@@ -1,0 +1,318 @@
+// Copyright © 2019 The Things Network Foundation, The Things Industries B.V.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+// BORDERS
+// =======
+
+// ## General
+
+border-normal($side = '', $width = 1px)
+  $prefix = '-'
+  if $side == ''
+    $prefix = ''
+  border{$prefix + $side}: $width solid $c-divider
+
+border-dark($side = '', $width = 1px)
+  $prefix = '-'
+  if $side == ''
+    $prefix = ''
+  border{$prefix + $side}: $width solid $c-divider-dark
+
+border-input($side = '', $width = 1px)
+  $prefix = '-'
+  if $side == ''
+    $prefix = ''
+  border{$prefix + $side}: $width solid $c-input-border
+
+border-subtle($side = '', $width = 1px)
+  $prefix = '-'
+  if $side == ''
+    $prefix = ''
+  border{$prefix + $side}: $width solid $c-divider-subtle
+
+pseudo-border($size, $color)
+  &:before
+    position: absolute
+    bottom: 0
+    left: 0
+    height: $size
+    display: block
+    width: 100%
+    background: $color
+    content: ''
+    {block}
+
+pseudo-border-animated($size, $color)
+  +pseudo-border($size, $color)
+    transform: scaleX(0)
+    transition: transform .2s, width .4s cubic-bezier(1, 0, 0, 1) .2s
+
+  &:hover:before
+    transform: scaleX(1)
+
+
+
+// COLORS
+// ======
+
+// Darker/lighter is used to step through color shadings in a consistent
+// way (using steps). Consider using an already defined color or defining
+// a new one altogether when applicable. Only use with full integer steps.
+darker($color, $step = 1)
+  darken($color, 5 * $step)
+
+lighter($color, $step = 1)
+  lighten($color, 5 * $step)
+
+// Hoverize and activize will return shaded values for active and hover state.
+// This will improve consistency for shaded colors.
+hoverize($color)
+  if ($color == $c-active-blue)
+    $c-active-blue-hover
+  else
+    darker($color, 2)
+
+activize($color)
+  if ($color == $c-active-blue)
+    $c-active-blue-active
+  else
+    darker($color, 3)
+
+// For text colors and lines
+tc-hoverize($color)
+  if ($color == $tc-active)
+    $tc-active-hover
+  else
+    darker($color, 2)
+
+
+// POSITIONING
+// ======
+
+// Nudges push the element in the specified direction by the specified amount.
+
+nudge($direction, $amount = 1px)
+  position: relative
+
+  if $direction == 'up'
+    bottom: $amount
+  if $direction == 'down'
+    top: $amount
+  if $direction == 'left'
+    right: $amount
+  if $direction == 'right'
+    left: $amount
+
+// Center absolute uses absolute positioning to put the element in the
+// center of its container.
+center-absolute()
+  top: 50%
+  left: 50%
+  position: absolute
+  transform: translate(-50%, -50%)
+
+
+// Fullscreen forces an element to be full screen using position absolute
+full-screen()
+  position: absolute
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  transform: translate(0, 0)
+  max-width: initial
+  max-height: initial
+
+
+// TYPOGRAPHY
+// ==========
+
+// Heading size definitions
+
+h1()
+  font-size: $fs.xxl
+  line-height: $lh.xxl
+  font-weight: 400
+
+h2()
+  font-size: $fs.xl
+  line-height: $lh.xl
+  font-weight: 600
+
+h3()
+  font-size: $fs.l
+  line-height: $lh.l
+  font-weight: 400
+
+entity-title()
+  h2()
+  line-height: 1
+  white-space: no-break
+  margin: $ls.xxs 0
+  height: 4rem
+  display: flex
+  align-items: center
+
+
+// One liner, sets line-height to 1, makes components spacing a lot easier.
+// Only suitable for texts that will not wrap at all. Otherwise use
+// text-spacing-* or text-margin-*
+
+one-liner($display = inline-block)
+  line-height: 1
+  display: $display
+  white-space: nowrap
+
+// Text spacing will return a spacing value that compensates for the elements
+// line height, in order to make it relative to the elements visual bounding
+// box again. It can be used to space text elements that cannot have a
+// line height of 1
+
+text-spacing-top($val = 0rem, $line-height = @line-height)
+  if not $line-height
+    $line-height = $line-height-base
+  $subtractor = $line-height * ($line-height-margin-factor + .04rem)
+  return 'calc(%s - %s)' % ($val $subtractor)
+
+text-spacing-bottom($val = 0rem, $line-height = @line-height)
+  if not $line-height
+    $line-height = $line-height-base
+  $subtractor = $line-height * ($line-height-margin-factor + .04rem)
+  return 'calc(%s - %s)' % ($val $subtractor)
+
+text-spacing($up = 0rem, $down = false, $line-height = @line-height)
+  text-spacing-top($up, $line-height)
+  if $down
+    text-spacing-bottom($down, $line-height)
+  else
+    text-spacing-bottom($up, $line-height)
+
+// text-margin-top / bottom will
+
+text-margin-top($val = 0rem, $line-height = @line-height)
+  margin-top: text-spacing-top($val, $line-height)
+
+text-margin-bottom($val = 0rem, $line-height = @line-height)
+  margin-bottom: text-spacing-bottom($val, $line-height)
+
+
+text-margin($up = 0rem, $down = false, $line-height = @line-height)
+  text-margin-top($up, $line-height)
+  if $down
+    text-margin-bottom($down, $line-height)
+  else
+    text-margin-bottom($up, $line-height)
+
+
+// Eat text margin is a shorthand mixin to strip off a text elements margins
+// relative to its visual bounding box
+
+eat-text-margins($line-height = @line-height)
+  text-margin(0rem, false, $line-height)
+
+
+// LAYOUT
+// ======
+
+// Horizontalize is a shorthand to make elements in a container horizonatally
+// distributed.
+
+horizontalize()
+  display: flex
+  justify-content: space-between
+
+visually-hidden()
+  position: absolute;
+  width: 1px
+  height: 1px
+  margin: -1px
+  border: 0
+  padding: 0
+  white-space: nowrap
+  clip-path: inset(100%)
+  clip: rect(0 0 0 0)
+  overflow: hidden
+
+
+// RESPONSIVENESS
+// ==============
+
+media-query($max)
+  @media screen and (max-width: $max)
+    {block} // @stylint ignore
+
+media-query-min($min)
+  @media screen and (min-width: $min + 1)
+    {block} // @stylint ignore
+
+media-query-between($min, $max)
+  @media screen and (min-width: $min + 1) and (max-width: $max)
+    {block} // @stylint ignore
+
+
+// FUNCTIONAL
+// ==========
+
+// Removes default browser focus styles and adds custom ones for the
+// .focus-visible class added automatically on focused elements.
+focus-visible()
+  &:global(.focus-visible)
+    {block} // @stylint ignore
+
+  &:focus
+    outline: 0
+
+
+// ICONS
+// =====
+
+material-icon()
+  font-family: 'Material Icons'
+  font-weight: normal
+  font-style: normal
+  font-size: 1.3rem
+  line-height: 1
+  letter-spacing: normal
+  text-transform: none
+  display: inline-block
+  white-space: nowrap
+  word-wrap: normal
+  direction: ltr
+  vertical-align: middle
+  font-feature-settings: 'liga'
+  align-items: center
+
+
+// RESETS
+// ======
+
+reset-button()
+  border: 0
+  margin: 0
+  padding: 0
+  width: auto
+  overflow: visible
+  background: transparent
+  color: inherit
+  font: inherit
+  line-height: normal
+  -webkit-appearance: none
+  text-align: inherit
+
+
+// TRANSITIONS
+// ===========
+
+transition-color()
+  transition: color $ad.xs

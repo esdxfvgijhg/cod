@@ -1,0 +1,13 @@
+{
+    "consumption": {
+        "average": 4, 
+        "current": true, 
+        "period": 140, 
+        "power": true, 
+        "voltage": true
+    }, 
+    "nodearch": "m3", 
+    "power": "dc", 
+    "profilename": "test_consumption", 
+    "radio": null
+}

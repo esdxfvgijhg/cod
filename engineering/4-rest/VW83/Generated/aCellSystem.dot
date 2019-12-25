@@ -1,0 +1,29 @@
+digraph aCellSystem {
+	rankdir=LR;
+	size="8,5" 
+	node [shape = circle];
+P7 -> P5 [ label = "P7.P5" color = "blue"  ] ;
+P7 -> P6 [ label = "P7.P6" color = "blue"  ] ;
+P5 -> P2 [ label = "P5.P2" color = "blue"  ] ;
+P5 -> P3 [ label = "P5.P3" color = "blue"  ] ;
+P5 -> P4 [ label = "P5.P4" color = "blue"  ] ;
+P5 -> P6 [ label = "P5.P6" color = "blue"  ] ;
+P5 -> P7 [ label = "P5.P7" color = "blue"  ] ;
+P3 -> P1 [ label = "P3.P1" color = "blue"  ] ;
+P3 -> P2 [ label = "P3.P2" color = "blue"  ] ;
+P3 -> P4 [ label = "P3.P4" color = "blue"  ] ;
+P3 -> P5 [ label = "P3.P5" color = "blue"  ] ;
+P1 -> P2 [ label = "P1.P2" color = "blue"  ] ;
+P1 -> P3 [ label = "P1.P3" color = "blue"  ] ;
+P1 -> P4 [ label = "P1.P4" color = "blue"  ] ;
+P6 -> P5 [ label = "P6.P5" color = "blue"  ] ;
+P6 -> P7 [ label = "P6.P7" color = "blue"  ] ;
+P4 -> P1 [ label = "P4.P1" color = "blue"  ] ;
+P4 -> P2 [ label = "P4.P2" color = "blue"  ] ;
+P4 -> P3 [ label = "P4.P3" color = "blue"  ] ;
+P4 -> P5 [ label = "P4.P5" color = "blue"  ] ;
+P2 -> P1 [ label = "P2.P1" color = "blue"  ] ;
+P2 -> P3 [ label = "P2.P3" color = "blue"  ] ;
+P2 -> P4 [ label = "P2.P4" color = "blue"  ] ;
+P2 -> P5 [ label = "P2.P5" color = "blue"  ] ;
+}

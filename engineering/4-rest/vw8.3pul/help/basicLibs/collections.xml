@@ -1,0 +1,788 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.collections"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Collections</title>
+<body><p>&Product; provides an extensive library of 
+classes for operations on <apiname otherprops="pundle" title="Open a browser on the Collections component">Collections</apiname> 
+of objects. In addition to the conventional arrays, there are bags,
+sets, strings, intervals, linked lists, sorted collections, 
+dictionaries, and many more.</p>
+<p>Collection classes inherit the basic behavior of 
+the abstract class <apiname>Collection</apiname> for adding, removing, 
+and enumerating their elements.</p>
+</body>
+<topic id = "vw.help.collections.createEmpty"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create an empty collection</title>
+<body><p><indexterm>collections<indexterm>create empty</indexterm></indexterm>To
+create an empty collection with the default (5) element slots, send a <apiname>new</apiname> message
+to the collection class:
+<codeblock otherprops="smalltalk expression">| list |
+list := List new.
+list add: 'Leonardo';
+		add: 'Michelangelo';
+		add: 'Donatello';
+		add: 'Raphael'.
+^list.</codeblock></p>
+<p>To set the number of elements, send a <apiname>new:</apiname> message
+to the collection class with the number of element slots as argument:
+<codeblock otherprops="smalltalk expression">| array |
+array := Array new: 4.
+array at: 1 put: 'Leonardo';
+		at: 2 put: 'Michelangelo';
+		at: 3 put: 'Donatello';
+		at: 4 put: 'Raphael'.
+^array.</codeblock></p></body></topic>
+<topic id = "vw.help.collections.createInitialized"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create an initialized collection </title>
+<body><p><indexterm>collections<indexterm>create filled</indexterm></indexterm>Send
+a <apiname>new:withAll:</apiname> message to the desired collection
+class, with the initialization object.
+<codeblock otherprops="smalltalk expression">Array new: 16 withAll: 0.</codeblock></p></body></topic>
+<topic id = "vw.help.collections.createArray"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create an array with up to four elements</title>
+<body><p><indexterm>collections<indexterm>create array</indexterm></indexterm><indexterm>array<indexterm>create
+with elements</indexterm></indexterm>Send a <apiname>with:with:with:with:</apiname> message
+to the <apiname>Array</apiname> class, or a variant of that message
+containing as many <apiname>with:</apiname> keywords as needed, up
+to four. The argument of each <apiname>with:</apiname> keyword can
+be any object. 
+<codeblock otherprops="smalltalk expression">array1 := Array with: 'Leonardo'.
+array2 := Array
+			with: 'Leonardo'
+			with: 'Michelangelo'.</codeblock></p></body></topic>
+<topic id = "vw.help.collections.literalArray"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a literal array</title>
+<body><p><indexterm>literal array<indexterm>create</indexterm></indexterm><indexterm>collections<indexterm>create
+literal array</indexterm></indexterm><indexterm>array<indexterm>create
+literal</indexterm></indexterm>Enclose the list of literal elements
+in parentheses, with a number-sign prefix. Any white-space character
+can be used to separate the elements.
+<codeblock otherprops="smalltalk expression">#( 'Leonardo' 'Michelangelo' 'Donatello' 'Raphael' )</codeblock></p></body></topic>
+<topic id = "vw.help.collections.newFromOld"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a new collection from an old collection</title>
+<body><p><indexterm>collections<indexterm>create new from old</indexterm></indexterm>Send
+a <apiname>withAll:</apiname> message to the desired collection class
+(<apiname>List</apiname>).
+<codeblock otherprops="smalltalk expression">List withAll: Smalltalk keys</codeblock></p></body></topic>
+<topic id = "vw.help.collections.getSize"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get a collection’s size</title>
+<body><p><indexterm>collections<indexterm>get size</indexterm><indexterm>get
+capacity</indexterm></indexterm>A collection’s size is the number
+of used slots in the collection. The number of available slots is
+the capacity. Send a <apiname>size</apiname> message to the collection.
+The response is an integer (in the example, <codeph>31</codeph>). 
+<codeblock otherprops="smalltalk expression">| array |
+array := ColorValue constantNames.
+^array size</codeblock></p>
+<p>A collection’s capacity is the total number of slots available.
+ They may not all be used.  The capacity can be expanded by growing
+the collection.  Send a <apiname>capacity</apiname> message to the
+collection. The response is an integer.
+<codeblock otherprops="smalltalk expression">| set |
+set := Set withAll: ColorValue constantNames.
+^set capacity</codeblock></p></body></topic>
+<topic id = "vw.help.collections.testEmpty"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Test if a collection is empty</title>
+<body><p><indexterm>collections<indexterm>test if empty</indexterm></indexterm>Send
+an <apiname>isEmpty</apiname> message to the collection. The response
+is <codeph>true</codeph> when the collection has no elements and <codeph>false</codeph> otherwise.
+<codeblock otherprops="smalltalk expression">| list |
+list := List allInstances.
+list isEmpty
+		ifFalse: [^list first]</codeblock></p></body></topic>
+<topic id = "vw.help.collections.addElement"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Add elements to a collection</title>
+<body><p><indexterm>collections<indexterm>add elements</indexterm></indexterm>A <apiname>List</apiname>, <apiname>Set</apiname>,
+or <apiname>Dictionary</apiname> can add elements at any time.
+<ul><li>Send
+an <apiname>add:</apiname> message to a <apiname>List</apiname> or <apiname>Set</apiname>.
+The argument can be any object.</li>
+<li>Send an <apiname>at:put:</apiname> message to a <apiname>Dictionary</apiname>.
+The first argument is the lookup key, typically but not necessarily
+a <apiname>Symbol</apiname>. The second argument is the object that
+is associated with the key.</li></ul>
+<codeblock otherprops="smalltalk expression">| list dict |
+list := List new.
+dict := Dictionary new.
+list add: 'Leonardo';
+			add: 'Michelangelo';
+			add: 'Donatello';
+			add: 'Raphael'.
+dict at: #Leader put: 'Leonardo';
+			at: #Member1 put: 'Michelangelo';
+			at: #Member2 put: 'Donatello';
+			at: #Member3 put: 'Raphael'.
+^Array with: list with: dict</codeblock></p></body></topic>
+<topic id = "vw.help.collections.insertElement"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Insert an element at a location</title>
+<body><p><indexterm>collections<indexterm>insert element at location</indexterm></indexterm><ol>
+<li>Send an <apiname>addFirst:</apiname> message to a <apiname>List</apiname>.
+The argument is the element to be inserted at the beginning of the
+collection.</li>
+<li>Send an <apiname>add:before:</apiname> message to a <apiname>List</apiname>.
+The first argument is the element to be inserted. The second argument
+is the element before which the insertion is to take place.</li>
+<li>Send an <apiname>add:beforeIndex:</apiname> message to a <apiname>List</apiname>.
+The first argument is the element to be inserted. The second argument
+is the index of the element before which the insertion is to take
+place.
+<codeblock otherprops="smalltalk expression">| list |
+list := List new.
+list add: 'Raphael';
+			addFirst: 'Leonardo';
+			add: 'Michelangelo' before: 'Raphael';
+			add: 'Donatello' beforeIndex: 3.
+^list</codeblock></li></ol></p></body></topic>
+<topic id = "vw.help.collections.addCollection"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Add a collection of elements</title>
+<body>
+<p><indexterm>collections<indexterm>add a collection of elements</indexterm></indexterm><ol>
+<li>Send an <apiname>addAll:</apiname> message to a <apiname>List</apiname> or <apiname>Set</apiname>.
+The argument is a collection of elements to be added. Remember that
+a <apiname>Set</apiname> will discard duplicate elements.</li>
+<li>Send an <apiname>addAllFirst:</apiname> message to a <apiname>List</apiname> (not
+a <apiname>Set</apiname>). The argument is the collection of elements
+to be inserted at the beginning of the list.</li>
+<li>Send an <apiname>addAll:beforeIndex:</apiname> message to a <apiname>List</apiname>.
+The first argument is the collection to be inserted. The second
+argument is the index number of the element before which the new
+batch is to be inserted.
+<codeblock otherprops="smalltalk expression">| sizes totalElements |
+sizes := List new: 10000.
+sizes addAll: (List allInstances collect: [:list | list size]).
+sizes addAllFirst: (Dictionary allInstances collect: [:dict | dict size]).
+sizes
+			addAll: (Array allInstances collect: [:array | array size]) 
+			beforeIndex: 2.
+totalElements := 0.
+sizes do: [:sz | totalElements := totalElements + sz].
+^totalElements</codeblock></li></ol></p></body></topic>
+<topic id = "vw.help.collections.expandArray"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Expand an array</title>
+<body><p><indexterm>collections<indexterm>expand array</indexterm></indexterm><indexterm>array<indexterm>expand</indexterm></indexterm><ol>
+<li>Send a <apiname>copyWith:</apiname> message to a <apiname>List</apiname> or <apiname>Array</apiname>.
+The argument is the object that is to be appended to the end of
+the copy.</li>
+<li>Replace the original array with the expanded copy.
+<codeblock otherprops="smalltalk expression">| array copy |
+array := #( 1 2 3 4 5 6 7 8 9 ).
+copy := array copyWith: 10.
+array := copy.
+^array</codeblock></li></ol></p></body></topic>
+<topic id = "vw.help.collections.removeElement"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Remove an element</title>
+<body><p><indexterm>collections<indexterm>remove element</indexterm></indexterm>Send
+a <apiname>remove:</apiname> message to a <apiname>List</apiname> or <apiname>Set</apiname>.
+The argument is the object to be removed.
+<codeblock otherprops="smalltalk expression">| list |
+list := List withAll: ColorValue constantNames.
+list remove: #red.
+^list</codeblock></p>
+<p>To take an action if the element doesn’t exist, send a <apiname>remove:ifAbsent:</apiname> message
+to a <apiname>List</apiname> or <apiname>Set</apiname>. The first argument
+is the object to be removed. The second argument is a block containing
+the action or actions.</p>
+<p>An empty block is an effective means of taking no action &#x2014; that
+is, simply shutting off the error notifier that is displayed by
+default.
+<codeblock otherprops="smalltalk expression">| list |
+list := List withAll: ColorValue constantNames.
+list remove: #brickRed
+			ifAbsent: [Dialog warn: 'You must be kidding -- brickRed?'].
+list remove: #moonbeam ifAbsent: [ ].
+^list</codeblock></p></body></topic>
+<topic id = "vw.help.collections.removeSubset"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Remove a subset</title>
+<body><p><indexterm>collections<indexterm>remove subset</indexterm></indexterm>Send
+a <apiname>removeAll:</apiname> message to a <apiname>List</apiname> or <apiname>Set</apiname>.
+The argument is a collection containing the elements to be removed.
+If an element is not found, an error results. The subset can be
+contained in a different type of collection.
+<codeblock otherprops="smalltalk expression">| list |
+list := List withAll: ColorValue constantNames.
+list removeAll: #( #red #green #blue ).																			
+^list</codeblock></p></body></topic>
+<topic id = "vw.help.collections.removeAtIndex"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Remove elements by index</title>
+<body><p><indexterm>collections<indexterm>remove element by index</indexterm></indexterm><ol>
+<li>Send a <apiname>removeFirst</apiname> message to a <apiname>List</apiname> (but
+not a <apiname>Set</apiname>, <apiname>Array</apiname>, or <apiname>Dictionary</apiname>).
+The first element in the list will be removed. If the list is empty,
+an error results.</li>
+<li>Send a <apiname>removeFirst:</apiname> message to a <apiname>List</apiname>.
+The argument is the number of elements to be removed from the front
+of the list.</li>
+<li>Send a <apiname>removeLast</apiname> message to remove the
+last element.</li>
+<li>Send a <apiname>removeLast:</apiname> message. The argument
+is the number of elements to be removed from the end of the list.</li>
+<li>Send a <apiname>removeFrom:to:</apiname> message to a <apiname>List</apiname>.
+The first argument is the starting index of the range and the second
+argument is the ending index. An array containing the deleted elements
+is returned.</li>
+<li>Send a <apiname>removeFrom:to:returnElements:</apiname> message
+to a <apiname>List</apiname>. The first and second arguments are index
+numbers identifying the range to be removed. The third argument
+is <codeph>false</codeph> when you want <codeph>nil</codeph> to be
+returned instead of an array containing the deleted elements &#x2014; for
+large removal operations, this is more efficient.
+<codeblock otherprops="smalltalk expression">| list |
+list := List new: 25.
+1 to: 25 do: [:i | list add: i].
+"Removes 1"
+list removeFirst.
+"Removes 2 3 4 5 6"
+list removeFirst: 5.
+"Removes 25"
+list removeLast.
+"Removes 20 21 22 23 24"
+list removeLast: 5.
+"Removes 14 15 16 17 18"
+list removeFrom: 8 to: 12.
+"Removes 9 10 11 12 13"
+list removeFrom: 3 to: 7 returnElements: false.
+^list</codeblock></li></ol></p></body></topic>
+<topic id = "vw.help.collections.removeSpecified"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Remove elements that pass a test</title>
+<body><p><indexterm>collections<indexterm>remove element on condition</indexterm></indexterm>Send
+a <apiname>removeAllSuchThat:</apiname> message to a <apiname>List</apiname>.
+The argument is a block containing the test. The block must declare
+one argument variable for the element to be tested.
+<codeblock otherprops="smalltalk expression">| list |
+list := List withAll: ColorValue constantNames.
+list removeAllSuchThat: [:name | name first == $r].
+^list</codeblock></p></body></topic>
+<topic id = "vw.help.collections.removeAssociation"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Remove an association from a dictionary</title>
+<body><p><indexterm>collections<indexterm>remove association</indexterm></indexterm><indexterm>dictionary<indexterm>remove
+entry</indexterm></indexterm><ol><li>Send a <apiname>removeKey:</apiname> message
+to the dictionary. The argument is the key of the association that
+you want to remove. The removed value is returned. If the key is
+not found, an error results.</li>
+<li>To provide an alternative response to the key-not-found condition, send
+a <apiname>removeKey:ifAbsent:</apiname> message to the dictionary.
+The first argument is the key to be removed and the second argument
+is a block that specifies the action to take if the key is not found.
+An empty block causes no action, which is the same as silently ignoring
+the condition.
+<codeblock otherprops="smalltalk expression">| dict |
+dict := Dictionary new.
+dict at: #Leader put: 'Leonardo';
+			at: #Member1 put: 'Michelangelo';
+			at: #Member2 put: 'Donatello';
+			at: #Member3 put: 'Raphael'.
+dict removeKey: #Member2.
+dict removeKey: #Villain ifAbsent: [ ].
+^dict</codeblock></li></ol></p></body></topic>
+<topic id = "vw.help.collections.removeFromArray"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Remove an element from an array</title>
+<body><p><indexterm>array<indexterm>remove element</indexterm></indexterm><ol>
+<li>Send a <apiname>copyWithout:</apiname> message to an <apiname>Array</apiname> (or
+a <apiname>List</apiname>). The argument is the object to be removed.
+Every occurrence of that object will be removed from the copy.</li>
+<li>Replace the original array with the copy.
+<codeblock otherprops="smalltalk expression">| array copy |
+array := #( 1 8 3 4 5 6 7 8 9 ).
+copy := array copyWithout: 8.
+array := copy.
+^array</codeblock></li></ol></p></body></topic>
+<topic id = "vw.help.collections.replaceElements"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Replace elements</title>
+<body><p><indexterm>collections<indexterm>replace elements</indexterm></indexterm>Send
+an <apiname>at:put:</apiname> message to the collection.</p>
+<p>For a <apiname>Dictionary</apiname>, the first argument is the
+lookup key and the second argument is the value to be placed at
+that key. If the key does not exist, it will be added.</p>
+<p>For a <apiname>List</apiname> or <apiname>Array</apiname>, the first
+argument is the index number of the element to be replaced, and
+the second argument is the object that is to replace the old element.
+<codeblock otherprops="smalltalk expression">| list dict |
+dict := Dictionary new.
+dict at: #Leader put: 'Leonardo';
+			at: #Member1 put: 'Michelangelo';
+			at: #Member2 put: 'Donatello';
+			at: #Member3 put: 'Raphael'.
+list := List withAll: dict values.
+list sort.
+dict at: #Leader put: 'Rembrandt'.
+list at: 1 put: 'Rembrandt'.
+^Array with: list with: dict.</codeblock></p>
+<p>To replace all elements, send an <apiname>atAllPut:</apiname> message
+to a <apiname>List</apiname> or <apiname>Array</apiname>. The argument
+is the object that is to replace all existing elements.
+<codeblock otherprops="smalltalk expression">| list |
+list := List new.
+1 to: 10 do: [:number | list add: number].
+list atAllPut: 0.
+^list</codeblock></p>
+<p>To replace specified elements, send an <apiname>atAll:put:</apiname> message
+to a <apiname>List</apiname> or <apiname>Array</apiname>. The first
+argument is a collection containing the index numbers of the elements
+to be replaced. The second argument is the object to be placed in
+those slots.
+<codeblock otherprops="smalltalk expression">| list |
+list := List new.
+list
+	add: 'red';
+	add: 'ghoulishGreen';
+	add: 'red';
+	add: 'blackAndBlue'.
+list atAll: #(1 3) put: 'bloodRed'.
+^list</codeblock></p></body></topic>
+<topic id = "vw.help.collections.replaceObject"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Replace all occurrences of an object</title>
+<body><p><indexterm>collectionsl<indexterm>replace occurences of
+an object</indexterm></indexterm>Send a <apiname>replaceAll:with:</apiname> message
+to a <apiname>List</apiname> or <apiname>Array</apiname>. The first
+argument is the object whose occurrences you want to replace. The
+second argument is the replacement object.
+<codeblock otherprops="smalltalk expression">| list |
+list := List new.
+list
+	add: 'red';
+	add: 'ghoulishGreen';
+	add: 'red';
+	add: 'blackAndBlue'.
+list replaceAll: 'red' with: 'bloodRed'.
+^list</codeblock></p></body></topic>
+<topic id = "vw.help.collections.replaceSubset"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Replace a subset with a new subset</title>
+<body><p><indexterm>collections<indexterm>replace a subset</indexterm></indexterm>Send
+a <apiname>replaceFrom:to:with:startingAt:</apiname> message to a <apiname>List</apiname> or <apiname>Array</apiname>. The
+first and second arguments are index numbers identifying the replacement
+range. The <apiname>with:</apiname> argument is a collection containing
+the new elements. The <apiname>startingAt:</apiname> argument is the
+index number in the new collection at which to begin copying the
+replacement elements.
+<codeblock otherprops="smalltalk expression">| mainList replacements |
+mainList := #(1 2 3 4 5 6 7 8 9).
+replacements := #(15 14 13 12 11 10 9 8 7 6 5 4 3 2 1).
+mainList
+		replaceFrom: 1
+		to: mainList size
+		with: replacements
+		startingAt: 7.
+^mainList</codeblock></p></body></topic>
+<topic id = "vw.help.collections.copyElements"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Copy elements</title>
+<body><p><indexterm>collections<indexterm>copy elements</indexterm></indexterm>When
+copying a collection, you can modify literal elements such as numbers
+and strings without affecting the copy. For a nonliteral element,
+the copied collection holds onto the original object rather than
+a copy, and will reflect any changes you make to that object.</p>
+<p>Send a <apiname>copy</apiname> message to the collection.
+<codeblock otherprops="smalltalk expression">| dict1 dict2 |
+dict1 := Dictionary new.
+dict1 at: #Leader put: 'Leonardo';
+			at: #Member1 put: 'Michelangelo';
+			at: #Member2 put: 'Donatello';
+			at: #Member3 put: 'Raphael'.
+dict2 := dict1 copy.
+"Change the original without changing the copy."
+dict1 removeKey: #Leader.
+dict1 at: #Leader put: 'Rembrandt'.
+^Array with: dict1 with: dict2</codeblock></p></body></topic>
+<topic id = "vw.help.collections.copySubset"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Copy a subset</title>
+<body><p><indexterm>collections<indexterm>copy subset</indexterm></indexterm>Send
+a <apiname>copyFrom:to:</apiname> message to a <apiname>List</apiname> or <apiname>Array</apiname>.
+The first argument is the starting index of the range you want to
+copy, and the second argument is the ending index.
+<codeblock otherprops="smalltalk expression">| list copy |
+list := List new.
+1 to: 10 do: [:number | list add: number].
+copy := list copyFrom: 1 to: 3.
+^copy</codeblock></p></body></topic>
+<topic id = "vw.help.collections.combine"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Combine two collections</title>
+<body><p><indexterm>collections<indexterm>combine</indexterm></indexterm>Two
+ordered collections, such as a <apiname>List</apiname> and an <apiname>Array</apiname>,
+can be combined, as shown in the basic step. This technique is widely
+used with strings (which are ordered collections of characters),
+but it can also be used with other kinds of ordered collections.</p>
+<p>Send a comma (,) message to a <apiname>List</apiname> or <apiname>Array</apiname>.
+The argument is another ordered collection. A new collection will
+be returned, of the same type as the first collection, containing
+the elements of both collections.
+<codeblock otherprops="smalltalk expression">| list array combinedList |
+list := List withAll: ColorValue constantNames.
+array := #(#bloodRed #ghoulishGreen #blackAndBlue).
+combinedList := list, array.
+^combinedList</codeblock></p></body></topic>
+<topic id = "vw.help.collections.findElement"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Find elements</title>
+<body><p><indexterm>collections<indexterm>find element</indexterm><indexterm>search</indexterm></indexterm>Send
+an <apiname>at:</apiname> message to a <apiname>List</apiname> or <apiname>Array</apiname>.
+The argument is an index number. If the object is not found, zero
+is returned.
+<codeblock otherprops="smalltalk expression">| list |
+list := List withAll: ColorValue constantNames.
+^list at: 1</codeblock></p></body></topic>
+<topic id = "vw.help.collections.searchDict"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Search a dictionary</title>
+<body><p><indexterm>dictionary<indexterm>search</indexterm></indexterm><ol>
+<li>Send an <apiname>at:</apiname> message to the dictionary. The
+argument is the lookup key. If the key does not exist, an error
+results.</li>
+<li>To avoid the key-not-found error, send an <apiname>at:ifAbsent:</apiname> message. The
+second argument is an empty block (for no action) or a block containing
+actions to be taken if the key does not exist.</li>
+<li>To find the key that corresponds to a value, send a <apiname>keyAtValue:ifAbsent:</apiname> message
+to the dictionary. The first argument is the object whose key is
+to be found. The second argument is a block containing the value-not-found
+action.
+<codeblock otherprops="smalltalk expression">| dict found1 found2 found3 |
+dict := Smalltalk.
+found1 := dict at: #List.
+found2 := dict at: #UnlikelyClassName ifAbsent: [nil].
+found3 := dict keyAtValue: List ifAbsent: [nil].
+^Array with: found1 with: found2 with: found3</codeblock></li></ol></p></body></topic>
+<topic id = "vw.help.collections.getIndex"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get the index of an object</title>
+<body><p><indexterm>collections<indexterm>get object index</indexterm></indexterm><ol>
+<li>Send an <apiname>indexOf:</apiname> message to a <apiname>List</apiname> or <apiname>Array</apiname>.
+The argument is the object to be found. If the object is not an
+element, zero is returned.</li>
+<li>To search a subset of the <apiname>List</apiname> or <apiname>Array</apiname>,
+send a <apiname>nextIndexOf:from:to:</apiname> message. The first
+argument is the object to be found. The second and third arguments
+are indexes that define the search range. The returned index is
+relative to the beginning of the collection.</li>
+<li>To search backward from the end, send a <apiname>lastIndexOf:</apiname> message. The
+index of the last occurrence is returned, or zero if none exists.
+The returned index is relative to the beginning of the collection.
+<codeblock otherprops="smalltalk expression">| list found1 found2 found3 |
+list := List withAll: #( #red #green #blue #red #yellow #blue).
+found1 := list indexOf: #red.
+found2 := list nextIndexOf: #red from: 2 to: 6.
+found3 := list lastIndexOf: #red.
+^Array with: found1 with: found2 with: found3</codeblock></li></ol></p></body></topic>
+<topic id = "vw.help.collections.findObject"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Find an object in a collection</title>
+<body><p><indexterm>collections<indexterm>find object</indexterm></indexterm>To
+find out if an object is in a collection, send an <apiname>includes:</apiname> message to
+the collection, with the object as argument. The return value is <codeph>true</codeph> if
+the object is in the collection, and <codeph>false</codeph> otherwise.</p>
+<p>To find out how many instances of an object are in a collection,
+send an <apiname>occurrencesOf:</apiname> message to the collection,
+with the object as argument. The return value is the number of occurrences.
+<codeblock otherprops="smalltalk expression">| list found1 found2 |
+list := List withAll: #( #red #green #blue #red #yellow #blue).
+found1 := list includes: #red.
+found2 := list occurrencesOf: #red.
+^Array with: found1 with: found2</codeblock></p></body></topic>
+<topic id = "vw.help.collections.getBeforeAfter"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get the element before or after an object</title>
+<body><p><indexterm>collections<indexterm>get previous element</indexterm><indexterm>get
+next element</indexterm></indexterm>Send a <apiname>before:</apiname> message
+to a <apiname>List</apiname>. The argument is the element before which
+the desired element is located. If the argument matches the first
+element, an error results.</p>
+<p>Send an <apiname>after:</apiname> message to a <apiname>List</apiname>.
+The argument is the element after which the desired element is located.
+If the argument matches only the last element, an error results.
+<codeblock otherprops="smalltalk expression">| list found1 found2 |
+list := List withAll: #( #red #green #blue #red #yellow #blue).
+found1 := list before: #blue.
+found2 := list after: #yellow.
+^Array with: found1 with: found2</codeblock></p></body></topic>
+<topic id = "vw.help.collections.findFirstLast"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Find the first or last element</title>
+<body><p><indexterm>collections<indexterm>get first element</indexterm><indexterm>get
+last element</indexterm></indexterm>To get the first element, send
+a <apiname>first</apiname> message to a <apiname>List</apiname> or <apiname>Array</apiname>.
+If the collection is empty, an error results.</p>
+<p>To get the last element, send a <apiname>last</apiname> message
+to a <apiname>List</apiname> or <apiname>Array</apiname>. If the collection
+is empty, an error results.
+<codeblock otherprops="smalltalk expression">| list found1 found2 |
+list := List withAll: #( #red #green #blue).
+found1 := list first.
+found2 := list last.
+^Array with: found1 with: found2</codeblock></p></body></topic>
+<topic id = "vw.help.collections.findSubset"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Find a subset (sub-collection)</title>
+<body><p><indexterm>collections<indexterm>find subset</indexterm></indexterm>Send
+an <apiname>indexOfSubCollection:startingAt:</apiname> message to
+a <apiname>List</apiname> or <apiname>Array</apiname>. The first argument
+is the sub-collection to be found, which need not be the same type
+of collection. The second argument is the index number at which
+the search is to begin. The returned index number is relative to
+the beginning of the collection.</p>
+<p>If the sub-collection is not found, zero is returned. <apiname>indexOfSubCollection:startingAt:</apiname> searches
+for the sub-collection that appears in the same order as the target
+and with no elements between its elements.
+<codeblock otherprops="smalltalk expression">| list found1 found2 found3 |
+list := List withAll: #( #red #green #blue #red #yellow #blue).
+found1 := list 
+			indexOfSubCollection: #( #red #yellow #blue) 
+			startingAt: 1.
+found2 := list 
+			indexOfSubCollection: #( #yellow #red) 
+			startingAt: 1.
+found3 := list 
+			indexOfSubCollection: #( #red #blue) 
+			startingAt: 1.
+^Array with: found1 with: found2 with: found3</codeblock></p></body></topic>
+<topic id = "vw.help.collections.findPassFail"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Find elements that pass or fail a test</title>
+<body><p>To collect all elements that pass a test, send a <apiname>select:</apiname> message
+to a collection. The argument is a one-argument block containing
+the selection test.</p>
+<p>To collect all elements that fail a test, send a <apiname>reject:</apiname> message
+to a collection. The argument is a one-argument block containing
+the rejection test.</p>
+<p>To get the first element that passes a test, send a <apiname>detect:ifNone:</apiname> message
+to a collection. The first argument is a one-argument block containing
+the test. The second argument is a no-argument block containing
+the action to take if no element passes the test.
+<codeblock otherprops="smalltalk expression">| list found1 found2 found3 |
+list := List withAll: Smalltalk classNames.
+"Select classes with 'Example' in their names."
+found1 := list
+			select: [:nextElement | 
+				(nextElement indexOfSubCollection: 'Example'
+					startingAt: 1) > 0].
+"Reject classes with 'Example' in their names."
+found2 := list
+			reject: [:nextElement |
+				(nextElement indexOfSubCollection: 'Example'
+					startingAt: 1) > 0].
+"Detect the first class beginning with 'R'."
+found3 := list 
+			detect: [:nextElement | nextElement first == $R]
+			ifNone: [0].
+^Array with: found1 with: found2 with: found3</codeblock></p></body></topic>
+<topic id = "vw.help.collections.testEqual"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Test whether collections are the same</title>
+<body><p><indexterm>collections<indexterm>test equality</indexterm></indexterm>A
+collection can be compared to another collection. The collections can
+be compared for either equality of elements or identity of elements.</p>
+<p>To test for equality of elements, send a <apiname>=</apiname> message
+to one of the collections with the other collection as the argument.
+to test for identity of elements, send a <apiname>==</apiname> message.
+<codeblock otherprops="smalltalk expression">| list1 list2 copyIsEqual copyWithChangedElementIsEqual |
+list1 := List withAll: ColorValue constantNames.
+list2 := list1 copy.
+copyIsEqual := list1 = list2.
+list2 at: 1 put: #burntOrange.
+copyWithChangedElementIsEqual := list1 = list2.
+^Array with: copyIsEqual with: copyWithChangedElementIsEqual.</codeblock></p></body></topic>
+<topic id = "vw.help.collections.subtractSet"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Subtracting one set from another</title>
+<body><p><indexterm>collections<indexterm>subtracting collections</indexterm></indexterm>Send
+a – (minus) message to a <apiname>Set</apiname> or <apiname>Dictionary</apiname>.
+The argument is another set or dictionary. A similar type of collection
+is returned, containing the elements that occur in the first set
+but not the second.
+<codeblock otherprops="smalltalk expression">| set1 set2 |
+set1 := Set withAll: ColorValue constantNames.
+set2 := set1 select: [:name | 
+			(name indexOfSubCollection: 'light' startingAt: 1) > 0].
+^set1 - set2</codeblock></p></body></topic>
+<topic id = "vw.help.collections.sort"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Sort a collection</title>
+<body><p><indexterm>collections<indexterm>sort</indexterm></indexterm>A
+sorted collection can be sorted, as long as its elements respond
+to <apiname>&lt;</apiname> and <apiname>=</apiname> messages.</p>
+<p>Send a <apiname>sort</apiname> message to a sorted collection,
+such as a <apiname>List</apiname>, to sort in ascending order.
+<codeblock otherprops="smalltalk expression">| list |
+list := List withAll: #( 'Leonardo' 'Michelangelo' 'Donatello' 'Raphael').
+list sort.
+^list</codeblock></p>
+<p>To specify a sort order, send a <apiname>sortWith:</apiname> message
+to a sorted collection. The argument is a block containing the test
+for determining whether one element precedes another. The block
+must declare two arguments to contain the two elements being compared.
+The block should return <codeph>true</codeph> if the first argument
+should precede the second.  The block should return <codeph>false</codeph> otherwise.
+(In the example, the test causes the elements to be sorted in descending
+order.)
+<codeblock otherprops="smalltalk expression">| list |
+list := List withAll: #( 'Leonardo' 'Michelangelo' 'Donatello' 'Raphael').
+list sortWith: [:element1 :element2 | element1 > element2].
+^list</codeblock></p></body></topic>
+<topic id = "vw.help.collections.makeSortable"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Make an unsorted collection sortable</title>
+<body><p><indexterm>collections<indexterm>make sortable</indexterm></indexterm>Send
+an <apiname>asSortedCollection</apiname> message to the collection.
+A <apiname>SortedCollection</apiname> is returned, with the collection’s
+elements in ascending order.</p>
+<p>To customize the sort order, send an <apiname>asSortedCollection:</apiname> message
+to the collection. The argument is a block that compares two elements and
+answers <codeph>true</codeph> when the first element is to precede
+the second element.
+<codeblock otherprops="smalltalk expression">| array1 sort1 array2 sort2 |
+array1 := #( 'Leonardo' 'Michelangelo' 'Donatello' 'Raphael').
+sort1 := array1 asSortedCollection.
+array2 := #( 'Leonardo' 'Michelangelo' 'Donatello' 'Raphael').
+sort2 := array2 asSortedCollection: [:name1 :name2 | name1 > name2].
+^Array with: sort1 with: sort2.</codeblock></p></body></topic>
+<topic id = "vw.help.collections.reverseOrder"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Reverse the order of elements</title>
+<body><p><indexterm>collections<indexterm>reverse order</indexterm></indexterm>Send
+a <apiname>reverse</apiname> message to a <apiname>List</apiname> or <apiname>Array</apiname> (or
+any ordered collection). A new instance of the same type of collection
+is returned, with the elements in reverse order (but not explicitly
+sorted).
+<codeblock otherprops="smalltalk expression">| array reversedArray |
+array := #( 'Leonardo' 'Michelangelo' 'Donatello' 'Raphael').
+reversedArray := array reverse.
+^reversedArray</codeblock></p></body></topic>
+<topic id = "vw.help.collections.changeClass"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Change collection classes</title>
+<body><p><indexterm>collections<indexterm>change type</indexterm><indexterm>change
+class</indexterm></indexterm>Any collection can be converted to
+a <apiname>List</apiname>, an <apiname>Array</apiname>, or a <apiname>Set</apiname>,
+by sending an <apiname>asList</apiname>, <apiname>asArray</apiname>,
+or <apiname>asSet</apiname> message to the collection. The original
+collection is not converted, but an instance of the desired type
+of collection is returned containing the original collection’s elements,
+and the original collection remains unchanged.
+<codeblock otherprops="smalltalk expression">| array list set |
+array := ColorValue constantNames.
+list := array asList.
+set := array asSet.
+array := set asArray.
+^Array with: list with: set with: array</codeblock></p></body></topic>
+<topic id = "vw.help.collections.loop"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Loop through a collection</title>
+<body><p><indexterm>collections<indexterm>loop on elements</indexterm></indexterm>Send
+a <apiname>do:</apiname> message to a collection. The argument is
+a block that performs a series of operations on an element. The
+block is repeated for each element in the collection, and it is
+expected to declare one argument variable to hold the next element
+to be processed.
+<codeblock otherprops="smalltalk expression">| list color |
+list := List withAll: ColorValue constantNames.
+list sort.
+list do: [:colorName |
+			Transcript show: colorName asString; cr.
+			color := ColorValue perform: colorName.
+			Transcript
+				show: color red printString;
+				tab;
+				show: color green printString;
+				tab;
+				show: color blue printString;
+				cr; cr].</codeblock></p>
+<p>For a reverse-order search, send a <apiname>reverseDo:</apiname> message
+to a collection.</p>
+<p>For documentation on the variety of iterative operations 
+available for collections, refer to the "Control Structures" chapter of the 
+<xref href="./doc/AppDevGuide.pdf" format="pdf" 
+scope="external"><i>Application Developer's Guide</i></xref>.</p>
+</body></topic>
+<topic id = "vw.help.collection.loopOnKey"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Loop on lookup keys</title>
+<body><p><indexterm>collections<indexterm>loop on key</indexterm></indexterm><indexterm>dictionary<indexterm>loop
+on key</indexterm></indexterm>Send a <apiname>keysDo:</apiname> message
+to an ordered collection such as a <apiname>Dictionary</apiname>, <apiname>List</apiname>,
+or <apiname>Array</apiname>. The argument is a one-argument block
+that performs a series of operations using the lookup key for each element.</p>
+<p>Send a <apiname>keysAndValuesDo:</apiname> message to an ordered
+collection such as a <apiname>Dictionary</apiname>, <apiname>List</apiname>,
+or <apiname>Array</apiname>. The argument is a two-argument block
+that performs a series of operations using the lookup key and associated value
+for each element. 
+<codeblock otherprops="smalltalk expression">| dict randomGenerator gc randomX randomY colorValue |
+randomGenerator := Random new.
+gc := (ScratchPad prepareWindowOfSize: 300@400) 
+			graphicsContext.
+dict := Dictionary new.
+ColorValue constantNames do: [:colorName |
+			colorValue := ColorValue perform: colorName.
+			dict at: colorName put: colorValue].
+dict keysDo: [:colorName |
+			randomX := randomGenerator next * 300.
+			randomY := randomGenerator next * 300.
+			colorName displayOn: gc at: (randomX @ randomY)].
+dict keysAndValuesDo: [:colorName :color |
+			randomX := randomGenerator next * 300.
+			randomY := randomGenerator next * 300.
+			gc paint: color.
+		colorName displayOn: gc at: (randomX @ randomY)].</codeblock></p></body></topic>
+<topic id = "vw.help.collections.collect"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Collect the results of iteration</title>
+<body><p><indexterm>collections<indexterm>collect elements</indexterm></indexterm>Send
+a <apiname>collect:</apiname> message to a collection. The argument
+is a block that processes an element and returns an object that
+is to become an element in the result collection. The block is expected
+to declare one argument variable for the next element to be processed.
+<codeblock otherprops="smalltalk expression">| list capitalizedName initial |
+list := List withAll: ColorValue constantNames.
+list sort.
+list collect: [:colorName |
+			capitalizedName := colorName asString.
+			initial := (capitalizedName at: 1) asUppercase.
+			capitalizedName at: 1 put: initial.
+		capitalizedName].</codeblock></p></body></topic>
+<topic id = "vw.help.collections.loopOn2Collections"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Looping through two collections</title>
+<body><p><indexterm>collections<indexterm>loop through two collections</indexterm></indexterm>Send
+a <apiname>with:do:</apiname> message to a <apiname>List</apiname> or <apiname>Array</apiname>.
+The first argument is another <apiname>List</apiname> or <apiname>Array</apiname> of
+the same size as the first. The second argument is a block that
+performs a series of operations on a pair of elements, one from
+each of the two collections. The block is expected to declare two
+argument variables, one for each of the elements.
+<codeblock otherprops="smalltalk expression">| array1 array2 dict |
+array1 := #( #Leader #Member1 #Member2 #Member3).
+array2 := #( 'Leonardo' 'Michelangelo' 'Donatello' 'Raphael' ).
+dict := Dictionary new.
+array1 with: array2 do: [:array1Element :array2Element |
+			dict at: array1Element put: array2Element].
+^dict</codeblock></p></body></topic></topic></dita>

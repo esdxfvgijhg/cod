@@ -1,0 +1,95 @@
+
+#USE "course.lib"
+DATA TYPE BBox
+  RECORD
+    INT Top,Left,Bottom,Right:
+:
+
+PROTOCOL diam.proto IS BBox:
+
+PROC Node([]CHAN OF diam.proto in,out, VAL INT Identity, CHAN OF BYTE toMux)
+  [MaxFanOut] BBox bufIn,bufOut:
+  BBox myBBox:
+
+  PROC PrintBBox(BBox box)
+    SEQ 
+      out.number ( box[Left], 4, toMux)
+      out.number ( box[Bottom], 4, toMux)
+      out.number ( box[Right], 4, toMux)
+      out.number ( box[Top], 4, toMux)
+      toMux ! '*n'
+  :
+
+
+  PROC InitBBox(BBox box)
+    Location loc:
+    SEQ 
+      loc := NetLocation[Identity]
+      box[Left] := loc [xLoc]
+      box[Right] := loc [xLoc]
+      box[Top] := loc [yLoc]
+      box[Bottom] := loc [yLoc]
+  :
+
+  PROC MergeBBox(BBox box,thisBox)
+    Location loc:
+    SEQ 
+      IF 
+        thisBox[Left] < box [Left] 
+          box [Left] := thisBox[Left]
+        TRUE
+          SKIP
+      IF 
+        thisBox[Right] > box [Right] 
+          box [Right] := thisBox[Right]
+        TRUE
+          SKIP
+      IF 
+        thisBox[Top] < box [Top] 
+          box [Top] := thisBox[Top]
+        TRUE
+          SKIP
+      IF 
+        thisBox[Bottom] > box [Bottom] 
+          box [Bottom] := thisBox[Bottom]
+        TRUE
+          SKIP
+  :
+
+
+  SEQ
+    InitBBox(myBBox)
+    SEQ i=0 FOR SIZE out
+      bufOut[i] :=  myBBox
+    SEQ tour=0 FOR MaxNodes-1
+      SEQ
+        PAR
+          PAR i=0 FOR SIZE in
+            in [i] ? bufIn[i] 
+          PAR j=0 FOR SIZE out
+            out [j] ! bufOut[j] 
+        SEQ i=0 FOR SIZE in
+          MergeBBox(myBBox,bufIn[i])
+        SEQ i=0 FOR SIZE out
+          bufOut[i] :=  myBBox
+    out.number(Identity, 4, toMux)
+    PrintBBox(myBBox)    
+:
+
+PROC Mux([]CHAN OF BYTE fromNodes, CHAN OF BYTE out)
+  BYTE char:
+  SEQ
+    SEQ tours = 0 FOR 1
+      SEQ nbNodes = 0 FOR MaxNodes
+        ALT canalIndex =0 FOR MaxNodes
+          fromNodes[canalIndex] ? char
+            SEQ
+              out ! char
+              WHILE char <> '*n'
+                SEQ
+                  fromNodes[canalIndex] ? char
+                  out ! char
+:
+
+
+

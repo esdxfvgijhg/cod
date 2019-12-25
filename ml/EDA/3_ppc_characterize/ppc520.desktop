@@ -1,0 +1,10 @@
+#!/usr/bin/env Rscript
+DATAPATH <- Sys.getenv("DATAPATH")
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=Link to 3.5.2. Machine Screw Case Study
+Type=Link
+URL=file:///home/aghiles/S11/code/R/doc/handbook/ppc/section5/ppc52.html
+Icon=text-html
+Name[en_US]=ppc520

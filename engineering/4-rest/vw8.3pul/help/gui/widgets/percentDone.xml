@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.widgets.percent"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Percent Done Bar</title>
+<body><p><indexterm>GUI development:add percent done bar</indexterm><indexterm>percent
+done widget</indexterm>Also sometimes called a Progress Bar, this
+widget gives a visual indication of how far a process has advanced.
+It’s commonly used for file copy procedures, but can be useful for
+any number of lengthy processes to give the user an indication of
+how much work has been done and how much more there is to go.</p>
+<p>To add a Percent Done Bar to a canvas:<ol><li><p>Add a Percent
+Done Bar widget to the canvas and select it.</p></li>
+<li><p>In the <uicontrol>Aspect</uicontrol> property, enter a name
+for the aspect.The instance variable that determines the percentage.
+The value is a numeric value between 0 and 1.</p></li>
+<li><p>Set the progress orientation: <uicontrol>Horizontal</uicontrol>, <uicontrol>Vertical</uicontrol>,
+or <uicontrol>Both</uicontrol>.</p><p>Optionally, select <uicontrol>Reverse</uicontrol>,
+to reverse the direction of progress indication. Select Area to
+indicate progress as the percentage of area filled.</p></li>
+<li><p>Select a starting point radio button. The grid with five
+radio buttons sets the starting point: top, bottom, left, right,
+or center. If Both is selected for the orientation, then the starting
+point is either a corner or the center.</p></li>
+<li><p><uicontrol>Apply</uicontrol> the properties and install the
+canvas. Use <uicontrol>define</uicontrol> to add the aspect instance
+variable and accessor method.</p></li></ol></p></body></topic></dita>

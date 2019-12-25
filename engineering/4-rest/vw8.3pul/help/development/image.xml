@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product   "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.virtualImage"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Working with Image Files</title>
+<body><p>The &Product; virtual image is a platform-independent file 
+that contains an "image" of your working environment. It is delivered 
+as the file <filepath>visual.im</filepath> in the <filepath>image</filepath> 
+directory of the standard distribution.</p>
+<p>During the process of development, you may save "snapshots" of the 
+image file &#x2014; as many as you wish &#x2014;, which may be resumed later. Multiple 
+images may be run concurrently (each one maintains its own log of changes), 
+though in practice you generally work with just one.</p></body>
+<topic id = "vw.help.virtualImage.save"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Save the image</title>
+<body><p><indexterm>image<indexterm>save</indexterm></indexterm>To
+save the currently running image, select <uicontrol>File &#x2192; Save As... </uicontrol>in
+the Launcher window. A dialog prompts you for the name of the image, with
+the current image name as the default. To save the image to a different
+file, keeping the previously saved image safe, enter a new name,
+without the "<filepath>.im</filepath>" extension. If you choose a new
+name, &Product; will create a new changes file.</p></body></topic>
+
+<topic id = "vw.help.virtualImage.garbageCollect"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Reclaim space in an image</title>
+<body><p><indexterm>garbage collection</indexterm><indexterm>image<indexterm>garbage
+collect</indexterm></indexterm>To invoke the compacting garbage
+collector, select <uicontrol>System &#x2192; Collect Garbage</uicontrol> in
+the Launcher window. This will reclaim any unused data, sweeping
+all of the object memory except the zone called <term>Perm Space</term>.</p>
+<p>To invoke the global garbage collector, select <uicontrol>System &#x2192; Collect All Garbage</uicontrol> in
+the Launcher window. This will reclaim any unused data, sweeping all
+of the object memory including Perm Space.</p></body></topic>
+
+<topic id = "vw.help.virtualImage.exit"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Exit &Product;</title>
+<body><p><indexterm>exit VisualWorks</indexterm>To end a &Product; development
+session, select<uicontrol> File &#x2192; Exit &Product;... </uicontrol>in
+the Launcher window. A dialog prompts you to save the image before
+exiting. If you choose to save the image, you may provide a new
+filename.</p>
+<p>Selecting <uicontrol>Cancel</uicontrol> continues your session.</p>
+<p>Note that closing the Launcher window, for example by clicking
+the window’s close icon, allows you to either exit &Product;,
+or simply close the Launcher window itself.</p></body></topic>
+
+<topic id = "vw.help.virtualImage.permSave"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Permanent Save an image</title>
+<body><p><indexterm>image<indexterm>perm save as</indexterm></indexterm><indexterm>Perm Save As</indexterm>Use 
+<uicontrol>File &#x2192; Perm Save As...</uicontrol> in the Launcher window to create
+an image file with all <term>Old Space</term> objects
+moved into the zone called <term>Perm Space</term>.
+The newly-created image will execute subsequent garbage collections
+more efficiently.</p>
+<p>This is commonly a last step performed to prepare an image for deployment.</p></body></topic>
+
+</topic>
+</dita>

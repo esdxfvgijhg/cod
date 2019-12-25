@@ -1,0 +1,45 @@
+[SetupWiz]
+VBExe=C:\Program Files\Microsoft Visual Basic\vb32.exe
+SetupProj=C:\Program Files\Microsoft Visual Basic\setupkit\setup1\setup1.vbp
+BootStrap=C:\Program Files\Microsoft Visual Basic\setupkit\kitfil32\setup.exe
+RemoveInstallEXE=C:\Program Files\Microsoft Visual Basic\setupkit\kitfil32\ST4UNST.EXE
+CompressToDir=D:\Vw252Com\COM\Examples\COMAuto\StCom\VB4\SetupWiz\
+Protocol1=ncacn_ip_tcp,TCP/IP
+Protocol2=ncacn_nb_nb,NetBIOS over NetBEUI
+Protocol3=ncacn_nb_tcp,NetBIOS over TCP
+Protocol4=ncacn_np,Named Pipes
+Protocol5=ncadg_ipx,Datagram - IPX
+Protocol6=ncacn_spx,SPX
+Protocol7=ncadg_ip_udp,Datagram - UDP
+Protocol8=ncacn_nb_ipx,Netbios over IPX
+[Flags]
+AppTitle=vbStCom
+DefaultDir=$(ProgramFiles)\vbStCom
+MakeFilePath=D:\Vw252Com\COM\Examples\COMAuto\StCom\VB4\vbStCom.vbp,0
+Disk Drive=-1
+Disk Type=D:\Vw252Com\COM\Examples\COMAuto\StCom\VB4\Installer\
+AppExeName=D:\Vw252Com\COM\Examples\COMAuto\StCom\VB4\VbStCom.exe
+Deployment=0
+RemoteProvider=0
+DataAccess=0
+FilesChanged=0
+CheckSum=145836
+[Dependencies]
+File1=C:\WINNT40\System32\FM20.DLL,0,32764
+File2=C:\WINNT40\system32\COMCTL32.OCX,0,32764
+File3=C:\WINNT40\system32\RICHTX32.OCX,0,32764
+File4=C:\WINNT40\system32\COMDLG32.OCX,0,32764
+[Files]
+File1=C:\WINNT40\System32\VB40032.DLL,0,$(WinSysPath),,|32767|,-1,-1,0,0,,,0
+File2=C:\WINNT40\System32\ven2232.olb,0,$(WinSysPathSysFile),,|32767|,-1,0,0,0,,,0
+File3=C:\WINNT40\System32\olepro32.dll,0,$(WinSysPath),$(DLLSelfRegister),|32767|7|9|10|,-1,-1,0,0,,,0
+File4=C:\WINNT40\System32\msvcrt20.dll,0,$(WinSysPathSysFile),,|32767|,-1,0,0,0,,,0
+File5=C:\WINNT40\System32\msvcrt40.dll,0,$(WinSysPath),,|32767|7|9|10|,-1,-1,0,0,,,0
+File6=C:\Program Files\Microsoft Visual Basic\setupkit\kitfil32\Sys32\ctl3d32.dll,0,$(WinSysPathSysFile),,|32767|,-1,0,0,0,,,0
+File7=C:\WINNT40\System32\FM20.DLL,0,$(WinSysPath),,|32764|,-1,-1,0,0,,,0
+File8=C:\WINNT40\system32\COMCTL32.OCX,0,$(WinSysPath),$(DLLSelfRegister),|32764|,-1,-1,0,0,,,0
+File9=C:\WINNT40\System32\MFC40.DLL,0,$(WinSysPath),$(DLLSelfRegister),|7|9|10|,-1,-1,0,0,,,0
+File10=C:\WINNT40\system32\RICHTX32.OCX,0,$(WinSysPath),$(DLLSelfRegister),|32764|,-1,-1,0,0,,,0
+File11=C:\WINNT40\system32\COMDLG32.OCX,0,$(WinSysPath),$(DLLSelfRegister),|32764|,-1,-1,0,0,,,0
+File12=D:\Vw252Com\COM\Examples\COMAuto\StCom\Help\VBStCom.hlp,0,$(AppPath),,|32765|,-1,0,0,0,,,0
+File13=D:\Vw252Com\COM\Examples\COMAuto\StCom\VB4\VbStCom.exe,0,$(AppPath),$(EXESelfRegister),|32766|,-1,0,0,0,,,0

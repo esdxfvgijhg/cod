@@ -1,0 +1,933 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<title>The Chronos Date/Time Library</title>
+<meta name="description" content="Code library for date and time computations in Smalltalk. Supports Olson time zones, multiple calendars, scientific and business use cases, and flexible date/time formatting.">
+<meta name="keywords" content="Chronos, date, time, time zone, timezone, calendar, Smalltalk, VisualWorks, Olson timezone database, ANSI-Smalltalk Standard, DateAndTime, Duration, holiday, ISO 8601, RFC 2822">
+
+<link rel="alternate" type="application/atom+xml"
+    title="Chronos Time Zone Repository Publication Advisory" href="http://date-time-zone.com/feeds/timeZoneRepository.atom.xml">
+
+<style type="text/css">
+a:link {color: rgb(192, 164, 132); font-weight: bold;}
+a:visited {color: rgb(192, 164, 132); font-weight: bold; text-decoration: none;} 
+a:hover {color: #0000FF}
+a:active {color: #FF0000}
+td { 
+font-family: Helvetica,Arial,sans-serif;
+font-size: 16;
+text-align: justify;
+color: rgb(0, 0, 0);
+}
+.maintitle {
+font-size: 180%;
+font-weight: bold;
+}
+.gold {
+color:rgb(192, 164, 132);
+}
+.boldgold {
+color:rgb(192, 164, 132);
+font-weight: bold;
+font-size: 125%;
+}
+</style>
+
+<script type="text/javascript">
+function toInteger(n){
+  return (n < 0 ? - 1 : + 1) * Math.floor(Math.abs(n) + 0.5);
+}
+function zeropad(n) { 
+return n>9 ? n : '0'+n; 
+}
+function formatTimeZoneOffset(time, elementSeparator) {
+var minutesWestOfUT=time.getTimezoneOffset()
+var absOffsetInMinutes=Math.abs(minutesWestOfUT)
+var offsetInHours=toInteger(absOffsetInMinutes / 60)
+var offsetMinutes = absOffsetInMinutes % 60
+var isWestOfUT = minutesWestOfUT > 0
+return (isWestOfUT ? '-' : '+')+zeropad(offsetInHours)+elementSeparator+zeropad(offsetMinutes)
+}
+function formatTimeOfDay(time) {
+var hour=time.getHours()
+var minute=time.getMinutes()
+var second=time.getSeconds()
+return zeropad(hour)+':'+zeropad(minute)+':'+zeropad(second)
+}
+function abbreviationOfMonth(time) {
+return ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][time.getMonth()]
+}
+function formatDateAsYMD(time, elementSeparator) {
+var dayOfMonth=time.getDate()
+var month=time.getMonth() + 1
+var year=time.getFullYear()
+return year+elementSeparator+zeropad(month)+elementSeparator+zeropad(dayOfMonth)
+}
+function formatDateAsMDY(time, mdSeparator, dySeparator) {
+var dayOfMonth=time.getDate()
+var year=time.getFullYear()
+return abbreviationOfMonth(time)+mdSeparator+zeropad(dayOfMonth)+dySeparator+year
+}
+function formatDateAsDMY(time, dmSeparator, mySeparator) {
+var dayOfMonth=time.getDate()
+var year=time.getFullYear()
+return zeropad(dayOfMonth)+dmSeparator+abbreviationOfMonth(time)+mySeparator+year
+}
+function abbreviationOfDayOfWeek(time) {
+return ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][time.getDay()]
+}
+function formatDateAsRFC2822(time) {
+return abbreviationOfDayOfWeek(time)+', '+formatDateAsDMY(time, ' ', ' ')
+}
+
+function formatDateAndTimeAsISO8601(time) {
+return formatDateAsYMD(time,'-')+'T'+formatTimeOfDay(time)+formatTimeZoneOffset(time, ':')
+}
+function formatDateAndTimeAsRFC2822(time) {
+return formatDateAsRFC2822(time)+' '+formatTimeOfDay(time)+' '+formatTimeZoneOffset(time, '')
+}
+function startClock()
+{
+document.getElementById('clock').innerHTML=formatDateAndTimeAsRFC2822(new Date())
+t=setTimeout('startClock()',500)
+}
+</script>
+
+</head>
+<body bgcolor="#ffffff" onload="startClock()">
+<br style="font-size: 50%">
+<center>
+<table border="0" valign="center" style="width: 96%; text-align: left; margin-left: auto; margin-right: auto;">
+<tbody><tr><td>
+<center>
+<table width=94%>
+<tbody>
+<tr>
+<td><center>
+<img src="http://www.chronos-st.org/images/Chronos-small.png">
+<br style="font-size: 30%" />
+<a style="text-decoration: none;" href="http://en.wikipedia.org/wiki/Chronos" target="_top"><span class="boldgold">&chi;&rho;&#972;&nu;&omicron;&sigmaf;</span></a>
+</center></td>
+<td><table width="100%" border="0" bgcolor="white" cellpadding="0">
+<tbody>
+<tr>
+<td  align="left" style="text-align: left;">
+<div class="maintitle"><span class="gold"><a style="text-decoration: none;" href="http://www.chronos-st.org/" target="_top">The Chronos Date/Time Library</a></span></div>
+<br> 
+<b><span style="font-family: Helvetica,Arial,sans-serif; color: rgb(110, 110, 110);" id="clock">
+<noscript><small><i>~ A code library for date/time computations ~</i></small></noscript></span></b>
+</td>
+<td align="right" style="text-align: right;">
+<img src="http://www.chronos-st.org/images/SunDial.jpg" width=100 height=100>
+</td>
+<td align="right" style="text-align: right;">
+<img src="http://www.chronos-st.org/images/st-balloon.jpg">
+</td>
+</tbody>
+</table>
+
+</td>
+</tr>
+</tbody>
+</table>
+
+<table width=94% cellpadding=10>
+<tbody><tr><td>
+<table border=0 width="100%">
+<tr style="background-color: rgb(248, 248, 248);"> 
+<td style="text-align: left; font-family: Helvetica,Arial,sans-serif; color: rgb(128, 128, 128);">
+<span style="font-size: 14;">
+<noscript></noscript>
+<script type="text/javascript">
+document.write('Page retrieved '+formatDateAndTimeAsRFC2822(new Date()))
+</script>
+</span> 
+</td>
+<td style="text-align: right; font-family: Helvetica,Arial,sans-serif; color: rgb(128, 128, 128);">
+<span style="font-size: 14;">
+<noscript>Page published Tue, 29 May 2007 04:44:41 +0000 (UT: Universal Time)</noscript>
+<script type="text/javascript">
+document.write('Page published '+formatDateAndTimeAsRFC2822(new Date(1180413881638)))
+</script>
+</span>
+</td>
+</tr>
+</table>
+</td></tr>
+<tr><td>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head></head>
+<body><table><tbody> <tr> <td> <h1>Installation
+Instructuctions for the <a href="http://www.chronos-st.org" target="_top">Chronos Date/Time Library</a></h1>
+<p>Chronos is currently available only for <a href="http://smalltalk.cincom.com/downloads/index.ssp?content=visualworks" target="_top">
+VisualWorks Smalltalk</a>, <a href="http://www.squeak.org/" target="_top">Squeak Smalltalk</a> and&nbsp;<a href="http://www.object-arts.com/content/mydolphin/d6Downloads.html">Dolphin
+Smalltalk</a>.</p><p>For VisualWorks, the version
+currently distributed
+should be compatible with all versions of VisualWorks from 2.0
+forward (and perhaps earlier, but it hasn't been tried.) However, the
+&ldquo;file-out&rdquo; format is NOT
+compatible with versions of VisualWorks prior to 5i.3.&nbsp;For
+instructions and advice on installing Chronos
+in versions
+of VisualWorks prior to 5i.3, or for information on porting Chronos to
+non-VisualWorks environments other than those already available, see
+the <a href="http://www.chronos-st.org/Porting.html" target="_top">Porting.html</a>
+document that should accompany this document.</p><p>The
+VisualWorks version of Chronos is distributed as a .zip file, which
+contains .st source code file-ins and also parcels (which are
+alternatives to each other.) Chronos for VisualWorks is also available
+from the&nbsp;<a href="http://www.cincomsmalltalk.com/CincomSmalltalkWiki/Public+Store+Repository">Cincom
+Public PostGreSQL StORE Repository</a>.</p><p>The
+Squeak
+and Dolphin versions lack some of the functionality provided by the
+VisualWorks
+version. The Squeak version, for example, cannot determine the user's
+local time
+zone from the host operating system's time zone setting.
+&nbsp;Neither the Squeak nor the Dolphin versions of Chronos are
+able to determine locale information from the operating system.</p><p>The
+version of Chronos distributed for Squeak should be compatible with all
+Squeak versions since Squeak 3.6 (and perhaps even earlier.)
+&nbsp;Chronos for Squeak is distributed as both a .zip file and a
+.sar file (both of which contain .st source code file-ins.) The .zip
+file also contains .mcz files (which are alternatives to the file-ins.)
+Chronos for Squeak is also available from either <a href="http://map.squeak.org/package/46b5731f-5112-4157-94d3-d40c4ed8304d">SqueakMap</a>
+or <a href="http://www.squeaksource.com/Chronos.html">SqueakSource</a>.</p><p>The
+version of Chronos for Dolphin is known to be compatible with the X6
+version of Dolphin Smalltalk. &nbsp;Whether it is compatible with
+any other verision of Dolphin is not known (any information on that
+topic would be appreciated.) It is distributed as a .zip file
+containing a .pac ("package") file.</p><p>All the .zip
+files for all versions of Chronos contain the <a href="http://www.date-time-zone.com/">Chronos Time Zone
+Repository</a>.</p><h2>1.
+Install the Chronos Time Zone Repository</h2> <p>If
+you've obtained the Chronos distribution by
+installing the Chronos Bundle from
+the <a href="http://www.cincomsmalltalk.com/CincomSmalltalkWiki/Public+Store+Repository" target="_top">
+Cincom Public StORE Repository</a>, or by installing it from
+either <a href="http://map.squeak.org/package/46b5731f-5112-4157-94d3-d40c4ed8304d">SqueakMap</a>
+or <a href="http://www.squeaksource.com/Chronos.html">SqueakSource</a>,
+then you should also download the&nbsp;<a href="http://www.date-time-zone.com/">Chronos Time Zone
+Repository</a> from the
+<a href="http://www.chronos-st.org/" target="_top">Chronos
+web site</a> (navigate to the Downloads&gt;&gt;Time Zones
+frame, then select the <a href="http://chronos-st.org/downloads/time-zones.zip">Chronos
+Time Zone Repository</a> link--or just select the
+immediately-preceding link in this parenthetical comment.)&nbsp;</p><p>
+The&nbsp;<a href="http://www.date-time-zone.com/">Chronos
+Time Zone Repository</a> is included in the Chronos archive
+file ("Chronos.zip"--available from the&nbsp;<a href="http://www.chronos-st.org/" target="_top">Chronos
+web site</a>.) &nbsp;The pathname of the&nbsp;<a href="http://www.date-time-zone.com/">Chronos Time Zone
+Repository</a> in the Chronos.zip archive file is
+Chronos/time-zones. &nbsp;If the&nbsp;<a href="http://www.date-time-zone.com/">Chronos Time Zone
+Repository</a> is
+downloaded separately (as
+"<a href="http://www.chronos-st.org/downloads/time-zones.zip">time-zones.zip</a>,")
+then its pathname in the archive file is
+"time-zones".&nbsp;</p><p>Extract
+the entire contents of whichever archive file you downloaded (either
+Chronos.zip or&nbsp;<a href="http://www.chronos-st.org/downloads/time-zones.zip">time-zones.zip</a>)
+to the location of
+your choice. Chronos can be configured so that it will find
+the&nbsp;<a href="http://www.date-time-zone.com/">Chronos
+Time Zone Repository</a> at any location accessible using the
+Smalltalk
+file operation primitives. For the VisualWorks and Squeak versions of
+Chronos, the persistent time zone rulesets in
+the&nbsp;<a href="http://www.date-time-zone.com/">Chronos
+Time Zone Repository</a> are also individually accessible
+via HTTP at a well-known URL &nbsp;(e.g.,
+"http://date-time-zone.com/time-zones/rulesets/Europe/Berlin.tzn".)</p> <p>Depending
+on
+whether or not you are using the Squeak version of Chronos, where you
+decide to locate the&nbsp;<a href="http://www.date-time-zone.com/">Chronos Time Zone
+Repository</a> (and in which directory you plan to keep the
+Smalltalk image
+in which you install Chronos,) you may or may not need to set the value
+of the <span style="font-weight: bold;">CHRONOS_PATH</span>
+environment variable to the absolute path of the directory
+where the Chronos Time Zone Repository is (or will be) located. <span style="font-weight: bold;">The Squeak version of Chronos
+cannot access OS environment variables</span>, so for Squeak
+especially,&nbsp;putting the Chronos Time Zone Repository in the
+same folder that contains the Smalltalk image that
+you will be using to install Chronos will be the easiest approach
+initially.</p><p>If the&nbsp;<a href="http://www.date-time-zone.com/">Chronos Time Zone
+Repository</a> cannot be
+located, Chronos will issue error/warning messages to the Transcript,
+and although Chronos will still be functional, it will not be able to
+resolve any time zones identified by Olson timezone keys (e.g.,
+'America/Los_Angeles'.) Full functionality will be restored once
+Chronos is able to locate a valid&nbsp;<a href="http://www.date-time-zone.com/">Chronos Time Zone
+Repository</a>.</p><p>Should
+you&nbsp; desire to keep the&nbsp;<a href="http://www.date-time-zone.com/">Chronos Time Zone
+Repository</a> somewhere
+other than the image's current working directory, or if Chronos
+complains that it can't find the&nbsp;<a href="http://www.date-time-zone.com/">Chronos Time Zone
+Repository</a>, then you need to
+read the next section. &nbsp;Otherwise, you can skip it and
+continue
+with the section titled <span style="font-weight: bold;">Setting
+the System Time Zone</span>.&nbsp;</p><h3>How to
+Locate the&nbsp;<a href="http://www.date-time-zone.com/">Chronos
+Time Zone Repository</a> Somewhere Other than the
+Image's Current Directory</h3><p>For either VisualWorks or
+Dolphin (<span style="font-weight: bold;">but not for
+Squeak</span>,) the best approach is to set the system
+envorinment variable CHRONOS_PATH to the pathname of the directory that
+contains the "time-zones" folder.&nbsp;</p><p>Example:
+If the&nbsp;<a href="http://www.date-time-zone.com/">Chronos
+Time Zone Repository</a> (which resides in the "time-zones"
+folder) is located at
+"C:\DevTools\Smalltalk\Chronos\time-zones", then the value of the
+CHRONOS_PATH environment variable should be set to
+"C:\DevTools\Smalltalk\Chronos". <span style="text-decoration: underline;">Using the CHRONOS_PATH
+environment
+variable is a very good approach in many situations, especially
+when one uses multiple Chronos-enabled images that reside in different
+locations, and/or when multiple users should be sharing the same
+Chronos Time Zone Repository over a network.</span></p><p>Another
+option would be to programmatically inform your Chronos-enabled image
+where the&nbsp;<a href="http://www.date-time-zone.com/">Chronos
+Time Zone Repository</a> will be located. The location
+where
+a Chronos-enabled image expects to find the&nbsp;<a href="http://www.date-time-zone.com/">Chronos Time Zone
+Repository</a> can be programmatically changed using the
+ChronosSystemFacade API. &nbsp;Evaluate &lt;ChronosSystemFacade
+resourceRepositoryContext resourcePathPrefix: <span style="font-style: italic;">prefixString</span>&gt;,
+where <span style="font-style: italic;">prefixString&nbsp;</span>is
+the pathname (as a String, using host OS filename syntax) of the
+directory that contains the time-zones folder (e.g., if the time-zones
+folder's absolute pathname is
+'C:\DevTools\Smalltalk\Chronos\time-zones', then <span style="font-style: italic;">resourcePathPrefix</span>
+should be 'C:\DevTools\Smalltalk\Chronos'.) Of course, Chronos must
+first be installed in the image, and then the image must be saved after
+the pathname has been programmatically set.</p><p>During
+installation and/or
+whenever a
+Chronos-enabled image is
+restarted from a snapshot, Chronos will search for the folder
+containing the&nbsp;<a href="http://www.date-time-zone.com/">Chronos
+Time Zone Repository</a> at the following locations
+(in the order specified):</p> <ol> <li><span style="font-weight: bold;">At
+the "last good location"</span> where that particular
+image most recently found the folder containing the&nbsp;<a href="http://www.date-time-zone.com/">Chronos Time Zone
+Repository</a>. <span style="text-decoration: underline;">When
+installing Chronos for the first time in an image, the
+&ldquo;last good location&rdquo; is assumed by fiat to be the
+current working directory</span> (e.g., "Filename
+defaultDirectory" in VisualWorks, or "FileDirectory default" for
+Squeak.)</li> <li><span style="font-style: italic;">For
+VisualWorks and Dolphin only<span style="font-weight: bold;">:</span></span><span style="font-weight: bold;"> At
+the pathname
+specified by the value of the environment
+variable CHRONOS_PATH</span> (if defined, and if the specified
+path exists.)&nbsp;<span style="text-decoration: underline;"></span></li>
+<li><span style="font-weight: bold;">In
+the current
+working directory</span> according to the host Smalltalk
+environment
+(<span style="text-decoration: underline;">which can
+resolve to unexpected values in some situations.</span>) This is
+the easiest
+approach when one is only using a single Chronos-enabled image, and is
+the recommended approach for initial installation and evaluation.</li>
+<li><span style="font-style: italic;">For
+VisualWorks only:</span><span style="font-weight: bold;">
+In
+the same
+folder where the current VisualWorks image file
+is located</span> (the path to the image may not necessarily be
+the same as
+the current directory--for example, on Windows, when an image is
+started by drag and drop.)</li>
+<li><span style="font-style: italic;">For
+VisualWorks only:</span><span style="font-weight: bold;">
+</span><span style="font-weight: bold;">In
+the
+$VISUALWORKS folder</span>--if it's defined and the specified
+path exists (for versions of VW without an explicit $VISUALWORKS
+folder, this will instead be the folder where the image expects to find
+its *.sou file.)</li> </ol> <p>The
+ChronosSystemFacade singleton is responsible
+for finding
+the&nbsp;<a href="http://www.date-time-zone.com/">Chronos
+Time Zone Repository</a>. It searches for the&nbsp;<a href="http://www.date-time-zone.com/">Chronos Time Zone
+Repository</a> whenever Chronos is initially installed in an
+image,
+whenever a Chronos-enabled image is restarted from a snapshot, or
+whenever the message #install is sent to the ChronosSystemFacade
+singleton (e.g, "ChronosSystemFacade current install.").&nbsp;</p>
+<p>The
+ChronosSystemFacade singleton is also
+responsible for
+setting the Chronos system time zone, based on whichever Chronos time
+zone best matches the time zone used by the host system to define local
+
+time, according to the currently-specified matching policy.
+&nbsp;See
+the
+class comment of ChronosSystemFacade for more information.&nbsp;</p>
+<p>Notes:</p>
+<ul> <li>The expected filename
+(component of a pathname)
+of the
+directory containing the&nbsp;<a href="http://www.date-time-zone.com/">Chronos Time Zone
+Repository</a> is specified by
+the method
+ChronosSystemFacade&gt;&gt;timeZoneResourcesDirectoryName
+(hard-coded to be 'time-zones')</li> <li>The&nbsp;<a href="http://www.date-time-zone.com/">Chronos Time Zone
+Repository</a> folder
+contains the
+following subfolders: <ul> <li>f<span style="font-weight: bold;">oreign-keys</span>
+(contains mappings between Olson time
+zone keys and the time zone names used by other time zone databases,
+such as Microsoft's)</li> <li>l<span style="font-weight: bold;">eap-seconds</span>
+(contains leap second schedules for time scales,
+such as UTC)</li> <li><span style="font-weight: bold;">localization-policies</span>
+(contains the preferred mappings
+between zone offsets, zone abbreviations, and Olson time zone keys, on
+a per-country basis)</li> <li><span style="font-weight: bold;">Olson-zoneinfo-sources</span>
+(countains the text files--using the
+Unix line-end convention--that comprise the Olson Time Zone Database as
+published by Arthur David Olson; these are the source or input files
+for the Chronos Time Zone Compiler, and can also be used as the
+source/input files for various other time zone compilers, including
+zic, the one used by Unix/MacOS X)</li> <li><span style="font-weight: bold;">rulesets</span>
+(contains
+the time zone rulesets in the standard Chronos
+format, as compiled by the Chronos Time Zone Compiler, representing the
+time zone rules for all the time zones defined in the Olson Time Zone
+Database)</li> </ul> </li> </ul> <h2>2.
+Setting the System
+Timezone</h2> <p>Divining which&nbsp; time zone
+ruleset represents the local time of the host system (or the
+user--which may be different!) is a non-trivial problem. How Chronos
+attempts to do this, and how effective it is, varies considerably
+between
+different host operating systems and different Smalltalk flavors. (For
+a more in-depth discussion of the issues involved, see the essay <a href="http://www.chronos-st.org/Discovering%20the%20Local%20Time%20Zone--Why%20It%27s%20a%20Hard%20Problem.html">Discovering
+the Local Time Zone--Why It's a Hard Problem</a>.)</p><p>Although
+the Chronos system time zone can
+be set
+programmatically at any time after Chronos has been installed (see the
+class comment of ChronosTimezone for the specifics,) it is generally
+more convenient to configure your operating environment and/or
+installation image so that Chronos will be able to automatically set
+its system time zone to match the local time zone used by your
+operating system (although there's not much that can be done when using
+Squeak.) If this is not done, then during initial installation
+Chronos will simply use whatever information it may be able to obtain
+to guess at the correct local time zone.</p><p>If
+the&nbsp;<a href="http://www.date-time-zone.com/">Chronos
+Time Zone Repository</a> is not accessible, Chronos will make no
+attempt to discover the local time zone.</p><p>In the case
+of VisualWorks, Chronos will first attempt to get a valid POSIX or
+Olson time zone from the TZ environment variable. &nbsp;If that
+fails, and it's running on Windows, it will then attempt to access the
+time zone ruleset from the Windows Registry (which will fail if the
+OSTimeZone package is not--or cannot be--installed.) If the host OS is
+some flavor of UNIX, and the OSTimeZone package has been installed,
+Chronos will attempt to discover the current offset from Universal
+Time, and then use both that and the country code to make a reasonably
+good guess about the correct ruleset for the local time zone. As a last
+resort, Chronos will use the information provided by the VisualWorks
+default TimeZone to guess at the most likely corresponding Olson
+timezone (for now, this will only be
+helpful in cases where you&rsquo;ve already set the VW default
+TimeZone as desired in the installation image; however, Cincom
+currently plans to provide the capability for some future VisualWorks
+version to initialize the default TimeZone instance based on the
+ruleset of the time zone that the host system uses to define local
+time.)</p><p>In the case of Dolphin, Chronos will obtain
+what it needs from the Windows Registry. However, Chronos will instead
+use the TZ environment variable (and ignore the Windows Registry,)
+provided the TZ environment variable is set to a valid POSIX or Olson
+time zone.</p><p>In
+the case of Squeak, Chronos will create a Chronos time zone that
+exactly matches Squeak's native time zone. For Squeak 3.7 and later,
+that means a time zone whose fixed offset is the same as that of
+"DateAndTime localTimeZone"; for Squeak 3.6 and earlier, that means
+that Chronos defaults to Universal Time.</p><p>The
+recommended configuration procedure
+varies by
+Smalltalk flavor, and for VisualWorks also by operating
+system:</p><p><span style="font-weight: bold;">Squeak:
+</span>Install the Chronos Time Zone Repository in the same
+directory where you keep the Chronos-enabled image you will be using.
+&nbsp;Once Chronos has been installed in your image,
+programattically set the Chronos system time zone (e.g., "(Timezone at:
+'Asia/Tokyo') beSystem", "(Timezone at: 'Europe/Berlin') beSystem",
+"(Timezone at: 'Europe/London') beSystem", "(Timezone at:
+'Americal/New_York') beSystem",&nbsp;"(Timezone at:
+'Americal/Los_Angeles') beSystem"--see below for more time zone keys.)
+Save your image.</p><p><span style="font-weight: bold;">Dolphin:
+</span>Install the Chronos Time Zone Repository in the same
+directory where you keep the Chronos-enabled image you will be using.
+&nbsp;That should be all that's necessary.</p> <p><span style="font-weight: bold;">VisualWorks[Windows]</span>:
+Install Cincom&rsquo;s DLLCC and OSTimeZone
+parcels into the image into which you wish to install Chronos. Chronos
+will attempt to do this for you during installation, but it will not
+succeed unless those parcels have been installed at the expected
+locations in the $VISUALWORKS directory. If both parcels are installed
+(either by you, or automatically during Chronos installation,) then in
+most cases Chronos will be able to correctly determine the system
+timezone (provided you have it set correctly in Windows to begin with.)</p>
+<p>If defined and set to a valid value, Chronos will
+instead use
+the value of the TZ environment variable when running on Windows,
+although Windows itself makes no use of it. See the UNIX section below
+for information on the valid values to which the TZ environment
+variable may be set. For instructions on setting environment variables
+in Windows, see the Windows documentation&mdash;or do a Web search.</p>
+<p><span style="font-weight: bold;">VisualWorks[UNIX/Linux/MacOSX]</span>:
+For a variety of reasons (most of which are
+covered in exhaustive detail in the essay <a href="http://www.chronos-st.org/Discovering%20the%20Local%20Time%20Zone--Why%20It%27s%20a%20Hard%20Problem.html">Discovering
+the Local Time Zone--Why It's a Hard Problem</a>,) you should set
+the TZ
+environment variable to the key of whatever Olson time zone in which
+you&rsquo;d like to operate (or alternatively, you may set it to
+any valid POSIX time zone rule literal, such as
+&lsquo;CST6CDT&rsquo;.)</p> <p>For the United
+States, the correct time zone key would very probably&nbsp; be one
+of &ldquo;America/Adak&rdquo;, ":Pacific/Honolulu",
+":America/Anchorage", ":America/Los_Angeles',
+&lsquo;:America/Phoenix&rsquo;,
+&ldquo;:America/Denver&rsquo;,
+&ldquo;America/Boise&rdquo;,
+&ldquo;:America/Chicago&rdquo;,
+&ldquo;:America/Indiana/Indianapolis&rdquo;,
+&ldquo;:America/Detroit&rdquo; or
+&ldquo;:America/New_York&rdquo;. There are several other
+choices in the States of Alaska and Indiana, and in the various US
+territories and possessions.</p> <p>For Europe, common
+options would be
+&ldquo;:Europe/London&rdquo;,
+&ldquo;:Europe/Berlin&rdquo;,
+&ldquo;:Europe/Madrid&rdquo;,
+&ldquo;:Europe/Paris&rdquo;,
+"Europe/Amsterdam", &ldquo;:Europe/Athens&rdquo; and
+&ldquo;:Europe/Moscow&rdquo;.</p> <p>For Asia,
+common options would be
+&ldquo;:Asia/Jerusalem&rdquo;,
+&ldquo;:Asia/Tokyo&rdquo;,
+&ldquo;:Asia/Hong_Kong&rdquo; and
+&ldquo;:Asia/Calcutta&rdquo;.</p> <p>The full list
+of Olson timezone keys (over 400 of
+them&mdash;and that&rsquo;s not a typo) is available from a
+text file in the&nbsp;<a href="http://www.date-time-zone.com/">Chronos
+Time Zone Repository</a> (located at <path-prefix>/time-zones/rulesets/index.)
+The full list can also be accessed programmatically by evaluating
+&lsquo;ChronosTimezone allRegisteredKeys.&rsquo;</path-prefix></p>
+<p>The recommended procedure for setting the TZ
+environment
+variable on UNIX is to add a command such as one of the following to
+your &ldquo;.profile&rdquo; configuration file (although this
+won&rsquo;t work on all flavors of UNIX, it should work on most of
+them&mdash;see the documentation of your particular UNIX variant if
+you encounter problems):</p> <pre>	TZ=&rsquo;:America/Indiana/Vevay&rsquo;; export TZ<br>	TZ=&rsquo;:Australia/Sydney&rsquo;; export TZ<br>	TZ=&rsquo;HOVT-7HOVST-8,M3.5.0,M10.1.0/3:00&rsquo;; export TZ<br></pre>
+<p>The
+first two examples use Olson time zone keys; the last example uses a
+POSIX time zone rule literal. See the UNIX documentation of the tzset
+command and/or <a href="http://www.gnu.org/software/libc/manual/html_node/TZ-Variable.html" target="_top">Specifying
+the Time Zone with TZ</a> for more information on
+setting the time zone on Unix systems.</p> <p>Note the
+&ldquo;:&rdquo; character
+preceding the Olson
+time zone key. Chronos will actually recognize the specified time zone
+even if the &ldquo;:&rdquo; is missing&mdash;but UNIX and
+applications running on it may not. Perversely, AIX forbids the
+colon--and some versions don't support Olson time zones in any case.</p>
+<h2>3. Install Chronos In An Image</h2> <h3>The
+Chronos Date/Time Library</h3> <p>Generally, the Chronos
+Date/Time Library should install
+equally well into
+either a "virgin" image, or into an image that has the code of
+other applications and/or libraries already installed. For
+Dolphin, all code resides in
+a Chronos-specific package ("Chronos".) For VisualWorks, all code
+resides in Chronos-specific packages contained (directly or indirectly)
+by the
+bundle "Chronos"--and all classes are defined in the namespace
+"Chronos."</p> <p>Chronos
+does require that certain
+core image
+behavior
+remains unchanged. For the most part, Chronos depends only on the
+presence and correct operation of (a subset of) the classes and methods
+specified and required by the ANSI Smalltalk Standard. Almost all the
+exceptions would be base library classes and methods used
+by&nbsp;ChronosEnvironment and its subclasses, ChronosSystemFacade and
+its subclasses and ChronosSystemClock and its subclasses. The
+subclasses of ChronosEnvironment, ChronosSystemFacade and ChronosSystemClock are intentionally and necessarily
+specific to the particular Smalltalk environment (e.g., VisualWorks, Dolphin, Squeak, ...) </p> <p>If
+you're using a version of of your Smalltalk development environment modified in such a way that the code in
+any of the Chronos classes won't work as intended, then you'll have to
+either revert your image to "virgin" behavior, or else modify the
+offending Chronos methods (in effect, you'll have to "port" Chronos to
+your modified development environment.) Your choice.</p> <p>The
+only modifications Chronos makes to the
+"virgin"
+library of the supported Smalltalk flavors are the addition of a
+handful of utility methods to certain classes. &nbsp;Which native
+classes, if any, will have methods added by Chronos depends on the
+particular Smalltalk flavor and/or version. For VisualWorks, Chronos
+adds utility methods to
+Core.TimeZone, Number, Integer, CharacterArray, Filename, BlockClosure,
+Date, Time and Timestamp. Chronos itself either never invokes or uses
+any of such utility methods added to base system classes, or else
+checks for
+their presence and uses alternative logic if they are absent. With the
+single exception of the methods added to VisualWorks' Core.TimeZone,
+such added methods are solely
+for the convenience and usage of the clients of the Chronos Date/Time
+library, and all of them can be removed without affecting the operation
+of Chronos in any way.</p>   <span style="font-weight: bold;">Prerequisite: </span>Before installing Chronos into an image,
+install the <a href="http://www.date-time-zone.com/">Chronos
+Time Zone Repository</a>: The zip archive file <a href="http://www.chronos-st.org/downloads/time-zones.zip">time-zones.zip</a>
+contains the compressed&nbsp;<a href="http://www.date-time-zone.com/">Chronos Time Zone
+Repository</a>. Extract the contents of <a href="http://www.chronos-st.org/downloads/time-zones.zip">time-zones.zip</a>
+to the same directory as the image in which you will be using Chronos
+(or alternatively, for those not using Squeak, to the directory
+specified by the value of the OS environment variable CHRONOS_PATH.)
+The zip archive (<a href="http://www.chronos-st.org/downloads/time-zones.zip">time-zones.zip</a>) expands to a folder named time-zones (which
+itself contains several sub-folders.) &nbsp;If you install Chronos
+using Chronos.zip then the time-zones
+folder will be&nbsp;extracted from the archive along with all the
+other files listed above. &nbsp;If you install Chronos using <a href="http://chronos-st.org/downloads/Squeak/Chronos.sar">Chronos.sar</a> (Squeak,) then only&nbsp;<a href="http://www.chronos-st.org/downloads/time-zones.zip">time-zones.zip</a>
+will be extracted, and you will have to extract the time-zones folder
+from&nbsp;<a href="http://www.chronos-st.org/downloads/time-zones.zip">time-zones.zip</a>
+manually.<br><br>Successful initial installation of the
+Chronos
+Date/Time
+Library is reported to the Transcript, as are any errors or warnings.
+In the case of file-ins, you must de-install any previous version of
+Chronos from the image before installing a different version.
+Installation of a version of Chronos from a VisualWorks StORE repository can be
+done without first de-installing any currently-resident version.
+However, any problems encountered when installing a different version
+of Chronos into an image in which another version is already resident
+are best resolved by installing into a clean image.&nbsp;<br><span style="text-decoration: underline;"></span><h4><big><span style="text-decoration: underline;">Dolphin</span></big></h4><span style="font-weight: bold;">Installation Instructions: </span>Extract
+all files from <a href="http://chronos-st.org/downloads/Dolphin/Chronos.zip">Chronos.zip</a>
+and load the package file
+Chronos.pac into a Dolphin image of your choice.&nbsp; <h4 style="text-decoration: underline;"><big>VisualWorks</big></h4><p><span style="font-weight: bold;">Note</span>:
+The Bundle <span style="text-decoration: underline;">Squeak-Chronos</span>,
+which is a port of Squeak's Chronology Date/Time library from Squeak to
+VisualWorks, and is distributed as part of the Seaside Web Server (in
+order to provide Squeak-VW
+portability for Seaside) adds some of the same methods to the same
+classes as does
+the&nbsp;<span style="text-decoration: underline;">Chronos-VW-Extensions</span>
+package--although with different implementations, of course. If you
+need both the Chronos and the Squeak.Chronology Date/Time libraries in
+the same image at the same time, you'll have to decide whose version of
+the conflicted utility extension methods you wish to use (if any!) One
+approach to handle this issue would be to port any code that depends on
+one of the Date/Time libraries to use the other. &nbsp;Since both
+libraries have the same core API (defined by the <a href="http://www.smalltalk.org/versions/ANSIStandardSmalltalk.html" target="_top">ANSI
+Smalltalk Standard</a>,)
+and since both also include "VW compatiblity methods," that may in fact
+be easier than it sounds in many cases (so the news isn't all bad.)</p><p>For VisualWorks, the utility methods
+added by Chronos are all defined as class
+extensions
+in the package <span style="text-decoration: underline;">Chronos-VW-Extensions</span>
+(so you can easily find them and
+check for any collisions with code added by your own applications
+and/or libraries.) Examples of the added methods:
+Number&gt;&gt;hours (so that '-8 hours&rsquo; will evaluate
+to a Duration of -8 hours length,)
+BlockClosure&gt;&gt;durationToRun,
+CharacterArray&gt;&gt;asTimezone and
+Timestamp&gt;&gt;asDateAndTime (which answers the conversion of
+a Timestamp into a Chronos Timepoint.) The methods the <span style="text-decoration: underline;">Chronos-VW-Extensions</span>
+package
+adds to Core.TimeZone may also be removed,
+although doing so may cause time zone rule translation into instances
+of Core.TimeZone to be incorrect in cases involving either
+fractional-hour offsets or fractional-hour DST transition times. None
+of the methods added by Chronos to Core.TimeZone conflict with any
+methods in the <span style="text-decoration: underline;">Squeak-chronos</span>
+Bundle.</p><p><span style="font-weight: bold;">Installation Instructions: </span>Chronos can be installed as a
+Parcel, as a file-in or by using
+StORE:
+</p><p><span style="font-weight: bold;">Parcel
+(Chronos.pcl): </span>Extract
+all files from <a href="http://chronos-st.org/downloads/VisualWorks/Chronos.zip">Chronos.zip</a>
+and load the parcel
+Chronos.pcl into a VW image of your choice which does not have a
+previous version of Chronos currently installed. If a previous version
+of Chronos is installed in the target image, remove it first. [Note:
+Loading the Chronos.pcl parcel into pre-VW7x images has not been
+tried--it may or may not work]</p><p><span style="font-weight: bold;">File-In (Chronos.st)</span>:
+Extract all files from <a href="http://chronos-st.org/downloads/VisualWorks/Chronos.zip">Chronos.zip</a>
+and file in
+Chronos.st to a VW image of your choice which does not have a
+previous version of Chronos currently installed. If a previous version
+of Chronos is installed in the target image, remove it first. [For
+versions
+of VW prior to 5i.3, see the companion document <a href="http://www.chronos-st.org/Porting.html" target="_top">Porting.html</a>.]</p>
+<p><span style="font-weight: bold;">StORE
+Repository</span>:
+Load the &ldquo;Chronos&rdquo;
+bundle. The latest version is always available from the <a href="http://www.cincomsmalltalk.com/CincomSmalltalkWiki/Public+Store+Repository" target="_top">Cincom
+Public
+PostGreSQL StORE Repository</a>.</p><h4 style="text-decoration: underline;"><big>Squeak</big></h4><span style="font-weight: bold;">Note 1: </span>The <span style="font-weight: bold;">time-zones</span>
+folder must be located in the same directory as your Chronos image
+in order for Chronos to be fully functional. &nbsp;However, that
+constraint is not absolute, for two different reasons. Firstly,
+Chronos can be successfully installed even when the&nbsp;<a href="http://www.date-time-zone.com/">Chronos Time Zone
+Repository</a> is not available or accessible (it will complain,
+but it
+will work.) &nbsp;Secondly, it is possible to programmatically
+change
+the pathname where a Chronos-enabled image expects to find the time
+zone repository. &nbsp;For example, to make the current image
+expect to
+find the time zone repository in the root of the C: drive on Windows,
+evaluate the following expression: "ChronosSystemFacade current
+resourcePathPrefix: 'C:\'" (Note: This will fail if the time zone
+repository is not already present at 'C:\time-zones'.) <br><br><span style="font-weight: bold;">Note 2:</span> Older versions of Squeak lack VW-compatibility methods
+that Chronos needs. &nbsp;An error such as "Message not understood:
+#writeStream" is one likely symptom of this problem. &nbsp;One
+solution
+would to backport the VW-compatibility methods from a later version of
+Squeak. Another solution would be to use a later version of Squeak.<br><br><span style="font-weight: bold;">Installation Instructions: </span>The
+Chronos codebase can be installed by filing-in .st files (extracted
+from
+a .zip file,) by loading .mcz files (from <a href="http://www.squeaksource.com/Chronos.html">SqueakSource</a>,)
+or by loading a .sar file obtained from <a href="http://map.squeak.org/package/46b5731f-5112-4157-94d3-d40c4ed8304d">SqueakMap</a>:<br><br><span style="font-weight: bold;">File-in (multiple .st files from Chronos.zip): </span>Download
+<a href="http://chronos-st.org/downloads/Squeak/Chronos.zip">Chronos.zip</a>.
+Extract
+all files from&nbsp;<a href="http://chronos-st.org/downloads/Squeak/Chronos.zip">Chronos.zip</a>.
+Install the <a href="http://www.date-time-zone.com/">Chronos
+Time Zone Repository</a>&nbsp;as specified above. Then:<br><br>1.
+File-in Passport-Kernel.st, which contains the platform-neutral code
+for the
+"inter-Smalltalk portability" module and the "reference data
+access/management framework" used by Chronos. &nbsp;
+Passport-Kernel.st
+is in VW 3.0 format (as are all the other
+files,) and so should be
+consumable even by very old versions of Squeak. Note that the code in
+Passport-Kernel.st does not depend on Chronos itself in any way.
+&nbsp;You can use it by itself, without any other Chronos-specific
+code
+installed. &nbsp;However, the code in Passport-Kernel.st is not
+complete in itself. It requires that platform-specific sublcasses be
+added to the image--hence the next file-in.&nbsp;Passport-Kernel.st
+must be loaded first.<br><br>2.
+File-in Passport-Squeak.st, which provides the Squeak-specific code
+need to make the
+code in Passport-Kernel.st actually functional in Squeak.
+&nbsp;Passport-Squeak.st must be loaded second.<br><br>3.
+File-in Chronos.st, which contains
+the platforn-neutral Chronos codebase (the Chronos date/time engine and
+library.) &nbsp;Chronos.st must
+&nbsp;be loaded third.&nbsp;<br><br>4. File-in
+Chronos-System-Squeak.st, which
+provides the Squeak-specific code that makes Chronos actually
+functional in Squeak. Unlike the code in Passport-Squeak.st, there is
+not much need or use for the code in Chronos-System-Squeak.st other
+than
+in connection with Chronos.&nbsp;Chronos-System-Squeak.st must be
+loaded fourth.<br><br>5.
+If (and only if) applicable to the version of Squeak being used,
+file-in Chronos-System-Squeak-PostV3.6Only.st. This code&nbsp;is
+intended <span style="font-weight: bold;">ONLY</span>
+for Squeak 3.7 and later.
+&nbsp;It enables interconversion between Chronos and Chronology
+domain
+class instances, such as
+Chronology.DateAndTime&lt;=&gt;Chronos.Timepoint,
+Chronology.TimeZone&lt;=&gt;ChronosTimezone,
+Chronology.Date&lt;=&gt;Chronos.YearMonthDay, etc.
+Chronos-System-Squeak-PostV3.6Only.st must be filed in fifth--and must
+not be filed in to versions of Squeak prior to 3.7.<br><br><span style="font-weight: bold;">.SAR file: </span>Download
+the <a href="http://www.date-time-zone.com/">Chronos Time
+Zone Repository</a> from the <a href="http://www.chronos-st.org/">Chronos web site</a>,
+and install it as specified above. Download&nbsp;<a href="http://chronos-st.org/downloads/Squeak/Chronos.sar"><span style="font-weight: bold;">Chronos.sar</span></a>.
+Select&nbsp;<a href="http://chronos-st.org/downloads/Squeak/Chronos.sar"><span style="font-weight: bold;">Chronos.sar</span></a>
+in the FileList,&nbsp; press the "Install"
+button.&nbsp;&nbsp;<br><span style="font-weight: bold;"><br>SqueakSource (.MCZ
+files): <br><br></span>1.
+Install the package PassportPreamble (The filename will be of the form
+"PassportPreamble-SV.B.mcz", where "S" is one of "A" (alpha), "B"
+(Beta) or "R" (Release,) "V" is the major version (release) number, and
+"B" is the build number.)<br><br>2. Install the package Passport (The
+filename will be of the form "Passport-SV.B.mcz", where "S" is one of
+"A" (alpha), "B" (Beta) or "R" (Release,) "V" is the major version
+(release) number, and "B" is the build number.)<br><br>NOTE: The first
+two packages comprise the "Passport" inter-smalltalk portability
+library that is used by Chronos (and was in fact developed for use by
+Chronos.) Passport might prove useful for other applications and/or
+class libraries that need to operate on more than one Smalltalk
+platform.<br><br>3. Install the package ChronosPreamble (The filename
+will be of the form "ChronosPreamble-SV.B.mcz", where "S" is one of "A"
+(alpha), "B" (Beta) or "R" (Release,) "V" is the major version
+(release) number, and "B" is the build number.)<br><br>4. Install the
+package Chronos (The filename will be of the form "Chronos-SV.B.mcz",
+where "S" is one of "A" (alpha), "B" (Beta) or "R" (Release,) "V" is
+the major version (release) number, and "B" is the build number.)<br><br>5.
+Install the package ChronosPostscript (The filename will be of the form
+"ChronosPostscript-SV.B.mcz", where "S" is one of "A" (alpha), "B"
+(Beta) or "R" (Release,) "V" is the major version (release) number, and
+"B" is the build number.)<br><br>6. IF AND ONLY IF you are installing
+Chronos in a Squeak image whose version &gt; 3.6, then install the
+package ChronosSqueakPost36Only (The filename will be of the form
+"ChronosSqueakPost36Only-SV.B.mcz", where "S" is one of "A" (alpha),
+"B" (Beta) or "R" (Release,) "V" is the major version (release) number,
+and "B" is the build number.)<br><br>Usually, the package version with
+the highest version (release) and build number should be chosen (so
+choose "Chronos-B1.190" over "Chronos-B1.188".)<span style="font-weight: bold;"><br></span><span style="font-weight: bold;"></span>
+<h4 style="text-decoration: underline;">After the Installation</h4>Set
+your local time zone programmatically, if the one chosen by Chronos is
+not correct. For Squeak, setting the Chronos system time zone will also
+set Squeak's Chronology local time zone to have the same offset, name
+and abbreviation as are currently in effect for the selected time zone.
+For VisualWorks, setting the Chronos system time zone will also set the
+default Core.TimeZone to have the same ruleset (for the current year
+only, since Core.TimeZones don't support different rules for different
+years.)<br><br>Here are some example expressions that can be evaluated as "do its" to set Chronos' system time zone:<br><br><div style="margin-left: 40px;">(Timezone at: #'Australia/Sydney') beSystem<br>(Timezone at: #'Asia/Tokyo') beSystem<br>(Timezone at: #'Asia/Calcutta') beSystem<br>(Timezone at: #'Europe/Moscow') beSystem<br>(Timezone at: #'Europe/Athens') beSystem<br>(Timezone at: #'Europe/Berlin') beSystem<br>(Timezone at: #'Europe/London') beSystem<br>(Timezone at: #'America/New_York') beSystem<br>(Timezone at: #'America/Chicago') beSystem<br>(Timezone at: #'America/Denver') beSystem<br>(Timezone at: #'America/Phoenix') beSystem<br>(Timezone at: #'America/Los_Angeles') beSystem</div><h3>The Chronos Time Zone Compiler (and other
+utilities)</h3>Installing the Chronos Time Zone Compiler is not
+required. &nbsp;If you load it, the only new feature it adds is the
+ability to compile time zone rule set files from <a href="http://www.twinsun.com/tz/tz-link.htm">the format
+distributed
+by Arthur David Olson</a> (for use on Unix systems) to the format
+used by
+Chronos. &nbsp;The difference between the two formats is not just
+syntactical--the rule model is different, and decidedly
+non-trivial logic is required to convert from Olson to Chronos format.
+That's whiy it's properly called
+a compiler, and not just a "format converter."
+<h4 style="text-decoration: underline;"><big>VisualWorks</big></h4>
+The
+&ldquo;Chronos-Utilities&rdquo; bundle contains the Chronos
+Time Zone Compiler, which is the tool by which the data in the&nbsp;<a href="http://www.date-time-zone.com/">Chronos Time
+Zone Repository</a> is generated. This bundle can be ignored unless
+you just want to see the code, or want to run the Chronos Time Zone
+Compiler yourself. The Chronos bundle must be installed before
+installing the Chronos-Utilities bundle (although StORE should autoload
+the Chronos bundle for you.)<br> <p><span style="font-weight: bold;">Installation Instructions: </span>The Chronos Time Zone
+Compiler can be installed as a Parcel, as a file-in or by using StORE:</p><p><span style="font-weight: bold;">Parcel (Chronos-Utilities.pcl): </span>Extract
+all files from&nbsp;<a href="http://chronos-st.org/downloads/VisualWorks/Chronos.zip">Chronos.zip</a> and load the parcel
+Chronos-Utilities.pcl into the VW image of your choice which does not
+have a
+previous version of The Chronos Time Zone Compiler currently installed.
+If a previous version
+of The Chronos Time Zone Compiler is installed in the target image,
+remove it first. [Note:
+Loading the Chronos-Utilities.pcl parcel into pre-VW7x images has not
+been
+tried--it may or may not work]</p><p><span style="font-weight: bold;">File-In (Chronos-Utilities.st)</span>:
+Extract all files from&nbsp;<a href="http://chronos-st.org/downloads/VisualWorks/Chronos.zip">Chronos.zip</a> (if you
+haven&rsquo;t already) and file in Chronos-Utilities.st to the VW
+image of your choice which does not have a previous version of the
+Chronos-Utilities bundle currently installed [However, for versions of
+VW prior to 5i.3, see the companion document <a href="http://www.chronos-st.org/Porting.html" target="_top">Porting.html</a>.]</p>
+<p><span style="font-weight: bold;">StORE
+Repository</span>:
+Load the
+&ldquo;Chronos-Utilities&rdquo; bundle. The latest version is
+always available from the <a href="http://www.cincomsmalltalk.com/CincomSmalltalkWiki/Public+Store+Repository" target="_top">Cincom
+Public PostGreSQL StORE Repository</a>.</p> 
+<h4 style="text-decoration: underline;"><big>Squeak</big></h4>Currently, the Chronos Time Zone Compiler for Squeak is only available as the file
+&ldquo;Chronos-Utilities.st" from the Chronos.zip archive. The
+&ldquo;Chronos-Utilities.st" file contains the Chronos
+Time Zone Compiler, which is the tool by which the data in the&nbsp;<a href="http://www.date-time-zone.com/">Chronos Time
+Zone Repository</a> is generated. This file (Chronos-Utilities.st) can be ignored unless
+you just want to see the code, or want to run the Chronos Time Zone
+Compiler yourself. The Chronos Date/Time Library must be installed before
+installing Chronos-Utilities.st.<br><br><span style="font-weight: bold;">Installation Instructions: </span>Download
+<a href="http://chronos-st.org/downloads/Squeak/Chronos.zip">Chronos.zip</a>.
+Extract
+all files from&nbsp;<a href="http://chronos-st.org/downloads/Squeak/Chronos.zip">Chronos.zip</a>.
+File-in Chronos-Utilities.st (whch&nbsp; contains the
+Chronos Time Zone Compiler.) &nbsp;<h4><big><span style="text-decoration: underline;">Dolphin</span></big></h4>The
+Chronos Time Zone Compiler is not currently part of the Dolphn
+distribution. &nbsp;However, it can be provided on request (e-mail:
+special-request (at) chronos-st (dot) org). <h3>Additional
+information about the Chronos Time Zone Compiler and the Olson Time Zone Database:</h3>
+<ul>
+<li>To generate
+the&nbsp;<a href="http://www.date-time-zone.com/">Chronos Time
+Zone Repository</a> de
+novo, or to
+ensure you are using the latest version of the <a href="http://www.twinsun.com/tz/tz-link.htm">Olson Time Zone
+Database</a>, fetch the Olson source files from
+ftp://elsie.nci.nih.gov/pub/, extract/install them into
+&lt;path-prefix&gt;/time-zones/Olson-zoneinfo-sources, and then
+run the Chronos Time Zone Compiler by evaluating
+"OlsonTZDBRulesetCompiler processTimeZoneRules", thereby generating a
+new version of the&nbsp;<a href="http://www.date-time-zone.com/">Chronos Time
+Zone Repository</a>. This procedure can
+also be used to generate a &ldquo;de novo&rdquo; version of the&nbsp;<a href="http://www.date-time-zone.com/">Chronos Time
+Zone Repository</a>, which may be necessary when you do not
+already have a version of the&nbsp;<a href="http://www.date-time-zone.com/">Chronos Time
+Zone Repository</a>, and are
+unable to access the latest version from the <a href="http://www.chronos-st.org/" target="_top">Chronos
+web site</a>
+[direct
+link: http://www.chronos-st.org/downloads/time-zones.zip].</li>
+<li>The Olson time zone source files are packaged
+as a
+zipped tar file in the ftp://elsie.nci.nih.gov/pub/ folder. The name of
+the file has the form tzdataYYYYv.tar.gz, where YYYY is the 4 digits of
+the year and v is a lower-case letter of the English alphabet that
+indicates the version index within the year (so that the first version
+in the year 2006 would be 2006a, the second version would be 2006b, and
+so on.) The last version of the file for 2005 has the name
+tzdata2005r.tar.gz, and contains the version of the database commonly
+referred to as 2005r.</li><li>The
+source files from which the Chronos time zone
+rulesets,
+localization policies and UTC leap second schedule are generated reside
+in the&nbsp;<a href="http://www.date-time-zone.com/">Chronos Time
+Zone Repository</a> at the location
+&lt;path-prefix&gt;/time-zones/Olson-zoneinfo-sources. Arthur
+David Olson publishes updated versions of the source data about once
+every month (some countries decide de novo every year what their
+daylight saving policy will be, and of course there&rsquo;s always
+some set of countries every year that decide to change their rules.)</li> 
+<li>The value of
+&lt;path-prefix&gt;
+currently used by a
+Chronos image can be discovered by evaluating
+&ldquo;ChronosSystemFacade current resourcePathPrefix.&rdquo;
+If the value is the empty string or nil, then
+&lt;path-prefix&gt; is the current working directory (the
+absolute path for which can be discovered by evaluating
+&ldquo;ResourcePath defaultDirectory.&rdquo;)</li> </ul>
+<h2>Getting Started</h2> <p>Information on
+getting started is available from the <a href="http://www.chronos-st.org/Overview.html" target="_top">Overview</a>
+document, or from the <a href="http://www.chronos-st.org/" target="_top">Chronos
+web site</a>.</p><h2>Chronos Updates</h2><p>When
+updated versions of either the Chronos Date/Time Library or the
+Chronos Time Zone Repository become available, that information will be
+published on the <a href="http://chronos-st.blogspot.com/" target="_top">Chronos Blog</a>.
+&nbsp;Soon, there will be an&nbsp; Atom feed by means of which
+XML-encoded
+publication announcements can be obtained, which will enable automation
+of the time zone repository update
+process .</p> </td> </tr>
+</tbody></table></body></html>
+</td></tr>
+<tr><td>
+<p style="font-size: 75%; color: rgb(128, 128, 128); background-color: rgb(248, 248, 248);">
+[Chronos] All code (classes and methods, and all associated documentation,) distributed as part of the 
+Chronos Date/Time library are &copy; Copyright 2005-2006 by Alan L. Lovejoy.&nbsp; All Rights Reserved. 
+Usage is controlled by the Chronos License (which is included in the distribution as the contents of 
+the file {chronos-license.txt}, and is also available from the <a href="http://www.chronos-st.org/">
+Chronos web site</a> {<a href="http://www.chronos-st.org/License.html" target="_top">http://www.chronos-st.org/License.html</a>})
+</p>
+<blockquote>"Do not go gentle into that good night,
+<br>Old age should burn and rave at the close of the day;
+<br>Rage, rage at the dying of the light!" -- Dylan Thomas
+</blockquote>
+</td></tr>
+
+</center>
+</td></tr></tbody></table>
+</center>
+
+</body>
+</html>

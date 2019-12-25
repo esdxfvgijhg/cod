@@ -1,0 +1,19 @@
+obj_native/framer-802154.o: \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/net/mac/framer-802154.c \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/mac/framer-802154.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/mac/framer.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/mac/frame802154.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/platform/native/./contiki-conf.h \
+ project-conf.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/rime/rimeaddr.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/packetbuf.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./lib/random.h
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/net/mac/framer-802154.c :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/mac/framer-802154.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/mac/framer.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/mac/frame802154.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/platform/native/./contiki-conf.h :
+ project-conf.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/rime/rimeaddr.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/packetbuf.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./lib/random.h :

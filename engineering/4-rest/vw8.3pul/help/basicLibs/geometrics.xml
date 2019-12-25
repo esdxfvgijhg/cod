@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.geometrics"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Geometrics</title>
+<body><p>The &Product; <apiname otherprops="pundle" title="Open a browser on this component">Graphics</apiname> 
+framework implements a variety of geometric objects as 
+subclasses of the abstract class <apiname title="Open a browser on this class">Geometric</apiname>, e.g.:
+<apiname>Point</apiname>, <apiname>Rectangle</apiname>, <apiname>LineSegment</apiname>, 
+<apiname>Polyline</apiname>, <apiname>Circle</apiname>, <apiname>EllipticalArc</apiname>, 
+<apiname>Bezier</apiname>, and <apiname>Spline</apiname>.</p>
+<p>Geometrics are immutable, mathematical entities that model
+geometric abstractions, such as Lines and Circles. They are 
+"strictly mathematical," in that they carry no visual properties
+such as color or line-thickness.</p>
+</body>
+<topic id = "vw.help.geometrics.displayPoint"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Display a point</title>
+<body><p><indexterm>point<indexterm>display</indexterm></indexterm>Displaying
+a single point is occasionally needed for building a dotted pattern.
+This is done by displaying a dot.<ol><li><p>Create a <apiname>Point</apiname> by
+sending an <apiname>@</apiname> message to the integer representing
+the x coordinate. The argument is the y coordinate.</p></li>
+<li><p>Display the point by sending a <apiname>displayLineFrom:to:</apiname> message
+to the graphics context. The first argument is the point and the
+second argument is a neighboring point, which can be derived by
+adding 1 to the point.
+<codeblock otherprops="smalltalk expression">| gc random points |
+gc := (ScratchPad prepareWindow) graphicsContext.
+random := Random new.
+points := OrderedCollection new.
+"Create 1000 random points in a 100-pixel square."
+1000 timesRepeat: [
+		points add: ((random next * 100) @ (random next * 100))].
+"Display each random point."
+points do: [:pt |
+		gc displayLineFrom: pt to: pt + 1]</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.geometrics.drawLine"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Draw a line</title>
+<body><p><indexterm>line<indexterm>draw</indexterm></indexterm>To
+draw a straight line directly on a display surface:<ol><li><p>Get
+the graphics context of the display surface by sending a <apiname>graphicsContext</apiname> message.</p></li>
+<li><p>Send a <apiname>displayLineFrom:to:</apiname> message to the
+graphics context. The first argument is the starting point of the
+line and the second argument is the endpoint.
+<codeblock otherprops="smalltalk expression">| gc |
+gc := (ScratchPad prepareWindow) graphicsContext.
+5 to: 400 by: 5 do: [:i | 								gc displayLineFrom: 0@i to: i@400].</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.geometrics.lineSegment"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create and display a line segment</title>
+<body><p><indexterm>line<indexterm>create line segment</indexterm></indexterm>Creating
+a <apiname>LineSegment</apiname> is useful when your application needs
+to perform an operation on the line, such as determining its length
+or scaling it.<ol><li><p>Create a line segment by sending a <apiname>from:to:</apiname> message
+to the <apiname>LineSegment</apiname> class. The first argument is
+the starting point of the line and the second argument is the endpoint.</p></li>
+<li><p>Perform any desired operations on the line (in the example,
+the x dimension is exaggerated by a factor of 10).</p></li>
+<li><p>Wrap the line segment in a stroking wrapper by sending an <apiname>asStroker</apiname> message
+to it. This equips the line with the ability to render itself.</p></li>
+<li><p>Display the wrapped line segment by sending a <apiname>displayOn:</apiname> message
+to its stroking wrapper. The argument is the graphics context of
+the display surface.
+<codeblock otherprops="smalltalk expression">| gc line scaleFactor |
+gc := (ScratchPad prepareWindow) graphicsContext.
+scaleFactor := 10@1.
+5 to: 400 by: 5 do: [:i |
+		line := LineSegment from: 0@i to: i@400.
+		line := line scaledBy: scaleFactor.
+		line asStroker displayOn: gc].</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.geometrics.polyline"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create and display a polyline</title>
+<body><p><indexterm>line<indexterm>create polyline</indexterm></indexterm>A
+jointed, multi-segmented line, or polyline, can be instantiated
+and drawn as a <indexterm>PolyLine</indexterm><apiname>PolyLine</apiname>.</p>
+<p>Create a <apiname>Polyline</apiname> by sending a <apiname>vertices:</apiname> message
+to the <apiname>Polyline</apiname> class. The argument is the collection
+of vertices. Then wrap the polyline in a stroking wrapper (using <apiname>asStroker</apiname>)
+and display it on the graphics context (using <apiname>displayOn:</apiname>).
+<codeblock otherprops="smalltalk expression">| gc points x y radians polyline |
+gc := (ScratchPad prepareWindow) graphicsContext.
+points := OrderedCollection new.
+0 to: 360 by: 30 do: [:angle |
+		radians := angle degreesToRadians.
+		x := 200 - (200 * radians cos).
+		y := 200 - (200 * radians sin).
+		points add: x@y].
+gc displayPolyline: points.
+polyline := Polyline vertices: points.
+0.9 to: 0.1 by: -0.1 do: [:scale |
+		polyline := polyline scaledBy: scale.
+		polyline asStroker displayOn: gc].</codeblock></p></body></topic>
+<topic id = "vw.help.geometrics.curvedLine"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create and display a curved line</title>
+<body><p><indexterm>Spline</indexterm><indexterm>line<indexterm>create
+spline</indexterm></indexterm><indexterm>line<indexterm>create curve</indexterm></indexterm>A <apiname>Spline</apiname> is
+a smooth line that curves at each point in a collection.<ol><li><p>Create
+a <apiname>Spline</apiname> by sending a <apiname>controlPoints:</apiname> message
+to the <apiname>Spline</apiname> class. The argument is a collection
+of points.</p></li>
+<li><p>Wrap the spline in a stroking wrapper by sending an <apiname>asStroker</apiname> message
+to it.</p></li>
+<li><p>Display the wrapped spline by sending a <apiname>displayOn:</apiname> message
+to the stroking wrapper. The argument is the graphics context.
+<codeblock otherprops="smalltalk expression">| gc points spline random x y |
+gc := (ScratchPad prepareWindow) graphicsContext.
+points := OrderedCollection new.
+random := Random new.
+"Collect 10 random points."
+10 timesRepeat: [
+		x := random next * 400.
+		y := random next * 400.
+		points add: x@y.
+		gc displayDotOfDiameter: 8 at: points last].
+spline := Spline controlPoints: points.
+spline asStroker displayOn: gc.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.geometrics.bezierCurve"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create and display a bezier curve</title>
+<body><p><indexterm>Bezier curve</indexterm><indexterm>line<indexterm>create
+bezier curve</indexterm></indexterm><ol><li><p>Create a bezier curve
+by sending a <apiname>start:end:controlPoint1:controlPoint2:</apiname> message
+to the <apiname>Bezier</apiname> class. Each of the arguments is a
+point.</p></li>
+<li><p>Wrap the bezier curve in a stroking wrapper by sending an <apiname>asStroker</apiname> message
+to it.</p></li>
+<li><p>Display the wrapped spline by sending a <apiname>displayOn:</apiname> message
+to the stroking wrapper. The argument is the graphics context.
+<codeblock otherprops="smalltalk expression">| gc points bezier random x y |
+gc := (ScratchPad prepareWindow) graphicsContext.
+points := OrderedCollection new.
+random := Random new.
+"Collect 10 random points."
+4 timesRepeat: [
+		x := random next * 400.
+		y := random next * 400.
+		points add: x@y.
+		gc displayDotOfDiameter: 8 at: points last].
+bezier := Bezier
+		start: (points at: 1)
+		end: (points at: 2)
+		controlPoint1: (points at: 3)
+		controlPoint2: (points at: 4).
+bezier asStroker displayOn: gc.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.geometrics.polygon"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create and display a polygon</title>
+<body><p><indexterm>polygon<indexterm>create</indexterm></indexterm>A
+polygon is a filled <indexterm>Polygon</indexterm><indexterm>Polyline</indexterm><apiname>Polyline</apiname>.
+A polygon can be created and displayed from a collection of vertices. <ol>
+<li><p>Send a <apiname>displayPolygon:</apiname> message to the graphics
+context of the display surface. The argument is a collection of
+points, each point representing one vertex of the polygon.</p></li>
+<li><p>Alternatively, create an instance of <apiname>Polyline</apiname> by
+sending a <apiname>vertices:</apiname> message to the <apiname>Polyline</apiname> class,
+with the vertex points as the argument. Wrap the polyline in a stroking
+or filling wrapper (using <apiname>asStroker</apiname> or <apiname>asFiller</apiname>)
+and display the wrapped polygon by sending <apiname>displayOn:</apiname> to
+the wrapper with the graphics context as argument. A variant of <apiname>displayOn:</apiname> (used
+here) enables you to specify the origin &#x2014; that is, the upper-left
+corner of the rectangle containing the polygon.
+<codeblock otherprops="smalltalk expression">| gc points x y radians polyline origin |
+gc := (ScratchPad prepareWindow) graphicsContext.
+points := OrderedCollection new.
+0 to: 360 by: 30 do: [:angle |
+		radians := angle degreesToRadians.
+		x := 200 - (200 * radians cos).
+		y := 200 - (200 * radians sin).
+		points add: x@y].
+gc displayPolygon: points.
+polyline := Polyline vertices: points.
+0.9 to: 0.1 by: -0.1 do: [:scale |
+		gc paint: (ColorValue brightness: 1 - scale).
+		polyline := polyline scaledBy: scale.
+		origin := 200@200 - (polyline bounds width / 2).
+		polyline asFiller displayOn: gc at: origin].</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.geometrics.rectangle"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create and display a rectangle</title>
+<body><p><indexterm>Rectangle</indexterm><indexterm>rectangle<indexterm>create</indexterm></indexterm>A <apiname>Rectangle</apiname> is
+a special case of a polygon that provides an extended set of operations
+because it is so commonly used in constructing complex views. A
+rectangle is commonly created by specifying its origin point and
+either its lower-right corner or its extent, as shown in the variant.<ol>
+<li><p>Create a rectangle (in the example, <codeph>rect1</codeph>)
+by sending an <apiname>extent:</apiname> message to the point representing
+the origin. The argument is a point whose x value indicates the
+width of the rectangle and whose y value indicates the height.</p></li>
+<li><p>Alternatively, create a rectangle (<codeph>rect2</codeph>)
+by sending a <apiname>corner:</apiname> message to the origin point.
+The argument is the lower-right corner point.</p></li>
+<li><p>Wrap the rectangle in a stroking or filling wrapper (using <apiname>asStroker</apiname> or <apiname>asFiller</apiname>)
+and display the resulting wrapper on a graphics context.
+<codeblock otherprops="smalltalk expression">| gc rect1 rect2 border |
+gc := (ScratchPad prepareWindow) graphicsContext.
+"Black rectangle"
+rect1 := 100@100 extent: 200@200.
+rect1 asFiller displayOn: gc.
+"Gray rectangle"
+border := 3.
+rect2 := (rect1 origin + border) corner: (rect1 corner - border).
+rect2 asFiller displayOn: (gc paint: ColorValue gray).</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.geometrics.circle"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create and display a circle</title>
+<body><p><indexterm>Circle</indexterm><indexterm>circle<indexterm>create</indexterm></indexterm>A
+circle is created by specifying its center point and radius, as
+shown in the basic steps. <ol><li><p>Send a <apiname>center:radius:</apiname> message
+to the <apiname>Circle</apiname> class. The first argument is the
+center point of the circle. The second argument is an integer indicating
+the radius of the circle.</p></li>
+<li><p>Wrap the circle in a stroking or filling wrapper by sending <apiname>asStroker</apiname> or <apiname>asFiller</apiname> to
+it.</p></li>
+<li><p>Display the wrapped circle by sending <apiname>displayOn:</apiname> to
+it, with the graphics context as argument.
+<codeblock otherprops="smalltalk expression">| gc circle |
+gc := (ScratchPad prepareWindow) graphicsContext.
+"Blue filled circle"
+circle := Circle center: 200@200 radius: 100.
+circle asFiller displayOn: (gc paint: ColorValue blue).
+"Black stroked circle"
+gc paint: ColorValue black; lineWidth: 2.
+circle asStroker displayOn: gc.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.geometrics.filledCircle"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create and display a filled circle</title>
+<body><p><indexterm>circle<indexterm>filled circle</indexterm></indexterm>Send
+a <apiname>displayDotOfDiameter:at:</apiname> message to the graphics
+context of the display surface. The first argument is the diameter
+of the circle. The second argument is the center point.
+<codeblock otherprops="smalltalk expression">| gc |
+gc := (ScratchPad prepareWindow) graphicsContext.
+gc displayDotOfDiameter: 200 at: 200@200.</codeblock></p></body></topic>
+<topic id = "vw.help.geometrics.elipse"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create and display an ellipse</title>
+<body><p><indexterm>ellipse<indexterm>create</indexterm></indexterm>An
+ellipse is created by specifying the rectangle that encloses it,
+as well as the beginning angle and the number of degrees traversed
+(the sweep angle) from that starting angle. For a complete ellipse,
+the angles are 0 and 360, as shown in the second variant. When the bounding
+rectangle is a square, the ellipse is circular.<ol><li><p>For a
+stroked ellipse, send a <apiname>displayArcBoundedBy:startAngle:sweepAngle:</apiname> message
+to the graphics context. The first argument is the rectangle that encloses
+the ellipse. The second argument is 0 and the third argument is
+360.</p></li>
+<li><p>For a filled ellipse, send a <apiname>displayWedgeBoundedBy:startAngle:sweepAngle:</apiname> message
+to the graphics context, with the same arguments as above.</p></li>
+<li><p>Alternatively, create an instance of <apiname>EllipticalArc</apiname> by
+sending a <apiname>boundingBox:startAngle:sweepAngle:</apiname> message
+to that class. The arguments are the same as above. Then wrap the
+ellipse in a stroking or filling wrapper and display it on the graphics
+context.
+<codeblock otherprops="smalltalk expression">| gc ellipse |
+gc := (ScratchPad prepareWindow) graphicsContext.
+"Black stroked ellipse"
+gc displayArcBoundedBy: (150@100 extent: 100@200)
+		startAngle: 0
+		sweepAngle: 360.
+"Black filled ellipse"
+gc displayWedgeBoundedBy: (160@110 extent: 80@180)
+		startAngle: 0
+		sweepAngle: 360.
+"Red ellipse"
+ellipse := EllipticalArc
+		boundingBox: (150@175 extent: 100@50)
+		startAngle: 0
+		sweepAngle: 360.
+ellipse asFiller displayOn: (gc paint: ColorValue red)</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.geometrics.arc"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create and display an arc</title>
+<body><p><indexterm>arc<indexterm>create</indexterm></indexterm>Use
+the same technique as for displaying a full ellipse, but the <codeph>startAngle</codeph> argument
+is the angle at which the arc or wedge begins, measured in degrees
+clockwise from the 3 o’clock position. The <codeph>sweepAngle</codeph> argument
+is the number of degrees spanned by the arc, measured clockwise
+from the starting angle.
+<codeblock otherprops="smalltalk expression">| gc arc box |
+gc := (ScratchPad prepareWindow) graphicsContext.
+box := 150@100 extent: 100@200.
+"Black stroked arc"
+gc displayArcBoundedBy: box
+		startAngle: 0
+		sweepAngle: 180.
+"Black filled arc"
+gc displayWedgeBoundedBy: box
+		startAngle: 180
+		sweepAngle: 90.
+"Red arc"
+arc := EllipticalArc
+		boundingBox: box
+		startAngle: 270
+		sweepAngle: 90.
+arc asFiller displayOn: (gc paint: ColorValue red)</codeblock></p></body></topic>
+<topic id = "vw.help.geometrics.setThickness"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set the line thickness</title>
+<body><p><indexterm>line<indexterm>thickness</indexterm></indexterm>By
+default, lines, arcs, and polygons are drawn with a one-pixel line. When
+you increase the line thickness, extra pixels are spread evenly on
+both sides of the actual line.</p>
+<p>Send a <apiname>lineWidth:</apiname> message to the graphics context
+of the display surface. The argument is an integer indicating the
+number of pixels of thickness.
+<codeblock otherprops="smalltalk expression">| gc rect |
+gc := (ScratchPad prepareWindow) graphicsContext.
+rect := 10@10 extent: 30@30.
+2 to: 20 by: 2 do: [:width |
+		gc lineWidth: width.
+		rect moveBy: 30@30.
+		rect asStroker displayOn: gc].</codeblock></p></body></topic>
+<topic id = "vw.help.geometrics.setCap"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set the line cap style</title>
+<body><p><indexterm>line<indexterm>end cap</indexterm></indexterm>By
+default, lines and arcs are drawn with butt ends. When two thick lines
+share an endpoint, butt ends produce a notched joint. Changing the
+cap style to projecting fixes this by extending each end of the
+line by half of its thickness. Another solution is to use round
+ends, which extend the ends in a semicircle.</p>
+<p>Send a <apiname>capStyle:</apiname> message to the graphics context
+of the display surface. The argument is derived by sending a <apiname>capButt</apiname>, <apiname>capProjecting</apiname>, or <apiname>capRound</apiname> message
+to the <apiname>GraphicsContext</apiname> class.
+<codeblock otherprops="smalltalk expression">| gc |
+gc := (ScratchPad prepareWindow) graphicsContext.
+gc lineWidth: 20.
+"Butt line caps -- the default"
+gc capStyle: GraphicsContext capButt.
+gc displayLineFrom: 100@100 to: 300@100.
+gc displayLineFrom: 300@100 to: 300@300.
+"Projecting line caps"
+gc capStyle: GraphicsContext capProjecting.
+gc displayLineFrom: 100@150 to: 250@150.
+gc displayLineFrom: 250@150 to: 250@300.
+"Round line caps"
+gc capStyle: GraphicsContext capRound.
+gc displayLineFrom: 100@200 to: 200@200.
+gc displayLineFrom: 200@200 to: 200@300.</codeblock></p></body></topic>
+<topic id = "vw.help.geometrics.setJoin"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set the line join style</title>
+<body><p><indexterm>line<indexterm>join style</indexterm></indexterm>By
+default, a polyline or polygon is drawn with mitered joints. In
+some situations, a beveled or rounded joint is preferable. The basic
+step shows how to change the join style.</p>
+<p>Send a <apiname>joinStyle:</apiname> message to the graphics context
+of the display surface. The argument is derived by sending a <apiname>joinMiter</apiname>, <apiname>joinBevel</apiname>,
+or <apiname>joinRound</apiname> message to the <apiname>GraphicsContext</apiname> class.
+<codeblock otherprops="smalltalk expression">| gc |
+gc := (ScratchPad prepareWindow) graphicsContext.
+gc lineWidth: 30.
+"Miter joins -- the default"
+gc joinStyle: GraphicsContext joinMiter.
+gc displayPolyline: 
+		(Array with: 100@200 with: 200@50 with: 300@200).
+"Bevel joins"
+gc joinStyle: GraphicsContext joinBevel.
+gc displayPolyline: 
+		(Array with: 100@300 with: 200@150 with: 300@300).
+"Round joins"
+gc joinStyle: GraphicsContext joinRound.
+gc displayPolyline: 
+		(Array with: 100@400 with: 200@250 with: 300@400).</codeblock></p></body></topic>
+<topic id = "vw.help.geometrics.setColor"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Color a graphic</title>
+<body><p><indexterm>graphic<indexterm>coloring</indexterm></indexterm>By
+default, a color-based display surface (<apiname>ApplicationWindow</apiname> or <apiname>Pixmap</apiname>)
+displays geometric objects in black. You change the color by installing
+a new paint (color or pattern) in the graphics context.</p>
+<p>Send a <apiname>paint:</apiname> message to the graphics context
+of the display surface. The argument is a color or pattern.
+<codeblock otherprops="smalltalk expression">| gc circle colors |
+gc := (ScratchPad prepareWindow) graphicsContext.
+circle := Circle center: 200@200 radius: 200.
+colors := ColorValue constantNames.
+colors do: [:colorName |
+		gc paint: (ColorValue perform: colorName).
+		circle := circle scaledBy: 0.9.
+		circle asFiller displayOn: gc]</codeblock></p></body></topic>
+<topic id = "vw.help.geometrics.storeColorAndObject"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Store a color with a graphical object</title>
+<body><p>When the graphic object is going to be reused the color
+information needs to be kept with it. Using a wrapper keeps track
+of the paint to be used for its component.<ol><li><p>Wrap the geometric
+object in a stroking or filling wrapper by sending <apiname>asStroker</apiname> or <apiname>asFiller</apiname> to
+it.</p></li>
+<li><p>Wrap the stroking or filling wrapper in a <apiname>GraphicsAttributesWrapper</apiname> by
+sending an <apiname>on:</apiname> message to that class, with the
+wrapper from the basic step as the argument.</p></li>
+<li><p>Create a new <apiname>GraphicsAttributes</apiname> object and send
+a <apiname>paint:</apiname> message to it. The argument is a color
+or pattern.</p></li>
+<li><p>Install the graphics attributes in the <apiname>GraphicsAttributesWrapper</apiname> by sending
+an <apiname>attributes:</apiname> message with the attributes as the argument.</p></li>
+<li><p>Display the graphics attributes wrapper by sending a <apiname>displayOn:at:</apiname> message
+to it. The first argument is the graphics context of the display
+surface. The second argument is the origin point at which the geometric
+object is to be displayed.
+<codeblock otherprops="smalltalk expression">| gc circle wrapper1 wrapper2 random pt attributes1 attributes2 |
+gc := (ScratchPad prepareWindow) graphicsContext.
+circle := Circle center: 0@0 radius: 50.
+wrapper1 := GraphicsAttributesWrapper on: circle asFiller.
+attributes1 := GraphicsAttributes new paint: ColorValue red.
+wrapper1 attributes: attributes1.
+wrapper2 := GraphicsAttributesWrapper on: circle asFiller.
+attributes2 := GraphicsAttributes new paint: ColorValue blue.
+wrapper2 attributes: attributes2.
+random := Random new.
+100 timesRepeat: [
+	pt := random next * 300 + 50 @ (random next * 300 + 50).
+		wrapper1 displayOn: gc at: pt.
+	pt := random next * 300 + 50 @ (random next * 300 + 50).
+	wrapper2 displayOn: gc at: pt]</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.geometrics.useInApplication"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Integrate a graphic into an application</title>
+<body><p><indexterm>graphic<indexterm>add to application</indexterm></indexterm>Integrating
+a graphic relies on the fact that a view is automatically sent a <apiname>displayOn:</apiname> message
+whenever its containing window is damaged. A model can also redisplay
+a graphic when it changes<ol><li><p>In the view that is responsible
+for displaying the graphic, create a <apiname>displayOn:</apiname> method.
+This method creates the graphic object based on data from the model
+and displays the graphic objects on the graphics context. This method
+is triggered whenever an <apiname>invalidate</apiname> message is
+received by the view.
+<codeblock otherprops="smalltalk method">displayOn: aGraphicsContext
+		self model isNil ifTrue: [^self].
+		self model strokes do: [:stroke |
+			aGraphicsContext displayPolyline: stroke].</codeblock></p></li>
+<li><p>In any method in the domain model that affects the graphic,
+send a <apiname>changed:with:</apiname> message to <codeph>self</codeph>.
+The first argument is a symbol identifying the nature of the change.
+The second argument is needed by the view to display the appropriate
+graphic.
+<codeblock otherprops="smalltalk method">add: aPoint
+		"Add aPoint to the current stroke."
+		self strokes last add: aPoint.
+		self changed: #stroke with: self currentLineSegment.</codeblock></p></li>
+<li><p>When the change in the model is such that the view needs
+no data or control parameter, use <codeph>nil</codeph> as the second
+argument in the <apiname>changed:with:</apiname> message. 
+<codeblock otherprops="smalltalk method">eraseAll
+		"Erase my contents."
+		self strokes removeAll: self strokes copy.
+		self changed: #erase with: nil.</codeblock></p></li>
+<li><p>In the view (<apiname>SketchView</apiname>), create an <apiname>update:with:</apiname> method
+in an updating protocol. This method is invoked by the model whenever it
+changes and is responsible for updating its display based on the
+aspect of the model that changed. 
+<codeblock otherprops="smalltalk method">update: anAspect with: anObject
+		"When a point is added to the model..."
+		anAspect == #stroke
+			ifTrue: [anObject asStroker displayOn: self graphicsContext].
+		"When the model erases its contents..."
+		anAspect == #erase
+			ifTrue: [self invalidate].</codeblock></p></li>
+<li><p>When an entirely new model is given to the view using its <apiname>model:</apiname> method,
+the view sends <apiname>invalidate</apiname> to itself, again causing
+a <apiname>displayOn:</apiname> message to be sent to the view with
+the appropriate graphics context. Because <apiname>model:</apiname> overrides
+an inherited method with that name, begin the method by invoking
+the inherited version by sending a <apiname>model:</apiname> message
+to <codeph>super</codeph>.
+<codeblock otherprops="smalltalk method">model: aModel
+		super model: aModel.
+		self invalidate.
+		"Tell the controller where to send menu messages."
+		self controller performer: aModel.</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:CustomView-Example:Examples.CustomViewExample open" 
+format="st" scope="external">CustomView-Example</xref></p>
+</body></topic></topic></dita>

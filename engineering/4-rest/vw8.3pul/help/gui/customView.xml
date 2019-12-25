@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.gui.customView"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create Custom View Classes</title>
+<topic id = "vw.help.gui.customView.create"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a view class</title>
+<body><p><indexterm>GUI<indexterm>create custom view</indexterm></indexterm><indexterm>custom
+view<indexterm>create</indexterm></indexterm><indexterm>custom view<indexterm>connect
+to domain</indexterm></indexterm>A view displays text or graphics
+representing all or part of a data model. Each of the existing widgets
+uses a view to display a data model. When an existing widget does
+not serve your purpose, you can create a custom view.
+<ol><li><p>In
+a System Browser, display the class-definition template by selecting
+a class category and making sure no class is selected.</p></li>
+<li><p>In the template, specify the name of the view’s superclass
+(in the example, <apiname>UI.View</apiname>).</p></li>
+<li><p>Replace <codeph>NameOfClass</codeph> with the new class’s
+name (<codeph>SketchView</codeph>).</p></li>
+<li><p>Supply variable names, if any, and then accept the definition.
+<codeblock otherprops="smalltalk expression">Smalltalk.UI defineClass: #SketchView
+	superclass: #{UI.View}
+	indexedType: #none
+	private: false
+	instanceVariableNames: ''
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'Examples-Help'</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:CustomView-Example:Examples.SketchView browse" 
+format="st" scope="external">SketchView</xref></p>
+</body></topic>
+<topic id = "vw.help.gui.customView.connect"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Connect a view to a domain model</title>
+<body><p>As a subclass of <apiname>DependentPart</apiname>, every
+view inherits an instance variable for storing its model. Sending
+a <apiname>model:</apiname> message to the view, typically when the
+view is created, stores the model in this instance variable, where
+it can be accessed easily.</p>
+<p>A side effect of the <apiname>model:</apiname> message is that
+the view is registered as a dependent of the model. This link sets
+the stage for the view to update its display when the model changes.<ol>
+<li><p>Tell the view which object to use as its domain model. This
+is done in an initialization method or, as in the example, the application
+model (<apiname>CustomViewExample</apiname>) can notify the view whenever
+the domain model changes.
+<codeblock otherprops="smalltalk method">changedSketch
+		self sketchView model: self sketches selection.</codeblock></p></li>
+<li><p>If the view needs to take action when its model is changed,
+such as redisplaying itself, override the inherited model: method
+(as in <codeph>SketchView</codeph>).
+<codeblock otherprops="smalltalk method">model: aModel
+		super model: aModel.
+		self invalidate.
+		"Tell the controller where to send menu messages."
+		self controller performer: aModel.</codeblock></p></li></ol></p>
+<p><b>Online examples:</b> 
+<xref href="prereq:CustomView-Example:Examples.CustomViewExample open" 
+format="st" scope="external">CustomViewExample</xref> and 
+<xref href="prereq:CustomView-Example:Examples.SketchView browse" 
+format="st" scope="external">SketchView</xref></p>
+</body></topic>
+<topic id = "vw.help.gui.customView.displayContents"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Display a view’s contents</title>
+<body><p><indexterm>custom view<indexterm>display</indexterm></indexterm>A
+view’s purpose is to display text or graphics. It does so in a method named <apiname>displayOn:</apiname>,
+which is sent to the view whenever circumstances require that it
+update its display.</p>
+<p>It displays the text and/or graphics on a <apiname>GraphicsContext</apiname>,
+which is an object that windows and other display surfaces use for
+rendering objects.<ol><li><p>In a displaying protocol, add a <apiname>displayOn:</apiname> method
+to the view. The argument is a <apiname>GraphicsContext</apiname>.</p></li>
+<li><p>In the <apiname>displayOn:</apiname> method, get the required
+data from the model (in the example, a set of line segments, each
+represented as a collection of points).</p></li>
+<li><p>In the <apiname>displayOn:</apiname> method, display the appropriate
+text or graphics, based on the data from step 2 (in the example,
+each collection of points is displayed as a <apiname>Polyline</apiname>).
+<codeblock otherprops="smalltalk method">displayOn: aGraphicsContext
+		self model isNil ifTrue: [^self].
+		self model strokes do: [:stroke |
+			aGraphicsContext displayPolyline: stroke].</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:CustomView-Example:Examples.SketchView browse" 
+format="st" scope="external">SketchView</xref></p>
+</body></topic>
+<topic id = "vw.help.gui.customView.updateData"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Update a view when its model changes</title>
+<body><p><indexterm>custom view<indexterm>update</indexterm></indexterm>When
+the domain model changes its state, it is responsible for notifying
+all of its dependents. It does so by sending a variant of the <apiname>changed:with:</apiname> message
+to itself. The first argument is a <apiname>Symbol</apiname> indicating
+what was changed, and the second argument is the new value.</p>
+<p>The <apiname>changed:with:</apiname> message is inherited, and
+it sends an <apiname>update:with:</apiname> message to each dependent,
+passing along the same two arguments.<ol><li><p>In any method in
+the domain model that changes the model in a way that affects the
+view, send a variant of the <apiname>changed:with:</apiname> message
+to the model. (In the example, <codeph>Sketch</codeph> sends three
+such messages, one when it adds a point and the others when it erases
+some or all of its contents.)
+<codeblock otherprops="smalltalk method">add: aPoint
+		"Add aPoint to the current stroke."
+		self strokes last add: aPoint.
+		self changed: #stroke with: self currentLineSegment.</codeblock>
+<codeblock otherprops="smalltalk method">eraseLine
+		"Erase the last stroke that was drawn."
+		self strokes isEmpty 
+			ifFalse: [
+				self strokes removeLast.
+				self changed: #erase with: nil].</codeblock>
+<codeblock otherprops="smalltalk method">eraseAll
+		"Erase my contents."
+		self strokes removeAll: self strokes copy.
+		self changed: #erase with: nil.</codeblock></p></li>
+<li><p>In the view, implement a variant of the <apiname>update:with:</apiname> method
+to take the appropriate action in response to a change in the model.
+(In the example, the same <apiname>update:with:</apiname> method responds
+to either of the <apiname>changed:with:</apiname> messages sent by
+the model.)
+<codeblock otherprops="smalltalk method">update: anAspect with: anObject
+		"When a point is added to the model..."
+		anAspect == #stroke
+			ifTrue: [anObject asStroker displayOn: self graphicsContext].
+		"When the model erases its contents..."
+		anAspect == #erase
+			ifTrue: [self invalidate].</codeblock></p></li></ol></p>
+<p><b>Online examples:</b> 
+<xref href="prereq:CustomView-Example:Examples.Sketch browse" 
+format="st" scope="external">Sketch</xref> and 
+<xref href="prereq:CustomView-Example:Examples.SketchView browse" 
+format="st" scope="external">SketchView</xref></p>
+</body></topic>
+<topic id = "vw.help.gui.customView.controller"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Connect a view to a controller</title>
+<body><p><indexterm>custom view<indexterm>controller</indexterm></indexterm>An
+active view, one that responds to mouse or keyboard input, uses
+a controller to process mouse and keyboard input. A view is closely allied
+with its controller, so an inherited mechanism installs the desired
+controller when the view is created. You can control which type
+of controller is installed.</p>
+<p>Create a <apiname>defaultControllerClass</apiname> method for the
+view. This method returns the name of the desired controller class.
+<codeblock otherprops="smalltalk method">defaultControllerClass
+		^SketchController</codeblock></p>
+<p><b>Online examples:</b> 
+<xref href="prereq:CustomView-Example:Examples.SketchView browse" 
+format="st" scope="external">SketchView</xref> and 
+<xref href="prereq:CustomView-Example:Examples.SketchController browse" 
+format="st" scope="external">SketchController</xref></p>
+</body></topic>
+<topic id = "vw.help.gui.customView.updateView"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Redisplay a view</title>
+<body><p><indexterm>custom view<indexterm>redisplay</indexterm></indexterm>Send <apiname>invalidate</apiname> to
+a view to cause the entire view to be treated as a damage rectangle,
+and so be repainted.</p>
+<p>Send <apiname>invalidate</apiname> to the view. This is typically
+done in a view method that changes the model (as in the example).
+<codeblock otherprops="smalltalk method">model: aModel
+		super model: aModel.
+		self invalidate.
+		"Tell the controller where to send menu messages."
+		self controller performer: aModel.</codeblock></p>
+<p><b>Online example:</b> 
+<xref href="prereq:CustomView-Example:Examples.SketchView browse" 
+format="st" scope="external">SketchView</xref></p>
+<p>Send <apiname>invalidateRectangle:</apiname> to the view. The argument
+is a rectangle that represents all or part of the view’s bounding
+box. The bounding box can be accessed by sending <apiname>bounds</apiname> to
+the view.</p>
+<p>Send <apiname>invalidateRectangle:repairNow:</apiname> to the view.
+The first argument is a rectangle that represents all or part of
+a view’s bounding box. The second argument is <codeph>true</codeph> when
+immediate redisplay is desired, and <codeph>false</codeph> for the
+default behavior.</p></body></topic>
+<topic id = "vw.help.gui.customView.addToInterface"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Add a view to an interface</title>
+<body><p><indexterm>custom view<indexterm>add to interface</indexterm></indexterm>A
+view-holder widget is provided on the Palette for integrating a custom
+view into a canvas. This view holder enables you to treat your custom
+view like a standard widget in that you can paint its layout and apply
+borders and scroll bars. However, your application is responsible
+for connecting the view to a domain model.<ol><li><p>Use a Palette
+to place a view-holder widget on the canvas.</p></li>
+<li><p>In the view holder’s <apiname>View</apiname> property, enter
+the name of the application-model method that supplies an instance
+of the desired view (<codeph>sketchView</codeph>).</p></li>
+<li><p>If the application model will need to access the custom view
+while the application is running, use a System Browser to create
+an instance variable (<codeph>sketchView</codeph>) in which to store
+the custom view.</p></li>
+<li><p>Create the application-model method that you named in step
+2 (<codeph>sketchView</codeph>). This method typically answers the
+contents of the instance variable that you created in step 3.
+<codeblock otherprops="smalltalk method">sketchView
+	^sketchView</codeblock></p></li>
+<li><p>In an <codeph>initialize</codeph> method in the application
+model, create an instance of the custom view. If appropriate, connect
+the custom view to a data model. (In the example, there is no model
+to be connected until the user adds the first <codeph>Sketch</codeph> object.)
+<codeblock otherprops="smalltalk method">initialize
+	sketches := SelectionInList with: OrderedCollection new.
+	sketches selectionIndexHolder onChangeSend: #changedSketch to: self.
+	sketchView := SketchView new.</codeblock></p></li></ol></p>
+<p><b>Online examples:</b>
+<xref href="prereq:CustomView-Example:Examples.CustomViewExample open" 
+format="st" scope="external">CustomViewExample</xref> and 
+<xref href="prereq:CustomView-Example:Examples.SketchView browse" 
+format="st" scope="external">SketchView</xref></p>
+</body></topic></topic></dita>

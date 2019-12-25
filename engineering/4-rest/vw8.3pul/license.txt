@@ -1,0 +1,35 @@
+CINCOM SYSTEMS, INC.
+SOFTWARE LICENSE AGREEMENT
+FOR CINCOM SMALLTALK PERSONAL USE 
+
+IMPORTANT NOTICE:  READ THE TERMS AND CONDITIONS OF THIS LICENSE AGREEMENT CAREFULLY BEFORE PROCEEDING TO USE THIS COMPUTER SOFTWARE AND THE ACCOMPANYING USER DOCUMENTATION (THE "PRODUCT"). THE PRODUCT IS COPYRIGHTED AND ITS USE IS LICENSED (NOT SOLD).  BY DOWNLOADING AND/OR INSTALLING THE PRODUCT ON A COMPUTER AND USING THE PRODUCT, YOU ARE ACCEPTING AND AGREEING TO THE TERMS OF THIS LICENSE AGREEMENT.  IF YOU ARE NOT WILLING TO BE BOUND BY THE TERMS AND CONDITIONS OF THIS LICENSE AGREEMENT, YOU SHOULD NOT DOWNLOAD OR, USE THE PRODUCT AND PROMPTLY DELETE, DESTROY OR RETURN THE PRODUCT.  THIS LICENSE AGREEMENT REPRESENTS THE ENTIRE AGREEMENT CONCERNING THE PRODUCT BETWEEN YOU AND CINCOM SYSTEMS, INC. (REFERRED TO HEREIN AS "LICENSOR"), AND THIS AGREEMENT SUPERSEDES ANY PRIOR PROPOSALS, REPRESENTATIONS, OR UNDERSTANDING BETWEEN THE PARTIES PERTAINING TO THE PRODUCTS GOVERNED BY THIS LICENSE AGREEMENT.
+
+	1. License Grant.  Licensor hereby grants to you, the individual, and you do hereby accept, a nonexclusive and nontransferable license to use the Product only as is authorized in this License Agreement.  The Product may be used or accessed by only you only at a single location on computers owned, leased or otherwise controlled by you in the manner and subject to the terms set forth in this License Agreement.  You agree that you will not, assign, sublicense, transfer, pledge, lease, rent, allow access to or share your rights under this License Agreement.  You agree that your rights under this License Agreement does not cover the use of the Products for any revenue generating purpose or operation of any business venture and are not to pass to a successor through merger or consolidation.  You agree that you may not reverse assemble, reverse compile, reverse engineer or otherwise translate the Product.  You agree that you receive no rights other than those expressly granted to you in this License Agreement
+
+	You may make one copy of the Product for the purpose of backup in the event the Product is damaged or destroyed.  Any such copies of the Product shall include Licensor's copyright and other proprietary notices.  Execpt as authorized under this paragraph, no copies of the Product or any portions thereof may be made by you or any person under your authority or control.
+
+	U.S. Government Restricted Rights:  Licensor provides the Product with RESTRICTED RIGHTS.  Use, duplication, or disclosure by the U.S. Government or any agency or instrumentality thereof is subject to restrictions set forth in subparagraphs (c) (1) and (2) of the Commercial Computer Software - Restricted Rights clause at 48 C.F.R. 52.227-19, or any successor provision, as applicable. The Contractor/Manufacturer is Cincom Systems, Inc., 55 Merchant Street, Cincinnati, Ohio  45246.
+
+	2. Licensor's Rights.  You acknowledge and agree that the Product is a proprietary product of Licensor protected under U.S. copyright law and international treaty provisions.  You further acknowledge and agree that all right, title, and interest in and to the Product, including associated intellectual property rights, are and shall remain with Licensor. This License Agreement does not convey to you an interest in or to the Product, but only a limited right of use revocable in accordance with the terms of this License Agreement.
+
+	3. License Fees.  This license is granted to you for your personal use only.  Therefore, no license fees are involved, unless you breach the terms and conditions of this Agreement. Upon any such breach you shall pay Licensor any and all applicable damages relating to the breach, including, but not limited to the applicable license fees for the Product for your nonconforming use.
+
+	4. Term.  This License Agreement is effective upon delivery of the Product to you and will remain in effect until terminated.  You may terminate this License Agreement at any time.  Licensor may terminate this License Agreement upon your breach of any term hereof.  Upon termination by Licensor, you agree to discontinue usage and return or destroy all copies and portions of the Product.
+
+	5. Limited Warranty. THE PRODUCT IS LICENSED "AS IS," AND LICENSOR DISCLAIMS ANY AND ALL OTHER WARRANTIES, WHETHER EXPRESS OR IMPLIED, INCLUDING, WITHOUT LIMITATION, ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+
+	6. Limitation of Liability.  Licensor's cumulative liability to you or any other party for any loss or damages resulting from any claims, demands, or actions arising out of or relating to this Agreement will not exceed the total amount paid by you to Licensor.  In no event shall Licensor be liable for any indirect, incidental, consequential, special, or exemplary damages or lost profits, even if Licensor has been advised of the possibility of such damages.  THE ABOVE LIMITATION OR EXCLUSION MAY NOT BE ALLOWED BY ALL JURISDICTIONS.
+
+	7. Trademark.  The trademarks and copyrights listed in this License Agreement, on the Product, or related documentation are trademarks and copyrights of Licensor.  No right, license, or interest to such trademarks and copyrights is granted hereunder, and you agree that no such right, license, or interest shall be asserted by you with respect to such trademarks and copyrights.
+
+	8. Governing Law.  This License Agreement shall be construed and governed in accordance with the laws of the State of Ohio.
+
+	9. Costs of Litigation.  If any action is brought by either party to this License Agreement against the other party regarding the subject matter hereof, the prevailing party shall be entitled to recover, in addition to any other relief granted, reasonable attorney fees and expenses of litigation.
+
+	10. Severability.  Should any term of this License Agreement be declared void or unenforceable by any court of competent jurisdiction, such declaration shall have no effect on the remaining terms hereof.
+
+	11. No Waiver.  The failure of either party to enforce any rights granted hereunder or to take action against the other party in the event of any breach hereunder shall not be deemed a waiver by that party as to subsequent enforcement of such or any other such rights or any subsequent actions in the event of future breaches.
+
+	12. Export.  Licensee shall ensure that neither the Cincom Products, commodities, technology, or software, nor any direct product thereof are exported, directly or indirectly, in violation of the export laws and regulations of the United States of America including the Export Administration Regulations.  Diversion contrary to U.S. law is prohibited.  
+
+If you have any questions about this License Agreement, or if you have any questions or comments about the Product, please contact your local Cincom sales office.

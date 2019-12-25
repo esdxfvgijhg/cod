@@ -1,0 +1,11 @@
+#!/bin/sh
+
+javadoc -sourcepath data/src/main/java:core/src/main/java:ctrl/src/main/java -docletpath /home/aghiles/Aghiles/Teaching/Java/lib/umlgraph-5.6.jar -doclet org.umlgraph.doclet.UmlGraph -package -attributes -operations -constructors -enumerations -views -visibility -types core/src/main/java/com/github/sdnwiselab/sdnwise/util/*.java
+dot -Tpng -ocore.png graph.dot
+
+javadoc -sourcepath data/src/main/java:core/src/main/java:ctrl/src/main/java -docletpath /home/aghiles/Aghiles/Teaching/Java/lib/umlgraph-5.6.jar -doclet org.umlgraph.doclet.UmlGraph -package -attributes -operations -constructors -enumerations -views -visibility -types ctrl/src/main/java/com/github/sdnwiselab/sdnwise/*/*.java
+dot -Tpng -octrl.png graph.dot
+
+javadoc -sourcepath data/src/main/java:core/src/main/java:ctrl/src/main/java -docletpath /home/aghiles/Aghiles/Teaching/Java/lib/umlgraph-5.6.jar -doclet org.umlgraph.doclet.UmlGraph -package -attributes -operations -constructors -enumerations -views -visibility -types data/src/main/java/com/github/sdnwiselab/sdnwise/*/*/*.java
+dot -Tpng -odata.png graph.dot
+

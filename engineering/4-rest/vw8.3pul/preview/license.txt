@@ -1,0 +1,260 @@
+          LIMITED AVAILABILITY LICENSE AGREEMENT
+
+
+IMPORTANT NOTICE:  READ THE TERMS AND CONDITIONS OF THIS LICENSE
+AGREEMENT CAREFULLY BEFORE PROCEEDING TO USE THE COMPUTER
+SOFTWARE AND THE RELATED USER DOCUMENTATION (THE "PRODUCT"). THE
+PRODUCT IS COPYRIGHTED AND ITS USE IS LICENSED (NOT SOLD).  BY
+DOWNLOADING, INSTALLING, COPYING, OR OTHERWISE USING THE PRODUCT,
+YOU ACCEPT AND AGREE TO THE TERMS OF THIS LICENSE AGREEMENT.  IF
+YOU ARE NOT WILLING TO BE BOUND BY THE TERMS AND CONDITIONS OF
+THIS LICENSE AGREEMENT, YOU SHALL NOT USE THE PRODUCT.  THIS
+LICENSE AGREEMENT REPRESENTS THE ENTIRE AGREEMENT CONCERNING THE
+PRODUCT BETWEEN YOU (REFERRED TO HEREIN AS "CUSTOMER") AND CINCOM
+SYSTEMS, INC. (REFERRED TO HEREIN AS "CINCOM"), AND THIS
+AGREEMENT SUPERSEDES ANY PRIOR PROPOSALS, REPRESENTATIONS, OR
+UNDERSTANDING BETWEEN THE PARTIES RELATING TO THE PRODUCT.
+
+1.	Limited License
+
+1.1     Cincom grants to Customer, subject to the terms and
+conditions contained in this Agreement, a nonexclusive and
+nontransferable license to use, for its own internal
+operations only, the proprietary computer software programs
+and related materials ("Products").
+
+1.2     The license is granted for testing purposes only to
+prove the Products reliability, performance, and functional
+conformity to the Products' specifications.  If Customer
+wishes to use the Products after completion of the testing,
+a software license agreement must be executed by Customer.
+The Products licensed under this Agreement shall not be
+used for commercial or production purposes.
+
+2.      Products
+
+2.1     Customer acknowledges that the Products are being
+licensed for testing purposes only, and that the Products are
+of an experimental nature.
+
+2.2     Customer agrees to monitor the performance of the
+Products and to provide backup operations to protect itself
+from loss due to any error conditions.
+
+3.      Term
+
+3.1     This Agreement is effective from the date that
+Customer accepts the terms and conditions of this Limited
+Availability License Agreement, and will remain in effect
+until terminated in accordance with the Section 4 of this
+Agreement.
+
+4.      Termination
+
+4.1     This Agreement may be terminated by either party for
+any reason.
+
+4.2     Failure by either party to substantially comply with
+any term or condition under this Agreement shall constitute
+default.  The nondefaulting party shall be entitled to give
+written notice to the defaulting party requiring it to cure
+the default.  The notice shall include a detailed
+description of the act or omission that constitutes the
+default.  If the defaulting party has not cured the default
+within 30 days after receipt of notice, the nondefaulting
+party may terminate this Agreement by giving written notice
+to take effect upon receipt.  Notwithstanding the
+foregoing, Cincom may terminate this Agreement immediately
+and without notice if Customer fails to fulfill its
+obligations under Section 1 or Section 8 of this Agreement.
+The right to terminate this Agreement is in addition to any
+other rights and remedies provided under this Agreement or
+otherwise under law.
+
+4.3     No later than ten days after the effective date of
+any termination, Customer shall return or destroy all
+applicable Products, including all copies and versions.
+
+5.      Charges
+
+5.1     Services may be purchased and utilized in accordance
+with Cincom's then current services fee schedule and
+appropriate services agreement.
+
+5.2     Customer agrees that the costs of Customer resources
+consumed during the test period are the sole responsibility
+of the Customer.
+
+5.3     Any out-of-pocket expenses incurred by Cincom on
+Customer's behalf will be limited to reasonable and customary
+travel, lodging, and meal expenses and will be due as incurred.
+
+
+
+6.      Warranties
+
+6.1     Cincom warrants that it has the right to grant Customer a
+license to use the Products.
+
+6.2     CINCOM IS LICENSING THE USE OF THE PRODUCTS TO CUSTOMER
+ON AN "AS IS" BASIS AND DISCLAIMS ALL WARRANTIES, EXPRESS AND
+IMPLIED, CONCERNING THE PRODUCTS, INCLUDING ALL WARRANTIES
+OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, BUT
+EXCEPTING THE WARRANTY OF TITLE SET FORTH IN PARAGRAPH 6.1.
+
+7.      Indemnities and Liabilities
+
+7.1     If a claim is brought against Customer alleging that
+the Products infringe a patent, copyright, or trade secret,
+Cincom will defend, at its own expense, such claims and
+indemnify and hold Customer harmless from any damages or
+costs, including reasonable attorney fees, incurred or
+awarded as a result of the claim against Customer, provided
+Customer gives Cincom prompt written notice of the claim,
+allows Cincom to control the defense and settlement of the
+claim, and fully cooperates with Cincom in the defense and
+settlement.  Cincom shall have no obligation with respect
+to any infringement claim based on Customer's modification
+of the Products or its combination, operation, or use with
+data or programs not furnished by Cincom.  This Paragraph
+7.1 states Cincom's entire obligation and liability with
+respect to infringement of any patent, copyright, or trade
+secret.
+
+7.2     Cincom will not be liable for delays or failures in
+performance due to causes beyond its control, for damages
+caused by Customer's failure to perform Customer's
+responsibilities, or for any claim, other than infringement
+claims provided for in Paragraph 7.1, of a third party
+arising out of or related to Customer's use of the Products.
+
+7.3     CINCOM AND ITS LICENSORS WILL NOT BE LIABLE FOR ANY
+CLAIM, WHETHER IN CONTRACT, TORT, OR OTHERWISE, FOR ANY
+INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES,
+INCLUDING LOST PROFITS, EVEN IF CINCOM HAS BEEN ADVISED OF
+THE POSSIBILITY OF SUCH DAMAGES.
+
+7.4     Cincom's entire liability and Customer's exclusive
+remedy for any cause whatsoever, and regardless of the form
+of action, whether in contract, tort, or otherwise, are
+limited to the liabilities and the remedies set forth in
+this Agreement.
+
+8.      Proprietary Information
+
+8.1     Customer acknowledges that Cincom claims that the
+Products constitute proprietary and confidential information
+of Cincom and its licensors, that the protection of this
+information is of the highest importance, and that Cincom
+may employ protection methods within the Products' code to
+prevent unauthorized use of the Products.  Customer shall
+keep the Products in strict confidence, shall take
+appropriate steps to ensure that persons authorized to have
+access to the Products refrain from any unauthorized
+reproduction or disclosure of the Products, and shall
+restrict access to the Products to Customer personnel who
+need to access the Products to enable Customer to use the
+Products as contemplated by this Agreement and who have
+been advised of and have agreed to treat the Products in
+accordance with this Section 8.
+
+8.2     Customer will not reverse engineer or decode the
+Products or defeat protection methods used for preventing
+unauthorized uses of the Products.
+
+8.3     Customer shall not transfer or otherwise disclose
+(i) the Products, (ii) any associated programs derived or
+developed from the Products, or (iii) the results of any
+benchmark tests run on the Products, without the express
+written approval of Cincom.  Depending on the circumstances,
+Cincom's approval maybe contingent upon the payment of a
+fee.
+
+8.4     Customer will not be liable for disclosure of any
+information of the Products if:
+
+8.4.1   the information is rightfully known to Customer prior
+to receipt of it from Cincom without restriction on
+disclosure; or
+
+8.4.2   the information is in or comes into the public domain
+through no act or omission on the part of Customer; or
+
+8.4.3   the information is rightfully disclosed to Customer by
+a third party without restriction on disclosure; or
+
+8.4.4   the information is independently developed by
+Customer; or
+
+8.4.5   the information is required by law to be disclosed
+by Customer, provided Customer gives Cincom a reasonable
+opportunity to contest the disclosure and/or obtain a
+protective order.
+
+8.5     The Products and all copies and versions of the
+Products made by Customer are and shall remain the sole
+property of Cincom or its licensors.  Customer shall include
+the Products' proprietary notice on all copies of the Products,
+in whole or in part and in any form, made by Customer.
+
+8.6     The obligations set forth in this Section 8 shall
+survive the termination of this Agreement.  Customer
+acknowledges that a breach of its obligations under this
+Section 8 will cause irreparable harm to Cincom and/or its
+licensors for which monetary damages would be inadequate.
+Cincom and/or its licensors will be entitled to injunctive
+relief for any such breaches, threatened or actual.
+
+
+
+9.      General Provisions
+
+9.1     This Agreement and any claim, whether in contract,
+tort, or otherwise, arising out of this Agreement shall be
+governed by and construed in accordance with the laws of
+Ohio, excluding its conflict of laws principles.
+
+9.2     Any notice regarding this Agreement directed to Cincom,
+shall be delivered by hand, commercial overnight courier, or
+certified mail, return receipt requested, to the address set
+forth below:
+
+        Cincom Systems, Inc.
+        Attn:  Legal Department
+        55 Merchant Street
+        Cincinnati, OH 45246
+
+9.3     The failure of either party to act upon any right,
+remedy, or breach of this Agreement shall not constitute a
+waiver of that or any other right, remedy, or breach.  No
+waiver shall be effective unless made in writing and signed
+by an authorized representative of the waiving party.
+
+9.4     Customer shall not transfer its rights or obligations
+under this Agreement without the prior written approval of
+Cincom.  Cincom will not unreasonably withhold such
+approval, however, depending on the circumstances, approval
+may be contingent upon the payment of a fee.  Subject to
+the foregoing restriction on transfer, this Agreement shall
+be binding upon and inure to the benefit of the parties'
+successors and assigns.
+
+9.5     This Agreement, which includes all addenda and written
+amendments now or hereafter made to this Agreement,
+constitutes the entire agreement and understanding between
+the parties relating to the license and use of the
+Products.  Any representation, statement, or warranty not
+expressly contained in this Agreement shall not be
+enforceable by the parties.  This Agreement may not be
+amended or modified except by a writing, which specifically
+references this Agreement and is signed by authorized
+representatives of Cincom and Customer.  Cincom's licensors
+shall be third party beneficiaries under this Agreement.
+
+9.6     This Agreement is effective upon acceptance of the
+terms and conditions herein and download/delivery of the
+product and will remain in effect until terminated in
+accordance with the Section 4 of this Agreement.
+
+
+ca2695		032800

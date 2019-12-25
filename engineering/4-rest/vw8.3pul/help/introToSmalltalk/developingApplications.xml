@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+<!ENTITY arrow		"&#x2192;">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+	<topic id="vw.help.intro.developingApplications" 
+		xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+		<title>Developing a Smalltalk Application</title>
+		<body>
+			<p>Smalltalk applications can be delivered in several different ways, 
+			affording you, the developer, a great deal of flexibility. The following 
+			topics explore the basics of application deployment, and you can refer to the 
+			&Product; <xref href="./doc/AppDevGuide.pdf" format="pdf" 
+			scope="external"><i>Application Developer's Guide</i></xref> for a more 
+			in-depth account of the strategies and options that are available.</p>
+		</body>
+		
+	<topic id="vw.help.intro.developingApplications.what" 
+		xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+		<title>What is a Smalltalk Application?</title>
+		<body>
+			<p>A software application in a typical programming language usually consists 
+			of an executable (e.g., <filepath>.exe</filepath>) file and supporting files. 
+			The structure of a typical &Product; application usually consists of supporting 
+			files and two main files &#x2014; an <term>image file</term> with extension <filepath>.im</filepath>, 
+			and an executable <filepath>.exe</filepath> file containing the <term>virtual machine</term> 
+			that executes the code in the image. The image can be ported among different platforms 
+			without any changes, provided that it does not use platform-specific features such 
+			as platform-specific syntax of filenames. Only the virtual machine executable is 
+			platform-specific. For Windows and OS X applications, you can combine the two files 
+			into a single application file, as explained in the documentation.</p>
+			<p>The development environment that you are now using is also essentially an application, 
+			but it uses two additional files. One contains the source code and has extension 
+			<filepath>.sou</filepath> (this file would not usually be supplied with a commercial 
+			application), and the other is the "changes" files with extension <filepath>.cha</filepath>, 
+			which contains all the changes that you made to the image and the source code. 
+			The <filepath>.cha</filepath> file allows you to restore modified code up to the point 
+			where the changes file has been created or "condensed" into the image; this topic is 
+			covered in the documentation. A commercial application would not have a changes file 
+			because it would be condensed into the image file. In addition, the image file would 
+			be "stripped" of all classes that the application does not need, such as Browser classes, 
+			GUI Tool classes, and so on.</p>
+			<p>Most of the classes in an application usually come from the built-in library 
+			(numbers, strings, collections, windows, etc.), some possibly modified by the programmer. 
+			Application-specific classes &#x2014; for example <codeph>Book</codeph>, <codeph>Patron</codeph>, 
+			<codeph>Librarian</codeph>, and <codeph>Catalog</codeph> for a book library application 
+			&#x2014; are either developed specifically for the application or come from another source. 
+			Some classes may be obtained from parcels separately loaded into the basic image.</p>
+			<p>As already mentioned, the classes that constitute the application can usually be 
+			conceptually divided into four basic groups:
+			<ul>
+			<li><term>base classes</term> such as numbers &#x2014; obtained from the built-in library</li>
+			<li><term>domain classes</term> that represent objects in the problem domain (such as 
+			<codeph>Book</codeph>, <codeph>Patron</codeph>, <codeph>Librarian</codeph>, and 
+			<codeph>Catalog</codeph> &#x2014; written by the developers),</li>
+			<li><term>user interface classes</term> &#x2014; defining the general behavior of windows 
+			and their widgets, usually obtained directly from the built-in class library without 
+			any change</li>
+			<li><term>application model classes</term> that provide the glue between the developer's 
+			domain classes and the user interface. As explained earlier, application model classes 
+			are usually derived from the built-in <codeph>ApplicationModel</codeph> class.</li>
+			</ul></p>
+			<p>Creating a new application thus requires:
+			<ul>
+			<li>Defining new methods and classes in the domain category, and application model classes 
+			defining windows and their interfaces to domain classes. Changes to built-in classes are 
+			much less common but not unusual.</li>
+			<li>"Stripping" the image of unnecessary classes using the <codeph>RuntimePackager</codeph> 
+			available via <uicontrol>Tools &arrow; Runtime Packager</uicontrol> in the Launcher 
+			window. The procedure is explained in the packager itself and in &Product; documentation.</li>
+			</ul></p>
+			<p>Make sure to read your license to see what you can legally deliver and read the 
+			documentation for full details on application deleivery.</p>
+		
+			<section>
+			<title>Exercise</title>
+			<ol>
+			<li>Deploy one of the applications developed earlier.</li>
+			</ol>
+			</section>
+		</body>
+	</topic>
+	
+	<topic id="vw.help.intro.developingApplications.style" 
+		xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+		<title>Smalltalk style</title>
+		<body>
+			<p>Just as developers using other languages have opinions on what constitutes 
+			good programming style, Smalltalk programmers have theirs as well. Some are based 
+			on established conventions, but most are recommended because they produce efficient, 
+			readable, maintainable, and extendible code.</p>
+			<p>Perhaps the main guiding principle is that Smalltalkers consider readability to be 
+			of paramount importance &#x2014; more than programmers in most other languages. They 
+			maintain that code should be succinct, self-documenting, and a minimum of documentation 
+			should normally be required to help the experienced reader understand the code. This leads 
+			to numerous guidelines summarized in the widely-recognized books by Skublics and Beck. 
+			Within this limited space, I will list only a few selected rules of Smalltalk style:
+			<ul>
+			<li>Choose <i>names</i> of classes, variables, and messages very carefully. If you cannot 
+			find a good name, reconsider whether the construct is appropriate. If it is, use the best 
+			name you can think of and improve it when you revisit the code. If it isn't, change your design.</li>
+			<li>Don't hesitate to <i>combine several names</i> into a single identifier using camel case. 
+			If you do, capitalize the second and consecutive words as in <codeph>raisedTo: asUppercase</codeph>, 
+			<codeph>GenericException</codeph>, etc. However, don't make names too long.</li>
+			<li>Avoid <i>unnecessary comments</i>; they break the fluidity of the code and may become 
+			misleading if the code is later edited. Well-written Smalltalk code should be self-explanatory.</li>
+			<li>Methods should be <i>short</i>, no more than 10 lines or so. A method definition should 
+			fit into the Browser without scrolling.</li>
+			<li>If a method becomes too long, it should probably be divided (refactored) into several methods.</li>
+			<li>Use conventional <i>protocol names</i> such as <codeph>accessing</codeph>, 
+			<codeph>instance creation</codeph>, <codeph>testing</codeph>, etc., whenever possible.</li>
+			<li>Use available methods whenever possible. In particular, use appropriate enumeration messages 
+			when working with collections.</li>
+			<li>Avoid <i>nested logic</i> and use <term>polymorphism</term> instead. (Polymorphism means 
+			that different classes implement messages with the same names and the same function but using 
+			class-specific logic. A good example are methods that draw geometric objects &#x2014; they all 
+			have the same name and can thus be used without knowing, which specific object is being drawn, 
+			but each works differently to achieve the desired result.)</li>
+			</ul>
+			</p>
+		</body>
+	</topic>
+	</topic>
+</dita>

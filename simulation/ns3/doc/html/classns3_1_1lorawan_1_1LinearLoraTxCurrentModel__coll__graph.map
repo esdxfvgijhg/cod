@@ -1,0 +1,4 @@
+<map id="ns3::lorawan::LinearLoraTxCurrentModel" name="ns3::lorawan::LinearLoraTxCurrentModel">
+<area shape="rect" id="node2" href="$classns3_1_1lorawan_1_1LoraTxCurrentModel.html" title="Model the transmit current as a function of the transmit power and mode. " alt="" coords="13,131,200,267"/>
+<area shape="rect" id="node3" href="$classObject.html" title="{Object\n||}" alt="" coords="77,5,137,83"/>
+</map>

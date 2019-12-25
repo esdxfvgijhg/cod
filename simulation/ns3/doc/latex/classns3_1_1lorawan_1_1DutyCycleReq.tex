@@ -1,0 +1,135 @@
+\hypertarget{classns3_1_1lorawan_1_1DutyCycleReq}{}\section{ns3\+:\+:lorawan\+:\+:Duty\+Cycle\+Req Class Reference}
+\label{classns3_1_1lorawan_1_1DutyCycleReq}\index{ns3\+::lorawan\+::\+Duty\+Cycle\+Req@{ns3\+::lorawan\+::\+Duty\+Cycle\+Req}}
+
+
+{\ttfamily \#include $<$mac-\/command.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Duty\+Cycle\+Req\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=251pt]{classns3_1_1lorawan_1_1DutyCycleReq__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Duty\+Cycle\+Req\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=343pt]{classns3_1_1lorawan_1_1DutyCycleReq__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classns3_1_1lorawan_1_1DutyCycleReq_aa940e6c73680a6eadfa976d08b56f92c}{Duty\+Cycle\+Req} (uint8\+\_\+t duty\+Cycle)
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1DutyCycleReq_ae8bd08eaf66d3a83f4c972d6317bc7dd}{Serialize} (Buffer\+::\+Iterator \&start) const
+\item 
+virtual uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1DutyCycleReq_ac158ec7e1539555825e2651ee176c7a5}{Deserialize} (Buffer\+::\+Iterator \&start)
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1DutyCycleReq_a8d0d86de5e54eab057bcdd9b79c97aa9}{Print} (std\+::ostream \&os) const
+\item 
+double \hyperlink{classns3_1_1lorawan_1_1DutyCycleReq_ab42bcc06f2f90bac5aaf3a267fed20e8}{Get\+Maximum\+Allowed\+Duty\+Cycle} (void) const
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Implementation of the \hyperlink{classns3_1_1lorawan_1_1DutyCycleReq}{Duty\+Cycle\+Req} Lo\+Ra\+W\+AN M\+AC command.
+
+With this command, the network server can limit the maximum aggregated transmit duty cycle of an end device. The aggregate duty cycle is computed as the duty cycle among all sub bands. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1DutyCycleReq_aa940e6c73680a6eadfa976d08b56f92c}\label{classns3_1_1lorawan_1_1DutyCycleReq_aa940e6c73680a6eadfa976d08b56f92c}} 
+\index{ns3\+::lorawan\+::\+Duty\+Cycle\+Req@{ns3\+::lorawan\+::\+Duty\+Cycle\+Req}!Duty\+Cycle\+Req@{Duty\+Cycle\+Req}}
+\index{Duty\+Cycle\+Req@{Duty\+Cycle\+Req}!ns3\+::lorawan\+::\+Duty\+Cycle\+Req@{ns3\+::lorawan\+::\+Duty\+Cycle\+Req}}
+\subsubsection{\texorpdfstring{Duty\+Cycle\+Req()}{DutyCycleReq()}}
+{\footnotesize\ttfamily ns3\+::lorawan\+::\+Duty\+Cycle\+Req\+::\+Duty\+Cycle\+Req (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{duty\+Cycle }\end{DoxyParamCaption})}
+
+Constructor providing initialization of all parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em duty\+Cycle} & The duty cycle as a 8-\/bit unsigned integer. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1DutyCycleReq_ac158ec7e1539555825e2651ee176c7a5}\label{classns3_1_1lorawan_1_1DutyCycleReq_ac158ec7e1539555825e2651ee176c7a5}} 
+\index{ns3\+::lorawan\+::\+Duty\+Cycle\+Req@{ns3\+::lorawan\+::\+Duty\+Cycle\+Req}!Deserialize@{Deserialize}}
+\index{Deserialize@{Deserialize}!ns3\+::lorawan\+::\+Duty\+Cycle\+Req@{ns3\+::lorawan\+::\+Duty\+Cycle\+Req}}
+\subsubsection{\texorpdfstring{Deserialize()}{Deserialize()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+Duty\+Cycle\+Req\+::\+Deserialize (\begin{DoxyParamCaption}\item[{Buffer\+::\+Iterator \&}]{start }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Deserialize the buffer into a M\+AC command.
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & A pointer to the buffer that contains the serialized command. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of bytes that were consumed. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1MacCommand_af12d223a71a67196bce498f1240eda75}{ns3\+::lorawan\+::\+Mac\+Command}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1DutyCycleReq_ab42bcc06f2f90bac5aaf3a267fed20e8}\label{classns3_1_1lorawan_1_1DutyCycleReq_ab42bcc06f2f90bac5aaf3a267fed20e8}} 
+\index{ns3\+::lorawan\+::\+Duty\+Cycle\+Req@{ns3\+::lorawan\+::\+Duty\+Cycle\+Req}!Get\+Maximum\+Allowed\+Duty\+Cycle@{Get\+Maximum\+Allowed\+Duty\+Cycle}}
+\index{Get\+Maximum\+Allowed\+Duty\+Cycle@{Get\+Maximum\+Allowed\+Duty\+Cycle}!ns3\+::lorawan\+::\+Duty\+Cycle\+Req@{ns3\+::lorawan\+::\+Duty\+Cycle\+Req}}
+\subsubsection{\texorpdfstring{Get\+Maximum\+Allowed\+Duty\+Cycle()}{GetMaximumAllowedDutyCycle()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+Duty\+Cycle\+Req\+::\+Get\+Maximum\+Allowed\+Duty\+Cycle (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Get the maximum duty cycle prescribed by this Mac command, in fraction form.
+
+\begin{DoxyReturn}{Returns}
+The maximum duty cycle. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1DutyCycleReq_a8d0d86de5e54eab057bcdd9b79c97aa9}\label{classns3_1_1lorawan_1_1DutyCycleReq_a8d0d86de5e54eab057bcdd9b79c97aa9}} 
+\index{ns3\+::lorawan\+::\+Duty\+Cycle\+Req@{ns3\+::lorawan\+::\+Duty\+Cycle\+Req}!Print@{Print}}
+\index{Print@{Print}!ns3\+::lorawan\+::\+Duty\+Cycle\+Req@{ns3\+::lorawan\+::\+Duty\+Cycle\+Req}}
+\subsubsection{\texorpdfstring{Print()}{Print()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Duty\+Cycle\+Req\+::\+Print (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Print the contents of this M\+AC command in human-\/readable format.
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The std\+::ostream instance on which to print the M\+AC command. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1MacCommand_a6bf88db38dab7dcd817811a9fb59f920}{ns3\+::lorawan\+::\+Mac\+Command}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1DutyCycleReq_ae8bd08eaf66d3a83f4c972d6317bc7dd}\label{classns3_1_1lorawan_1_1DutyCycleReq_ae8bd08eaf66d3a83f4c972d6317bc7dd}} 
+\index{ns3\+::lorawan\+::\+Duty\+Cycle\+Req@{ns3\+::lorawan\+::\+Duty\+Cycle\+Req}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!ns3\+::lorawan\+::\+Duty\+Cycle\+Req@{ns3\+::lorawan\+::\+Duty\+Cycle\+Req}}
+\subsubsection{\texorpdfstring{Serialize()}{Serialize()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Duty\+Cycle\+Req\+::\+Serialize (\begin{DoxyParamCaption}\item[{Buffer\+::\+Iterator \&}]{start }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Serialize the contents of this M\+AC command into a buffer, according to the Lo\+Ra\+W\+AN standard.
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & A pointer to the buffer into which to serialize the command. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1MacCommand_a0ed44b33942ddc3dc9694dc06ab0b87f}{ns3\+::lorawan\+::\+Mac\+Command}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+mac-\/command.\+h\item 
+mac-\/command.\+cc\end{DoxyCompactItemize}

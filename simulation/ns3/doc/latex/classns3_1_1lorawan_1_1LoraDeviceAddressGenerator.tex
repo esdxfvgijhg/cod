@@ -1,0 +1,116 @@
+\hypertarget{classns3_1_1lorawan_1_1LoraDeviceAddressGenerator}{}\section{ns3\+:\+:lorawan\+:\+:Lora\+Device\+Address\+Generator Class Reference}
+\label{classns3_1_1lorawan_1_1LoraDeviceAddressGenerator}\index{ns3\+::lorawan\+::\+Lora\+Device\+Address\+Generator@{ns3\+::lorawan\+::\+Lora\+Device\+Address\+Generator}}
+
+
+{\ttfamily \#include $<$lora-\/device-\/address-\/generator.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Lora\+Device\+Address\+Generator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{classns3_1_1lorawan_1_1LoraDeviceAddressGenerator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Lora\+Device\+Address\+Generator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{classns3_1_1lorawan_1_1LoraDeviceAddressGenerator__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddressGenerator_afb0a91944592c3f390c528bc4a87574d}{Lora\+Device\+Address\+Generator} (const uint8\+\_\+t nwk\+Id=0, const uint32\+\_\+t nwk\+Addr=0)
+\item 
+\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} \hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddressGenerator_a2d166ee5b76365d6a7a31cac36817f60}{Next\+Network} (void)
+\item 
+\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} \hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddressGenerator_a1d6c7015540abd13289e69dfcd0f6701}{Next\+Address} (void)
+\item 
+\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} \hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddressGenerator_aded9a1ced7deb2449cfcd07291bc4281}{Get\+Next\+Address} (void)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraDeviceAddressGenerator_ab359d7b536a57574b15f71c4b304c292}\label{classns3_1_1lorawan_1_1LoraDeviceAddressGenerator_ab359d7b536a57574b15f71c4b304c292}} 
+static Type\+Id {\bfseries Get\+Type\+Id} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class generates sequential \hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} instances. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraDeviceAddressGenerator_afb0a91944592c3f390c528bc4a87574d}\label{classns3_1_1lorawan_1_1LoraDeviceAddressGenerator_afb0a91944592c3f390c528bc4a87574d}} 
+\index{ns3\+::lorawan\+::\+Lora\+Device\+Address\+Generator@{ns3\+::lorawan\+::\+Lora\+Device\+Address\+Generator}!Lora\+Device\+Address\+Generator@{Lora\+Device\+Address\+Generator}}
+\index{Lora\+Device\+Address\+Generator@{Lora\+Device\+Address\+Generator}!ns3\+::lorawan\+::\+Lora\+Device\+Address\+Generator@{ns3\+::lorawan\+::\+Lora\+Device\+Address\+Generator}}
+\subsubsection{\texorpdfstring{Lora\+Device\+Address\+Generator()}{LoraDeviceAddressGenerator()}}
+{\footnotesize\ttfamily ns3\+::lorawan\+::\+Lora\+Device\+Address\+Generator\+::\+Lora\+Device\+Address\+Generator (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{nwk\+Id = {\ttfamily 0},  }\item[{const uint32\+\_\+t}]{nwk\+Addr = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+Initialise the base \hyperlink{classns3_1_1lorawan_1_1NwkID}{Nwk\+ID} and the first \hyperlink{classns3_1_1lorawan_1_1NwkAddr}{Nwk\+Addr} to be used by the generator.
+
+The first call to \hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddressGenerator_a1d6c7015540abd13289e69dfcd0f6701}{Next\+Address()} or Get\+Address() will return these values.
+
+
+\begin{DoxyParams}{Parameters}
+{\em nwk\+Id} & The first network id. \\
+\hline
+{\em nwk\+Addr} & The first address. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraDeviceAddressGenerator_aded9a1ced7deb2449cfcd07291bc4281}\label{classns3_1_1lorawan_1_1LoraDeviceAddressGenerator_aded9a1ced7deb2449cfcd07291bc4281}} 
+\index{ns3\+::lorawan\+::\+Lora\+Device\+Address\+Generator@{ns3\+::lorawan\+::\+Lora\+Device\+Address\+Generator}!Get\+Next\+Address@{Get\+Next\+Address}}
+\index{Get\+Next\+Address@{Get\+Next\+Address}!ns3\+::lorawan\+::\+Lora\+Device\+Address\+Generator@{ns3\+::lorawan\+::\+Lora\+Device\+Address\+Generator}}
+\subsubsection{\texorpdfstring{Get\+Next\+Address()}{GetNextAddress()}}
+{\footnotesize\ttfamily \hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} ns3\+::lorawan\+::\+Lora\+Device\+Address\+Generator\+::\+Get\+Next\+Address (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the \hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} that will be allocated upon a call to Next\+Address.
+
+Does not change the internal state; is just used to peek at the next address that will be allocated upon a call to Next\+Address
+
+\begin{DoxyReturn}{Returns}
+the \hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraDeviceAddressGenerator_a1d6c7015540abd13289e69dfcd0f6701}\label{classns3_1_1lorawan_1_1LoraDeviceAddressGenerator_a1d6c7015540abd13289e69dfcd0f6701}} 
+\index{ns3\+::lorawan\+::\+Lora\+Device\+Address\+Generator@{ns3\+::lorawan\+::\+Lora\+Device\+Address\+Generator}!Next\+Address@{Next\+Address}}
+\index{Next\+Address@{Next\+Address}!ns3\+::lorawan\+::\+Lora\+Device\+Address\+Generator@{ns3\+::lorawan\+::\+Lora\+Device\+Address\+Generator}}
+\subsubsection{\texorpdfstring{Next\+Address()}{NextAddress()}}
+{\footnotesize\ttfamily \hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} ns3\+::lorawan\+::\+Lora\+Device\+Address\+Generator\+::\+Next\+Address (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Allocate the next \hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address}.
+
+This operation is a post-\/increment, meaning that the first address allocated will be the one that was initially configured.
+
+This keeps the nwk\+Id constant, only incrementing nwk\+Addr.
+
+\begin{DoxyReturn}{Returns}
+the \hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} address 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraDeviceAddressGenerator_a2d166ee5b76365d6a7a31cac36817f60}\label{classns3_1_1lorawan_1_1LoraDeviceAddressGenerator_a2d166ee5b76365d6a7a31cac36817f60}} 
+\index{ns3\+::lorawan\+::\+Lora\+Device\+Address\+Generator@{ns3\+::lorawan\+::\+Lora\+Device\+Address\+Generator}!Next\+Network@{Next\+Network}}
+\index{Next\+Network@{Next\+Network}!ns3\+::lorawan\+::\+Lora\+Device\+Address\+Generator@{ns3\+::lorawan\+::\+Lora\+Device\+Address\+Generator}}
+\subsubsection{\texorpdfstring{Next\+Network()}{NextNetwork()}}
+{\footnotesize\ttfamily \hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} ns3\+::lorawan\+::\+Lora\+Device\+Address\+Generator\+::\+Next\+Network (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the first address from the next network.
+
+This resets the address to the base address that was used for initialization.
+
+\begin{DoxyReturn}{Returns}
+the \hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} address of the next network 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lora-\/device-\/address-\/generator.\+h\item 
+lora-\/device-\/address-\/generator.\+cc\end{DoxyCompactItemize}

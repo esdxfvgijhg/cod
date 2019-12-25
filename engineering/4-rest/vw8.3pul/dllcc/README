@@ -1,0 +1,10 @@
+This directory contains the C code for testing DLLCC for VisualWorks.
+
+The makefiles found in src/makeplat/<platName> have a rule named, dllcc, for creating the cptst loadable library.
+
+To build the fast version of the dllcc library:
+
+1. create a build directory
+2. create a symbolic link named 'src' linked to the vm source directory
+3. create a symbolic link named 'makefile' linked to 'src/makeplat/<platName>/fast.nb.lg.makefile
+4. make dllcc

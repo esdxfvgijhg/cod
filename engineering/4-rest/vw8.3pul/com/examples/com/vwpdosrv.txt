@@ -1,0 +1,78 @@
+" * How To Publish the COM Persistent Data Object Example As A COM Object Server Image. * " 
+
+This file describes a procedure for creating a basic COM object server application.
+The Persistent Data Object (PDO) example of a simple COM object is used to demonstrate
+the procedure.  Because the PDO example does not require automation, the steps
+described here omit installing the Automation runtime component to the
+deployment image that is created for the object server application EXE.   You will
+usually load this component in your object server applications, of course, since 
+Automation support is generally provided when objects are published.
+
+A .REG file is also provided, to demonstrate registration of the simple object server
+application.  Note that this is a "do-it-yourself" example, where you must actually
+create the deployment image yourself.
+
+
+	1. Start with a clean VW image
+
+	2. Load the COM-Ole Examples parcel, ComOleExamples.pcl.
+
+	3. Change the directory pathname in the following code to specify the name
+		of the directory containing your COM installation directory, if necessary
+		for your object server application to locate auxiliary files in the 						deployment directory, and then evaluate to configure the image with
+		runtime settings for an object server application deployment image 
+		and install your application startup logic:
+
+	" Configure the image with runtime settings for deployment as a COM object server application "
+	"NOTE: Modify the following to specify the name of your COM installation directory."
+	COMSessionManager defaultCOMDirectoryName: 'c:\vw7\com'.  
+	COMSessionManager installRuntime.
+	" Optional: you can turn off COM resource tracking to reduce the relatively small overhead
+		incurred by this facility in your deployed application if you believe your application 
+		is provably correct in its management of COM resources s.t. you do not need
+		the image shutdown backstop which releases any orphaned resource references. "
+	"COMSessionManager trackResources: false."
+	" Optional: install tracing capability if we leave it in the deployment image 
+		and want runtime tracing logged to a file from the server application.
+		This is primarily a debugging technique for validating the initial version
+		of an object server application and is not ordinarily done for a 
+		deployed server.  The log file is named 'COMTrace.log' by default. "
+	( Smalltalk includesKey: #COMTraceManager )
+		ifTrue: [ ( Smalltalk at: #COMTraceManager ) installTraceSupport ].
+	" install the object server application startup logic for the COM PDO.  This demonstrates
+		the simple case of a single-class dedicated COM object server. "
+	ImageManager removeActionsForEvent: #deploymentStartup.  " ensure that we're the only game in town "
+	ImageManager 
+		when: #deploymentStartup
+		send: #startUpApplication to: COMPersistentDataObject.
+
+
+	4. Make a deployment image for the object server application EXE. 
+		Remember to position your open windows or close your open windows.
+		You can also resize the Transcript window.
+
+	Deployment Image Options:
+
+	Option A
+
+		Prune the system if desired with RuntimePackager.  To do this, load
+                Runtime Packager in the image, start it, and load the parameters file
+		comserver.rtp using menu option File->Load parameters... from the
+                Runtime Packager window.
+
+	Option B
+
+		Make a headless image
+
+	Option C
+
+		Or, just save the image with a NEW name, for example VWPDOSrv.
+
+
+	5. If necessary, copy the new image to the location designated by your .reg file
+		or edit the LocalServer32 key in file VWPDOSrv.reg for the directory
+		of your image.  Registration file VWPDOSrv.reg assumes the COM Connect PDO
+ 		server image is copied to COM\Examples\COM.
+
+
+	6. Exit your image without saving, as you do not wish to retain the runtime settings that have been installed.

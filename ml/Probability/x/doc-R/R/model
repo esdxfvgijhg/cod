@@ -1,0 +1,58 @@
+fa(x)= ax = y
+
+dataset
+a f x y
+
+Weights: a
+model: f
+factors: x
+resuts: y
+
+Modelisation: 
+input: a x y
+output: f
+
+Fiting: 
+input: x y f
+output: a
+
+Resolution: fa(x)=y
+input: a x f
+output: y
+
+
+      _________
+x __ |         | __ y
+     |_________|
+          |
+          a
+
+
+IA-> ML -> DL(ANN)
+
+
+data -> information -> knowledge
+
+pytarch
+theano
+cafee
+
+slide 17 (TF?)
+
+
+FDA FPCA MCMC
+
+metropolis 
+
+?=vraissanblance croyance/?
+
+P(H|E) = P(E|H) P(H) / P(E)
+
+
+
+E H = ?
+H E = 0.3
+H = 
+E = 
+
+

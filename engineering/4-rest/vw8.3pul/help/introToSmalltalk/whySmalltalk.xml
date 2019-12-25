@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+	<topic id="vw.help.intro.whySmalltalk" 
+		xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+		<title>Why Smalltalk?</title>
+		<body>
+			<ul>
+			<li>The rules of the language are very simple.</li>
+			<li>The underlying concepts are simple and uniformly applied across the language.</li>
+			<li>Smalltalk remains one of the very few pure object-oriented languages.</li>
+			<li>There is no separation between the language and the programming environment 
+				the environment itself is a live universe of objects.</li>
+			<li>Code written by a knowledgable Smalltalk programmer is very compact and readable. 
+				This improves readability and development.</li>
+			<li>The source code is a part of the environment and is thus constantly available 
+				for study, extension, and modification. It explains functionality better and more 
+				accurately than any other documentation and access to it speeds up development.</li>
+			<li>The development environment is very powerful.</li>
+			<li>The language and the development environment are reflective, which means that 
+				your program can access information about its structure, implementation, and 
+				even run-time operation, and extend or modify them as you wish even at run-time.</li>
+			<li>Compilation is incremental so that any code and even a piece of a program can be 
+				executed instantaneously at any time. This makes for very fast development and 
+				testing, and encourages experimentation and improvement.</li>
+			<li>Because of the nature of the compilation and execution process, you can interrupt 
+				any application at any point, inspect the code and the objects, modify them, and 
+				continue running the application without recompiling it even after changing code.</li>
+			<li>Smalltalk is strongly typed, meaning that you cannot make an object execute a 
+				message that it was not programmed to understand.</li>
+			<li>Smalltalk is dynamically typed, which means that when your program needs to 
+				evaluate a message, it finds its definition at run-time rather than at compilation time. 
+				This makes the language very flexible and Smalltalk applications very extensible.</li>
+			<li>&Product; Smalltalk is very portable and allows well-written applications to run 
+				without any change on more than ten different platforms.</li>
+			<li>The language and the environment are very mature. They were initially developed 
+				over a period of ten years between 1970 and 1980 and evolved into a very well 
+				thought-out structure before being made available for commercial use. &Product;, 
+				a direct descendent of the original Smalltalk, keeps up to date with the 
+				evolution of development software through regular releases for both 
+				commercial and non-commercial users.</li>
+			<li>Finally, there is an enthusiastic group of users of both &Product; Smalltalk 
+				and other Smalltalk dialects. Find them in the <xref 
+				href="https://groups.google.com/forum/#!forum/comp.lang.smalltalk" 
+				scope="external" format="html">comp.lang.smalltalk</xref> newsgroup.</li>
+		</ul>
+		<p>The following sections introduce enough Smalltalk so that you can start 
+			developing simple applications and, more importantly, explore further easily.</p>
+		<p>For more information on &Product;, extensive documentation is available. Beginners
+			may want to start with the <xref href="./doc/WalkThrough.pdf" format="pdf" 
+			scope="external"><i>Walk Through</i></xref> and the <xref href="./doc/AppDevGuide.pdf" 
+			format="pdf" scope="external"><i>Application Developer's Guide</i></xref>).</p>
+		</body>
+	</topic>
+</dita>

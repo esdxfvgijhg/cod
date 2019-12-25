@@ -1,0 +1,279 @@
+\hypertarget{classns3_1_1lorawan_1_1GatewayLoraPhy}{}\section{ns3\+:\+:lorawan\+:\+:Gateway\+Lora\+Phy Class Reference}
+\label{classns3_1_1lorawan_1_1GatewayLoraPhy}\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}}
+
+
+{\ttfamily \#include $<$gateway-\/lora-\/phy.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Gateway\+Lora\+Phy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classns3_1_1lorawan_1_1GatewayLoraPhy__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Gateway\+Lora\+Phy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classns3_1_1lorawan_1_1GatewayLoraPhy__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath}{Reception\+Path}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_a08744b321b5f1b1cf84cff8d7ca8bf49}{Start\+Receive} (Ptr$<$ Packet $>$ packet, double rx\+Power\+Dbm, uint8\+\_\+t sf, Time duration, double frequency\+M\+Hz)=0
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_a030500acf630f508b12923627cdc4068}{End\+Receive} (Ptr$<$ Packet $>$ packet, Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event}{Lora\+Interference\+Helper\+::\+Event} $>$ event)=0
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_a2f1375c96d37fd05f1e33e1423826299}{Send} (Ptr$<$ Packet $>$ packet, \hyperlink{structns3_1_1lorawan_1_1LoraTxParameters}{Lora\+Tx\+Parameters} tx\+Params, double frequency\+M\+Hz, double tx\+Power\+Dbm)=0
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraPhy_a0676e7b725abab9fab81c69ad0c361f5}\label{classns3_1_1lorawan_1_1GatewayLoraPhy_a0676e7b725abab9fab81c69ad0c361f5}} 
+virtual void {\bfseries Tx\+Finished} (Ptr$<$ Packet $>$ packet)
+\item 
+bool \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_a9184985bc4da2d1c0cc9fedb105b20f8}{Is\+Transmitting} (void)
+\item 
+virtual bool \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_a293b678aaaf872fb1d6c0385bbab9d71}{Is\+On\+Frequency} (double frequency\+M\+Hz)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_a5587bc3145215aad3faa2b522db5595b}{Add\+Reception\+Path} (double frequency\+M\+Hz)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_aa964c821ed36fce6815910898ddfbb71}{Reset\+Reception\+Paths} (void)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraPhy_ad43bcb346c3b0fba2787817014ee49d5}\label{classns3_1_1lorawan_1_1GatewayLoraPhy_ad43bcb346c3b0fba2787817014ee49d5}} 
+static Type\+Id {\bfseries Get\+Type\+Id} (void)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const double \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_a5e087b8d88cf37e3c81d189876cb3b67}{sensitivity} \mbox{[}6\mbox{]}
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::list$<$ Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath}{Reception\+Path} $>$ $>$ \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_ad76f73bdb7fe35f39eaf75cf619445fc}{m\+\_\+reception\+Paths}
+\item 
+Traced\+Value$<$ int $>$ \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_a4cf88e2deb82b7739dd028c6122e1ad4}{m\+\_\+occupied\+Reception\+Paths}
+\item 
+Traced\+Callback$<$ Ptr$<$ const Packet $>$, uint32\+\_\+t $>$ \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_ae88528e820900ced7285b7993622cdc5}{m\+\_\+no\+More\+Demodulators}
+\item 
+Traced\+Callback$<$ Ptr$<$ const Packet $>$, uint32\+\_\+t $>$ \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_a69dbd2dafaea10f75115f2eb38ae06dd}{m\+\_\+no\+Reception\+Because\+Transmitting}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraPhy_a0eb1bd0116270a374e1ebdf461da7c22}\label{classns3_1_1lorawan_1_1GatewayLoraPhy_a0eb1bd0116270a374e1ebdf461da7c22}} 
+bool \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_a0eb1bd0116270a374e1ebdf461da7c22}{m\+\_\+is\+Transmitting}
+\begin{DoxyCompactList}\small\item\em Flag indicating whether a transmission is going on. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Class modeling a Lora S\+X1301 chip.
+
+This class models the behaviour of the chip employed in Lora gateways. These chips are characterized by the presence of 8 receive paths, or parallel receivers, which can be employed to listen to different channels simultaneously. This characteristic of the chip is modeled using the Receive\+Path class, which describes a single parallel receiver. \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy}{Gateway\+Lora\+Phy} essentially holds and manages a collection of these objects. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraPhy_a5587bc3145215aad3faa2b522db5595b}\label{classns3_1_1lorawan_1_1GatewayLoraPhy_a5587bc3145215aad3faa2b522db5595b}} 
+\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}!Add\+Reception\+Path@{Add\+Reception\+Path}}
+\index{Add\+Reception\+Path@{Add\+Reception\+Path}!ns3\+::lorawan\+::\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Add\+Reception\+Path()}{AddReceptionPath()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Add\+Reception\+Path (\begin{DoxyParamCaption}\item[{double}]{frequency\+M\+Hz }\end{DoxyParamCaption})}
+
+Add a reception path, locked on a specific frequency.
+
+
+\begin{DoxyParams}{Parameters}
+{\em frequency\+M\+Hz} & The frequency on which to set this \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath}{Reception\+Path}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraPhy_a030500acf630f508b12923627cdc4068}\label{classns3_1_1lorawan_1_1GatewayLoraPhy_a030500acf630f508b12923627cdc4068}} 
+\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}!End\+Receive@{End\+Receive}}
+\index{End\+Receive@{End\+Receive}!ns3\+::lorawan\+::\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{End\+Receive()}{EndReceive()}}
+{\footnotesize\ttfamily virtual void ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+End\+Receive (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet $>$}]{packet,  }\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event}{Lora\+Interference\+Helper\+::\+Event} $>$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Finish reception of a packet.
+
+This method is scheduled by Start\+Receive, based on the packet duration. By passing a \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper}{Lora\+Interference\+Helper} Event to this method, the class will be able to identify the packet that is being received among all those that were registered as interference by Start\+Receive.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & The received packet. \\
+\hline
+{\em event} & The event that is tied to this packet in the \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper}{Lora\+Interference\+Helper}. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a719f749890c247abc3fda290d384c37f}{ns3\+::lorawan\+::\+Lora\+Phy}.
+
+
+
+Implemented in \hyperlink{classns3_1_1lorawan_1_1SimpleGatewayLoraPhy_aefb2464599926253bfb1003fa14f8fae}{ns3\+::lorawan\+::\+Simple\+Gateway\+Lora\+Phy}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraPhy_a293b678aaaf872fb1d6c0385bbab9d71}\label{classns3_1_1lorawan_1_1GatewayLoraPhy_a293b678aaaf872fb1d6c0385bbab9d71}} 
+\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}!Is\+On\+Frequency@{Is\+On\+Frequency}}
+\index{Is\+On\+Frequency@{Is\+On\+Frequency}!ns3\+::lorawan\+::\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Is\+On\+Frequency()}{IsOnFrequency()}}
+{\footnotesize\ttfamily bool ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Is\+On\+Frequency (\begin{DoxyParamCaption}\item[{double}]{frequency }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Whether this device is listening on the specified frequency or not.
+
+
+\begin{DoxyParams}{Parameters}
+{\em frequency} & The frequency to query. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the device is listening on that frequency, false otherwise. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a554597e30a17b099e8a7f68242cb16a7}{ns3\+::lorawan\+::\+Lora\+Phy}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraPhy_a9184985bc4da2d1c0cc9fedb105b20f8}\label{classns3_1_1lorawan_1_1GatewayLoraPhy_a9184985bc4da2d1c0cc9fedb105b20f8}} 
+\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}!Is\+Transmitting@{Is\+Transmitting}}
+\index{Is\+Transmitting@{Is\+Transmitting}!ns3\+::lorawan\+::\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Is\+Transmitting()}{IsTransmitting()}}
+{\footnotesize\ttfamily bool ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Is\+Transmitting (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Whether this device is transmitting or not.
+
+\begin{DoxyReturn}{Returns}
+true if the device is currently transmitting a packet, false otherwise. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a5280764d934ba5ff8d305b0bc6b600ce}{ns3\+::lorawan\+::\+Lora\+Phy}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraPhy_aa964c821ed36fce6815910898ddfbb71}\label{classns3_1_1lorawan_1_1GatewayLoraPhy_aa964c821ed36fce6815910898ddfbb71}} 
+\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}!Reset\+Reception\+Paths@{Reset\+Reception\+Paths}}
+\index{Reset\+Reception\+Paths@{Reset\+Reception\+Paths}!ns3\+::lorawan\+::\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Reset\+Reception\+Paths()}{ResetReceptionPaths()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reset\+Reception\+Paths (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Reset the list of reception paths.
+
+This method deletes all currently available \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath}{Reception\+Path} objects. \mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraPhy_a2f1375c96d37fd05f1e33e1423826299}\label{classns3_1_1lorawan_1_1GatewayLoraPhy_a2f1375c96d37fd05f1e33e1423826299}} 
+\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}!Send@{Send}}
+\index{Send@{Send}!ns3\+::lorawan\+::\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Send()}{Send()}}
+{\footnotesize\ttfamily virtual void ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Send (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet $>$}]{packet,  }\item[{\hyperlink{structns3_1_1lorawan_1_1LoraTxParameters}{Lora\+Tx\+Parameters}}]{tx\+Params,  }\item[{double}]{frequency\+M\+Hz,  }\item[{double}]{tx\+Power\+Dbm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Instruct the P\+HY to send a packet according to some parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & The packet to send. \\
+\hline
+{\em tx\+Params} & The desired transmission parameters. \\
+\hline
+{\em frequency\+M\+Hz} & The frequency on which to transmit. \\
+\hline
+{\em tx\+Power\+Dbm} & The power in d\+Bm with which to transmit the packet. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a2b940beff4a2fbfb2e603d5d9e65d863}{ns3\+::lorawan\+::\+Lora\+Phy}.
+
+
+
+Implemented in \hyperlink{classns3_1_1lorawan_1_1SimpleGatewayLoraPhy_ab65ad475c7a03520d6e03bdd008b8d93}{ns3\+::lorawan\+::\+Simple\+Gateway\+Lora\+Phy}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraPhy_a08744b321b5f1b1cf84cff8d7ca8bf49}\label{classns3_1_1lorawan_1_1GatewayLoraPhy_a08744b321b5f1b1cf84cff8d7ca8bf49}} 
+\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}!Start\+Receive@{Start\+Receive}}
+\index{Start\+Receive@{Start\+Receive}!ns3\+::lorawan\+::\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Start\+Receive()}{StartReceive()}}
+{\footnotesize\ttfamily virtual void ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Start\+Receive (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet $>$}]{packet,  }\item[{double}]{rx\+Power\+Dbm,  }\item[{uint8\+\_\+t}]{sf,  }\item[{Time}]{duration,  }\item[{double}]{frequency\+M\+Hz }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Start receiving a packet.
+
+This method is typically called by \hyperlink{classns3_1_1lorawan_1_1LoraChannel}{Lora\+Channel}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & The packet that is arriving at this P\+HY layer. \\
+\hline
+{\em rx\+Power\+Dbm} & The power of the arriving packet (assumed to be constant for the whole reception). \\
+\hline
+{\em sf} & The Spreading Factor of the arriving packet. \\
+\hline
+{\em duration} & The on air time of this packet. \\
+\hline
+{\em frequency\+M\+Hz} & The frequency this packet is being transmitted on. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1LoraPhy_aeeccb517d12084e12e36b533db22386b}{ns3\+::lorawan\+::\+Lora\+Phy}.
+
+
+
+Implemented in \hyperlink{classns3_1_1lorawan_1_1SimpleGatewayLoraPhy_a8ed607e9a11e4c0b759d456a35b68c40}{ns3\+::lorawan\+::\+Simple\+Gateway\+Lora\+Phy}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraPhy_ae88528e820900ced7285b7993622cdc5}\label{classns3_1_1lorawan_1_1GatewayLoraPhy_ae88528e820900ced7285b7993622cdc5}} 
+\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}!m\+\_\+no\+More\+Demodulators@{m\+\_\+no\+More\+Demodulators}}
+\index{m\+\_\+no\+More\+Demodulators@{m\+\_\+no\+More\+Demodulators}!ns3\+::lorawan\+::\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{m\+\_\+no\+More\+Demodulators}{m\_noMoreDemodulators}}
+{\footnotesize\ttfamily Traced\+Callback$<$Ptr$<$const Packet$>$, uint32\+\_\+t$>$ ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::m\+\_\+no\+More\+Demodulators\hspace{0.3cm}{\ttfamily [protected]}}
+
+Trace source that is fired when a packet cannot be received because all available Receive\+Path instances are busy.
+
+\begin{DoxySeeAlso}{See also}
+class Call\+Back\+Trace\+Source 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraPhy_a69dbd2dafaea10f75115f2eb38ae06dd}\label{classns3_1_1lorawan_1_1GatewayLoraPhy_a69dbd2dafaea10f75115f2eb38ae06dd}} 
+\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}!m\+\_\+no\+Reception\+Because\+Transmitting@{m\+\_\+no\+Reception\+Because\+Transmitting}}
+\index{m\+\_\+no\+Reception\+Because\+Transmitting@{m\+\_\+no\+Reception\+Because\+Transmitting}!ns3\+::lorawan\+::\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{m\+\_\+no\+Reception\+Because\+Transmitting}{m\_noReceptionBecauseTransmitting}}
+{\footnotesize\ttfamily Traced\+Callback$<$Ptr$<$const Packet$>$, uint32\+\_\+t$>$ ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::m\+\_\+no\+Reception\+Because\+Transmitting\hspace{0.3cm}{\ttfamily [protected]}}
+
+Trace source that is fired when a packet cannot be received because the Gateway is in transmission state.
+
+\begin{DoxySeeAlso}{See also}
+class Call\+Back\+Trace\+Source 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraPhy_a4cf88e2deb82b7739dd028c6122e1ad4}\label{classns3_1_1lorawan_1_1GatewayLoraPhy_a4cf88e2deb82b7739dd028c6122e1ad4}} 
+\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}!m\+\_\+occupied\+Reception\+Paths@{m\+\_\+occupied\+Reception\+Paths}}
+\index{m\+\_\+occupied\+Reception\+Paths@{m\+\_\+occupied\+Reception\+Paths}!ns3\+::lorawan\+::\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{m\+\_\+occupied\+Reception\+Paths}{m\_occupiedReceptionPaths}}
+{\footnotesize\ttfamily Traced\+Value$<$int$>$ ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::m\+\_\+occupied\+Reception\+Paths\hspace{0.3cm}{\ttfamily [protected]}}
+
+The number of occupied reception paths. \mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraPhy_ad76f73bdb7fe35f39eaf75cf619445fc}\label{classns3_1_1lorawan_1_1GatewayLoraPhy_ad76f73bdb7fe35f39eaf75cf619445fc}} 
+\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}!m\+\_\+reception\+Paths@{m\+\_\+reception\+Paths}}
+\index{m\+\_\+reception\+Paths@{m\+\_\+reception\+Paths}!ns3\+::lorawan\+::\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{m\+\_\+reception\+Paths}{m\_receptionPaths}}
+{\footnotesize\ttfamily std\+::list$<$Ptr$<$\hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath}{Reception\+Path}$>$ $>$ ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::m\+\_\+reception\+Paths\hspace{0.3cm}{\ttfamily [protected]}}
+
+A list containing the various parallel receivers that are managed by this Gateway. \mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraPhy_a5e087b8d88cf37e3c81d189876cb3b67}\label{classns3_1_1lorawan_1_1GatewayLoraPhy_a5e087b8d88cf37e3c81d189876cb3b67}} 
+\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}!sensitivity@{sensitivity}}
+\index{sensitivity@{sensitivity}!ns3\+::lorawan\+::\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{sensitivity}{sensitivity}}
+{\footnotesize\ttfamily const double ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::sensitivity\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{-130.0, -132.5, -135.0,
+                                                                                             -137.5, -140.0
+      , -142.5\}
+\end{DoxyCode}
+A vector containing the sensitivities required to correctly decode different spreading factors. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+gateway-\/lora-\/phy.\+h\item 
+gateway-\/lora-\/phy.\+cc\end{DoxyCompactItemize}

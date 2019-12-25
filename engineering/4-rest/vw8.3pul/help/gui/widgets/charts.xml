@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.widgets.charts"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Charts</title>
+<body><p>The <indexterm>chart widget</indexterm><indexterm>business
+graphics, &lt;Emphasis>See &lt;Default Para Font>chart widget</indexterm>Chart
+widget supports a large variety of graphical representations that
+are commonly used in business applications to represent numerical
+data. The style and appearance of the chart are set by widget properties.</p>
+<p>The application model provides the chart data in the form of
+a collection of numerical data. A simple chart presents a single
+set or series of values. A more complex chart, comparing two or
+more sets of data, requires two or more collections of values, called
+a <indexterm>data series</indexterm>data series.</p>
+<p>To use this widget, load the BGOK parcel.</p></body>
+<topic id = "vw.help.widgets.charts.addToCanvas"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Adding a Chart</title>
+<body><p><indexterm>GUI development<indexterm>add chart</indexterm></indexterm><indexterm>chart
+widget<indexterm>add to canvas</indexterm></indexterm>To add a bar
+chart to an application:<ol><li><p>Select the Chart widget in the
+Palette, and drop it on a canvas.</p></li>
+<li><p>On the <uicontrol>Basics</uicontrol> property page, specify
+the chart’s <uicontrol>Aspect</uicontrol>, which is the the name
+of the instance variable and accessor method that supplies the data
+to the chart.</p><p>In the case of a simple chart with a single
+series of values, the aspect returns a collection. For charts that
+compare multiple series of values, you set up one or more data series.</p></li>
+<li><p>Select the chart type and click <uicontrol>Apply</uicontrol></p></li>
+<li><p>Install the canvas.</p></li>
+<li><p>Create a definition for the chart widget’s aspect and edit
+it to return a value holder on the collection containing the chart
+data.</p></li></ol></p></body></topic>
+<topic id = "vw.help.widgets.charts.multipleDataSets"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Charting Multiple Data Series</title>
+<body><p><indexterm>chart widget<indexterm>chart multiple data series</indexterm></indexterm>A
+more complex chart, such as one that compares performance of two
+or more entities over time, needs to plot more than a single series of
+data points. To do this, you declare the multiple data series.</p>
+<p>The <uicontrol>Aspect</uicontrol> for your chart declared on
+the <uicontrol>Basics</uicontrol> property page is still the instance
+variable for your chart data, but it now is a collection of items
+with some additional structure.</p>
+<p>The simplest case is that it is a collection of simple collections
+of numbers, such as the following array of arrays:
+<codeblock otherprops="smalltalk expression">#(#(60 40) #(20 55) #(35 10) #(75 50))</codeblock></p>
+<p>The data series can be identified by index within the subcollections. (See <codeph>BG_EzChart</codeph> for
+an example of this approach.)</p>
+<p>More typically, the collection will consist of structured objects,
+such as an Employee object, defined in a class other than the application model.
+In this case the data series will require accessor methods defined
+in the relevant class to return the collections required for charting.
+(See <codeph>BG_Company</codeph> for an example of this approach.)</p>
+<p>In either case, you must specify the data series for the chart. <ol>
+<li><p>Add a Chart widget to a canvas.</p></li>
+<li><p>On the <uicontrol>Basics</uicontrol> property page for the
+chart, specify the <uicontrol>Aspect</uicontrol> for the Chart.</p></li>
+<li><p>On the Data Series page for each data series, click <uicontrol>New</uicontrol> to
+add a new data series, and</p><ul><li><p>In the Name field, enter
+a descriptive name for the first set.</p></li>
+<li><p>In the <uicontrol>Aspect</uicontrol> field, enter either
+the accessor method for the items making up this data series, or
+the index of this item in the subcollection.</p></li></ul></li>
+<li><p><uicontrol>Apply</uicontrol> your changes.</p></li>
+<li><p>Using a source browser, ensure that the chart widget’s aspect instance
+variable is initialized to the collection, and that its accessor
+method returns the collection as a value holder.</p></li></ol></p></body></topic>
+<topic id = "vw.help.widgets.charts.addLabels"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Adding Labels</title>
+<body><p><indexterm>chart widget<indexterm>add labels</indexterm></indexterm>You
+add labels to your chart by including the label strings as another data
+series. <indexterm>labels<indexterm>adding to a chart</indexterm></indexterm><indexterm>data
+series<indexterm>labels</indexterm></indexterm></p>
+<p>To add labels:<ol><li><p>On the <uicontrol>Data Series</uicontrol> property
+page, add a new data series with an appropriate name. For the <uicontrol>Aspect</uicontrol>,
+enter the index for the labels in the collection, or the name of
+the accessor method that returns the label from the collection members.</p></li>
+<li><p><uicontrol>Apply</uicontrol> your changes.</p></li>
+<li><p>Edit the application code as necessary to include the label
+in the collection stored in the chart widget’s aspect instance variable.</p></li></ol></p>
+<p>In a pie chart, a slice can be designated to be exploded. For
+example, enter Jan in the <uicontrol>Labels to Explode</uicontrol> field
+on the Options page. Only one label can be exploded at a time.</p>
+<p>A doughnut label appears inside a circle in the center of a pie
+chart. To create a doughnut label, enter the label name in the <uicontrol>Doughnut
+Label</uicontrol> field on the Options page.</p></body></topic>
+<topic id = "vw.help.widgets.charts.types"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Chart types</title>
+<body><section><title>Pareto</title><indexterm>Pareto chart</indexterm><p><indexterm>chart
+types</indexterm><indexterm>pareto chart</indexterm>A Pareto chart
+consists of a bar chart in descending order of item magnitude, with
+the overlay graph of cumulative percentages. Used with multiple
+data series, it is useful for pinpointing the data series that accounts
+for the greatest number.</p><p>The Pareto chart can take either
+a single or multiple data series, as described previously.</p><p>A
+Pareto chart does not accept labels.</p></section>
+<section><title>Picture</title><p><indexterm>picture chart</indexterm>A
+picture chart represents the unit of a numeric item with a meaningful
+picture or symbol. A picture chart can represent only a single data
+series, but may include the labels:<indexterm>picture chart<indexterm>sample
+data</indexterm></indexterm><indexterm>sample data<indexterm>picture
+chart</indexterm></indexterm>
+<codeblock otherprops="smalltalk expression">#(#(60 'Jan') #(20 'Feb') #(35 'Mar') #(75 'Apr'))</codeblock></p><p>For the labels to display, define two data series,
+and check the <uicontrol>Label</uicontrol> checkbox for the series
+holding the labels.</p><p>To replace the default picture, enter
+the name of the graphic into the <uicontrol>Aspect</uicontrol> field
+on the <uicontrol>Picture</uicontrol> section on the <uicontrol>Options</uicontrol> property
+page.</p><p>By default, the picture represents a unit of 20. To
+change the unit amount, enter the desired amount in the <uicontrol>Unit</uicontrol> field
+under the <uicontrol>Picture</uicontrol> section of the Options
+Properties.</p></section>
+<section><title>XY</title><indexterm>XY chart</indexterm><p>An XY
+chart indicates any correlations between two characteristics derived
+from the scattering status of points plotted in the chart.</p><p><indexterm>XY
+chart<indexterm>sample data</indexterm></indexterm><indexterm>sample
+data<indexterm>XY chart</indexterm></indexterm>The XY chart expects
+points as its data. For example, an XY chart with two data series
+could be set up as follows:
+<codeblock otherprops="smalltalk method">dataPointXY
+	| array1 array2 array3 |
+	array1 := Array with: 20@60 with: 20@40.
+	array2 := Array with: 40@40 with: 40@10.
+	array3 := Array with: 60@75 with: 60@35.
+	^(Array with: array1 with: array2 with: array3) asValue</codeblock></p></section>
+<section><title>Pie Charts</title><indexterm>pie chart</indexterm><indexterm>pie
+chart<indexterm>definition</indexterm></indexterm><p>A pie chart
+can only represent one data series, but may include labels:
+<codeblock otherprops="smalltalk expression">#(#(25 'Jan') #(15 'Feb') #(40 'Mar') #(20 'Apr'))</codeblock></p></section></body></topic></topic></dita>

@@ -1,0 +1,130 @@
+\hypertarget{classns3_1_1lorawan_1_1NetworkServer}{}\section{ns3\+:\+:lorawan\+:\+:Network\+Server Class Reference}
+\label{classns3_1_1lorawan_1_1NetworkServer}\index{ns3\+::lorawan\+::\+Network\+Server@{ns3\+::lorawan\+::\+Network\+Server}}
+
+
+{\ttfamily \#include $<$network-\/server.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Network\+Server\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{classns3_1_1lorawan_1_1NetworkServer__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Network\+Server\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classns3_1_1lorawan_1_1NetworkServer__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1NetworkServer_a49f56a2a0906c49cce6530cd4a734b1e}{Start\+Application} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1NetworkServer_ad6a5b6bae3c4d290e1e7001841a1fe42}{Stop\+Application} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1NetworkServer_ac2be7db7fbcd5acdbaeb3f8127164e2f}{Add\+Nodes} (Node\+Container nodes)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1NetworkServer_a3e39ba499b1ae2e66efac0d278fe0c0c}{Add\+Node} (Ptr$<$ Node $>$ node)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1NetworkServer_a7966b179bdd39dec7ed22a77442ce418}{Add\+Gateway} (Ptr$<$ Node $>$ gateway, Ptr$<$ \hyperlink{classNetDevice}{Net\+Device} $>$ net\+Device)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1NetworkServer_ae06877dca7b1a469dd178423bf9f17e5}{Add\+Component} (Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1NetworkControllerComponent}{Network\+Controller\+Component} $>$ component)
+\item 
+bool \hyperlink{classns3_1_1lorawan_1_1NetworkServer_ab7b09f2cbc07147690dbea2da7b2b357}{Receive} (Ptr$<$ \hyperlink{classNetDevice}{Net\+Device} $>$ device, Ptr$<$ const Packet $>$ packet, uint16\+\_\+t protocol, const Address \&address)
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkServer_a0664916eb128bf90f865a1e1079f9aa9}\label{classns3_1_1lorawan_1_1NetworkServer_a0664916eb128bf90f865a1e1079f9aa9}} 
+Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1NetworkStatus}{Network\+Status} $>$ {\bfseries Get\+Network\+Status} (void)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkServer_a684c1599dde67f1e1a48d06c109c1900}\label{classns3_1_1lorawan_1_1NetworkServer_a684c1599dde67f1e1a48d06c109c1900}} 
+static Type\+Id {\bfseries Get\+Type\+Id} (void)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkServer_ac09c9f4035d8dab9bd8ffd1669d5db96}\label{classns3_1_1lorawan_1_1NetworkServer_ac09c9f4035d8dab9bd8ffd1669d5db96}} 
+Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1NetworkStatus}{Network\+Status} $>$ {\bfseries m\+\_\+status}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkServer_afd6718fe7227371a6bb66a66a00f3267}\label{classns3_1_1lorawan_1_1NetworkServer_afd6718fe7227371a6bb66a66a00f3267}} 
+Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1NetworkController}{Network\+Controller} $>$ {\bfseries m\+\_\+controller}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkServer_abc0198d559dee9d8fb65f6e71d90cc79}\label{classns3_1_1lorawan_1_1NetworkServer_abc0198d559dee9d8fb65f6e71d90cc79}} 
+Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1NetworkScheduler}{Network\+Scheduler} $>$ {\bfseries m\+\_\+scheduler}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkServer_a893ed17f262e3f3b10cb8be1a1fc9d5d}\label{classns3_1_1lorawan_1_1NetworkServer_a893ed17f262e3f3b10cb8be1a1fc9d5d}} 
+Traced\+Callback$<$ Ptr$<$ const Packet $>$ $>$ {\bfseries m\+\_\+received\+Packet}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classns3_1_1lorawan_1_1NetworkServer}{Network\+Server} is an application standing on top of a node equipped with links that connect it with the gateways.
+
+This version of the \hyperlink{classns3_1_1lorawan_1_1NetworkServer}{Network\+Server} attempts to closely mimic an actual Network Server, by providing as much functionality as possible. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkServer_ae06877dca7b1a469dd178423bf9f17e5}\label{classns3_1_1lorawan_1_1NetworkServer_ae06877dca7b1a469dd178423bf9f17e5}} 
+\index{ns3\+::lorawan\+::\+Network\+Server@{ns3\+::lorawan\+::\+Network\+Server}!Add\+Component@{Add\+Component}}
+\index{Add\+Component@{Add\+Component}!ns3\+::lorawan\+::\+Network\+Server@{ns3\+::lorawan\+::\+Network\+Server}}
+\subsubsection{\texorpdfstring{Add\+Component()}{AddComponent()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Network\+Server\+::\+Add\+Component (\begin{DoxyParamCaption}\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1NetworkControllerComponent}{Network\+Controller\+Component} $>$}]{component }\end{DoxyParamCaption})}
+
+A \hyperlink{classns3_1_1lorawan_1_1NetworkControllerComponent}{Network\+Controller\+Component} to this \hyperlink{classns3_1_1lorawan_1_1NetworkServer}{Network\+Server} instance. \mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkServer_a7966b179bdd39dec7ed22a77442ce418}\label{classns3_1_1lorawan_1_1NetworkServer_a7966b179bdd39dec7ed22a77442ce418}} 
+\index{ns3\+::lorawan\+::\+Network\+Server@{ns3\+::lorawan\+::\+Network\+Server}!Add\+Gateway@{Add\+Gateway}}
+\index{Add\+Gateway@{Add\+Gateway}!ns3\+::lorawan\+::\+Network\+Server@{ns3\+::lorawan\+::\+Network\+Server}}
+\subsubsection{\texorpdfstring{Add\+Gateway()}{AddGateway()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Network\+Server\+::\+Add\+Gateway (\begin{DoxyParamCaption}\item[{Ptr$<$ Node $>$}]{gateway,  }\item[{Ptr$<$ \hyperlink{classNetDevice}{Net\+Device} $>$}]{net\+Device }\end{DoxyParamCaption})}
+
+Add this gateway to the list of gateways connected to this NS. Each GW is identified by its Address in the N\+S-\/\+G\+Ws network. \mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkServer_a3e39ba499b1ae2e66efac0d278fe0c0c}\label{classns3_1_1lorawan_1_1NetworkServer_a3e39ba499b1ae2e66efac0d278fe0c0c}} 
+\index{ns3\+::lorawan\+::\+Network\+Server@{ns3\+::lorawan\+::\+Network\+Server}!Add\+Node@{Add\+Node}}
+\index{Add\+Node@{Add\+Node}!ns3\+::lorawan\+::\+Network\+Server@{ns3\+::lorawan\+::\+Network\+Server}}
+\subsubsection{\texorpdfstring{Add\+Node()}{AddNode()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Network\+Server\+::\+Add\+Node (\begin{DoxyParamCaption}\item[{Ptr$<$ Node $>$}]{node }\end{DoxyParamCaption})}
+
+Inform the \hyperlink{classns3_1_1lorawan_1_1NetworkServer}{Network\+Server} that this node is connected to the network. This method will create a \hyperlink{classns3_1_1lorawan_1_1DeviceStatus}{Device\+Status} object for the new node (if it doesn\textquotesingle{}t already exist). \mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkServer_ac2be7db7fbcd5acdbaeb3f8127164e2f}\label{classns3_1_1lorawan_1_1NetworkServer_ac2be7db7fbcd5acdbaeb3f8127164e2f}} 
+\index{ns3\+::lorawan\+::\+Network\+Server@{ns3\+::lorawan\+::\+Network\+Server}!Add\+Nodes@{Add\+Nodes}}
+\index{Add\+Nodes@{Add\+Nodes}!ns3\+::lorawan\+::\+Network\+Server@{ns3\+::lorawan\+::\+Network\+Server}}
+\subsubsection{\texorpdfstring{Add\+Nodes()}{AddNodes()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Network\+Server\+::\+Add\+Nodes (\begin{DoxyParamCaption}\item[{Node\+Container}]{nodes }\end{DoxyParamCaption})}
+
+Inform the \hyperlink{classns3_1_1lorawan_1_1NetworkServer}{Network\+Server} that these nodes are connected to the network.
+
+This method will create a \hyperlink{classns3_1_1lorawan_1_1DeviceStatus}{Device\+Status} object for each new node, and add it to the list. \mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkServer_ab7b09f2cbc07147690dbea2da7b2b357}\label{classns3_1_1lorawan_1_1NetworkServer_ab7b09f2cbc07147690dbea2da7b2b357}} 
+\index{ns3\+::lorawan\+::\+Network\+Server@{ns3\+::lorawan\+::\+Network\+Server}!Receive@{Receive}}
+\index{Receive@{Receive}!ns3\+::lorawan\+::\+Network\+Server@{ns3\+::lorawan\+::\+Network\+Server}}
+\subsubsection{\texorpdfstring{Receive()}{Receive()}}
+{\footnotesize\ttfamily bool ns3\+::lorawan\+::\+Network\+Server\+::\+Receive (\begin{DoxyParamCaption}\item[{Ptr$<$ \hyperlink{classNetDevice}{Net\+Device} $>$}]{device,  }\item[{Ptr$<$ const Packet $>$}]{packet,  }\item[{uint16\+\_\+t}]{protocol,  }\item[{const Address \&}]{address }\end{DoxyParamCaption})}
+
+Receive a packet from a gateway. 
+\begin{DoxyParams}{Parameters}
+{\em packet} & the received packet \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkServer_a49f56a2a0906c49cce6530cd4a734b1e}\label{classns3_1_1lorawan_1_1NetworkServer_a49f56a2a0906c49cce6530cd4a734b1e}} 
+\index{ns3\+::lorawan\+::\+Network\+Server@{ns3\+::lorawan\+::\+Network\+Server}!Start\+Application@{Start\+Application}}
+\index{Start\+Application@{Start\+Application}!ns3\+::lorawan\+::\+Network\+Server@{ns3\+::lorawan\+::\+Network\+Server}}
+\subsubsection{\texorpdfstring{Start\+Application()}{StartApplication()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Network\+Server\+::\+Start\+Application (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Start the NS application. \mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkServer_ad6a5b6bae3c4d290e1e7001841a1fe42}\label{classns3_1_1lorawan_1_1NetworkServer_ad6a5b6bae3c4d290e1e7001841a1fe42}} 
+\index{ns3\+::lorawan\+::\+Network\+Server@{ns3\+::lorawan\+::\+Network\+Server}!Stop\+Application@{Stop\+Application}}
+\index{Stop\+Application@{Stop\+Application}!ns3\+::lorawan\+::\+Network\+Server@{ns3\+::lorawan\+::\+Network\+Server}}
+\subsubsection{\texorpdfstring{Stop\+Application()}{StopApplication()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Network\+Server\+::\+Stop\+Application (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Stop the NS application. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+network-\/server.\+h\item 
+network-\/server.\+cc\end{DoxyCompactItemize}

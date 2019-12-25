@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.stLang.controlStructs"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Control Structures</title>
+<body><p>Control structures for branching and looping in Smalltalk 
+are implemented by sending messages to booleans (for if-then-else machinery), 
+or to numbers, collections, and blocks for looping and complex conditionals.</p>
+<p>Class <apiname>BlockClosure</apiname> provides behavior for many complex 
+control structures, that are already defined in the class library.</p></body>
+<topic id = "vw.help.stLang.controlStructs.conditionalBranch"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a conditional branch</title>
+<body><p><indexterm>branch<indexterm>conditonal</indexterm></indexterm><indexterm>program
+flow<indexterm>conditional branch</indexterm></indexterm>Branching,
+or conditional processing, is accomplished by sending a variant
+of the <apiname>ifTrue:</apiname> message to the result of a true/false
+test. The conditional statements are enclosed in a block.</p>
+<p>The full set of variants is:
+<codeblock otherprops="smalltalk expression">aBoolean <b>ifTrue: [].</b>
+aBoolean <b>ifFalse:</b> [].
+aBoolean <b>ifTrue:</b> [] <b>ifFalse:</b> [].
+aBoolean <b>ifFalse:</b> [] <b>ifTrue:</b> [].</codeblock></p>
+</body></topic>
+<topic id = "vw.help.stLang.controlStructs.timesLoop"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Loop a number of times </title>
+<body><p><indexterm>program flow<indexterm>loop times</indexterm></indexterm>To
+repeat an operation a set number of times, send a <apiname>timesRepeat:</apiname> message
+to an integer with a block as argument:
+<codeblock otherprops="smalltalk expression">10 <b>timesRepeat:</b> [Transcript show: 'Testing!'; cr.]</codeblock></p>
+<p>Similarly, given a numeric range, you can repeat an operation
+for each number in the interval. The block argument includes a block argument
+that takes the current integer in the interval as value:
+<codeblock otherprops="smalltalk expression">65 <b>to:</b> 122 <b>do:</b> [:asciiNbr |
+	Transcript show: asciiNbr asCharacter printString]</codeblock></p>
+<p>The loop can also step through the interval in specified increments:
+<codeblock otherprops="smalltalk expression">10 <b>to:</b> 65 <b>by:</b> 5 <b>do:</b> [:marker |
+			Transcript 
+				show: marker printString;
+				show: '---'].</codeblock></p></body></topic>
+<topic id = "vw.help.stLang.controlStructs.repeat"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Loop until a block exits (repeat)</title>
+<body><p><indexterm>program flow<indexterm>loop until exit</indexterm></indexterm>Send
+the <apiname>repeat</apiname> message to the block to be repeated
+until the block returns true.
+<codeblock otherprops="smalltalk expression">| counter |
+counter := 0.
+	[counter := counter + 1.
+	counter > 10 ifTrue: [^true]] <b>repeat</b>.</codeblock></p></body></topic>
+<topic id = "vw.help.stLang.controlStructs.onBoolean"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Loop on a true or false condition (whileTrue: and whileFalse:)</title>
+<body><p><indexterm>program flow<indexterm>loop on boolean</indexterm></indexterm><indexterm>boolean<indexterm>loop</indexterm></indexterm>Send
+either a <apiname>whileTrue:</apiname> or <apiname>whileFalse:</apiname> message
+to a block that returns a boolean value, with a 0-argument block
+describing the action to perform on each loop.
+<codeblock otherprops="smalltalk expression">| endTime |
+endTime := Time now addTime: (Time fromSeconds: 3).
+[Time now &lt;= endTime] <b>whileTrue:</b>
+	[Transcript show: Time now printString; cr].</codeblock></p>
+</body></topic></topic></dita>

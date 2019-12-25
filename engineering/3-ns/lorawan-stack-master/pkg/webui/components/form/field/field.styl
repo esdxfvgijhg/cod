@@ -1,0 +1,117 @@
+// Copyright © 2019 The Things Network Foundation, The Things Industries B.V.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
++media-query-min($bp.xxs)
+  .horizontal.field
+    flex-direction: row
+    justify-content: space-between
+    flex-wrap: nowrap
+
+    .title
+      font-weight: normal
+      padding-top: 0
+
+    .component-area
+      display: flex
+      flex-grow: 1
+      width: calc(100% - 14rem)
+      flex-direction: column
+
+    .label
+      display: flex
+      width: 14rem
+      font-weight: normal
+
+.field
+  margin-bottom: $cs.l
+  display: flex
+  flex-wrap: wrap
+  width: 100%
+
+  .label
+    font-weight: 600
+
+  &.horizontal
+    .title
+      padding-top: $cs.xxs
+
+    .info-area
+      padding-top: $cs.xxs
+
+.reqicon
+  display: none
+  margin-left: $cs.xxs
+  color: $c-active-blue
+  font-weight: 800
+
+  .required &
+    display: inline
+
+.label
+  display: block
+  width:  100%
+  flex-shrink: 0
+  user-select: none
+
+.description
+  font-weight: normal
+  color: $tc-subtle-gray
+
+.component-area
+  flex-shrink: 0
+  width: 100%
+
+.messages
+  flex-shrink: 0
+  width: 100%
+  order: 3
+  margin-top: text-spacing-top($cs.xs)
+  margin-bottom: - $cs.xs
+
+.message
+  display: block
+  font-size: .9rem
+
+  height: 0
+  box-sizing: border-box
+  overflow: hidden
+  opacity: 0
+  transition: opacity $ad.m
+
+  span
+    display: inline-block
+
+  .name
+    font-weight: bold
+
+  &.show
+    height: auto
+    transition: opacity $ad.m
+    opacity: 1
+
+  .icon
+    font-size: 1.15rem
+    margin-right: $cs.xxs
+    vertical-align: text-top
+    flex-grow: 0
+    flex-shrink: 0
+
+.err
+  color: $c-error
+
+.warn
+  color: $c-warning
+
+.disabled .info-area
+    opacity: .4

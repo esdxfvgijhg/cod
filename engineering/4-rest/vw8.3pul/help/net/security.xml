@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+	<topic id = "vw.help.net.security"
+			xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+		<title>Security</title>
+		<body><p>&Product; provides add-on libraries and frameworks for
+				employing encryption and related security features in your
+				Smalltalk applications.</p>
+			<p>The Security frameworks are provided in a set of parcels. 
+				Use the <xref href="st:ParcelManager open" 
+				format="st" scope="external">Parcel Manager</xref>
+				to browse the <uicontrol>Security</uicontrol> folder, and
+				to load the desired components. Additional encryption functions 
+				are mostly provided by the <filepath>Xstreams-Xtras</filepath> 
+				parcel located in <filepath>/contributed/Xtreams</filepath>.</p> 
+			<p>For complete documentation, refer to the 
+				<xref href="./doc/SecurityGuide.pdf" format="pdf" 
+						scope="external"><i>Security Guide</i></xref>.</p>
+		</body>
+	</topic>
+</dita>

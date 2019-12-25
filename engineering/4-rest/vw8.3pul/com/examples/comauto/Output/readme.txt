@@ -1,0 +1,1 @@
+The files in this directory have been created by running the various Automation examples.

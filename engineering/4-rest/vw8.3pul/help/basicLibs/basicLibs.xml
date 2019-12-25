@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+	<topic id = "basicLibs"
+			xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+		<title>Basic Libraries</title>
+		<body>
+			<p>&Product; includes a rich set of core class
+				libraries as part of the base image. These may be freely
+				used by your application without loading any additional 
+				components.</p>
+			<p>The following Help topics provide a very brief overview of 
+				some of the most common core classes, along with numerous 
+				code examples to illustrate their use.</p>
+			<p>For more complete documentation on the &Product; class 
+				library, refer to the <xref href="./doc/BasicLibraries.pdf" 
+				format="pdf" scope="external"><i>Basic Libraries Guide</i></xref>.</p>
+		</body>
+	</topic>
+</dita>

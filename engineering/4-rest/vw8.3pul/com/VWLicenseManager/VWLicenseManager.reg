@@ -1,0 +1,38 @@
+REGEDIT
+
+/***********************************************************************
+/*
+/* VisualWorks COM All Data Types Example
+/* Copyright (c) 2012 Cincom Systems
+/*
+/* Summary of GUIDs:
+/*
+/* CLSID_VWAllDataTypes:	{EAD794C6-9658-4C2C-BE97-F86BDA3338FB}
+/* Type library: vwAllDT.tlb	{DB5DE8E1-AD1F-11d0-ACBE-5E86B1000000}
+/*
+/* Created by Gary Gregory
+/* Last update: Nov 2012.
+/*
+/***********************************************************************
+
+; Version independent registration. Points to version 1.0
+HKEY_CLASSES_ROOT\VisualWorks.AllDataTypes = VisualWorks All Data Types
+HKEY_CLASSES_ROOT\VisualWorks.AllDataTypes\Clsid = {EAD794C6-9658-4C2C-BE97-F86BDA3338FB}
+
+; Version 1.0 registration 
+HKEY_CLASSES_ROOT\VisualWorks.AllDataTypes.1 = VisualWorks All Data Types 1.0
+HKEY_CLASSES_ROOT\VisualWorks.AllDataTypes.1\Clsid = {EAD794C6-9658-4C2C-BE97-F86BDA3338FB}
+HKEY_CLASSES_ROOT\CLSID\{EAD794C6-9658-4C2C-BE97-F86BDA3338FB} = VisualWorks All Data Types 1.0
+HKEY_CLASSES_ROOT\CLSID\{EAD794C6-9658-4C2C-BE97-F86BDA3338FB}\ProgID = VisualWorks.AllDataTypes.1
+HKEY_CLASSES_ROOT\CLSID\{EAD794C6-9658-4C2C-BE97-F86BDA3338FB}\VersionIndependentProgID = VisualWorks.AllDataTypes
+HKEY_CLASSES_ROOT\CLSID\{EAD794C6-9658-4C2C-BE97-F86BDA3338FB}\LocalServer32 = c:\vw7.10\bin\visual.exe c:\vw7.10\com\examples\comauto\vwcomsrv.im /Automation
+HKEY_CLASSES_ROOT\CLSID\{EAD794C6-9658-4C2C-BE97-F86BDA3338FB}\TypeLib = {6A693FAC-D5E6-4D5B-909B-0C05834A58A1}
+HKEY_CLASSES_ROOT\CLSID\{EAD794C6-9658-4C2C-BE97-F86BDA3338FB}\Programmable
+
+
+; About Type Library and interface registrations. 
+; All interfaces that support virtual function table binding must be registered. 
+; The RegisterTypeLib and LoadTypeLib APIs will do this automatically through
+; the COMTypeLibrary services.
+
+; eof

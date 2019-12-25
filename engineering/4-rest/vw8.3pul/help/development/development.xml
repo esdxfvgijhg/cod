@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product   "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+	<topic id = "vw.help.devEnvironment"
+			xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+		<title>Development Environment</title>
+		<body>
+			<p>&Product; is a complete Smalltalk development environment that 
+				includes a rich class library and a powerful arsenal of tools.</p>
+			<p>The &Product; environment is comprised of a portable Smalltalk 
+				<term>virtual image</term> (usually called an <term>image file</term>), 
+				that is run by a platform-specific <term>virtual machine</term>. The 
+				standard distribution image of &Product; is sometimes referred to as 
+				the <term>base image</term>. As you develop applications using &Product;, 
+				you generally save your work in your own copies of the image file.</p>
+			<p>&Product; includes a number of tools for managing the image file, 
+				the user interface settings (e.g., themes, key bindings, etc.) you 
+				prefer, for managing code changes, code components, and more.</p>
+		</body>
+	</topic>
+</dita>

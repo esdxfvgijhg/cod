@@ -1,0 +1,12 @@
+@Tools-Debugger"
+	"Debugger-Compiler-Modifications"
+	"Debugger-Probes"
+	"Debugger-Support"
+	"Debugger-Exception-Modifications"
+	"Debugger-Tools-Modifications"
+	"Debugger-StackInspector"
+	"Debugger-UI"
+	"Debugger-Process Monitor"
+	"Debugger-Browser Extensions"
+	"Debugger-Load All"
+	;

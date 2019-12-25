@@ -1,0 +1,133 @@
+\hypertarget{classns3_1_1lorawan_1_1GatewayLoraMac}{}\section{ns3\+:\+:lorawan\+:\+:Gateway\+Lora\+Mac Class Reference}
+\label{classns3_1_1lorawan_1_1GatewayLoraMac}\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Mac@{ns3\+::lorawan\+::\+Gateway\+Lora\+Mac}}
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Gateway\+Lora\+Mac\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classns3_1_1lorawan_1_1GatewayLoraMac__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Gateway\+Lora\+Mac\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classns3_1_1lorawan_1_1GatewayLoraMac__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1GatewayLoraMac_adc8823176576f9d19d4ae663d88d869e}{Send} (Ptr$<$ Packet $>$ packet)
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraMac_a2acc1aa214a6bf016e81b7d2fe891173}\label{classns3_1_1lorawan_1_1GatewayLoraMac_a2acc1aa214a6bf016e81b7d2fe891173}} 
+bool {\bfseries Is\+Transmitting} (void)
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1GatewayLoraMac_a8e53a57ec381d76bd47f51581b8c0df7}{Receive} (Ptr$<$ Packet const $>$ packet)
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1GatewayLoraMac_a2d752f0ff766d409e1eb91d7bcd06ad5}{Failed\+Reception} (Ptr$<$ Packet const $>$ packet)
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1GatewayLoraMac_a115cbb38716b278b7bac756386a5ae77}{Tx\+Finished} (Ptr$<$ Packet const $>$ packet)
+\item 
+Time \hyperlink{classns3_1_1lorawan_1_1GatewayLoraMac_ae6271138c9d7b29e588e5b59d67b2c66}{Get\+Waiting\+Time} (double frequency)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraMac_a99dcd0d95d3ea8196aa0402d46d98896}\label{classns3_1_1lorawan_1_1GatewayLoraMac_a99dcd0d95d3ea8196aa0402d46d98896}} 
+static Type\+Id {\bfseries Get\+Type\+Id} (void)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraMac_a2d752f0ff766d409e1eb91d7bcd06ad5}\label{classns3_1_1lorawan_1_1GatewayLoraMac_a2d752f0ff766d409e1eb91d7bcd06ad5}} 
+\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Mac@{ns3\+::lorawan\+::\+Gateway\+Lora\+Mac}!Failed\+Reception@{Failed\+Reception}}
+\index{Failed\+Reception@{Failed\+Reception}!ns3\+::lorawan\+::\+Gateway\+Lora\+Mac@{ns3\+::lorawan\+::\+Gateway\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Failed\+Reception()}{FailedReception()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Gateway\+Lora\+Mac\+::\+Failed\+Reception (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet const $>$}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Function called by lower layers to inform this layer that reception of a packet we were locked on failed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & the packet we failed to receive \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1LoraMac_afcd55472bbfa299c4d0239d5fa9957e3}{ns3\+::lorawan\+::\+Lora\+Mac}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraMac_ae6271138c9d7b29e588e5b59d67b2c66}\label{classns3_1_1lorawan_1_1GatewayLoraMac_ae6271138c9d7b29e588e5b59d67b2c66}} 
+\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Mac@{ns3\+::lorawan\+::\+Gateway\+Lora\+Mac}!Get\+Waiting\+Time@{Get\+Waiting\+Time}}
+\index{Get\+Waiting\+Time@{Get\+Waiting\+Time}!ns3\+::lorawan\+::\+Gateway\+Lora\+Mac@{ns3\+::lorawan\+::\+Gateway\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Get\+Waiting\+Time()}{GetWaitingTime()}}
+{\footnotesize\ttfamily Time ns3\+::lorawan\+::\+Gateway\+Lora\+Mac\+::\+Get\+Waiting\+Time (\begin{DoxyParamCaption}\item[{double}]{frequency }\end{DoxyParamCaption})}
+
+Return the next time at which we will be able to transmit.
+
+\begin{DoxyReturn}{Returns}
+The next transmission time. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraMac_a8e53a57ec381d76bd47f51581b8c0df7}\label{classns3_1_1lorawan_1_1GatewayLoraMac_a8e53a57ec381d76bd47f51581b8c0df7}} 
+\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Mac@{ns3\+::lorawan\+::\+Gateway\+Lora\+Mac}!Receive@{Receive}}
+\index{Receive@{Receive}!ns3\+::lorawan\+::\+Gateway\+Lora\+Mac@{ns3\+::lorawan\+::\+Gateway\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Receive()}{Receive()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Gateway\+Lora\+Mac\+::\+Receive (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet const $>$}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Receive a packet from the lower layer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & the received packet \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1LoraMac_a6eda46656789a277b8e103afcefdc21a}{ns3\+::lorawan\+::\+Lora\+Mac}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraMac_adc8823176576f9d19d4ae663d88d869e}\label{classns3_1_1lorawan_1_1GatewayLoraMac_adc8823176576f9d19d4ae663d88d869e}} 
+\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Mac@{ns3\+::lorawan\+::\+Gateway\+Lora\+Mac}!Send@{Send}}
+\index{Send@{Send}!ns3\+::lorawan\+::\+Gateway\+Lora\+Mac@{ns3\+::lorawan\+::\+Gateway\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Send()}{Send()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Gateway\+Lora\+Mac\+::\+Send (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet $>$}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Send a packet.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & The packet to send. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1LoraMac_ac2f3fd92536658192bfa3d1523fff716}{ns3\+::lorawan\+::\+Lora\+Mac}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraMac_a115cbb38716b278b7bac756386a5ae77}\label{classns3_1_1lorawan_1_1GatewayLoraMac_a115cbb38716b278b7bac756386a5ae77}} 
+\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Mac@{ns3\+::lorawan\+::\+Gateway\+Lora\+Mac}!Tx\+Finished@{Tx\+Finished}}
+\index{Tx\+Finished@{Tx\+Finished}!ns3\+::lorawan\+::\+Gateway\+Lora\+Mac@{ns3\+::lorawan\+::\+Gateway\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Tx\+Finished()}{TxFinished()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Gateway\+Lora\+Mac\+::\+Tx\+Finished (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet const $>$}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Perform actions after sending a packet.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & The packet that just finished transmission. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1LoraMac_aa64037192af83dc459487bccccd10bdf}{ns3\+::lorawan\+::\+Lora\+Mac}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+gateway-\/lora-\/mac.\+h\item 
+gateway-\/lora-\/mac.\+cc\end{DoxyCompactItemize}

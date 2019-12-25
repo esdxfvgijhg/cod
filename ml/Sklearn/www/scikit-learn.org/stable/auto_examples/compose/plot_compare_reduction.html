@@ -1,0 +1,1024 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+<!-- Mirrored from scikit-learn.org/stable/auto_examples/compose/plot_compare_reduction.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 03 May 2019 21:52:10 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+  
+    <title>Selecting dimensionality reduction with Pipeline and GridSearchCV &#8212; scikit-learn 0.20.3 documentation</title>
+  <!-- htmltitle is before nature.css - we use this hack to load bootstrap first -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
+  <link rel="stylesheet" href="../../_static/css/bootstrap-responsive.css"/>
+
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.20.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/copybutton.js"></script>
+    <script type="text/javascript" src="../../_static/js/extra.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_SVG"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Column Transformer with Heterogeneous Data Sources" href="plot_column_transformer.html" />
+    <link rel="prev" title="Column Transformer with Mixed Types" href="plot_column_transformer_mixed_types.html" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="../../_static/js/bootstrap.min.js" type="text/javascript"></script>
+  <script>
+     VERSION_SUBDIR = (function(groups) {
+         return groups ? groups[1] : null;
+     })(location.href.match(/^https?:\/\/scikit-learn.org\/([^\/]+)/));
+  </script>
+  <link rel="canonical" href="plot_compare_reduction.html" />
+
+  <script type="text/javascript">
+    $("div.buttonNext, div.buttonPrevious").hover(
+       function () {
+           $(this).css('background-color', '#FF9C34');
+       },
+       function () {
+           $(this).css('background-color', '#A7D6E2');
+       }
+    );
+    function showMenu() {
+      var topNav = document.getElementById("scikit-navbar");
+      if (topNav.className === "navbar") {
+          topNav.className += " responsive";
+      } else {
+          topNav.className = "navbar";
+      }
+    };
+  </script>
+
+  </head>
+  <body>
+
+<div class="header-wrapper">
+    <div class="header">
+        <p class="logo"><a href="../../index-2.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+        </a>
+        </p><div class="navbar" id="scikit-navbar">
+            <ul>
+                <li><a href="../../index-2.html">Home</a></li>
+                <li><a href="../../install.html">Installation</a></li>
+                <li class="btn-li"><div class="btn-group">
+              <a href="../../documentation.html">Documentation</a>
+              <a class="btn dropdown-toggle" data-toggle="dropdown">
+                 <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+            <li class="link-title">Scikit-learn <script>document.write(DOCUMENTATION_OPTIONS.VERSION + (VERSION_SUBDIR ? " (" + VERSION_SUBDIR + ")" : ""));</script></li>
+            <li><a href="../../tutorial/index.html">Tutorials</a></li>
+            <li><a href="../../user_guide.html">User guide</a></li>
+            <li><a href="../../modules/classes.html">API</a></li>
+            <li><a href="../../glossary.html">Glossary</a></li>
+            <li><a href="../../faq.html">FAQ</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../../roadmap.html">Roadmap</a></li>
+            <li class="divider"></li>
+                <script>if (VERSION_SUBDIR != "stable") document.write('<li><a href="../../documentation.html">Stable version</a></li>')</script>
+                <script>if (VERSION_SUBDIR != "dev") document.write('<li><a href="http://scikit-learn.org/dev/documentation.html">Development version</a></li>')</script>
+                <li><a href="http://scikit-learn.org/dev/versions.html">All available versions</a></li>
+                <li><a href="../../_downloads/scikit-learn-docs.pdf">PDF documentation</a></li>
+              </ul>
+            </div>
+        </li>
+            <li><a href="../index.html">Examples</a></li>
+            </ul>
+            <a href="javascript:void(0);" onclick="showMenu()">
+                <div class="nav-icon">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </div>
+            </a>
+            <div class="search_form">
+                <div class="gcse-search" id="cse" style="width: 100%;"></div>
+            </div>
+        </div> <!-- end navbar --></div>
+</div>
+
+
+<!-- GitHub "fork me" ribbon -->
+<a href="https://github.com/scikit-learn/scikit-learn">
+  <img class="fork-me"
+       style="position: absolute; top: 0; right: 0; border: 0;"
+       src="../../_static/img/forkme.png"
+       alt="Fork me on GitHub" />
+</a>
+
+<div class="content-wrapper">
+    <div class="sphinxsidebar">
+    <div class="sphinxsidebarwrapper">
+        <div class="rel">
+    
+        <div class="rellink">
+        <a href="plot_column_transformer_mixed_types.html"
+        accesskey="P">Previous
+        <br/>
+        <span class="smallrellink">
+        Column Transf...
+        </span>
+            <span class="hiddenrellink">
+            Column Transformer with Mixed Types
+            </span>
+        </a>
+        </div>
+            <div class="spacer">
+            &nbsp;
+            </div>
+        <div class="rellink">
+        <a href="plot_column_transformer.html"
+        accesskey="N">Next
+        <br/>
+        <span class="smallrellink">
+        Column Transf...
+        </span>
+            <span class="hiddenrellink">
+            Column Transformer with Heterogeneous Data Sources
+            </span>
+        </a>
+        </div>
+
+    <!-- Ad a link to the 'up' page -->
+        <div class="spacer">
+        &nbsp;
+        </div>
+        <div class="rellink">
+        <a href="../index.html">
+        Up
+        <br/>
+        <span class="smallrellink">
+        Examples
+        </span>
+            <span class="hiddenrellink">
+            Examples
+            </span>
+            
+        </a>
+        </div>
+    </div>
+    
+      <p class="doc-version"><b>scikit-learn v0.20.3</b><br/>
+      <a href="http://scikit-learn.org/dev/versions.html">Other versions</a></p>
+    <p class="citing">Please <b><a href="../../about.html#citing-scikit-learn" style="font-size: 110%;">cite us </a></b>if you use the software.</p>
+    <ul>
+<li><a class="reference internal" href="#">Selecting dimensionality reduction with Pipeline and GridSearchCV</a><ul>
+<li><a class="reference internal" href="#illustration-of-pipeline-and-gridsearchcv">Illustration of <code class="docutils literal"><span class="pre">Pipeline</span></code> and <code class="docutils literal"><span class="pre">GridSearchCV</span></code></a></li>
+<li><a class="reference internal" href="#caching-transformers-within-a-pipeline">Caching transformers within a <code class="docutils literal"><span class="pre">Pipeline</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</div>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" checked />
+<label for="nav-trigger"></label>
+
+
+
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Click <a class="reference internal" href="#sphx-glr-download-auto-examples-compose-plot-compare-reduction-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+</div>
+<div class="sphx-glr-example-title section" id="selecting-dimensionality-reduction-with-pipeline-and-gridsearchcv">
+<span id="sphx-glr-auto-examples-compose-plot-compare-reduction-py"></span><h1>Selecting dimensionality reduction with Pipeline and GridSearchCV<a class="headerlink" href="#selecting-dimensionality-reduction-with-pipeline-and-gridsearchcv" title="Permalink to this headline">¶</a></h1>
+<p>This example constructs a pipeline that does dimensionality
+reduction followed by prediction with a support vector
+classifier. It demonstrates the use of <code class="docutils literal"><span class="pre">GridSearchCV</span></code> and
+<code class="docutils literal"><span class="pre">Pipeline</span></code> to optimize over different classes of estimators in a
+single CV run – unsupervised <code class="docutils literal"><span class="pre">PCA</span></code> and <code class="docutils literal"><span class="pre">NMF</span></code> dimensionality
+reductions are compared to univariate feature selection during
+the grid search.</p>
+<p>Additionally, <code class="docutils literal"><span class="pre">Pipeline</span></code> can be instantiated with the <code class="docutils literal"><span class="pre">memory</span></code>
+argument to memoize the transformers within the pipeline, avoiding to fit
+again the same transformers over and over.</p>
+<p>Note that the use of <code class="docutils literal"><span class="pre">memory</span></code> to enable caching becomes interesting when the
+fitting of a transformer is costly.</p>
+<div class="section" id="illustration-of-pipeline-and-gridsearchcv">
+<h2>Illustration of <code class="docutils literal"><span class="pre">Pipeline</span></code> and <code class="docutils literal"><span class="pre">GridSearchCV</span></code><a class="headerlink" href="#illustration-of-pipeline-and-gridsearchcv" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>This section illustrates the use of a <code class="docutils literal"><span class="pre">Pipeline</span></code> with
+<code class="docutils literal"><span class="pre">GridSearchCV</span></code></div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Authors: Robert McGibbon, Joel Nothman, Guillaume Lemaitre</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <a href="../../modules/generated/sklearn.datasets.load_digits.html#sklearn.datasets.load_digits" title="View documentation for sklearn.datasets.load_digits"><span class="n">load_digits</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <a href="../../modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV" title="View documentation for sklearn.model_selection.GridSearchCV"><span class="n">GridSearchCV</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <a href="../../modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">Pipeline</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <a href="../../modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="View documentation for sklearn.svm.LinearSVC"><span class="n">LinearSVC</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <a href="../../modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="View documentation for sklearn.decomposition.PCA"><span class="n">PCA</span></a><span class="p">,</span> <a href="../../modules/generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="View documentation for sklearn.decomposition.NMF"><span class="n">NMF</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <a href="../../modules/generated/sklearn.feature_selection.SelectKBest.html#sklearn.feature_selection.SelectKBest" title="View documentation for sklearn.feature_selection.SelectKBest"><span class="n">SelectKBest</span></a><span class="p">,</span> <a href="../../modules/generated/sklearn.feature_selection.chi2.html#sklearn.feature_selection.chi2" title="View documentation for sklearn.feature_selection.chi2"><span class="n">chi2</span></a>
+
+<span class="k">print</span><span class="p">(</span><span class="vm">__doc__</span><span class="p">)</span>
+
+<span class="n">pipe</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">Pipeline</span></a><span class="p">([</span>
+    <span class="c1"># the reduce_dim stage is populated by the param_grid</span>
+    <span class="p">(</span><span class="s1">&#39;reduce_dim&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;classify&#39;</span><span class="p">,</span> <a href="../../modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="View documentation for sklearn.svm.LinearSVC"><span class="n">LinearSVC</span></a><span class="p">())</span>
+<span class="p">])</span>
+
+<span class="n">N_FEATURES_OPTIONS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="n">C_OPTIONS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;reduce_dim&#39;</span><span class="p">:</span> <span class="p">[</span><a href="../../modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="View documentation for sklearn.decomposition.PCA"><span class="n">PCA</span></a><span class="p">(</span><span class="n">iterated_power</span><span class="o">=</span><span class="mi">7</span><span class="p">),</span> <a href="../../modules/generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="View documentation for sklearn.decomposition.NMF"><span class="n">NMF</span></a><span class="p">()],</span>
+        <span class="s1">&#39;reduce_dim__n_components&#39;</span><span class="p">:</span> <span class="n">N_FEATURES_OPTIONS</span><span class="p">,</span>
+        <span class="s1">&#39;classify__C&#39;</span><span class="p">:</span> <span class="n">C_OPTIONS</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;reduce_dim&#39;</span><span class="p">:</span> <span class="p">[</span><a href="../../modules/generated/sklearn.feature_selection.SelectKBest.html#sklearn.feature_selection.SelectKBest" title="View documentation for sklearn.feature_selection.SelectKBest"><span class="n">SelectKBest</span></a><span class="p">(</span><a href="../../modules/generated/sklearn.feature_selection.chi2.html#sklearn.feature_selection.chi2" title="View documentation for sklearn.feature_selection.chi2"><span class="n">chi2</span></a><span class="p">)],</span>
+        <span class="s1">&#39;reduce_dim__k&#39;</span><span class="p">:</span> <span class="n">N_FEATURES_OPTIONS</span><span class="p">,</span>
+        <span class="s1">&#39;classify__C&#39;</span><span class="p">:</span> <span class="n">C_OPTIONS</span>
+    <span class="p">},</span>
+<span class="p">]</span>
+<span class="n">reducer_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;PCA&#39;</span><span class="p">,</span> <span class="s1">&#39;NMF&#39;</span><span class="p">,</span> <span class="s1">&#39;KBest(chi2)&#39;</span><span class="p">]</span>
+
+<span class="n">grid</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV" title="View documentation for sklearn.model_selection.GridSearchCV"><span class="n">GridSearchCV</span></a><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid</span><span class="p">)</span>
+<span class="n">digits</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.datasets.load_digits.html#sklearn.datasets.load_digits" title="View documentation for sklearn.datasets.load_digits"><span class="n">load_digits</span></a><span class="p">()</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">digits</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+
+<span class="n">mean_scores</span> <span class="o">=</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html#numpy.array" title="View documentation for numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">[</span><span class="s1">&#39;mean_test_score&#39;</span><span class="p">])</span>
+<span class="c1"># scores are in the order of param_grid iteration, which is alphabetical</span>
+<span class="n">mean_scores</span> <span class="o">=</span> <span class="n">mean_scores</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">C_OPTIONS</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">N_FEATURES_OPTIONS</span><span class="p">))</span>
+<span class="c1"># select score for best C</span>
+<span class="n">mean_scores</span> <span class="o">=</span> <span class="n">mean_scores</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">bar_offsets</span> <span class="o">=</span> <span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.arange.html#numpy.arange" title="View documentation for numpy.arange"><span class="n">np</span><span class="o">.</span><span class="n">arange</span></a><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">N_FEATURES_OPTIONS</span><span class="p">))</span> <span class="o">*</span>
+               <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">reducer_labels</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="o">.</span><span class="mi">5</span><span class="p">)</span>
+
+<a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.figure.html#matplotlib.pyplot.figure" title="View documentation for matplotlib.pyplot.figure"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">()</span>
+<span class="n">COLORS</span> <span class="o">=</span> <span class="s1">&#39;bgrcmyk&#39;</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">reducer_scores</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">reducer_labels</span><span class="p">,</span> <span class="n">mean_scores</span><span class="p">)):</span>
+    <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.bar.html#matplotlib.pyplot.bar" title="View documentation for matplotlib.pyplot.bar"><span class="n">plt</span><span class="o">.</span><span class="n">bar</span></a><span class="p">(</span><span class="n">bar_offsets</span> <span class="o">+</span> <span class="n">i</span><span class="p">,</span> <span class="n">reducer_scores</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">COLORS</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.title.html#matplotlib.pyplot.title" title="View documentation for matplotlib.pyplot.title"><span class="n">plt</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span><span class="s2">&quot;Comparing feature reduction techniques&quot;</span><span class="p">)</span>
+<a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.xlabel.html#matplotlib.pyplot.xlabel" title="View documentation for matplotlib.pyplot.xlabel"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span></a><span class="p">(</span><span class="s1">&#39;Reduced number of features&#39;</span><span class="p">)</span>
+<a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.xticks.html#matplotlib.pyplot.xticks" title="View documentation for matplotlib.pyplot.xticks"><span class="n">plt</span><span class="o">.</span><span class="n">xticks</span></a><span class="p">(</span><span class="n">bar_offsets</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">reducer_labels</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">N_FEATURES_OPTIONS</span><span class="p">)</span>
+<a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.ylabel.html#matplotlib.pyplot.ylabel" title="View documentation for matplotlib.pyplot.ylabel"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span></a><span class="p">(</span><span class="s1">&#39;Digit classification accuracy&#39;</span><span class="p">)</span>
+<a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.ylim.html#matplotlib.pyplot.ylim" title="View documentation for matplotlib.pyplot.ylim"><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span></a><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.legend.html#matplotlib.pyplot.legend" title="View documentation for matplotlib.pyplot.legend"><span class="n">plt</span><span class="o">.</span><span class="n">legend</span></a><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+
+<a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../../_images/sphx_glr_plot_compare_reduction_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_compare_reduction_001.png" />
+</div>
+<div class="section" id="caching-transformers-within-a-pipeline">
+<h2>Caching transformers within a <code class="docutils literal"><span class="pre">Pipeline</span></code><a class="headerlink" href="#caching-transformers-within-a-pipeline" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>It is sometimes worthwhile storing the state of a specific transformer
+since it could be used again. Using a pipeline in <code class="docutils literal"><span class="pre">GridSearchCV</span></code> triggers
+such situations. Therefore, we use the argument <code class="docutils literal"><span class="pre">memory</span></code> to enable caching.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Note that this example is, however, only an illustration since for this
+specific case fitting PCA is not necessarily slower than loading the
+cache. Hence, use the <code class="docutils literal"><span class="pre">memory</span></code> constructor parameter when the fitting
+of a transformer is costly.</p>
+</div>
+</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tempfile</span> <span class="kn">import</span> <span class="n">mkdtemp</span>
+<span class="kn">from</span> <span class="nn">shutil</span> <span class="kn">import</span> <span class="n">rmtree</span>
+<span class="kn">from</span> <span class="nn">joblib</span> <span class="kn">import</span> <a href="https://joblib.readthedocs.io/en/latest/generated/joblib.Memory.html#joblib.Memory" title="View documentation for joblib.Memory"><span class="n">Memory</span></a>
+
+<span class="c1"># Create a temporary folder to store the transformers of the pipeline</span>
+<span class="n">cachedir</span> <span class="o">=</span> <span class="n">mkdtemp</span><span class="p">()</span>
+<span class="n">memory</span> <span class="o">=</span> <a href="https://joblib.readthedocs.io/en/latest/generated/joblib.Memory.html#joblib.Memory" title="View documentation for joblib.Memory"><span class="n">Memory</span></a><span class="p">(</span><span class="n">cachedir</span><span class="o">=</span><span class="n">cachedir</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">cached_pipe</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">Pipeline</span></a><span class="p">([(</span><span class="s1">&#39;reduce_dim&#39;</span><span class="p">,</span> <a href="../../modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="View documentation for sklearn.decomposition.PCA"><span class="n">PCA</span></a><span class="p">()),</span>
+                        <span class="p">(</span><span class="s1">&#39;classify&#39;</span><span class="p">,</span> <a href="../../modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="View documentation for sklearn.svm.LinearSVC"><span class="n">LinearSVC</span></a><span class="p">())],</span>
+                       <span class="n">memory</span><span class="o">=</span><span class="n">memory</span><span class="p">)</span>
+
+<span class="c1"># This time, a cached pipeline will be used within the grid search</span>
+<span class="n">grid</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV" title="View documentation for sklearn.model_selection.GridSearchCV"><span class="n">GridSearchCV</span></a><span class="p">(</span><span class="n">cached_pipe</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid</span><span class="p">)</span>
+<span class="n">digits</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.datasets.load_digits.html#sklearn.datasets.load_digits" title="View documentation for sklearn.datasets.load_digits"><span class="n">load_digits</span></a><span class="p">()</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">digits</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+
+<span class="c1"># Delete the temporary cache before exiting</span>
+<span class="n">rmtree</span><span class="p">(</span><span class="n">cachedir</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none"><div class="highlight"><pre><span></span>________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(PCA(copy=True, iterated_power=7, n_components=2, random_state=None,
+  svd_solver=&#39;auto&#39;, tol=0.0, whiten=False),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(PCA(copy=True, iterated_power=7, n_components=2, random_state=None,
+  svd_solver=&#39;auto&#39;, tol=0.0, whiten=False),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(PCA(copy=True, iterated_power=7, n_components=2, random_state=None,
+  svd_solver=&#39;auto&#39;, tol=0.0, whiten=False),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(PCA(copy=True, iterated_power=7, n_components=2, random_state=None,
+  svd_solver=&#39;auto&#39;, tol=0.0, whiten=False),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(PCA(copy=True, iterated_power=7, n_components=2, random_state=None,
+  svd_solver=&#39;auto&#39;, tol=0.0, whiten=False),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 9]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(PCA(copy=True, iterated_power=7, n_components=4, random_state=None,
+  svd_solver=&#39;auto&#39;, tol=0.0, whiten=False),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(PCA(copy=True, iterated_power=7, n_components=4, random_state=None,
+  svd_solver=&#39;auto&#39;, tol=0.0, whiten=False),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(PCA(copy=True, iterated_power=7, n_components=4, random_state=None,
+  svd_solver=&#39;auto&#39;, tol=0.0, whiten=False),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(PCA(copy=True, iterated_power=7, n_components=4, random_state=None,
+  svd_solver=&#39;auto&#39;, tol=0.0, whiten=False),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(PCA(copy=True, iterated_power=7, n_components=4, random_state=None,
+  svd_solver=&#39;auto&#39;, tol=0.0, whiten=False),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 9]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(PCA(copy=True, iterated_power=7, n_components=8, random_state=None,
+  svd_solver=&#39;auto&#39;, tol=0.0, whiten=False),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(PCA(copy=True, iterated_power=7, n_components=8, random_state=None,
+  svd_solver=&#39;auto&#39;, tol=0.0, whiten=False),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(PCA(copy=True, iterated_power=7, n_components=8, random_state=None,
+  svd_solver=&#39;auto&#39;, tol=0.0, whiten=False),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(PCA(copy=True, iterated_power=7, n_components=8, random_state=None,
+  svd_solver=&#39;auto&#39;, tol=0.0, whiten=False),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(PCA(copy=True, iterated_power=7, n_components=8, random_state=None,
+  svd_solver=&#39;auto&#39;, tol=0.0, whiten=False),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 9]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(NMF(alpha=0.0, beta_loss=&#39;frobenius&#39;, init=None, l1_ratio=0.0, max_iter=200,
+  n_components=2, random_state=None, shuffle=False, solver=&#39;cd&#39;,
+  tol=0.0001, verbose=0),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(NMF(alpha=0.0, beta_loss=&#39;frobenius&#39;, init=None, l1_ratio=0.0, max_iter=200,
+  n_components=2, random_state=None, shuffle=False, solver=&#39;cd&#39;,
+  tol=0.0001, verbose=0),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(NMF(alpha=0.0, beta_loss=&#39;frobenius&#39;, init=None, l1_ratio=0.0, max_iter=200,
+  n_components=2, random_state=None, shuffle=False, solver=&#39;cd&#39;,
+  tol=0.0001, verbose=0),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.1s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(NMF(alpha=0.0, beta_loss=&#39;frobenius&#39;, init=None, l1_ratio=0.0, max_iter=200,
+  n_components=2, random_state=None, shuffle=False, solver=&#39;cd&#39;,
+  tol=0.0001, verbose=0),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(NMF(alpha=0.0, beta_loss=&#39;frobenius&#39;, init=None, l1_ratio=0.0, max_iter=200,
+  n_components=2, random_state=None, shuffle=False, solver=&#39;cd&#39;,
+  tol=0.0001, verbose=0),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 9]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(NMF(alpha=0.0, beta_loss=&#39;frobenius&#39;, init=None, l1_ratio=0.0, max_iter=200,
+  n_components=4, random_state=None, shuffle=False, solver=&#39;cd&#39;,
+  tol=0.0001, verbose=0),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(NMF(alpha=0.0, beta_loss=&#39;frobenius&#39;, init=None, l1_ratio=0.0, max_iter=200,
+  n_components=4, random_state=None, shuffle=False, solver=&#39;cd&#39;,
+  tol=0.0001, verbose=0),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.1s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(NMF(alpha=0.0, beta_loss=&#39;frobenius&#39;, init=None, l1_ratio=0.0, max_iter=200,
+  n_components=4, random_state=None, shuffle=False, solver=&#39;cd&#39;,
+  tol=0.0001, verbose=0),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(NMF(alpha=0.0, beta_loss=&#39;frobenius&#39;, init=None, l1_ratio=0.0, max_iter=200,
+  n_components=4, random_state=None, shuffle=False, solver=&#39;cd&#39;,
+  tol=0.0001, verbose=0),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(NMF(alpha=0.0, beta_loss=&#39;frobenius&#39;, init=None, l1_ratio=0.0, max_iter=200,
+  n_components=4, random_state=None, shuffle=False, solver=&#39;cd&#39;,
+  tol=0.0001, verbose=0),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 9]), None)
+________________________________________________fit_transform_one - 0.1s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(NMF(alpha=0.0, beta_loss=&#39;frobenius&#39;, init=None, l1_ratio=0.0, max_iter=200,
+  n_components=8, random_state=None, shuffle=False, solver=&#39;cd&#39;,
+  tol=0.0001, verbose=0),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.1s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(NMF(alpha=0.0, beta_loss=&#39;frobenius&#39;, init=None, l1_ratio=0.0, max_iter=200,
+  n_components=8, random_state=None, shuffle=False, solver=&#39;cd&#39;,
+  tol=0.0001, verbose=0),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.1s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(NMF(alpha=0.0, beta_loss=&#39;frobenius&#39;, init=None, l1_ratio=0.0, max_iter=200,
+  n_components=8, random_state=None, shuffle=False, solver=&#39;cd&#39;,
+  tol=0.0001, verbose=0),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.1s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(NMF(alpha=0.0, beta_loss=&#39;frobenius&#39;, init=None, l1_ratio=0.0, max_iter=200,
+  n_components=8, random_state=None, shuffle=False, solver=&#39;cd&#39;,
+  tol=0.0001, verbose=0),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.1s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(NMF(alpha=0.0, beta_loss=&#39;frobenius&#39;, init=None, l1_ratio=0.0, max_iter=200,
+  n_components=8, random_state=None, shuffle=False, solver=&#39;cd&#39;,
+  tol=0.0001, verbose=0),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 9]), None)
+________________________________________________fit_transform_one - 0.1s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/ce059dd4031139a6b2806c6eeb882177
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/fd2f9ad0f7503004c6c4e5daa84b3d81
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/f7699cba03794b00c4e7ad12918c3870
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/637c1c59f2a2bebcf577f17752da8e7b
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/662bd46dd1274c93e6633e1814aa6d18
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/340ab152c19b30c5094b0cc3d48088ce
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/5f5b28b918cd25901092d13d441e4d26
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/cfb5ed9e762b82923af42c9cdd8a029f
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/f43b55f88ba83096d0f246bc7cdeeacc
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/4a4f9f5b5aef5a99552c40788a041c3a
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/4d9657eb86031c9c3f4d22e2f3c9cb43
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/1251d528711edc2cb2ff337ef4d2b930
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/5899433ec17984cc1dc0c0b58c092f48
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/ac4979a637124e8de3021326e803952f
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/62198984c58175f6c8de85a08adac475
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/6fff13cab5b44100846e3d5ebcf5b777
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/8d0ec968ae6c20d5b13136352e9b3221
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/9130f54ef4a686fa57506a07f278a220
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/0553e2fdefbc628d4fc448fe0485529b
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/01ae613cb5d86163f07ea3ad33679ea1
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/7a8c73996adeba89c910d9043e4c8065
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/39cb0260b02feb8c2c86cd648f109e38
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/a2dfe8b09115d1094021450fa7dea05a
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/e3695525c67b22b8572c03b14c0dc50b
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/03bc3c8801621ecb55d332f660286f0f
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/714bb222f2d2b3701cde1ff62ed70e6b
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/9a0bbb81ae7f721edae06009b7927f36
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/07ed5c7ffed979168bc6b10dde11fedf
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/67e7ced7c33c8539bd4754a3a43ccb25
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/53f9f651406e0182dfcfe2d0ca68db80
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/ce059dd4031139a6b2806c6eeb882177
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/fd2f9ad0f7503004c6c4e5daa84b3d81
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/f7699cba03794b00c4e7ad12918c3870
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/637c1c59f2a2bebcf577f17752da8e7b
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/662bd46dd1274c93e6633e1814aa6d18
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/340ab152c19b30c5094b0cc3d48088ce
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/5f5b28b918cd25901092d13d441e4d26
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/cfb5ed9e762b82923af42c9cdd8a029f
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/f43b55f88ba83096d0f246bc7cdeeacc
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/4a4f9f5b5aef5a99552c40788a041c3a
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/4d9657eb86031c9c3f4d22e2f3c9cb43
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/1251d528711edc2cb2ff337ef4d2b930
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/5899433ec17984cc1dc0c0b58c092f48
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/ac4979a637124e8de3021326e803952f
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/62198984c58175f6c8de85a08adac475
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/6fff13cab5b44100846e3d5ebcf5b777
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/8d0ec968ae6c20d5b13136352e9b3221
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/9130f54ef4a686fa57506a07f278a220
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/0553e2fdefbc628d4fc448fe0485529b
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/01ae613cb5d86163f07ea3ad33679ea1
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/7a8c73996adeba89c910d9043e4c8065
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/39cb0260b02feb8c2c86cd648f109e38
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/a2dfe8b09115d1094021450fa7dea05a
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/e3695525c67b22b8572c03b14c0dc50b
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/03bc3c8801621ecb55d332f660286f0f
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/714bb222f2d2b3701cde1ff62ed70e6b
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/9a0bbb81ae7f721edae06009b7927f36
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/07ed5c7ffed979168bc6b10dde11fedf
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/67e7ced7c33c8539bd4754a3a43ccb25
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/53f9f651406e0182dfcfe2d0ca68db80
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/ce059dd4031139a6b2806c6eeb882177
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/fd2f9ad0f7503004c6c4e5daa84b3d81
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/f7699cba03794b00c4e7ad12918c3870
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/637c1c59f2a2bebcf577f17752da8e7b
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/662bd46dd1274c93e6633e1814aa6d18
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/340ab152c19b30c5094b0cc3d48088ce
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/5f5b28b918cd25901092d13d441e4d26
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/cfb5ed9e762b82923af42c9cdd8a029f
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/f43b55f88ba83096d0f246bc7cdeeacc
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/4a4f9f5b5aef5a99552c40788a041c3a
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/4d9657eb86031c9c3f4d22e2f3c9cb43
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/1251d528711edc2cb2ff337ef4d2b930
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/5899433ec17984cc1dc0c0b58c092f48
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/ac4979a637124e8de3021326e803952f
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/62198984c58175f6c8de85a08adac475
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/6fff13cab5b44100846e3d5ebcf5b777
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/8d0ec968ae6c20d5b13136352e9b3221
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/9130f54ef4a686fa57506a07f278a220
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/0553e2fdefbc628d4fc448fe0485529b
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/01ae613cb5d86163f07ea3ad33679ea1
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/7a8c73996adeba89c910d9043e4c8065
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/39cb0260b02feb8c2c86cd648f109e38
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/a2dfe8b09115d1094021450fa7dea05a
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/e3695525c67b22b8572c03b14c0dc50b
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/03bc3c8801621ecb55d332f660286f0f
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/714bb222f2d2b3701cde1ff62ed70e6b
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/9a0bbb81ae7f721edae06009b7927f36
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/07ed5c7ffed979168bc6b10dde11fedf
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/67e7ced7c33c8539bd4754a3a43ccb25
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/53f9f651406e0182dfcfe2d0ca68db80
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(SelectKBest(k=2, score_func=&lt;function chi2 at 0x7ff1f89b1620&gt;), array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(SelectKBest(k=2, score_func=&lt;function chi2 at 0x7ff1f89b1620&gt;), array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(SelectKBest(k=2, score_func=&lt;function chi2 at 0x7ff1f89b1620&gt;), array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(SelectKBest(k=2, score_func=&lt;function chi2 at 0x7ff1f89b1620&gt;), array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(SelectKBest(k=2, score_func=&lt;function chi2 at 0x7ff1f89b1620&gt;), array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 9]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(SelectKBest(k=4, score_func=&lt;function chi2 at 0x7ff1f89b1620&gt;), array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(SelectKBest(k=4, score_func=&lt;function chi2 at 0x7ff1f89b1620&gt;), array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(SelectKBest(k=4, score_func=&lt;function chi2 at 0x7ff1f89b1620&gt;), array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(SelectKBest(k=4, score_func=&lt;function chi2 at 0x7ff1f89b1620&gt;), array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(SelectKBest(k=4, score_func=&lt;function chi2 at 0x7ff1f89b1620&gt;), array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 9]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(SelectKBest(k=8, score_func=&lt;function chi2 at 0x7ff1f89b1620&gt;), array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(SelectKBest(k=8, score_func=&lt;function chi2 at 0x7ff1f89b1620&gt;), array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(SelectKBest(k=8, score_func=&lt;function chi2 at 0x7ff1f89b1620&gt;), array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(SelectKBest(k=8, score_func=&lt;function chi2 at 0x7ff1f89b1620&gt;), array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(SelectKBest(k=8, score_func=&lt;function chi2 at 0x7ff1f89b1620&gt;), array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 9]), None)
+________________________________________________fit_transform_one - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/957fad013ca010289fccaf07eba68f62
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/481779f7d475f07d3a5e4f0bc06eafab
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/caf47ab6c6c883d05da5da8684cefb47
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/e31b0f98339c869d8c03a3273af6511e
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/6f27e62b861a27d22aec7689f36f86af
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/bca47aac37d2a7d757128c6a4d334ae8
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/bb5dbd9ce947c86b88a0430ac920077c
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/6f7ed41e81892936065cf6e231300d92
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/4e4cf1344179544b063154ff81b1cc2c
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/0f59c30e1159b6229e5f0a97fd042cc2
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/c35366c71fb804f90ed882ea82f61800
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/2eb4e2b554c826175d5861fbe4121cf1
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/68544d0e24f376a2a0172b8c07eb235f
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/09042604ce6aea29e15cc3faafb0284d
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/5732ea62c8724f7e20a4cc267ed111d6
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/957fad013ca010289fccaf07eba68f62
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/481779f7d475f07d3a5e4f0bc06eafab
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/caf47ab6c6c883d05da5da8684cefb47
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/e31b0f98339c869d8c03a3273af6511e
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/6f27e62b861a27d22aec7689f36f86af
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/bca47aac37d2a7d757128c6a4d334ae8
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/bb5dbd9ce947c86b88a0430ac920077c
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/6f7ed41e81892936065cf6e231300d92
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/4e4cf1344179544b063154ff81b1cc2c
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/0f59c30e1159b6229e5f0a97fd042cc2
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/c35366c71fb804f90ed882ea82f61800
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/2eb4e2b554c826175d5861fbe4121cf1
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/68544d0e24f376a2a0172b8c07eb235f
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/09042604ce6aea29e15cc3faafb0284d
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/5732ea62c8724f7e20a4cc267ed111d6
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/957fad013ca010289fccaf07eba68f62
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/481779f7d475f07d3a5e4f0bc06eafab
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/caf47ab6c6c883d05da5da8684cefb47
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/e31b0f98339c869d8c03a3273af6511e
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/6f27e62b861a27d22aec7689f36f86af
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/bca47aac37d2a7d757128c6a4d334ae8
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/bb5dbd9ce947c86b88a0430ac920077c
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/6f7ed41e81892936065cf6e231300d92
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/4e4cf1344179544b063154ff81b1cc2c
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/0f59c30e1159b6229e5f0a97fd042cc2
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/c35366c71fb804f90ed882ea82f61800
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/2eb4e2b554c826175d5861fbe4121cf1
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/68544d0e24f376a2a0172b8c07eb235f
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/09042604ce6aea29e15cc3faafb0284d
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+[Memory]0.0s, 0.0min    : Loading _fit_transform_one from /tmp/tmpd22i53nw/joblib/sklearn/pipeline/_fit_transform_one/5732ea62c8724f7e20a4cc267ed111d6
+___________________________________fit_transform_one cache loaded - 0.0s, 0.0min
+________________________________________________________________________________
+[Memory] Calling sklearn.pipeline._fit_transform_one...
+_fit_transform_one(NMF(alpha=0.0, beta_loss=&#39;frobenius&#39;, init=None, l1_ratio=0.0, max_iter=200,
+  n_components=8, random_state=None, shuffle=False, solver=&#39;cd&#39;,
+  tol=0.0001, verbose=0),
+array([[0., ..., 0.],
+       ...,
+       [0., ..., 0.]]), array([0, ..., 8]), None)
+________________________________________________fit_transform_one - 0.2s, 0.0min
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">PCA</span></code> fitting is only computed at the evaluation of the first
+configuration of the <code class="docutils literal"><span class="pre">C</span></code> parameter of the <code class="docutils literal"><span class="pre">LinearSVC</span></code> classifier. The
+other configurations of <code class="docutils literal"><span class="pre">C</span></code> will trigger the loading of the cached <code class="docutils literal"><span class="pre">PCA</span></code>
+estimator data, leading to save processing time. Therefore, the use of
+caching the pipeline using <code class="docutils literal"><span class="pre">memory</span></code> is highly beneficial when fitting
+a transformer is costly.</p>
+<p><strong>Total running time of the script:</strong> ( 2 minutes  19.985 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-compose-plot-compare-reduction-py">
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../../_downloads/plot_compare_reduction.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_compare_reduction.py</span></code></a></div>
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../../_downloads/plot_compare_reduction.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_compare_reduction.ipynb</span></code></a></div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io/">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2007 - 2018, scikit-learn developers (BSD License).
+      <a href="../../_sources/auto_examples/compose/plot_compare_reduction.rst.txt" rel="nofollow">Show this page source</a>
+    </div>
+     <div class="rel">
+    
+    <div class="buttonPrevious">
+      <a href="plot_column_transformer_mixed_types.html">Previous
+      </a>
+    </div>
+    <div class="buttonNext">
+      <a href="plot_column_transformer.html">Next
+      </a>
+    </div>
+    
+     </div>
+
+    
+    <script>
+        window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+        ga('create', 'UA-22606712-2', 'auto');
+        ga('set', 'anonymizeIp', true);
+        ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    
+    <script>
+      (function() {
+        var cx = '016639176250731907682:tjtqbvtvij0';
+        var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
+        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
+      })();
+    </script>
+  </body>
+
+<!-- Mirrored from scikit-learn.org/stable/auto_examples/compose/plot_compare_reduction.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 03 May 2019 21:52:11 GMT -->
+</html>

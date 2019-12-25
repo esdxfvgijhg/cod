@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+	<topic id="vw.help.intro.about"
+		xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+		<title>About this Introduction</title>
+		<body>
+			<p><i>Copyright &#x00A9; 2003-2017, Ivan Tomek (Updated &#x00A9; 2017 by Cincom Systems, Inc.).</i></p>
+			<p>(Please send comments, suggestions, and corrections to <b>ivan.tomek@acadiau.ca</b>.).</p>
+			<p>Disclaimer: This is an unsolicited contribution and not an official component of the 
+			&Product; environment. All errors and inconsistencies are mine and I (Ivan Tomek) do not 
+			assume any legal responsibility for them.</p>
+		</body>
+	</topic>
+</dita>

@@ -1,0 +1,34 @@
+REGEDIT
+
+/*************************************************************************
+/*
+/* VisualWorks OLE Smalltalk Commander
+/* Copyright (c) 2012 Cincom Systems
+/*
+/* Summary of GUIDs:
+/*
+/* CLSID	{5FD2D2B1-95A8-11d0-ACAB-E80467000000}
+/* TypeLib	{5FD2D2B2-95A8-11d0-ACAB-E80467000000}
+/*
+/*************************************************************************
+
+; Version independent registration. Points to version 1.0
+HKEY_CLASSES_ROOT\VisualWorks.SmalltalkCommander = VisualWorks Smalltalk Commander
+HKEY_CLASSES_ROOT\VisualWorks.SmalltalkCommander\Clsid = {5FD2D2B1-95A8-11d0-ACAB-E80467000000}
+
+; Version 1.0 registration 
+HKEY_CLASSES_ROOT\VisualWorks.SmalltalkCommander.1 = VisualWorks Smalltalk Commander 1.0
+HKEY_CLASSES_ROOT\VisualWorks.SmalltalkCommander.1\Clsid = {5FD2D2B1-95A8-11d0-ACAB-E80467000000}
+HKEY_CLASSES_ROOT\CLSID\{5FD2D2B1-95A8-11d0-ACAB-E80467000000} = VisualWorks Smalltalk Commander 1.0
+HKEY_CLASSES_ROOT\CLSID\{5FD2D2B1-95A8-11d0-ACAB-E80467000000}\ProgID = VisualWorks.SmalltalkCommander.1
+HKEY_CLASSES_ROOT\CLSID\{5FD2D2B1-95A8-11d0-ACAB-E80467000000}\VersionIndependentProgID = VisualWorks.SmalltalkCommander
+HKEY_CLASSES_ROOT\CLSID\{5FD2D2B1-95A8-11d0-ACAB-E80467000000}\LocalServer32 = c:\vw7.10\bin\visual.exe c:\vw7.10\com\examples\comauto\vwcomsrv.im /Automation
+HKEY_CLASSES_ROOT\CLSID\{5FD2D2B1-95A8-11d0-ACAB-E80467000000}\TypeLib = {5FD2D2B2-95A8-11d0-ACAB-E80467000000}
+HKEY_CLASSES_ROOT\CLSID\{5FD2D2B1-95A8-11d0-ACAB-E80467000000}\Programmable
+
+; About Type Library and interface registrations. 
+; All interfaces that support virtual function table binding must be registered. 
+; The RegisterTypeLib and LoadTypeLib APIs will do this automatically through
+; the COMTypeLibrary services.
+
+; eof

@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product      "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.time"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Times</title>
+<body><p>Instances of class <apiname>Time</apiname> represent the time 
+part (hours, minutes, seconds, milliseconds, microseconds, and nanoseconds) 
+of a <apiname>Timestamp</apiname>. Days start at midnight. Instances can 
+perform arithmetic (add/subtract another <apiname>Time</apiname>), and convert 
+themselves into other classes (e.g., <apiname>Duration</apiname>, 
+<apiname>Timestamp</apiname>, or <apiname>Number</apiname>).</p>
+<p>Class <apiname>Timestamp</apiname> combines a <apiname>Date</apiname> and a 
+<apiname>Time</apiname>, for situations requiring a tightly-integrated date 
+and time. A <apiname>Time</apiname> can be modified by a <apiname>TimeZone</apiname>, 
+which is informed by the host OS.</p>
+</body>
+<topic id = "vw.help.time.now"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create the current time</title>
+<body><p><indexterm>time<indexterm>create current</indexterm></indexterm>Send
+a <apiname>now</apiname> message to the <apiname>Time</apiname> class.
+<codeblock otherprops="smalltalk expression">| time |
+time := Time now.
+^time</codeblock></p></body></topic>
+<topic id = "vw.help.time.fromString"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a time from a string</title>
+<body><p><indexterm>time<indexterm>create from string</indexterm></indexterm>Send
+a <apiname>readFrom:</apiname> message to <apiname>Time</apiname>. The
+argument is a string containing the hours, minutes, and seconds,
+separated by colons. The minutes and/or seconds can be omitted.
+The "am/pm" designation can be omitted ("am" is the default) and
+can be in upper- or lowercase.
+<codeblock otherprops="smalltalk expression">| times |
+times := OrderedCollection new.
+times
+		add: (Time readFrom: '3:47:26 pm');
+		add: (Time readFrom: '03:47');
+		add: (Time readFrom: '::26 PM').
+^times</codeblock></p></body></topic>
+<topic id = "vw.help.time.secondsSinceMidnight"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a time by seconds since midnight</title>
+<body><p><indexterm>time<indexterm>create from seconds</indexterm></indexterm>Send
+a <apiname>fromSeconds:</apiname> message to <apiname>Time</apiname>.
+The argument is the number of seconds that have elapsed since midnight.
+<codeblock otherprops="smalltalk expression">| time |
+time := Time fromSeconds: (60 * 60 * 4).
+^time</codeblock></p></body></topic>
+<topic id = "vw.help.times.secondsInMinute"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get seconds since the minute began</title>
+<body><p><indexterm>time<indexterm>get seconds in minute</indexterm></indexterm>Send
+a <apiname>seconds</apiname> message to the time.
+<codeblock otherprops="smalltalk expression">| time |
+time := Time now.
+^time seconds.</codeblock></p></body></topic>
+<topic id = "vw.help.time.secondsInDay"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get seconds since the day began</title>
+<body><p><indexterm>time<indexterm>seconds since beginning of day</indexterm></indexterm>Send
+an <apiname>asSeconds</apiname> message to the time.
+<codeblock otherprops="smalltalk expression">| time |
+time := Time now.
+^time asSeconds.</codeblock></p></body></topic>
+<topic id = "vw.help.time.secondsSince1901"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get seconds since 1901</title>
+<body><p><indexterm>time<indexterm>get seconds since 1901</indexterm></indexterm>In
+time computations that span multiple days, it is sometimes convenient
+to represent each time as the number of seconds since 1901 began.</p>
+<p>Send a <apiname>totalSeconds</apiname> message to <apiname>Time</apiname>.
+<codeblock otherprops="smalltalk expression">| x |
+x := Time totalSeconds.
+^x</codeblock></p></body></topic>
+<topic id = "vw.help.time.secondsSinceReset"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Getting seconds since the clock was reset</title>
+<body><p><indexterm>time<indexterm>seconds since reset</indexterm></indexterm>When
+you want to measure the number of milliseconds required by some
+process, you can take a reading of the millisecond clock both before
+and after the process. This reading is also sometimes used as a
+simple random number for temporary file naming and as a seed value
+for a random stream.</p>
+<p>Send a <apiname>millisecondClockValue</apiname> message to <apiname>Time</apiname>.
+<codeblock otherprops="smalltalk expression">"Time 1000 repetitions of a block"
+| x |
+x := Time millisecondClockValue.
+1000 timesRepeat: 
+		[|splitSecondCount|
+   "Answer milliseconds as a number between 0 and 999"
+		  splitSecondCount:=Time millisecondClockValue \\ 1000.
+		  splitSecondCount &lt; 250
+			ifTrue:["Spend no more than one quarter of any second in this block.
+				        Show the millisecond count in the Transcript"
+				        Transcript show: splitSecondCount printString;cr]].
+^Time millisecondClockValue - x</codeblock></p></body></topic>
+<topic id = "vw.help.time.minutesInHour"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get minutes since the hour began</title>
+<body><p><indexterm>time<indexterm>minutes since hour</indexterm></indexterm>Send
+a <apiname>minutes</apiname> message to an instance of class <apiname>Time</apiname>.
+<codeblock otherprops="smalltalk expression">| time |
+time := Time now.
+^time minutes.</codeblock></p></body></topic>
+<topic id = "vw.help.time.hoursInDay"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get hours since the day began</title>
+<body><p><indexterm>time<indexterm>hours since day</indexterm></indexterm>Send
+an <apiname>hours</apiname> message to an instance of class <apiname>Time</apiname>.
+<codeblock otherprops="smalltalk expression">| time |
+time := Time now.
+^time hours.</codeblock></p>
+<p>Send an <apiname>addTime:</apiname> message to an instance of class <apiname>Time</apiname>.
+The argument is either a <apiname>Time</apiname> or a <apiname>Date</apiname>.
+<codeblock otherprops="smalltalk expression">| time1 time2 |
+time1 := Time readFrom: '5'.
+time2 := Time readFrom: '8:51:39 am'.
+^time1 addTime: time2</codeblock></p></body></topic>
+<topic id = "vw.help.time.subractTimesDates"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Add/Subtract times and dates</title>
+<body><p><indexterm>time<indexterm>add time</indexterm></indexterm><indexterm>time<indexterm>subtract
+time</indexterm></indexterm>Send a <apiname>subtractTime:</apiname> message
+to an instance of class <apiname>Time</apiname>. The argument is either
+a <apiname>Time</apiname> or a <apiname>Date</apiname>.
+<codeblock otherprops="smalltalk expression">| time1 time2 |
+time1 := Time readFrom: '5'.
+time2 := Time readFrom: '8:51:39 am'.
+^time2 subtractTime: time1</codeblock></p></body></topic>
+<topic id = "vw.help.timeStamp"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Timestamp</title>
+<body><p><indexterm class = "- topic/indexterm ">time stamp</indexterm><indexterm>Timestamp
+class</indexterm><apiname>Timestamp</apiname> represents a moment
+to millisecond accuracy. It contains numeric representations of
+year, month, day, hour, minute, second and millisecond.</p></body>
+<topic id = "vw.help.timestamp.create"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Creating Timestamp</title>
+<body><p><indexterm>time<indexterm>create timestamp</indexterm></indexterm><indexterm>timestamp<indexterm>create</indexterm></indexterm>The <apiname>Timestamp</apiname> class
+has two methods to return a new timestamp representing the current
+moment:<dl><dlentry><dt>now</dt>
+<dd>Returns a <apiname>Timestamp</apiname> representing the current
+local time and date.</dd></dlentry>
+<dlentry><dt>nowUTC</dt>
+<dd>Returns a <apiname>Timestamp</apiname> representing the current
+UTC time and date.</dd></dlentry></dl></p>
+<p><apiname>Timestamp</apiname> interacts with <apiname>TimeZone</apiname> to
+provide local time.</p>
+<p>Other instance creation methods provide creating a Timestamp
+from specific information, such as these (browse the instance creation
+ method category for the full list):
+<dl>
+<dlentry>
+<dt>fromDate: <option>aDate</option> andTime: <option>aTime</option></dt>
+<dd>Returns a Timestamp representing <option>aDate</option> and <option>aTime</option>.</dd></dlentry>
+<dlentry><dt>fromMilliseconds: <option>milliseconds</option></dt>
+<dd>Returns a <apiname>Timestamp</apiname> from the number of milliseconds
+since 12:00 am, January 1, 1901.</dd></dlentry></dl></p>
+<p>Other classes can also return a Timestamp.  For example, the
+creation date of a file:
+<codeblock otherprops="smalltalk expression">'visual.im' asFilename creationTimestamp</codeblock></p></body></topic>
+<topic id = "vw.help.timestamp.compare"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Comparing Timestamps</title>
+<body><p><indexterm>timestamp<indexterm>compare</indexterm></indexterm>Several
+methods are available for comparing two time stamps. A few are shown
+here. Browse <apiname>Timestamp</apiname> instance methods for more.<dl>
+<dlentry><dt>&lt; <option>aChronologicalValue</option></dt>
+<dd>Return a Boolean indicating whether the receiver is less than <option>aChronologicalValue</option> (a <apiname>Date</apiname>, <apiname>Time</apiname>,
+or <apiname>Timestamp</apiname>).</dd></dlentry>
+<dlentry><dt>= <option>aChronologicalValue</option></dt>
+<dd>Return a Boolean indicating whether the receiver is equal to <option>aChronologicalValue</option>.</dd></dlentry>
+<dlentry><dt>differenceFromDate: <option>aDate</option></dt>
+<dd>Returns a <apiname>Duration</apiname> containing the difference
+between the receiver and the start of <option>aDate</option>.</dd></dlentry>
+<dlentry><dt>lessFromDate: <option>aDate</option></dt>
+<dd>Returns a <apiname>Boolean</apiname> indicating whether <apiname>aDate</apiname> precedes
+the date of the  receiver. </dd></dlentry></dl></p></body></topic></topic>
+<topic id = "vw.help.time.performance.timeBlock"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Time a block of code</title>
+<body><p><indexterm>time<indexterm>time a block of code</indexterm></indexterm><indexterm>performance<indexterm>time
+a block of code</indexterm></indexterm>During the optimization phase
+of application development, it is useful to compare the run times
+of alternate implementations. A profiler tool, such as that provided
+in the Advanced Tools parcel, provides this information. A simpler
+utility is provided by the <apiname>Time</apiname> class <apiname>millisecondsToRun:</apiname> method.
+ This method may be used to determine the clock time in milliseconds
+to execute a block containing one or more Smalltalk statements.<ol><li><p>Create
+a <apiname>BlockClosure</apiname> containing one or more expressions
+to be tested. Repeating the expressions through <apiname>timesRepeat:</apiname> usually improves
+the validity of the comparison.</p></li>
+<li><p>Send a <apiname>millisecondsToRun:</apiname> message to the <apiname>Time</apiname> class.
+The argument is the block you created in step 1.</p></li>
+<li><p>Repeat steps 1 and 2 for the second version of the code.
+If the second version is not ready yet, you can simply record the
+value from step 2 for later comparison.</p>
+<codeblock otherprops="smalltalk expression">| block1 block2 ms1 ms2 |
+"Test the speed of Time now and Date today."
+block1 := [100 timesRepeat: [Time now. Date today]].
+ms1 := Time
+		millisecondsToRun: block1.
+"Test the speed of dateAndTimeNow, which does the same thing."
+block2 := [100 timesRepeat: [Time dateAndTimeNow]].
+ms2 := Time
+		millisecondsToRun: block2.
+^ms1 printString, '								', ms2 printString</codeblock></li></ol></p></body></topic>
+<topic id = "timezone"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>TimeZone</title>
+<body><p><indexterm>time zone</indexterm><indexterm class = "- topic/indexterm
+">time<indexterm>zones</indexterm></indexterm>The virtual machine
+microsecond clock reports time in UTC (coordinated universal time)
+on all platforms. The <apiname>Time</apiname> class converts UTC to
+local time with the aid of class <apiname>TimeZone</apiname>.</p>
+<p>The primary tasks performed by a <apiname>TimeZone</apiname> are
+converting a <apiname>Timestamp</apiname> between local and universal
+time, and between counts of seconds since the beginning of Smalltalk
+epoch (1/1/1900).</p>
+<p>By default, the <apiname>TimeZone</apiname> is set to <apiname>SystemTimeZone</apiname>,
+which accesses operating system resources to perform the conversion
+services. Accordingly, the time zone reflects the operating system’s
+time zone configuration.</p></body>
+<topic id = "vw.help.timezone.create"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a TimeZone instance</title>
+<body><p><indexterm>time zone<indexterm>create</indexterm></indexterm>To
+invoke the current <apiname>TimeZone</apiname>, send a <apiname>default</apiname> message.
+That instance can then be requested to do a conversion, for example:
+<codeblock otherprops="smalltalk expression">TimeZone default localToUniversal: Timestamp now</codeblock></p>
+<p>Browse other conversion methods in the api protocol.</p>
+<p>As an alternative to the default <apiname>SystemTimeZone</apiname>,
+you can create a <apiname>TimeZone</apiname> object that stores an
+offset from UTC for local time, including settings for daylight
+savings time. You define a <apiname>TimeZone</apiname> instance to
+set these to appropriate values for your location, and then set
+it as the default <apiname>TimeZone</apiname>. Two instance creation
+messages are provided. The more general form is:
+<dl>
+<dlentry><dt>timeDifference: <option>hours</option> DST: <option>amount</option> start: <option>startHour</option> end: <option>endHour</option> 
+ from: <option>startDate</option> to: <option>endDate</option> startDay: <option>startDaySymbol</option></dt>
+<dd>where: </dd>
+<dd><option>hours</option> is the difference from
+UTC (e.g., -5 for Eastern time).</dd>
+<dd><option>amount</option> is the amount of time change
+for Daylight Savings Time (usually one hour).</dd>
+<dd><option>startHour</option> is the hour at which
+the change takes effect.</dd>
+<dd><option>endHour</option> is the hour at which the change ends.</dd>
+<dd><option>startDate</option> is the integer number of the latest
+day DST starts.</dd>
+<dd><option>endDate</option> is the integer number of the latest
+day DST ends.</dd>
+<dd><option>startDaySymbol</option> is the name
+of the day, as a Symbol, of the week when the change takes effect,
+prior to startDate and endDate.</dd></dlentry>
+</dl></p>
+<p>To set the time zone in &Product;, send a <apiname>setDefaultTimeZone:</apiname> message
+to the <apiname>TimeZone</apiname> class, with a <apiname>TimeZone</apiname> instance:
+<codeblock otherprops="smalltalk expression">TimeZone setDefaultTimeZone: 
+	(TimeZone timeDifference: -5 
+		DST: 1 
+		start: 2 
+		end: 2 
+		from: 97 "on April 7" 
+		to: 304 "until October 31" 
+		startDay: #Sunday).</codeblock></p>
+<p><apiname>CompositeTimeZone</apiname> represents a collection of <apiname>TimeZone</apiname> instances
+for timezones in which the policy changes from year to year. The
+policy and conversions can then be carried out as appropriate for
+the year.</p></body></topic></topic>
+<topic id = "vw.help.time.duration"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Duration</title>
+<body><p><indexterm>time<indexterm>duration</indexterm></indexterm><indexterm>duration</indexterm>Instances
+of <apiname>Duration</apiname> represent an interval of time. It supports resolution
+to the nanosecond.</p>
+<p>The implementation is based on the ANSI Smalltalk specification,
+but refer to the class comments for differences.</p>
+<p>The usual methods for creating a <apiname>Duration</apiname> are
+with unary methods implemented in <apiname>Number</apiname>: 
+<codeblock otherprops="smalltalk expression">4.2 seconds.
+6800 milliseconds.
+450 ms.
+800 microseconds.
+8 days.
+9 minutes.
+-12 hours.</codeblock></p>
+<p>There are instance creation methods (class methods), as well, though
+these are seldom used.</p>
+<p>Because <apiname>Duration</apiname> is a subclass of <apiname>Number</apiname>,
+durations can be added and subtracted:
+<codeblock otherprops="smalltalk expression">8 seconds + 25 seconds.
+2 days + 4 hours.</codeblock></p>
+<p>They can also be compared, queried for sign, have their sign changed,
+and be queried for the component fields (days, hours, minutes, etc).</p>
+<p>Durations are useful for system services which need to specify
+time elapsed, such as <apiname>Delay</apiname> and profiling. For
+example, you can cause a wait state by sending a <apiname>wait</apiname> message
+to a <apiname>Duration</apiname>:
+<codeblock otherprops="smalltalk expression">8 seconds wait</codeblock></p>
+<p>(This is shorthand for: <codeph>8 seconds aDelay wait</codeph>).</p>
+<p>A <apiname>BlockClosure</apiname> can be timed by sending a <apiname>timeToRun</apiname> message:
+<codeblock otherprops="smalltalk expression">[1000 factorial] timeToRun</codeblock>The returned value is a <apiname>Duration</apiname> object.</p></body></topic>
+<topic id = "vw.help.time.timer"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Timer</title>
+<body><p><indexterm>time<indexterm>timer</indexterm></indexterm><indexterm>Timer</indexterm><apiname>Timer</apiname> performs
+an action every period after an initial wait period.</p>
+<p>The initial period can be a <apiname>Timestamp</apiname> (absolute
+timer) or a <apiname>Duration</apiname> (relative timer). <indexterm>startAfter:</indexterm><indexterm>startAt:</indexterm><dl>
+<dlentry><dt>startAfter: <option>initialPeriod</option></dt>
+<dd>Start the timer to fire after the <option>initialPeriod</option> duration. </dd></dlentry>
+<dlentry><dt>startAt: <option>aTimestamp</option></dt>
+<dd>Start the timer to fire at <option>aTimestamp</option>.</dd></dlentry></dl></p>
+<p>A <apiname>Timer</apiname> action can fork blocks, resume suspended
+processes, or signal semaphores<indexterm>process:</indexterm><indexterm>semaphore:</indexterm><indexterm>block:</indexterm>. <dl>
+<dlentry><dt>block: <option>aBlock</option></dt>
+<dd>Configure the timer to run <option>aBlock</option> in a new
+process when it fires.</dd></dlentry>
+<dlentry><dt>process: <option>aProcess</option></dt>
+<dd>Configure the timer to resume <option>aProcess</option> when
+it fires. Hold on to <option>aProcess</option> so it does not garbage
+collect while it is waiting.</dd></dlentry>
+<dlentry><dt>semaphore: <option>aSemaphore</option></dt>
+<dd>Configure the timer to signal <option>aSemaphore</option> when
+it fires. Hold on to <option>aSemaphore</option> so it does not
+garbage collect while it is waiting.</dd></dlentry></dl></p>
+<p>If given a repeat period, a timer will keep firing indefinitely
+after the initial wait period. If a timer does not repeat, it stops
+itself after the first iteration.<indexterm>period:</indexterm><dl>
+<dlentry><dt>period: <option>aDuration</option></dt>
+<dd>Set <option>aDuration</option> between repetitions.</dd></dlentry></dl></p>
+<p>For example 
+<codeblock otherprops="smalltalk expression">timer := Timer new	block: [Transcript cr; show: 'Repeating myself'] ;	period: 5 seconds;	startAt: Timestamp now</codeblock></p>
+<p>Convenience protocol for setting up timers is provided on the
+class side (and illustrated below).</p>
+<p>Note that active (scheduled) timers can get garbage collected
+if not held strongly. In this case they will be de-scheduled when
+they finalize. However, traditionally, active <apiname>Delay</apiname>s
+were held strongly. To allow mimicking the same behavior, <apiname>Timer</apiname>s
+that are initialized with semaphores and processes are automatically
+registered to prevent their garbage collection as well. Therefore
+the following timer will not be collected until the action is performed:
+<codeblock otherprops="smalltalk expression">Timer 
+	after: 10 seconds 
+	resume: [ Transcript cr; show: 'Time is up!' ] newProcess</codeblock></p>
+<p>However, this is not the case for the more general, block based actions.
+This allows to take advantage of automatic reclamation when desired.
+<codeblock otherprops="smalltalk expression">| timer |
+	timer := Timer every: 0.2 seconds do: [ Transcript nextPut: $.; flush ].
+	3 seconds wait.
+	timer := nil</codeblock></p>
+<p><apiname>Timer</apiname>s can be realized using either the "classic"
+VM facilities  or native OS facilities, where OS facilities are
+available. These facilities have different strengths and limitations
+(more detailed discussion of these can be found in the class comment
+of <apiname>TimerSystem</apiname>).</p>
+<p>Both kinds of timers can be used simultaneously. The default
+choice can be configured on the <apiname>TimerSystem</apiname>. Specific
+choice for a given <apiname>Timer</apiname> can be forced <i>before</i> the
+timer is activated, using either <apiname>useNativeInterface</apiname> or <apiname>useClassicInterface</apiname>.</p></body></topic></topic></dita>

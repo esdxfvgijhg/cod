@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.resources"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Resources</title>
+<topic id = "vw.help.resources.finder"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Open a Resource Finder</title>
+<body><p><indexterm>resource finder</indexterm>The Resource Finder
+is a tool that helps you locate resources, such as graphics and
+menus, that are saved in applications. Open a Resource Finder by
+selecting <uicontrol>Painter&#xA0;&#x2192;&#xA0;Resources</uicontrol> in
+the &Product; Launcher window.</p>
+<p>Double-clicking on a resource opens it in the appropriate editor.</p></body></topic></topic></dita>

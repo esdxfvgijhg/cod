@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<topic id = "vw.help.overview"
+		xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+	<title>Help</title>
+	<body>
+		<p>The &Product; <i>Help Browser</i> provides quick online help on 
+			the Smalltalk language, the development environment, the coding tools, 
+			some of the basic class libraries, and add-on components.</p>
+		<p>The Help topics can guide your understanding of <i>concepts</i> (e.g., 
+			"how are variables scoped in Smalltalk?"), <i>tasks</i> (e.g., "how 
+			do I create a class?"), as well as the <i>class library</i> ("which 
+			classes are best for sorting lists?"), and <i>add-on components</i> 
+			("which add-on frameworks provide support for HTTP?"). Detailed 
+			descriptions of the development tools and their menus are available, 
+			as are some best practices for using the &Product; environment, and 
+			many code examples to illustrate use of the class library.</p>
+		<p>For more complete documentation, refer to the 
+			<xref href="./Welcome.pdf" format="pdf" 
+				scope="external"><i>&Product; documentation set</i></xref>.</p>
+	</body>
+</topic>

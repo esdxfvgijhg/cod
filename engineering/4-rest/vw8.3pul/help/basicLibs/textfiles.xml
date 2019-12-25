@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.textFile"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Files</title>
+<body><p>As an environment for creating cross-platform portable applications,
+&Product; provides mechanisms for constructing file names and
+performing file operations in a platform-neutral manner.</p>
+<p>The abstract class <apiname>Filename</apiname> provides most 
+file and directory operations, while its subclasses handle all 
+platform-specific functions. Class <apiname>LogicalFilename</apiname> 
+and its subclass <apiname>PortableFilename</apiname> provide
+mechanisms for storing absolute and relative pathnames in a
+platform-neutral form.</p></body>
+<topic id = "vw.help.textFile.createFile"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a disk file</title>
+<body><p><indexterm>file<indexterm>create</indexterm></indexterm>Send
+an <apiname>asFilename</apiname> message to the string identifying
+the desired file or directory. The disk file or directory is not
+affected by the mere creation of a <apiname>Filename</apiname> object.
+Because no explicit link exists to the disk file or directory, you
+need not do anything explicit to release the external resource when
+you are finished with it.
+<codeblock otherprops="smalltalk expression">| name filename |
+name := 'test.tmp'.
+filename := name asFilename.
+^filename</codeblock></p></body></topic>
+<topic id = "vw.help.textFile.createDirectory"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a disk directory</title>
+<body><p><indexterm>directory<indexterm>create</indexterm></indexterm><indexterm>file<indexterm>create
+directory</indexterm></indexterm>Send a <apiname>makeDirectory</apiname> message
+to the <apiname>Filename</apiname> representing the desired directory.
+If the disk directory already exists, an error results.
+<codeblock otherprops="smalltalk expression">| directory |
+directory := 'test' asFilename.
+directory makeDirectory.
+^directory exists</codeblock></p></body></topic>
+<topic id = "vw.help.textFile.createPortableName"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Construct a portable file name</title>
+<body><p><indexterm>file<indexterm>portable file name</indexterm></indexterm><indexterm>file
+name</indexterm>Send a <apiname>construct:</apiname> message to the <apiname>Filename</apiname> representing
+the parent directory. When a pathname is to represent a hierarchy
+of nested parent directories, use a series of such <apiname>construct:</apiname> messages.
+<codeblock otherprops="smalltalk expression">| unixDir portableDir |
+unixDir := 'visual/utils' asFilename.
+portableDir := 'visual' asFilename
+			construct: 'utils'.
+unixDir inspect.
+portableDir inspect.</codeblock></p></body></topic>
+<topic id = "vw.help.textFile.checkExistence"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Check whether a file or directory exists</title>
+<body><p><indexterm>file<indexterm>check existence</indexterm></indexterm><indexterm>directory<indexterm>check
+existence</indexterm></indexterm>Send an <apiname>exists</apiname> message
+to the <apiname>Filename</apiname>. If the disk file or directory exists, <codeph>true</codeph> is
+returned.
+<codeblock otherprops="smalltalk expression">| unlikelyFile |
+unlikelyFile := 'qqqqzzzz' asFilename.
+^unlikelyFile exists</codeblock></p></body></topic>
+<topic id = "vw.help.textFile.workingDir"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get the working directory</title>
+<body><p><indexterm>directory<indexterm>get working directory</indexterm></indexterm>Send
+a <apiname>defaultDirectory</apiname> message to the <apiname>Filename</apiname> class.
+A <apiname>Filename</apiname> representing the working directory is
+returned.
+<codeblock otherprops="smalltalk expression">| workingDir |
+workingDir := Filename defaultDirectory.
+^workingDir</codeblock></p></body></topic>
+<topic id = "vw.help.textFile.getParentDir"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get the parent directory</title>
+<body><p><indexterm>file<indexterm>get directory</indexterm></indexterm><indexterm>directory<indexterm>get
+parent</indexterm></indexterm>Send a <apiname>directory</apiname> message
+to the <apiname>Filename</apiname>. A <apiname>Filename</apiname> representing the
+parent directory is returned.
+<codeblock otherprops="smalltalk expression">| dir parentDir |
+dir := Filename defaultDirectory.
+parentDir := dir directory.
+^parentDir</codeblock></p></body></topic>
+<topic id = "vw.help.textFile.getPathnameParts"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get the parts of a pathname</title>
+<body><p><indexterm>filename<indexterm>get parts of path</indexterm></indexterm><indexterm>file<indexterm>get
+pathname parts</indexterm></indexterm><ul><li><p>To get the entire
+pathname as a string, send an <apiname>asString</apiname> message
+to the <apiname>Filename</apiname>.</p></li>
+<li><p>To get the directory part of a pathname, send a <apiname>head</apiname> message
+to the <apiname>Filename</apiname>. A string containing the directory’s
+pathname is returned.</p></li>
+<li><p>To get the file part of the pathname, send a <apiname>tail</apiname> message.
+A string containing the file’s name is returned.</p></li></ul></p>
+<example>
+<codeblock otherprops="smalltalk expression">| filename pathString dirString fileString |
+filename := Filename defaultDirectory.
+pathString := filename asString.
+dirString := filename head.
+fileString := filename tail.
+^'
+PATH: ', pathString, '
+DIRECTORY: ', dirString, '
+FILE: ', fileString</codeblock></example></body></topic>
+<topic id = "vw.help.textFile.fileOrDirectory"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Distinguish a file from a directory</title>
+<body><p><indexterm>file<indexterm>test if directory</indexterm></indexterm>Send
+an <apiname>isDirectory</apiname> message to the <apiname>Filename</apiname>.
+If the <apiname>Filename</apiname> represents a disk directory, <codeph>true</codeph> is
+returned. If it represents a disk file, <codeph>false</codeph> is
+returned. If neither a file nor a directory with a matching name exists,
+an error results.
+<codeblock otherprops="smalltalk expression">| dir |
+dir := Filename defaultDirectory.
+^dir isDirectory</codeblock></p></body></topic>
+<topic id = "vw.help.textFile.accessTime"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get the access and modification times</title>
+<body><p><indexterm>file<indexterm>get modification times</indexterm></indexterm><ol>
+<li><p>Get a dictionary containing dates and times associated with
+a file or directory by sending a <apiname>dates</apiname> message
+to the <apiname>Filename</apiname>.</p></li>
+<li><p>Get the desired date-time pair by sending an <apiname>at:</apiname> message
+to the dictionary. The argument is <codeph>#accessed</codeph> for
+the time at which the file’s contents were most recently accessed.
+The argument is <codeph>#modified</codeph> for the time of the most
+recent modification to the file’s contents. The argument is <codeph>#statusChanged</codeph> for
+the time of the most recent change in external attributes of the
+file, such as ownership and permissions.</p></li></ol></p>
+<p>If the operating system does not support the requested type of information,
+nil is returned; otherwise, an array containing a date and a time
+is returned.
+<codeblock otherprops="smalltalk expression">| newFile stream datesDict modifyDates modifyDate modifyTime |
+newFile := 'testFile' asFilename.
+stream := newFile writeStream.
+stream nextPutAll: Object comment.
+stream close.
+datesDict := newFile dates.
+modifyDates := datesDict at: #modified.
+modifyDates isNil 
+			ifFalse: [
+				modifyDate := modifyDates first.
+				modifyTime := modifyDates last].
+^'</codeblock></p></body></topic>
+<topic id = "vw.help.textFile.getFileSize"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get the size of a file</title>
+<body><p><indexterm>file<indexterm>get size</indexterm></indexterm>Send
+a <apiname>fileSize</apiname> message to the <apiname>Filename</apiname>.
+If the file exists, the number of characters it contains is returned.
+If the file does not exist, an error results. If the <apiname>Filename</apiname> represents
+a disk directory rather than a disk file, zero is returned.
+<codeblock otherprops="smalltalk expression">| newFile stream |
+newFile := 'testFile' asFilename.
+stream := newFile writeStream.
+stream nextPutAll: Object comment.
+stream close.
+^newFile fileSize.</codeblock></p></body></topic>
+<topic id = "vw.help.textFile.getFileContents"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get the contents of a file</title>
+<body><p><indexterm>file<indexterm>get contents</indexterm></indexterm>Send
+a <apiname>contentsOfEntireFile</apiname> message to a <apiname>Filename</apiname> representing
+a disk file. A string is returned.
+<codeblock otherprops="smalltalk expression">| newFile stream contents |
+newFile := 'testFile' asFilename.
+stream := newFile writeStream.
+stream nextPutAll: Object comment.
+stream close.
+contents := newFile contentsOfEntireFile.
+^contents</codeblock></p></body></topic>
+<topic id = "vw.help.textFile.getDirContents"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get the contents of a directory</title>
+<body><p><indexterm>directory<indexterm>get contents</indexterm></indexterm>Send
+a <apiname>directoryContents</apiname> message to a <apiname>Filename</apiname> representing
+a disk directory. An array of file and subdirectory names is returned.
+<codeblock otherprops="smalltalk expression">| workingDir contents |
+workingDir := Filename defaultDirectory.
+contents := workingDir directoryContents.
+^contents</codeblock></p></body></topic>
+<topic id = "vw.help.textFile.writeTextToFile"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Store text in a file</title>
+<body><p><indexterm>file<indexterm>write text to file</indexterm></indexterm><indexterm>text<indexterm>write
+to file</indexterm></indexterm>Putting a string into a disk file
+involves using a stream. The technique illustrated erases any existing
+file contents.<ol><li><p>Create a <apiname>Filename</apiname> by sending
+an <apiname>asFilename</apiname> message to a string containing the
+pathname.</p></li>
+<li><p>Create a stream for writing characters onto the file by sending
+a <apiname>writeStream</apiname> message to the <apiname>Filename</apiname>.</p></li>
+<li><p>Send the string’s characters to the file by sending a <apiname>nextPutAll:</apiname> message
+to the stream. The argument is the string. This operation can be
+repeated for a series of strings.</p></li>
+<li><p>Close the stream by sending a <apiname>close</apiname> message
+to it.
+<codeblock otherprops="smalltalk expression">| newFile stream |
+newFile := 'testFile' asFilename.
+stream := newFile writeStream.
+stream nextPutAll: Object comment.
+stream close.
+^newFile contentsOfEntireFile</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.textFile.appendText"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Append text to a file</title>
+<body><p><indexterm>file<indexterm>append text</indexterm></indexterm><indexterm>text<indexterm>append
+to file</indexterm></indexterm>When creating the stream, send an <apiname>appendStream</apiname> message
+to the <apiname>Filename</apiname>.
+<codeblock otherprops="smalltalk expression">| filename stream |
+filename := 'testFile' asFilename.
+"Creating the file."
+stream := filename writeStream.
+stream nextPutAll: 'FIRST STRING'.
+stream close.
+"Appending"
+stream := filename appendStream.
+stream nextPutAll: ' -- SECOND STRING'.
+stream close.
+^filename contentsOfEntireFile</codeblock></p></body></topic>
+<topic id = "vw.help.textFile.openEditor"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Open an editor on a file</title>
+<body><p><indexterm>file<indexterm>open in editor</indexterm></indexterm>The
+&Product; text editor allows the user to alter the contents of
+a file. For read-only access to the file, create a canvas containing
+a read-only text editor or a text editor with a limited menu.</p>
+<p>Send an <apiname>edit</apiname> message to the <apiname>Filename</apiname>.
+If the <apiname>Filename</apiname> represents a disk directory, an
+error results. If the <apiname>Filename</apiname> represents a nonexistent
+file, an editor is opened with which the user can create the contents
+of the file.
+<codeblock otherprops="smalltalk expression">| newFile stream |
+newFile := 'testFile' asFilename.
+stream := newFile writeStream.
+stream nextPutAll: Object comment.
+stream close.
+newFile edit.</codeblock></p></body></topic>
+<topic id = "vw.help.textFile.deleteFileOrDir"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Delete a file or directory</title>
+<body><p><indexterm>file<indexterm>delete</indexterm></indexterm><indexterm>directory<indexterm>delete</indexterm></indexterm>On
+operating systems such as UNIX that support multiple pathnames for
+the same physical disk file or directory, deleting as shown here removes
+the reference that is identified by the pathname, but it does not
+delete the physical file or directory if another reference exists.<ol>
+<li><p>If necessary, confirm that the disk file or directory to
+be deleted exists by sending an <apiname>exists</apiname> message
+to the <apiname>Filename</apiname>.</p></li>
+<li><p>Send a <apiname>delete</apiname> message to the <apiname>Filename</apiname>.
+<codeblock otherprops="smalltalk expression">| newFile stream pretest posttest |
+newFile := 'testFile' asFilename.
+stream := newFile writeStream.
+stream nextPutAll: Object comment.
+stream close.
+pretest := newFile exists.
+newFile delete.
+posttest := newFile exists.
+^'
+EXISTS BEFORE DELETION: ', pretest printString, '
+EXISTS AFTER DELETION: ', posttest printString.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.textFile.copyFile"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Copy a file</title>
+<body><p><indexterm>file<indexterm>copy</indexterm></indexterm>Send
+a copyTo: message to the Filename. The argument is a string containing
+the pathname of the copy. If the Filename represents a directory
+or a nonexistent disk file, an error results.
+<codeblock otherprops="smalltalk expression">| newFile stream |
+newFile := 'testFile' asFilename.
+stream := newFile writeStream.
+stream nextPutAll: Object comment.
+stream close.
+newFile copyTo: 'testFile.tmp'.
+^'testFile.tmp' asFilename exists.</codeblock></p></body></topic>
+<topic id = "vw.help.textFile.moveFile"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Move a file</title>
+<body><p><indexterm>file<indexterm>move</indexterm></indexterm>Send
+a <apiname>moveTo:</apiname> message to the <apiname>Filename</apiname>.
+The argument is a string containing the new pathname, which can
+include a different directory. If the <apiname>Filename</apiname> represents
+a directory or a nonexistent disk file, an error results.
+<codeblock otherprops="smalltalk expression">| newFile stream |
+newFile := 'testFile' asFilename.
+stream := newFile writeStream.
+stream nextPutAll: Object comment.
+stream close.
+newFile moveTo: 'testFile.tmp'.
+^'testFile.tmp' asFilename exists.</codeblock></p></body></topic>
+<topic id = "vw.help.textFile.renameFile"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Rename a file</title>
+<body><p><indexterm>file<indexterm>rename</indexterm></indexterm>Send
+a <apiname>renameTo:</apiname> message to the <apiname>Filename</apiname>.
+The argument is a string containing the new pathname, which can
+include a different directory. If the <apiname>Filename</apiname> represents
+a directory or a nonexistent disk file, an error results.
+<codeblock otherprops="smalltalk expression">| newFile stream |
+newFile := 'testFile' asFilename.
+stream := newFile writeStream.
+stream nextPutAll: Object comment.
+stream close.
+newFile renameTo: 'testFile2.tmp'.
+^'testFile2.</codeblock></p></body></topic>
+<topic id = "vw.help.textFile.compareFiles"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Compare two filenames or files</title>
+<body><p><indexterm>file<indexterm>compare</indexterm></indexterm><ol>
+<li><p>To compare two filenames, send an <apiname>=</apiname> message
+to one <apiname>Filename</apiname>. The argument is the second <apiname>Filename</apiname>.
+If they have the same pathname (that is, they point to the same
+physical disk file), <codeph>true</codeph> is returned.</p></li>
+<li><p>To compare the contents of two disk files, get the contents
+of each file by sending <apiname>contentsOfEntireFile</apiname> messages
+to the <apiname>Filenames</apiname>. Then send an <apiname>=</apiname> message
+to one of the resulting strings, with the other string as the argument.
+<codeblock otherprops="smalltalk expression">| file1 file2 stream pathsAreEqual contentsAreEqual |
+file1 := 'fileOne' asFilename.
+file2 := 'fileTwo' asFilename.
+stream := file1 writeStream.
+stream nextPutAll: Object comment.
+stream close.
+file1 copyTo: file2 asString.
+pathsAreEqual := (
+			file1 = file2).
+contentsAreEqual := (
+			file1 contentsOfEntireFile = file2 contentsOfEntireFile).
+^'
+PATHS ARE EQUAL: ', pathsAreEqual printString, '
+CONTENTS ARE EQUAL: ', contentsAreEqual printString.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.textFile.compareDirectories"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Compare directories</title>
+<body><p><indexterm>directory<indexterm>compare</indexterm></indexterm>To
+compare the contents of two disk directories, get the contents of each
+directory by sending <apiname>directoryContents</apiname> messages
+to the <apiname>Filenames</apiname>. Then send an <apiname>=</apiname> message
+to one of the resulting arrays, with the other array as the argument.
+<codeblock otherprops="smalltalk expression">| dir1 dir2 pathsAreEqual contentsAreEqual |
+dir1 := Filename defaultDirectory.
+dir2 := dir1 directory.
+pathsAreEqual := (
+			dir1 = dir2).
+contentsAreEqual := (
+			dir1 directoryContents = dir2 directoryContents).
+^'
+PATHS ARE EQUAL: ', pathsAreEqual printString, '
+CONTENTS ARE EQUAL: ', contentsAreEqual printString.</codeblock></p></body></topic>
+<topic id = "vw.help.textFile.printFile"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Print a file</title>
+<body><p><indexterm>file<indexterm>print</indexterm></indexterm>Some
+operating systems support printing a text file directly, and others
+require that it first be converted to or a printer-specific format.</p>
+<p>To print directly, send a <apiname>printTextFile</apiname> message
+to the <apiname>Filename</apiname>. If text file printing is not supported
+by the operating system, an error results.
+<codeblock otherprops="smalltalk expression">| newFile stream |
+newFile := 'testFile' asFilename printTextFile.
+stream := newFile writeStream.
+stream nextPutAll: Object comment.
+stream close.
+newFile printTextFile</codeblock></p>
+<p>To print a file regardless of the operating system,  convert
+the file contents to a composed text.<ol><li><p>Get the contents
+of the file by sending a <apiname>contentsOfEntireFile</apiname> message
+to the <apiname>Filename</apiname>. Convert the resulting string to
+a <apiname>ComposedText</apiname> by sending an <apiname>asComposedText</apiname> message
+to it.</p></li>
+<li><p>Print the composed text by sending a <apiname>hardcopy</apiname> message
+to it.
+<codeblock otherprops="smalltalk expression">| newFile stream contents composedText |
+newFile := 'testFile' asFilename printTextFile.
+stream := newFile writeStream.
+stream nextPutAll: Object comment.
+stream close.
+contents := newFile contentsOfEntireFile.
+composedText := contents asComposedText.
+composedText hardcopy.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.textFile.writeFields"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Write fields to a data file</title>
+<body><p><indexterm>file<indexterm>write data fileds</indexterm></indexterm><ol>
+<li><p>Create a write stream on the file by sending a <apiname>writeStream</apiname> message
+to the <apiname>Filename</apiname>.</p></li>
+<li><p>Create a block in which, for each field of data, a <apiname>nextPutAll:</apiname> message
+is sent to the stream with the data string as argument, followed
+by a <apiname>nextPut:</apiname> message with the separator character
+as argument.</p></li>
+<li><p>Send an <apiname>ensure:</apiname> message to the data-writing
+block. The argument is another block that closes the stream by sending
+a <apiname>close</apiname> message to it.</p></li>
+<li><p>To confirm the operation, open an editor on the data file.
+<codeblock otherprops="smalltalk expression">| dataFile stream separator writingBlock |
+dataFile := 'dataFile' asFilename.
+separator := $,.								"comma"
+stream := dataFile writeStream.
+writingBlock := [
+			ColorValue constantNames do: [ :color |
+				stream nextPutAll: color.
+				stream nextPut: separator]].
+writingBlock ensure: [stream close].
+dataFile edit.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.textFile.readFields"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Read fields from a data file</title>
+<body><p><indexterm>file<indexterm>read data fields</indexterm></indexterm><ol>
+<li><p>Create a read stream on the file by sending a <apiname>readStream</apiname> message
+to the <apiname>Filename</apiname>.</p></li>
+<li><p>Create a block in which the next field of data is fetched
+by sending an <apiname>upTo:</apiname> message to the stream, with
+the separator character as the argument. This is repeated by placing
+it within an inner block that is repeated until the end of the stream
+is encountered.</p></li>
+<li><p>Send an <apiname>ensure:</apiname> message to the data-reading
+block. The argument is another block that closes the stream by sending
+a <apiname>close</apiname> message to it.
+<codeblock otherprops="smalltalk expression">| dataFile stream separator writingBlock colorNames readingBlock |
+dataFile := 'dataFile' asFilename.
+separator := $,.								"comma"
+"Write data"
+stream := dataFile writeStream.
+writingBlock := [
+			ColorValue constantNames do: [ :color |
+				stream nextPutAll: color.
+				stream nextPut: separator]].
+writingBlock ensure: [stream close].
+"Read data"
+stream := dataFile readStream.
+colorNames := OrderedCollection new.
+readingBlock := [
+			[stream atEnd] whileFalse: [
+				colorNames add: (stream upTo: separator)]].
+readingBlock ensure: [stream close].
+^colorNames</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.textFile.setFilePermissions"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set file permissions</title>
+<body><p><indexterm>file<indexterm>set permissions</indexterm></indexterm>On
+operating systems such as UNIX that support file and directory permissions,
+the permission to change a file can be added or removed as shown
+in the basic steps.<ol><li><p>To remove the permission to change
+the contents of a file or directory, send a <apiname>makeUnwritable</apiname> message
+to the <apiname>Filename</apiname>.</p></li>
+<li><p>To restore the writing permission, send a <apiname>makeWritable</apiname> message.</p></li>
+<li><p>To find out whether the writing permission is enabled, send
+a <apiname>canBeWritten</apiname> message. If the file or directory
+does not exist, a response of <codeph>true</codeph> indicates that
+the parent directory is writable. The <apiname>canBeWritten</apiname> test
+works on all operating systems.
+<codeblock otherprops="smalltalk expression">| newFile stream removed restored |
+newFile := 'testFile' asFilename.
+stream := newFile writeStream.
+stream nextPutAll: Object comment.
+stream close.
+newFile makeUnwritable.
+removed := newFile canBeWritten.
+newFile makeWritable.
+restored := newFile canBeWritten.
+^'
+PERMISSION REMOVED: ', removed printString, '
+PERMISSION RESTORED: ', restored printString.</codeblock></p></li></ol></p>
+<p></p></body></topic></topic></dita>

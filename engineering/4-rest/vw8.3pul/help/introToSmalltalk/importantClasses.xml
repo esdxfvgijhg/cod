@@ -1,0 +1,607 @@
+<?xml version="1.0"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+	<topic id="vw.help.intro.importantClasses" 
+		xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+		<title>Other Important Classes</title>
+		<body>
+			<p>This part of the introduction covers the fundamentals of class 
+			<apiname>ExternalStream</apiname> and <apiname>Filename</apiname>, which are 
+			used with files and directories; and <apiname>BinaryObjectStorage</apiname> 
+			(a.k.a. <codeph>BOSS</codeph>) which can save complex objects in files and 
+			later retrieve them; and <apiname>Exception</apiname> and its subclasses,
+			which handle error conditions such as division by 0 or out-of-bounds access 
+			of arrays.</p>
+		</body>
+		
+		<topic id="vw.help.intro.importantClasses.streamsAndFiles" 
+			xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+			<title>External Streams and Files</title>
+			<body>
+			<p>Files are the traditional means for storing and retrieving application data. 
+			Class <apiname>Filename</apiname> provides the interface between &Product; and 
+			the file system of your computer. The <i>External stream</i> classes implement 
+			mechanisms to open files, read or write them byte-by-byte, and perform other 
+			file operations.</p>
+			<p>Class <codeph>Filename</codeph> provides unified platform-independent access to 
+			files and directories. Because file systems are platform-dependent, <codeph>Filename</codeph> 
+			is an abstract class and the real work is implemented by its concrete subclasses. 
+			This dependency is hidden because when you send a message to create a 
+			<codeph>Filename</codeph> object, the method creates an instance of the default 
+			concrete class for the current platform.</p>
+			
+			<p>The following are the essential <codeph>Filename</codeph> protocols and methods 
+			and a few examples of their use.</p>
+			
+			<p>As usual, the class-side <b>instance creation</b> methods provide protocol 
+			for creating new objects. A <codeph>Filename</codeph> (either a file or a directory) 
+			is created with the message <codeph>named: aString</codeph> where <codeph>aString</codeph> 
+			is the name of the file, e.g.:
+			<codeblock otherprops="smalltalk expression">Filename <b>named:</b> 'notes.txt'	"Refers to an existing or non-existent file in the current directory but does not create it."</codeblock></p>
+		
+			<p>You can also create a <codeph>Filename</codeph> object from a <codeph>String</codeph> 
+			with <codeph>asFilename</codeph>, e.g.:
+			<codeblock otherprops="smalltalk expression">'C:\VW5i.4\help\notes.txt' asFilename	"Example with complete file access path."</codeblock></p>
+		
+			<p>The class-side <b>utilities</b> protocol provides a number of useful methods, 
+			such as:
+			<codeblock otherprops="smalltalk expression">Filename <b>filesMatching:</b> '*.st'.		"Return the names of all files in the current directory matching the argument."
+			Filename <b>volumes</b>	"Return the names of all reachable disk volumes (disk drives)."</codeblock></p>
+		
+			<p>The class-side <b>constants</b> protocol provides access to platform-dependent 
+			conventions, e.g.:
+			<codeblock otherprops="smalltalk expression">Filename separator	"Return this platform's separator in file path. Frees code from the platform-dependent syntax."</codeblock></p>
+			<p>This and related methods make it possible to write code that can run on any platform.</p>
+		
+			<p>Methods in the <b>defaults</b> protocol provide access to the current directory, e.g.:
+			<codeblock otherprops="smalltalk expression">Filename currentDirectory	"Return the Filename representing the current directory."</codeblock></p>
+		
+			<p>On the instance side of class <codeph>Filename</codeph>, methods in the 
+			<b>utilities</b> protocol provide access to file creation and other dates, 
+			its contents (without having to open or close the file), and so on, e.g.:
+			<dl>
+			<dlentry>
+			<dt>contentsOfEntireFile</dt>
+			<dd>Return the contents of the file as a <codeph>String</codeph>. Does not 
+				require opening and closing the file.</dd>
+			</dlentry>
+			<dlentry>
+			<dt>dates</dt>
+			<dd>Return a <codeph>Dictionary</codeph> with file access dates; contents 
+				depend on the platform.</dd>
+			</dlentry>
+			</dl>
+			</p>
+		
+			<p>The <b>file utilities</b> protocol contains numerous useful methods for 
+			operations on the underlying file, including:
+			<dl>
+			<dlentry>
+			<dt>fileSize</dt>
+			<dd>Answer the integer size of the receiver file in bytes.</dd>
+			</dlentry>
+			<dlentry>
+			<dt>directoryContents</dt>
+			<dd>Return the contents of the receiver, presumably a directory.</dd>
+			</dlentry>
+			<dlentry>
+			<dt>copyTo: aFilename</dt>
+			<dd>Copy the receiver's contents to <codeph>aFilename</codeph>, 
+				without affecting the receiver.</dd>
+			</dlentry>
+			<dlentry>
+			<dt>delete</dt>
+			<dd>Delete the receiver <codeph>Filename</codeph> (a file or a directory).</dd>
+			</dlentry>
+			<dlentry>
+			<dt>makeDirectory</dt>
+			<dd>Create a subdirectory of the current directory.</dd>
+			</dlentry>
+			<dlentry>
+			<dt>moveTo: aFilename</dt>
+			<dd>Copy the receiver to destination <codeph>aFilename</codeph> 
+				and delete the receiver.</dd>
+			</dlentry>
+			<dlentry>
+			<dt>renameTo: aFilename</dt>
+			<dd>Rename the receiver, possibly resulting in a move to another directory.</dd>
+			</dlentry>
+			<dlentry>
+			<dt>makeWriteable</dt>
+			<dd>Make the receiver a writeable file.</dd>
+			</dlentry>
+			<dlentry>
+			<dt>makeUnwriteable</dt>
+			<dd>Make the receiver a read-only file.</dd>
+			</dlentry>
+			</dl></p>
+		
+			<p>In the <b>converting</b> protocol:
+			<codeblock otherprops="smalltalk expression">aFilename <b>asString</b>	"Answer the file's or directory's name"</codeblock></p>
+		
+			<p>In the <b>testing</b> protocol:
+			<dl>
+			<dlentry>
+			<dt>exists</dt>
+			<dd>Does the receiver file or directory exist?</dd>
+			</dlentry>
+			<dlentry>
+			<dt>isWriteable</dt>
+			<dd>Is the receiver file or directory writeable?</dd>
+			</dlentry>
+			<dlentry>
+			<dt>isDirectory</dt>
+			<dd>Is the receiver a directory (rather than a file)?</dd>
+			</dlentry>
+			</dl></p>
+		
+			<p>Methods in the <b>parsing</b> protocol can parse the path 
+			of the receiver; note that the file described by the path does 
+			not have to exist:
+			<codeblock otherprops="smalltalk expression">'C:\mydirectory\test.txt' asFilename head.		"Return the directory prefix of the receiver, i.e.: 'C:\mydirectory'."
+			'C:\mydirectory\test.txt' asFilename tail			"Return name of receiver without path, here: 'test.txt'."
+			'C:\mydirectory\test.txt' asFilename extension		"Return receiver's extension, here: '.txt'."
+			'C:\mydirectory\test.txt' asFilename directory		"Return the Filename representing the receiver's directory or the receiver itself if it denotes a directory; similar to message head except that it returns a Filename object rather than a String.</codeblock></p>
+		
+			<section>
+			<title>Exercises</title>
+			<ol>
+			<li>Print the names of all directories in the root directory of the current disk drive.</li>
+			<li>Print the names of all files in the root directory.</li>
+			<li>Print the names of all read-only files in the root directory.</li>
+			<li>Open the File Browser tool from the Launcher (under the <uicontrol>File</uicontrol> 
+			command or using the button) and use it to create a short text file in the root directory.</li>
+			<li>Display the contents of the text file from the previous exercise in the Transcript.</li>
+			</ol>
+			</section>
+		
+			<section>
+			<title>Files and Streams</title>
+			<p>Class <apiname>Filename</apiname> provides an interface to the file system but no 
+			messages to operate on the contents of the file except <codeph>contentsOfEntireFile</codeph>. 
+			Access to the 
+			bytes stored in a file is provided by various <term>external stream</term> classes. 
+			Here, "external" refers to data outside the Smalltalk image, such as files, network 
+			streams, sockets, etc.</p>
+			<p>External streams are subclasses of <apiname>Stream</apiname> and form one of the 
+			branches of its subtree. The other very important branch contains <term>internal streams</term> 
+			that are used mainly for efficient manipulation of strings and other sequenceable collections. 
+			Internal streams are very important but I will not cover them due to lack of space. 
+			I recommend that you study these classes in the documentation and using the System Browser. 
+			Many of the messages described below are inherited from abstract superclasses common to 
+			both internal and external streams but their description is written in the context of 
+			external streams.</p>
+			<p>Streams in general can perhaps be best visualized as providing a window that can be 
+			moved back and forth over an indexable collection. For internal streams, this collection 
+			is usually a string (an indexable collection of characters). For files, the underlying 
+			collection is a byte array. The role of the esential stream messages is to move this 
+			window back and forth, and to read or write the elements in the position currently "visible" 
+			through the window. The branch of the class library leading to external streams forms a 
+			rather large hierarchy of mostly abstract classes and the following instance variables 
+			are essential for basic use:
+			<dl>
+			<dlentry>
+			<dt>position</dt>
+			<dd>Return the current position of the "window" within the file treated as a stream of 
+				bytes, an integer with initial value 0; next read or write access will occur at 
+				position + 1.</dd>
+			</dlentry>
+			<dlentry>
+			<dt>readLimit</dt>
+			<dd>Return the integer size of the collection, beyond which the stream cannot be read.</dd>
+			</dlentry>
+			<dlentry>
+			<dt>writeLimit</dt>
+			<dd>Return the position of the last byte written to the file.</dd>
+			</dlentry>
+			</dl></p>
+		
+			<p>The following are the essential behaviors required for use of streams with files:</p>
+			</section>
+			
+			<section>
+			<title>Creating Streams</title>
+			<p>External streams are created over <apiname>Filename</apiname> objects by 
+			messages in its <term>stream creation</term> instance-side protocol. Several 
+			types of streams can be created, and they differ in how they access the underlying 
+			file. The basic types are read streams, write streams, and read-write streams 
+			but other types of access can also be prescribed. The following are examples of 
+			the essential stream-creation messages understood by instances of <codeph>Filename</codeph>:
+			<dl>
+			<dlentry>
+			<dt>readStream</dt>
+			<dd>Opens the file associated with the receiver and returns a stream on it 
+				allowing sequential and random <b>read-only</b> byte-oriented access. 
+				No writing is possible.</dd>
+			</dlentry>
+			<dlentry>
+			<dt>writeStream</dt>
+			<dd>Opens/creates the file; returns a stream allowing sequential or random 
+				<b>write-only</b> byte-oriented access. No reading.</dd>
+			</dlentry>
+			<dlentry>
+			<dt>readWriteStream</dt>
+			<dd>Opens/creates the file; returns a stream allowing sequential or random 
+				<b>read-write</b> byte-oriented access.</dd>
+			</dlentry>
+			</dl></p>
+			<p>When your application is finished with a stream, you should 
+			explicitly close it, e.g.:
+			<codeblock otherprops="smalltalk expression">aStream close		"Close the underlying file stream"</codeblock></p>
+			</section>
+			<section>
+			<title>Testing Streams</title>
+			<p>To test the position of a stream:
+			<dl>
+			<dlentry>
+			<dt>atEnd</dt>
+			<dd>Return <codeph>true</codeph> if the stream is positioned at the end of the file.</dd>
+			</dlentry>
+			</dl></p>
+			</section>
+		
+			<section>
+			<title>Positioning Streams</title>
+			<p>Methods in the <b>positioning</b> protocol allow for byte-oriented reading and writing:
+			<dl>
+			<dlentry>
+			<dt>next</dt>
+			<dd>Increment the position and return next byte in file.</dd>
+			</dlentry>
+			<dlentry>
+			<dt>nextPut: aByte</dt>
+			<dd>Increment the position and store <codeph>aByte</codeph> (for example, 
+				a <codeph>Character</codeph>) in the new position.</dd>
+			</dlentry>
+			<dlentry>
+			<dt>nextPutAll:	aCollection</dt>
+			<dd>Increment the position and store <codeph>aCollection</codeph>'s elements 
+				one-by-one in consecutive positions; <codeph>aCollection</codeph> is very 
+				often a <codeph>String</codeph>.</dd>
+			</dlentry>
+			</dl></p>
+			</section>
+		
+			<section>
+			<title>Examples</title>
+			<p>To illustrate some of these methods, the following code fragment 
+			stores text in a file called <filepath>test.txt</filepath>:
+			<codeblock otherprops="smalltalk expression">| filename writeFileStream |
+			"Create a file in the current directory and a write stream over it, store a string in it, and close the stream."
+			filename := 'test.txt' asFilename.
+			writeFileStream := filename <b>writeStream</b>.
+			writeFileStream nextPutAll: 'testing, testing'.
+			writeFileStream close</codeblock></p>
+		
+			<p>To read the data back one character at-a-time, displaying the characters in the 
+			<codeph>Transcript</codeph> one character per line, close file and delete it:
+			<codeblock otherprops="smalltalk expression">| filename readFileStream |
+			filename := 'test file.txt' asFilename.
+			readFileStream := filename <b>readStream</b>.
+			Transcript clear.
+			[readFileStream atEnd] 
+				whileFalse: [Transcript nextPut: readFileStream next; cr].
+			Transcript flush.
+			readFileStream close.
+			filename delete</codeblock></p>
+			</section>
+			
+			<section>
+			<title>Notes</title>
+			<ul>
+			<li>Don't forget to close a stream when you are finished  with it. Preferably use 
+			the <codeph>ensure:</codeph> message described in the section on exceptions, below.</li>
+			<li>Note that the <codeph>Transcript</codeph> understands stream accessing protocol. 
+			For a sequence of outputs to <codeph>Transcript</codeph>, a sequence of <codeph>nextPut:</codeph> 
+			and <codeph>nextPutAll:</codeph> followed by <codeph>flush</codeph> is much faster 
+			than a sequence of <codeph>show:</codeph> messages.</li>
+			</ul>
+			</section>
+			</body>
+		</topic>
+			
+		<topic id="vw.help.intro.importantClasses.boss" 
+			xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+			<title>The Binary Object Streaming Service (BOSS)</title>
+			<body>
+			<p><i>BOSS</i> is the name of a collection of &Product; classes used to store 
+			Smalltalk objects in files and read them back, and <apiname>BinaryObjectStorage</apiname> 
+			is its main class. <codeph>BOSS</codeph> is not a part of the basic image and 
+			if you want to use it, you must load the <codeph>BOSS</codeph> parcel (use 
+			the Parcel Manager). 
+			<codeph>BOSS</codeph> is very powerful and can store quite complicated objects 
+			such as a sorted collection of <codeph>Book</codeph> objects. You will see that 
+			object storage and retrieval using BOSS requires only a few messages and is very 
+			simple.</p>
+			<p>However, BOSS has some limitations, the major one being that it cannot store 
+			objects that "belong" to the host operating system, such as windows of graphical 
+			user interfaces and the objects that reference them.</p>
+			
+			<section>
+			<title>Using BOSS</title>
+			<p>For routine use, the only BOSS class you need to know is <codeph>BinaryObjectStorage</codeph>. 
+			To read or write objects using BOSS you just use the accessing and positioning methods 
+			described for file streams. The only other methods you need are <codeph>onNew: aStream</codeph> 
+			(to create a <codeph>Stream</codeph> for writing) and <codeph>onOld: aStream</codeph> 
+			(for reading objects from an existing file).</p>
+			<p>For example, the following code fragment stores an <codeph>Array</codeph> in a file 
+			and then reads it back. The code is rather redundant &#x2014; the same result could be 
+			achieved with fewer lines and variables but this version clearly indicates the objects 
+			involved. A shorter version is given in the next example:
+			<codeblock otherprops="smalltalk expression">| theArray aFilename writeFileStream boss |
+			"Create file and a write stream over it, use BOSS to store an Array, close."
+			aFilename := 'file.bos' asFilename.
+			theArray := #('string 1' 'string 2' 100 200).
+			writeFileStream := aFilename writeStream.
+			boss := BinaryObjectStorage <b>onNew:</b> writeFileStream.
+			boss <b>nextPut:</b> theArray.
+			boss <b>close</b></codeblock>
+			<p>Examine the file with the File Browser to see that it contains binary data 
+			rather than text.</p>
+			<p>Now, to read the BOSS file back into a Smalltalk object:
+			<codeblock otherprops="smalltalk expression">| theArray aFilename readFileStream boss |
+			"Open a read stream over the file created above, read the Array from it using BOSS, print it, close and delete the file."
+			aFilename := 'file.bos' asFilename.
+			readFileStream := aFilename readStream.
+			boss := BinaryObjectStorage <b>onOld:</b> readFileStream.
+			theArray := boss <b>next</b>.
+			Transcript clear; show: theArray printString.
+			boss <b>close</b>.
+			aFilename delete</codeblock></p>
+		
+			<p>Note that the whole array was stored as a single object rather than a 
+			sequence of the array's elements. The following variation stores the elements 
+			<i>separately</i> and reads them back one-by-one:
+			<codeblock otherprops="smalltalk expression">| theArray boss |
+			"Create file and a write stream over it, store individual elements of an Array object in it using BOSS, close."
+			theArray := #('string 1' 'string 2' 100 200).
+			boss := BinaryObjectStorage onNew: 'file.bos' asFilename writeStream.
+			boss <b>nextPutAll:</b> theArray.	"nextPutAll: stores the collection's elements one-by-one."
+			boss close</codeblock></p>
+			
+			<codeblock otherprops="smalltalk expression">| aFilename boss |
+			aFilename := 'test file.bos' asFilename.
+			boss := BinaryObjectStorage onOld: filename readStream.
+			Transcript clear.
+			[boss atEnd] 
+				whileFalse: [Transcript show: boss next printString; cr].	"Typical pattern for reading files."
+			boss close.
+			aFilename delete</codeblock></p>
+		
+			<p>Using random access stream messages, BOSS could be used as a simple 
+			database system.</p>
+			</section>
+			
+			<section>
+			<title>Exercises</title>
+			<ol>
+			<li>Create a two-element array whose first element is the array of all even 
+			numbers between 1 and 10 and whose second element is the array of all odd 
+			numbers between 1 and 10. Store this object in a file as a single object 
+			using BOSS. Read this object back and print it to Transcript.</li>
+			<li>Store the same array as a sequence of elements (a 10-element sequence 
+			of objects consisting of 2, 4, 6, 8, 10, 1, 3, 5, 7, 9), read it back into 
+			an <codeph>OrderedCollection</codeph>, and inspect the result.</li>
+			</ol>
+			</section>
+			</body>
+		</topic>
+		
+		<topic id="vw.help.intro.importantClasses.exception" 
+			xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+			<title>Exceptions</title>
+			<body>
+		
+			<p>Well-designed applications must anticipate illegal conditions such as reading 
+			from a file that does not exist, or accessing an array index outside its legal bounds. 
+			One way to handle such conditions is to test for them and deal with non-stanard 
+			situations, another is dealing with the problem when it occurs. Prevention consists 
+			of conditional logic with expressions such as <codeph>collection detect:ifNone:</codeph> 
+			or <codeph>aFilename exists ifTrue: [...] ifFalse: [...]</codeph>. The problem-handling 
+			approach uses <codeph>Exception</codeph> objects. This section explains the principles 
+			of <codeph>Exception</codeph>s.</p>
+			
+			<p>A Smalltalk exception is an object designed to help in handling non-standard situations, 
+			an instance of one of the subclasses of<codeph> Exception</codeph>. According to the 
+			&Product; documentation, "exceptions are unusual or undesired events that can occur 
+			during the execution of a &Product; application", and exception handling consists of 
+			"raising an exception" (instantiating one of the exception classes) when the 
+			unusual or undesired event occurs, and specifying how to handle a particular exception.</p>
+			<p>To use the exception-handling system, one must understand:
+			<ul>
+			<li>the classes that define exception objects</li>
+			<li>the methods that raise and handle exceptions, and</li>
+			<li>the principle of their operation.</li>
+			</ul></p>
+			
+			<p>The following is a brief summary of these topics. For more details, refer to 
+			the <xref href="./doc/AppDevGuide.pdf" format="pdf" 
+			scope="external"><i>Application Developer's Guide</i></xref>.</p>
+		
+			<section>
+			<title>Exception Classes</title>
+			<p>All &Product; exceptions are defined as subclasses of class <codeph>GenericException</codeph>. 
+			This branch of the class library is quite large as you can see by evaluating:
+			<codeblock otherprops="smalltalk expression">GenericException allSubclasses size</codeblock></p>
+		
+			<p>Class<codeph> GenericException</codeph> defines a number of instance and class 
+			variables, including <codeph>messageText</codeph> (describing the error), 
+			<codeph>originator</codeph> (the object that raised the exception), 
+			<codeph>notifierString</codeph> (the default string used to describe the receiver), 
+			<codeph>initialContext</codeph> (the initial context of the message send in which the 
+			exception was raised), and others.</p>
+			<p>The most important subclasses of <codeph>GenericException</codeph> are: 
+			<codeph>Error</codeph>, <codeph>Warning</codeph>, and <codeph>Notification</codeph>. 
+			The difference between them lies in the severity of the event that raised them. 
+			<term>Error</term> is the superclass of exception classes raised when a serious 
+			program error that requires an intervention occurs; its subclasses include 
+			<codeph>ArithmeticError</codeph>, <codeph>DomainError</codeph>, <codeph>ZeroDivide</codeph>, 
+			<codeph>RangeError</codeph>, <codeph>MessageNotUnderstood</codeph>, <codeph>KeyNotFoundError</codeph>, 
+			<codeph>SubscriptOutOfBoundsError</codeph>,  and many others. The default response 
+			to an <codeph>Error</codeph> is to open the Debugger, as happens, for example, if you 
+			evaluate:
+			<codeblock otherprops="smalltalk expression">#(1 2 3) at: 4</codeblock></p>
+		
+			<p>For a less disruptive response, your application should define a handler that 
+			deals with the situation programmatically and avoids an exception window. I will 
+			show how to do this shortly. A <term>Warning</term> is a less serious exception 
+			raised when the user (or the program) should be notified of some exceptional event 
+			by a dialog rather an exception window. The default action for a <term>Notification</term> 
+			is to do nothing and continue execution; the presence of this exception can, however, 
+			be handled using the same techniques as other exceptions.</p>
+			<p>You can define your own exception classes as subclasses of <codeph>Exception</codeph> 
+			and activate (raise) them at appropriate places of your program with the messages 
+			<codeph>raiseSignal</codeph> or <codeph>raiseSignal: aString</codeph>. More commonly, 
+			you will only need to intercept (trap) some of the predefined exceptions and handle 
+			them in ways similar to the examples included in the class-side protocol <codeph>examples</codeph> 
+			of class <codeph>Exception</codeph>. Note, however, that these examples are written 
+			in terms of the older exception handling mechanism that used <codeph>Signal</codeph>s 
+			rather than exceptions. In essence, <codeph>Signal</codeph>s were mapped to exceptions 
+			and have been introduced for conformity with the ANSI Smalltalk standard.</p>
+			</section>
+			<section>
+			<title>Handling Exceptions</title>
+			<p>Every exception has its default handler action (specified by the method 
+			<codeph>defaultAction</codeph>, usually inherited) which is executed when the 
+			exception occurs and the program does not provide an explicit error handling action. 
+			As an example,
+			<codeblock otherprops="smalltalk expression">3 / 0</codeblock>
+			by default opens the familiar <codeph>Exception</codeph> window, whereas a 
+			<codeph>Warning</codeph> by default simply opens a <codeph>true/false</codeph> 
+			confirmation dialog, as in (<uicontrol>Do It</uicontrol>:
+			<codeblock otherprops="smalltalk expression">Warning raiseSignal: 'Very large object encountered. Proceed?'</codeblock></p>
+			<p>If you anticipate the possibility of an exception and want to handle it, 
+			you should "guard" the operation that might create the exception by inserting 
+			it in a block, and send it the message <codeph>on: anExceptionClass do: handlerBlock</codeph>. 
+			The <codeph>on:</codeph> argument is the name the class of the anticipated 
+			exception, and the argument to <codeph>do:</codeph> (<codeph>handlerBlock</codeph>) 
+			is a block that will be evaluated if the exception of the specified class or 
+			its subclass is raised during the evaluation of the guarded block. As an example, 
+			to guard against division by 0, you could write:
+			<codeblock otherprops="smalltalk expression">| divisor |
+			divisor := (Dialog request: 'Enter divisor' initialAnswer: '0') asNumber.
+			[10 / divisor]		"Operation to be attempted in a guarded fashion."
+				<b>on:</b> ZeroDivide	"Anticipated possible type of Exception."
+				<b>do:</b> [:exception | Dialog warn: 'Attempt to divide by zero.'].	"Handler - evaluated only if ZeroDivide exception occurs. <b>Note that the raised exception is available to the code of the block</b>."
+			Transcript clear; show: 'divisor = ', divisor printString</codeblock></p>
+			<p>When this code fragment is evaluated and <codeph>divisor ~= </codeph><codeph>0</codeph>, 
+			the receiver block performs the indicated division and evaluation proceeds to the 
+			<codeph>Transcript</codeph> statement. When <codeph>divisor = 0</codeph>, the 
+			handler catches the exception, evaluates the <codeph>do:</codeph> block, and 
+			proceeds to the <codeph>Transcript</codeph> statement. The exception window is 
+			never displayed. Note that the behavior depends on the notion of a block of 
+			statements that is only evaluated when the specified exceptional condition occurs.</p>
+			<p>The general pattern for Smalltalk error handlers is as follows: as the receiver 
+			block of <codeph>on:do:</codeph> is being evaluated, each invoked message puts an 
+			"evaluation context" object with information about the message, its receiver, 
+			and its arguments on an evaluation stack (e.g., of the kind shown in a Debugger window). 
+			A large number of contexts may thus pile up on top of the context of the 
+			method evaluating the <codeph>on:do:</codeph> message. If the evaluation of a 
+			message succeeds without raising an exception, its context is removed from the 
+			stack and if all messages in the guarded block succeed, the piled-up messages 
+			unwind one-by-one and eventually strip the stack down to the context object of 
+			the <codeph>on:do:</codeph> message. If, however, a message executed in the 
+			guarded block raises an exception, Smalltalk starts searching the context stack 
+			from this message's context (now on the top of the stack) until it finds an 
+			<codeph>on:do:</codeph> message whose <codeph>on:</codeph> argument is the 
+			exception class of the exception that was raised or its subclass. It then 
+			evaluates the <codeph>do:</codeph> block and execution proceeds from this point. 
+			If a matching <codeph>on:do:</codeph> message is not found, the default action 
+			is generally to open the Debugger.</p>
+			</section>
+			
+			<section>
+			<title>Exercises</title>
+			<ol>
+			<li>Modify the example above to open an inspector when the exception occurs. Inspect the 
+			components of the exception.</li>
+			<li>Repeat the previous exercise but open the debugger.</li>
+			<li>Browse the <codeph>Exception</codeph> hierarchy and examine the instance variables 
+			and methods defined in <codeph>Exception</codeph> and its subclasses.</li>
+			<li>Examine the definitions of the following exceptions and write code fragments that 
+			will raise them. Write handlers to deal with them: <codeph>IndexNotFoundError</codeph>,	
+			<codeph>keyNotFoundError</codeph>,	<codeph>NotFoundError</codeph>,	<codeph>PositionOutOfBoundsError</codeph>.</li>
+			<li>What is the difference between instance variable <codeph>messageText</codeph> and 
+			class instance variable <codeph>notifierString</codeph>, both defined in class 
+			<codeph>GenericException</codeph>.</li>
+			</ol>
+			</section>
+			
+			<section>
+			<title>Resuming from Exceptions</title>
+			<p>An exception available in the <codeph>do:</codeph> handler block can be asked 
+			to respond in special ways. Two of them are illustrated in simple examples below, 
+			and others are described in the &Product; documentation and illustrated using several 
+			examples in class <codeph>Exception</codeph>. All these methods are defined in class 
+			<codeph>GenericException</codeph> and you can, of course, define your own additional 
+			methods using information available in <codeph>Exception</codeph> objects.</p>
+			
+			<p>Instead of exiting from the guarded block after handling the exception, your application 
+			can also re-evaluate the guarded block, possibly modifying some objects first to make 
+			the re-evaluation possible. For example:
+			<codeblock otherprops="smalltalk expression">| divisor |	"On exception, give divisor a new but reasonable value that will succeed."
+			divisor := (Dialog request: 'Enter divisor' initialAnswer: '0') asNumber.
+			[10 / divisor]		"Operation to be attempted."
+				on: ZeroDivide
+				do: [:exception | Dialog warn: 'Attempt to divide by zero.\Replacing divisor.' withCRs. divisor := 0.000001. <b>exception retry</b>].
+			Transcript clear; show: 'divisor = ', divisor printString</codeblock></p>
+		
+			<p>Instead of exiting, your application can continue processing the guarded block 
+			immediately behind the point where the exception occurred. For example, 
+			the following code fragment traps <uicontrol>&lt;Ctrl&gt; y</uicontrol> pressed by 
+			the user during execution:
+			<codeblock otherprops="smalltalk expression">"Press &lt;Ctrl&gt; y during the execution of the block to see the effect of the following."
+			[(Delay forSeconds: 5) wait]
+					on: UserInterrupt	"Trap &lt;Ctrl&gt; y, which normally causes user interrupt and opens an exception window."
+					do: [:ex | Dialog warn: 'You pressed Ctrl y'. ex resume]	"Return to the loop inside the guarded block."</codeblock></p>
+		
+			<p>Another way to handle exceptions is to use the <codeph>ensure: aBlock</codeph> 
+			or <codeph>ifCurtailed: aBlock</codeph> messages. Like <codeph>on:do:</codeph>, both of 
+			these methods are defined in class <codeph>BlockClosure</codeph> and start by 
+			evaluating the receiver. The <term>ensure:</term> message then evaluates the 
+			block argument <codeph>aBlock</codeph>, regardless of whether the receiver block evaluated 
+			successfully or not. A typical use of <codeph>ensure:</codeph> is in processing files 
+			where we must ensure that the external stream is closed whether the file operations 
+			succeeded or not. The pattern (which is the recommended way to work with files) is as follows:
+			<codeblock otherprops="smalltalk expression">["open stream on Filename and do something"]
+				ensure: [stream close]	"Close stream whether the operations in the block succeeded or not. Note that the exception is not specified."</codeblock></p>
+		
+			<p>As another example, evaluate:
+			<codeblock otherprops="smalltalk expression">| divisor |
+			divisor := (Dialog request: 'Enter divisor' initialAnswer: '0') asNumber.
+			[10 / divisor] ensure: [Dialog warn: 'Division may or may not have succeeded.']</codeblock></p>
+		
+			<p>The message <term>ifCurtailed:</term> <codeph>aBlock</codeph> evaluates 
+			<codeph>aBlock</codeph> <i>only</i> if the evaluation of the receiver fails. As an example,
+			<codeblock otherprops="smalltalk expression">| divisor |
+			divisor := (Dialog request: 'Enter divisor' initialAnswer: '0') asNumber.
+			[10 / divisor]	 <b>ifCurtailed:</b> [Dialog warn: 'Division by zero attempted.']	"Click Terminate in Exception window on exception. Note again the exception is not specified."</codeblock></p>
+			<p>If the <codeph>divisor</codeph> is not 0, the argument block is not evaluated.</p>
+			<p>As you have noted, these two messages allow the raised exceptions to perform their 
+			default actions (such as opening an exception window) but "tolerate" (<codeph>ensure:</codeph>) 
+			or "sense" (<codeph>ifCurtailed:</codeph>) their occurrence.</p>
+			</section>
+			
+			<section>
+			<title>Exercises</title>
+			<ol>
+			<li>Modify the <codeph>retry</codeph> example to ask the user for a new divisor.</li>
+			<li>Modify the <codeph>retry</codeph> example to ask the user whether to enter a new 
+			divisor or continue and proceed accordingly.</li>
+			<li>Browse references to <codeph>ensure:</codeph> and <codeph>ifCurtailed:</codeph> 
+			and see examples in class <codeph>Exception</codeph>.</li>
+			</ol>
+			</section>
+			</body>
+		</topic>
+	</topic>
+</dita>

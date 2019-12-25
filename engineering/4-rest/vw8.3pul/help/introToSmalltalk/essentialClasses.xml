@@ -1,0 +1,848 @@
+<?xml version="1.0"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+<!ENTITY arrow		"&#x2192;">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+	<topic id="vw.help.intro.essentialClasses" 
+		xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+		<title>Essential Classes and Methods</title>
+		<body>
+			<p>Although learning Smalltalk certainly does not require knowing all the 
+			classes in the library, you cannot write Smalltalk code without knowing about 
+			the fundamental classes such as those implementing numbers and strings. 
+			Introducing these base classes is the subject of this part of the Introduction. 
+			Additional important classes are described later. Once you start using Smalltalk, 
+			you will quickly learn the classes that you need most often.</p>
+		</body>
+		<topic id="vw.help.intro.essentialClasses.object" 
+			xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+			<title>Class Object</title>
+			<body>
+			<p>Because <codeph>Object</codeph> is the superclass of all classes, all classes 
+			inherit all of its methods. Some of the most common ones and their protocols are 
+			introduced here.</p>
+			
+			<section>
+			<title>Printing</title>
+			<p>Methods in the <codeph>printing</codeph> protocol are responsible for generating 
+			a textual representation of their class. For example, sending <codeph>printString</codeph> 
+			converts the receiver to a string object 
+			using the <codeph>printOn:</codeph> method. Use <codeph>printString</codeph> when 
+			you need a string representing an object, for example, to print in the Transcript 
+			with the <codeph>show:</codeph> message as in:
+			<codeblock otherprops="smalltalk expression">Transcript show: (5 * 3) <b>printString</b></codeblock></p>
+			<p>or in dialogs as in:
+			<codeblock otherprops="smalltalk expression">| price |
+			price := 100.
+			Dialog warn: 'The price is ', price printString</codeblock></p>
+			<p>The basic definition of <codeph>printString</codeph> in class <codeph>Object</codeph> 
+			is not very useful because it essentially only returns the name of the class. 
+			If you define a new class and want <codeph>printString</codeph> to produce 
+			more specific information, you must define your own <codeph>printOn:</codeph> method. 
+			To do this, follow one of the many examples in the class library.</p>
+			</section>
+			
+			<section>
+			<title>Comparing</title>
+			<p>Comparing objects for equality and equivalence (identity) returns 
+			<codeph>true</codeph> or <codeph>false</codeph>.</p>
+			<p>Sending <codeph>=</codeph> checks whether the receiver and the argument 
+			are equal in some programmer-defined way, while 
+			<codeph>=</codeph> checks whether the receiver and the argument are 
+			equivalent, i.e., one and the same object".</p>
+			<p>To illustrate the difference between equality and equivalence, consider 
+			two <codeph>Book</codeph> objects defined by the programmer to be equal 
+			when they have the same author and title. Two books with the same author 
+			and title but a different publisher will then be equal but not equivalent 
+			(identical). As another example, evaluate:
+			<codeblock otherprops="smalltalk expression">| p1 p2 |
+			p1 := (Point x: 10 y: 20).
+			p2 := (Point x: 10 y: 20).
+			Transcript clear; show: (p1 = p2) printString.	"true -- two points whose x and y are equal because Point defines = that way."
+			Transcript cr; show: (p1 == p2) printString	"false -- these are two equal but distinct objects." </codeblock></p>
+			<p>For many objects <codeph>=</codeph> and <codeph>==</codeph> give the 
+			same result because <codeph>Object</codeph> defines <codeph>=</codeph> to be 
+			the same as <codeph>==</codeph> and many classes don't override this definition. 
+			But don't take <codeph>=</codeph> and <codeph>==</codeph> for granted because 
+			sometimes they don't give intuitively obvious results. As an example:
+			<codeblock otherprops="smalltalk expression">'abc' = 'abc'.		"true"
+			'abc' == 'abc'	"false"</codeblock></p>
+			<p>Finally, <codeph>~=</codeph> means "not equal", while <codeph>~~</codeph> 
+			means "not equivalent".</p>
+			<p>In other words, if you define a new class and are not satisfied with 
+			the inherited definition of <codeph>=</codeph>, you can redefine it.</p>
+			</section>
+			
+			<section>
+			<title>Copying</title>
+			<p>Methods in the <codeph>copying</codeph> protocol make copies of the receiver 
+			and create a new object of the same kind as the receiver. The exact relation 
+			between the receiver and the copy depends on how certain methods are defined 
+			(copying semantics) as I will show next.</p>
+			<p>The two main methods in this protocol are <codeph>copy</codeph> and <codeph>postCopy</codeph>. 
+			Method <codeph>copy</codeph> first makes a "shallow copy" of its receiver 
+			and then sends a <codeph>postCopy</codeph> message to it to perform any 
+			other desired copy operations. The definition of <codeph>postCopy</codeph> 
+			in <codeph>Object</codeph> does not do anything, but many classes redefine 
+			<codeph>postCopy</codeph> to perform their customized copying operations. 
+			Misunderstanding the <codeph>copy</codeph> operation is a frequent cause of 
+			strange program behaviors and I will now explain it in more detail.</p>
+			<p>Let's imagine a library service application. It defines <codeph>Book</codeph>, 
+			a class that includes the instance variable <codeph>borrower</codeph>, an 
+			instance of <codeph>Person</codeph>. Class <codeph>Person</codeph> includes 
+			the instance variable <codeph>homeAddress</codeph>.</p>
+			<p>Let's assume that <codeph>Book</codeph> does not redefine <codeph>postCopy</codeph>. 
+			That is, if you send <codeph>copy</codeph> to a <codeph>Book</codeph> object, 
+			the result is a <term>shallow copy</term>, i.e., a new <codeph>Book</codeph> 
+			object whose instance variables have the values of the instance variables of 
+			the original. In particular, the <codeph>borrower</codeph> of both books will 
+			be the same <codeph>Person</codeph> object. If you now change the address of 
+			the borrower of the <term>copy</term> of the original book, the <term>original</term> 
+			book's borrower's address will also change, because the <codeph>borrower</codeph> 
+			objects of the original and the copy are one and the same object. The same thing, 
+			of course, happens if you change the original's address &#x2014; the copy's address 
+			will also change. If you do not desire this behavior, redefine <codeph>postCopy</codeph> 
+			in class <codeph>Book</codeph> accordingly. For examples, browse some implementors 
+			of <codeph>postCopy</codeph> in the Smalltalk class library. In essence, a "deep" 
+			copy requires that you define <codeph>postCopy</codeph> to create copies of instance 
+			variables to the desired depth.</p>
+			<p>We will see several other <codeph>Object</codeph> methods later. As a rule, 
+			whenever I say that you can use a message with <term>any</term> object, the implication 
+			is that its definition is in class <codeph>Object</codeph>. Three examples of such 
+			messages universally understood messages that we have already encountered are 
+			<codeph>class</codeph>, <codeph>halt</codeph>, and <codeph>inspect</codeph>.</p>
+			</section>
+			
+			<section>
+			<title>Exercises</title>
+			<ol>
+			<li>Read the definition of method <codeph>=</codeph> in class <codeph>Object</codeph>.</li>
+			<li>Find all classes that reimplement <codeph>=</codeph>.</li>
+			<li>An interesting method defined in <codeph>Object</codeph> is <codeph>isMemberOf:</codeph> 
+			It takes a class name as its argument and returns <codeph>true</codeph> if the receiver 
+			is an instance of the argument class. Try <codeph>3/5 isMemberOf: Number</codeph>,  
+			<codeph>3/5 isMemberOf: Fraction</codeph> and comment on the result.</li>
+			<li>Message <codeph>isKindOf:</codeph> is related to <codeph>isMemberOf:</codeph>. 
+			Read its definition in the Browser and try <codeph>3/5 isKindOf: Number</codeph>, 
+			<codeph>3/5 isKindOf: Fraction</codeph>. Explain the commonalities and differences 
+			between the two messages.</li>
+			<li>Message <codeph>respondsTo: aSymbol</codeph> answers <codeph>true</codeph> if 
+			the receiver understands the message whose selector is <codeph>aSymbol</codeph>. 
+			Try <codeph>3 respondsTo: #squared</codeph>, <codeph>3 respondsTo: #asUppercase</codeph>, 
+			<codeph>3 respondsTo: #blaBlaBla</codeph>, and <codeph>'abc' respondsTo: #+</codeph>. 
+			Find at least three references to this message in the library.</li>
+			<li>Read the definition of <codeph>copy</codeph> and <codeph>postCopy</codeph> in 
+			<codeph>Object</codeph>. Then read the definition of <codeph>postCopy</codeph> in 
+			<codeph>Rectangle</codeph> and explain its effect. Draw a diagram showing the 
+			original and its copy.</li>
+			<li>Find the definition of method <codeph>browse</codeph> and give an example of 
+			its use.</li>
+			<li>Class <codeph>Object</codeph> defines many messages. To see how many instance, 
+			evaluate <codeph>Object selectors size</codeph> with <uicontrol>Print it</uicontrol>.</li>		
+			</ol>
+			</section>
+		</body>
+		</topic>
+		
+		<topic id="vw.help.intro.essentialClasses.number" 
+			xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+			<title>Number classes</title>
+			<body>
+			<p>Smalltalk's number classes include integers, floating-point numbers, fractions, fixed-point numbers (fixed number of decimal digits), complex numbers (extension of the basic library in parcel <codeph>ATMetaNumerics</codeph>), metanumbers (same parcel including infinity and other unusual but useful kinds of numbers), and others. Numbers define the obvious protocols for arithmetic and mathematical functions. Check them out, for example, in class <codeph>ArithmeticValue</codeph> and try the following examples with <uicontrol>Print it</uicontrol>, carefully considering the effect of evaluation rules on the order of calculation:
+			<codeblock otherprops="smalltalk expression">3 + 7 / 3.					"A message from the <b>arithmetic</b> protocol."
+			(3 + 7 / 3) asFloat.			"asFloat is in the <b>converting</b> protocol."
+			(3 + 7 / 3) asFixedPoint: 2.	"asFixedPoint: is also in the <b>converting</b> protocol."
+			Float pi asRational.			"Also in the <b>converting</b> protocol."
+			15 log.						"log is in <b>mathematical functions</b>."
+			0.3 sin.						"sin is in <b>mathematical functions</b>."
+			1000 factorial.				"Protocol <b>factorization and divisibility</b>."
+			37 raisedTo: 22.				"raisedTo: is in <b>mathematical functions</b>."</codeblock></p>
+			<p>Some of the interesting aspects of number classes include the fact that all numbers 
+			are instances of classes (unlike most other languages where they are special data types 
+			and thus subject to different rules than objects), that they perform automatic conversions 
+			between "large" and "small" integers, and that you can extend their protocols &#x2014; 
+			because they are objects (you did define the <codeph>cubed</codeph> method in an 
+			earlier example).</p>
+
+			<section>
+			<title>Exercises</title>
+			<ol>
+			<li>What are the classes of the results of the above expressions?</li>
+			<li>What do you consider to be the three most important instance protocols of 
+			number classes?</li>
+			<li>What are the differences between <codeph>Float</codeph>, <codeph>Double</codeph>, 
+			<codeph>Fraction</codeph>, and <codeph>FixedPoint</codeph>?</li>
+			<li>What are some possible uses of <codeph>FixedPoint</codeph>? (Hint: Read the 
+			class comment.)</li>
+			<li>Create an instance of <codeph>FixedPoint</codeph> with two decimal digits. 
+			(Hint: See the class comment.)</li>
+			<li>What do you consider the most useful class message in class <codeph>Float</codeph>? 
+			How is its implementation in <codeph>Double</codeph> different?</li>
+			<li>Are there any senders of message <codeph>factorial</codeph>? What about the 
+			other messages in the same protocol?</li>
+			<li>Define methods calculating the following in the appropriate number classes: 
+			test for primality, Fibonacci numbers, radius and angle for complex numbers, 
+			testing for perfect square, testing for primality.</li>
+			<li>Draw the complete class tree of number classes.</li>
+			</ol>
+			</section>
+		</body>
+		</topic>
+		
+		<topic id="vw.help.intro.essentialClasses.textual" 
+			xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+			<title>Strings, Characters, Symbols, Text, and Dialogs</title>
+			<body>
+			<p>A <codeph>String</codeph> is an indexed collection of characters and 
+			understands numerous messages for concatenation, substring insertion, searching, and other useful 
+			operations. Most of the methods commonly used with strings are defined in 
+			<codeph>String</codeph> and its superclass <codeph>CharacterArray</codeph>, 
+			but many are inherited from the collection superclasses of <codeph>String</codeph>. 
+			Class <codeph>String</codeph> itself is an abstract class and factors out 
+			shared behaviors of several different implementations of strings.</p>
+			
+			<p>As some examples of string messages, evaluate each of the following 
+			lines with <uicontrol>Print it</uicontrol>:
+			<codeblock otherprops="smalltalk expression">'abc' &lt; 'xyz'.
+			'abcdefg' findString: 'de' startingAt: 1.	"Elements of String and other indexed collections begin at index 1."
+			'abcdefg' size</codeblock></p>
+			<p>To see the nature of string objects, evaluate the following 
+			with <uicontrol>Do it</uicontrol> and use the Inspector to examine 
+			the string's <uicontrol>elements</uicontrol>:
+			<codeblock otherprops="smalltalk expression">'abc' inspect		"What is the class of this string?"</codeblock></p>
+
+			<section>
+			<title>Exercises</title>
+			<ol>
+			<li>List three useful string-processing messages defined in the 
+			superclasses of <codeph>CharacterArray</codeph> and write an 
+			expression using each of them.</li>
+			<li>Write an expression to convert <codeph>'a big bear'</codeph> to 
+			<codeph>'a big black bear'</codeph>. (Hint: Check the <codeph>accessing</codeph> 
+			protocol in class <codeph>String</codeph>.)</li>
+			<li>A <codeph>String</codeph> is often created as a literal 
+			(such as <codeph>'abc'</codeph>), or with the <codeph>new:</codeph> 
+			message as in:
+				<codeblock otherprops="smalltalk expression">String new: 16</codeblock>
+			This creates a <codeph>String</codeph> with no characters in it but 
+			room for 16 characters. Inspect this object and note its class and explain.</li>
+			<li>Read the definition of method <codeph>withCRs</codeph> and use it 
+			to print a multi-line message in the <codeph>Transcript</codeph>.</li>
+			<li>What is the difference between <codeph>=</codeph> and <codeph>match:</codeph> ?</li>
+			</ol>
+			</section>
+
+			<section>
+			<title>Characters</title>
+			<p>Individual elements of strings are instances of class <term>Character</term>. 
+			Characters are usually created as literals as in:<codeph>$a</codeph> or 
+			<codeph>$3</codeph>, or by a class-side instance-creation message such as:
+			<codeblock otherprops="smalltalk expression">Character cr.
+			Character esc</codeblock></p>
+			<p>You can also create a character from its numeric code as in:
+			<codeblock otherprops="smalltalk expression">80 asCharacter.		"Character from its ASCII code."</codeblock></p>
+			<p>Class <codeph>Character</codeph> is a subclass of the abstract class 
+			<codeph>Magnitude</codeph> (as are <codeph>Date</codeph>, <codeph>Time</codeph> 
+			and other "comparable" objects including all number classes) and as 
+			such its instances can be compared, e.g.,:
+			<codeblock otherprops="smalltalk expression">$a &lt; $d</codeblock></p>
+			</section>
+			<section>
+			<title>Exercises</title>
+			<ol>
+			<li>Explore character creation messages.</li>
+			<li>Explore the <codeph>testing</codeph>, <codeph>converting</codeph>, 
+			and <codeph>comparing</codeph> protocols of class <codeph>Character</codeph>.</li>
+			<li>Class <codeph>Magnitude</codeph> is an abstract class gathering all 
+			behaviors meaningful for comparable objects. All its methods are derived 
+			from three methods left as subclass responsibility. What are these three 
+			methods and how are the other methods derived from them? Note that due to 
+			inheritance, subclasses of <codeph>Magnitude</codeph> only have to define 
+			these three methods and inherit all the other functionality, thus saving 
+			many redefinitions and enforcing consistency.</li>
+			<li>Use &lt;= with strings, dates, time objects, and numbers (all instances 
+			of <codeph>Magnitude</codeph> subclasses).</li>
+			<li>Define method <codeph>asString</codeph> that returns a <codeph>String</codeph> 
+			with the receiver character as its only element. As an example, <codeph>$a asString</codeph> 
+			should return <codeph>'a'</codeph>. Use the <codeph>with:</codeph> instance-creation message.</li>
+			<li>Define method <codeph>dayToday</codeph> such that <codeph>Date dayToday</codeph> 
+			returns the name of the day today as a <codeph>String</codeph>. As an example, 
+			<codeph>Date dayToday</codeph> might return <codeph>'Monday'</codeph>. 
+			(Note: The method that you will need returns a <codeph>Symbol</codeph> such as 
+			<codeph>#Monday</codeph>. Convert it to a <codeph>String</codeph> via <codeph>asString</codeph>. 
+			Symbols are covered in the next section.)</li>
+			<li>Define method <codeph>hourNow</codeph> such that <codeph>Time hourNow</codeph> 
+			returns the integer hour of the current time. As an example, <codeph>Time hourNow</codeph> 
+			might return 7 or 15 for a.m. and p.m. time respectively.</li>
+			</ol>
+			</section>
+
+			<section>
+			<title>Symbols</title>
+			<p>Symbols (instances of class <term>Symbol</term>, a subclass of <codeph>String</codeph>) 
+			are just like strings but their instances are unique whereas strings are not. A symbol 
+			is distinguished by the hash mark <codeph>#</codeph> at the beginningm e,g, 
+			<codeph>#Smalltalk</codeph>. To see the difference between a string and a symbol, try:
+			<codeblock otherprops="smalltalk expression">'abc' = 'abc'.
+			'abc' == 'abc'	"These are two different String objects that happen to have the same value."</codeblock></p>
+			<p>and:
+			<codeblock otherprops="smalltalk expression">#abc = #abc.
+			#abc == #abc	"Because symbols are unique, this returns <b>true</b>."</codeblock></p>
+			<p>Some messages require <codeph>Symbol</codeph>s as arguments, usually when 
+			the arguments are names of methods. Because of this, the <codeph>system primitives</codeph> 
+			method protocol in class <codeph>Symbol</codeph> includes selector-related 
+			messages such as:
+			<pre>#+ <b>isKeyword</b>				"Tests whether + is a keyword message."
+#between:and: <b>keywords</b>		"Extracts keywords from selector <b>between:and:</b>."</pre></p>
+			<p>An interesting message that requires a <codeph>Symbol</codeph> as 
+			its argument is <codeph>perform:</codeph> and its relatives. This message is 
+			defined in <codeph>Object</codeph> and thus understood by all objects and it 
+			tells its receiver to evaluate the <codeph>Symbol</codeph> argument as a message. 
+			As an example:
+			<codeblock otherprops="smalltalk expression">3 perform: #factorial</codeblock></p>
+			<p>tells <codeph>3</codeph> to evaluate <codeph>factorial</codeph>; it is thus equivalent to:
+			<codeblock otherprops="smalltalk expression">3 factorial</codeblock></p>
+			<p>A typical use of <codeph>perform:</codeph> is to execute a message associated 
+			with a button in a window: The programmer can associate any message with a button 
+			(by naming it as a <codeph>Symbol</codeph>), and when the button is clicked, 
+			the action message is "performed", i.e., sent to a known receiver.</p>
+			</section>
+			
+			<section>
+			<title>Exercises</title>
+			<ol>
+			<li>Symbols are related to strings. Give the messages that convert one to the other.</li>
+			<li>Message <codeph>isInfix</codeph> checks whether a selector is a binary selector. 
+			Try this and other messages from protocol <codeph>system primitives</codeph>.</li>
+			<li>Evaluate the expressions <codeph>3 perform: #+ with: 5</codeph> 
+			and <codeph>3 perform: #between:and: with: 7 with: 15</codeph>. What do they do? 
+			Find the protocol defining <codeph>perform:</codeph> methods and comment on it.</li>
+			</ol>
+			</section>
+
+			<section>
+			<title>Dialogs</title>
+			<p>Class <term>Dialog</term> contains many useful messages for obtaining data 
+			(mostly strings) from the user. All are class messages. Try the following with 
+			<uicontrol>Print it</uicontrol>:
+			<codeblock otherprops="smalltalk expression">Dialog request: 'What is your age?' 
+				initialAnswer: '20'				"Returns a <b>string</b> -- no arithmetic possible!"
+			(Dialog request: 'What is your age?' initialAnswer: '20') asNumber	"Returns a number -- can do arithmetic."
+			Dialog 															"Returns selection given by the values: argument"
+					choose: 'Which one do you want?' 
+					fromList: #('first' 'second' 'third' 'fourth') 					"Prompt labels."
+					values: #(1 2 3 4) 										"Corresponding return values."
+					lines: 8 													"Number of lines displayed."
+					cancel: [#noChoice]										"Value returned when user clicks Cancel."
+			Dialog confirm: 'Are you sure you want to delete the file?'			"Returns <b>true</b> or <b>false</b>
+			Dialog warn: 'This is a warning'									"Returns <b>nil</b> -- the UndefinedObject"</codeblock></p>
+			<p>All these messages are derived from class <codeph>SimpleDialog</codeph> that 
+			defines some additional dialogs as instance messages. As an example:
+			<codeblock otherprops="smalltalk expression">SimpleDialog new
+					chooseMultiple: 'Select all desired values'
+					fromList: #('first' 'second' 'third' 'fourth') values: #(10 20 30 40)
+					buttons: #() 
+					values: #()
+					lines: 8
+					cancel: [#noChoice]
+					for: Dialog defaultParentWindow</codeblock></p>
+			<p>returns multiple selections in the list.</p>
+			</section>
+			
+			<section>
+			<title>Exercises</title>
+			<ol>
+			<li>Message <codeph>choose:...</codeph> is in the <codeph>multiple choice dialog</codeph> 
+			protocol of <codeph>Dialog</codeph> and uses a list widget. Find and test two 
+			other messages defined in this protocol that use buttons. What are the advantages 
+			and disadvantages of each of these messages?</li>
+			<li>Examine the dialog messages defined in class <codeph>SimpleDialog</codeph>.</li>
+			</ol>
+			</section>
+			
+			<section>
+			<title>Text</title>
+			<p>A <codeph>String</codeph> is a relatively primitive object &#x2014; a sequence 
+			of characters with no 'rendering' information (font, color, size, etc.). 
+			Consequently, a <codeph>String</codeph> prints itself in the default font and 
+			default color. If you want to control the rendering of a piece of text, you must 
+			convert the string to a <codeph>Text</codeph> object and specify the <term>emphasis</term> 
+			of its characters. As an example:
+			<codeblock otherprops="smalltalk expression">ComposedTextView open: <b>'abc' asText allBold</b> asValue</codeblock></p>
+			<p>opens a window with the specified text in bold. To display the text italicized, you can use:
+			<codeblock otherprops="smalltalk expression">ComposedTextView open: ('abc' asText emphasizeAllWith: #italic)asValue</codeblock></p>
+			<p>You can also emphasize individual characters, as in:
+			<codeblock otherprops="smalltalk expression">ComposedTextView open: ('abcd' asText emphasizeFrom: 1 to: 2 with: #underline)asValue</codeblock></p>
+			<p>To combine several emphases, you must use an array (to be explained later) of emphasis values, e.g.:
+			<codeblock otherprops="smalltalk expression">| emphasis |
+			emphasis := #(#underline #italic).
+			ComposedTextView open: ('abcd' asText emphasizeFrom: 1 to: 2 with: emphasis)asValue</codeblock></p>
+			<p>(The temporary variable <codeph>emphasis</codeph> in this code example is not really 
+			necessary, and I used it only to make the code more readable.)</p>
+			<p>If you want to use color, you must specify it using an <codeph>Association</codeph> 
+			(created with the <codeph>-&gt;</codeph> message and to be introduced shortly) as in:
+			<codeblock otherprops="smalltalk expression">| emphasis |
+			emphasis := #color -&gt; ColorValue red.
+			ComposedTextView open: ('abcd' asText emphasizeFrom: 1 to: 2 with: emphasis)asValue</codeblock></p>
+			</section>
+			
+			<section>
+			<title>Exercises</title>
+			<ol>
+			<li>Examine some existing uses of <codeph>Text</codeph> and emphasis in the class library. 
+			(Hint: To find references to class <codeph>Text</codeph>, select the class and execute 
+			the <uicontrol>References</uicontrol> command from the <uicontrol>&lt;Operate&gt;</uicontrol> menu
+			in the Browser.)</li>
+			<li>Find references to text emphasizing methods.</li>
+			<li>Class <codeph>ColorValue</codeph> lets you create objects describing colors in 
+			various mixtures of red, green, and blue, or using other specification mechanisms. 
+			Many common color combinations such as <codeph>red</codeph>, <codeph>salmon</codeph>, 
+			<codeph>yellow</codeph>, and <codeph>blue</codeph> are predefined via class messages. 
+			Find these class messages and count how many different colors are predefined. Browse 
+			references to <codeph>ColorValue</codeph> and note that most of them refer to "resources" 
+			&#x2014; definitions of user interface objects such as icons and windows.</li>
+			<li>Write an expression that opens a window with the following text: 
+			ABC<b>DE</b><i>FG</i><codeph>hijk</codeph>lm<b>no</b>p.</li>
+			<li>Define methods <codeph>allItalic</codeph> and <codeph>allUnderlined</codeph> to 
+			emphasize all characters in the receiver <codeph>Text</codeph> as indicated. 
+			(Hint: Look at the definition of <codeph>allBold</codeph>.)</li>
+			</ol>
+			</section>
+			</body>
+			</topic>
+			
+		<topic id="vw.help.intro.essentialClasses.boolean" 
+			xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+			<title>Class Boolean</title>
+			<body>
+			<p>Class <codeph>Boolean</codeph> is abstract and classes <codeph>True</codeph> and 
+			<codeph>False</codeph> are its concrete subclasses, each with a single instance: 
+			<codeph>true</codeph> and <codeph>false</codeph> respectively. Booleans are used 
+			mainly for control of flow of execution including conditional execution of a 
+			block of statements and conditional repetition. Try:
+			<codeblock otherprops="smalltalk expression">(4 &lt; 5) ifTrue: [Transcript clear; show: '4 is less than 5'].			"The <b>ifTrue:</b> message. You can ge 'ifTrue:' by pressing &lt;Ctrl+Shift&gt; t"
+			(4 &lt; 5) ifFalse: [Transcript clear; show: '4 is less than 5'].			"The <b>ifFalse:</b> message. Shortcut &lt;Ctrl+Shift&gt; f"
+			(14 &lt; 5) ifTrue: [Transcript clear; show: '14 is less than 5'].
+			(4 &lt; 5) ifTrue: [Transcript clear; show: '4 is less than 5']			"The <b>ifTrue:ifFalse:</b> message -- this and the following line constitute a single message."
+					ifFalse: [Transcript clear; show: '4 is NOT less than 5'].
+			(14 &lt; 5) ifTrue: [Transcript clear; show: '14 is less than 5']
+					ifFalse: [Transcript clear; show: '14 is NOT less than 5']</codeblock></p>
+			<p>The square bracket construct containing statements is a <term>block closure</term> 
+			or simply a <term>block</term>. I will talk about blocks in a moment but for now, 
+			it is enough to know that evaluation of the statements in a block is delayed until 
+			it is explicitly requested by the definition of the message. As an example, 
+			the block following <codeph>ifTrue:</codeph> in the first example is evaluated only 
+			if <codeph>4 &lt; 5</codeph> is true &#x2014; because that's how method <codeph>ifTrue:</codeph> 
+			is defined.</p>
+			<p>As in all programming languages, Smalltalk Booleans can be combined, e.g.:
+			<codeblock otherprops="smalltalk expression">(3 &lt; 4) &amp; (5 &lt; 6).		"logical AND"
+			(3 &lt; 4) | (5 &lt; 6).		"logical OR"
+			(3 &lt; 4) not			"logical negation"</codeblock></p>
+			<p>The <codeph>&amp;</codeph> and <codeph>|</codeph> binary messages are "fully evaluating", 
+			which means that the argument is evaluated under all circumstances. (This is, of course, 
+			necessary because a message cannot be executed unless its arguments are known). The logical
+			AND and OR operations also have "partially evaluating" versions, in which the argument is 
+			only evaluated if necessary &#x2014; because it is defined by a block:
+			<codeblock otherprops="smalltalk expression">(3 &lt; 4) and: [5 &lt; 6].		"The argument block is evaluated because the receiver is true, and the expression's value thus depends on the value of the argument."
+			(3 &gt; 4) and: [5 &lt; 6].		"The argument block is <b>not</b> evaluated because the receiver is <b>false</b>, and the expression's value is thus <b>false</b> no matter what is the value of the argument."
+			(3 &lt; 4) or: [5 &lt; 6].		"Argument must be evaluated."
+			(3 &gt; 4) or: [5 &lt; 6].		"Argument is not evaluated."
+			(3 factorial &gt; 15) and: [3 squared &gt; 50 or: [44 &gt; 150 log]].	"Combines several logical operations."</codeblock></p>
+			<p>The partially-evaluating messages require a block argument because only a block argument 
+			gives the option to be evaluated or not.</p>
+			<p>Although the fully-evaluating versions may be easier to read, the partially-evaluating 
+			versions with block arguments are generally preferred for two reasons: they may be faster 
+			because the argument does not have to be always evaluated, and they allow us to avoid 
+			evaluating an inappropriate or possibly even illegal operation as in:
+			<codeblock otherprops="smalltalk expression">| x |
+			x := (Dialog request: 'Enter a number' initialAnswer: '10') asNumber.
+			x &gt; 0 and: [x log &gt; 5]</codeblock></p>
+			<p>If the user entered a negative number, attempting to evaluate the statement inside the 
+			block would cause an exception, but this does not happen because the block will not be 
+			evaluated when <codeph>x &gt; 0</codeph>. On the other hand:
+			<codeblock otherprops="smalltalk expression">| x |
+			x := (Dialog request: 'Enter a number' initialAnswer: '10') asNumber.
+			x &gt; 0 &amp; (x log &gt; 5)</codeblock></p>
+			<p>will cause an exception for <codeph>x &lt;= 0</codeph> because the argument of 
+			<codeph>&amp;</codeph> must be calculated before the message is sent; that is , always.</p>
+
+			<section>
+			<title>Exercises</title>
+			<ol>
+			<li>Construct an expression that writes text to the Transcript to demonstrate 
+			that a "partially-evaluating" logical operator does not evaluate the block unless it is necessary.</li>
+			<li>Write an expression to determine whether a message selector is unary, and print 
+			an appropriate message to the Transcript.</li>
+			<li>Read and explain the definition of <codeph>ifTrue:</codeph> in classes 
+			<codeph>Boolean</codeph>, <codeph>True</codeph>, and <codeph>False</codeph>.</li>
+			<li>What does an <codeph>ifTrue:</codeph> message return when its receiver is 
+			<codeph>true</codeph>? What does it return if the receiver is <codeph>false</codeph>?</li>
+			<li>Write a code fragment to read two numbers and test whether the first number is smaller 
+			than 5 and the second number's square root is greater than 10.</li>
+			<li>Rewrite the previous exercise using only <codeph>ifTrue:</codeph>, <codeph>ifFalse:</codeph>, 
+			and <codeph>ifTrue:ifFalse:</codeph> messages, possibly nested.</li>
+			</ol>
+			</section>
+			</body>
+			</topic>
+			
+		<topic id="vw.help.intro.essentialClasses.blockClosure" 
+			xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+			<title>Blocks</title>
+			<body>
+			<p>Blocks are instances of class <codeph>BlockClosure</codeph>. They are generally 
+			defined as literals using the square brackets syntax, e.g.:
+			<codeblock otherprops="smalltalk expression">[30 squared].
+			[Transcript clear. Transcript show: 'Hello']</codeblock></p>
+			<p>A block represents the "delayed execution" of a sequence of zero 
+			or more statements, which means that the statements inside the block 
+			are evaluated only if the program explicitly requests it. To validate this, 
+			evaluate the two statements shown above with <uicontrol>Print it</uicontrol> and 
+			<uicontrol>Inspect it</uicontrol>.</p>
+			<p>To evaluate a block, in other words to execute the statements surrounded 
+			by the brackets, send it the <codeph>value</codeph> messages, as in:
+			<codeblock otherprops="smalltalk expression">[30 squared] value.
+			[30 squared. 2 + 5] value.
+			[Transcript clear. Transcript show: 'Hello'] value.
+			[:x | 3 + x] value: 5		"To be explained shortly."</codeblock></p>
+			<p>Evaluate each of these four expressions with <uicontrol>Print it</uicontrol> 
+			and note that a block returns the object calculated by its last statement.</p>
+			<p>Blocks are very important and one of their most common uses is in iteration 
+			&#x2014; repeated evaluation of a sequence of statements while a condition holds, 
+			does not hold, etc. To see iteration at work, study and evaluate the following 
+			code fragment:
+			<codeblock otherprops="smalltalk expression">| count |
+			count := 0.
+			[count &lt; 100] <b>whileTrue:</b> [count := count + 1].		"Repeat iteration until the first block evaluates to <b>false</b>."
+			Transcript clear; show: count printString</codeblock></p>
+			<p>The evaluation of the block argument in this example is triggered by a 
+			<codeph>value</codeph> statement <i>inside</i> the definition of the 
+			<codeph>whileTrue:</codeph> message. This definition is, of course, in 
+			class <codeph>BlockClosure</codeph> because the code shows that the 
+			block is its receiver. Study and evaluate also the following two code 
+			fragments using different iteration messages:
+			<codeblock otherprops="smalltalk expression">| count |
+			count := 0.
+			[count squared &gt; 100] <b>whileFalse:</b> [count := count + 1]. 		"Repeat iteration until the first block evaluates to <b>true</b>."
+			Transcript clear; show: count printString</codeblock>
+			<codeblock otherprops="smalltalk expression">| count |
+			count := 0.
+			[count := count + 1. count &lt; 100] <b>whileTrue</b>.					"Note that this is a unary message."
+			Transcript clear; show: count printString</codeblock></p>
+			<p>The following two forms of iteration do not use blocks as receivers 
+			(they are not defined in class <codeph>BlockClosure</codeph>), but I 
+			include them here because they are very common:
+			<codeblock otherprops="smalltalk expression">Transcript clear.
+			3 <b>timesRepeat:</b> [Transcript cr; show: 'Testing!'].</codeblock>
+			<codeblock otherprops="smalltalk expression">3 timesRepeat: [(Delay forSeconds: 1) wait. Screen default ringBell]	"Make sure to turn up your speaker first!"</codeblock>
+			<codeblock otherprops="smalltalk expression">Transcript clear.
+			<b>1 to: 3 do:</b> [:n | Transcript cr; show: n printString; tab; show: n squared printString]</codeblock></p>
+			<p>The last block contains a <term>block argument</term> <codeph>n</codeph>. 
+			In this case, the argument assumes consecutive values of 1, 2, and 3 
+			during the repeated evaluation of the block. That's because the 
+			definition of <codeph>to:do:</codeph> uses the argument this way, 
+			not because of some magic. Some messages use blocks that require 
+			one or more arguments, others don't have an argument &#x2014; it all 
+			depends on what is needed and how the message is defined.</p>
+			<p>Blocks may also contain internal temporary variables as in:
+			<codeblock otherprops="smalltalk expression">Transcript clear.
+			1 to: 3 do: [:n| | <b>square cube</b> | square := n squared. cube := square * n.
+						Transcript cr; show: n printString; tab; show: square printString; tab; show: cube printString]</codeblock></p>
+			<p>The "lexical scope" (visibility) of block arguments and block 
+			temporary variables is limited to the block itself and the identifiers 
+			<codeph>n</codeph>, <codeph>square</codeph>, and <codeph>cube</codeph> are 
+			thus undefined outside the block. If you have a choice, define your temporary variables 
+			inside your block rather than outside &#x2014; this makes evaluation faster.</p>
+
+			<section>
+			<title>Exercises</title>
+			<ol>
+			<li>Write a code fragment that repeatedly asks the user for a number and prints 
+			its square root in the Transcript. When the user enters a negative number, the code stops.</li>
+			<li>Message <codeph>to:do:</codeph> steps through its block argument values in 
+			increments of <codeph>1</codeph>. Is there a method that allows you to specify 
+			the step? (Hint: The method is defined in the same class and protocol as <codeph>to:do:</codeph>.)</li>
+			<li>Use the message from the previous exercise to write a code fragment that prints 
+			a table of <codeph>x</codeph>, <codeph>sin(x)</codeph>, and <codeph>cos(x)</codeph> values 
+			in the interval <codeph>0</codeph> to <codeph>pi</codeph> in increments of <codeph>0.1</codeph>.</li>
+			<li>Write a code fragment that displays a dialog with two choices &#x2014; <codeph>continue</codeph> 
+			and <codeph>stop</codeph>. The program keeps redisplaying the dialog until the user 
+			selects <codeph>stop</codeph>.</li>
+			<li>Find, read, and explain the definition of message <codeph>timesRepeat:</codeph>.</li>
+			<li>An interesting use of blocks is in the message <codeph>millisecondsToRun:</codeph> which 
+			takes a block as its argument. Read its definition, and use it to determine how long it 
+			takes to evaluate <codeph>10000 factorial</codeph> on your computer. (Note: Be careful with 
+			interpreting the result because Smalltalk may perform garbage collection while executing 
+			the block and this will distort the measured time. Better ways to measure performance are 
+			available in the <codeph>AT Advanced Tools</codeph> parcels.)</li>
+			<li>The feature that determines whether a block argument has zero arguments (as in 
+			<codeph>ifTrue:</codeph>), one argument (as in <codeph>to:do:</codeph> above), or more 
+			than one argument is the kind of <codeph>value</codeph> message used to evaluate the 
+			block: if the block is evaluated with <codeph>value</codeph>, it must not have any 
+			block arguments; if it is evaluated with <codeph>value</codeph>:, it must have exactly 
+			one block argument, etc. Check the definition of <codeph>ifTrue:</codeph> and 
+			<codeph>to:do:</codeph> to see the difference.</li>
+			</ol>
+			</section>
+			</body>
+			</topic>
+			
+		<topic id="vw.help.intro.essentialClasses.collection" 
+			xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+			<title>Collections</title>
+			<body>
+			<p>Classes defining various kinds of collections of objects are one Smalltalk's 
+			greatest strengths. They include collections with indexed elements (array, 
+			ordered collection, sorted collection, string, and others), and unordered 
+			collections whose elements are not accessed by index (such as sets, bags, 
+			and dictionaries). Most collections are dynamic in that their size can 
+			change at run-time, but a few (<codeph>Array</codeph> and its subclasses) 
+			have fixed size. All indexed collections are indexed starting from 1. Almost 
+			all collections are heterogenous (can accept any objects as their instances) 
+			but a few are homogeneous (accept only certain kinds of objects). The following 
+			is a brief overview of essential collection classes followed by their main protocols:</p>
+			<p><apiname>Collection</apiname> is the <term>abstract</term> superclass of all 
+			collections. It has no instances and its only purpose is to define everything 
+			that most collections share. For an abstract class, it defines quite a few 
+			methods that are essential for all collections. Its most important <term>concrete</term> 
+			subclasses are the following:</p>
+			<p><apiname>Array</apiname> is indexed (as in all indexable collections, the first index is 1), 
+			fixed size (elements cannot be added or removed, only their values can change), 
+			very efficient in operation, and automatically checks that an index is within bounds, 
+			raising	an exception if not. Instances are often created as a literal. e.g.:
+			<codeblock otherprops="smalltalk expression">#(10 20 30 $a $b $c 'abc' 3.14 #symbol true)</codeblock></p>
+			<p>The elements of a literal array may be any literal objects, including other literal arrays.</p>
+			<p>All the following collections are dynamic in size &#x2014; elements can be added and 
+			removed at any time and without limits, and the amount of allocated space automatically 
+			grows when the current capacity is filled. The mechanism that allows growing makes them 
+			less efficient for accessing than arrays.</p>
+			<p><apiname>OrderedCollection</apiname> is similar to <apiname>Array</apiname> but variable 
+			in size. The protocols are somewhat different.</p>
+			<p><apiname>SortedCollection</apiname> is subclass of <codeph>OrderedCollection</codeph> 
+			that automatically sorts its elements using a sort block. By default, it uses:
+			<pre>[:element1 :element2 | element1 &lt; element2]</pre></p>
+			<p>to decide whether <codeph>element1</codeph> should be located before <codeph>element2</codeph> 
+			or not, and elements are thus sorted in ascending order by default. But the program can 
+			define any sort block, even during the lifetime of the collection, thus resorting the 
+			collection automatically:
+			<codeblock otherprops="smalltalk expression">#(1 2 3 4 5 6 7 8) asSortedCollection: [:x :y | (x rem: 4) &lt; (y rem: 4)]	"What is this? Predict and try."</codeblock></p>
+			<p><apiname>Set</apiname> is an unordered collection, with no index, that automatically 
+			eliminates duplicates on the basis of equality. Try:
+			<codeblock otherprops="smalltalk expression">#(1 1 1 2 2 2 3 3 3) asSet</codeblock></p>
+			<p><apiname>IdentitySet</apiname> is the same as <codeph>Set</codeph>, but uses identity 
+			instead of equality to test for duplication. It is therefore faster, because an identity 
+			check is always faster than an equality check. <codeph>IdentitySet</codeph> is referable 
+			to <codeph>Set</codeph> unless equality is required.</p>
+			<p><apiname>Dictionary</apiname> is a <codeph>Set</codeph> of associations, where an 
+			<codeph>Association</codeph> is a key-value pair usually created with the <codeph>-&gt;</codeph> 
+			binary message, as in:
+			<codeblock otherprops="smalltalk expression">'maison' -&gt; 'house'	"Entry in an French-English dictionary. Evaluate with <uicontrol>Inspect it</uicontrol>.".
+			'ADD' -&gt; 2r00001101	"Possibly a translation of an assembly language mnemonic to its binary equivalent. Note the syntax of the binary value."</codeblock></p>
+			<p>Strictly speaking, elements of <codeph>Dictionary</codeph> do not have to be associations 
+			but must understand the <codeph>Association</codeph> protocol; in reality, they are practically 
+			always associations. To see the internals of a <codeph>Dictionary</codeph>, <uicontrol>Inspect</uicontrol>:
+			<codeblock otherprops="smalltalk expression">Dictionary new add: 'CRT' -&gt; 'Cathode Ray Tube'; add: 'SSI' -&gt; 'Small Scale Integration'; yourself</codeblock></p>
+			<p>Inspect the following example to see that duplication is eliminated on the basis of equality 
+			of keys, i.e., the first entry is overwritten by the second:
+			<codeblock otherprops="smalltalk expression">Dictionary new add: 'key1' -&gt; 'old value'; add: 'key1' -&gt; 'new value'; yourself		"key1 now has new value."</codeblock></p>
+			<p>(I will explain the purpose of <codeph>yourself</codeph> in a moment.)</p>
+			<p>Both the key and the value may be any objects, including collections such as arrays or 
+			other dictionaries. Since dictionaries are collections with special elements (associations), 
+			their protocol is somewhat different from that of other collections.</p>
+			<p><apiname>IdentityDictionary</apiname> is similar to <codeph>Dictionary</codeph> but 
+			uses identity to test duplication. Like <codeph>IdentitySet</codeph>, it is more efficient 
+			than <codeph>Dictionary</codeph> because identity testing is faster. To see the difference 
+			between <codeph>Dictionary</codeph> and  <codeph>IdentityDictionary</codeph> inspect:
+			<codeblock otherprops="smalltalk expression">IdentityDictionary new add: 'key1' -&gt; 'old value'; add: 'key1' -&gt; 'new value'; yourself		"Two entries with 'key1' "</codeblock></p>
+			<p>and compare with the expression above.</p>
+		
+			<p><apiname>Bag</apiname> is like <codeph>Set</codeph>, but knows how many occurrences 
+			of an element are present. <uicontrol>Inspect It</uicontrol> and explain:
+			<codeblock otherprops="smalltalk expression">#(1 1 1 2 2 2 3 3 3) asBag</codeblock></p>
+			<p><apiname>Interval</apiname> is a compact representation of an arithmetic progression, 
+			a sequence of equally spaced numbers:
+			<codeblock otherprops="smalltalk expression">Interval from: 3 to: 9.				"Represents sequence 3, 4, 5, 6, 7, 8, 9"
+			Interval from: 3 to: 9 by: 1 / 2		"Represents what?"</codeblock></p>
+			<p>The main protocols shared by all collections are:</p>
+			<p>The <b>instance creation</b> protocol typically includes <codeph>new</codeph>, 
+			<codeph>new:</codeph>, and various forms of <codeph>with:</codeph> as in:
+			<codeblock otherprops="smalltalk expression">Array new: 5.
+			OrderedCollection new.
+			Array with: 3 factorial with: 5 factorial with: 23 factorial</codeblock></p>
+			<p>The <b>accessing</b> protocol includes different kinds of accessors for 
+			different collections, with only the following two methods shared by all:
+			<codeblock otherprops="smalltalk expression">capacity "returns the number of 'slots' in the collection".
+			size "returns the number of filled slots, i.e. the number of elements in the collection"</codeblock></p>
+			<p>To see the difference, evaluate the following with <uicontrol>Do it</uicontrol> 
+			and explain the result:
+			<codeblock otherprops="smalltalk expression">| oc |
+			oc := OrderedCollection new: 10.
+			oc add: 10; add: 20.
+			Transcript clear;
+				show: 'capacity: ', oc capacity printString; cr;
+				show: 'size: ', oc size printString</codeblock></p>
+			<p>To access an <codeph>Array</codeph>, uses the getter <codeph>at:</codeph> 
+			and setter <codeph>at:put:</codeph> methods, e.g.:
+			<codeblock otherprops="smalltalk expression">| array |
+			array := Array with: 11 with: 22 with: 33.
+			Transcript clear;
+				show: 'element at index 2 is ', (array at: 2) printString; cr.
+			array at: 2 put: 20.
+			Transcript show: 'new element at index 2 is ', (array at: 2) printString</codeblock></p>
+			<p>With an <codeph>OrderedCollection</codeph>, you can use <codeph>first</codeph> 
+			and <codeph>last</codeph> for accessing, and <codeph>removeFirst</codeph> and 
+			<codeph>removeLast</codeph> for removing. The second pair of messages returns 
+			the same object as the first pair, but removes the object at the same time. 
+			Methods in the <b>adding and removing</b> protocol (explained below) 
+			are frequently used to fill an <codeph>OrderedCollection</codeph>.</p>
+			<p>Dictionaries are special and use their own accessors. Check them out in 
+			the Browser.</p>
+			<p>Methods in the <b>converting</b> protocol handle converting one kind of 
+			collection into another. For example, Inspect the results of:
+			<codeblock otherprops="smalltalk expression">#('abc' 'AAA' 'xyz' '123' 'def') asSortedCollection.					"Use Inspect It or Print It. The receiver is a literal array."
+			#(1 1 1 3 5 6 6 2 2) asSet.
+			#('abc' 'AAA' 'xyz' '123' 'def') asSet asSortedCollection asArray		"Eliminates duplication and sorts an array."</codeblock></p>
+			<p>Methods in the <b>adding and removing</b> protocol only apply to collections 
+			that can grow; as a consequence, they cause an exception for arrays. The main 
+			messages are <codeph>add: anObject</codeph>, <codeph>remove: anObject</codeph>, 
+			and <codeph>remove: anObject ifAbsent: aBlock</codeph> (used if you are not 
+			sure that <codeph>anObject</codeph> really is in the collection). A peculiarity 
+			of all these messages is that they return the argument, not the collection itself:
+			<codeblock otherprops="smalltalk expression">| names result |
+			names := OrderedCollection with: 'John'.
+			result := names add: 'Wayne'
+			Transcript clear; show: result</codeblock></p>
+			<p>adds<codeph> 'Wayne'</codeph> to <codeph>names</codeph>, but the 
+			<codeph>add:</codeph> message returns <codeph>'Wayne'</codeph>, not the 
+			changed collection &#x2014; so that the fragment prints only the name. 
+			To obtain the collection, cascade <codeph>add:</codeph> with the message 
+			<codeph>yourself</codeph>, as in:
+			<codeblock otherprops="smalltalk expression">| names result |
+			names := OrderedCollection with: 'John'.
+			result :=  names add: 'Wayne'; yourself.
+			Transcript clear; show: result printString</codeblock></p>
+			<p>Messages in the <codeph>removing</codeph> protocol also return the 
+			argument to be removed. To see the difference, evaluate the following 
+			two fragments with <uicontrol>Do It</uicontrol>:
+			<codeblock otherprops="smalltalk expression">| names |
+			names := OrderedCollection with: 'John'.
+			names add: 'Wayne'; add: 'James'.
+			names remove: 'Wayne'</codeblock></p>
+			<p>and:
+			<codeblock otherprops="smalltalk expression">| names |
+			names := OrderedCollection with: 'John'.
+			names add: 'Wayne'; add: 'James'.
+			names remove: 'Wayne'; <b>yourself</b></codeblock></p>
+			<p>This peculiarity of adding and removing messages applies to 
+			other collection accessors as well, and is a source of frequent mistakes, 
+			even by experienced Smalltalk developers.</p>
+			<p>Finally, read, predict, and test the following code fragment:
+			<codeblock otherprops="smalltalk expression">| names |
+			names := OrderedCollection new.
+			names 	add: 'John';
+					add: 'Robert';
+					add: 'Wayne';
+					add: 'James'.		"We don't need <b>yourself</b> here because our goal is to update <b>names</b>, which the cascade does."
+			Transcript clear; show: 'Full collection: ', names printString.
+			names remove: 'Wayne'.
+			Transcript cr; show: 'After removing Wayne: ', names printString</codeblock></p>
+			<p>Instances of <codeph>OrderedCollection</codeph> can also use 
+			<codeph>addLast:</codeph>, which is equivalent to <codeph>add:</codeph>, 
+			and <codeph>addFirst:</codeph>.</p>
+			<p>For instances of <codeph>Dictionaries</codeph>, the argument of 
+			<codeph>add:</codeph> is an <codeph>Association</codeph>, and 
+			<codeph>remove:</codeph> and <codeph>remove:ifAbsent:</codeph> 
+			are illegal &#x2014; use <codeph>removeKey:</codeph> and 
+			<codeph>removeKey:ifAbsent:</codeph> instead. To illustrate, 
+			Inspect the following code example:
+			<codeblock otherprops="smalltalk expression">| dictionary |
+			dictionary := Dictionary new
+				add: 'overdo' -&gt; 'do to death, go to extremes';
+				add: 'overheated' -&gt; 'agitated, excited';
+				add: 'playmate' -&gt; 'buddy, companion';
+				yourself.
+			dictionary removeKey: 'overdo'.
+			dictionary</codeblock></p>
+			<p>Methods in the very useful <b>enumeration</b> protocol access 
+			individual elements of the collection and do something with each 
+			of them. This is perhaps the most interesting of all collection 
+			protocols and its methods work with all types of collections, 
+			although dictionaries require some attention, as usual. To explore 
+			the main enumeration methods, all of which are regularly used by 
+			all good Smalltalk developers, examine the following and evaluate it 
+			using <uicontrol>Do it</uicontrol>:
+			<codeblock otherprops="smalltalk expression">Transcript clear.
+			#(1 2 3 4) do: [:element| Transcript show: element squared printString; cr]</codeblock></p>
+			<p>and the following (line-by-line) with <uicontrol>Inspect</uicontrol> 
+			or <uicontrol>Print it</uicontrol>:
+			<codeblock otherprops="smalltalk expression">#(1 5 2 89 34 53) select: [:element | element &gt; 28].
+			#(1 5 2 89 34 53) reject: [:element | element &gt; 28].
+			#(1 5 2 89 34 53) collect: [:element | element &gt; 28].
+			#(1 5 2 89 34 53) detect: [:element | element &gt; 28].		"Returns the first element satisfying the condition."
+			#(1 5 2 89 34 53) detect: [:element | (element rem: 3) = 0]	ifNone: [Dialog warn: 'No such element']</codeblock></p>
+			<p>I suggest that you read the definitions of these and other enumeration 
+			messages in class <codeph>Transcript</codeph>.</p>
+			<p>For dictionaries, the enumeration messages work on association <i>values</i> 
+			rather than associations themselves, and additional enumeration messages 
+			work on keys and associations.</p>
+			<p>Methods in the <b>testing</b> protocol mainly test whether a collection 
+			contains an element and return <codeph>true</codeph> or <codeph>false</codeph>. 
+			Try:
+			<codeblock otherprops="smalltalk expression">#(1 2 3 4 5) includes: 4.									"Test for presence of a specific object."
+			#(-2 3 4 -5) contains: [:number | number squared &gt; 50]	"Test for presence of an element satisfying a test."</codeblock></p>
+			<p>Two very frequently used testing messages are <codeph>isEmpty</codeph> 
+			and <codeph>isNotEmpty</codeph>.</p>
+			
+			<section>
+			<title>Exercises</title>
+			<ol>
+			<li>Write an expression to sort an array of numbers in descending order 
+			of magnitude. Repeat to sort an array of strings in reverse alphabetical order.</li>
+			<li>Write an expression to convert a string so that its characters are 
+			arranged in alphabetical order. As an example, <codeph>'cat'</codeph> should 
+			become <codeph>'tca'</codeph>. (Hint: You may find it useful to use the 
+			message <codeph>withAll:</codeph>.)</li>
+			<li>Examine, explore existing uses, and test messages in the <b>converting</b> 
+			protocols of collections.</li>
+			<li>Examine the <b>enumeration</b> protocol of class <codeph>Collection</codeph> 
+			and its subclasses, and list and explain additional enumeration methods.</li>
+			<li>Read and explain the definition of <codeph>yourself</codeph>. Find several 
+			of its uses in the class library.</li>
+			<li>Examine the protocols of <codeph>Dictionary</codeph> and <codeph>IdentityDictionary</codeph> 
+			paying special attention to adding, removing, and enumeration &#x2014; these protocols 
+			are somewhat different from those of other collections.</li>
+			<li>Find all senders of <codeph>isEmpty</codeph> and explore a few uses.</li>
+			<li>Write an expression to return all integers between <codeph>3</codeph> and 
+			<codeph>51</codeph> that are divisible by both <codeph>3</codeph> and <codeph>7</codeph>. 
+			Use the most suitable enumeration message. (Hint: Use an <codeph>Interval</codeph>.)</li>
+			<li>Repeat the previous exercise but return integers that are <i>not</i> divisible by 
+			both <codeph>3</codeph> and <codeph>7</codeph>.</li>
+			<li>Write an expression to return the squares of all integers between <codeph>3</codeph> 
+			and <codeph>51</codeph> that are divisible by <codeph>3</codeph> and <codeph>7</codeph>.</li>
+			<li>Define a method <codeph>allButFirst</codeph> that returns the collection of all 
+			elements of the receiver except the first one. As an example, <codeph>#(1 2 3) allButFirst</codeph> 
+			should return <codeph>#(2 3)</codeph>.</li>
+			<li>Define a method <codeph>sameSizeAs: aCollection</codeph> to return <codeph>true</codeph> 
+			if the receiver and the argument collections have the same size.</li>
+			<li>Define a method <codeph>equalElementsAs: aCollection</codeph> to return <codeph>true</codeph> 
+			if the receiver and argument collections' elements are equal. It should work for all 
+			sequenceable collections.</li>
+			<li>Write an expression to compare the speed and the differences in operation of 
+			<codeph>=</codeph> and <codeph>equalElementsAs:</codeph>.</li>
+			<li>Define a method <codeph>+</codeph> to add together pairs of elements of two 
+			sequenceable collections of equal size. As an example, <codeph>#(1 2 3) + #(10 20 30)</codeph> 
+			should return <codeph>#(11 22 33)</codeph>. Ignore possible error conditions.</li>
+			</ol>
+			</section>
+		</body>
+		</topic>
+	</topic>
+</dita>

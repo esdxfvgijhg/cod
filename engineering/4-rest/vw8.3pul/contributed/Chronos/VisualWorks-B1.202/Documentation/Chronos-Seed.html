@@ -1,0 +1,69 @@
+<center><h1>The Chronos Seed Archive</h1></center>
+<p>Description/purpose of the files in the "Chronos Seed" archive:</p>
+
+<ol>
+<li><b>ANSI-Conformance-VW.st</b>: Contains methods that need to be added to VisualWorks classes so that they will conform to the ANSI Smalltalk Standard.  It may also be necessary to add "ANSI Compatibility" methods to the base class library of the Smalltalk implementation to which Chronos is being ported--but, unless you are porting to an earlier version of VisualWorks, the needed methods are probably different than the ones in this file-in, which is specific to VisualWorks 7.4 and earlier (and even then, the method implementations may need to be changed for ancient VW versions.)</li>
+
+<li><b>Passport-Kernel.st</b>: The core of the "inter-Smalltalk" portability library and of the "reference data retrieval/management framework" used by Chronos.  The code in this file-in should depend only on the native class library of the host Smalltalk environment, with the possible exception of "ANSI Compatibility" issues.  However, <b>note that the code in this file-in is not functional by itself--it is necessary to add code that is specific to a particular Smalltalk implementation. Specifically, some (but not all) of the classes defined in Passport-Kernel.st must be given subclasses whose behavior and implementation are correct for the target Smalltalk environment.</b> What must be done, and a general idea of how to do it, are best gleaned by browsing the code of either the VisualWorks or the Squeak distributions (for example, see the code in Passport-Kernel-VW.st.)  Implementing the requisite platform-specific "Passport" classes will probably be the hardest part of the port.</li>
+
+<li><b>Passport-Kernel-VW.st</b>: Provides VisualWorks-specific subclasses (as needed) to some of the classes defined in Passport-kernel.st.  Analagous subclasses must be provided for other Smalltalk impelentations--a task for which the person porting Chronos to some other Smalltalk flavor (or ancient version of VisualWorks) is responsible.</li>
+
+<li><b>Chronos-Environment.st</b>: Code responsible for defining/initializing Chronos namespaces (shared pool dictionaries,) and also for handling related "environment" issues.  The only class in this package is ChronosEnironment, which is coded as though the host Smalltalk environment strictly conformed to the version of Smalltalk specified by the book "Smalltalk, The Langauge And Its Implementation" (the renowned "Blue Book.")  At least one subclass of ChronosEnvironment must be implemented for each host Smalltalk platform--and perhaps more than one, if multiple versions of the host Smalltalk platform are to be supported both historically and into the future.</li>
+
+<li><b>Chronos-System.st</b>: Responisible for defining an abstract facade for performing operations specific to the needs of Chronos that can neither be implemented nor invoked using either standard "Blue Book" Smalltalk-80 or ANSI-Standard Smalltalk classes/methods.  The key classes in this package are ChronosSystemFacade and ChronosSystemClock.  At least one subclass of ChronosSystemFacade and one subclass of ChronosSystemClock must be implemented for each host Smalltalk platform--and perhaps more than one, if multiple versions of the host Smalltalk platform are to be supported both historically and into the future.</li>
+
+<li><b>Chronos.st</b>: The platform-independent code of Chronos, which depends only on a) much (but not all) of the Smalltalk functionality and class library as specified by the ANSI Smalltalk Standard, b) some, but far from all, of the functionality and class library specified by the "Blue Book," c) a small set of rather spiffy "convenience methods" defined by VisualWorks which should be easy to add to other Smalltalk platforms that don't yet have them, d) the code in Chronos-Environment.st and Chronos-System.st--including the platform-specific subclasses that must be implemented to effect a port, and e) the code in Passport-Kernel.st--including the platform-specific subclasses that will be necessary, as mentioned in the above.  However, note that Chronos will still not be functional, even with Passport-Kernel.st (and required subclasses specific to a particular Smalltalk environment) and Chronos.st both installed.  To make a functional version of Chronos, you must do the tasks specified in the <a href="http://www.chronos-st.org/Porting.html">Chronos Porting Instructions</a> (which involve implementing subclasses of ChronosEnvironment, ChronosSystemFacade and ChronosSystemClock to provide functionality equivalent to that provided by the VisualWorks-specific subclasses of ChronosEnvironment, ChronosSystemFacade and ChronosSystemClock as found in Chronos-Environment-VW.st and Chronos-System-VW.st.). Once all the preceding steps have been finished (and not before,) to make Chronos functional you then must either file-in Chronos-Installation.st or else evaluate "ChronosEnvironment canonical install."</li>
+
+<li><b>Chronos-Environment-VW.st</b>: The VisualWorks-specific subclasses of ChronosEnvironment.  One or more platform-specific subclasses of ChronosEnvironment must be implemented to make a functional version of Chronos. One such subclass will be sufficient, more would only be needed for the purpose of supporting different versions of the target Smalltalk platform/environment (e.g, "modern" vs. "ancient," or "UNIX" vs. "Windows.")</li>
+
+<li><b>Chronos-System-VW.st</b>: The VisualWorks-specific subclasses of ChronosSystemFacade and ChronosSystemClock.  One or more platform-specific subclasses of both ChronosSystemFacade and ChronosSystemClock must be implemented to make a functional version of Chronos. One subclass of ChronosSystemFacade and one subclass of ChronosSystemClock will be sufficient, more would only be needed for the purpose of supporting different versions of the target Smalltalk platform/environment (e.g, "modern" vs. "ancient," or "UNIX" vs. "Windows.")</li>
+
+<li><b>Chronos-Installation.st</b>: Code that causes Chronos to fully initialize and install itself on file-in.  You must avoid execution of this code until your port is sufficiently functional.</li>
+
+<li><b>Chronos-VW-Extensions.st</b>: Useful extensions to base VisualWorks classes.  Optional--and this file is specific to VisualWorks.  However, it is probably a good idea to add analogous extensions to the target Smalltalk environment (although that is not at all required.)</li>
+
+<li><b>Chronos-ST80 (and VW) Compatibility.st</b>: Adds methods to various Chronos classes so that they will be type-compatible with the VisualWorks Date, Time and Timestamp classes.  Optional--and this file is specific to VisualWorks. However, you may want to add methods to Chronos so that some of the Chronos classes will be type-compatible with the native Date/Time classes of the target platform.</li>
+
+<li><b>Chronos-Utilities.st</b>: Contains the code for the Chronos Time Zone Compiler. Optional--and hopefully, not VisualWorks specific.</li>
+
+</ol>
+
+<p>Steps to prepare the Chronos Seed Files For Porting from VW to other ST environments:
+<ol>
+<li>Save source image under a special name (e.g., "seed.im".)</li>
+<li>Install the FileOut30 parcel:
+	<ul>	
+	<li>Open the Parcel Manager (Select System->Parcel Manager from the tool bar of the VWLauncher window.)</li>
+	<li>Select the Directories tab</li>
+	<li>Scroll down in the list on the left to "Contributed" folder and select it (pre vw7.4, this is called "Goodies.")</li>
+	<li>Scroll down in the list on the upper right to "FileOut30", select it, then select "load" 
+from the operate menu (right-button menu.)</li>
+	</ul></li>
+<li>Configure "File Out" to use the VW 3.0 chunk format:
+	<ul>
+	<li>Open the Settings Tool (Select System->Settings from the tool bar of the VWLauncher window.)</li>
+	<li>Select System->Source from the hierarchical list on the left.</li>
+	<li>Select the "VW 3.0 compatible source code" radio button from the right-hand side pane.</li>
+	<li>Select the "OK" button on the bottom of the window.</li>
+	</ul></li>
+<li>File out the package &lt;ANSI-Conformance-VW> to the folder where you have decided to store the seed files.</li>
+<li>File out the package &lt;Passport-Kernel> to the folder where you have decided to store the seed files.</li>
+<li>File out the package &lt;Passport-Kernel-VW> to the folder where you have decided to store the seed files.</li>
+<li>File out the package &lt;Chronos-Environment> to the folder where you have decided to store the seed files.
+<li>File out the package &lt;Chronos-Environment-VW> to the folder where you have decided to store the seed files.
+<li>File out the package &lt;Chronos-System> to the folder where you have decided to store the seed files.
+<li>File out the package &lt;Chronos-System-VW> to the folder where you have decided to store the seed files.
+<li>File out the package &lt;Chronos-ST80 (and VW) Compatibility> to the folder where you have decided to store the seed files.</li>
+<li>File out the package &lt;Chronos-VW-Extensions> to the folder where you have decided to store the seed files.</li>
+<li>File out the package &lt;Chronos-Installation> to the folder where you have decided to store the seed files.</li>
+<li>Edit the bundle specification of the bundle &lt;Chronos>, removing &lt;Chronos-Platform Abstraction> and &lt;Chronos-Platform Extensions> as sub-bundles and &lt;Chronos-Installation> as a sub-package. Note: Editing a bundle specification to remove a sub-bundle (or sub-package) does not remove any code from the image, it just disassociates the parent and child modules from each other.)
+<li>Save the seed image in case it's needed again.</li>
+<li>File out the bundle &lt;Chronos> to the folder where you have decided to store the seed files.</li>
+<li>File out the bundle &lt;Chronos-Utilities> to the folder where you have decided to store the seed files.</li>
+</ol>
+
+<p>To port Chronos from VisualWorks to another Smalltalk environment requires, at a minimum, that the classes EnvironmentFacade, ResourcePathFacde, ChronosEnvironment, ChronosSystemClock, and ChronosSystemFacade be subimplemented so that they provide behavior appropriate to the target platform.  Particularly, the methods EnvironmentFacade>>setPlatformClass and ChronosEnvironment class>>setPlatformClass must be subimplemented by any direct subclasses.
+
+For more information, see the class comments of EnvironmentFacade, ResourcePathFacade, ChronosEnvironment, ChronosSystemClock, and ChronosSystemFacade.  Also, you may find the information in the Chronos Porting Instructions document to be helpful: http://www.chronos-st.org/Porting.html
+
+

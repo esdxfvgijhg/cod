@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.widgets.hierLists"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Hierarchical Lists</title>
+<body><p><indexterm>widget<indexterm>hierarchical list</indexterm></indexterm><indexterm>hierarchical
+list widget</indexterm>A <indexterm>Hierarchical List</indexterm>Hierarchical
+List widget is similar to a List widget, but its primary component
+is an <indexterm>IndentedTreeSelectionInList class</indexterm><apiname>IndentedTreeSelectionInList</apiname>.
+This object holds a tree object representing the hierarchy.</p>
+<p>For cases where the hierarchical list is displaying a natural
+hierarchy, such as the class hierarchy, <apiname>IndentedTreeSelectionInList</apiname> provides instance
+creation methods to create the tree. Otherwise, create the tree
+using instances of <apiname>AssociationTreeWithParent</apiname>.</p>
+<p>Retrieving the index and contents of a list item uses the same methods
+as for a List widget’s <apiname>SelectionInList</apiname>.</p></body>
+<topic id = "vw.help.widgets.hierLists.addToCanvas"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Adding a List</title>
+<body><p><indexterm>list widget<indexterm>adding</indexterm></indexterm><indexterm>widget<indexterm>add
+hierarchical list widget</indexterm></indexterm><indexterm>GUI development<indexterm>add
+hierarchical list</indexterm></indexterm><ol><li><p>Use a Palette
+to add a Hierarchical List widget to the canvas. Leave the list
+selected.</p></li>
+<li><p>On the <uicontrol>Basics</uicontrol> property page, fill
+in the list’s <uicontrol>Aspect</uicontrol> property with the name
+of the method that will return an instance of <apiname>IndentedTreeSelectionInList</apiname>.</p></li>
+<li><p><uicontrol>Apply</uicontrol> the change, install the canvas,
+and use <uicontrol>define</uicontrol> to add an instance variable
+and aspect accessor method to the application model. This instance
+variable will hold the <apiname>SelectionInList</apiname>.</p></li>
+<li><p>Write an <codeph>initialize</codeph> method to initialize
+the <apiname>IndentedTreeSelectionInList</apiname>.</p></li></ol></p></body></topic>
+<topic id = "vw.help.widgets.hierLists.createTree"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a List for a Natural Tree</title>
+<body><p><indexterm>hierarchical list widget<indexterm>create tree</indexterm></indexterm>The <apiname>IndentedTreeSelectionInList</apiname> class
+has a few instance creation methods that make it easy to create
+a tree out of an object with a natural hierarchy. For instance,
+the class method <apiname>listObjectHierarchy:childAccessor:childNameAccessor:</apiname> can
+create an appropriate list object as follows:
+<codeblock otherprops="smalltalk method">initialize
+	theList := IndentedTreeSelectionInList
+				listObjectHierarchy: Object
+				childAccessor: #allSubclasses
+				childNameAccessor: #name.
+	^self</codeblock></p>
+<p>For other instance creation convenience methods, browse the instance
+creation protocol.</p>
+<p>You can build a hierarchy of arbitrary objects using instances
+of <apiname>AssociationTree</apiname> or <apiname>AssociationTreeWithParent</apiname>.
+Then use the tree as the source of the hierarchy for the Hierarchical
+List widget.</p>
+<p>This version of the initialize method creates a hierarchy:
+<codeblock otherprops="smalltalk method">initialize
+	tree := (AssociationTreeWithParent key: 'first' value: #first).
+	tree addChild: 
+		((AssociationTreeWithParent 
+			key: 'second'
+			value: #second)
+			addChild: (AssociationTreeWithParent 
+				key: 'third'
+				value: #third);
+			addChild: (AssociationTreeWithParent 
+				key: 'fourth'
+				value: #fourth));
+		addChild: ((AssociationTreeWithParent 
+			key: 'fifth'
+			value: #fifth)
+			addChild: (AssociationTreeWithParent 
+				key: 'sixth' 
+				value: #sixth);
+			addChild: (AssociationTreeWithParent 
+				key: 'seventh'
+				value: #seventh)).
+	myList := IndentedTreeSelectionInList
+				listObjectHierarchy: tree
+				childAccessor: #children
+				childNameAccessor: #displayString.
+	^self</codeblock></p></body></topic></topic></dita>

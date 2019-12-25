@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA BookMap//EN" "bookmap.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<map title="GUI Development" 
+	xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+	<title>GUI Development</title>
+	<topicref navtitle = "GUI Development Basics" href = "guiDevBasics.xml" type = "topic">
+		<topicref navtitle = "Composing Windows" href = "windows.xml" type = "topic"/>
+		<topicref navtitle = "Working with Widgets" href = "widgets/widgets.ditamap" format = "ditamap"/>
+		<topicref navtitle = "Adapting Domain Models to Widgets" href = "adaptors.xml" type = "topic"/>
+		<topicref navtitle = "Create Custom View Classes" href = "customView.xml" type = "topic"/>
+		<topicref navtitle = "Bitmap Images" href = "imageEditor.xml" type = "topic"/>
+		<topicref navtitle = "Menus" href = "menuEditor.xml" type = "topic"/>
+		<topicref navtitle = "Toolbars" href = "toolbar.xml" type = "topic"/>
+		<topicref navtitle = "Resources" href = "resource.xml" type = "topic"/>
+	</topicref>
+</map>

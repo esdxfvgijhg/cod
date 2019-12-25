@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product	"VisualWorks">
+<!ENTITY arrow		"&#x2192;">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.envSettings"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Environment Settings</title>
+<body><p>The &Product; environment can be easily customized to suit your system 
+configuration, work process, and aesthetic tastes. Most of this is handled via 
+the <xref href="st:SettingsManager openOrRaise: VisualWorksSettings" 
+format="st" scope="external">Settings Tool</xref>.</p>
+<p>Any changes you make to your development image are saved along with the image. 
+You can also export your customized settings as an XML file, to easily reproduce 
+all of your customizations when installing a new release of the environment.</p></body>
+
+<topic id = "vw.help.envSettings.openTool"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Open the Settings Tool</title>
+<body><p><indexterm>system settings</indexterm><indexterm>Settings Tool</indexterm>The 
+Settings Tool allows you to control a variety
+of global parameters, including the appearance of windows, source
+file name, and the default font for text. To open the Settings Tool,
+choose <uicontrol>System&#xA0;&arrow;&#xA0;Settings</uicontrol> in 
+the &Product; Launcher window.</p>
+<p><xref href="st:SettingsManager openOrRaise: VisualWorksSettings" 
+format="st" scope="external">Open the Settings Tool for me</xref></p>
+<p>Use the scroll buttons and tabs on the right-hand side of the
+Settings window to navigate among its pages.</p></body></topic>
+
+<topic id = "vw.help.envSettings.setHome"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set the Home Directory for an Image</title>
+<body><p><indexterm>home directory</indexterm><indexterm>directory<indexterm>home</indexterm></indexterm><indexterm>image<indexterm>set
+home directory</indexterm></indexterm>To set the default "home"
+directory for the current image, select <uicontrol>File &#x2192; Set &Product; Home...</uicontrol> in
+the Launcher window. The <xref href="st:SettingsManager openOrRaise: VisualWorksSettings" 
+format="st" scope="external" title="Open the Settings Tool">Settings Tool</xref> opens to the <uicontrol>System</uicontrol>
+page, on which you should enter the path to the directory that contains the current 
+&Product; installation.</p>
+<p>As a short-cut, you can click the <uicontrol>Paste Current</uicontrol> 
+button, which enters the current installation directory. Usually, this is 
+the correct directory.</p>
+<p>Once the directory has been specified, select <uicontrol>Apply</uicontrol> 
+or <uicontrol>OK</uicontrol>.</p>
+<p>The &Product; home directory path may be referenced using the parameter 
+<codeph>$(VISUALWORKS)</codeph>.
+This parameter is used to locate the system sources and changes
+file, as well as parcels that can be loaded. Make sure you supply
+the name of the main installation directory, of which 
+<filepath>/image</filepath>, <filepath>/parcels</filepath>,
+and <filepath>/bin</filepath> are sub-directories.</p></body></topic>
+
+<topic id = "vw.help.envSettings.setUILookAndFeel"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set the Look and Feel of the User Interface</title>
+<body><p>On the <uicontrol>Look and Feel</uicontrol> page of the 
+<xref href="st:SettingsManager openOrRaise: VisualWorksSettings" 
+format="st" scope="external" title="Open the Settings Tool">Settings Tool</xref>, 
+use the <uicontrol>Skin</uicontrol> menu to change the appearance and 
+behavior of buttons, scroll bars, and other widgets.</p>
+<p>The <uicontrol>Native</uicontrol> skin uses native drawing to
+provide a high-fidelity, native look for platforms that support it.
+For platforms that do not have a true "native" look (e.g., X11),
+the Native skin is replaced by a <uicontrol>Default</uicontrol> skin, 
+which provides a platform-agnostic look. The Default skin is available 
+on any platform.</p>
+<p>The new look and feel will apply to any window that you open
+subsequently.</p>
+<p>When the <uicontrol>Ignore action button double clicks</uicontrol> 
+setting is disabled (this is the default), rapid clicks on action buttons 
+are recognized as separate clicks, no matter how quickly the button 
+is clicked. When the option is enabled, they are considered to be double 
+clicks and in effect ignored.</p>
+<p>When the <uicontrol>Open dialog boxes centered at mouse cursor</uicontrol> 
+is disabled (this is the default), dialog boxes open centered inside the 
+currently-active window, or inside the screen if there is no current 
+window. When this setting is enabled, dialog boxes open centered at 
+the mouse cursor.</p>
+</body></topic>
+
+<topic id = "vw.help.envSettings.defaultTextAttributes"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set the Default Text Attributes</title>
+<body><p><indexterm>text<indexterm>set global text attributes</indexterm></indexterm>The default 
+theme, text style and size used in the &Product; Source Code Editor may be set 
+from the <uicontrol>Editor</uicontrol> page of the <xref 
+href="st:SettingsManager openOrRaise: VisualWorksSettings" 
+format="st" scope="external" title="Open the Settings Tool">Settings Tool</xref>.</p>
+<p>&Product; also keeps a set of global text attributes which you may adjust 
+on the <uicontrol>Tools</uicontrol> page of the Settings Tool.
+To change the attributes used to render text, select one of the following:<dl>
+<dlentry><dt>Small</dt>
+<dd>This will select text that is slightly smaller than "default",
+useful for small displays on the order of 640x480 pixels</dd></dlentry>
+<dlentry><dt>Default</dt>
+<dd>The usual style, suitable for 1024x768 displays</dd></dlentry>
+<dlentry><dt>Large</dt>
+<dd>A slightly larger style, for 1600x1280 hi-res displays</dd></dlentry>
+<dlentry><dt>Fixed</dt>
+<dd>Similar to "default", but all characters are the same size &#x2014; this
+is useful for presenting table-oriented data or in a terminal emulator</dd></dlentry></dl></p>
+<p>To redefine the default text attributes press the corresponding
+radio button, and select <uicontrol>Accept</uicontrol>.</p>
+</body></topic>
+
+<topic id = "vw.help.envSettings.editKeyBindings"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Edit the Default Key Bindings</title>
+<body><p>On the <uicontrol>Look and Feel</uicontrol> page of the 
+<xref href="st:SettingsManager openOrRaise: VisualWorksSettings" 
+format="st" scope="external" title="Open the Settings Tool">Settings Tool</xref>, 
+click the <uicontrol>Key Bindings &arrow; Edit...</uicontrol> 
+button to open the Key Bindings Editor.</p>
+<p>The Key Bindings Editor allows you to explore and edit the key bindings 
+for commands. Note that the key bindings are not saved with the preferences. 
+You can save and load key bindings from the editor window.</p></body></topic>
+
+<topic id = "vw.help.envSettings.globalizationOptions"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Enable Tools for Globalization</title>
+<body><p><indexterm>internationalization<indexterm>enable globalization</indexterm></indexterm>On
+the <uicontrol>UI&#xA0;Options</uicontrol> page of the <xref href="st:SettingsManager openOrRaise: VisualWorksSettings" 
+format="st" scope="external" title="Open the Settings Tool">Settings Tool</xref>, use the <uicontrol>Show&#xA0;UI&#xA0;for&#xA0;Globalization</uicontrol> setting
+to enable fields for support of globalization. When this option
+is enabled, the GUI Painter Tool will show special fields such as
+keys for message catalogs.</p></body></topic>
+
+<topic id = "vw.help.envSettings.setWindowPlacement"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set the Placement of Windows</title>
+<body><p><indexterm>window placement options</indexterm>On the 
+<uicontrol>Look and Feel</uicontrol> page
+of the <xref href="st:SettingsManager openOrRaise: VisualWorksSettings" 
+format="st" scope="external" title="Open the Settings Tool">Settings Tool</xref>, 
+use the <uicontrol>Window placement</uicontrol> setting to specify 
+whether newly-created windows are positioned on the screen by the user 
+or are automatically positioned under the current mouse position with 
+a default size.</p></body></topic>
+
+<topic id = "vw.help.envSettings.setMouseButtons"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set the Mouse Button Order</title>
+<body><p><indexterm>mouse button options</indexterm>On the 
+<uicontrol>Look and Feel</uicontrol> page
+of the <xref href="st:SettingsManager openOrRaise: VisualWorksSettings" 
+format="st" scope="external" title="Open the Settings Tool">Settings Tool</xref>, 
+use the <uicontrol>Mouse button order</uicontrol> setting to specify 
+which mouse buttons perform which functions. The first option binds the 
+right mouse button to the &lt;Operate&gt; menu of the current view, 
+while the middle button opens the &lt;Window&gt; menu. The second option 
+swaps the roles of the middle and the right buttons.</p>
+<p>The second option is the traditional Smalltalk-80 button configuration 
+(also known as red, yellow, blue). The first option, however, is the 
+default because it works better with two-button mice. For those, the
+&lt;Window&gt; function becomes unassigned while the right button 
+remains bound to the more frequently used &lt;Operate&gt; menu.</p>
+</body></topic>
+
+<topic id = "vw.help.envSettings.limitIconLabels"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set a Limit on the Length of Icon Labels</title>
+<body><p><indexterm>icon<indexterm>limit label length</indexterm></indexterm>On
+the <uicontrol>Tools</uicontrol> page of the <xref 
+href="st:SettingsManager openOrRaise: VisualWorksSettings" 
+format="st" scope="external" title="Open the Settings Tool">Settings Tool</xref>, 
+adjust the <uicontrol>Icon&#xA0;Label&#xA0;Length</uicontrol> setting
+to constrain the length of icon label text.</p></body></topic>
+
+<topic id = "vw.help.envSettings.setFileDialogs"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Specify the Use of Native File Dialogs</title>
+<body><p>On the <uicontrol>Tools</uicontrol> page of the <xref 
+href="st:SettingsManager openOrRaise: VisualWorksSettings" 
+format="st" scope="external" title="Open the Settings Tool">Settings Tool</xref>,
+toggle the <uicontrol>Use native file dialogs</uicontrol> setting to
+enable (this is the default) or disable the use of platform file dialogs
+to prompt for the names of files to open or save.</p>
+<p>When this setting is disabled, portable &Product; dialogs are used.</p>
+</body></topic>
+
+<topic id = "vw.help.envSettings.printOptions"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Platform-specific Printing Options</title>
+<body><p><indexterm>printing<indexterm>set printing options</indexterm></indexterm>Select
+the <uicontrol>Printing</uicontrol> page of the <xref 
+href="st:SettingsManager openOrRaise: VisualWorksSettings" 
+format="st" scope="external" title="Open the Settings Tool">Settings Tool</xref>.</p>
+<p>Use the <uicontrol>Document&#xA0;Printing</uicontrol> options
+to choose between PostScript and Host printer drivers (the latter
+are supported only on MS-Windows platforms). If <uicontrol>Host&#xA0;Printing</uicontrol> is
+selected on a non-Windows platform, the system will default back
+to PostScript at print time.</p>
+<p>Use the <uicontrol>Text&#xA0;Printing</uicontrol> options
+to choose how hardcopy commands (i.e., in browser code views) are
+handled. To make hardcopies via the Document system, select <uicontrol>Document&#xA0;Printing</uicontrol>;
+to save hardcopy as a disk file (named <filepath>temp.prt</filepath> by
+default), select <uicontrol>Plain&#xA0;Text&#xA0;Printing</uicontrol>.</p></body></topic>
+
+<topic id = "vw.help.envSettings.browsingOptions"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set Options for Browsing</title>
+<body><p><indexterm>browsing<indexterm>set options</indexterm></indexterm>Select
+the <uicontrol>Browsing</uicontrol> page in the <xref href="st:SettingsManager openOrRaise: VisualWorksSettings" 
+format="st" scope="external" title="Open the Settings Tool">Settings Tool</xref>.</p>
+<p>To control the default action of the <uicontrol>Browse&#xA0;&arrow;&#xA0;Class&#xA0;Named...</uicontrol> command
+in the Launcher window, use the <uicontrol>Class&#xA0;Browsing</uicontrol> setting.
+To open a hierarchy browser on the specified class, all of its subclasses
+and superclasses, select Use&#xA0;Hierarchy&#xA0;Browsers;
+to open a class browser on the specified class, select <uicontrol>Use&#xA0;Class&#xA0;Browsers</uicontrol>.</p>
+<p>To change display options for the System Browser, change the <uicontrol>Show&#xA0;Namespaces</uicontrol>, <uicontrol>Show&#xA0;Parcels</uicontrol>,
+and <uicontrol>Show&#xA0;Packages</uicontrol> switches. Enabling these
+options will add multi-fuction tabs and additional menu options to
+the System Browser. These options also affect the evaluation of the <apiname>browse</apiname> message
+(e.g., <codeph>Collection browse</codeph>.)</p></body></topic>
+
+<topic id = "vw.help.envSettings.sourceFiles"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set Source and Changes Files</title>
+<body><p><indexterm>files<indexterm>set source files</indexterm></indexterm><indexterm>files<indexterm>set
+changes files</indexterm></indexterm><indexterm>source files</indexterm><indexterm>change
+files</indexterm>Select the <uicontrol>Source&#xA0;&arrow;&#xA0;Source&#xA0;Files</uicontrol> option
+in the <xref href="st:SettingsManager openOrRaise: VisualWorksSettings" 
+format="st" scope="external" title="Open the Settings Tool">Settings Tool</xref> to change the name of the system sources or
+changes files.</p>
+<p>By default, both the sources "<filepath>.sou</filepath>" and changes
+"<filepath>.cha</filepath>" files reside in the <filepath>/image</filepath> directory.
+In a networked environment, users normally share the same sources
+file and have a private changes file. To establish such a configuration,
+either add a new sources file path and click on <uicontrol>Accept</uicontrol>;
+or else select an existing source file from the scrollable list, edit 
+the field below the list to contain the absolute path name of the 
+shared sources file, and click on the <uicontrol>Change</uicontrol> 
+button.</p>
+<p>To keep the changes file in a location other than the startup
+directory, select changes file "<filepath>.cha</filepath>", and insert
+the appropriate path and file name.</p>
+<p>When you make a backup copy of a &Product; image, three files must
+be archived together: the image file, the sources file, and the changes
+file.</p></body></topic>
+
+<topic id = "vw.help.envSettings.sourceDirectories"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set Source Directories</title>
+<body><p><indexterm>source directories</indexterm><indexterm>directories<indexterm>set
+source directories</indexterm></indexterm>Select the <uicontrol>Source&#xA0;Dirs</uicontrol> option
+in the <xref href="st:SettingsManager openOrRaise: VisualWorksSettings" 
+format="st" scope="external" title="Open the Settings Tool">Settings Tool</xref> to change the directories where system and
+parcel source files are located.</p>
+<p>To add a new sources path, enter the path in the field below
+the scrollable list and click on <uicontrol>Accept</uicontrol>.
+To modify an existing path, select it in the scrollable list, edit
+the field, and click on <uicontrol>Change</uicontrol>.</p></body></topic>
+
+<topic id = "vw.help.envSettings.parcelLoadOpts"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set Options for Parcel Loading</title>
+<body><p><indexterm>parcels<indexterm>set load options</indexterm></indexterm>Select
+the <uicontrol>Parcel&#xA0;Path</uicontrol> page in the <xref href="st:SettingsManager openOrRaise: VisualWorksSettings" 
+format="st" scope="external" title="Open the Settings Tool">Settings Tool</xref> to set parcel loading options.</p>
+<p>To reference the &Product; home directory, use the parameter <codeph>$(VISUALWORKS)</codeph>.
+If a parcel has prerequisite parcels, they will be searched for
+in the directories and in the order specified in this list. The
+period character "<codeph>.</codeph>" is used to indicate the directory
+in which the current parcel is being loaded from, not the directory
+in which &Product; is running. Use "<codeph>.</codeph>" to search
+for a parcel’s prerequisites in the same directory as the parcel.</p></body></topic>
+
+<topic id = "vw.help.envSettings.i18nMessages"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set Message Catalogs for Internationalization</title>
+<body><p><indexterm>internationalization<indexterm>set message catalogs</indexterm></indexterm>Use
+the <uicontrol>Messages</uicontrol> page of the <xref href="st:SettingsManager openOrRaise: VisualWorksSettings" 
+format="st" scope="external" title="Open the Settings Tool">Settings Tool</xref> to
+specify directories containing message catalogs for internationalization.</p>
+<p>The list view specifies which directories contain message catalog files.
+These directories contain a collection of subdirectories, where each
+subdirectory is given a name that identifies the language group for
+which it is intended. Message catalog files for specific languages are
+located in these subdirectories.</p>
+<p>To add a directory, type the directory’s name into the input
+field, and press the <uicontrol>Add</uicontrol> button. To delete
+a directory, select it in the list and press <uicontrol>Delete</uicontrol>.
+To change a directory, select it in the list, change the name which
+appears in the input field, and then press <uicontrol>Change</uicontrol>.</p>
+<p>Use <uicontrol>Accept</uicontrol> to finalize, and <uicontrol>Reset</uicontrol> to
+revert your changes.</p></body></topic>
+
+<topic id = "vw.help.envSettings.sourceFormat"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set XML Source Code Option for File-outs</title>
+<body><p><indexterm>source code<indexterm>format options</indexterm></indexterm>Use
+the <uicontrol>File-out&#xA0;Type</uicontrol> page of the <xref href="st:SettingsManager openOrRaise: VisualWorksSettings" 
+format="st" scope="external" title="Open the Settings Tool">Settings Tool</xref> to specify use of XML formatting for source code files saved
+with <uicontrol>File&#xA0;Out</uicontrol>.</p>
+<p>By default, sources are stored using XML. For compatibility with
+ versions prior to &Product; 5i, set this option to 
+ <uicontrol>Smalltalk&#xA0;chunk&#xA0;source&#xA0;code</uicontrol>.</p>
+ </body></topic></topic>
+ </dita>

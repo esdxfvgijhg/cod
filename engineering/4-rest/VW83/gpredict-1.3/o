@@ -1,0 +1,15 @@
+./po/Makefile
+./data/Makefile
+./data/desktop/Makefile
+./data/trsp/Makefile
+./data/satdata/Makefile
+./Makefile
+./src/Makefile
+./src/sgpsdp/Makefile
+./src/sgpsdp/TR/Makefile
+./doc/Makefile
+./doc/man/Makefile
+./win32/Makefile
+./pixmaps/icons/Makefile
+./pixmaps/Makefile
+./pixmaps/maps/Makefile

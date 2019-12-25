@@ -1,0 +1,148 @@
+\hypertarget{classns3_1_1lorawan_1_1DevStatusAns}{}\section{ns3\+:\+:lorawan\+:\+:Dev\+Status\+Ans Class Reference}
+\label{classns3_1_1lorawan_1_1DevStatusAns}\index{ns3\+::lorawan\+::\+Dev\+Status\+Ans@{ns3\+::lorawan\+::\+Dev\+Status\+Ans}}
+
+
+{\ttfamily \#include $<$mac-\/command.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Dev\+Status\+Ans\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{classns3_1_1lorawan_1_1DevStatusAns__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Dev\+Status\+Ans\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=343pt]{classns3_1_1lorawan_1_1DevStatusAns__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classns3_1_1lorawan_1_1DevStatusAns_a2a117f790856a52f98743c42aaab5097}{Dev\+Status\+Ans} (uint8\+\_\+t battery, uint8\+\_\+t margin)
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1DevStatusAns_ab1e376c78c06b679eeb6d73d32aaa62f}{Serialize} (Buffer\+::\+Iterator \&start) const
+\item 
+virtual uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1DevStatusAns_a359096eee9c97dd58abd5b37f2bcd059}{Deserialize} (Buffer\+::\+Iterator \&start)
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1DevStatusAns_a167cca1cb129a2084dcc5412a00b3126}{Print} (std\+::ostream \&os) const
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1DevStatusAns_a20703d8a96ccafe156ef0403912ac1c9}{Get\+Battery} (void)
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1DevStatusAns_a571f9538c6252bc91fe8dc7e7c6d0f11}{Get\+Margin} (void)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Implementation of the \hyperlink{classns3_1_1lorawan_1_1DevStatusAns}{Dev\+Status\+Ans} Lo\+Ra\+W\+AN M\+AC command. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1DevStatusAns_a2a117f790856a52f98743c42aaab5097}\label{classns3_1_1lorawan_1_1DevStatusAns_a2a117f790856a52f98743c42aaab5097}} 
+\index{ns3\+::lorawan\+::\+Dev\+Status\+Ans@{ns3\+::lorawan\+::\+Dev\+Status\+Ans}!Dev\+Status\+Ans@{Dev\+Status\+Ans}}
+\index{Dev\+Status\+Ans@{Dev\+Status\+Ans}!ns3\+::lorawan\+::\+Dev\+Status\+Ans@{ns3\+::lorawan\+::\+Dev\+Status\+Ans}}
+\subsubsection{\texorpdfstring{Dev\+Status\+Ans()}{DevStatusAns()}}
+{\footnotesize\ttfamily ns3\+::lorawan\+::\+Dev\+Status\+Ans\+::\+Dev\+Status\+Ans (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{battery,  }\item[{uint8\+\_\+t}]{margin }\end{DoxyParamCaption})}
+
+Constructor with initialization of all parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em battery} & The battery level in \mbox{[}0, 255\mbox{]}. \\
+\hline
+{\em margin} & The demodulation margin of the last received \hyperlink{classns3_1_1lorawan_1_1DevStatusReq}{Dev\+Status\+Req} packet. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1DevStatusAns_a359096eee9c97dd58abd5b37f2bcd059}\label{classns3_1_1lorawan_1_1DevStatusAns_a359096eee9c97dd58abd5b37f2bcd059}} 
+\index{ns3\+::lorawan\+::\+Dev\+Status\+Ans@{ns3\+::lorawan\+::\+Dev\+Status\+Ans}!Deserialize@{Deserialize}}
+\index{Deserialize@{Deserialize}!ns3\+::lorawan\+::\+Dev\+Status\+Ans@{ns3\+::lorawan\+::\+Dev\+Status\+Ans}}
+\subsubsection{\texorpdfstring{Deserialize()}{Deserialize()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+Dev\+Status\+Ans\+::\+Deserialize (\begin{DoxyParamCaption}\item[{Buffer\+::\+Iterator \&}]{start }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Deserialize the buffer into a M\+AC command.
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & A pointer to the buffer that contains the serialized command. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of bytes that were consumed. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1MacCommand_af12d223a71a67196bce498f1240eda75}{ns3\+::lorawan\+::\+Mac\+Command}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1DevStatusAns_a20703d8a96ccafe156ef0403912ac1c9}\label{classns3_1_1lorawan_1_1DevStatusAns_a20703d8a96ccafe156ef0403912ac1c9}} 
+\index{ns3\+::lorawan\+::\+Dev\+Status\+Ans@{ns3\+::lorawan\+::\+Dev\+Status\+Ans}!Get\+Battery@{Get\+Battery}}
+\index{Get\+Battery@{Get\+Battery}!ns3\+::lorawan\+::\+Dev\+Status\+Ans@{ns3\+::lorawan\+::\+Dev\+Status\+Ans}}
+\subsubsection{\texorpdfstring{Get\+Battery()}{GetBattery()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+Dev\+Status\+Ans\+::\+Get\+Battery (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the battery information contained in this M\+AC command.
+
+\begin{DoxyReturn}{Returns}
+The battery level. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1DevStatusAns_a571f9538c6252bc91fe8dc7e7c6d0f11}\label{classns3_1_1lorawan_1_1DevStatusAns_a571f9538c6252bc91fe8dc7e7c6d0f11}} 
+\index{ns3\+::lorawan\+::\+Dev\+Status\+Ans@{ns3\+::lorawan\+::\+Dev\+Status\+Ans}!Get\+Margin@{Get\+Margin}}
+\index{Get\+Margin@{Get\+Margin}!ns3\+::lorawan\+::\+Dev\+Status\+Ans@{ns3\+::lorawan\+::\+Dev\+Status\+Ans}}
+\subsubsection{\texorpdfstring{Get\+Margin()}{GetMargin()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+Dev\+Status\+Ans\+::\+Get\+Margin (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the demodulation margin contained in this M\+AC command.
+
+\begin{DoxyReturn}{Returns}
+The margin. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1DevStatusAns_a167cca1cb129a2084dcc5412a00b3126}\label{classns3_1_1lorawan_1_1DevStatusAns_a167cca1cb129a2084dcc5412a00b3126}} 
+\index{ns3\+::lorawan\+::\+Dev\+Status\+Ans@{ns3\+::lorawan\+::\+Dev\+Status\+Ans}!Print@{Print}}
+\index{Print@{Print}!ns3\+::lorawan\+::\+Dev\+Status\+Ans@{ns3\+::lorawan\+::\+Dev\+Status\+Ans}}
+\subsubsection{\texorpdfstring{Print()}{Print()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Dev\+Status\+Ans\+::\+Print (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Print the contents of this M\+AC command in human-\/readable format.
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The std\+::ostream instance on which to print the M\+AC command. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1MacCommand_a6bf88db38dab7dcd817811a9fb59f920}{ns3\+::lorawan\+::\+Mac\+Command}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1DevStatusAns_ab1e376c78c06b679eeb6d73d32aaa62f}\label{classns3_1_1lorawan_1_1DevStatusAns_ab1e376c78c06b679eeb6d73d32aaa62f}} 
+\index{ns3\+::lorawan\+::\+Dev\+Status\+Ans@{ns3\+::lorawan\+::\+Dev\+Status\+Ans}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!ns3\+::lorawan\+::\+Dev\+Status\+Ans@{ns3\+::lorawan\+::\+Dev\+Status\+Ans}}
+\subsubsection{\texorpdfstring{Serialize()}{Serialize()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Dev\+Status\+Ans\+::\+Serialize (\begin{DoxyParamCaption}\item[{Buffer\+::\+Iterator \&}]{start }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Serialize the contents of this M\+AC command into a buffer, according to the Lo\+Ra\+W\+AN standard.
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & A pointer to the buffer into which to serialize the command. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1MacCommand_a0ed44b33942ddc3dc9694dc06ab0b87f}{ns3\+::lorawan\+::\+Mac\+Command}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+mac-\/command.\+h\item 
+mac-\/command.\+cc\end{DoxyCompactItemize}

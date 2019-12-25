@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.widgets.spinButton"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Spin Buttons</title>
+<body><p><indexterm>spin button widget</indexterm><indexterm>GUI
+development<indexterm>add spin button</indexterm></indexterm>A spin
+button allows a user to select a value from a determined range.
+The selected value is returned as a selectable object type and format.</p>
+<p>A spin button model must representable as a number. In the cases
+of <uicontrol>String</uicontrol>, <uicontrol>Text</uicontrol>, or <uicontrol>Symbol</uicontrol>,
+the model responds to <apiname>asNumber</apiname> for the representation.</p>
+<p>The Low Value is the minimum setting the button will spin to,
+and the High Value is the maximum setting. The spin button range
+is unbounded unless these values are set.</p>
+<p>The Interval is the amount each button press increments or decrements
+the spin button value. Any number may be entered for the Interval,
+but only positive numbers make sense. The default Interval value
+is 1.</p>
+<p>To add a spin button to a canvas:<ol><li><p>Add a spin button
+widget to the canvas.</p></li>
+<li><p>In the <uicontrol>Aspect</uicontrol> property, enter a name
+for the aspect.</p></li>
+<li><p>(Optional) Set the <uicontrol>Type</uicontrol>, <uicontrol>Format</uicontrol>, <uicontrol>Low
+Value</uicontrol>, <uicontrol>High Value</uicontrol>, and <uicontrol>Intervale</uicontrol> properties</p><p>These
+properties set the returned object type and format, and the range
+and increment for the presented values.</p></li>
+<li><p><uicontrol>Apply</uicontrol> the properties and install the
+canvas, and use <uicontrol>define</uicontrol> to add the aspect
+instance variable and accessor method.</p></li>
+<li><p>Create or edit the <codeph>initialize</codeph> method to
+initialize the aspect variable with a value holder and an initial
+value.</p></li></ol></p></body></topic></dita>

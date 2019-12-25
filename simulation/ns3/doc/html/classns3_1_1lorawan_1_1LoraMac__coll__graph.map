@@ -1,0 +1,4 @@
+<map id="ns3::lorawan::LoraMac" name="ns3::lorawan::LoraMac">
+<area shape="rect" id="node2" href="$classObject.html" title="{Object\n||}" alt="" coords="17,5,77,83"/>
+<area shape="rect" id="node10" href="$classns3_1_1lorawan_1_1LogicalLoraChannelHelper.html" title="{ns3::lorawan::LogicalLora\lChannelHelper\n||+ LogicalLoraChannelHelper()\l+ ~LogicalLoraChannelHelper()\l+ GetAggregatedWaitingTime()\l+ GetWaitingTime()\l+ AddEvent()\l+ GetChannelList()\l+ GetEnabledChannelList()\l+ AddChannel()\l+ AddChannel()\l+ SetChannel()\l+ AddSubBand()\l+ AddSubBand()\l+ RemoveChannel()\l+ GetTxPowerForChannel()\l+ GetSubBandFromChannel()\l+ GetSubBandFromFrequency()\l+ DisableChannel()\l+ GetTypeId()\l}" alt="" coords="69,132,275,473"/>
+</map>

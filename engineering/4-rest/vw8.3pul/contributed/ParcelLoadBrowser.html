@@ -1,0 +1,290 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Kevin Greek">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (WinNT; U) [Netscape]">
+   <title>Parcel Load Browser</title>
+</head>
+<body bgcolor="#FFFFFF" link="#0000FF" vlink="#000000">
+
+<h2>
+
+<hr WIDTH="100%"><font color="#000000">Parcel Load Browser Goodie</font></h2>
+<font color="#000000">Products : VW5i.4</font>
+<br><font color="#000000">Platforms: ALL</font>
+<br>
+<hr WIDTH="100%">
+<p><font color="#000000">The parcel <tt>ParcelLoadBrowser.pcl </tt>replaces
+the parcel load dialog opened from the Parcel Browser or VisualLauncher
+with a window that allows one to perform the following functions:</font>
+<blockquote>
+<li>
+<font color="#000000">Accumulate a list of parcels to load at once.</font></li>
+
+<li>
+<font color="#000000">View parcels by either filename or name.</font></li>
+
+<li>
+<font color="#000000">Select parcels by directory from a tree and view
+all parcels in the search scope of a directory.</font></li>
+
+<li>
+<font color="#000000">Add or remove directories from the tree's search
+scope.</font></li>
+
+<li>
+<font color="#000000">Filter the search for parcels to those matching a
+string with an optional wild card character *.</font></li>
+
+<li>
+<font color="#000000">Parse a list of parcels by name and version from
+a string and identify which parcels are available to load, are loaded,
+or missing from the list.</font></li>
+
+<li>
+<font color="#000000">View the description of a selected parcel.</font></li>
+
+<li>
+<font color="#000000">Search for parcels with a class definition that matches
+a class, superclass, or namespace.</font></li>
+
+<li>
+<font color="#000000">Accumulate a favorites list of parcels to load based
+on frequency or recency.</font></li>
+
+<li>
+<font color="#000000">Adds a list of parcel favorites to load from the
+VisualLauncher Tools menu.</font></li>
+</blockquote>
+<font color="#000000">Parcels are selected by either the <b>Path</b> or
+<b>Name</b>
+tab in the browser.&nbsp; Selected parcels appear in the <b>Selections
+</b>list.&nbsp;
+If <b>Unlist prerequisites</b> is checked the browser will attempt to unlist
+prerequisites of parcels in the <b>Selections </b>list.&nbsp; This removes
+unnecessary parcels from the <b>Selections </b>list<b> </b>and avoids attempts
+to load prerequisite parcels twice.&nbsp; The description for a parcel,
+if any, is displayed for any parcel selection in the <b>Files
+</b>or<b>
+Selections </b>list.</font>
+<br>&nbsp;
+<h3>
+<a NAME="Path"></a><font color="#000000">Path</font></h3>
+<font color="#000000">The <b>Path</b> page displays a directory tree of
+all parcels in the VisualWorks parcel path and in directories the user
+may add.&nbsp; The scope of the directory tree may be expanded or reduced
+by selecting a directory in the tree view and using any one of its following
+menu items:</font>
+<br>&nbsp;
+<table>
+<tr>
+<td><b>All</b></td>
+
+<td>Search and include in the tree all subdirectories of the selection
+that contain parcel files.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>More</b></td>
+
+<td>Include a greater depth of&nbsp; subdirectories and their parcel files
+of the selection in the tree.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>Less</b></td>
+
+<td>Remove leaf subdirectories and parcel files of the selection in the
+tree.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>Remove</b></td>
+
+<td>Remove the selected path from the tree.</td>
+</tr>
+
+<tr>
+<td><b>Sort..</b></td>
+
+<td>Choose to sort names by ascending or descending order in the tree.</td>
+</tr>
+</table>
+
+<p><font color="#000000">The <b>Files</b> list displays the parcels found
+in the scope of a selected directory that match in name to the Filter string.
+If no directory is selected all parcels in the tree are listed.&nbsp; A
+new directory may be added to the tree at any time by entering its pathname
+into the <b>Add path </b>field.&nbsp; Entries to this field are added to
+the selections of the field's drop down list so a previous directory may
+be recovered.</font>
+<p><font color="#000000">Selecting a parcel in the <b>Files</b> list adds
+it to the <b>Selections</b> list.&nbsp; All parcels in the <b>Selections</b>
+list will be loaded when the <b>Load</b> button is pressed.&nbsp; To add
+multiple parcels Control or Shift select parcels in the <b>Files</b> list.&nbsp;
+Names of parcels loaded appear in italics.</font>
+<h3>
+<font color="#000000">Name</font></h3>
+<font color="#000000">The <b>Name</b> tab page will parse parcel names
+from text and identify the available, missing, or loaded parcels parsed.&nbsp;
+The <b>Parcel names to load </b>field expects to parse lines in the following
+format:</font>
+<p><font color="#000000">&nbsp;&nbsp;&nbsp; <i>&lt;Parcel name></i> Version:
+<i>&lt;Parcel
+version></i>&nbsp; of&nbsp; <i>&lt;Parcel timestamp></i></font>
+<p><font color="#000000">or</font>
+<p><font color="#000000">&nbsp;&nbsp; <i>&lt;Parcel name></i> Version:
+<i>&lt;Parcel
+version></i></font>
+<p><font color="#000000">or</font>
+<p><font color="#000000">&nbsp;&nbsp;&nbsp; <i>&lt;Parcel name></i></font>
+<p><font color="#000000">Note that although the parcel name and version
+is parsed in each line the parcel timestamp entry is ignored.</font>
+<p><font color="#000000">To recreate an image from a parcel list, paste
+the parcel list from the Parcel: section of the dialog opened from the
+VisualLauncher Help->About menu.&nbsp; For example, if an excerpt from
+this section reads:</font>
+<p><tt><font color="#000000">&nbsp;AT Profiling Version 5i.1 of 12/13/99
+3:06:50 pm</font></tt>
+<br><tt><font color="#000000">&nbsp;AT Support Version 5i.0.0 of 3/5/99
+3:30:38 pm</font></tt>
+<br><tt><font color="#000000">&nbsp;AT Tools Version 5i.1 of 12/13/99 2:52:54
+pm</font></tt>
+<br><tt><font color="#000000">&nbsp;DLLCC Version 5i.1 of 12/16/99 11:01:59
+am</font></tt>
+<br><tt><font color="#000000">&nbsp;XML Version 5i.1 of 1/3/00 2:47:43
+pm</font></tt>
+<br><tt><font color="#000000">&nbsp;XML-source Version 5i.1 of 1/3/00 2:47:55
+pm</font></tt>
+<p><font color="#000000">then if this is pasted in the <b>Parcel names
+to load </b>field and the <b>Accept </b>button is pressed the available,
+missing, or loaded lists are filled with the parcels parsed.&nbsp;&nbsp;
+Parcels that cannot be found to be either loaded or in the search tree
+as specified in the <b>Path</b> tab appear in the missing list.&nbsp; Those
+parcels appearing in the available list are added to <b>Selections</b>
+for loading when <b>Accept </b>is pressed.</font>
+<p><font color="#000000">If checked, <b>Obey version</b> ensures that only
+parcels with the version specified are included in the available list.&nbsp;
+For most applications <b>Obey version </b>need not be checked <b>.</b></font>
+<br>&nbsp;
+<h3>
+<font color="#000000">Class</font></h3>
+<font color="#000000">The <b>Class</b> page offers a parcel search facility
+to locate class definitions matching the name, superclass, or namespace
+specified.&nbsp; Parcels searched need not be loaded.&nbsp; The search
+is performed within the selected branch of the parcels selected on the
+<b><a href="#Path">Path</a></b>
+page.&nbsp; If no branch in the file tree is selected the entire tree is
+searched. During the search matching classes are added to the <b>Class:
+</b>list
+and their associated parcels are listed in <b>Parcels:</b>.&nbsp; Selecting
+a class selects its associated parcel in the parcels list and shows its
+definition in the definition pane.</font>
+<p><font color="#000000">To start a search enter the namespace, class,
+or superclass criteria in the appropriate fields and press the <b>Search
+</b>button.&nbsp;
+The wildcard '*' may be used in either class, superclass, or namespace
+entries.&nbsp; To interrupt the search press the <b>Stop </b>button.&nbsp;
+The <b>Reset </b>clears the criteria entries.</font>
+<p><font color="#000000">For example, the following search criteria should
+list all classes and the parcels their definition appears in for a classes
+matching '*ORB*' in the DST namespace:</font>
+<p><font color="#000000">Class: '*orb'</font>
+<br><font color="#000000">Namespace: 'DST'</font>
+<p><font color="#000000">To limit the search to just the DST parcels select
+the DST directory from the file tree on the <b>Path</b> page.</font>
+<br><font color="#000000"></font>&nbsp;
+<h3>
+<font color="#000000">Method</font></h3>
+<font color="#000000">The <b>Method</b> page offers a parcel search facility
+to locate method definitions matching the class, method protocol, or selector
+specified.&nbsp; Parcels searched need not be loaded.&nbsp; The search
+is performed within the selected branch of the parcels selected on the
+<b><a href="#Path">Path</a></b>
+page.&nbsp; If no branch in the file tree is selected the entire tree is
+searched. During the search matching classes are added to the <b>Method:
+</b>list
+and their associated parcels are listed in <b>Parcels:</b>.&nbsp; Selecting
+a selector in the <b>Method:
+</b>list selects its associated parcel in
+the parcels list and shows its definition in the definition pane.</font>
+<p><font color="#000000">To start a search enter the class, protocol, or
+selector criteria in the appropriate fields and press the <b>Search
+</b>button.&nbsp;
+The wildcard '*' may be used in either class, protocol, or selector entries.&nbsp;
+To interrupt the search press the <b>Stop </b>button.&nbsp; The <b>Reset
+</b>clears the criteria entries.</font>
+<p><font color="#000000">For example, the following search criteria should
+list all selectors and the parcels their definition appears in for a classes
+matching 'DB*' in the Store-DB namespace:</font>
+<p><font color="#000000">Method: 'textFor*'</font>
+<br><font color="#000000">Class: 'DB*'</font>
+<p><font color="#000000">To limit the search to just the Store parcels
+select the Store directory from the file tree on the <b>Path</b> page.</font>
+<br>&nbsp;
+<h3>
+<font color="#000000">Favorites</font></h3>
+<font color="#000000">As parcels are loaded with the Parcel Load Browser
+a history of the parcel file last loaded is tallied.&nbsp; Opening the
+<b>Favorites </b>will show a list of parcels most frequently or last loaded,
+depending on the selection in the <b>Sort by </b>box.&nbsp; To otherwise
+manually add a parcel to the list first select the parcel from the <b>Path</b>,
+<b>Class</b>,
+or <b>Name</b> page to add it to the Parcel Load Browser load list.&nbsp;
+Then click the <b>Add</b> button on the Favorites page to add the parcels
+to the list.&nbsp; To remove parcels from the list select any and all then
+press the <b>Remove </b>button.&nbsp; Parcels that are already loaded list
+in italics.</font>
+<p><font color="#000000">Favorite parcels not yet loaded also appear listed
+in the VisualLauncher menu <b>Tools</b>-><b>Load Favorite Parcel </b>menu.&nbsp;
+This menu is added when the Parcel Load Browser is loaded.&nbsp; Simply
+select the parcel to load from the menu and it is loaded.</font>
+<p><font color="#000000">Changes to the favorites list are stored to a
+file named <tt>parcels.fav </tt>in the default VisualWorks directory whenever
+the Parcel Load Browser is closed.&nbsp; This data is recovered as needed
+from the file.</font>
+<br>&nbsp;
+<h2>
+<font color="#000000">Additional Info</font></h2>
+<font color="#000000">To restore the original parcel entry dialog simply
+unload <tt>ParcelLoadBrowser.pcl</tt>.</font>
+<p><font color="#000000">The pages that appear in the Parcel Load Browser
+originate as separate classes subclassed from <b>ParcelLoadBrowser</b>.&nbsp;
+Individual instances of the pages may be opened as separate windows by
+evaluating any of the expressions below.</font>
+<p><tt><font color="#000000">"Open a parcel path finder window to locate
+parcels by path"</font></tt>
+<br><tt><font color="#000000">ParcelByPathFinder open.</font></tt>
+<p><tt><font color="#000000">"Open a parcel name finder window"</font></tt>
+<br><tt><font color="#000000">ParcelByNameFinder open.</font></tt>
+<p><tt><font color="#000000">"Open a window to find parcels by a class
+definition (search over entire parcel path space)"</font></tt>
+<br><tt><font color="#000000">ParcelByClassFinder open.</font></tt><tt><font color="#000000"></font></tt>
+<p><tt><font color="#000000">"Open a window to find parcels by a selector
+definition (search over entire parcel path space)"</font></tt>
+<br><tt><font color="#000000">ParcelByMethodFinder open.</font></tt>
+<p><tt><font color="#000000">"Open the parcel favorites window"</font></tt>
+<br><tt><font color="#000000">ParcelFavorites open.</font></tt>
+<p><font color="#000000">Parcel favorites settings can be accessed and
+changed from class methods of <b>ParcelFavorites</b>.</font>
+<p><tt><font color="#000000">"Clear the favorites list and read the favorites
+from file parcels.fav (if available)"</font></tt>
+<br><tt><font color="#000000">ParcelFavorites initialize.</font></tt>
+<p><tt><font color="#000000">"List of parcel favorites by name and version
+array sorted by most use"</font></tt>
+<br><tt><font color="#000000">ParcelFavorites mostUsed.</font></tt>
+<p>
+<hr WIDTH="100%">
+<p><font color="#000000">Copyright &copy; 2000, 2001 Cincom Systems, Inc.&nbsp;
+All Rights Reserved.&nbsp; Unauthorized use, copying or</font>
+<br><font color="#000000">redistribution is prohibited. Code and other
+information are provided as-is, without warranty of</font>
+<br><font color="#000000">any kind and Cincom Systems, Inc. disclaims all
+implied warranties of merchantability or fitness</font>
+<br><font color="#000000">for a particular purpose. Code may only be used
+with Cincom Systems, Inc. products.</font>
+<p>
+<hr >
+</body>
+</html>

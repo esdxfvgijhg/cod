@@ -1,0 +1,4 @@
+<map id="ns3::lorawan::NewChannelReq" name="ns3::lorawan::NewChannelReq">
+<area shape="rect" id="node2" href="$classns3_1_1lorawan_1_1MacCommand.html" title="{ns3::lorawan::MacCommand\n||+ MacCommand()\l+ ~MacCommand()\l+ Serialize()\l+ Deserialize()\l+ Print()\l+ GetSerializedSize()\l+ GetCommandType()\l+ GetTypeId()\l+ GetCIDFromMacCommand()\l}" alt="" coords="19,145,222,340"/>
+<area shape="rect" id="node3" href="$classObject.html" title="{Object\n||}" alt="" coords="5,5,65,83"/>
+</map>

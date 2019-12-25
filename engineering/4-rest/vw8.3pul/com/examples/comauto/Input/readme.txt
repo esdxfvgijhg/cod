@@ -1,0 +1,1 @@
+The files in this directory are used when running the various Automation examples.

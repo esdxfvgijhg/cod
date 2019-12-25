@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.stLang.boolean"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Boolean Conditionals</title>
+<body><p>The boolean constant <codeph>true</codeph> is the sole 
+instance of class <apiname>True</apiname>, while the constant 
+<codeph>false</codeph> is the sole instance of class <apiname>False</apiname>, 
+both of which are subclasses of the abstract class <apiname>Boolean</apiname>.</p>
+<p>Together, these classes provide all standard boolean functions as 
+their behavior.</p></body>
+<topic id = "vw.help.stLang.boolean.operators"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Boolean operators</title>
+<body><p><indexterm>boolean<indexterm>operators</indexterm></indexterm>When
+two or more conditions need to be tested, use the logical and and
+or messages to combine the tests in a series. These messages come
+in two forms:<ul><li><p><apiname>&amp;</apiname> and <apiname>|</apiname> (vertical
+bar)</p></li>
+<li><p><apiname>and:</apiname> and <apiname>or:</apiname> (the argument
+is a block containing the second test)</p></li></ul></p>
+<p>Use the second pair of messages when the second test depends
+on the result of the first test. In a common situation involving
+such a dependency, the first test checks the data type of a variable
+and the second test sends a message that is appropriate only for
+the desired data type.</p>
+<p>Using the second form, involving block arguments, is also appropriate when
+the second test is costly, because the second test is executed only
+when needed.</p></body></topic>
+<topic id = "vw.help.stLang.boolean.messages"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Answer true when both tests are met (logical "and")</title>
+<body><p><indexterm>boolean<indexterm>and</indexterm></indexterm>Send
+an <apiname>&amp;</apiname> or <apiname>and:</apiname> message to an
+expression that returns a boolean value.</p>
+<p>The <apiname>&amp;</apiname> message takes any expression that
+also evaluates to a boolean value. Both expressions are always evaluated.
+<codeblock otherprops="smalltalk expression">| response message |
+response := Dialog request: 'What is your password'.
+(response size &gt; 0) <b>&amp;</b> (response size &lt;= 8)
+	ifTrue: [message := 'Thank you. Have a safe journey']
+	ifFalse: [message := 'Sorry, I cannot let you pass'].
+Transcript show: message; cr.</codeblock></p>
+<p>The <apiname>and:</apiname> message takes a block that evaluates
+to a boolean value. The block is evaluated only if the first expression
+evaluates as true.
+<codeblock otherprops="smalltalk expression">| response message |
+response := Dialog request: 'What is your password'.
+((response size &gt; 0) <b>and:</b> [response size &lt;= 8])
+	ifTrue: [message := 'Thank you. Have a safe journey']
+	ifFalse: [message := 'Sorry, I cannot let you pass'].
+Transcript show: message; cr.</codeblock></p>
+</body></topic></topic></dita>

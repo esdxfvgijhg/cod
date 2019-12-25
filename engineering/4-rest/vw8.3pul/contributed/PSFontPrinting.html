@@ -1,0 +1,365 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.77 [en] (WinNT; U) [Netscape]">
+   <title>VW PostScript Font Printing</title>
+</head>
+<body>
+
+<h2>
+
+<hr WIDTH="100%">Installing Fonts for Use with PostScript Printing</h2>
+Products : VW7.1 and later
+<br>Platforms: ALL
+<br>Keywords : printing, font, graphics
+<p>Released:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6/23/97
+<br>Last Revised: 7/30/03
+<h2>
+
+<hr WIDTH="100%"></h2>
+This document presents an overview of PostScript printing and fonts and
+answers the question of how new PostScript fonts are installed and used
+with VisualWorks. A patch and application is attached to simplify VW font
+installation and to download soft fonts to a printer.
+<br>&nbsp;
+<h3>
+What is PostScript?</h3>
+Like Java, PostScript is a language of executable content whereby PostScript
+programs and data may be downloaded and run on any device with a PostScript
+interpreter. In fact, PostScript was the first language that popularized
+executable content. The purpose of the PostScript language is to compose
+the graphic elements of text, graphics, and scanned images on a page of
+a printer or other output device. It is device independent and takes full
+advantage of the capabilities built into the device in rendering graphics
+and text.
+<br>&nbsp;
+<h3>
+Type 1 PostScript Font Files</h3>
+The most common PostScript font format for type display on PostScript printers
+and displays is the Type 1. The Type 1 font is a specialized form of the
+PostScript language and is the only digital type format recognized on every
+computer platform from microcomputers to mainframes. Hundreds of companies
+around the world have designed and released more than 30,000 Type 1 fonts.
+PostScript Type 1 fonts are distributed in a few different file formats
+and two files are usually all that are needed to install and use PostScript
+fonts. The files are normally identified by their .AFM, .PFM, .PFB, or
+.PFA file extensions.
+<p><b>AFM (Adobe Font Metrics)</b> This is an ASCII readable file with
+the font metric information for the PostScript font. Every style of a font
+family has a corresponding AFM file. The font metric information includes
+the encodings, character widths, bounding boxes, ligature, and kerning
+tables as is needed to format text for the screen or printer. A font metric
+file specifies character widths to calculate line widths and text placement,
+as well as character bounding boxes that can be used for placing accents
+and determination of clipping regions. An AFM font metric file is needed
+for each PostScript printer font defined in VW for printer text placement.
+Once installed in VW the font metrics appear in instances of PostScriptFontBody.
+<p><b>PFM (Printer Font Metrics)</b> This is the binary equivalent of the
+font AFM font metric file as is usually distributed for the Windows and
+Macintosh environments. AFM files are seldom used on Windows and Mac platforms.
+<p><b>PFB (Printer Font Binary)</b> This is a Type 1 font outline file
+stored in a compressed binary format intended for PC or Macintosh platforms.
+Macintosh uses a different binary storage format known as a POST resource.
+Mac PFB files are therefore not compatible with PC PFB files. Because PFB
+files include binary data they cannot in general be sent directly to a
+PostScript printer. Instead, a print driver unpacks the font to ASCII before
+sending to the printer.
+<p><b>PFA (Printer Font ASCII)</b> This is the ASCII PostScript equivalent
+of an unpacked PFB file. It can be sent directly to a PostScript printer
+for interpretation. Any binary data present in a former PFB file is stored
+as "ASCII hex"--meaning each byte of binary data is turned into two ASCII
+characters representing the hexadecimal value. Stand alone conversion utilities
+exist to convert PFB files to PFA files such as what most Windows print
+drivers do.
+<p>For each font style, matching PFM and PFB PostScript files are needed
+to install a font on Windows or Macintosh environments; Unix platforms
+require matching AFM and PFA files. These matching files are usually identified
+by filenames identical except for the extension.
+<p>If the PFA font file is not available in a package but the PFB file
+is then you can create the PFA file using any of the conversion utilities
+pfa2pfb, pfb2pfa, pfatopfb, fbtopfa, ft1ascii, t1binary, or t1utils available
+by FTP. The reference section below cites a location where t1utils for
+the PC is available.
+<br>&nbsp;
+<h3>
+PostScript Printing Primer</h3>
+Windows and Mac platforms rely heavily on their individual PostScript drivers
+to construct the PostScript content sent to the printer. This means appropriate
+application calls by applications such as MS Word need only tell the platform
+resident PostScript print driver what soft fonts to include and the driver
+then does the remaining processing. When an application requests a font
+the print driver compares the font request to a list of fonts known to
+be installed in the printer. If it determines that a font to be included
+in the document is not resident on the printer, the driver finds the required
+font or an appropriate substitute installed on the operating system, extracts
+its content, translates it to PostScript, and includes its content in the
+current print job.
+<p>Print servers on Unix platforms on the other hand usually only send
+a PostScript file to the printer as is with no further processing. VisualWorks
+assumes the lowest common denominator exists between platforms and takes
+the responsibility to construct the entire PostScript file itself. Once
+VisualWorks constructs a PostScript file it sends the file to the operating
+system's PostScript print spooler. It does this without knowledge whether
+the fonts required by the document are missing from the PostScript printer
+and is not enabled to download the soft fonts the document needs.
+<br>&nbsp;
+<h3>
+PostScript Font Types Compatible with VW</h3>
+To be used with VW the PostScript font must satisfy the following conditions:
+<ol>
+<li>
+It must be a Type 1 font.</li>
+
+<li>
+The AFM font file should be available written with the line end convention
+of the platform it is installed to (i.e. LF for Unix, CR for Mac platforms,
+and CRLF for Windows platforms).</li>
+
+<li>
+It should have AdobeStandardEncoding, HRomanEncoding, or FontSpecific encoding
+types. These are the encoding schemes currently recognized by VW. If you
+are not certain what encoding the font has look inside the font AFM file
+for the tag 'EncodingScheme' where it is specified.</li>
+
+<li>
+If the font needs to be downloaded as a soft font to a PostScript printer
+its PFA file must be available.</li>
+</ol>
+These restrictions are a trade-off between the existing VW coding to interpret
+PostScript fonts and the requirement that VW operate on multiple platforms.
+<br>&nbsp;
+<h3>
+How to Display and Print PostScript Fonts in VW</h3>
+To display PostScript fonts in VW you need only to install and setup these
+fonts for the operating system. When you add PostScript fonts to the operating
+system follow the instructions of the font manufacturer for installation.
+For MS Windows, you will need to install Adobe Type Manager so Windows
+can display PostScript as well as TrueType fonts. Once the operating system
+can utilize PostScript fonts VW will display them. To see a sample of all
+fonts VW can display file in and run the Font2Example VW application available
+from the online example files.
+<p>To print PostScript fonts from VW requires that the PostScript AFM font
+file is installed in VW and that the printer has the font installed. It
+is not enough that VW has the font defined, the printer must either have
+the font defined internally or have it downloaded in advance as a soft
+font. If the font is referenced but not available on the printer it will
+substitute a default font, usually Courier, in place of it.
+<p>For a listing of all PostScript fonts VW recognizes and can print evaluate
+the following with 'print it' in VW:
+<p><tt>&nbsp;&nbsp;&nbsp; PostScriptFontBody fontNames</tt>
+<p>The majority of all Apple and HP PostScript laser printers have all
+these VW default fonts defined internally with the exception of the following
+font variations of Helvetica:
+<p><tt>&nbsp;&nbsp;&nbsp; Helvetica-Black</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; Helvetica-BlackOblique</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; Helvetica-Condensed</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; Helvetica-Condensed-Oblique</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; Helvetica-Condensed-Bold</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; Helvetica-Condensed-BoldObl</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; Helvetica-Light</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; Helvetica-LightOblique</tt>
+<p>Since few if any printers have these font styles installed these fonts
+will be printed using a default font (e.g. Courier). Fortunately, Helvetica
+bold or italic fonts are good substitutes and there is seldom a need to
+use a Helvetica font choice from the list above.
+<p>The remaining sections of this document will describe how to download
+soft fonts to a PostScript printer to either make them persist on the printer
+or to be used for a single-use print job. A VW patch and application is
+also presented to simplify font installation and implement font download
+for VW PostScript print jobs.
+<br>&nbsp;
+<h3>
+Making PostScript Soft Fonts Persistent in Printer Volatile Memory</h3>
+PostScript soft fonts can be downloaded to a PostScript printer and made
+available for use indefinitely. Few if any Windows PostScript printer drivers
+still provide this ability however.
+<p>The comp.lang.PostScript FAQ contains instructions on how to make a
+font persistent. This amounts to appending a font PFA file to a PostScript
+header and downloading it to the printer. To remove a persistent font the
+only reliable method in PostScript Level 1 is to restart the printer. Of
+course, the real solution is just to not download persistent fonts unless
+you really want them available indefinitely. If you want them only for
+one job, you should download them as part of the job.
+<br>&nbsp;
+<h3>
+Downloading Soft Fonts for Use During a Print Job</h3>
+You can download a font manually for use during a print job by just including
+the PFA source for all fonts needed by the document prior to the document
+PostScript content. This is as easy as prepending all the PFA font files
+needed in the document before the PostScript document file and printing
+the combination. The document file must be at the end of the combined file.
+For example, given a PostScript document created by VW as <tt>VWsource.ps</tt>
+and the PFA file <tt>font.pfa</tt> the resulting file to print, <tt>VWoutput.ps</tt>,
+could be created in a DOS Shell by executing
+<p><tt>&nbsp;&nbsp;&nbsp; copy font.pfa+VWsource.ps VWoutput.ps</tt>
+<p>in the command line.
+<p>Evaluating
+<p><tt>&nbsp;&nbsp;&nbsp; 'VWoutput.ps' asFilename printPSFile</tt>
+<p>in VW should print the document with the soft font. Append other PFA
+font files to the beginning of the combined output file as necessary for
+each soft font used.
+<br>&nbsp;
+<h3>
+VW PostScript Printing Goodie</h3>
+Instead of prepending PostScript fonts to a document manually for each
+print job requiring a soft font, this goodie adds functionality to the
+PostScriptFontBody and PostScriptFile classes to do this automatically.
+PostScript fonts are installed in VW by means of processing the AFM files
+in the Fontmets subdirectory. Each font installed will reference an instance
+of PostScriptFontBody in the class variable PostScriptFonts in PostScriptFontBody.
+What the patch adds to the PostScriptFontBody class is an instance variable
+'fontSource' which, if defined for an instance, references the Filename
+instance on the font's PFA file. The PostScriptFile method #close has also
+been changed so that before a PostScript file created by VW is closed all
+fonts needed in the document are matched to PostScriptFontBody instances.
+If a PostScriptFontBody instance has a filename defined for 'fontSource'
+the PFA font file is read and appended to the beginning of the document.
+The resulting PostScript file, larger by the font files appended to it,
+can be directed to the printer or left on the disk.
+<br>&nbsp;
+<h3>
+VW Font Installation Application</h3>
+An application aid to install PostScript fonts into VW and reference the
+font PFA files appears below. The application has two lists--an Available
+list of fonts available to install and an Installed list of fonts installed
+in VW. The FontInstaller application fills the Available list with all
+fonts that are available to install from AFM and PFA font files omitting
+those fonts already installed in VW that appear in the Installed list.
+Fonts with matching AFM and PFA font files appear in green whereas fonts
+found from only AFM metric files are in black. The user can select fonts
+to install or remove installed fonts. The application also can print a
+test page of all installed fonts. See the Help option for the application
+for more details or read on.
+<p>There are two parcels and their accompanying source files (.pst) in
+this application:
+<br>&nbsp;
+<table BORDER COLS=2 >
+<tr>
+<td>PSFontDeply</td>
+
+<td>Parcel to add PostScript font printing to an image.&nbsp;</td>
+</tr>
+
+<tr>
+<td>PSFontPrinting</td>
+
+<td>Application to setup and test PostScript printer fonts to an image.
+Unload this parcel to prepare a deployment image. Autoloads PSFontDeploy
+parcel.</td>
+</tr>
+</table>
+
+<p>Follow the steps below to make new PostScript fonts available to print
+from your image.
+<ol>
+<li>
+Parcel in the PSFontPrinting parcel.</li>
+
+<li>
+Copy the AFM and PFA font files for all fonts you wish to include in the
+installation to the Fontmets subdirectory you specify for your VW installation.
+By default, these files are expected to appear in Utils/Fontmets as a subdirectory
+of VW. For case dependent operating systems (e.g. Unix) the AFM and PFA
+filenames should match in case and their extensions should be in lower
+case (i.e. "afm" and "pfa").</li>
+
+<li>
+Open the Settings Tool and select the tab named "PS Fonts" or execute "FontInstaller
+open".</li>
+
+<li>
+Modify or add the specification of your font directory in step 2 above.
+Once this is completed the Available list of the PostScript Font Installer
+window should include the names of all fonts you installed files for in
+green. Font names that appear in black have an AFM file but no matching
+PFA file was found. If you add font files to either of these directories
+while the Installer is running select the 'Update' option from the Available
+list pop up menu.</li>
+
+<li>
+Select a font that you wish to install in the Available list and push the
+">>" button. The font you selected is installed and its name should be
+moved from the Available list to the Installed list.</li>
+</ol>
+To print a sample of all PostScript fonts installed in VW select the Installer's
+'Print all' option in the Installed list.
+<p>If you want to remove PostScript printer fonts from the image select
+a font name in the Installed list and press the "&lt;&lt;" button. The
+font will be withdrawn from the Installed list and placed in the Available
+list.
+<p>To distribute an image using the PostScript printer fonts unload the
+PSFontPrinting parcel and save the image with the PSFontDeply parcel
+and settings. Then, when you distribute an image you need to have the end
+user install the PFA files to the same directory you used for any fonts
+you installed using the Installer above. If the image is distributed to
+an operating system with case dependent file names (e.g. Unix) and the
+image was developed from an operating system with case independent file
+names (e.g. Windows) be certain that the AFM and PFA file names distributed
+are in lower case. If not, the end user will see VW pop up a dialog asking
+for a correct path and file name for the needed PFA file when the font
+is used. Also, if you distribute the image you must obey the font manufacturer's
+fair use policy for those fonts you distribute with the image.
+<br>&nbsp;
+<h3>
+Sample Font Download</h3>
+A ZIP archive of sample PostScript font files ready for use with the PSFontPrinting
+parcel is available for download from
+<p><a href="http://www.cincomsmalltalk.com:8080/CincomSmalltalkWiki/DOWNLOAD/CODE/fontmets.zip">http://www.cincomsmalltalk.com:8080/CincomSmalltalkWiki/DOWNLOAD/CODE/fontmets.zip</a>
+<p>Install the files from the archive to Utils/Fontmets as a subdirectory
+of VW.&nbsp; Or install the files to another directory and specify that
+directory to the Settings Tool "PS Fonts" page as noted in the previous
+section.&nbsp; The archive also includes Adobe AFM files previously distributed
+with VW2.5.2.&nbsp; The font metrics of these files are defined already
+in a VW image by default and the files are only needed if you use the Settings
+Tool "PS Fonts" page to remove the font then later wish to restore it .
+<p>
+<hr WIDTH="100%">
+<h3>
+References</h3>
+
+<h4>
+PostScript Font Sources</h4>
+PostScript fonts are available either as freeware, shareware, or commericial
+products. Free or shareware font listings originate from AOL, Compuserve,
+several Web or FTP sites, and CD-ROMs. A number of Linux user groups have
+compiled PostScript fonts and utilities for use with this product.
+<p>Here are a few sites for information on PostScript fonts and font sources:
+<p><a href="http://www.math.utah.edu/~beebe/fonts/postscript-type-1-fonts.html">http://www.math.utah.edu/~beebe/fonts/postscript-type-1-fonts.html</a>
+<br><a href="http://yoyo.cc.monash.edu.au/~wigs/postscript/">http://yoyo.cc.monash.edu.au/~wigs/postscript/</a>
+<br><a href="http://www.cs.indiana.edu/docproject/programming/postscript/postscript.html">http://www.cs.indiana.edu/docproject/programming/postscript/postscript.html</a>
+<p>The full set of public domain PostScript font files for the Computer
+<br>Modern Roman set is available at
+<p><a href="http://www.ams.org/tex/type1-cm-fonts.html">http://www.ams.org/tex/type1-cm-fonts.html</a>
+<br>&nbsp;
+<h4>
+Type 1 Font Conversion Utilities</h4>
+For DOS and Windows, t1utils1.zip:
+<p><a href="http://garbo.uwasa.fi/pc/fonts.html">http://garbo.uwasa.fi/pc/fonts.html</a>
+<p>The t1ascii.exe executable may be used to convert a PFB file to PFA
+file in DOS.
+<br>&nbsp;
+<h4>
+Usenet newsgroup comp.lang.postscript FAQ</h4>
+<a href="ftp://wilma.cs.brown.edu/pub/comp.lang.postscript/">ftp://wilma.cs.brown.edu/pub/comp.lang.postscript/</a>
+<br>&nbsp;
+<h4>
+Adobe Technical Notes (in Adobe PDF format)</h4>
+Technical Note #5040. Supporting Downloadable PostScript Language Fonts
+<p>Technical Note #5075. Supporting Fonts in the PostScript Language Environment
+<br>&nbsp;
+<h4>
+Adobe PostScript and Typographic Information</h4>
+Documents on PostScript font styles, metrics, terminology, and an overview
+of PostScript may be found at <a href="http://partners.adobe.com/asn/developer/technotes.html">http://partners.adobe.com/asn/developer/technotes.html</a>
+<p>
+<hr WIDTH="100%">
+<p>Copyright &copy; 1999-2003 Cincom Systems, Inc.&nbsp; All Rights Reserved.&nbsp;
+Unauthorized use, copying or redistribution is prohibited. Code and other
+information are provided as-is, without warranty of any kind and Cincom
+Systems, Inc. disclaims all implied warranties of merchantability or fitness
+for a particular purpose. Code may only be used with Cincom Systems, Inc.
+products.
+<br>&nbsp;
+</body>
+</html>

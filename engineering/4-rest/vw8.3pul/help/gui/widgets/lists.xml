@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.widgets.lists"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Lists</title>
+<topic id = "vw.help.widgets.lists.addToCanvas"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Add a list to a canvas</title>
+<body><p><indexterm>list widget</indexterm><indexterm>widget<indexterm>add
+list</indexterm></indexterm>Use a list widget to display a collection
+of objects and to allow the user to select one or more elements
+in the list.</p>
+<p>A list widget depends on two value holders: a collection of objects and
+the index of the current selection. A <apiname>SelectionInList</apiname> object
+contains both of these value holders.<ol><li><p>Add a list widget
+to the canvas, leaving it selected.</p></li>
+<li><p>On the <uicontrol>Basics</uicontrol> page of the GUI Painter Tool, 
+fill in the list’s <uicontrol>Aspect</uicontrol> property with the name 
+of the method that will return an instance of <apiname>SelectionInList</apiname>.</p></li>
+<li><p>Use the canvas’s <uicontrol>Define</uicontrol> command to add 
+an instance variable (<codeph>classes</codeph>)
+to the application model, and to create a corresponding aspect method.
+This instance variable will hold the <apiname>SelectionInList</apiname>.</p></li>
+<li><p>Create an <codeph>initialize</codeph> method to assign a
+default value to the instance variable you created in step 2 (<codeph>classes</codeph>).
+Initialize the variable with an instance of <codeph>SelectionInList</codeph> that
+is itself initialized with a list of Smalltalk class names.
+<codeblock otherprops="smalltalk method">initialize
+		super initialize.
+		classes := SelectionInList with: Smalltalk classNames.
+		classes selectionIndexHolder onChangeSend:
+			 #changedClass to: self.
+		methodNames := MultiSelectionInList new.
+		instances := SelectionInList new.</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:List1-Example:Examples.SimpleListExample open" 
+format="st" scope="external">List1-Example</xref></p>
+</body></topic>
+
+<topic id = "vw.help.widgets.lists.nontextItems"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Display a list of non-textual elements</title>
+<body><p><indexterm>list widget<indexterm>list non-text objects</indexterm></indexterm>Create
+a new <apiname>displayString</apiname> method in the class of the
+element to be listed. The list will send this message to each element
+at display time. (The following method is implemented in the <apiname>Association</apiname> class.)
+<codeblock otherprops="smalltalk method">displayString
+		"Allows a value to be quietly associated with the key that is 
+		displayed in a SequenceView."
+		^key displayString</codeblock></p></body></topic>
+<topic id = "vw.help.widgets.lists.editList"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Edit a list of elements</title>
+<body><p><indexterm>list widget<indexterm>edit list</indexterm></indexterm>To
+change the list of elements, give the <apiname>SelectionInList</apiname> a
+new collection of elements. <ol><li><p>In the method that is responsible
+for updating the list, get the <apiname>SelectionInList</apiname> from
+the application model</p></li>
+<li><p>Send a <apiname>list:</apiname> message to the <apiname>SelectionInList</apiname> with
+the new collection as the argument.
+<codeblock otherprops="smalltalk method">changedClass
+		| cls |
+		self classes selection isNil
+			"No class is selected -- empty the selector list."
+			ifTrue: [
+				self methodNames list: List new.
+				self instances list: List new]
+			"A class is selected"
+			ifFalse: [
+				cls := Smalltalk at: self classes selection.
+				"Update the selectors list."
+				self methodNames list: cls selectors asSortedCollection.
+				"Update the instances list."
+				self instances list: cls allInstances].</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:List1-Example:Examples.SimpleListExample open" 
+format="st" scope="external">List1-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.lists.multiSelect"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Allow multiple list selections</title>
+<body><p><indexterm>list widget<indexterm>multi-select</indexterm></indexterm>You
+can select more than one item in a list as targets for an action.
+A list allows multiple selections when its Multi Select property
+is turned on.</p>
+<p>The Use Modifier Keys For Multi Select property determines how modifier
+keys behave in selecting. When set (the default):<ul><li><p>The
+&lt;Select> mouse button to selects a single item on the list</p></li>
+<li><p>&lt;Shift>-click selects additional contiguous items</p></li>
+<li><p>&lt;Control>-click selects an additional noncontiguous item</p></li></ul></p>
+<ol><li><p>Select the list widget in the canvas.</p></li>
+<li><p>In the GUI Painter Tool, turn on the list widget’s Multi
+Select property.</p></li>
+<li><p>Apply properties and Install the canvas.</p></li>
+<li><p>In the application model’s <codeph>initialize</codeph> method,
+initialize the list widget’s aspect variable to hold a <apiname>MultiSelectionInList</apiname>.
+<codeblock otherprops="smalltalk method">initialize
+		super initialize.
+		classes := SelectionInList with: Smalltalk classNames.
+		classes selectionIndexHolder onChangeSend: #changedClass to: self.
+		methodNames := MultiSelectionInList new.
+		instances := SelectionInList new.</codeblock></p></li></ol>
+<p><b>Online example:</b> 
+<xref href="prereq:List1-Example:Examples.SimpleListExample open" 
+format="st" scope="external">List1-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.lists.getSelection"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get a list selection</title>
+<body><p>You can ask a <apiname>SelectionInList</apiname> for the
+selected object or for the index of the selected object in the list.
+For a multiselect list, the application model must be able to handle
+a collection of objects.</p>
+<p>When nothing is selected, a <apiname>SelectionInList</apiname> returns <codeph>nil</codeph> as
+the selection and zero as the index; a <apiname>MultiSelectionInList</apiname> returns
+an empty collection for both the selections and the indexes.<ol><li><p>Get
+the <apiname>SelectionInList</apiname> (or <apiname>MultiSelectionInList</apiname>)
+from the application model.</p></li>
+<li><p>To get the selected item(s) and send a <apiname>selection</apiname> (or <apiname>selections</apiname>) message.</p></li>
+<li><p>To get the index(es), send a <apiname>selectionIndex</apiname> (<apiname>selectionIndexes</apiname>) message.
+<codeblock otherprops="smalltalk method">changedClass
+		| cls |
+		<b>self classes selection</b> isNil
+			"No class is selected -- empty the selector list."
+			ifTrue: [
+				self methodNames list: List new.
+				self instances list: List new]
+			"A class is selected"
+			ifFalse: [
+				cls := Smalltalk at: self classes selection.
+				"Update the selectors list."
+				self methodNames list: cls selectors asSortedCollection.
+				"Update the instances list."
+				self instances list: cls allInstances].</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:List1-Example:Examples.SimpleListExample open" 
+format="st" scope="external">List1-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.lists.setSelections"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set list selections programmatically</title>
+<body><p><indexterm>list widget<indexterm>set selection</indexterm></indexterm><ol>
+<li><p>Get the <apiname>SelectionInList</apiname> from the application
+model</p></li>
+<li><p>To select by index, send it a <apiname>selectionIndex:</apiname> message
+with the index number as argument.</p></li>
+<li><p>To select by item, send it a <apiname>selection:</apiname> message
+with the object as argument.
+<codeblock otherprops="smalltalk method">postOpenWith: aBuilder
+		super postOpenWith: aBuilder.
+		"Uncomment the line below to auto-select the first class."
+		self classes selectionIndex: 1.
+		"Uncomment the lines below to auto-select the last class."
+		"self classes selection: self classes list last.
+		(aBuilder componentAt: #classes) widget controller 
+			cursorPointWithScrolling."
+		"In the classes list, use boxed highlighting instead of reverse-video."
+		(aBuilder componentAt: #classes) widget strokedSelection.</codeblock></p></li></ol></p>
+<p>For a <apiname>MultiSelectionInList</apiname>, send <apiname>selectionIndexes:</apiname> or <apiname>selections:</apiname>,
+with the appropriate collection as argument. You can select all
+items by sending a <apiname>selectAll</apiname> message to the list:
+<codeblock otherprops="smalltalk method">selectAll
+		self methodNames selectAll.</codeblock></p>
+<p>Similarly, send a <apiname>clearAll</apiname> message to clear
+all selections:
+<codeblock otherprops="smalltalk method">clearAll
+		self methodNames clearAll.</codeblock></p>
+<p><b>Online example:</b> 
+<xref href="prereq:List1-Example:Examples.SimpleListExample open" 
+format="st" scope="external">List1-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.lists.addMenu"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Add a menu to a list</title>
+<body><p><indexterm>list widget<indexterm>add menu</indexterm></indexterm>By
+default, a list does not have a pop-up menu, but it is sometimes useful
+to have a menu that includes:<ul><li><p>Commands that act on the
+selection(s).</p></li>
+<li><p>Commands that act on the list itself, usually by updating
+or filtering its contents.</p></li></ul></p>
+<p>To add a menu:<ol><li><p>Select the list widget in the canvas.</p></li>
+<li><p>In the GUI Painter Tool, fill in the list widget’s Menu property
+with the name of the method that will supply the menu.</p></li>
+<li><p><uicontrol>Apply</uicontrol> the property and <uicontrol>Install</uicontrol> the
+canvas.</p></li>
+<li><p>Use a Menu Editor to create the menu method.</p></li>
+<li><p>Create the methods that are invoked by the menu.</p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:List1-Example:Examples.SimpleListExample open" 
+format="st" scope="external">List1-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.lists.connectLists"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Connect two lists</title>
+<body><p><indexterm>list widget<indexterm>connect lists</indexterm></indexterm>As
+for any interaction between widgets, lists may be connected by declaring
+dependencies between them.<ol><li><p>In the application model’s <codeph>initialize</codeph> method,
+arrange for a change message (<codeph>changedClass</codeph>) to
+be sent when the selection is changed in the first list.
+<codeblock otherprops="smalltalk method">initialize
+		super initialize.
+		classes := SelectionInList with: Smalltalk classNames.
+		classes selectionIndexHolder 
+			onChangeSend: #changedClass to: self. 
+		methodNames := MultiSelectionInList new.
+		instances := SelectionInList new.</codeblock></p></li>
+<li><p>Create the change method (<codeph>changedClass</codeph>)
+in the application model to update the second list (<codeph>methodNames</codeph>)
+when appropriate.
+<codeblock otherprops="smalltalk method">changedClass
+		| cls |
+		self classes selection isNil
+			"No class is selected -- empty the selector list."
+			ifTrue: [
+				self methodNames list: List new.
+				self instances list: List new]
+			"A class is selected"
+			ifFalse: [
+				cls := Smalltalk at: self classes selection.
+				"Update the selectors list."
+				self methodNames list: cls selectors asSortedCollection.
+				"Update the instances list."
+				self instances list: cls allInstances].</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:List1-Example:Examples.SimpleListExample open" 
+format="st" scope="external">List1-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.lists.connectToEditor"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Connect a list to a text editor</title>
+<body><p><indexterm>list widget<indexterm>connect to editor</indexterm></indexterm><ol>
+<li><p>In the application model’s <codeph>initialize</codeph> method,
+arrange for a change message (<codeph>changedClass</codeph>) to
+be sent to the application model whenever the list selection is
+changed. 
+<codeblock otherprops="smalltalk method">initialize
+		super initialize.
+		comment := '' asValue.
+		classes := SelectionInList with: Smalltalk classNames.
+		classes selectionIndexHolder 
+			onChangeSend: #changedClass to: self.
+		textStyle := #plain asValue.
+		textStyle onChangeSend: #changedStyle to: self.
+		readOnly := false asValue.
+		readOnly onChangeSend: #changedReadOnly to: self.</codeblock></p></li>
+<li><p>Create the change method (<codeph>changedClass</codeph>)
+in the application model to update the text editor’s value holder
+(<codeph>comment</codeph>) appropriately.
+<codeblock otherprops="smalltalk method">changedClass
+		"When the list selection changes, update
+			the comment view."
+		| selectedClass txt start wrapper |
+		selectedClass := self classes selection.
+		selectedClass isNil
+			ifTrue: [self comment value: '' asText]
+			ifFalse: [
+				txt := (Smalltalk at: selectedClass) comment.
+				self comment 
+					value: txt.
+				"Find and highlight the class name in the text."
+				start := txt 
+					indexOfSubCollection: selectedClass asString 
+					startingAt: 1.
+				start > 0
+					ifTrue: [
+						wrapper := (self builder componentAt: #comment).
+						wrapper widget controller
+							selectAndScrollFrom: start 
+							to: start + selectedClass asString size - 1.
+						wrapper takeKeyboardFocus]].</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Editor1-Example:Examples.Editor1Example open" 
+format="st" scope="external">Editor1-Example</xref></p>
+</body></topic></topic></dita>

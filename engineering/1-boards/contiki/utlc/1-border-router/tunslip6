@@ -1,0 +1,26 @@
+#!/bin/bash
+
+mytitle="Tunslip6"
+echo -e '\033]2;'$mytitle'\007'
+
+projectPath=`/home/aghiles/Aghiles/Tool/commands/program/targetos`
+projectPath=$projectPath/contiki
+
+echo "You have to make the access to USB0 free !!!"
+cd $projectPath/tools/
+make tunslip6 && sudo ./tunslip6 -s /dev/ttyUSB0 aaaa::1/64
+
+
+#title1="Connexion"
+##title3="Server"
+
+#cmd1="
+#cd $projectPath/tools/
+#make tunslip6 && sudo ./tunslip6 -s /dev/ttyUSB0 aaaa::1/64" 
+
+
+##cmd3="sudo python UDP-MQTT-final-server.py"
+
+#gnome-terminal --tab --title="$title1" --command="bash -c '$cmd1; $SHELL'" #\
+##               --tab --title="$title3" --command="bash -c '$cmd3; $SHELL'" 
+

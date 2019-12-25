@@ -1,0 +1,7 @@
+#!/bin/sh
+
+export VISUALWORKS=/home/netgen/vw8.3pul
+export SOURCE_PATH=/media/netgen/CST17PUL
+
+cd /home/netgen/vw8.3pul/launchpad
+/home/netgen/vw8.3pul/bin/linux86/visual /home/netgen/vw8.3pul/launchpad/launchpad.im

@@ -1,0 +1,141 @@
+\hypertarget{classns3_1_1lorawan_1_1LinearLoraTxCurrentModel}{}\section{ns3\+:\+:lorawan\+:\+:Linear\+Lora\+Tx\+Current\+Model Class Reference}
+\label{classns3_1_1lorawan_1_1LinearLoraTxCurrentModel}\index{ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model@{ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model}}
+
+
+{\ttfamily \#include $<$lora-\/tx-\/current-\/model.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Linear\+Lora\+Tx\+Current\+Model\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{classns3_1_1lorawan_1_1LinearLoraTxCurrentModel__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Linear\+Lora\+Tx\+Current\+Model\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{classns3_1_1lorawan_1_1LinearLoraTxCurrentModel__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LinearLoraTxCurrentModel_adde65b755e155cba2f3cf7dd676d19df}{Set\+Eta} (double eta)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LinearLoraTxCurrentModel_a675cff436187a271b78832f938b1d404}{Set\+Voltage} (double voltage)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LinearLoraTxCurrentModel_a1685530e7d61367adfab611f724f95ce}{Set\+Standby\+Current} (double idle\+Current)
+\item 
+double \hyperlink{classns3_1_1lorawan_1_1LinearLoraTxCurrentModel_a4e15519375a8f9b0a43cc5e437461e5a}{Get\+Eta} (void) const
+\item 
+double \hyperlink{classns3_1_1lorawan_1_1LinearLoraTxCurrentModel_a74f4d04511937d792a90c69997773d95}{Get\+Voltage} (void) const
+\item 
+double \hyperlink{classns3_1_1lorawan_1_1LinearLoraTxCurrentModel_a74cf9badafdd63a68f40f8d3cb9898cb}{Get\+Standby\+Current} (void) const
+\item 
+double \hyperlink{classns3_1_1lorawan_1_1LinearLoraTxCurrentModel_a665f1751a87d6ff09b30c4ca30484b92}{Calc\+Tx\+Current} (double tx\+Power\+Dbm) const
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LinearLoraTxCurrentModel_a910ea8ed64df92fcbd89e6a4b68ad03f}\label{classns3_1_1lorawan_1_1LinearLoraTxCurrentModel_a910ea8ed64df92fcbd89e6a4b68ad03f}} 
+static Type\+Id {\bfseries Get\+Type\+Id} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A linear model of the transmission current for a Lo\+Ra device, based on the Wi\+Fi model. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LinearLoraTxCurrentModel_a665f1751a87d6ff09b30c4ca30484b92}\label{classns3_1_1lorawan_1_1LinearLoraTxCurrentModel_a665f1751a87d6ff09b30c4ca30484b92}} 
+\index{ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model@{ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model}!Calc\+Tx\+Current@{Calc\+Tx\+Current}}
+\index{Calc\+Tx\+Current@{Calc\+Tx\+Current}!ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model@{ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model}}
+\subsubsection{\texorpdfstring{Calc\+Tx\+Current()}{CalcTxCurrent()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model\+::\+Calc\+Tx\+Current (\begin{DoxyParamCaption}\item[{double}]{tx\+Power\+Dbm }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Get the current for transmission at this power.
+
+
+\begin{DoxyParams}{Parameters}
+{\em tx\+Power\+Dbm} & The nominal tx power in d\+Bm \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The transmit current (in Ampere) 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1LoraTxCurrentModel_ad4143a40cb10d4cbd4bf838e006780c7}{ns3\+::lorawan\+::\+Lora\+Tx\+Current\+Model}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LinearLoraTxCurrentModel_a4e15519375a8f9b0a43cc5e437461e5a}\label{classns3_1_1lorawan_1_1LinearLoraTxCurrentModel_a4e15519375a8f9b0a43cc5e437461e5a}} 
+\index{ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model@{ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model}!Get\+Eta@{Get\+Eta}}
+\index{Get\+Eta@{Get\+Eta}!ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model@{ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model}}
+\subsubsection{\texorpdfstring{Get\+Eta()}{GetEta()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model\+::\+Get\+Eta (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the power amplifier efficiency. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LinearLoraTxCurrentModel_a74cf9badafdd63a68f40f8d3cb9898cb}\label{classns3_1_1lorawan_1_1LinearLoraTxCurrentModel_a74cf9badafdd63a68f40f8d3cb9898cb}} 
+\index{ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model@{ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model}!Get\+Standby\+Current@{Get\+Standby\+Current}}
+\index{Get\+Standby\+Current@{Get\+Standby\+Current}!ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model@{ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model}}
+\subsubsection{\texorpdfstring{Get\+Standby\+Current()}{GetStandbyCurrent()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model\+::\+Get\+Standby\+Current (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the current in the S\+T\+A\+N\+D\+BY state. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LinearLoraTxCurrentModel_a74f4d04511937d792a90c69997773d95}\label{classns3_1_1lorawan_1_1LinearLoraTxCurrentModel_a74f4d04511937d792a90c69997773d95}} 
+\index{ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model@{ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model}!Get\+Voltage@{Get\+Voltage}}
+\index{Get\+Voltage@{Get\+Voltage}!ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model@{ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model}}
+\subsubsection{\texorpdfstring{Get\+Voltage()}{GetVoltage()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model\+::\+Get\+Voltage (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the supply voltage. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LinearLoraTxCurrentModel_adde65b755e155cba2f3cf7dd676d19df}\label{classns3_1_1lorawan_1_1LinearLoraTxCurrentModel_adde65b755e155cba2f3cf7dd676d19df}} 
+\index{ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model@{ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model}!Set\+Eta@{Set\+Eta}}
+\index{Set\+Eta@{Set\+Eta}!ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model@{ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model}}
+\subsubsection{\texorpdfstring{Set\+Eta()}{SetEta()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model\+::\+Set\+Eta (\begin{DoxyParamCaption}\item[{double}]{eta }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em eta} & (dimension-\/less)\\
+\hline
+\end{DoxyParams}
+Set the power amplifier efficiency. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LinearLoraTxCurrentModel_a1685530e7d61367adfab611f724f95ce}\label{classns3_1_1lorawan_1_1LinearLoraTxCurrentModel_a1685530e7d61367adfab611f724f95ce}} 
+\index{ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model@{ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model}!Set\+Standby\+Current@{Set\+Standby\+Current}}
+\index{Set\+Standby\+Current@{Set\+Standby\+Current}!ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model@{ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model}}
+\subsubsection{\texorpdfstring{Set\+Standby\+Current()}{SetStandbyCurrent()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model\+::\+Set\+Standby\+Current (\begin{DoxyParamCaption}\item[{double}]{idle\+Current }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em idle\+Current} & (Ampere)\\
+\hline
+\end{DoxyParams}
+Set the current in the S\+T\+A\+N\+D\+BY state. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LinearLoraTxCurrentModel_a675cff436187a271b78832f938b1d404}\label{classns3_1_1lorawan_1_1LinearLoraTxCurrentModel_a675cff436187a271b78832f938b1d404}} 
+\index{ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model@{ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model}!Set\+Voltage@{Set\+Voltage}}
+\index{Set\+Voltage@{Set\+Voltage}!ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model@{ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model}}
+\subsubsection{\texorpdfstring{Set\+Voltage()}{SetVoltage()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model\+::\+Set\+Voltage (\begin{DoxyParamCaption}\item[{double}]{voltage }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em voltage} & (Volts)\\
+\hline
+\end{DoxyParams}
+Set the supply voltage. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lora-\/tx-\/current-\/model.\+h\item 
+lora-\/tx-\/current-\/model.\+cc\end{DoxyCompactItemize}

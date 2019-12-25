@@ -1,0 +1,12 @@
+#!/bin/sh
+
+ls -ls .
+touch ssh
+echo "dtoverlay=dwc2,dr_mode=peripheral" >> config.txt
+#echo "modules-load=dwc2,g_ether" >> cmdline.txt
+touch ssh
+
+
+
+ssh-keygen -R raspberrypi.local
+ssh pi@raspberrypi.local

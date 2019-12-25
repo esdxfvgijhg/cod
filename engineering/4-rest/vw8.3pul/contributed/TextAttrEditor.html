@@ -1,0 +1,292 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="Kevin Greek">
+   <title>VW Text Attributes Editor</title>
+</head>
+<body>
+
+<h2>
+
+<hr WIDTH="100%">Application to examine and edit text styles</h2>
+Products : VW5i.0
+<br>Platforms: ALL
+<br>Keywords : printing, font, FontDescription, FontPolicy, TextAttributes
+<p>Released:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Aug&nbsp; 4, 1998
+<br>Last Revised:&nbsp; Sep 28, 1998
+<h2>
+
+<hr WIDTH="100%"></h2>
+&nbsp;Choosing a particular font or text style in a VisualWorks application
+<br>&nbsp;can often be frustrating for the following reasons:
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.&nbsp; Since
+VisualWorks applications are intended to be cross platforn,
+<br>&nbsp;an application may inevitably be installed on a platform that
+is missing
+<br>&nbsp;one or more fonts for the platform it was developed for and uses.
+A choice
+<br>&nbsp;trade-off exists between what stylized fonts the developer will
+choose
+<br>&nbsp;to specify and what generic fonts are available to be substituted
+for them
+<br>&nbsp;on all target platforms if these fonts are missing.
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.&nbsp; The
+path from creating the text and font specifications to
+<br>&nbsp;seeing the outcome in the application involves some time consuming
+design
+<br>&nbsp;steps.&nbsp; A few iterations may be necessary in the specifications
+before
+<br>&nbsp;the desired font and style is obtained.
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.&nbsp; Interpreting
+why text doesn't appear in a desired font or
+<br>&nbsp;style requires the designer to probe through several inspectors
+on the text.
+<p>&nbsp;Have you ever wished you could interactively choose and set font
+description
+<br>&nbsp;and text attributes and see the result?&nbsp; The application
+attached allows
+<br>&nbsp;a developer to modify and view the result of FontDescription,
+TextAttributes,
+<br>&nbsp;and FontPolicy specifications upon a ComposedText instance on
+the screen
+<br>&nbsp;or printer.&nbsp; For debugging, this application can be used
+to examine why
+<br>&nbsp;a ComposedText instance appears the way it does based on its
+specifications
+<br>&nbsp;and available platform fonts.
+<br>&nbsp;
+<h3>
+&nbsp;Background</h3>
+&nbsp; A ComposedText instance embodies an instance of Text, a text style
+as
+<br>&nbsp;an instance of either TextAttributes or VariableSizeTextAttributes,
+a FontPolicy,
+<br>&nbsp;and other attributes that determine how its text is broken into
+lines or
+<br>&nbsp;its composed height or width.&nbsp; Aside from these remaining
+attributes the
+<br>&nbsp;importance of each of these objects in text display will be discussed
+below.
+<br>&nbsp;More information on each of these objects may be determined from
+their
+<br>&nbsp;class comments.
+<p>&nbsp;<b>Text</b> -- the Text instance possesses the string to be displayed
+plus an
+<br>&nbsp;equally sized run array of any character style emphasis codes
+to be applied
+<br>&nbsp;on a character by character basis in the text.&nbsp; The position
+of a character
+<br>&nbsp;code in the array matches the position in the string to which
+it is applied.
+<br>&nbsp;Typical character style codes which require no parameter include
+#bold,
+<br>&nbsp;#italic, #underline, #strikeout, #sansSerif,&nbsp; #serif, #small,
+#normal,
+<br>&nbsp;and #large.&nbsp; Codes #family and #color take a single parameter
+and appear
+<br>&nbsp;as an association, such as #color->ColorValue red or #family->'arial'.
+<br>&nbsp;None, one, or more character codes may be defined for each character
+in
+<br>&nbsp;the string.&nbsp; The duty of interpreting these character codes
+belongs to
+<br>&nbsp;a CharacterAttributes or VariableCharacterAttributes instance
+which uses
+<br>&nbsp;a block defined for each emphasis code to appropriately refine
+a default
+<br>&nbsp;FontDescription.&nbsp; An example Text instance that emphasizes
+its entire string
+<br>&nbsp;in italic and bold is created below
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'All this bold and
+in italic' asText emphasizeAllWith:#(#bold #italic).
+<p>&nbsp;<b>FontDescription</b> -- a FontDescription is a specification
+for a font based
+<br>&nbsp;on typeface family, encoding, name, size, etc.&nbsp; A specification
+in a FontDescription
+<br>&nbsp;may be left at or set to nil so that specification is ignored
+in the search
+<br>&nbsp;for an appropriate font.&nbsp; A CharacterAttributes or VariableCharacterAttributes
+<br>&nbsp;uses a default query FontDescription instance to which it may
+further refine
+<br>&nbsp;according to the character codes in a Text instance.&nbsp; The
+FontDescription
+<br>&nbsp;is ultimately used with a FontPolicy to search for the best platform
+font
+<br>&nbsp;that matches its specification.&nbsp; A FontDescription may be
+so loosely specified
+<br>&nbsp;that a FontPolicy may choose any font or so tightly specified
+that it may
+<br>&nbsp;find no font that satisfies its criteria.
+<p>&nbsp;<b>CharacterAttributes</b> or <b>VariableCharacterAttributes</b>
+-- a CharacterAttributes
+<br>&nbsp;instance is used to map character styles to fonts.&nbsp; It holds
+one instance
+<br>&nbsp;of FontDescription as a "default query" and a dictionary of styles
+that
+<br>&nbsp;modify an interim FontDescription using a block defined for each
+character
+<br>&nbsp;style.&nbsp;&nbsp;&nbsp; A CharacterAttributes instance starts
+with the default query
+<br>&nbsp;FontDescription, passes it to the first style block that applies,
+then
+<br>&nbsp;takes the result of that block and applies it as the FontDescription
+for
+<br>&nbsp;the next style block that applies, and so on for a FontDescription
+that
+<br>&nbsp;combines all styles needed.&nbsp;&nbsp; An instance of VariableCharacterAttributes
+<br>&nbsp;is a subclass of CharacterAttributes that adds the behavior to
+change font
+<br>&nbsp;size and encoding according the current Locale preferences.&nbsp;&nbsp;
+It has a
+<br>&nbsp;scale attribute that defines the ratio of&nbsp; font size of&nbsp;
+the&nbsp; FontDescription
+<br>&nbsp;it produces to the preferred font size of the current Locale.&nbsp;
+An instance
+<br>&nbsp;of VariableSizeTextAttributes uses an instance of VariableCharacterAttributes.
+<p>&nbsp;<b>TextAttributes</b> or <b>VariableSizeTextAttributes</b> --
+an instance of TextAttributes
+<br>&nbsp;contains attributes describing text alignment and spacing with
+an instance
+<br>&nbsp;of&nbsp; CharacterAttributes that determines character font and
+styling.&nbsp; A
+<br>&nbsp;VariableSizeTextAttributes instance performs a parallel function
+but is
+<br>&nbsp;paired with a VariableCharacterAttributes instance to scale text
+size independent
+<br>&nbsp;of screen resolution.&nbsp; A VariableSizeTextAttributes is a
+subclass of TextAttributes.
+<p>&nbsp;<b>FontPolicy</b> -- an instance of FontPolicy is defined for
+each GraphicsDevice
+<br>&nbsp;(i.e. screen or printer) that displays a font.&nbsp; Based on
+a FontDescription
+<br>&nbsp;it searches a list of platform fonts (i.e. ImplementationFont)
+available
+<br>&nbsp;for the GraphicsDevice and ranks those fonts for the best match
+to the
+<br>&nbsp;FontDescription.&nbsp; It defines a number of weights for each
+attribute of
+<br>&nbsp;a FontDescription.&nbsp; The font that matches an attribute with
+the highest
+<br>&nbsp;weight will take precedence over font attributes with a lesser
+weight.
+<p>&nbsp;<b>ComposedText</b> -- a ComposedText instance possesses a Text
+instance, a TextAttributes
+<br>&nbsp;(or VariableSizeTextAttributes), and an instance of&nbsp; FontPolicy,
+or, if
+<br>&nbsp;nil, will use a default FontPolicy instance.&nbsp;&nbsp;&nbsp;
+A CharacterAttributes (or
+<br>&nbsp;VariableCharacterAttributes) usually obtained from a TextAttributes
+(or
+<br>&nbsp;VariableSizeTextAttributes) instance, its default FontDescription,
+and
+<br>&nbsp;a FontPolicy are the minimum components needed to specify and
+obtain a
+<br>&nbsp;font.&nbsp; A ComposedText instance contains all these objects
+needed to specify
+<br>&nbsp;how it may display itself.
+<br>&nbsp;
+<h3>
+&nbsp;Font selection depends on the GraphicsDevice where it is used</h3>
+&nbsp; A different selection of fonts are often used for printing and screen
+<br>&nbsp;display.&nbsp; Unless the printer choice in VisualWorks is the
+Windows host
+<br>&nbsp;printer, fonts for printing will usually originate from the set
+of default
+<br>&nbsp;fonts internal to the printer.&nbsp; On the other hand, Windows
+will usually
+<br>&nbsp;display from its set of TrueType fonts installed on the platform
+hard disk.
+<br>&nbsp;Since one can't expect the set of fonts available for the screen
+is the
+<br>&nbsp;same as that printed it is important to examine text samples
+on the medium
+<br>&nbsp;they are intended.&nbsp; To be rendered on a printer, a ComposedText
+instance
+<br>&nbsp;needs to be passed the message #newGraphicsDevice: with the printer
+instance
+<br>&nbsp;as argument as in:
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<tt> | ps |</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printer := (Printer startPrintJobNamed:'temp')
+graphicsDevice.</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; aComposedText graphicsDevice: printer.</tt>
+<p>&nbsp;The TextOptionsEditor application may edit ComposedText instances
+for either
+<br>&nbsp;media.&nbsp; A ComposedText instance intended for printing should
+however be
+<br>&nbsp;printed since its text shown in the editor viewer will likely
+be in only
+<br>&nbsp;closest substitute to the font used by the printer.
+<br>&nbsp;
+<h3>
+&nbsp; Opening the TextOptionsEditor</h3>
+&nbsp;To open the TextOptionsEditor on a default ComposedText instance
+file-in
+<br>&nbsp;the attached code and evaluate the following:
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<tt> TextOptionsEditor
+open</tt>
+<p>&nbsp;To open and view a particular ComposedText instance named aComposedText
+<br>&nbsp;intended for screen viewing use the following:
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<tt>&nbsp; TextOptionsEditor
+new</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; composedTextHolder:
+aComposedText asValue;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; open.</tt>
+<p>&nbsp; If you wish to open on aComposedText instance and open an accessory
+window
+<br>&nbsp;that prints a sample and reports its settings (e.g. for aComposedText
+instance
+<br>&nbsp;whose graphics device is the printer) use
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <tt>TextOptionsEditor
+new</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; composedTextHolder:
+aComposedText asValue;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; open;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; openPrintAccessory.</tt>
+<p>&nbsp;Look to the TextOptionsEditor class side methods in category 'examples'
+<br>&nbsp;for samples opening the editor under various conditions.
+<p>&nbsp;When the editor is assigned a ComposedText instance to edit through
+the
+<br>&nbsp;method #composedTextHolder: it creates and installs copies of
+the ComposedText
+<br>&nbsp;instance's text style, FontPolicy, and FontDescription into the
+ComposedText
+<br>&nbsp;instance.&nbsp; This is a precaution to prevent the editor from
+altering any
+<br>&nbsp;of the objects used in rendering system text.
+<br>&nbsp;
+<h3>
+&nbsp;Description of classes</h3>
+&nbsp;The TextOptionsEditor uses three auxilary application classes to
+view and
+<br>&nbsp;edit ComposedText properties.&nbsp; This includes the FontDescriptionInterface
+<br>&nbsp;class to edit a FontDescription, the TextAttributesInterface
+to edit either
+<br>&nbsp;a TextAttributes or VariableSizeTextAttributes instance, and
+the FontPolicyInterface
+<br>&nbsp;class to edit a FontPolicy.&nbsp; The TextOptionsInterface is
+an abstract superclass
+<br>&nbsp;of these three interface classes that provides common accessors
+and default
+<br>&nbsp;behavior between them.&nbsp; Either the FontDescriptionInterface,
+TextAttributesInterface,
+<br>&nbsp;or FontPolicyInterface may be used by themselves to edit or display
+a FontDescription,
+<br>&nbsp;TextAttributes, or FontPolicy respectfully or may be reused in
+other applications.
+<br>&nbsp;Be aware that these applications can modify attributes in current
+use by
+<br>&nbsp;VisualWorks to display text in its browsers, inspectors, or&nbsp;
+widgets unless
+<br>&nbsp;you open the editor applications on a copy of the instance.
+<p>
+<hr WIDTH="100%">
+<p>Copyright &copy; 1999 Cincom Systems, Inc.&nbsp; All Rights Reserved.&nbsp;
+Unauthorized use, copying or redistribution is prohibited. Code and other
+information are provided as-is, without warranty of any kind and Cincom
+Systems, Inc. disclaims all implied warranties of merchantability or fitness
+for a particular purpose. Code may only be used with Cincom Systems, Inc.
+products.
+<br>&nbsp;
+</body>
+</html>

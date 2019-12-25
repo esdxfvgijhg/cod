@@ -1,0 +1,1 @@
+encoding: #UTF_8catalog: db2DBdb2DatabaseException = 'DB2-Datenbank-Außnahme.'unableToQueryStatementAttributes = 'Abfrage der Statementattribute nicht möglich.'

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.widgets.textEdit"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Text Editors</title>
+<topic id = "vw.help.widgets.textEdit.addToCanvas"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Add a text editor to a canvas</title>
+<body><p><indexterm>text edit widget<indexterm>add to canvas</indexterm></indexterm><indexterm>GUI
+development<indexterm>add text edit</indexterm></indexterm><ol><li><p>Use
+a Palette to add a text editor to the canvas, leaving it selected.</p></li>
+<li><p>In the GUI Painter Tool,  fill in the editor’s <uicontrol>Aspect</uicontrol> property
+with the name of the method (<codeph>comment</codeph>) that will
+return the value model for the text editor.</p></li>
+<li><p>Use the <uicontrol>define</uicontrol> command to add an instance
+variable (<codeph>comment</codeph>) and accessor method to the application
+model for storing the text editor’s value model.</p></li>
+<li><p>Create an <codeph>initialize</codeph> method that initializes
+the aspect variable (<codeph>comment</codeph>) with a value holder
+containing the initial text to be displayed (an empty string).
+<codeblock otherprops="smalltalk method">initialize
+		super initialize.
+		comment := '' asValue.
+		classes := SelectionInList with: Smalltalk classNames.
+		classes selectionIndexHolder 
+			onChangeSend: #changedClass to: self.
+		textStyle := #plain asValue.
+		textStyle onChangeSend: #changedStyle to: self.
+		readOnly := false asValue.
+		readOnly onChangeSend: #changedReadOnly to: self</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Editor1-Example:Examples.Editor1Example open" 
+format="st" scope="external">Editor1-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.textEdit.accessSelected"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Access and modify selected text</title>
+<body><p><indexterm>text edit widget<indexterm>select text</indexterm></indexterm>Your
+application can access and modify a selected (highlighted) portion
+of text in an editor. <ol><li><p>In a method in the application
+model, get the widget’s controller by sending a <apiname>controller</apiname> message
+to the widget.</p></li>
+<li><p>Get the selected text from the controller by sending a <apiname>selection</apiname> message
+to the widget.</p></li>
+<li><p>Make any changes to the selected text, such as format changes.</p></li>
+<li><p>Replace the original text with the modified text, by sending
+a <apiname>replaceSelectedText:</apiname> message to the controller.</p></li>
+<li><p>Send <apiname>resetSelections</apiname> and <apiname>invalidate</apiname>
+<codeblock otherprops="smalltalk method">changedStyle
+		"A text style was selected -- apply it to the current selection in
+		the comment."
+		| c selectedText style |
+		"Get the selected text."
+		c := (builder componentAt: #comment) widget controller.
+		selectedText := c selection.
+		"If nothing is selected, take no action."
+		selectedText isEmpty ifTrue: [^self].
+		"If 'Plain' was selected, remove all emphases;
+		otherwise add the new emphasis."
+		style := self textStyle value.
+		style == #plain
+			ifTrue: [selectedText emphasizeAllWith: nil]
+			ifFalse: [
+				selectedText addEmphasis: (Array with: style)
+					removeEmphasis: nil
+					allowDuplicates: false].
+		"Ask the controller to insert the modified text, then
+		update the view."
+		c replaceSelectionWith: selectedText.
+		c view resetSelections.
+		c view invalidate.</codeblock> messages to the controller’s view to update the display.</p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Editor1-Example:Examples.Editor1Example open" 
+format="st" scope="external">Editor1-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.textEdit.highlightText"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Highlight text programmatically</title>
+<body><p><indexterm>text edit widget<indexterm>highlight text</indexterm></indexterm>Your
+application can highlight text for the user (e.g., as part of spell checking.)<ol>
+<li><p>In a method in the application model, get the controller
+from the widget.</p></li>
+<li><p>Ask the controller to select the text between two endpoints
+(and ask it to scroll the selection into view if necessary).</p></li>
+<li><p>Ask the builder’s component to take the keyboard focus, so
+the highlighting will be displayed.
+<codeblock otherprops="smalltalk method">changedClass
+		"When the list selection changes, update the comment view."
+		| selectedClass txt start wrapper |
+		selectedClass := self classes selection.
+		selectedClass isNil
+			ifTrue: [self comment value: '' asText]
+			ifFalse: [
+				txt := (Smalltalk at: selectedClass) comment.
+				self comment 
+					value: txt.
+				"Find and highlight the class name in the text."
+				start := txt 
+					indexOfSubCollection: selectedClass asString 
+					startingAt: 1.
+				start > 0 ifTrue: [
+					wrapper := (self builder componentAt: #comment).
+					wrapper widget controller
+						selectAndScrollFrom: start 
+						to: start + selectedClass asString size - 1.
+					wrapper takeKeyboardFocus]].</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Editor1-Example:Examples.Editor1Example open" 
+format="st" scope="external">Editor1-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.textEdit.textAlignment"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Change text alignment programmatically</title>
+<body><p><indexterm>text edit widget<indexterm>change alignment</indexterm></indexterm>Initial
+text alignment can be set in the UI Painter. You might need to change
+it during runtime, according to user preferences.<ol><li><p>In a
+method in the application model, get the widget from the builder.</p></li>
+<li><p>Get a copy of the widget’s text style. (Do not modify the
+widget’s text style directly, because that object is shared by many
+text editors in the system.)</p></li>
+<li><p>Set the alignment of the text style to <codeph>0</codeph>, <codeph>1</codeph>,
+or <codeph>2</codeph> (<codeph>0</codeph> is flush left, <codeph>1</codeph> is flush
+right, and <codeph>2</codeph> is centered).</p></li>
+<li><p><uicontrol>Install</uicontrol> the new text style in the
+widget.</p></li>
+<li><p>Ask the widget to redisplay itself.
+<codeblock otherprops="smalltalk method">alignRight
+		| widget style |
+		widget := (self builder componentAt: #comment) widget.
+		style := widget textStyle copy.
+		style alignment: 1.
+		widget textStyle: style.
+		widget invalidate.</codeblock></p></li></ol></p></body></topic></topic></dita>

@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile Dropdown is in initial state has dropdown open should match snapshot 1`] = `
+<div
+  className="container"
+  onClick={[Function]}
+  onKeyPress={[Function]}
+  role="button"
+  tabIndex="0"
+>
+  <span
+    className="id"
+  >
+    kschiffer
+  </span>
+  <Icon
+    icon="arrow_drop_down"
+  />
+  <Dropdown
+    items={
+      Array [
+        Object {
+          "icon": "settings",
+          "path": "/profile-settings",
+          "title": "Profile Settings",
+        },
+        Object {
+          "action": [Function],
+          "icon": "power_settings_new",
+          "title": "Logout",
+        },
+      ]
+    }
+  />
+</div>
+`;
+
+exports[`Profile Dropdown is in initial state should match snapshot 1`] = `
+<div
+  className="container"
+  onClick={[Function]}
+  onKeyPress={[Function]}
+  role="button"
+  tabIndex="0"
+>
+  <span
+    className="id"
+  >
+    kschiffer
+  </span>
+  <Icon
+    icon="arrow_drop_down"
+  />
+</div>
+`;

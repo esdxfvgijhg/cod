@@ -1,0 +1,204 @@
+1_eda_explore/3_5_Quantitative Techniques/eda352_Confidence Limits for the Mean.r:               ##Read data and compute summary statistics.
+1_eda_explore/3_5_Quantitative Techniques/eda352_Confidence Limits for the Mean.r:               ##Compute confidence intervals.
+1_eda_explore/3_5_Quantitative Techniques/eda35h3_Generalized ESD Test for Outliers.r:           ##Create function to compute the test statistic.
+1_eda_explore/3_5_Quantitative Techniques/eda35h3_Generalized ESD Test for Outliers.r:           ##Compute test statistic until r=10 values have been
+1_eda_explore/3_5_Quantitative Techniques/eda35h3_Generalized ESD Test for Outliers.r:           ##Compute critical value.
+1_eda_explore/3_5_Quantitative Techniques/eda35i_Yates Algorithm.r:                              ##Compute the pseudo-replication standard deviation
+1_eda_explore/3_5_Quantitative Techniques/eda35i_Yates Algorithm.r:                              ##Compute the standard deviation of a coefficient based
+1_eda_explore/3_5_Quantitative Techniques/eda35i_Yates Algorithm.r:                              ##Compute the effect estimate and residual standard deviation
+1_eda_explore/3_5_Quantitative Techniques/eda35i_Yates Algorithm.r:                              ##Compute the residual standard deviation for cumulative
+1_eda_explore/3_5_Quantitative Techniques/eda35c_Autocorrelation.r:                              ##Attach "nlme" library and compute autocorrelations.
+1_eda_explore/3_5_Quantitative Techniques/eda35h2_Tietjen-Moore Test for Outliers.r:             ##Create a function to compute statistic to
+1_eda_explore/3_5_Quantitative Techniques/eda35h2_Tietjen-Moore Test for Outliers.r:             ##Compute the absolute residuals.
+1_eda_explore/3_5_Quantitative Techniques/eda35h2_Tietjen-Moore Test for Outliers.r:             ##Compute the sums of squares.
+1_eda_explore/3_5_Quantitative Techniques/eda35h2_Tietjen-Moore Test for Outliers.r:             ##Compute the test statistic.
+1_eda_explore/3_5_Quantitative Techniques/eda35h2_Tietjen-Moore Test for Outliers.r:             ##Call the function and compute value of test statistic for data.
+1_eda_explore/3_5_Quantitative Techniques/eda35h2_Tietjen-Moore Test for Outliers.r:             ##Compute critical value based on simulation.
+1_eda_explore/3_5_Quantitative Techniques/eda35f_Chi-Square Goodness-of-Fit Test.r:              ##Compute critical value.
+1_eda_explore/3_5_Quantitative Techniques/eda35a_Levene Test for Equality of Variances.r:        ##Compute critical value.
+1_eda_explore/3_5_Quantitative Techniques/eda35d_Runs Test for Detecting Non-randomness.r:       ##Compute critical value.
+1_eda_explore/4_2_Graphical Techniques/eda4292.r:                                                ##Compute AIC and BIC for each distribution.
+1_eda_explore/4_2_Graphical Techniques/eda4263_ Filter Transmittance.r:                          ##Compute summary statistics.
+1_eda_explore/4_2_Graphical Techniques/eda4263_ Filter Transmittance.r:# Compute the five number summary.
+1_eda_explore/4_2_Graphical Techniques/eda4263_ Filter Transmittance.r:                          ##Compute the inter-quartile range.
+1_eda_explore/4_2_Graphical Techniques/eda4263_ Filter Transmittance.r:                          ##Compute the lag 1 autocorrelation.
+1_eda_explore/4_2_Graphical Techniques/eda4243_Josephson Junction Cryothermometry.r:             ##Compute summary statistics.
+1_eda_explore/4_2_Graphical Techniques/eda4243_Josephson Junction Cryothermometry.r:# Compute the five number summary.
+1_eda_explore/4_2_Graphical Techniques/eda4243_Josephson Junction Cryothermometry.r:             ##Compute the inter-quartile range.
+1_eda_explore/4_2_Graphical Techniques/eda4243_Josephson Junction Cryothermometry.r:             ##Compute the lag 1 autocorrelation.
+1_eda_explore/4_2_Graphical Techniques/eda4283_Heat Flow Meter 1.r:                              ##Compute summary statistics.
+1_eda_explore/4_2_Graphical Techniques/eda4283_Heat Flow Meter 1.r:# Compute the five number summary.
+1_eda_explore/4_2_Graphical Techniques/eda4283_Heat Flow Meter 1.r:                              ##Compute the inter-quartile range.
+1_eda_explore/4_2_Graphical Techniques/eda4283_Heat Flow Meter 1.r:                              ##Compute the lag 1 autocorrelation.
+1_eda_explore/4_2_Graphical Techniques/eda4283_Heat Flow Meter 1.r:                              ##Compute the 95 % confidence interval for the mean.
+1_eda_explore/4_2_Graphical Techniques/eda4223_ Uniform Random Numbers.r:                        ##Compute summary statistics.
+1_eda_explore/4_2_Graphical Techniques/eda4223_ Uniform Random Numbers.r:# Compute the five number summary.
+1_eda_explore/4_2_Graphical Techniques/eda4223_ Uniform Random Numbers.r:                        ##Compute the inter-quartile range.
+1_eda_explore/4_2_Graphical Techniques/eda4223_ Uniform Random Numbers.r:                        ##Compute the lag 1 autocorrelation.
+1_eda_explore/4_2_Graphical Techniques/eda4223_ Uniform Random Numbers.r:                        ##Compute probabilty plot correlation coefficients (PPCC)
+1_eda_explore/4_2_Graphical Techniques/eda4273_Standard Resistor.r:                              ##Compute summary statistics.
+1_eda_explore/4_2_Graphical Techniques/eda4273_Standard Resistor.r:# Compute the five number summary.
+1_eda_explore/4_2_Graphical Techniques/eda4273_Standard Resistor.r:                              ##Compute the inter-quartile range.
+1_eda_explore/4_2_Graphical Techniques/eda4273_Standard Resistor.r:                              ##Compute the lag 1 autocorrelation.
+1_eda_explore/4_2_Graphical Techniques/eda4213_Normal Random Numbers.r:                          ##Compute summary statistics.
+1_eda_explore/4_2_Graphical Techniques/eda4213_Normal Random Numbers.r:# Compute the five number summary.
+1_eda_explore/4_2_Graphical Techniques/eda4213_Normal Random Numbers.r:                          ##Compute the inter-quartile range.
+1_eda_explore/4_2_Graphical Techniques/eda4213_Normal Random Numbers.r:                          ##Compute the lag 1 autocorrelation.
+1_eda_explore/4_2_Graphical Techniques/eda4292_a.r:                                              ##Compute AIC and BIC for each distribution.
+1_eda_explore/4_2_Graphical Techniques/eda4292_b.r:                                              ##R function by C.-M. Wang to compute the table value
+1_eda_explore/4_2_Graphical Techniques/eda4292_b.r:                                              ##Compute the factor r for constructing one-sided
+1_eda_explore/4_2_Graphical Techniques/eda4292_b.r:                                              ##Example:  Compute a lower prediction interval
+1_eda_explore/4_2_Graphical Techniques/eda4292_rcode.r:                                          ##R function by C.-M. Wang to compute the table value
+1_eda_explore/4_2_Graphical Techniques/eda4292_rcode.r:                                          ##Compute the factor r for constructing one-sided
+1_eda_explore/4_2_Graphical Techniques/eda4292_rcode.r:                                          ##Example:  Compute a lower prediction interval
+1_eda_explore/4_2_Graphical Techniques/eda4233_Random Walk.r:                                    ##Compute summary statistics.
+1_eda_explore/4_2_Graphical Techniques/eda4233_Random Walk.r:# Compute the five number summary.
+1_eda_explore/4_2_Graphical Techniques/eda4233_Random Walk.r:                                    ##Compute the inter-quartile range.
+1_eda_explore/4_2_Graphical Techniques/eda4233_Random Walk.r:                                    ##Compute the lag 1 autocorrelation.
+1_eda_explore/eda42a3.r:                                                                         ##Compute summary statistics.
+1_eda_explore/eda42a3.r:                                                                         ## Compute the five number summary.
+1_eda_explore/eda42a3.r:                                                                         ##Compute the inter-quartile range.
+1_eda_explore/eda42a3.r:                                                                         ##Compute the lag 1 autocorrelation.
+1_eda_explore/eda42a3.r:                                                                         ##Compute the batch means for each laboratory.
+1_eda_explore/eda42a3.r:                                                                         ##Compute the batch means for each laboratory and level of x1.
+1_eda_explore/eda42a3.r:                                                                         ##Compute the batch means for each laboratory and level of x2.
+1_eda_explore/eda42a3.r:                                                                         ##Compute the batch means for each laboratory and level of x3.
+1_eda_explore/eda42a3.r:                                                                         ##Compute pooled standard deviation.
+1_eda_explore/eda42a3.r:                                                                         ##Compute overall batch mean.
+1_eda_explore/eda42a3.r:                                                                         ##Compute effect estimates and factor means.
+1_eda_explore/eda42a3.r:                                                                         ##Compute overall batch mean.
+1_eda_explore/eda42a3.r:                                                                         ##Compute effect estimates and factor means.
+1_eda_explore/eda42.r:                                                                           ##Compute summary statistics.
+1_eda_explore/eda42.r:                                                                           ##Compute the five number summary.
+1_eda_explore/eda42.r:                                                                           ##Compute the inter-quartile range.
+1_eda_explore/eda42.r:                                                                           ##Compute the lag 1 autocorrelation.
+1_eda_explore/eda42.r:                                                                           ##Compute the batch means for each laboratory.
+1_eda_explore/eda42.r:                                                                           ##Compute the batch means for each laboratory and level of x1.
+1_eda_explore/eda42.r:                                                                           ##Compute the batch means for each laboratory and level of x2.
+1_eda_explore/eda42.r:                                                                           ##Compute the batch means for each laboratory and level of x3.
+1_eda_explore/eda42.r:                                                                           ##Compute overall batch mean.
+1_eda_explore/eda42.r:                                                                           ##Compute effect estimates and factor means.
+1_eda_explore/eda42.r:                                                                           ##Compute overall batch mean.
+1_eda_explore/eda42.r:                                                                           ##Compute effect estimates and factor means.
+
+2_mpc_measure/mpc3511.r:                                                                         ##Compute pooled standard deviation.
+2_mpc_measure/mpc3522a.r:                                                                        ##Compute the average of the historical data
+2_mpc_measure/mpc3522a.r:                                                                        ##Compute the upper control limit.
+2_mpc_measure/mpc3522a.r:                                                                        ##Compute the lower control limit.
+2_mpc_measure/mpc3671.r:                                                                         ##Compute updated uncertainty.
+2_mpc_measure/mpc3672.r:                                                                         ##Compute the calibration standard deviation.
+2_mpc_measure/mpc3673.r:                                                                         ##Compute uncertainty for values of y.
+2_mpc_measure/mpc371_Control chart for a linear calibration line.r:                              ##Compute upper and lower control limits.
+2_mpc_measure/mpc442.r:                                                                          ##Compute the level-2 standard deviation.
+2_mpc_measure/mpc442.r:                                                                          ##Compute the between-day standard deviation.
+2_mpc_measure/mpc443a.r:                                                                         ##Compute means for each run and wafer combination.
+2_mpc_measure/mpc443a.r:                                                                         ##Compute meanas for each wafer.
+2_mpc_measure/mpc443a.r:                                                                         ##Compute s3 for each wafer
+2_mpc_measure/mpc443.r:                                                                          ##Compute averages.
+2_mpc_measure/mpc443.r:                                                                          ##Compute level-3 standard deviation.
+2_mpc_measure/mpc5333.r:                                                                         ##Compute average difference for each run.
+2_mpc_measure/mpc5333.r:                                                                         ##Compute standard deviation for each run.
+2_mpc_measure/mpc611.r:                                                                          ##Compute pooled standard deviations for each run and all data.
+2_mpc_measure/mpc611.r:                                                                          ##Compute Run 1 means and standard deviations for each wafer.
+2_mpc_measure/mpc611.r:                                                                          ##Compute Run2 means and standard deviations for each wafer.
+2_mpc_measure/mpc611.r:                                                                          ##Compute pooled standard deviation across wafers.
+2_mpc_measure/mpc611.r:                                                                          ##Compute pooled standard deviation across runs.
+2_mpc_measure/mpc611.r:                                                                          ##Compute cell means.
+2_mpc_measure/mpc611.r:                                                                          ##Compute differences from wafer means for each run.
+2_mpc_measure/mpc621.r:                                                                          ##Compute the level-1 standard deviation.
+2_mpc_measure/mpc621.r:                                                                          ##Compute the level-2 standard deviation.
+2_mpc_measure/mpc621.r:                                                                          ##Compute the upper quantile of the F distribution.
+2_mpc_measure/mpc621.r:                                                                          ##Compute the upper Control Limit
+2_mpc_measure/mpc621.r:                                                                          ##Compute center line.
+2_mpc_measure/mpc621.r:                                                                          ##Compute the level 1 standard deviation.
+2_mpc_measure/mpc621.r:                                                                          ##Compute the upper quantile of the F distribution.
+2_mpc_measure/mpc621.r:                                                                          ##Compute the upper Control Limit
+2_mpc_measure/mpc621.r:                                                                          ##Compute center line.
+2_mpc_measure/mpc621.r:                                                                          ##Compute level-2 standard deviation
+2_mpc_measure/mpc621.r:                                                                          ##Compute upper and lower control limits.
+2_mpc_measure/mpc631.r:                                                                          ##Compute pooled standard deviations for each run and all data.
+2_mpc_measure/mpc631.r:                                                                          ##Compute Run 1 means and standard deviations for each wafer.
+2_mpc_measure/mpc631.r:                                                                          ##Compute Run2 means and standard deviations for each wafer.
+2_mpc_measure/mpc631.r:                                                                          ##Compute pooled standard deviation across wafers.
+2_mpc_measure/mpc631.r:                                                                          ##Compute pooled standard deviation across runs.
+2_mpc_measure/mpc631.r:                                                                          ##Compute cell means.
+2_mpc_measure/mpc631.r:                                                                          ##Compute differences from wafer means for each run.
+2_mpc_measure/mpc631.r:                                                                          ##Compute differences between configurations.
+
+3_ppc_characterize/ppc511_Furnace Case Study.r:                                                  ##Compute 95 % confidence interval for the mean.
+3_ppc_characterize/ppc511_Furnace Case Study.r:                                                  ##Compute 95 % confidence interval for the variance.
+3_ppc_characterize/ppc511_Furnace Case Study.r:                                                  ##Compute and print thickness quantiles.
+3_ppc_characterize/ppc511_Furnace Case Study.r:                                                  ##Compute Cp and a 95 % confidence interval.
+3_ppc_characterize/ppc511_Furnace Case Study.r:                                                  ##Compute CpL and a 95 % confidence interval.
+3_ppc_characterize/ppc511_Furnace Case Study.r:                                                  ##Compute CpU and a 95 % confidence interval.
+3_ppc_characterize/ppc511_Furnace Case Study.r:                                                  ##Compute Cpk and a 95 % confidence interval.
+3_ppc_characterize/ppc511_Furnace Case Study.r:                                                  ##Compute Cpm and a 95 % confidence interval.
+3_ppc_characterize/ppc511_Furnace Case Study.r:                                                  ##Compute actual percent defective.
+3_ppc_characterize/ppc511_Furnace Case Study.r:                                                  ##Compute theoretical percent defective assuming a normal distribution.
+3_ppc_characterize/ppc511_Furnace Case Study.r:                                                  ##Compute the batch means for each laboratory.
+3_ppc_characterize/ppc511_Furnace Case Study.r:                                                  ##Compute variance components.
+3_ppc_characterize/ppc511_Furnace Case Study.r:                                                  ##Compute percent of total variation.
+3_ppc_characterize/ppc521_Machine Screw Case Study.r:                                            ##Compute summary statistics and 95 % confidence intervals for
+3_ppc_characterize/ppc521_Machine Screw Case Study.r:                                            ##Compute summary statistics and 95 % confidence intervals for
+
+4_pmd_model/pmd611_Load Cell Output.r:                                                           ##Compute confidence interval for calibration value
+
+5_pri_improve/pri471_Full factorial example.r:                                                   ##Attach psych library to compute the geometric mean of strength.
+5_pri_improve/pri471_Full factorial example.r:                                                   ##Compute means for plotting.
+5_pri_improve/pri611_Eddy current probe sensitivity study.r:                                     ##Compute effect estimates and factor means.
+5_pri_improve/pri611_Eddy current probe sensitivity study.r:                                     ##Compute the pseudo-replication standard deviation
+5_pri_improve/pri611_Eddy current probe sensitivity study.r:                                     ##Compute the effect estimate and residual standard deviation
+5_pri_improve/pri611_Eddy current probe sensitivity study.r:                                     ##Compute the residual standard deviation for cumulative
+5_pri_improve/pri611_Eddy current probe sensitivity study.r:                                     ##Compute effect estimates and print.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:                                    ##Compute effect estimates and factor means.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:                                    ##Compute the residual standard deviation for cumulative
+
+6_pmc_monitor/pmc44a_Univariate Time Series Models.r:                                            ##Compute the autocorrelation of the transformed and differenced series.
+6_pmc_monitor/pmc44a_Univariate Time Series Models.r:                                            ##Compute autocorrelation of final series.
+6_pmc_monitor/pmc44a_Univariate Time Series Models.r:                                            ##Compute 90% confidence intervals for each prediction
+6_pmc_monitor/pmc611_Lithography Process.r:                                                      ##Compute summary statistics.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                      ##Compute the five-number summary.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                      ##Compute the inter-quartile range.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                      ##Compute the lag 1 autocorrelation.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                      ##Compute averages and standard deviations for each cassette and wafer.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                      ##Compute center line and control limits.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                      ##Compute center line and upper control limit and generate chart.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                      ##Compute averages and standard deviations for each cassette.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                      ##Compute center line and control limits.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                      ##Compute center line and control limits and generate chart.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                      ##Compute averages and standard deviations for each cassette.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                      ##Compute center line and within-lot control limits.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                      ##Compute between-lot control limits.
+6_pmc_monitor/pmc613.r:                                                                          ##Compute averages and standard deviations for each cassette and wafer.
+6_pmc_monitor/pmc613.r:                                                                          ##Compute center line and control limits.
+6_pmc_monitor/pmc613.r:                                                                          ##Compute center line and upper control limit and generate chart.
+6_pmc_monitor/pmc613.r:                                                                          ##Compute averages and standard deviations for each cassette.
+6_pmc_monitor/pmc613.r:                                                                          ##Compute center line and control limits.
+6_pmc_monitor/pmc613.r:                                                                          ##Compute center line and control limits and generate chart.
+6_pmc_monitor/pmc613.r:                                                                          ##Compute component of variance.
+6_pmc_monitor/pmc613.r:                                                                          ##of freedom to manually compute variance components.
+6_pmc_monitor/pmc613.r:                                                                          ##Compute expected mean squares and variance components
+6_pmc_monitor/pmc621_Box-Jenkins Modeling Example.r:                                             ##Compute 95 % confidence intervals for each parameter.
+6_pmc_monitor/pmc621_Box-Jenkins Modeling Example.r:                                             ##Compute 95 % confidence intervals for ma1.
+
+7_prc_compare/prc263_Location of Population Values.r:                                            ##Compute the approximate and exact k2 factor.
+7_prc_compare/prc263_Location of Population Values.r:                                            ##Compute the approximate k2 factor for a two-sided tolerance interval.
+7_prc_compare/prc263_Location of Population Values.r:                                            ##For this example, the standard deviation is computed fromt the sample,
+7_prc_compare/prc263_Location of Population Values.r:                                            ##Compute the exact k2 factor for a two-sided tolerance interval using
+7_prc_compare/prc474_Comparing multiple proportions: The Marascuillo procedure.r:                ##Compute critical values.
+
+8_apr_reliability/2_2_Plotting reliability data/apr223_Trend and growth plotting (Duane plots).r:##Compute interarrival time.
+8_apr_reliability/2_2_Plotting reliability data/apr221_Probability plotting.r:                   ##Compute slope of line fit to plotted data.
+8_apr_reliability/2_2_Plotting reliability data/apr222_Hazard and cumulative hazard plotting.r:  ##Input data and compute the cumulative hazard.
+8_apr_reliability/2_2_Plotting reliability data/apr222_Hazard and cumulative hazard plotting.r:  ##Compute Weibull parameter estimates.
+8_apr_reliability/4_2_Fitting an acceleration model/apr421_ Graphical estimation.r:              ##Compute Ao, the ln T50 estimate, and A1, the cell sigma estimate.
+8_apr_reliability/4_2_Fitting an acceleration model/apr421_ Graphical estimation.r:              ##Compute 11605/(temp+273.16) for three cell temperatures.
+8_apr_reliability/4_2_Fitting an acceleration model/apr421_ Graphical estimation.r:              ##Compute acceleration between 85 C and 125 C.
+8_apr_reliability/4_2_Fitting an acceleration model/apr422_Maximum likelihood.r:                 ##Compute -2 ln likelihood
+8_apr_reliability/4_5_Fitting system repair rate models/apr452_Power law (Duane) model.r:        ##Compute aHat, bHat, MTBF, ML, and MU.
+8_apr_reliability/4_5_Fitting system repair rate models/apr452_Power law (Duane) model.r:        ##Compute 80 % confidence interval for MTBF.
+8_apr_reliability/apr121_Weibull distribution.r:#Functions for computing PDF values and CDF values
+8_apr_reliability/apr166_Birnbaum-Saunders distribution.r:                                       ##Compute the PDF at t=4000.
+8_apr_reliability/apr166_Birnbaum-Saunders distribution.r:                                       ##Compute the CDF.
+8_apr_reliability/apr460_Gamma_distribution.r:                                                   ##Compute the percentile for the reciprocal mean.
+

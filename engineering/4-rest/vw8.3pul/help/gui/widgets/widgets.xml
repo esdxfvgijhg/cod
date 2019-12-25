@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+	<topic id = "vw.help.widgets"
+			xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+		<title>Widgets</title>
+		<body>
+			<p>The &Product; GUI framework includes a 
+				large set of standard widgets that can be easily 
+				adapted to your application's domain model.</p>
+			<p>For more complete documentation on configuring 
+				widgets, refer to the <xref href="./doc/GUIDevGuide.pdf" 
+				format="pdf" scope="external"><i>GUI Developer's Guide</i></xref>.</p>
+		</body>
+	</topic>
+</dita>

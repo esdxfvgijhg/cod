@@ -1,0 +1,101 @@
+// -------------------------------------------------------------------------------------------
+// VWstcom.idl: IDL source for VisualWorks Automation Smalltalk Commander.
+//
+// This file will be processed by the MIDL compiler to
+// produce the type library (VWstcom.tlb) and marshalling code.
+//
+// Type library:	VWstcom.tlb   			{5FD2D2B2-95A8-11d0-ACAB-E80467000000}
+// Interface:	ISmalltalkCommanderDisp		{5FD2D2B3-95A8-11d0-ACAB-E80467000000}
+// CLSID_VWSmalltalkCommander:			{5FD2D2B1-95A8-11d0-ACAB-E80467000000)
+// -------------------------------------------------------------------------------------------
+
+cpp_quote("//+-------------------------------------------------------------------------")
+cpp_quote("//")
+cpp_quote("//  VisualWorks Automation: Smalltalk Commander Example")
+cpp_quote("//  Created by Gary Gregory")
+cpp_quote("//  Copyright (C) ParcPlace-Digitalk, 1997.")
+cpp_quote("//")
+cpp_quote("//--------------------------------------------------------------------------")
+
+// In order to reuse the exact same syntax for our method and property declarations,
+// we follow the IDL syntax that is used to declare dual interface method and 
+// properties in an intermediary interface called ISmalltalkCommanderDispVtbl.
+// We can then tell the MIDL compiler to map ISmalltalkCommanderDispVtbl to our dispatch 
+// interface ISmalltalkCommanderDisp with the 'dispinterface' declaration.
+
+//** 
+//** Create an intermediary interface called ISmalltalkCommanderDispVtbl
+//** 
+[ 
+	object,
+	uuid(C9594220-F715-11d0-A791-00A024CD45B2), //** Dummy IID is used since the attribute is required.
+      helpstring("VisualWorks Smalltalk Commander dispatch interface"),
+	pointer_default(unique),
+	oleautomation
+] 
+interface ISmalltalkCommanderDispVtbl : IDispatch
+{
+	import "oaidl.idl";
+
+//
+// Methods
+//
+	[helpstring("Evaluate the Smalltalk expression and answer an object.")]
+	HRESULT Evaluate([in] BSTR Expression, [out, retval] VARIANT* retval);
+
+	[helpstring("Evaluate the Smalltalk expression and answer a String.")]
+	HRESULT EvaluateAsString([in] BSTR Expression, [out, retval] BSTR* retval);
+
+	[helpstring("Release the Smalltalk Automation server from memory.")]
+	HRESULT Quit();
+
+	[helpstring("Get the last error message.")]
+	HRESULT GetLastError([out, retval] BSTR* retval);
+
+	[helpstring("Get the last error message stack.")]
+	HRESULT GetLastErrorStack([out, retval] BSTR* retval);
+
+	[propput, helpstring("Set or return whether the answers of evaluating expressions answers nil or answers an error string. True means answer an error string, false means answer nil.")] 
+	HRESULT AnswerErrors([in] VARIANT_BOOL Value);
+	[propget]
+	HRESULT AnswerErrors([out, retval] VARIANT_BOOL* Value);
+};
+
+//**
+//** Here we map our ISmalltalkCommanderDispVtbl to ISmalltalkCommanderDisp as a dispinterface.
+//**
+[ 
+	uuid(5FD2D2B3-95A8-11d0-ACAB-E80467000000), // DIID_ISmalltalkCommanderDisp
+]
+dispinterface ISmalltalkCommanderDisp {
+	interface ISmalltalkCommanderDispVtbl;
+};
+
+//
+// Component and type library descriptions
+//
+[
+  uuid(5FD2D2B2-95A8-11d0-ACAB-E80467000000), // LIBID_VWSTCOM
+  lcid(0x0),
+  version(1.0),
+  helpstring("VisualWorks Smalltalk Commander")
+]
+library VWSTCOM
+{
+    importlib("stdole32.tlb");
+
+    //  Class information for VWSmalltalkCommander
+    [
+      uuid(5FD2D2B1-95A8-11d0-ACAB-E80467000000), // CLSID_VWSmalltalkCommander
+      helpstring("VisualWorks Smalltalk Commander Class"),
+    ]
+    coclass VWSmalltalkCommander
+    {
+	//**
+	//** This next line surfaces the dispinterface from the class.
+	//**
+	[default] dispinterface ISmalltalkCommanderDisp; 
+    };
+};
+
+// eof

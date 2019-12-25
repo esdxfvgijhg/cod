@@ -1,0 +1,3 @@
+<map id="ns3::lorawan::EndDeviceLoraPhyListener" name="ns3::lorawan::EndDeviceLoraPhyListener">
+<area shape="rect" id="node2" href="$classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener.html" title="{ns3::lorawan::LoraRadioEnergy\lModelPhyListener\n||+ LoraRadioEnergyModelPhyListener()\l+ ~LoraRadioEnergyModelPhy\lListener()\l+ SetChangeStateCallback()\l+ SetUpdateTxCurrentCallback()\l+ NotifyRxStart()\l+ NotifyTxStart()\l+ NotifySleep()\l+ NotifyStandby()\l}" alt="" coords="5,204,252,413"/>
+</map>

@@ -1,0 +1,348 @@
+1_eda_explore/3_5_Quantitative Techniques/eda35h1_Grubbs' Test for Outliers.r:                 ##Generate normal probability plot.
+1_eda_explore/3_5_Quantitative Techniques/eda35h3_Generalized ESD Test for Outliers.r:         ##Generate normal probability plot.
+1_eda_explore/3_5_Quantitative Techniques/eda35e_Anderson-Darling Test.r:                      ##Generate 1000 standard normal random numbers
+1_eda_explore/3_5_Quantitative Techniques/eda35e_Anderson-Darling Test.r:                      ##Generate 1000 double exponential random numbers
+1_eda_explore/3_5_Quantitative Techniques/eda35e_Anderson-Darling Test.r:                      ##Generate 1000 Cauchy random numbers and perform the
+1_eda_explore/3_5_Quantitative Techniques/eda35e_Anderson-Darling Test.r:                      ##Cauchy random number generators can produce very extreme
+1_eda_explore/3_5_Quantitative Techniques/eda35e_Anderson-Darling Test.r:                      ##Generate 1000 log-normal random numbers and
+1_eda_explore/3_5_Quantitative Techniques/.Rhistory:                                           ##Generate 1000 standard normal random numbers
+1_eda_explore/3_5_Quantitative Techniques/.Rhistory:                                           ##Generate 1000 double exponential random numbers
+1_eda_explore/3_5_Quantitative Techniques/.Rhistory:                                           ##Cauchy random number generators can produce very extreme
+1_eda_explore/3_5_Quantitative Techniques/.Rhistory:                                           ##Generate 1000 log-normal random numbers and
+1_eda_explore/3_5_Quantitative Techniques/eda35h2_Tietjen-Moore Test for Outliers.r:           ##Generate normal probability plot.
+1_eda_explore/3_5_Quantitative Techniques/eda35f_Chi-Square Goodness-of-Fit Test.r:            ##Generate normal random numbers and perform the chi-square test.
+1_eda_explore/3_5_Quantitative Techniques/eda35f_Chi-Square Goodness-of-Fit Test.r:            ##Generate double exponential random numbers and perform
+1_eda_explore/3_5_Quantitative Techniques/eda35f_Chi-Square Goodness-of-Fit Test.r:            ##Generate t random numbers and perform the chi-square test.
+1_eda_explore/3_5_Quantitative Techniques/eda35f_Chi-Square Goodness-of-Fit Test.r:            ##Generate lognormal random numbers and perform the chi-square test.
+1_eda_explore/3_5_Quantitative Techniques/eda35g_Kolmogorov-Smirnov Goodness-of-Fit Test.r:    ##Generate normal random numbers and perform
+1_eda_explore/3_5_Quantitative Techniques/eda35g_Kolmogorov-Smirnov Goodness-of-Fit Test.r:    ##Generate double exponential random numbers and
+1_eda_explore/3_5_Quantitative Techniques/eda35g_Kolmogorov-Smirnov Goodness-of-Fit Test.r:    ##Generate t (3 degrees of freedom) random
+1_eda_explore/3_5_Quantitative Techniques/eda35g_Kolmogorov-Smirnov Goodness-of-Fit Test.r:    ##Generate lognormal random numbers and perform
+1_eda_explore/4_2_Graphical Techniques/eda4292.r:                                              ##Generate initial plots of the data.
+1_eda_explore/4_2_Graphical Techniques/eda4292.r:                                              ##Generate QQ-plot of the data.
+1_eda_explore/4_2_Graphical Techniques/eda4292.r:                                              ##Generate QQ-plots for each distribution and overlay.
+1_eda_explore/4_2_Graphical Techniques/eda4292.r:                                              ##Generate a 95 % confidence interval on the
+1_eda_explore/4_2_Graphical Techniques/eda4263_ Filter Transmittance.r:                        ##Generate a 4-plot of the data.
+1_eda_explore/4_2_Graphical Techniques/eda4263_ Filter Transmittance.r:                        ##Generate run sequence plot.
+1_eda_explore/4_2_Graphical Techniques/eda4263_ Filter Transmittance.r:                        ##Generate lag plot.
+1_eda_explore/4_2_Graphical Techniques/eda4263_ Filter Transmittance.r:                        ##Generate index variable and fit straight line.
+1_eda_explore/4_2_Graphical Techniques/eda4263_ Filter Transmittance.r:                        ##Load the car library, generate an arbitrary interval indicator
+1_eda_explore/4_2_Graphical Techniques/eda4263_ Filter Transmittance.r:                        ##Generate critical value.
+1_eda_explore/4_2_Graphical Techniques/eda4263_ Filter Transmittance.r:                        ##Generate and plot the autocorrelation function.
+1_eda_explore/4_2_Graphical Techniques/eda4243_Josephson Junction Cryothermometry.r:           ##Generate a 4-plot of the data.
+1_eda_explore/4_2_Graphical Techniques/eda4243_Josephson Junction Cryothermometry.r:           ##Generate separate plots to show more detail.
+1_eda_explore/4_2_Graphical Techniques/eda4243_Josephson Junction Cryothermometry.r:           ##Generate index variable and fit straight line.
+1_eda_explore/4_2_Graphical Techniques/eda4243_Josephson Junction Cryothermometry.r:           ##Load the car library, generate an arbitrary interval indicator
+1_eda_explore/4_2_Graphical Techniques/eda4243_Josephson Junction Cryothermometry.r:           ##Generate and plot the autocorrelation function.
+1_eda_explore/4_2_Graphical Techniques/eda4283_Heat Flow Meter 1.r:                            ##Generate a 4-plot of the data.
+1_eda_explore/4_2_Graphical Techniques/eda4283_Heat Flow Meter 1.r:                            ##Generate run order plot.
+1_eda_explore/4_2_Graphical Techniques/eda4283_Heat Flow Meter 1.r:                            ##Generate lag plot.
+1_eda_explore/4_2_Graphical Techniques/eda4283_Heat Flow Meter 1.r:                            ##Generate index variable and fit straight line.
+1_eda_explore/4_2_Graphical Techniques/eda4283_Heat Flow Meter 1.r:                            ##Generate arbitrary interval indicator variable and
+1_eda_explore/4_2_Graphical Techniques/eda4283_Heat Flow Meter 1.r:                            ##Generate and plot the autocorrelation function.
+1_eda_explore/4_2_Graphical Techniques/eda4223_ Uniform Random Numbers.r:                      ##Generate a 4-plot of the data.
+1_eda_explore/4_2_Graphical Techniques/eda4223_ Uniform Random Numbers.r:                      ##Generate separate plots to show more detail.
+1_eda_explore/4_2_Graphical Techniques/eda4223_ Uniform Random Numbers.r:                      ##Attach boot library and generate values for bootstrap plot.
+1_eda_explore/4_2_Graphical Techniques/eda4223_ Uniform Random Numbers.r:                      ##Generate bootstrap plot.
+1_eda_explore/4_2_Graphical Techniques/eda4223_ Uniform Random Numbers.r:                      ##Generate index variable and fit straight line.
+1_eda_explore/4_2_Graphical Techniques/eda4223_ Uniform Random Numbers.r:                      ##Load the car library, generate an arbitrary interval indicator
+1_eda_explore/4_2_Graphical Techniques/eda4223_ Uniform Random Numbers.r:                      ##Generate and plot the autocorrelation function.
+1_eda_explore/4_2_Graphical Techniques/eda4273_Standard Resistor.r:                            ##Generate a 4-plot of the data.
+1_eda_explore/4_2_Graphical Techniques/eda4273_Standard Resistor.r:                            ##Generate run order plot.
+1_eda_explore/4_2_Graphical Techniques/eda4273_Standard Resistor.r:                            ##Generate lag plot.
+1_eda_explore/4_2_Graphical Techniques/eda4273_Standard Resistor.r:                            ##Generate index variable and fit straight line.
+1_eda_explore/4_2_Graphical Techniques/eda4273_Standard Resistor.r:                            ##Load the car library, generate an arbitrary interval indicator
+1_eda_explore/4_2_Graphical Techniques/eda4273_Standard Resistor.r:                            ##Generate and plot the autocorrelation function.
+1_eda_explore/4_2_Graphical Techniques/eda4213_Normal Random Numbers.r:                        ##Generate a 4-plot of the data.
+1_eda_explore/4_2_Graphical Techniques/eda4213_Normal Random Numbers.r:                        ##Generate separate plots to show more detail.
+1_eda_explore/4_2_Graphical Techniques/eda4213_Normal Random Numbers.r:                        ##Generate index variable and fit straight line.
+1_eda_explore/4_2_Graphical Techniques/eda4213_Normal Random Numbers.r:                        ##Generate arbitrary interval indicator variable and
+1_eda_explore/4_2_Graphical Techniques/eda4213_Normal Random Numbers.r:                        ##Generate and plot the autocorrelation function.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate index variable and fit straight line.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Load the car library, generate an arbitrary interval indicator
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate and plot the autocorrelation function.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate initial plots of the data.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate QQ-plot of the data.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate QQ-plots for each distribution and overlay.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate a 4-plot of the data.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate a 4-plot of the data.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate run sequence plot.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate a 4-plot of the data.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate run sequence plot.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate a 4-plot of the data.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate run sequence plot.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate lag plot.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate index variable and fit straight line.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate index variable and fit straight line.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate index variable and fit straight line.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Load the car library, generate an arbitrary interval indicator
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate critical value.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate and plot the autocorrelation function.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate a 4-plot of the data.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate separate plots to show more detail.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate a 4-plot of the data.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate separate plots to show more detail.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate index variable and fit straight line.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate a 4-plot of the data.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate a 4-plot of the data.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate a 4-plot of the data.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate separate plots to show more detail.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate separate plots to show more detail.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate a 4-plot of the data.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate separate plots to show more detail.
+1_eda_explore/4_2_Graphical Techniques/.Rhistory:                                              ##Generate index variable and fit straight line.
+1_eda_explore/4_2_Graphical Techniques/eda4292_a.r:                                            ##Generate initial plots of the data.
+1_eda_explore/4_2_Graphical Techniques/eda4292_a.r:                                            ##Generate QQ-plot of the data.
+1_eda_explore/4_2_Graphical Techniques/eda4292_a.r:                                            ##Generate QQ-plots for each distribution and overlay.
+1_eda_explore/4_2_Graphical Techniques/eda4292_a.r:                                            ##Generate a 95 % confidence interval on the
+1_eda_explore/4_2_Graphical Techniques/eda4233_Random Walk.r:                                  ##Generate 4-plot.
+1_eda_explore/4_2_Graphical Techniques/eda4233_Random Walk.r:                                  ##Generate spectral plot.
+1_eda_explore/4_2_Graphical Techniques/eda4233_Random Walk.r:                                  ##Generate index variable and fit straight line.
+1_eda_explore/4_2_Graphical Techniques/eda4233_Random Walk.r:                                  ##Load the car library, generate an arbitrary interval indicator
+1_eda_explore/4_2_Graphical Techniques/eda4233_Random Walk.r:                                  ##Generate plot of predicted versus observed.
+1_eda_explore/4_2_Graphical Techniques/eda4233_Random Walk.r:                                  ##Generate 4-plot of residuals.
+1_eda_explore/4_2_Graphical Techniques/eda4233_Random Walk.r:                                  ##Generate uniform probability plot.
+1_eda_explore/eda33e5_bimodal mixture model.r:                                                 ##Import ascii data file and generate histogram.
+1_eda_explore/eda42a3.r:                                                                       ##Generate a 4-plot of the data.
+1_eda_explore/eda42a3.r:                                                                       ##Generate bihistogram.
+1_eda_explore/eda42a3.r:                                                                       ##Generate a quantile-quantile plot for the two batches.
+1_eda_explore/eda42a3.r:                                                                       ##Generate box plots for each batch.
+1_eda_explore/eda42a3.r:                                                                       ##Generate block plots for each factor.
+1_eda_explore/eda42a3.r:                                                                       ##Generate four plots on one page.
+1_eda_explore/eda42a3.r:                                                                       ##Generate the block plot.
+1_eda_explore/eda42a3.r:                                                                       ##Generate the block plot for the first factor.
+1_eda_explore/eda42a3.r:                                                                       ##Generate the block plot for the second factor.
+1_eda_explore/eda42a3.r:                                                                       ##Generate the block plot for the third factor.
+1_eda_explore/eda42a3.r:                                                                       ##Generate a box plot for each laboratory.
+1_eda_explore/eda42a3.r:                                                                       ##Create a dataframe with batch 1 data and generate the box plot.
+1_eda_explore/eda42a3.r:                                                                       ##Create a dataframe with batch 2 data and generate the box plot.
+1_eda_explore/eda42a3.r:                                                                       ##Generate DEX scatter plot for batch 1.
+1_eda_explore/eda42a3.r:                                                                       ##Generate factor ID variable.
+1_eda_explore/eda42a3.r:                                                                       ##Attach lattice library and generate the DEX scatter plot.
+1_eda_explore/eda42a3.r:                                                                       ##Generate DEX mean plot for batch 1.
+1_eda_explore/eda42a3.r:                                                                       ##Generate DEX standard deviation plot.
+1_eda_explore/eda42a3.r:                                                                       ##Attach lattice library and generate the DEX scatter plot for batch 2.
+1_eda_explore/eda42a3.r:                                                                       ##Generate DEX mean plot for batch 2.
+1_eda_explore/eda42a3.r:                                                                       ##Generate DEX standard deviation plot for batch 2.
+1_eda_explore/eda42a3.r:                                                                       ##Generate DEX Interaction Plot for Batch 1.
+1_eda_explore/eda42a3.r:# Generate plot.
+1_eda_explore/eda42a3.r:                                                                       ##Generate DEX Interaction Plot for Batch 2.
+1_eda_explore/eda42a3.r:# Generate plot.
+1_eda_explore/eda42.r:                                                                         ##Generate a 4-plot of the data.
+1_eda_explore/eda42.r:                                                                         ##Generate bihistogram.
+1_eda_explore/eda42.r:                                                                         ##Generate a quantile-quantile plot for the two batches.
+1_eda_explore/eda42.r:                                                                         ##Generate a box plot for each batch.
+1_eda_explore/eda42.r:                                                                         ##Generate four plots on one page.
+1_eda_explore/eda42.r:                                                                         ##Generate the block plot.
+1_eda_explore/eda42.r:                                                                         ##Generate the block plot for the first factor.
+1_eda_explore/eda42.r:                                                                         ##Generate the block plot for the second factor.
+1_eda_explore/eda42.r:                                                                         ##Generate the block plot for the third factor.
+1_eda_explore/eda42.r:                                                                         ##Generate box plot for each laboratory.
+1_eda_explore/eda42.r:                                                                         ##Create a dataframe with batch 1 data and generate the box plot.
+1_eda_explore/eda42.r:                                                                         ##Create a dataframe with batch 2 data and generate the box plot.
+1_eda_explore/eda42.r:                                                                         ##Generate DEX scatter plot for batch 1.
+1_eda_explore/eda42.r:                                                                         ##Generate factor ID variable.
+1_eda_explore/eda42.r:                                                                         ##Attach lattice library and generate the DEX scatter plot.
+1_eda_explore/eda42.r:                                                                         ##Generate DEX mean plot.
+1_eda_explore/eda42.r:                                                                         ##Generate DEX standard deviation plot.
+1_eda_explore/eda42.r:                                                                         ##Attach lattice library and generate the DEX scatter plot.
+1_eda_explore/eda42.r:                                                                         ##Generate DEX mean plot.
+1_eda_explore/eda42.r:                                                                         ##Generate DEX standard deviation plot.
+1_eda_explore/eda42.r:                                                                         ##Generate plot.
+1_eda_explore/eda42.r:                                                                         ##Generate plot.
+
+2_mpc_measure/mpc3511.r:                                                                       ##Generate control chart with reference lines.
+2_mpc_measure/mpc3521.r:                                                                       ##Generate control limits based on years prior to 1985.
+2_mpc_measure/mpc3521.r:                                                                       ##Generate control chart with reference lines.
+2_mpc_measure/mpc3521.r:                                                                       ##Generate control limits based on years after 1985.
+2_mpc_measure/mpc3521.r:                                                                       ##Generate revised control chart.
+2_mpc_measure/mpc3522a.r:                                                                      ##Generate EWMA chart.
+2_mpc_measure/mpc3671.r:                                                                       ##Generate quadratic regression curve and print results.
+2_mpc_measure/mpc3671.r:                                                                       ##Generate additional points on the x-axis for plotting.
+2_mpc_measure/mpc3671.r:                                                                       ##Generate calibration curve plot.
+2_mpc_measure/mpc3673.r:                                                                       ##Generate new Y' values for plotting.
+2_mpc_measure/mpc371_Control chart for a linear calibration line.r:                            ##Generate the control chart.
+2_mpc_measure/mpc611.r:                                                                        ##Generate a new codes for day and probe.
+2_mpc_measure/mpc611.r:                                                                        ##Generate new wafer variable for plotting and add to df1 data frame.
+2_mpc_measure/mpc611.r:                                                                        ##Attach lattice library and generate plot for run #1 and probe #2362.
+2_mpc_measure/mpc611.r:                                                                        ##Generate new wafer variable for plotting and add to df2 data frame.
+2_mpc_measure/mpc611.r:                                                                        ##Generate plot for run #2 and probe #2362.
+2_mpc_measure/mpc611.r:                                                                        ##Generate new wafer variable for plotting and add to df1 data frame.
+2_mpc_measure/mpc611.r:                                                                        ##Generate plot
+2_mpc_measure/mpc611.r:                                                                        ##Generate new wafer variable for plotting and add to df2 data frame.
+2_mpc_measure/mpc611.r:                                                                        ##Generate plot
+2_mpc_measure/mpc611.r:                                                                        ##Generate plot for wafer 138.
+2_mpc_measure/mpc611.r:                                                                        ##Generate plot for wafer 139.
+2_mpc_measure/mpc611.r:                                                                        ##Generate plot for wafer 140.
+2_mpc_measure/mpc611.r:                                                                        ##Generate plot for wafer 141.
+2_mpc_measure/mpc611.r:                                                                        ##Generate plot for wafer 142.
+2_mpc_measure/mpc621.r:                                                                        ##Generate control chart for bias and variability.
+2_mpc_measure/mpc621.r:                                                                        ##Generate day variable for plotting.
+2_mpc_measure/mpc621.r:                                                                        ##Generate the control chart for precision.
+2_mpc_measure/mpc621.r:                                                                        ##Generate day variable for plotting.
+2_mpc_measure/mpc621.r:                                                                        ##Generate the control chart for bias and long-term variability.
+2_mpc_measure/mpc631.r:                                                                        ##Generate plot for Run 1.
+2_mpc_measure/mpc631.r:                                                                        ##Generate plot for Run 2.
+
+3_ppc_characterize/ppc511_Furnace Case Study.r:                                                ##Generate summary statistics for thickness.
+3_ppc_characterize/ppc511_Furnace Case Study.r:                                                ##Generate plots of the data.
+3_ppc_characterize/ppc511_Furnace Case Study.r:                                                ##Generate box plot for each run.
+3_ppc_characterize/ppc511_Furnace Case Study.r:                                                ##Generate box plot for each furnace location (zone).
+3_ppc_characterize/ppc511_Furnace Case Study.r:                                                ##Generate box plot for each wafer.
+3_ppc_characterize/ppc511_Furnace Case Study.r:                                                ##Generate the block plot.
+3_ppc_characterize/ppc511_Furnace Case Study.r:                                                ##Generate F tests.
+3_ppc_characterize/ppc521_Machine Screw Case Study.r:                                          ##Generate box plot for each machine.
+3_ppc_characterize/ppc521_Machine Screw Case Study.r:                                          ##Generate box plot for each day.
+3_ppc_characterize/ppc521_Machine Screw Case Study.r:                                          ##Generate box plot for time of day.
+3_ppc_characterize/ppc521_Machine Screw Case Study.r:                                          ##Generate box plot by sample number.
+3_ppc_characterize/ppc521_Machine Screw Case Study.r:                                          ##Generate residuals from model with machine only.
+3_ppc_characterize/ppc521_Machine Screw Case Study.r:                                          ##Generate 4-plot of residuals.
+3_ppc_characterize/ppc521_Machine Screw Case Study.r:                                          ##Generate data frame with new cases.
+3_ppc_characterize/ppc521_Machine Screw Case Study.r:                                          ##Generate plot.
+
+4_pmd_model/pmd611_Load Cell Output.r:                                                         ##Generate regression analysis results
+4_pmd_model/pmd621_Alaska Pipeline.r:                                                          ##Generate conditional plot
+4_pmd_model/pmd621_Alaska Pipeline.r:                                                          ##Generate plot of raw data with overlaid regression function
+4_pmd_model/pmd621_Alaska Pipeline.r:                                                          ##Generate plot to compare three fits
+4_pmd_model/pmd641_Thermal Expansion of Copper.r:                                              ##Generate starting values for C/C model
+
+5_pri_improve/pri471_Full factorial example.r:                                                 ##Generate four plots.
+5_pri_improve/pri471_Full factorial example.r:                                                 ##Generate theoretical quantiles.
+5_pri_improve/pri471_Full factorial example.r:                                                 ##Generate normal probability plot of all effects (excluding the
+5_pri_improve/pri471_Full factorial example.r:                                                 ##Generate four plots.
+5_pri_improve/pri471_Full factorial example.r:                                                 ##Generate new transformed response variable and add to data frame.
+5_pri_improve/pri471_Full factorial example.r:                                                 ##Generate four plots of residuals based on transformed response.
+5_pri_improve/pri471_Full factorial example.r:                                                 ##Attach lattice library and generate main effects plot.
+5_pri_improve/pri471_Full factorial example.r:                                                 ##Generate two types of 2-way interaction plots.
+5_pri_improve/pri471_Full factorial example.r:# Generate plot.
+5_pri_improve/pri471_Full factorial example.r:                                                 ##Generate the lattice plot.
+5_pri_improve/pri542_Simplex-lattice designs.r:                                                ##Generate triangular plot.
+5_pri_improve/pri542_Simplex-lattice designs.r:                                                ##Generate triangular area for plotting.
+5_pri_improve/pri542_Simplex-lattice designs.r:                                                ##Generate triangular contour plot.
+5_pri_improve/pri611_Eddy current probe sensitivity study.r:                                   ##Generate re-coded factor variables for plotting.
+5_pri_improve/pri611_Eddy current probe sensitivity study.r:                                   ##Generate factor ID variable.
+5_pri_improve/pri611_Eddy current probe sensitivity study.r:                                   ##Attach lattice library and generate the DOE scatter plot.
+5_pri_improve/pri611_Eddy current probe sensitivity study.r:                                   ##Generate mean plot.
+5_pri_improve/pri611_Eddy current probe sensitivity study.r:# Generate plot.
+5_pri_improve/pri611_Eddy current probe sensitivity study.r:                                   ##Generate four plots on one page.
+5_pri_improve/pri611_Eddy current probe sensitivity study.r:                                   ##Generate the block plot for factor 1 - number of turns.
+5_pri_improve/pri611_Eddy current probe sensitivity study.r:                                   ##Generate the block plot for factor 2 - winding distance.
+5_pri_improve/pri611_Eddy current probe sensitivity study.r:                                   ##Generate the block plot for factor 3 - wire gauge.
+5_pri_improve/pri611_Eddy current probe sensitivity study.r:                                   ##Generate half-normal probability plot of effect estimates.
+5_pri_improve/pri611_Eddy current probe sensitivity study.r:                                   ##Generate Youden plot.
+5_pri_improve/pri611_Eddy current probe sensitivity study.r:                                   ##Generate averages for each factor and level.
+5_pri_improve/pri611_Eddy current probe sensitivity study.r:                                   ##Generate plot.
+5_pri_improve/pri611_Eddy current probe sensitivity study.r:                                   ##Generate residual plots.
+5_pri_improve/pri611_Eddy current probe sensitivity study.r:                                   ##Generate level means for plotting.
+5_pri_improve/pri611_Eddy current probe sensitivity study.r:                                   ##Generate x and y data for plotting.
+5_pri_improve/pri611_Eddy current probe sensitivity study.r:                                   ##Generate predicted response surface and generate matrix of surface.
+5_pri_improve/pri611_Eddy current probe sensitivity study.r:                                   ##Generate contour plot, add design points and labels.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:                                  ##Generate re-coded factor variables for plotting.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:                                  ##Generate factor ID variable.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:                                  ##Attach lattice library and generate the DEX scatter plot.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:                                  ##Generate mean plot.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:# Generate plot.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:                                  ##Generate seven plots on one page.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:                                  ##Generate level means.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:                                  ##Generate the block plot for factor 1.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:                                  ##Generate the block plot for factor 2.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:                                  ##Generate the block plot for factor 3.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:                                  ##Generate level means for factor 4.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:                                  ##Generate the block plot for factor 4.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:                                  ##Generate level means for factor 5.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:                                  ##Generate the block plot for factor 5.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:                                  ##Generate level means for factor 6.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:                                  ##Generate the block plot for factor 6.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:                                  ##Generate level means for factor 7.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:                                  ##Generate the block plot for factor 7.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:                                  ##Generate Youden plot.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:                                  ##Generate averages for each factor and level.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:                                  ##Generate names for effect estimates.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:                                  ##Generate Youden plot.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:                                  ##Generate half-normal probability plot of effect estimates.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:                                  ##Generate level means for plotting.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:                                  ##Generate x and y data for plotting.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:                                  ##Generate predicted response surface and generate matrix of surface.
+5_pri_improve/pri621_Sonoluminescent light intensity study.r:                                  ##Generate contour plot, add design points and labels.
+
+6_pmc_monitor/pmc4431_Univariate Time Series Models.r:                                         ##Generate the seasonal subseries plot.
+6_pmc_monitor/pmc44a_Univariate Time Series Models.r:                                          ##Generate predictions of 12 future values.
+6_pmc_monitor/pmc44a_Univariate Time Series Models.r:                                          ##Generate forecasts in original units.  To avoid under-predicting,
+6_pmc_monitor/pmc611_Lithography Process.r:                                                    ##Generate a 4-plot of the data.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                    ##Generate a run-order plot of the data.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                    ##Generate a numerical Summary.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                    ##Generate a scatter plot of width versus cassette.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                    ##Generate a box plot of width versus cassette.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                    ##Generate a scatter plot of width versus wafer.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                    ##Generate a box plot of width versus wafer.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                    ##Generate a scatter plot of width versus site.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                    ##Generate a box plot of width versus site.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                    ##Generate a Dex mean plot.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                    ##Generate factor ID variable.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                    ##Generate plot.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                    ##Generate a Dex sd plot.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                    ##Generate moving average control chart.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                    ##Generate plot.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                    ##Generate moving range control chart.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                    ##Generate mean control chart (wafers).
+6_pmc_monitor/pmc611_Lithography Process.r:                                                    ##Generate chart.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                    ##Generate SD control chart (wafers).
+6_pmc_monitor/pmc611_Lithography Process.r:                                                    ##Compute center line and upper control limit and generate chart.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                    ##Generate mean control chart (cassettes).
+6_pmc_monitor/pmc611_Lithography Process.r:                                                    ##Generate chart.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                    ##Generate SD control chart (cassettes).
+6_pmc_monitor/pmc611_Lithography Process.r:                                                    ##Compute center line and control limits and generate chart.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                    ##Generate the component of variance table.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                    ##Generate mean squares.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                    ##Generate a mean control chart using lot-to-lot variation.
+6_pmc_monitor/pmc611_Lithography Process.r:                                                    ##Generate chart.
+6_pmc_monitor/pmc613.r:                                                                        ##Generate control chart.
+6_pmc_monitor/pmc613.r:                                                                        ##Compute center line and upper control limit and generate chart.
+6_pmc_monitor/pmc613.r:                                                                        ##Generate control chart.
+6_pmc_monitor/pmc613.r:                                                                        ##Compute center line and control limits and generate chart.
+6_pmc_monitor/pmc621_Box-Jenkins Modeling Example.r:                                           ##Generate run-order plot.
+6_pmc_monitor/pmc621_Box-Jenkins Modeling Example.r:                                           ##Generate autocorrelation plot with 95 % confidence bands.
+6_pmc_monitor/pmc621_Box-Jenkins Modeling Example.r:                                           ##Generate autocorrelation plot of first differenced data.
+6_pmc_monitor/pmc621_Box-Jenkins Modeling Example.r:                                           ##Generate partial autocorrelation plot of first differenced data.
+6_pmc_monitor/pmc621_Box-Jenkins Modeling Example.r:                                           ##Attach library Hmisc and generate a 4-plot of the residuals
+6_pmc_monitor/pmc621_Box-Jenkins Modeling Example.r:                                           ##Generate autocorrelation Plot of Residuals from ARIMA(2) Model
+6_pmc_monitor/pmc621_Box-Jenkins Modeling Example.r:                                           ##Generate a 4-plot of the residuals from the MA(1) model.
+6_pmc_monitor/pmc621_Box-Jenkins Modeling Example.r:                                           ##Generate Autocorrelation Plot of Residuals from MA(1) Model
+
+7_prc_compare/prc232_Comparing to Nominal Variability.r:                                       ##Generate table of sample sizes.
+
+8_apr_reliability/1_9_Modeling reliability growth/apr192_NHPP Exponential Law Model.r:         ##Generate Duane plot.
+8_apr_reliability/1_9_Modeling reliability growth/apr192_NHPP Exponential Law Model.r:         ##A function to generate 13 random repair times
+8_apr_reliability/1_9_Modeling reliability growth/apr192_NHPP Exponential Law Model.r:         ##Generate Duane plot.
+8_apr_reliability/1_9_Modeling reliability growth/apr191_NHPP Power Law Model.r:               ##A function to generate 13 random repair times
+8_apr_reliability/2_2_Plotting reliability data/apr221_Probability plotting.r:                 ##Input data and generate plotting variables.
+8_apr_reliability/2_2_Plotting reliability data/apr221_Probability plotting.r:                 ##Generate probability plot.
+8_apr_reliability/2_2_Plotting reliability data/apr221_Probability plotting.r:                 ##Another way to generate the Weibull Probability Plot using
+8_apr_reliability/2_2_Plotting reliability data/apr222_Hazard and cumulative hazard plotting.r:##Generate cumulative hazard plot for exponential distribution.
+8_apr_reliability/2_2_Plotting reliability data/apr222_Hazard and cumulative hazard plotting.r:##Generate cumulative hazard plot for the Weibull distribution.
+8_apr_reliability/4_2_Fitting an acceleration model/apr421_ Graphical estimation.r:            ##Generate lognormal probability plot using procedure from 8.2.2.1.
+8_apr_reliability/4_2_Fitting an acceleration model/apr421_ Graphical estimation.r:            ##Generate lognormal probability plot for each cell
+8_apr_reliability/4_2_Fitting an acceleration model/apr422_Maximum likelihood.r:               ##Generate survival curve (Kaplan-Meier).
+8_apr_reliability/4_2_Fitting an acceleration model/apr422_Maximum likelihood.r:               ##Generate survival curve (Kaplan-Meier).
+8_apr_reliability/4_2_Fitting an acceleration model/apr422_Maximum likelihood.r:               ##Generate survival curve (Kaplan-Meier).
+8_apr_reliability/4_2_Fitting an acceleration model/.Rhistory:                                 ##Generate lognormal probability plot for each cell
+8_apr_reliability/apr161_Exponential distribution.r:                                           ##Generate an exponential probability plot, normalized so that a
+8_apr_reliability/apr161_Exponential distribution.r:                                           ##Generate 100 random exponential values using lambda = 0.01.
+8_apr_reliability/apr161_Exponential distribution.r:                                           ##Generate theoretical quantiles of the exponential distribution.
+8_apr_reliability/apr161_Exponential distribution.r:                                           ##Generate probability plot.
+8_apr_reliability/apr162_Weibull distribution.r:                                               ##Generate 100 random numbers from a Weibull with shape parameter
+8_apr_reliability/apr162_Weibull distribution.r:                                               ##Generate a Weibull probability plot for the data generated.
+8_apr_reliability/apr163_Extreme value distribution.r:                                         ##Generate 100 random numbers from the extreme value distribution.
+8_apr_reliability/apr163_Extreme value distribution.r:                                         ##Generate extreme value probability plot.
+8_apr_reliability/apr164_Lognormal distribution.r:                                             ##Generate 100 lognormal random numbers for probability plot.
+8_apr_reliability/apr164_Lognormal distribution.r:                                             ##Generate lognormal probability plot.
+8_apr_reliability/apr164_Lognormal distribution.r:                                             ##Generate lognormal probability plot when sigma is estimated from data.
+8_apr_reliability/apr165_Gamma distribution.r:                                                 ##Generate 100 Gamma random numbers.
+8_apr_reliability/apr165_Gamma distribution.r:                                                 ##Generate probability plot.
+8_apr_reliability/apr166_Birnbaum-Saunders distribution.r:                                     ##Generate 100 random numbers from the Birnbaum-Saunders
+8_apr_reliability/apr166_Birnbaum-Saunders distribution.r:                                     ##Generate probability plot.
+8_apr_reliability/apr166_Birnbaum-Saunders distribution.r:                                     ##Generate probability plot.
+8_apr_reliability/apr413.r:                                                                    ##Generate Kaplan-Meier survival curve.
+8_apr_reliability/apr413.r:                                                                    ##Generate a Weibull probability plot.
+8_apr_reliability/apr460_Gamma_distribution.r:                                                 ##Generate data for plotting.
+

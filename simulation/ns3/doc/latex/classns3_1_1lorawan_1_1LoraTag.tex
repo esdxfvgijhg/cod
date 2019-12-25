@@ -1,0 +1,216 @@
+\hypertarget{classns3_1_1lorawan_1_1LoraTag}{}\section{ns3\+:\+:lorawan\+:\+:Lora\+Tag Class Reference}
+\label{classns3_1_1lorawan_1_1LoraTag}\index{ns3\+::lorawan\+::\+Lora\+Tag@{ns3\+::lorawan\+::\+Lora\+Tag}}
+
+
+{\ttfamily \#include $<$lora-\/tag.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Lora\+Tag\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{classns3_1_1lorawan_1_1LoraTag__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Lora\+Tag\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{classns3_1_1lorawan_1_1LoraTag__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraTag_a2d82713e3dd081bea0595a5363eb36f4}\label{classns3_1_1lorawan_1_1LoraTag_a2d82713e3dd081bea0595a5363eb36f4}} 
+virtual Type\+Id {\bfseries Get\+Instance\+Type\+Id} (void) const
+\item 
+\hyperlink{classns3_1_1lorawan_1_1LoraTag_ab431ca942a24ff3f58edca2ca790a525}{Lora\+Tag} (uint8\+\_\+t sf=0, uint8\+\_\+t destroyed\+By=0)
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraTag_a601c30f1afe11ee9b444601b987069b8}\label{classns3_1_1lorawan_1_1LoraTag_a601c30f1afe11ee9b444601b987069b8}} 
+virtual void {\bfseries Serialize} (Tag\+Buffer i) const
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraTag_adcf3b70b607aa93db67fb14e352e7bca}\label{classns3_1_1lorawan_1_1LoraTag_adcf3b70b607aa93db67fb14e352e7bca}} 
+virtual void {\bfseries Deserialize} (Tag\+Buffer i)
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraTag_a25c0d8b5599db0a4afc25324cfb32d11}\label{classns3_1_1lorawan_1_1LoraTag_a25c0d8b5599db0a4afc25324cfb32d11}} 
+virtual uint32\+\_\+t {\bfseries Get\+Serialized\+Size} () const
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraTag_a6f04453d53c9a5c204484dd46db4844b}\label{classns3_1_1lorawan_1_1LoraTag_a6f04453d53c9a5c204484dd46db4844b}} 
+virtual void {\bfseries Print} (std\+::ostream \&os) const
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1LoraTag_aacab2442951ecde87e08047bead0e317}{Get\+Spreading\+Factor} () const
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1LoraTag_a40689221c88be9ac02b847c131e7b755}{Get\+Destroyed\+By} () const
+\item 
+double \hyperlink{classns3_1_1lorawan_1_1LoraTag_a956ea65aa29bb932888d0f8e6cf2f7db}{Get\+Receive\+Power} () const
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraTag_a7afef6f80d53d33748c4fd34a9df6e3e}{Set\+Spreading\+Factor} (uint8\+\_\+t sf)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraTag_ad420b4023f8ddeb1b7ea8d63255a718d}{Set\+Destroyed\+By} (uint8\+\_\+t sf)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraTag_ac13d46d936c4da9814ab6fb113f9fc64}{Set\+Receive\+Power} (double receive\+Power)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraTag_a9c6da5747bb782ee78f0edd91775ab1b}{Set\+Frequency} (double frequency)
+\item 
+double \hyperlink{classns3_1_1lorawan_1_1LoraTag_adb07fb2ac91bec8d81426ece513ed062}{Get\+Frequency} (void)
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1LoraTag_a23f8237d7bf360dc2a24496c904cbaab}{Get\+Data\+Rate} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraTag_a539be1f167fb209d8e3105dc99779c88}{Set\+Data\+Rate} (uint8\+\_\+t data\+Rate)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraTag_a03dd31c3014ed944df5f024544a13bd9}\label{classns3_1_1lorawan_1_1LoraTag_a03dd31c3014ed944df5f024544a13bd9}} 
+static Type\+Id {\bfseries Get\+Type\+Id} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classTag}{Tag} used to save various data about a packet, like its Spreading Factor and data about interference. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraTag_ab431ca942a24ff3f58edca2ca790a525}\label{classns3_1_1lorawan_1_1LoraTag_ab431ca942a24ff3f58edca2ca790a525}} 
+\index{ns3\+::lorawan\+::\+Lora\+Tag@{ns3\+::lorawan\+::\+Lora\+Tag}!Lora\+Tag@{Lora\+Tag}}
+\index{Lora\+Tag@{Lora\+Tag}!ns3\+::lorawan\+::\+Lora\+Tag@{ns3\+::lorawan\+::\+Lora\+Tag}}
+\subsubsection{\texorpdfstring{Lora\+Tag()}{LoraTag()}}
+{\footnotesize\ttfamily ns3\+::lorawan\+::\+Lora\+Tag\+::\+Lora\+Tag (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{sf = {\ttfamily 0},  }\item[{uint8\+\_\+t}]{destroyed\+By = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+Create a \hyperlink{classns3_1_1lorawan_1_1LoraTag}{Lora\+Tag} with a given spreading factor and collision.
+
+
+\begin{DoxyParams}{Parameters}
+{\em sf} & The Spreading Factor. \\
+\hline
+{\em destroyed\+By} & The SF this tag\textquotesingle{}s packet was destroyed by. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraTag_a23f8237d7bf360dc2a24496c904cbaab}\label{classns3_1_1lorawan_1_1LoraTag_a23f8237d7bf360dc2a24496c904cbaab}} 
+\index{ns3\+::lorawan\+::\+Lora\+Tag@{ns3\+::lorawan\+::\+Lora\+Tag}!Get\+Data\+Rate@{Get\+Data\+Rate}}
+\index{Get\+Data\+Rate@{Get\+Data\+Rate}!ns3\+::lorawan\+::\+Lora\+Tag@{ns3\+::lorawan\+::\+Lora\+Tag}}
+\subsubsection{\texorpdfstring{Get\+Data\+Rate()}{GetDataRate()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+Lora\+Tag\+::\+Get\+Data\+Rate (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the data rate for this packet.
+
+\begin{DoxyReturn}{Returns}
+The data rate that needs to be employed for this packet. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraTag_a40689221c88be9ac02b847c131e7b755}\label{classns3_1_1lorawan_1_1LoraTag_a40689221c88be9ac02b847c131e7b755}} 
+\index{ns3\+::lorawan\+::\+Lora\+Tag@{ns3\+::lorawan\+::\+Lora\+Tag}!Get\+Destroyed\+By@{Get\+Destroyed\+By}}
+\index{Get\+Destroyed\+By@{Get\+Destroyed\+By}!ns3\+::lorawan\+::\+Lora\+Tag@{ns3\+::lorawan\+::\+Lora\+Tag}}
+\subsubsection{\texorpdfstring{Get\+Destroyed\+By()}{GetDestroyedBy()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+Lora\+Tag\+::\+Get\+Destroyed\+By (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Read which Spreading Factor this packet was destroyed by.
+
+\begin{DoxyReturn}{Returns}
+The SF this packet was destroyed by. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraTag_adb07fb2ac91bec8d81426ece513ed062}\label{classns3_1_1lorawan_1_1LoraTag_adb07fb2ac91bec8d81426ece513ed062}} 
+\index{ns3\+::lorawan\+::\+Lora\+Tag@{ns3\+::lorawan\+::\+Lora\+Tag}!Get\+Frequency@{Get\+Frequency}}
+\index{Get\+Frequency@{Get\+Frequency}!ns3\+::lorawan\+::\+Lora\+Tag@{ns3\+::lorawan\+::\+Lora\+Tag}}
+\subsubsection{\texorpdfstring{Get\+Frequency()}{GetFrequency()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+Lora\+Tag\+::\+Get\+Frequency (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the frequency of the packet. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraTag_a956ea65aa29bb932888d0f8e6cf2f7db}\label{classns3_1_1lorawan_1_1LoraTag_a956ea65aa29bb932888d0f8e6cf2f7db}} 
+\index{ns3\+::lorawan\+::\+Lora\+Tag@{ns3\+::lorawan\+::\+Lora\+Tag}!Get\+Receive\+Power@{Get\+Receive\+Power}}
+\index{Get\+Receive\+Power@{Get\+Receive\+Power}!ns3\+::lorawan\+::\+Lora\+Tag@{ns3\+::lorawan\+::\+Lora\+Tag}}
+\subsubsection{\texorpdfstring{Get\+Receive\+Power()}{GetReceivePower()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+Lora\+Tag\+::\+Get\+Receive\+Power (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Read the power this packet arrived with.
+
+\begin{DoxyReturn}{Returns}
+This tag\textquotesingle{}s packet received power. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraTag_aacab2442951ecde87e08047bead0e317}\label{classns3_1_1lorawan_1_1LoraTag_aacab2442951ecde87e08047bead0e317}} 
+\index{ns3\+::lorawan\+::\+Lora\+Tag@{ns3\+::lorawan\+::\+Lora\+Tag}!Get\+Spreading\+Factor@{Get\+Spreading\+Factor}}
+\index{Get\+Spreading\+Factor@{Get\+Spreading\+Factor}!ns3\+::lorawan\+::\+Lora\+Tag@{ns3\+::lorawan\+::\+Lora\+Tag}}
+\subsubsection{\texorpdfstring{Get\+Spreading\+Factor()}{GetSpreadingFactor()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+Lora\+Tag\+::\+Get\+Spreading\+Factor (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Read which Spreading Factor this packet was transmitted with.
+
+\begin{DoxyReturn}{Returns}
+This tag\textquotesingle{}s packet\textquotesingle{}s SF. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraTag_a539be1f167fb209d8e3105dc99779c88}\label{classns3_1_1lorawan_1_1LoraTag_a539be1f167fb209d8e3105dc99779c88}} 
+\index{ns3\+::lorawan\+::\+Lora\+Tag@{ns3\+::lorawan\+::\+Lora\+Tag}!Set\+Data\+Rate@{Set\+Data\+Rate}}
+\index{Set\+Data\+Rate@{Set\+Data\+Rate}!ns3\+::lorawan\+::\+Lora\+Tag@{ns3\+::lorawan\+::\+Lora\+Tag}}
+\subsubsection{\texorpdfstring{Set\+Data\+Rate()}{SetDataRate()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Tag\+::\+Set\+Data\+Rate (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{data\+Rate }\end{DoxyParamCaption})}
+
+Set the data rate for this packet.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data\+Rate} & The data rate. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraTag_ad420b4023f8ddeb1b7ea8d63255a718d}\label{classns3_1_1lorawan_1_1LoraTag_ad420b4023f8ddeb1b7ea8d63255a718d}} 
+\index{ns3\+::lorawan\+::\+Lora\+Tag@{ns3\+::lorawan\+::\+Lora\+Tag}!Set\+Destroyed\+By@{Set\+Destroyed\+By}}
+\index{Set\+Destroyed\+By@{Set\+Destroyed\+By}!ns3\+::lorawan\+::\+Lora\+Tag@{ns3\+::lorawan\+::\+Lora\+Tag}}
+\subsubsection{\texorpdfstring{Set\+Destroyed\+By()}{SetDestroyedBy()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Tag\+::\+Set\+Destroyed\+By (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{sf }\end{DoxyParamCaption})}
+
+Set which Spreading Factor this packet was destroyed by.
+
+
+\begin{DoxyParams}{Parameters}
+{\em sf} & The Spreading Factor. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraTag_a9c6da5747bb782ee78f0edd91775ab1b}\label{classns3_1_1lorawan_1_1LoraTag_a9c6da5747bb782ee78f0edd91775ab1b}} 
+\index{ns3\+::lorawan\+::\+Lora\+Tag@{ns3\+::lorawan\+::\+Lora\+Tag}!Set\+Frequency@{Set\+Frequency}}
+\index{Set\+Frequency@{Set\+Frequency}!ns3\+::lorawan\+::\+Lora\+Tag@{ns3\+::lorawan\+::\+Lora\+Tag}}
+\subsubsection{\texorpdfstring{Set\+Frequency()}{SetFrequency()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Tag\+::\+Set\+Frequency (\begin{DoxyParamCaption}\item[{double}]{frequency }\end{DoxyParamCaption})}
+
+Set the frequency of the packet.
+
+This value works in two ways\+:
+\begin{DoxyItemize}
+\item It is used by the GW to signal to the NS the frequency of the uplink packet
+\item It is used by the NS to signal to the GW the freqeuncy of a downlink packet 
+\end{DoxyItemize}\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraTag_ac13d46d936c4da9814ab6fb113f9fc64}\label{classns3_1_1lorawan_1_1LoraTag_ac13d46d936c4da9814ab6fb113f9fc64}} 
+\index{ns3\+::lorawan\+::\+Lora\+Tag@{ns3\+::lorawan\+::\+Lora\+Tag}!Set\+Receive\+Power@{Set\+Receive\+Power}}
+\index{Set\+Receive\+Power@{Set\+Receive\+Power}!ns3\+::lorawan\+::\+Lora\+Tag@{ns3\+::lorawan\+::\+Lora\+Tag}}
+\subsubsection{\texorpdfstring{Set\+Receive\+Power()}{SetReceivePower()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Tag\+::\+Set\+Receive\+Power (\begin{DoxyParamCaption}\item[{double}]{receive\+Power }\end{DoxyParamCaption})}
+
+Set the power this packet was received with.
+
+
+\begin{DoxyParams}{Parameters}
+{\em receive\+Power} & The power, in d\+Bm. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraTag_a7afef6f80d53d33748c4fd34a9df6e3e}\label{classns3_1_1lorawan_1_1LoraTag_a7afef6f80d53d33748c4fd34a9df6e3e}} 
+\index{ns3\+::lorawan\+::\+Lora\+Tag@{ns3\+::lorawan\+::\+Lora\+Tag}!Set\+Spreading\+Factor@{Set\+Spreading\+Factor}}
+\index{Set\+Spreading\+Factor@{Set\+Spreading\+Factor}!ns3\+::lorawan\+::\+Lora\+Tag@{ns3\+::lorawan\+::\+Lora\+Tag}}
+\subsubsection{\texorpdfstring{Set\+Spreading\+Factor()}{SetSpreadingFactor()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Tag\+::\+Set\+Spreading\+Factor (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{sf }\end{DoxyParamCaption})}
+
+Set which Spreading Factor this packet was transmitted with.
+
+
+\begin{DoxyParams}{Parameters}
+{\em sf} & The Spreading Factor. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lora-\/tag.\+h\item 
+lora-\/tag.\+cc\end{DoxyCompactItemize}

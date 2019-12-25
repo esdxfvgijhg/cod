@@ -1,0 +1,73 @@
+<definitions targetNamespace="urn:vwservices/timeNowService" xmlns:tns="urn:vwservices/timeNowService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+	<types>
+		<schema targetNamespace="urn:vwservices/timeNowService" elementFormDefault="qualified" xmlns:tns="urn:vwservices/timeNowService" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.w3.org/2001/XMLSchema">
+			<element name="AsTimestamp">
+				<complexType>
+					<sequence>
+						<element name="asTimestamp" type="xsd:time"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="AsTimestampResponse">
+				<complexType>
+					<sequence>
+						<element name="result" type="xsd:dateTime"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="TimeNowResponse">
+				<complexType>
+					<sequence>
+						<element name="result" type="xsd:time"/>
+					</sequence>
+				</complexType>
+			</element>
+		</schema>
+	</types>
+	<message name="AsTimestampSoapIn">
+		<part name="parameter" element="tns:AsTimestamp"/>
+	</message>
+	<message name="AsTimestampSoapOut">
+		<part name="return" element="tns:AsTimestampResponse"/>
+	</message>
+	<message name="TimeNowSoapIn"/>
+	<message name="TimeNowSoapOut">
+		<part name="return" element="tns:TimeNowResponse"/>
+	</message>
+	<portType name="TimeNowService">
+		<operation name="AsTimestamp">
+			<input message="tns:AsTimestampSoapIn"/>
+			<output message="tns:AsTimestampSoapOut"/>
+		</operation>
+		<operation name="TimeNow">
+			<input message="tns:TimeNowSoapIn"/>
+			<output message="tns:TimeNowSoapOut"/>
+		</operation>
+	</portType>
+	<binding name="TimeNowService" type="tns:TimeNowService">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="AsTimestamp">
+			<soap:operation soapAction="urn:vwservices/timeNowService#AsTimestamp" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="TimeNow">
+			<soap:operation soapAction="urn:vwservices/timeNowService#TimeNow" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="TimeServer">
+		<port name="TimeNowService" binding="tns:TimeNowService">
+			<soap:address location="http://localhost:4960/TimeNowService"/>
+		</port>
+	</service>
+</definitions>

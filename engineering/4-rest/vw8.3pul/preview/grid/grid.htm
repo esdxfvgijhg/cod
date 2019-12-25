@@ -1,0 +1,2110 @@
+<html>
+
+<head>
+
+<title>Grid Widget Preview</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<h1>Grid</h1>
+
+<p>Grid is a new widget for the classic VW GUI that combines elements of the 
+
+  Table and Dataset widgets for a simpler and more flexible interface. It is based 
+
+  on the Grid from the Widgetry project. 
+
+<p> It consists of three packages: 
+
+<p>
+
+<OL >
+
+  <LI >Grid -- Base UI Grid support package. </LI>
+
+  <LI >Grid UIPainter -- UIPainter interface add-on for Grid.</LI>
+
+  <LI >Grid Samples -- Sample Grid and test applications. </LI>
+
+  <LI >Grid SUnit Tests -- SUnit test classes and empty Grid application for interactive 
+
+    tests. </LI>
+
+</OL>
+
+<table border="0">
+
+  <tr> 
+
+    <td width="163"><a href="#GridFeatures">Grid Features</a></td>
+
+    <td width="414">Current and projected features.</td>
+
+  </tr>
+
+  <tr> 
+
+    <td width="163"><a href="#GridElements">Grid Elements</a></td>
+
+    <td width="414">Grid support classes.</td>
+
+  </tr>
+
+  <tr> 
+
+    <td width="163"><a href="#GridColumnModels">Grid Column Models</a></td>
+
+    <td width="414">How to setup a column model.</td>
+
+  </tr>
+
+  <tr> 
+
+    <td width="163"><a href="#GridUIPainter">Grid UIPainter Interface</a></td>
+
+    <td width="414">Creating and editing Grid attributes in a canvas.</td>
+
+  </tr>
+
+  <tr> 
+
+    <td width="163"><a href="#GridNavigation">Grid Navigation</a></td>
+
+    <td width="414">Scrolling and keyboard navigation to a new destination.</td>
+
+  </tr>
+
+  <tr> 
+
+    <td width="163"><a href="#GridSelection">Grid Selection</a></td>
+
+    <td width="414">Selecting rows or cells in a Grid.</td>
+
+  </tr>
+
+  <tr> 
+
+    <td width="163"><a href="#GridSorting">Grid Sorting</a></td>
+
+    <td width="414">Row sort with and without a UI.</td>
+
+  </tr>
+
+  <tr> 
+
+    <td width="163"><a href="#GridDragDrop">Grid Drag and Drop</a></td>
+
+    <td width="414">Reorder columns or move and insert rows</td>
+
+  </tr>
+
+  <tr> 
+
+    <td width="163"><a href="#GridInterface">Grid Interface</a></td>
+
+    <td width="414">Application layer interface object that simplifies Grid setup 
+
+      and use.</td>
+
+  </tr>
+
+  <tr> 
+
+    <td width="163"><a href="#GridTutorial">Grid Tutorial</a></td>
+
+    <td width="414">Simple example Grid creation and manipulation.</td>
+
+  </tr>
+
+</table>
+
+
+
+<HR >
+
+<H2 ><a name="GridFeatures"></a>Grid Features</H2>
+
+<H3 >Grid Preview Features</H3>
+
+<p>
+
+<UL >
+
+  <LI > Multiple or single selection options by row or individual cell. </LI>
+
+  <LI > Multiple row sort by column with or without a UI. </LI>
+
+  <LI > Interactive row or column resize. </LI>
+
+  <LI > Scroll and align column, row, or cell to a particular pane position (e.g. 
+
+    center, left, right, top, bottom). </LI>
+
+  <LI > UIBuilder canvas support with the Grid-UIPainter parcel. </LI>
+
+  <LI >SelectionInGrid and GridInterface model support. </LI>
+
+  <LI >Drag-and-drop columns reordering</LI>
+
+</UL>
+
+<H3 >Grid Planned Features</H3>
+
+<p> 
+
+<UL >
+
+  <LI > Drag-and-drop rows to add, remove, or sort elements. </LI>
+
+  <LI > Tree column. </LI>
+
+  <LI > Announcements or trigger events will be completed. </LI>
+
+  <LI > Row and column headers will display in a specific UILook for Mac OSX, 
+
+    Win 95/2000, Win XP, and Motif. Currently only a default look is supported. 
+
+  </LI>
+
+  <LI > Vertical scroll steps in row height increments. Currently rows scroll 
+
+    vertically in 1 pixel steps. </LI>
+
+</UL>
+
+<hr>
+
+<H2 ><a name="GridElements"></a>Grid Elements</H2>
+
+<p>
+
+New for a Grid are classes defined to represent and take the roles of its rows, columns, and cells.  This improves the accessibility and control of a Grid by one or more of its elements.  The DataSetView and TableView were sorely lacking in this encapsulated behavior. <p>
+
+<UL ><LI > GridRow -- The GridRow represents each line item in a Grid and its current height when shown in the Grid.  Options determine whether a line should be displayed at its border or it may be resized. Subclasses may add special behavior: </LI>
+
+<UL ><LI >GridHeaderRow -- A header row for all columns in a Grid that displays the column caption.  A column header button may be used to sort rows according to a column constraint.  A GridHeaderRow is a meta-row in that it doesn't represent any line item--it is just a handle to control or caption a column. </LI>
+
+<LI >GridHilightRow -- Instances of a GridHilightRow alternately shade their background to ease readibility of adjacent Grid rows.  </LI>
+
+
+
+</UL>
+
+  <LI > GridColumn -- The GridColumn defines what aspect of a GridRow to display 
+
+    and what widget is used to display it in a column. It controls whether a border 
+
+    line should be displayed, whether it may be sorted, dragged, or resized. The 
+
+    spec used to declare the cell widget may be modified in the usual way to disable 
+
+    or modify the appearence of the widget. Subclasses may add special behavior. 
+
+    <UL ><LI >GridHeaderColumn -- A header column usually positioned as the leftmost column to select or number each row.  An offset may be defined to adjust its numbering origin when row numbering is shown.  </LI></UL>
+
+<LI > GridCell -- A holder for the position intersecting a GridRow and GridColumn. It provides access for either the row or column element at this location. Sending #value to aGridCell answers the value of the cell for the line item and column.   </LI>
+
+</UL>
+
+<H2 >Visual Elements </H2>
+
+<p>The Grid itself is a CompositeView that contains only the elements visible in 
+
+its pane. Its components are dynamically added and removed as the bounds of the 
+
+Grid pane changes or is scrolled. As the counterparts of a Grid's persistent elements 
+
+these visual elements are built and have a lifetime only while elements are visible 
+
+in the pane. These classes are private for use within the Grid. 
+
+<p> GridVisualSegment<br>
+
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GridVisualRow <br>
+
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GridVisualColumn
+
+<p>
+
+  A GridVisualSegment is the abstract superclass of a GridVisualColumn and a GridVisualRow. 
+
+  It knows of and can access its adjacent visible neighbor in a linked list. If 
+
+  a GridVisualSegment has no predecessor or successor then it resides at the visible 
+
+  or scrollable border of a Grid pane. If the segment is a GridVisualRow it knows 
+
+  its top and bottom position in the Grid, its GridRow, and its height. If the 
+
+  segment is a GridVisualColumn it knows its left and right Grid position, its 
+
+  GridColumn, and its width. 
+
+<p>
+
+GridVisualCell -- Visual counterpart of GridCell that constructs and maintains a Grid component using the Grid's builder. <p>
+
+<p>
+
+<hr>
+
+<H2 ><FONT face="Arial" ><a name="GridColumnModels"></a></FONT>Column Models</H2>
+
+<p>
+
+The model for a GridColumn specification defines the aspect path required to obtain the value for a cell in the column for any row.  Although the model may be provided directly as an AspectAdaptor whose subject is the row item, typically it is specified as a Symbol for the aspect path that the Grid cell builder will use to create and assign as model.  When specified as a Symbol, it is declared in this format <p>
+
+<code>#'_row *&lt;unary accessor&gt;' </code><p>
+
+where '_row' is a reserved word denoting the model will be accessed from the current row item and '*&lt;unary accessor&gt;' is one or more unary accessor messages that form the aspect path to obtain the value for the cell from the row item.   <p>
+
+
+
+In use, the GridColumn spec declaration might appear as  <p>
+
+<code>(GridColumnSpec new<br> &nbsp; &nbsp; &nbsp; &nbsp; label: 'First Name';<br> &nbsp; &nbsp; &nbsp; &nbsp; width: 80;<br> &nbsp; &nbsp; &nbsp; &nbsp; spec:  (InputFieldSpec new model:#'_row firstName');<br> &nbsp; &nbsp; &nbsp; &nbsp; yourself) </code><p>
+
+
+
+Examples: <p>
+
+<table> <tr> <td width="200"><code>#'_row firstName'</code></td> 
+
+    <td>The value is obtained by sending #firstName to the row item. The row item 
+
+      must also respond to #firstName: when the cell value is set by an editor.</td>
+
+  </tr> <tr> <td width="200"><code>#'_row address state'</code></td> 
+
+    <td>The value is obtained by sending #state and set by sending #state: to 
+
+      the object obtained by sending #address to the row item.</td>
+
+  </tr> <tr> <td width="200"><code>#'_row 2 y'</code></td> 
+
+    <td>The value is obtained by sending #y to the second element of the row item. 
+
+      The row item is most likely a SequenceableCollection of Points and this 
+
+      aspect path will access or modify the 'y' value of its second element.</td>
+
+  </tr> </table> <p>
+
+
+
+If the cell model is to be buffered for changes the model may be declared in this format: <p>
+
+<code>#'_row *&lt;unary accessor&gt; | &lt;buffered aspect&gt;'</code>  <p>
+
+where '&lt;buffered aspect&gt;' is the aspect for a ValueModel which when set true accepts the edited value from a buffer.  If the '&lt;buffered aspect&gt;' model is set to false the last edited value in a buffer is canceled and the value is restored from the row item. <p>
+
+<HR >
+
+<h2><a name="GridUIPainter"></a>Grid UIPainter Interface</h2>
+
+The Grid-UIPainter package/parcel adds code to the UIPainter canvas editing tools 
+
+to easily add and edit a Grid widget. Load the Grid-UIPainter and it should include 
+
+a Grid widget button among the other widgets available for selection on the palette. 
+
+<p>
+
+The Grid-UIPainter component enables the following editing tasks: 
+
+<h3>Adding a column</h3>
+
+<p>
+
+Select the Grid widget and the PainterTool should show a <b>Basics</b> page.  Press the <b>New Column</b> button to add a new column.  Each new column will add a child node to the Grid widget appearing in the PainterTool hierarchical tree of components in the canvas. <p>
+
+<p>
+
+<h3>Selecting a column</h3> 
+
+<p> Either select the Grid child node appearing for the column in the PainterTool 
+
+  tree or &lt;Alt&gt;-&lt;Select&gt; the desired column in the Grid appearing 
+
+  in the UIPainter canvas. The selected column will appear highlighted and the 
+
+  PainterTool pages will change to display and enable editing of a column's attributes. 
+
+  If the content for a column has not been defined only the <b>Basics</b> page 
+
+  will appear. 
+
+<p>
+
+<p>
+
+<h3>Define column content</h3> <p>
+
+
+
+A column may contain any widget but only widgets that have models are useful.  Defining a column with a label, view holder, region, resizing splitter, and group box will only show a column of identical items.  Likewise, a column of dataset, click widget, chart, notebook, tab widget, subcanvas, and even grid widgets are to be avoided since they unnecessarily complicate an interface.  The most useful and recommended widgets for column content are input fields, text editors, spin buttons, combo boxes, check boxes, and sliders.  <p>
+
+Select the Grid widget in the canvas then select the widget you would like to define in the UIPainter palette.  Drop your selected widget onto a column by clicking on it.  This defines the content for the column.  If the column had no content defined for it previously then additional pages besides <b>Basics</b> will appear in the PainterTool to edit the attributes of the content (e.g. <b>Component</b>, <b>Color</b>, <b>Details</b>, etc). If the Grid widget is not first selected then dropping a widget from the palette on the Grid will simply place the widget on top the Grid. <p>
+
+<p>
+
+<h3>Removing a column</h3> 
+
+<p> Select a Grid column either from the PropertiesTool tree or by clicking on 
+
+  the column using &lt;Alt&gt;-&lt;Select&gt;. Press the <b>Remove Column</b> 
+
+  button on the <b>Basics</b> page the the column will be removed. 
+
+<p>
+
+<p>
+
+<h3>Reordering columns</h3> <p>
+
+Select a Grid column in the canvas then drag and drop a column by its header to a new position among other columns. <p>
+
+<p>
+
+
+
+<h3>Column width</h3> <p>
+
+Drag a column border with the mouse to resize it.  Currently there isn't an entry field on the column <b>Basics</b> page to set the size to a particular width in pixels. <p>
+
+<p>
+
+<h3>Row height</h3> 
+
+<p> Row height is only defined and relevant for rows added to a Grid at runtime. 
+
+  One may set the default row height in the Grid <b>Basics</b> page--the height 
+
+  a row will assume if it isn't individually assigned a height.
+
+<p>
+
+<p>
+
+<h3>Adding a row header column</h3> 
+
+<p> Select the Grid and the PropertiesTool <b>Basics</b> page. In the <b>Rows</b> 
+
+  group box, select <b>Add Header</b>. This should add a leftmost row selector 
+
+  column to the Grid. This should also enable the <b>Buttons </b>and <b>Numbered</b> 
+
+  check box options to change the style of the row selector column. If you select 
+
+  <b>Numbered</b> for a numbered row selector column then a non-zero entry to 
+
+  <b>Offset</b> will offset the initial row number by the number given. 
+
+<p>
+
+
+
+<p>
+
+<h3>Adding a column header row</h3> 
+
+<p> Select the Grid and the PropertiesTool <b>Basics</b> page. In the <b>Columns</b> 
+
+  group box, select <b>Add Header</b>. To edit each column name select a Grid 
+
+  column either from the PropertiesTool tree or by clicking on the column using 
+
+  &lt;Alt&gt;-&lt;Select&gt; then enter its name in the column <b>Basics</b> page. 
+
+<p>
+
+<h3>Overall row and column behavior</h3> 
+
+<p>Modify the following check boxes on the PainterTool <b>Basics</b> page to 
+
+  change the following column and row attributes: 
+
+<p>
+
+<dt><b>Columns</b> 
+
+  <dl> 
+
+    <dt><b>Allow Resizing</b> 
+
+    <dd>If on, any column may be resized interactively by dragging its border. 
+
+    </dd>
+
+    <dt><b>Allow Reordering</b> </dt>
+
+    <dd> If on, columns may be interactively reordered by dragging and dropping 
+
+      them by column header. </dd>
+
+  </dl>
+
+<dt><b>Rows</b> 
+
+  <dl> 
+
+    <dt><b>Allow Resizing</b></dt>
+
+    <dd> If on, rows may be resized by interactively dragging their borders.</dd>
+
+    <dt> <b>Height</b></dt>
+
+    <dd>Define a default row height in pixels in this field. </dd>
+
+  </dl>
+
+  <p> 
+
+  <HR >
+
+  <h2><a name="GridNavigation"></a>Grid Navigation</h2>
+
+  <h3>Keyboard Navigation Shortcuts and Programmatic Counterparts</h3>
+
+  <table border="1">
+
+    <tr> 
+
+      <td>Action </td>
+
+      <td>Keypress</td>
+
+      <td>Grid Message</td>
+
+      <td>Notes</td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Scroll page up</td>
+
+      <td>&lt;PageUp&gt;</td>
+
+      <td><code>aGrid pageUp</code></td>
+
+      <td>&nbsp;</td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Scroll page down</td>
+
+      <td>&lt;PageDown&gt;</td>
+
+      <td><code>aGrid pageDown</code></td>
+
+      <td>&nbsp;</td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Scroll to top line</td>
+
+      <td>&lt;Control&gt;-&lt;Home&gt;</td>
+
+      <td><code>aGrid home</code></td>
+
+      <td>&nbsp;</td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Scroll to bottom line</td>
+
+      <td>&lt;Control&gt;-&lt;End&gt;</td>
+
+      <td><code>aGrid end</code></td>
+
+      <td>&nbsp;</td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Edit next field</td>
+
+      <td>&lt;Tab&gt;</td>
+
+      <td><code>aGrid moveEditHorizontallyBy: 1</code></td>
+
+      <td><code>aGrid horizontalPolicy ~= #none</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Edit prior field</td>
+
+      <td>&lt;Shift&gt;-&lt;Tab&gt;</td>
+
+      <td><code>aGrid moveEditHorizontallyBy: -1</code></td>
+
+      <td><code>aGrid horizontalPolicy ~= #none</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Edit upper field</td>
+
+      <td>&lt;Up Arrow&gt;</td>
+
+      <td><code>aGrid moveEditVerticallyBy: 1 </code></td>
+
+      <td><code>aGrid verticalPolicy ~= #none</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Edit lower field</td>
+
+      <td>&lt;Down Arrow&gt;</td>
+
+      <td><code>aGrid moveEditVerticallyBy: -1 </code></td>
+
+      <td><code>aGrid verticalPolicy ~= #none</code></td>
+
+    </tr>
+
+  </table>
+
+  <h3>Row Scrolling</h3>
+
+  <table  border="1">
+
+    <tr> 
+
+      <td>Scroll to make the row visible at the closest border</td>
+
+      <td><code>aGridRow scrollToView</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Scroll to make the row visible at the closest border</td>
+
+      <td><code>aGridRow scrollToView: #nearest.</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Scroll to make the row visible at the Grid top</td>
+
+      <td><code>aGridRow scrollToView: #top.</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Scroll to make the row visible at the Grid bottom</td>
+
+      <td><code>aGridRow scrollToView: #bottom.</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Scroll to make the row visible at the Grid center</td>
+
+      <td><code>aGridRow scrollToView: #center.</code></td>
+
+    </tr>
+
+  </table>
+
+  <h3>Column Scrolling</h3>
+
+  <table  border="1">
+
+    <tr> 
+
+      <td>Scroll to make the column visible at the closest border</td>
+
+      <td><code>aGridColumn scrollToView</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Scroll to make the column visible at the closest border</td>
+
+      <td><code>aGridColumn scrollToView: #nearest.</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Scroll to make the column visible at the Grid left</td>
+
+      <td><code>aGridColumn scrollToView: #left.</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Scroll to make the column visible at the Grid right</td>
+
+      <td><code>aGridColumn scrollToView: #right.</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Scroll to make the column visible at the Grid center</td>
+
+      <td><code>aGridColumn scrollToView: #center.</code></td>
+
+    </tr>
+
+  </table>
+
+  <h3>Cell Scrolling</h3>
+
+  <table  border="1">
+
+    <tr> 
+
+      <td>Scroll to make the cell visible at any closest border</td>
+
+      <td><code>aGridCell scrollToView</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Scroll to make the cell visible at any closest border</td>
+
+      <td><code>aGridCell scrollToRowView: #nearest andColumnView: #nearest.</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Scroll to make the cell visible at the top left</td>
+
+      <td><code>aGridCell scrollToRowView: #top andColumnView: #left. </code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Scroll to make the cell visible at the bottom left</td>
+
+      <td><code>aGridCell scrollToRowView: #bottom andColumnView: #right.</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Scroll to make the cell visible at the top right</td>
+
+      <td><code>aGridCell scrollToRowView: #top andColumnView: #right.</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Scroll to make the column visible at the pane center</td>
+
+      <td><code>aGridCell scrollToRowView: #center andColumnView: #center.</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Scroll to make the cell visible at the horizontal center</td>
+
+      <td><code>aGridCell scrollToRowView: #nearest andColumnView: #center.</code></td>
+
+    </tr>
+
+  </table>
+
+  <p><code>&quot;Scroll the editor into view&quot;<br>
+
+    aGrid editCell scrollToView.</code></p>
+
+  <HR >
+
+  <h2><a name="GridSelection"></a>Grid Selection</h2>
+
+  <h3>Selection Modes</h3>
+
+  Unlike other selection widgets the Grid was designed with the objective to be 
+
+  flexible enough to change settings for multiple or single selection, cell or 
+
+  row selection without reinitializing selections or models. *Cell selection -- 
+
+  If true, individual cells may be selected, otherwise only entire rows may be 
+
+  selected. *Multiple selection -- If true, more than one entity may be selected 
+
+  at once. !Selection Ranges Since the Grid may allow multiple, individual cells 
+
+  to be selected a truly two-dimensional selection indexing scheme was necessary. 
+
+  Instead of a single selection indexing scheme as is used with other selection 
+
+  widgets the Grid uses a Set of Rectangles to denote regions of selections. A 
+
+  selection region is denoted by the coordinate positions for the origin and corner 
+
+  of a cell selection rectangle. If the Grid is set to accept multiple selections 
+
+  it will merge selection rectangles in its set as selections are added or divide 
+
+  selection rectangles in its set as selections are removed as necessary to keep 
+
+  the selection set simplified. 
+
+  <h3>Selection Range Examples</h3>
+
+  <table>
+
+    <tr> 
+
+      <td>Selection</td>
+
+      <td>Range</td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Line 1 (6 columns)</td>
+
+      <td><code>Set with: (1@1 corner: 6@1).</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Cell 2@2</td>
+
+      <td><code>Set with: (2@2 extent: 0@0).</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Line 1 and 2 (6 columns) </td>
+
+      <td><code>Set with: (1@1 corner: 6@2).</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Cell 1@1 and 2@2</td>
+
+      <td><code>Set with: (1@1 extent: 0@0) with: (2@2 extent: 0@0).</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Cell 1@1, 1@2, and 2@2</td>
+
+      <td><code>Set with: (1@1 extent: 0@1) with: (2@2 extent: 0@0).</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Adjacent Cells 1@1 thru 2@2</td>
+
+      <td><code>Set with: (1@1 extent: 1@1).</code></td>
+
+    </tr>
+
+  </table>
+
+  <h3>Interactive Selection</h3>
+
+  If a RowHeaderColumn appears in a Grid then selecting its row header button 
+
+  at any time will select the entire contents of a row whether the Grid is set 
+
+  for cell selection or not. When a Grid is set for multiple selection, multiple 
+
+  items may be sweep selected. Hold the &lt;Shift&gt; down and select the next 
+
+  target by mouse or keyboard and all items between the old and new target will 
+
+  be selected. Alternatively, if &lt;Control&gt; is depressed a selection will 
+
+  be toggled (i.e. added if absent or removed if present). The keyboard may be 
+
+  used to toggle selection of the target position by pressing &lt;Space&gt;. 
+
+  <h3>Setting Selections Programmatically</h3>
+
+  Send #selectRange:, #unselectRange:, or #resetSelections to a Grid to add, remove, 
+
+  or clear selection ranges from its selection set. 
+
+  <h3>Selection Range Examples</h3>
+
+  <code>"Single select, row selection. 7 columns"<br>
+
+  grid multiSelect: false.<br>
+
+  grid selectByCell: false.</code> 
+
+  <p> 
+
+  <table border="1">
+
+    <tr> 
+
+      <td>Action</td>
+
+      <td>Code</td>
+
+      <td>Resulting Selection Set</td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Add row 13 </td>
+
+      <td><code>grid selectRange: (1@13 extent: 0@0).</code></td>
+
+      <td><code>Set with: (1@13 corner: 7@13)</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Change to row 14 </td>
+
+      <td><code>grid selectRange: (1@14 extent: 0@0).</code></td>
+
+      <td><code>Set with: (1@14 corner: 7@14)</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Change to row 16 </td>
+
+      <td><code>grid selectRange: (1@16 extent: 0@0).</code></td>
+
+      <td><code>Set with: (1@16 corner: 7@16)</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Change to row 15 </td>
+
+      <td><code>grid selectRange: (1@15 extent: 0@0). </code></td>
+
+      <td><code>Set with: (1@15 corner: 7@15)</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Clear all selections </td>
+
+      <td><code>grid resetSelections.</code></td>
+
+      <td><code>Set new</code></td>
+
+    </tr>
+
+  </table>
+
+  <p> <code>"Multi select, row selection. 7 columns"<br>
+
+    grid multiSelect: true. <br>
+
+    grid selectByCell: false.</code> 
+
+  <p> 
+
+  <table border="1">
+
+    <tr> 
+
+      <td>Action</td>
+
+      <td>Code</td>
+
+      <td>Resulting Selection Set</td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Add row 13</td>
+
+      <td><code>grid selectRange: (1@13 extent: 0@0).</code></td>
+
+      <td><code>Set with: (1@13 corner: 7@13)</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Add row 14 </td>
+
+      <td><code>grid selectRange: (1@14 extent: 0@0).</code></td>
+
+      <td><code>Set with: (1@13 corner: 7@14)</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Add row 16 </td>
+
+      <td><code>grid selectRange: (1@16 extent: 0@0).</code></td>
+
+      <td><code>Set with: (1@16 corner: 7@16) with: (1@13 corner: 7@14)</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Add row 15 </td>
+
+      <td><code>grid selectRange: (1@15 extent: 0@0). </code></td>
+
+      <td><code>Set with: (1@13 corner: 7@16)</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Clear all selections </td>
+
+      <td><code>grid resetSelections.</code></td>
+
+      <td><code>Set new</code></td>
+
+    </tr>
+
+  </table>
+
+  <p> <code>"Single select, cell selection"<br>
+
+    grid multiSelect: false.<br>
+
+    grid selectByCell: true.</code> 
+
+  <p> 
+
+  <table border="1">
+
+    <tr> 
+
+      <td>Action</td>
+
+      <td>Code</td>
+
+      <td>Resulting Selection Set</td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Add cell 1@13</td>
+
+      <td><code>grid selectRange: (1@13 extent: 0@0).</code></td>
+
+      <td><code>Set with: (1@13 extent: 0@0)</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Change to cell 1@14</td>
+
+      <td><code>grid selectRange: (1@14 extent: 0@0).</code></td>
+
+      <td><code>Set with: (1@14 extent: 0@0)</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Change to cell 1@16</td>
+
+      <td><code>grid selectRange: (1@16 extent: 0@0).</code></td>
+
+      <td><code>Set with: (1@16 extent: 0@0)</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Change to cell 1@15</td>
+
+      <td><code>grid selectRange: (1@15 extent: 0@0). </code></td>
+
+      <td><code>Set with: (1@15 extent: 0@0)</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Clear all selections </td>
+
+      <td><code>grid resetSelections.</code></td>
+
+      <td><code>Set new</code></td>
+
+    </tr>
+
+  </table>
+
+  <p> <code>"Multi select, cell selection"<br>
+
+    grid multiSelect: true.<br>
+
+    grid selectByCell: true.</code> 
+
+  <p> 
+
+  <table border="1">
+
+    <tr> 
+
+      <td>Action</td>
+
+      <td>Code</td>
+
+      <td>Resulting Selection Set</td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Add cell 1@13</td>
+
+      <td><code>grid selectRange: (1@13 extent: 0@0).</code></td>
+
+      <td><code>Set with: (1@13 extent: 0@0)</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Add cell 1@14</td>
+
+      <td><code>grid selectRange: (1@14 extent: 0@0).</code></td>
+
+      <td><code>Set with: (1@13 extent: 0@1)</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Add cell 1@16</td>
+
+      <td><code>grid selectRange: (1@16 extent: 0@0).</code></td>
+
+      <td><code>Set with: (1@16 extent: 0@0) with: (1@13 extent: 0@1)</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Add cell 1@15</td>
+
+      <td><code>grid selectRange: (1@15 extent: 0@0). </code></td>
+
+      <td><code>Set with: (1@13 extent: 0@3)</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Clear all selections </td>
+
+      <td><code>grid resetSelections.</code></td>
+
+      <td><code>Set new</code></td>
+
+    </tr>
+
+  </table>
+
+  <p> <code>"Setting selections then merging them. It normally isn't necessary 
+
+    to explicitly request a selection range merge when ranges are added/removed 
+
+    one at a time"<br>
+
+    grid multiSelect: true.<br>
+
+    grid selectByCell: true.<br>
+
+    grid selections: (Set with: (1@43 extent: 0@0) with: (1@44 extent: 0@0) with: 
+
+    (1@46 extent: 0@0) with:(1@45 extent: 0@0)).<br>
+
+    grid mergeSelections.<br>
+
+    grid selections. "Set with: (1@43 extent: 0@3)"</code> 
+
+  <p> 
+
+  <h3>Removing Selections</h3>
+
+  <code>"Multi select, cell selection"<br>
+
+  grid multiSelect: true.<br>
+
+  grid selectByCell: true.</code> 
+
+  <p> 
+
+  <table border="1">
+
+    <tr> 
+
+      <td>Action</td>
+
+      <td>Code</td>
+
+      <td>Resulting Selection Set</td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Add cells 1@13 to 1@16</td>
+
+      <td><code>grid selectRange: (1@13 extent: 0@3).</code></td>
+
+      <td><code>Set with: (1@13 extent: 0@3)</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Remove cell 1@14</td>
+
+      <td><code>grid selectRange: (1@14 extent: 0@0).</code></td>
+
+      <td><code>Set with: (1@13 extent: 0@0) with: (1@15 extent: 0@1)</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Remove cell 1@16</td>
+
+      <td><code>grid selectRange: (1@16 extent: 0@0).</code></td>
+
+      <td><code>Set with: (1@13 extent: 0@0) with: (1@15 extent: 0@0)</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Remove cell 1@15</td>
+
+      <td><code>grid selectRange: (1@15 extent: 0@0). </code></td>
+
+      <td><code>Set with: (1@13 extent: 0@0)</code></td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Clear all selections </td>
+
+      <td><code>grid resetSelections.</code></td>
+
+      <td><code>Set new</code></td>
+
+    </tr>
+
+  </table>
+
+  <h3>Dos and Don'ts</h3>
+
+  <table border="1">
+
+    <tr> 
+
+      <td>Do</td>
+
+      <td>Don't</td>
+
+    </tr>
+
+    <tr> 
+
+      <td>Use the Grid selection API methods to add or remove selection ranges. 
+
+        This ensures the Grid UI will update and the selection set appears in 
+
+        minimal form.<br>
+
+        <br>
+
+        <code>grid selectRange: aRectangle</code></td>
+
+      <td>Add or remove selection ranges directly to the Grid selection set. The 
+
+        Grid will not update to show new selections, line and multiple selection 
+
+        rules for Grid #selectByCell or #multiSelect: attributes will not be obeyed, 
+
+        and the selection range may not be in minimal form.<br>
+
+        <br>
+
+        <code>grid selections add: aRectangle</code></td>
+
+    </tr>
+
+  </table>
+
+  <h3>Enumerating Selections</h3>
+
+  Grid currently has #selectionDo: available to enumerate through all row selections 
+
+  in a Grid. Typically this method is implemented in models such as SelectionInList 
+
+  or SelectionInTree. In the future when Grid has a dedicated SelectionInGrid 
+
+  model the SelectionInGrid instance will be expected to perform this instead. 
+
+  The argument is expected to be a one or two argument block. When #selectionDo: 
+
+  is a single argument block its argument is expected to be the item selected 
+
+  as it is other implementations of #selectionDo: for SelectionInList and others. 
+
+  If it is a two argument Block the first argument will be the selected GridRow 
+
+  instance and the second will its item. Note that #selectionDo: always enumerates 
+
+  over a full row even if only a single cell in the row is selected for a Grid 
+
+  set for cell selection. 
+
+  <p> 
+
+  <blockquote><code>"Single argument blocks are passed each whole selected row 
+
+    item"<br>
+
+    itemsSelected := OrderedCollection new.<br>
+
+    grid selectionDo:[[:item| itemsSelected add: item].<br>
+
+    "Dual argument blocks are passed each the selected GridRow and its item"<br>
+
+    rowsSelected := OrderedCollection new.<br>
+
+    itemsSelected := OrderedCollection new.<br>
+
+    grid selectionDo:[[:row :item| <br>
+
+    &nbsp; &nbsp;&nbsp;rowsSelected add: row.<br>
+
+    &nbsp; &nbsp;&nbsp;itemsSelected add: item].</code></blockquote> 
+
+  Grid implements #selectionCellDo: for enumerating all cell selections, including 
+
+  those within a full row selection. Like #selectionDo: it accepts one or two 
+
+  argument blocks. This will also be the method implemented by a future SelectionInGrid 
+
+  model. If a single argument block is used with #selectionCellDo: its argument 
+
+  is expected to be the value of a selected cell. When a two argument block is 
+
+  used the first argument is the selected GridCell instance and the second is 
+
+  its cell value. 
+
+  <blockquote><code>"Single argument blocks are passed the value of selected cells"<br>
+
+    valuesSelected := OrderedCollection new.<br>
+
+    grid selectionCellDo:[[:value| valuesSelected add: value].<br>
+
+    "Dual argument blocks are passed each the selected GridCell and its value"<br>
+
+    cellsSelected := OrderedCollection new.<br>
+
+    valuesSelected := OrderedCollection new.<br>
+
+    grid selectionCellDo:[[:cell :value| <br>
+
+    &nbsp; &nbsp; &nbsp;cellsSelected add: cell.<br>
+
+    &nbsp; &nbsp;&nbsp; valuesSelected add: value].</code></blockquote>
+
+  <HR >
+
+  <h2><a name="GridSorting"></a>Grid Sorting</h2>
+
+  The Grid can conduct multiple column sorts upon its rows without ever being 
+
+  open as a window. It may also conduct single or multiple column sorts interactively 
+
+  by toggling the sort direction of a column header button. Unlike the DataSetView, 
+
+  no sort method need be defined for a Grid to sort its column. For a column to 
+
+  be sortable it must: 
+
+  <p> 
+
+  <OL >
+
+    <LI >Define a model that answers a Magnitude that responds to #>. </LI>
+
+    <LI >The column must also contain a widget that displays a Magnitude that 
+
+      responds to #>. This excludes widgets that have a Boolean model such as 
+
+      a Checkbox or RadioButton. This includes widgets such as an InputField or 
+
+      SpinButton. When the widget is an InputField the format and precision of 
+
+      the object displayed is what is used for sorting. </LI>
+
+  </OL>
+
+  Each GridColumn defines a sort constraint instance which may be set for sort 
+
+  direction: ascending, descending or, if nil, no sorting at all. One GridColumn 
+
+  sort constraint may be logically combined with a secondary sort constraint when 
+
+  the primary constraint has two items that match. A GridColumn sort constraint 
+
+  may be used in place of a sort Block for a SortedCollection or a SequenceableCollectorSorter 
+
+  on the rows of a Grid. 
+
+  <p> A multiple sort attempt is unlikely to be meaningful when there are no two 
+
+    items that match under a primary sort. For example, attempting to sort a database 
+
+    of US Congressmen by house address and last name would not yield any different 
+
+    sort than a single sort would by house address. This presumes no two congressmen 
+
+    live in the same house. Presuming there are more than one Congressman with 
+
+    the same last name then sorting by last name and then by house address might 
+
+    be helpful. Several Congressmen may represent a single state and each state 
+
+    representative may represent a different party--Democrat, Republican, or Independent. 
+
+    Sorting by state and then by party is likely to be a meaningful multiple sort. 
+
+  <p> 
+
+  <h3>Sort Example without a UI</h3>
+
+  <p> For this example you will want to use the file congress.str in Smalltalk 
+
+    #readFrom: format. This file provides over 400 records of congressmen information 
+
+    of the 2007-2008 US Congress as "screen scraped" from the US House of Representatives 
+
+    Office of the Clerk (http://clerk.house.gov). It provides the sample data 
+
+    the for Grid sort example below. All three Grid packages Grid, Grid SUnit 
+
+    Tests, and Grid Samples should be loaded. 
+
+  <p> <code>"Sorting"<br>
+
+    "Create columns and add to a Grid that will not be opened. Note the model 
+
+    for each of the columns contains an AspectAdaptor"<br>
+
+    grid := Grid new.<br>
+
+    congress := CongressTable new readMembers.<br>
+
+    firstName := (GridColumn spec: (ReadFieldSpec new model:#'_row firstName')) 
+
+    addToGrid: grid.<br>
+
+    lastName := (GridColumn spec: (ReadFieldSpec new model:#'_row lastName')) 
+
+    addToGrid: grid.<br>
+
+    mi := (GridColumn spec: (ReadFieldSpec new model:#'_row middle')) addToGrid: 
+
+    grid.<br>
+
+    state := (GridColumn spec: (ReadFieldSpec new model:#'_row state')) addToGrid: 
+
+    grid.<br>
+
+    district := (GridColumn spec: (ReadFieldSpec new model:#'_row district')) 
+
+    addToGrid: grid.<br>
+
+    rows := congress members. </code> 
+
+  <p> <code>"Sort rows by state"<br>
+
+    state sortConstraint sortDirection: #ascending. "Set the state column to sort 
+
+    in ascending order"<br>
+
+    SequenceableCollectionSorter sort: rows using: state sortConstraint. "Sort 
+
+    the congressmen instances by state, AK to WA" </code> 
+
+  <p> <code>"Sorting by last name"<br>
+
+    lastName sortDirection: #descending. "Sort in descending order by last name"<br>
+
+    SequenceableCollectionSorter sort: rows using: lastName sortConstraint. "Sort 
+
+    the congressmen instances by last name"</code> 
+
+  <p><code><br>
+
+    </code> 
+
+  <p> <code> "Multiple sort"<br>
+
+    "Sort congressmen by state. For congressmen that appear in the same state 
+
+    sort by last name"<br>
+
+    state sortConstraint sortDirection: #ascending. "Set the state column to sort 
+
+    in ascending order"<br>
+
+    lastName sortConstraint sortDirection: #descending. "Sort in descending order 
+
+    by last name"<br>
+
+    SequenceableCollectionSorter sort: rows using: state sortConstraint & lastName 
+
+    sortConstraint. </code> 
+
+  <p> 
+
+  <p> 
+
+  <h3>Interactive Sort Column Selection</h3>
+
+  <p> The GridHeaderRow defines a sort size (i.e. <code>sortSize</code>) property 
+
+    for the maximum number of columns that may be sorted at once. If this property 
+
+    is set above 0 the first distinct sortSize number columns selected in a Grid 
+
+    will be sorted with the first selected column as the primary sort constraint, 
+
+    the second selected column as the secondary constraint, etc. When exactly 
+
+    <code>sortSize</code> number columns have been selected, selecting a new column 
+
+    in the GridHeaderRow resets all sort constraints and the new column selected 
+
+    will be the primary sort column. Select the column again to change its sort 
+
+    direction. Select a new column to add a secondary sort column. Continue to 
+
+    select new columns or toggle the sort direction of exising sort columns until 
+
+    <code>sortSize</code> number of columns have been selected again. 
+
+  <p> <code>"Open window on sorted rows and add a column header with labels"<br>
+
+    EmptyGridApp openWith: grid.<br>
+
+    firstName label: 'First Name'.<br>
+
+    lastName label: 'Last Name'.<br>
+
+    mi label:'Middle'.<br>
+
+    state label:'State'.<br>
+
+    district label:'District'.<br>
+
+    party label:'Party'.<br>
+
+    grid columns do:[:each| each width: 60].<br>
+
+    grid rows: (rows collect:[:each| GridRow on: each height: 20]).<br>
+
+    headerRow := (GridHeaderRow new)<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height: 
+
+    25;<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yourself.<br>
+
+    grid addRow: headerRow beforeIndex: 1. </code> 
+
+  <p> <code>grid allowSorting: true.&nbsp;&nbsp;"Allow interactive column sorting"<br>
+
+    headerRow sortSize: 2.&nbsp;&nbsp;&nbsp;"Allow sorting on two columns"<br>
+
+    </code> 
+
+  <p> <code>"Select the 'First Name' column header to sort congressmen rows by 
+
+    first name."<br>
+
+    "Select the 'First Name' column header to toggle sort direction."<br>
+
+    "Select the 'State' column header for a secondary sort by state"<br>
+
+    "Select either the 'State' or 'First Name' column header again to toggle their 
+
+    sort direction"<br>
+
+    "Select a new column. Since the header row has been set to sort only as many 
+
+    as 2 columns selecting a new column clears all sort constraints and sets the 
+
+    new column as the primary (and only) sort constraint"</code> 
+
+  <p><br>
+
+  <p> <code>"What columns are primary and secondary constraints and what are their 
+
+    sort directions?"<br>
+
+    headerRow constraintColumns collect:[:each| each label->each sortDirection].</code> 
+
+  <p><br>
+
+  <p> <code> "Reset sort constraints"<br>
+
+    headerRow clearConstraints.</code><br>
+
+  <HR >
+
+  <h2><a name="GridDragDrop"></a>Grid Drag and Drop</h2>
+
+  If enabled, the user may drag and drop columns to reorder them or move, replace, 
+
+  and insert rows. It is always possible to reorder, add, remove, or change columns 
+
+  or rows programmatically outside the application user interface, for example 
+
+  by using the #columns:, #columns, #rows:, or #rows accessors. 
+
+  <h3>Column Reordering</h3>
+
+  Like the Dataset, Grid columns may be reordered by drag and drop. Simply drag 
+
+  a column header over a target column header where you wish to move it. Reordering 
+
+  all columns may be enabled by setting the Grid #allowColumnReordering: property 
+
+  true or by checking the Grid Basics page "Allow Column Reordering" property 
+
+  in the Painter Tool. 
+
+  <blockquote><code>"Prevent columns from being reordered by drag and drop"<br>
+
+    aGrid allowColumnReordering: false</code></blockquote>
+
+  Whether or where individual columns are selectively dragged is enforced by an 
+
+  optional #allowColumnMoveFrom:toIndex: that may be implemented in the application 
+
+  hosting the Grid. This message is sent to the application whenever the Grid 
+
+  allows column reordering and a column header is dragged over another column 
+
+  header. The arguments are the index of the column being dragged and the index 
+
+  of the target column. 
+
+  <blockquote><code>allowColumnMoveFrom: columnIndex toIndex: destIndex<br>
+
+    "Allow only columns 1 and 7 to be interchanged"<br>
+
+    ^(columnIndex = 7 and: [[destIndex = 1]) or: [[columnIndex = 1 and: [[destIndex 
+
+    = 7]]</code></blockquote>
+
+
+
+  <HR >
+
+  <h2><a name="GridInterface"></a>Grid Interface</h2>
+
+  A GridInterface combines and manages the grid view, selection model, and column 
+
+  specifications with row data to simplify access and creation of a grid at an 
+
+  application level. It is the top-level interface for creating, updating, and 
+
+  accessing elements of a grid. A GridInterface 
+
+  <ol>
+
+    <li> Holds the Grid, its SelectionInGrid instance, and a List of data that 
+
+      makes up the rows of the Grid. </li>
+
+    <li>Hides creation and management of GridRows under the most common scenarios. 
+
+    </li>
+
+    <li>Set the list of row data based on the model and contents of the Grid. 
+
+    </li>
+
+    <li>Set the contents of the Grid and model from the List of row data. </li>
+
+    <li>Set grid default values (e.g. row height and column width) without accessing 
+
+      the Grid. </li>
+
+    <li>Access to column and row data without indexing headers. </li>
+
+  </ol>
+
+  <p> Much of the GridInterface functionality requires an operating Grid instance. 
+
+    This usually is supplied upon building a Grid from spec. 
+
+  <HR >
+
+  <h2><a name="GridTutorial"></a>Grid Tutorial</h2>
+
+  For this example you will want to use the file congress.str in Smalltalk #readFrom: 
+
+  format. This file provides over 400 records of congressmen information of the 
+
+  2007-2008 US Congress as "screen scraped" from the US House of Representatives 
+
+  Office of the Clerk (http://clerk.house.gov). It provides the sample data the 
+
+  for Grid example below. 
+
+  <p> You will also want to load the "Grid" and "Grid SUnit Tests" packages from 
+
+    Bear. 
+
+  <p> Create a Grid on the name, state, district, and party from a database of 
+
+    all 2007 US congressmen. Two classes are required: Congressman, an instance 
+
+    of a congressman's identity and contact information, and CongressTable, a 
+
+    manager object that reads and writes Congressman instances by file. A Smalltalk 
+
+    #readFrom: syntax file named <A href="http://www.cincomsmalltalk.com/CincomSmalltalkWiki/DOWNLOAD/Grid/congress.str" >congress.str</A> 
+
+    must appear in the default file directory to read the database. 
+
+  <h3 > </h3>
+
+  <h3 >Creating a Grid Programmatically</h3>
+
+  <p> 
+
+  <p> <code>"Create a Grid and all its GridColumns. All columns are editable input 
+
+    fields for the name, state, district, and party for a list ofCongressmen appearing 
+
+    as rows. EmptyGridApp is a simple window that displays an empty grid that 
+
+    will be customized." </code> 
+
+  <p> <code>congress := CongressTable new readMembers.<br>
+
+    grid := Grid new.<br>
+
+    app := EmptyGridApp openWith: grid.<br>
+
+    firstName := (GridColumn new)<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;spec: (InputFieldSpec new model: #'_row 
+
+    firstName');<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width: 80;<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'First Name';<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yourself.<br>
+
+    grid addColumn: firstName.<br>
+
+    lastName := (GridColumn new)<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;spec: (InputFieldSpec new model: #'_row 
+
+    lastName');<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width: 80;<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'Last Name';<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yourself.<br>
+
+    grid addColumn: lastName.<br>
+
+    mi := (GridColumn new)<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;spec: (InputFieldSpec new model: #'_row 
+
+    middle');<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width: 80;<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'Middle';<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yourself.<br>
+
+    grid addColumn: mi.<br>
+
+    state := (GridColumn new)<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;spec: (InputFieldSpec new model: #'_row 
+
+    state');<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width: 80;<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'State';<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yourself.<br>
+
+    grid addColumn: state.<br>
+
+    district := (GridColumn new)<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;spec: (InputFieldSpec new model: #'_row 
+
+    district');<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width: 80;<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'District';<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yourself.<br>
+
+    grid addColumn: district.<br>
+
+    party := (GridColumn new)<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;spec: (InputFieldSpec new model: #'_row 
+
+    party');<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width: 80;<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'Party';<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yourself.<br>
+
+    grid addColumn: party.<br>
+
+    "Create GridRows on each Congressman instance and assign the list to the Grid"<br>
+
+    rows := congress members asList collect:[:each| GridRow on: each height: 25].<br>
+
+    grid rows: rows. </code> 
+
+  <p> <code>"Add a Grid column header"<br>
+
+    grid addRow: ((GridHeaderRow new)<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height: 25;<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yourself)<br>
+
+    &nbsp;&nbsp;&nbsp;beforeIndex: 1. </code> 
+
+  <p> <code>"Add a Grid row header with buttons and line numbering"<br>
+
+    grid addColumn: ((GridHeaderColumn new)<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lineNumbers: true;<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;buttons: true;<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width: 30;<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yourself)<br>
+
+    &nbsp;&nbsp;&nbsp;beforeIndex: 1. </code> 
+
+  <p> <code>"Adjust line numbering for the column header"<br>
+
+    grid columns first offset: -1.<br>
+
+    grid setVisibleColumns.<br>
+
+    </code> 
+
+  <p> 
+
+  <p> <code>"Removing or moving rows and columns"<br>
+
+    "Swap party and district columns"<br>
+
+    grid moveColumnIndex: 7 toIndex: 6. </code> 
+
+  <p> <code>"Remove the next 10 rows"<br>
+
+    grid removeRowsFrom: 2 to: 11. </code> 
+
+  <p> <code>"Remove row at index 5"<br>
+
+    grid removeRowIndex: 5. </code> 
+
+  <p> 
+
+  <p> <code>"Examples of changing column attributes without reopening the Grid"<br>
+
+    "Disable the party column"<br>
+
+    party spec initiallyDisabled: true.<br>
+
+    grid setVisibleColumns. </code> 
+
+  <p> <code>"Change the party column to be read-only"<br>
+
+    party spec initiallyDisabled: false.<br>
+
+    party spec isReadOnly: true.<br>
+
+    grid setVisibleColumns. </code> 
+
+  <p> <code>"Change the party column label"<br>
+
+    party label: 'Affiliation'.<br>
+
+    grid setVisibleColumns. </code> 
+
+  <p> <code>"Change state column width"<br>
+
+    state width: 30. </code> 
+
+  <p> 
+
+  <p> <code>" Column attributes may be saved and restored"<br>
+
+    "Save column attributes and widths to a column spec array to be restored later"<br>
+
+    columnSpecs := grid columns literalArrayEncoding. </code> 
+
+  <p> <code>"Restore columns from specs"<br>
+
+    grid columns: (columnSpecs asList collect:[:each| each decodeAsLiteralArray]).</code><br>
+
+    <br>
+
+  <h3 >Creating a Grid using the UIPainter</h3>
+
+  <p> Load Grid-UIPainter and open a new canvas. The UIPainter palette should 
+
+    include a new selection for a Grid widget. Drop and layout a Grid in the canvas 
+
+    window. 
+
+  <p> Next define 6 columns by pressing the <b>New Column</b> button on the Grid 
+
+    <b>Basics</b> page 6 times. Add an input field as content for each column. 
+
+    To do this first select the Grid, then select the input field widget from 
+
+    the palette and drop one on each column. 
+
+  <p> Select each column in the Grid then enter the label and component model 
+
+    according to the table below 
+
+  <p> 
+
+  <TABLE border="2" cellpadding="4" cellspacing="0" >
+
+    <TR > 
+
+      <TD align="CENTER" >&nbsp;Column number</TD>
+
+      <TD align="CENTER" >&nbsp;Basics-Grid Column Label String</TD>
+
+      <TD align="CENTER" >&nbsp;Component-Aspect</TD>
+
+      <TD align="CENTER" >&nbsp;</TD>
+
+    </TR>
+
+    <TR > 
+
+      <TD align="CENTER" >&nbsp;1</TD>
+
+      <TD align="CENTER" >&nbsp;First Name</TD>
+
+      <TD align="CENTER" >&nbsp;_row firstName</TD>
+
+      <TD align="CENTER" >&nbsp;</TD>
+
+    </TR>
+
+    <TR > 
+
+      <TD align="CENTER" >&nbsp;2</TD>
+
+      <TD align="CENTER" >&nbsp;Last Name</TD>
+
+      <TD align="CENTER" >&nbsp;_row lastName</TD>
+
+      <TD align="CENTER" >&nbsp;</TD>
+
+    </TR>
+
+    <TR > 
+
+      <TD align="CENTER" >&nbsp;3</TD>
+
+      <TD align="CENTER" >&nbsp;Middle</TD>
+
+      <TD align="CENTER" >&nbsp;_row middle</TD>
+
+      <TD align="CENTER" >&nbsp;</TD>
+
+    </TR>
+
+    <TR > 
+
+      <TD align="CENTER" >&nbsp;4</TD>
+
+      <TD align="CENTER" >&nbsp;State</TD>
+
+      <TD align="CENTER" >&nbsp;_row state</TD>
+
+      <TD align="CENTER" >&nbsp;</TD>
+
+    </TR>
+
+    <TR > 
+
+      <TD align="CENTER" >&nbsp;5</TD>
+
+      <TD align="CENTER" >&nbsp;District</TD>
+
+      <TD align="CENTER" >&nbsp;_row district</TD>
+
+      <TD align="CENTER" >&nbsp;</TD>
+
+    </TR>
+
+    <TR > 
+
+      <TD align="CENTER" >&nbsp;6</TD>
+
+      <TD align="CENTER" >&nbsp;Party</TD>
+
+      <TD align="CENTER" >&nbsp;_row party</TD>
+
+      <TD align="CENTER" >&nbsp;</TD>
+
+    </TR>
+
+  </TABLE>
+
+  <p> Leave the ID of the Grid widget as the default: #Grid1. 
+
+  <p> Install the canvas to a new ApplicationModel class named MyCongressGrid 
+
+    or similar. You will need to load the package/parcel "Grid Samples" to obtain 
+
+    data to fill this example. Define the #postBuildWith: for this application 
+
+    class as 
+
+  <p> <code>postBuildWith: aUIBuilder<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| grid rows |<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super postBuildWith: aUIBuilder.<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grid := self widgetAt: #Grid1.<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rows := CongressTable longExample members 
+
+    asList<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;collect: [:each | GridRow 
+
+    on: each height: 25].<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grid rows: rows.<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Add column header"<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grid addRow: ((GridHeaderRow new)<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height: 25;<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yourself)<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;beforeIndex: 1</code> 
+
+  <p> Be sure to place the file congress.str in the image directory of your VW 
+
+    installation. This file will be read to fill the table. Open the sample Grid 
+
+    application and enjoy. 
+
+  <p> 
+
+  <HR >
+
+  <table border="0" width="100%">
+
+    <tr> 
+
+      <td align="left">VisualWorks 7.8</td>
+
+      <td>&nbsp;</td>
+
+      <td align="right"><i>Revised February 16, 2011</i></td>
+
+    </tr>
+
+  </table>
+
+
+
+</body>
+
+</html>
+

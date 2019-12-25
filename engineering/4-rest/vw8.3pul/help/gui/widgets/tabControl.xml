@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.widgets.tabControl"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Tab Control</title>
+<body><p><indexterm>tab control</indexterm><indexterm>tab widget</indexterm>The
+TabControl is an alternative to the Notebook widget, providing a tabbed
+folder look. To change the contents of the subpane below the row
+of tabs, click a tab, or select the tab using cursor keys and press <uicontrol>Enter</uicontrol>.</p>
+<p>The Tab Control shows two scroller buttons, if there are more
+tabs than can be displayed in the available header space. Press
+the buttons to scroll the tabs.</p>
+<p><b>Online example:</b> 
+<xref href="prereq:TabControlExample:Examples.TabControlExample open" 
+format="st" scope="external">TabControl-Example</xref></p>
+</body>
+<topic id = "vw.help.widgets.tabControl.addToCanvas"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Adding a Tab Control</title>
+<body><p><indexterm>GUI development<indexterm>add tab control</indexterm></indexterm><ol>
+<li><p>Select the Tab Control on the Palette and drop it on the
+canvas.</p></li>
+<li><p>In its <uicontrol>Aspect</uicontrol> property, enter an aspect
+name. Also enter an <uicontrol>ID</uicontrol>, or keep the default.
+You will need the ID to identify the selected tab.</p></li>
+<li><p>Define the accessor method for the aspect.</p><p>The model
+should be a <apiname>SelectionInList</apiname> on either <apiname>String</apiname> 
+objects, which make up textual tab labels, or <apiname>Association</apiname> objects 
+of a <apiname>VisualComponent</apiname> to a (optional) <apiname>String</apiname>.
+In <apiname>TabControlExample</apiname>, this is handled in two methods:
+<codeblock otherprops="smalltalk method">tabs
+	tabs isNil
+		ifTrue:
+			[(tabs := SelectionInList with: self labelArray) 
+				selectionIndex: 1.
+			tabs selectionIndexHolder 
+				onChangeSend: #tabsChanged
+				to: self].
+	^tabs</codeblock>
+<codeblock otherprops="smalltalk method">labelArray
+	"Private - The list of tab names (and/or icons). See also #specArray."
+	^Array
+		with: 'Appearance'
+		with: self class colorsImage -> 'Colors'
+		with: self class printerImage -> ''</codeblock></p></li>
+<li><p>Paint subcanvases for each page (See the <codeph>appearanceSpec</codeph>, 
+<codeph>colorsSpec</codeph>,
+and <codeph>fontsSpec</codeph> class methods in <apiname>TabControlExample</apiname> for
+examples.)</p><p>So the canvas can be identified by an index, which
+will be retrieved from labelArray, <apiname>TabControlExample</apiname> defines a specAttay
+method:
+<codeblock otherprops="smalltalk method">specArray
+	"Private - The list of associated sub canvaes. See also #labelArray."
+	^#(#appearanceSpec #fontsSpec #colorsSpec)</codeblock></p></li>
+<li><p>Define a method that will respond by changing subcanvases when
+the tab selection has changed. This message is sent when the <apiname>SelectionInList</apiname> changes,
+as is defined in the <apiname>tabs</apiname> method.
+<codeblock otherprops="smalltalk method">tabsChanged
+	"Every time, a tab is changed, a new sub canvas gets installed."
+	| index |
+	index := self tabs selectionIndex.
+	(self builder componentAt: #tabbing) widget 
+		client: self 		spec: (self specArray at: index)</codeblock></p>
+<p>The change is made by the <apiname>client:spec:</apiname> message
+sent to the Tab Control widget, which is retrieved from the builder.</p></li></ol></p></body></topic>
+<topic id = "vw.help.widgets.tabControl.addTabIcon"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Placing an Icon on a Tab</title>
+<body><p><indexterm>tab control widget<indexterm>add icon to tab</indexterm></indexterm>Each
+tab label can be a string, an icon, or an icon and a string. To use
+an icon, the <apiname>SelectionInList</apiname> must be an <apiname>Association</apiname>.
+The tabs method invokes labelArray to provide the labels, as follows:
+<codeblock otherprops="smalltalk method">labelArray
+	"Private - The list of tab names (and/or icons). See also #specArray."
+	^Array
+		with: 'Appearance'
+		with: self class colorsImage -> 'Colors'
+		with: self class printerImage -> ''</codeblock></p>
+<p>If the label is only a string, then it is provided simply as
+a String, as in the case with the first tab, 'Appearance'.</p>
+<p>If the label includes an icon, then the label is specified by
+an <apiname>Association</apiname> between the icon and a <apiname>String</apiname>.
+The second tab label is an <apiname>Association</apiname> between
+the graphic returned by <codeph>self colorsImage</codeph> and the <codeph>String</codeph> 'Colors'.</p>
+<p>The third tab is an icon without a <codeph>String</codeph>, so
+the <codeph>String</codeph> is empty.</p></body></topic></topic></dita>

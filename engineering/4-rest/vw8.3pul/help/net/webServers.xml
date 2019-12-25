@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+	<topic id = "vw.help.net.webServers"
+			xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+		<title>Web Server Applications (SiouX)</title>
+		<body><p>SiouX enables you to build secure, scalable, high-performance 
+				web servers, using HTTP and HTTPS for frameworks such as AppeX,
+				Seaside, and Web Toolkit Servlets.</p>
+			<p>SiouX is provided in a set of parcels. 
+				Use the <xref href="st:ParcelManager open" 
+				format="st" scope="external">Parcel Manager</xref>
+				to browse the <uicontrol>Web Development</uicontrol> folder, and
+				to load the desired components.</p> 
+			<p>For complete documentation, refer to the 
+				<xref href="./doc/WebServerGuide.pdf" format="pdf" 
+						scope="external"><i>Web Server Developer's Guide</i></xref>.</p>
+		</body>
+	</topic>
+</dita>

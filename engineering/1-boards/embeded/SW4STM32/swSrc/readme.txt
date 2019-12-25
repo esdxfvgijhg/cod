@@ -1,0 +1,1 @@
+This folder contains SW4STM32 specific code. It is only included with SW4STM32 projects.

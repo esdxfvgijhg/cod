@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "shortcuts.findReplace"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Find and Replace</title>
+<body><p><table frame = "topbot" colsep = "0" rowsep = "0">
+<tgroup cols = "2" colsep = "0" rowsep = "0"
+    outputclass = "2Column NoTitle">
+<colspec colnum = "1" colname = "1" colwidth = "33*" colsep = "0"/>
+<colspec colnum = "2" colname = "2" colwidth = "67*" colsep = "0"/>
+<tbody>
+<row rowsep = "1">
+<entry colname = "1">Ctrl+F</entry>
+<entry colname = "2">Find</entry>
+</row>
+<row rowsep = "1">
+<entry colname = "1">Ctrl+G</entry>
+<entry colname = "2">Find again</entry>
+</row>
+<row rowsep = "1">
+<entry colname = "1">Ctrl+Shift+G</entry>
+<entry colname = "2">Find previous again</entry>
+</row>
+<row rowsep = "1">
+<entry colname = "1">Ctrl+R</entry>
+<entry colname = "2">Replace</entry>
+</row>
+<row rowsep = "0">
+<entry colname = "1">Ctrl+Shift+R</entry>
+<entry colname = "2">Replace again</entry>
+</row>
+</tbody>
+</tgroup></table></p></body></topic></dita>

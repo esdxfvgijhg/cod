@@ -1,0 +1,13 @@
+@RefactoringBrowser"
+	"Refactory"
+	"RBBrowserNamespace"
+	"RBParser"
+	"RBEnvironments"
+	"RBChangeObjects"
+	"RBRefactorings"
+	"RBBaseUI"
+	"RBRefactoringUI"
+	"RBBrowserUI"
+	"RBSmalllint"
+	"RBSmalllintUI"
+	;

@@ -1,0 +1,37 @@
+DATA TYPE BBox
+  RECORD
+    INT Top,Left,Bottom,Right:
+:
+
+PROTOCOL diam.proto IS BBox:
+
+PROC Node([]CHAN OF diam.proto in,out, VAL INT Identity, CHAN OF BYTE toMux)
+  [MaxFanOut] BBox bufIn,bufOut:
+  BBox myBBox:
+  SEQ
+    SEQ i=0 FOR SIZE out
+      bufOut[i] :=  myBBox
+    PAR
+      PAR i=0 FOR SIZE in
+        in [i] ? bufIn[i] 
+      PAR j=0 FOR SIZE out
+        out [j] ! bufOut[j] 
+    toMux ! 'x'
+    toMux ! '*n'
+:
+
+PROC Mux([]CHAN OF BYTE fromNodes, CHAN OF BYTE out)
+  BYTE char:
+  SEQ
+    SEQ tours = 0 FOR 1
+      SEQ nbNodes = 0 FOR MaxNodes
+        ALT canalIndex =0 FOR MaxNodes
+          fromNodes[canalIndex] ? char
+            SEQ
+              out ! char
+              WHILE char <> '*n'
+                SEQ
+                  fromNodes[canalIndex] ? char
+                  out ! char
+:
+

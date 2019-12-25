@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA BookMap//EN" "bookmap.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<map title="Development Environment" 
+	chunk="by-topic" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+	<topicref navtitle = "Development Environment" href = "development.xml" type = "topic">
+		<topicref navtitle="Working with Image Files" href = "image.xml" type = "topic"/>
+		<topicref navtitle = "Environment Settings" href = "envSettings.xml" type = "topic"/>
+		<topicref navtitle = "Inspecting Objects" href = "inspect.xml" type = "topic"/>
+		<topicref navtitle = "Displaying text in the Transcript" href = "writeToTranscript.xml" type = "topic"/>
+		<topicref navtitle = "Debugging" href = "debug.xml" type = "topic"/>
+		<topicref navtitle = "Changes and Change Sets" href = "sysChanges.xml" type = "topic"/>
+		<topicref navtitle = "Components and Version Control" href = "pundles.xml" type="topic"/>
+	</topicref>
+	<reltable>
+		<relrow>
+			<relcell linking = "sourceonly">
+				<topicref navtitle = "Development Environment"
+					href = "development.xml" type = "topic"/>
+			</relcell>
+			<relcell>
+				<topicref navtitle = "Application Developer's Guide"
+					href = "./doc/AppDevGuide.pdf"
+					format = "pdf" scope = "external" />
+			</relcell>
+		</relrow>
+	</reltable>
+</map>

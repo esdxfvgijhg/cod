@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.widgets.clickmaps"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Click Map</title>
+<body><p>The <indexterm>Click Map widget</indexterm>Click Map widget
+allows you to define areas of a graphic image and specify the action
+to invoke if the user clicks on each area.</p>
+<p>Using a Click Maps for a button bar makes it possible to use
+any graphic image to represent the row of buttons. The image may include
+text, graphics, and a variety of colors. All of the buttons may be
+part of a single image, guaranteeing their relative layout.</p></body>
+<topic id = "vw.help.widgets.clickmaps.addToCanvas"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Adding a Click Map</title>
+<body><p>To add a click map widget to a canvas:<ol><li><p>Choose
+the click map widget in the Palette and place it on a canvas.</p></li>
+<li><p>Set the following <uicontrol>Basic</uicontrol> properties
+and <uicontrol>Apply</uicontrol> them:</p><p><uicontrol>ID</uicontrol>:
+A unique identifier for the widget, which will be used to access the
+widget.</p><p><uicontrol>Visual Message</uicontrol>: The message
+selector that returns the image, which is typically an image resource
+method.</p><p><uicontrol>Mappings Selector</uicontrol>: The message
+that returns the mapping between an area and the action for that
+location. You define mapping using the Hot Regions Editor.</p><p><uicontrol>Default
+Click Message</uicontrol>: (optional) Specifies the action to be
+invoked when the user clicks in an area for which no other action
+is specified. If left empty, no action is taken.</p></li>
+<li><p>In the canvas, resize the click map widget so that it closely outlines
+the graphic image.</p></li>
+<li><p><uicontrol>Install</uicontrol> the canvas, and provide a
+class name and method name in which to install the canvas when prompted.</p></li></ol></p></body></topic>
+<topic id = "vw.help.widgets.clickmaps.defineRegions"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Defining the Hot Region Mappings</title>
+<body><p><indexterm>click widget<indexterm>map regions</indexterm></indexterm><ol>
+<li><p>Select the click map widget in the canvas.</p></li>
+<li><p>In the GUI Painter Tool, choose <uicontrol>Tools &#x2192; Hot
+Regions Editor</uicontrol>.</p></li>
+<li><p>Choose Regions &#x2192; Read to display the selected click
+widget’s image as the background in the Hot Regions Editor. Resize
+the window to display the entire image.</p></li>
+<li><p>Choose <uicontrol>Edit &#x2192; New
+Slice</uicontrol> to begin defining a region.</p><p>A slice is
+comprised of one or more areas that invoke the same action when
+clicked. The areas in a slice do not need to be contiguous. Identify
+areas in the Hot Regions Editor using tools similar to other bitmap
+editors:
+<ul>
+<li><p>The four colors or patterns of ink allow you
+to select a color that shows well when selecting a region. The color
+does not show in the final click map.</p></li>
+<li><p>Six brush sizes and shapes. The first four draw lines, the
+next draws an ellipse, and the sixth draws a rectangle.</p></li>
+<li><p>A fill-mode bucket that fills the entire image.</p></li></ul></p></li>
+<li><p>In the <uicontrol>Selector</uicontrol> input field, enter
+a method selector for the action to be invoked when this slice is
+clicked and press &lt;Return&gt;.</p><p>The selector is added to the
+menu button in the middle of the Hot Regions Editor. You can use
+the menu to switch between different slices of the same hot region
+resource.</p></li>
+<li><p>Repeat steps 4 and 5 to define all the slices for this hot
+region.</p></li>
+<li><p>Choose <uicontrol>Regions &#x2192; Apply</uicontrol> to:</p><ul>
+<li><p>Install the hot region resource. You are prompted for the class
+name and selector for the resource method that stores the hot region
+mappings.</p></li>
+<li><p>Insert the resource’s selector into the <uicontrol>Mapping
+Selector</uicontrol> property of the click map widget that is selected
+in the canvas.</p></li></ul></li>
+<li><p>Close the Hot Regions Editor.</p></li>
+<li><p>Install the canvas.</p></li></ol></p></body></topic></topic></dita>

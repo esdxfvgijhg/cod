@@ -1,0 +1,77 @@
+// Copyright © 2019 The Things Network Foundation, The Things Industries B.V.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+@require './fonts.styl'
+
+normalize-css()
+
+html, body
+  font-size: $font-size-base
+  height: 100%
+
+body
+  font-family: $font-family
+  line-height: $line-height-base
+  color: $tc-deep-gray
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  background: white
+
+  & > div
+    height: 100%
+
+::-webkit-scrollbar
+  width: .5em
+
+::-webkit-scrollbar-thumb
+  background-color: darker($c-backdrop)
+
+::-webkit-scrollbar-track
+  padding: 2px
+
+h1
+  h1()
+
+h2
+  h2()
+
+h3
+  h3()
+
+ul li
+  &:not(:last-child)
+    margin-bottom: $cs.s
+
+  a
+    text-decoration: none
+    color: $tc-deep-gray
+
+a
+  color: $tc-active
+
+p a:hover
+  color: hoverize($tc-active)
+
+hr
+  border-normal()
+  background-color: $c-divider
+  border: 0
+  height: 1px
+
+// Remove focus from elements when targeted by a mouse.
+// The `focus-visible` class is added on focusable elements
+// automatically when in focus.
+// See https://github.com/WICG/focus-visible
+:global(.js-focus-visible) :focus:not(:global(.focus-visible))
+  outline: 0

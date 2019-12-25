@@ -1,0 +1,15 @@
+"Aspect-Oriented Programming with AspectS" has been presented at: 
+NetObjectDays (NODe) 2002, Erfurt, Germany, October 7-10, 2002.
+
+A revised version of the paper will appear as follows: 
+
+R. Hirschfeld. AspectS – Aspect-Oriented Programming with Squeak. 
+In M. Aksit, M. Mezini, R. Unland, editors, 
+   Objects, Components, Architectures, Services, and Applications 
+   for a Networked World, LNCS 2591, Springer, 2003 
+(http://www.springer.de/cgi/svcat/search_book.pl?isbn=3-540-00737-7)
+
+A copy is available at: 
+http://www-ia.tu-ilmenau.de/~hirsch/Projects/Squeak/AspectS/
+
+[2003-02-03]

@@ -1,0 +1,70 @@
+Souhait=inconnU/Installé/suppRimé/Purgé/H=à garder
+| État=Non/Installé/fichier-Config/dépaqUeté/échec-conFig/H=semi-installé/W=attend-traitement-déclenchements
+|/ Err?=(aucune)/besoin Réinstallation (État,Err: majuscule=mauvais)
+||/ Nom            Version      Architecture Description
++++-==============-============-============-=================================================
+un  gir1.0-atk-1.0 <aucune>     <aucune>     (aucune description n'est disponible)
+ii  gir1.2-atk-1.0 2.18.0-1     i386         ATK accessibility toolkit (GObject introspection)
+Souhait=inconnU/Installé/suppRimé/Purgé/H=à garder
+| État=Non/Installé/fichier-Config/dépaqUeté/échec-conFig/H=semi-installé/W=attend-traitement-déclenchements
+|/ Err?=(aucune)/besoin Réinstallation (État,Err: majuscule=mauvais)
+||/ Nom                    Version      Architecture Description
++++-======================-============-============-==============================================
+ii  libpangoft2-1.0-0:i386 1.38.1-1     i386         Layout and rendering of internationalized text
+Souhait=inconnU/Installé/suppRimé/Purgé/H=à garder
+| État=Non/Installé/fichier-Config/dépaqUeté/échec-conFig/H=semi-installé/W=attend-traitement-déclenchements
+|/ Err?=(aucune)/besoin Réinstallation (État,Err: majuscule=mauvais)
+||/ Nom                      Version      Architecture Description
++++-========================-============-============-==============================================
+ii  libpangocairo-1.0-0:i386 1.38.1-1     i386         Layout and rendering of internationalized text
+Souhait=inconnU/Installé/suppRimé/Purgé/H=à garder
+| État=Non/Installé/fichier-Config/dépaqUeté/échec-conFig/H=semi-installé/W=attend-traitement-déclenchements
+|/ Err?=(aucune)/besoin Réinstallation (État,Err: majuscule=mauvais)
+||/ Nom                      Version             Architecture Description
++++-========================-===================-============-=======================================================
+un  cairo-5c                 <aucune>            <aucune>     (aucune description n'est disponible)
+ii  libcairo-gobject2:i386   1.14.6-1            i386         Cairo 2D vector graphics library (GObject library)
+ii  libcairo-perl            1.106-1build1       i386         Perl interface to the Cairo graphics library
+ii  libcairo2:i386           1.14.6-1            i386         Cairo 2D vector graphics library
+un  libcairomm-1.0-1         <aucune>            <aucune>     (aucune description n'est disponible)
+ii  libcairomm-1.0-1v5:i386  1.12.0-1            i386         C++ wrappers for Cairo (shared libraries)
+ii  libpangocairo-1.0-0:i386 1.38.1-1            i386         Layout and rendering of internationalized text
+ii  python3-cairo            1.10.0+dfsg-5build1 i386         Python 3 bindings for the Cairo vector graphics library
+ii  python3-gi-cairo         3.20.0-0ubuntu1     i386         Python 3 Cairo bindings for the GObject library
+Souhait=inconnU/Installé/suppRimé/Purgé/H=à garder
+| État=Non/Installé/fichier-Config/dépaqUeté/échec-conFig/H=semi-installé/W=attend-traitement-déclenchements
+|/ Err?=(aucune)/besoin Réinstallation (État,Err: majuscule=mauvais)
+||/ Nom                   Version      Architecture Description
++++-=====================-============-============-=============================================================
+un  gir1.0-pango-1.0      <aucune>     <aucune>     (aucune description n'est disponible)
+ii  gir1.2-pango-1.0:i386 1.38.1-1     i386         Layout and rendering of internationalized text - gir bindings
+ii  libpango-1.0-0:i386   1.38.1-1     i386         Layout and rendering of internationalized text
+Souhait=inconnU/Installé/suppRimé/Purgé/H=à garder
+| État=Non/Installé/fichier-Config/dépaqUeté/échec-conFig/H=semi-installé/W=attend-traitement-déclenchements
+|/ Err?=(aucune)/besoin Réinstallation (État,Err: majuscule=mauvais)
+||/ Nom                   Version            Architecture Description
++++-=====================-==================-============-============================================
+un  libfont-freetype-perl <aucune>           <aucune>     (aucune description n'est disponible)
+ii  libfreetype6:i386     2.6.1-0.1ubuntu2.3 i386         FreeType 2 font engine, shared library files
+Souhait=inconnU/Installé/suppRimé/Purgé/H=à garder
+| État=Non/Installé/fichier-Config/dépaqUeté/échec-conFig/H=semi-installé/W=attend-traitement-déclenchements
+|/ Err?=(aucune)/besoin Réinstallation (État,Err: majuscule=mauvais)
+||/ Nom                 Version            Architecture Description
++++-===================-==================-============-=====================================================
+ii  fontconfig          2.11.94-0ubuntu1.1 i386         generic font configuration library - support binaries
+ii  fontconfig-config   2.11.94-0ubuntu1.1 all          generic font configuration library - configuration
+un  libfontconfig       <aucune>           <aucune>     (aucune description n'est disponible)
+ii  libfontconfig1:i386 2.11.94-0ubuntu1.1 i386         generic font configuration library - runtime
+Souhait=inconnU/Installé/suppRimé/Purgé/H=à garder
+| État=Non/Installé/fichier-Config/dépaqUeté/échec-conFig/H=semi-installé/W=attend-traitement-déclenchements
+|/ Err?=(aucune)/besoin Réinstallation (État,Err: majuscule=mauvais)
+||/ Nom                  Version            Architecture Description
++++-====================-==================-============-==============================================================
+ii  curl                 7.47.0-1ubuntu2.11 i386         command line tool for transferring data with URL syntax
+un  gnupg-curl           <aucune>           <aucune>     (aucune description n'est disponible)
+ii  libcurl3:i386        7.47.0-1ubuntu2.11 i386         easy-to-use client-side URL transfer library (OpenSSL flavour)
+ii  libcurl3-gnutls:i386 7.47.0-1ubuntu2.11 i386         easy-to-use client-side URL transfer library (GnuTLS flavour)
+un  libcurl4-gnutls-dev  <aucune>           <aucune>     (aucune description n'est disponible)
+un  python-pycurl-doc    <aucune>           <aucune>     (aucune description n'est disponible)
+ii  python3-pycurl       7.43.0-1ubuntu1    i386         Python bindings to libcurl (Python 3)
+un  python3-pycurl-dbg   <aucune>           <aucune>     (aucune description n'est disponible)

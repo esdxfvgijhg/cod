@@ -1,0 +1,110 @@
+\hypertarget{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event}{}\section{ns3\+:\+:lorawan\+:\+:Lora\+Interference\+Helper\+:\+:Event Class Reference}
+\label{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event}\index{ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event@{ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event}}
+
+
+{\ttfamily \#include $<$lora-\/interference-\/helper.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Lora\+Interference\+Helper\+:\+:Event\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Lora\+Interference\+Helper\+:\+:Event\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event_a7ed9e05bda1c59057d65d046d4982f39}\label{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event_a7ed9e05bda1c59057d65d046d4982f39}} 
+{\bfseries Event} (Time duration, double rx\+Powerd\+Bm, uint8\+\_\+t spreading\+Factor, Ptr$<$ Packet $>$ packet, double frequency\+M\+Hz)
+\item 
+Time \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event_a1413175c6d325ae6e4131b3edc4df5aa}{Get\+Duration} (void) const
+\item 
+Time \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event_a0962fde4d6eca96401aea68a001d96fc}{Get\+Start\+Time} (void) const
+\item 
+Time \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event_a592178402fb4232513122ad3f9edcd0d}{Get\+End\+Time} (void) const
+\item 
+double \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event_a89d0371d6b9346699cad99be8d23e7aa}{Get\+Rx\+Powerd\+Bm} (void) const
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event_af14d899b1e6f25dbe42b26824582085f}{Get\+Spreading\+Factor} (void) const
+\item 
+Ptr$<$ Packet $>$ \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event_ae1f0213b62e877c33ce3f37ca4f1f549}{Get\+Packet} (void) const
+\item 
+double \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event_a4dac36c337c87310c5820cc6571d9b5a}{Get\+Frequency} (void) const
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event_aa3a3f59131390caee329736d91748c93}{Print} (std\+::ostream \&stream) const
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class representing a signal in time.
+
+Used in \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper}{Lora\+Interference\+Helper} to keep track of which signals overlap and cause destructive interference. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event_a1413175c6d325ae6e4131b3edc4df5aa}\label{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event_a1413175c6d325ae6e4131b3edc4df5aa}} 
+\index{ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event@{ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event}!Get\+Duration@{Get\+Duration}}
+\index{Get\+Duration@{Get\+Duration}!ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event@{ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event}}
+\subsubsection{\texorpdfstring{Get\+Duration()}{GetDuration()}}
+{\footnotesize\ttfamily Time ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event\+::\+Get\+Duration (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Get the duration of the event. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event_a592178402fb4232513122ad3f9edcd0d}\label{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event_a592178402fb4232513122ad3f9edcd0d}} 
+\index{ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event@{ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event}!Get\+End\+Time@{Get\+End\+Time}}
+\index{Get\+End\+Time@{Get\+End\+Time}!ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event@{ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event}}
+\subsubsection{\texorpdfstring{Get\+End\+Time()}{GetEndTime()}}
+{\footnotesize\ttfamily Time ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event\+::\+Get\+End\+Time (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Get the ending time of the event. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event_a4dac36c337c87310c5820cc6571d9b5a}\label{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event_a4dac36c337c87310c5820cc6571d9b5a}} 
+\index{ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event@{ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event}!Get\+Frequency@{Get\+Frequency}}
+\index{Get\+Frequency@{Get\+Frequency}!ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event@{ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event}}
+\subsubsection{\texorpdfstring{Get\+Frequency()}{GetFrequency()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event\+::\+Get\+Frequency (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Get the frequency this event was on. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event_ae1f0213b62e877c33ce3f37ca4f1f549}\label{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event_ae1f0213b62e877c33ce3f37ca4f1f549}} 
+\index{ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event@{ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event}!Get\+Packet@{Get\+Packet}}
+\index{Get\+Packet@{Get\+Packet}!ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event@{ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event}}
+\subsubsection{\texorpdfstring{Get\+Packet()}{GetPacket()}}
+{\footnotesize\ttfamily Ptr$<$ Packet $>$ ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event\+::\+Get\+Packet (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Get the packet this event was generated for. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event_a89d0371d6b9346699cad99be8d23e7aa}\label{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event_a89d0371d6b9346699cad99be8d23e7aa}} 
+\index{ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event@{ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event}!Get\+Rx\+Powerd\+Bm@{Get\+Rx\+Powerd\+Bm}}
+\index{Get\+Rx\+Powerd\+Bm@{Get\+Rx\+Powerd\+Bm}!ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event@{ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event}}
+\subsubsection{\texorpdfstring{Get\+Rx\+Powerd\+Bm()}{GetRxPowerdBm()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event\+::\+Get\+Rx\+Powerd\+Bm (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Get the power of the event. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event_af14d899b1e6f25dbe42b26824582085f}\label{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event_af14d899b1e6f25dbe42b26824582085f}} 
+\index{ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event@{ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event}!Get\+Spreading\+Factor@{Get\+Spreading\+Factor}}
+\index{Get\+Spreading\+Factor@{Get\+Spreading\+Factor}!ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event@{ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event}}
+\subsubsection{\texorpdfstring{Get\+Spreading\+Factor()}{GetSpreadingFactor()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event\+::\+Get\+Spreading\+Factor (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Get the spreading factor used by this signal. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event_a0962fde4d6eca96401aea68a001d96fc}\label{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event_a0962fde4d6eca96401aea68a001d96fc}} 
+\index{ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event@{ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event}!Get\+Start\+Time@{Get\+Start\+Time}}
+\index{Get\+Start\+Time@{Get\+Start\+Time}!ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event@{ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event}}
+\subsubsection{\texorpdfstring{Get\+Start\+Time()}{GetStartTime()}}
+{\footnotesize\ttfamily Time ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event\+::\+Get\+Start\+Time (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Get the starting time of the event. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event_aa3a3f59131390caee329736d91748c93}\label{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event_aa3a3f59131390caee329736d91748c93}} 
+\index{ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event@{ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event}!Print@{Print}}
+\index{Print@{Print}!ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event@{ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event}}
+\subsubsection{\texorpdfstring{Print()}{Print()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Interference\+Helper\+::\+Event\+::\+Print (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{stream }\end{DoxyParamCaption}) const}
+
+Print the current event in a human readable form. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lora-\/interference-\/helper.\+h\item 
+lora-\/interference-\/helper.\+cc\end{DoxyCompactItemize}

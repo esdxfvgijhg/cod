@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.widgets.dialogs"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Dialogs</title>
+<topic id = "vw.help.widgets.dialogs.warnng"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Display a warning</title>
+<body><p><indexterm>warning dialog</indexterm><indexterm>dialog<indexterm>warning</indexterm></indexterm>Send
+a <apiname>warn:</apiname> message to the <apiname>Dialog</apiname> class,
+with a string specifying the message.</p>
+<p>When the user clicks <uicontrol>OK</uicontrol>, the message returns
+the value <codeph>nil</codeph>. Backslash characters in the string
+are converted to carriage returns by the <apiname>withCRs</apiname> message.
+<codeblock otherprops="smalltalk method">warn
+		| returnVal |
+		returnVal := <b>Dialog</b> 
+			warn: 'The memory named\''FirstKiss''\was not found.\'
+				withCRs.
+		"Update the text field in the main window."
+		self returnedValue value: returnVal printString.</codeblock></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Dialog-Example:Examples.DialogExample open" 
+format="st" scope="external">Dialog-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.dialogs.confirm"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Prompt for a Yes/No answer</title>
+<body><p><indexterm>confirmation dialog</indexterm><indexterm>yes-no
+dialog</indexterm><indexterm>dialog<indexterm>confirmation</indexterm></indexterm><ol>
+<li><p>Send a <apiname>confirm:</apiname> message to the <apiname>Dialog</apiname> class.
+The argument is the question to be asked.
+<codeblock otherprops="smalltalk expression">Dialog <b>confirm: 'Really erase all memories\of adolescent 			period?\'</b> withCRs.</codeblock></p></li>
+<li><p>To specify a different default answer, send a <apiname>confirm:initialAnswer:</apiname> message
+to <apiname>Dialog</apiname> instead, with the as either true or false.
+<codeblock otherprops="smalltalk expression">Dialog 
+		confirm: 'Really erase all memories\of adolescent period?'
+			withCRs
+		initialAnswer: false</codeblock></p></li>
+<li><p>To adopt the look of a master window, send a <apiname>confirm:initialAnswer:for:</apiname> message,
+with the master window as the third argument:
+<codeblock otherprops="smalltalk expression">		returnVal := Dialog 
+			confirm: 'Really erase all memories\of adolescent period?'
+				withCRs
+			initialAnswer: false
+			<b>for: ScheduledControllers activeController view</b>.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.widgets.dialogs.multiChoice"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Ask a multiple-choice question</title>
+<body><p><indexterm>multiple-choice dialog</indexterm><indexterm>dialog<indexterm>multiple
+choice</indexterm></indexterm>Send a <apiname>choose:labels:values:default:</apiname> message
+to the <apiname>Dialog</apiname> class. The <codeph>choose:</codeph> argument
+is the question, the <codeph>labels:</codeph> argument is an array
+of <apiname>String</apiname>s for the button labels, the <codeph>values:</codeph> argument
+is an array of <apiname>Symbol</apiname>s to return values for each
+buttons, and the <codeph>default:</codeph> argument is the <codeph>Symbol</codeph> for
+the default answer.
+<codeblock otherprops="smalltalk expression">Dialog
+		choose: 'Which memory would you like to review first?'
+		labels: #( 'Swimming the Channel' 'Triumph at the Coliseum' 
+			'Love &amp; War #47')
+		values: #(#swim #triumph #love47)
+		default: #triumph</codeblock></p>
+<p>To adopt the look of a master window, send a <apiname>choose:labels:values:default:for:</apiname> message
+instead, with the master window as the <codeph>for:</codeph> argument.
+<codeblock otherprops="smalltalk expression">		returnVal := Dialog
+			choose: 'Which memory would you like to review first?'
+			labels: #( 'Swimming the Channel' 
+				'Triumph at the Coliseum' 
+				'Love &amp; War #47')
+			values: #(#swim #triumph #love47)
+			default: #triumph
+			<b>for: ScheduledControllers activeController view</b>.</codeblock></p></body></topic>
+<topic id = "vw.help.widgets.dialogs.textResponse"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Prompt for a textual response</title>
+<body><p><indexterm>dialog<indexterm>text response</indexterm></indexterm><indexterm>text-response
+dialog</indexterm>Send a <apiname>request:initialAnswer:</apiname> message
+to <apiname>Dialog</apiname>, with a prompt string and a default answer
+string.
+<codeblock otherprops="smalltalk expression">Dialog
+		request: 'Find all memories associated with...' 
+		initialAnswer: 'friend'</codeblock></p>
+<p>If there is no default answer, you can use the shorter <apiname>request:</apiname>,
+and provide the question string only.</p></body></topic>
+<topic id = "vw.help.widgets.dialogs.cancel"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Supply a cancel action</title>
+<body><p><indexterm>dialog<indexterm>cancel action</indexterm></indexterm>A
+text prompter, by default, returns an empty string when the user clicks <uicontrol>Cancel</uicontrol>.
+To provide a specific action on cancel, use the <apiname>request:initialAnswer:cancel:</apiname> message.
+The argument for <codeph>cancel:</codeph> is a block that returns
+a value or initiates some further action.
+<codeblock otherprops="smalltalk method">getText
+		| returnVal |
+		returnVal := Dialog
+			request: 'Find all memories associated with...' 
+			initialAnswer: 'friend' 
+			onCancel: [self defaultRuminationTopic].</codeblock></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Dialog-Example:Examples.DialogExample open" 
+format="st" scope="external">Dialog-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.dialogs.filename"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Prompt for a file name</title>
+<body><p><indexterm>file dialog</indexterm><indexterm>dialog<indexterm>file
+prompter</indexterm></indexterm>Send a <apiname>requestFileName:default:</apiname> message
+to <apiname>Dialog</apiname>, with a prompter string and the name
+of the default file as a string.
+<codeblock otherprops="smalltalk expression">Dialog 
+		requestFileName: 'Open memory file named...' 
+		<b>default: 'hero01.mem'</b></codeblock></p>
+<p>If a default file name isn’t needed, use the shorter <apiname>requestFileName:</apiname> message.</p></body></topic>
+<topic id = "vw.help.widgets.dialogs.list"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Prompt with a list of items</title>
+<body><p><indexterm>dialog<indexterm>list options</indexterm></indexterm>To
+display a dialog with a list of commands or data values, send a <apiname>choose:fromList:values:lines:cancel:</apiname> message
+to <apiname>Dialog</apiname>. The <codeph>choose:</codeph> argument
+contains the prompt string; the <codeph>fromList:</codeph> argument
+contains a collection of strings (command names or value descriptions);
+the <codeph>values:</codeph> argument, a collection of values associated
+with the <codeph>fromList:</codeph> items; <codeph>lines:</codeph> contains
+the maximum number of list items to display; and <codeph>cancel:</codeph> passes
+a block containing the cancel action.</p>
+<p>Each item in the list is associated with a value which can insert
+the selected value in a value holder or trigger an action.
+<codeblock otherprops="smalltalk expression">| files response |
+files := Filename defaultDirectory directoryContents
+		reject: [ :name | name asFilename isDirectory].
+response := Dialog
+		choose: 'Edit which file?'
+		fromList: files
+		values: files
+		lines: 8
+		cancel: [^nil].
+response asFilename edit.</codeblock></p>
+<p>To Supply extra buttons to the list prompter, send a <apiname>choose:fromList:values:buttons:values:lines:cancel:</apiname> message
+instead, where the <codeph>buttons:</codeph> argument is a collection
+of strings to be used as button labels and the <codeph>values:</codeph> argument
+is a collection of values to associate with the button labels.
+<codeblock otherprops="smalltalk expression">response := Dialog
+		choose: 'Edit which file?'
+		fromList: files
+		values: files
+		buttons: #('Count Files')
+		values: #(#count)
+		lines: 12
+		cancel: [^nil].</codeblock></p></body></topic>
+<topic id = "vw.help.widgets.dialogs.linkToMaster"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Link a dialog to a master window</title>
+<body><p><indexterm>GUI development<indexterm>link dialog to window</indexterm></indexterm><indexterm>dialog<indexterm>link
+to window</indexterm></indexterm>To open dialogs that mimic the
+colors and UI Look of a master window, use the instance opening
+protocol including a for: argument ( e.g., <apiname>warn:for:</apiname>)
+to specify the UI Look.</p>
+<p>To change the colors used, send a <codeph>useColorOveridesFromParent:
+true</codeph> message to <apiname>SimpleDialog</apiname>.<ol><li><p>Send
+a <codeph>useColorOveridesFromParent: true</codeph> message to the <codeph>SimpleDialog</codeph> class.
+Subsequently opened dialogs will adopt the colors of their master
+window.</p></li>
+<li><p>Send a <apiname>warn:for:</apiname> message to the <apiname>Dialog</apiname> class.
+The first argument is the message string, and the second argument
+is the master window.
+<codeblock otherprops="smalltalk expression">| masterWindow |
+	SimpleDialog useColorOveridesFromParent: true.
+	masterWindow := ScheduledWindow new.
+	masterWindow background: ColorValue yellow.
+	masterWindow open.
+	Dialog
+		warn: 'This dialog has a yellow background, too.' 
+		for: masterWindow.
+masterWindow sensor eventQuit: nil.</codeblock></p></li></ol></p>
+<p>To reset the <apiname>SimpleDialog</apiname> class to its default
+behavior, send it the <codeph>useColorOveridesFromParent: false</codeph> message
+with the argument .</p></body></topic>
+<topic id = "vw.help.widgets.dialogs.custom"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a custom dialog</title>
+<body><p><indexterm>dialog<indexterm>custom</indexterm></indexterm>Create
+a subclass of <apiname>SimpleDialog</apiname>, reusing its protocol
+for <codeph>#accept</codeph> or <codeph>#cancel</codeph>. In the
+method that is to open the dialog, send an <apiname>openDialogInterface:</apiname> message
+to the application model. The argument is the dialog’s interface
+specification.
+<codeblock otherprops="smalltalk method">openDialogCanvas
+		| returnVal |
+		returnVal := self openDialogInterface: #memoryZonesDialog.
+		"Update the text field in the main window."
+		self returnedValue value: returnVal printString.</codeblock></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Dialog-Example:Examples.DialogExample open" 
+format="st" scope="external">Dialog-Example</xref></p>
+</body></topic></topic></dita>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.widgets.tables"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Tables</title>
+<topic id = "vw.help.widgets.tables.addToCanvas"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Add a table</title>
+<body><p><indexterm>GUI development<indexterm>add table</indexterm></indexterm><indexterm>table
+widget</indexterm>Use a table to display data in a rows-and-columns
+format.</p>
+<p>A table uses a <apiname>TableInterface</apiname> to store its collection
+of cells, which is stored in an instance variable of the application
+model.<ol><li><p>Use a Palette to add a table widget to the canvas,
+leaving it selected.</p></li>
+<li><p>On the Basics page of the GUI Painter Tool, enter <codeph>tableInterface</codeph> as the <uicontrol>Aspect</uicontrol>.
+Turn on both horizontal and vertical grid lines.</p></li>
+<li><p><uicontrol>Apply</uicontrol> the properties and <uicontrol>Install</uicontrol> the
+canvas.</p></li>
+<li><p>Use the canvas’ <uicontrol>define</uicontrol> command to
+add the instance variables and aspect methods <codeph>sightingsTable</codeph> and <codeph>tableInterface</codeph>.</p></li>
+<li><p>Create an <codeph>initialize</codeph> method in the application
+model to give a default value to the <apiname>SelectionInTable</apiname>.
+<codeblock otherprops="smalltalk method">initialize
+		| list |
+		super initialize.
+		"Create a collection of sightings data."
+		list := TwoDList
+			on: #('Vulcans' 188 173 192 'Romulans' 26 26 452) copy
+			columns: 4
+			rows: 2.
+		sightingsTable := SelectionInTable with: list.
+		"Create a table interface and load it with the sightings."
+		tableInterface := TableInterface new
+			selectionInTable: sightingsTable.</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Table1-Example:Examples.Table1Example open" 
+format="st" scope="external">Table1-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.tables.colWidth"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Control table column widths</title>
+<body><p><indexterm>table widget<indexterm>set column width</indexterm></indexterm>By
+default, all columns have an equal width that expand and shrink according
+to the window size.</p>
+<p>To set specific widths for the columns, send a <apiname>columnWidths:</apiname> message to
+the table interface, with an array of column widths specified in pixels. 
+<codeblock otherprops="smalltalk expression">tableInterface columnWidths: #(100 40).</codeblock></p>
+<p>In this example, the first two columns are assigned fixed sizes.
+These widths remain fixed even if the window is expanded.</p></body></topic>
+<topic id = "vw.help.widgets.tables.selectBy"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Select by cell, row, or column</title>
+<body><p><indexterm>table widget<indexterm>select cells</indexterm></indexterm>By
+default, a single cell in the table is highlighted when the user
+clicks in it. In some applications, it is more appropriate to highlight
+the entire row or column in which the cell is located.</p>
+<p>To set the extent of a user selection, select either <uicontrol>Cell</uicontrol>, <uicontrol>Row</uicontrol>,
+or <uicontrol>Column</uicontrol> in the <uicontrol>Selection</uicontrol> set
+on the <uicontrol>Details</uicontrol> page of the GUI Painter Tool.</p></body></topic>
+<topic id = "vw.help.widgets.tables.conectToInput"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Connect a table to an input field</title>
+<body><p><indexterm>table widget<indexterm>connect to input field</indexterm></indexterm>To
+allow the user to change values in a table cell, the entry needs
+to be input some other way, such as in an input field. The input
+can then be added to the table.<ol><li><p>Add an input field below
+the table, leaving the field selected.</p></li>
+<li><p> On Basics page of the GUI Painter Tool, enter <codeph>cellContents</codeph> as
+the field’s <uicontrol>Aspect</uicontrol> property.</p></li>
+<li><p>Use the canvas’ <uicontrol>define</uicontrol> command to
+add an instance variable named <codeph>cellContents</codeph> to
+the <codeph>UFOtable</codeph> class, and to create a corresponding
+aspect method (<codeph>cellContents</codeph>).
+<codeblock otherprops="smalltalk method">cellContents
+		^cellContents</codeblock></p></li>
+<li><p>Add the instance method <codeph>changedCell</codeph> in a <codeph>change</codeph> messages protocol.
+<codeblock otherprops="smalltalk method">changedCell
+		| cellLocation |
+		"Get the coordinates of the highlighted cell."
+		cellLocation := self sightingsTable selectionIndex.
+		"If a cell is selected, update its contents from
+		the input field."
+		cellLocation = Point zero
+			ifFalse: [self sightingsTable table
+				at: cellLocation
+				put: self cellContents value]</codeblock></p></li>
+<li><p>In the application model’s <codeph>initialize</codeph> method,
+initialize the input field (<codeph>cellContents</codeph>).
+<codeblock otherprops="smalltalk method">initialize
+		| list |
+		super initialize.
+		"Create a collection of sightings data."
+		list := TwoDList
+			on: #('Vulcans' 188 173 192 'Romulans' 26 26 452) copy
+			columns: 4
+			rows: 2.
+		sightingsTable := SelectionInTable with: list.
+		"Create a table interface and load it with the sightings."
+		tableInterface := TableInterface new
+			selectionInTable: sightingsTable.
+		cellContents := String new asValue.
+		self cellContents onChangeSend: #changedCell to: self.</codeblock></p></li>
+<li><p>To update the table cell, register interest in the table
+selection with <apiname>onChangeSend:</apiname> and trigger an update
+in the input field.</p>
+<p>For a code sample, see <apiname>Table2Example</apiname>.</p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Table2-Example:Examples.Table2Example open" 
+format="st" scope="external">Table2-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.tables.label"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Label columns and rows</title>
+<body><p><indexterm>table widget<indexterm>label row and column</indexterm></indexterm>To
+assign labels to columns, send an array of labels to the table interface.
+For row labels, you send an array of labels and specify the width
+of those labels.<ol><li><p>To assign column labels, send a <apiname>columnLabelsArray:</apiname> message
+to the table interface with an array of label strings.</p></li>
+<li><p>To assign row labels, send a <apiname>rowLabelsArray:</apiname> message
+to the table interface with an array of label strings, and a <apiname>rowLabelsWidth:</apiname> message
+with a width in pixels.
+<codeblock otherprops="smalltalk method">tableInterface
+		columnLabelsArray: #('Visiting Race' '1992' '1993' '1994');
+		rowLabelsArray: #(1 2);
+		rowLabelsWidth: 20.</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Table3-Example:Examples.Table3Example open" 
+format="st" scope="external">Table3-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.tables.align"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Align table data and labels</title>
+<body><p><indexterm>table widget<indexterm>align data</indexterm></indexterm>By
+default, all cells contents are left aligned, and all labels are centered.
+You can align data and labels using one of the following symbols: <codeph>#left</codeph>, <codeph>#right</codeph>, <codeph>#centered</codeph>,
+or <codeph>#leftWrapped</codeph>. <ol><li><p>To set the alignment
+for column labels, edit the <codeph>initialize</codeph> method to send
+a <apiname>columnLabelsFormats:</apiname> message to the table interface
+with the format for each column label.</p></li>
+<li><p>To set the alignment for column data, send a <apiname>columnFormats:</apiname> message
+to the table interface with the format for each column.</p></li>
+<li><p>To set the alignment for row labels, send a <apiname>rowLabelsFormat:</apiname> message
+to the table interface with the format.
+<codeblock otherprops="smalltalk method">tableInterface
+		columnFormats: #(#left #right #right #right);
+		columnLabelsFormats: #(#left #right #right #right);
+		rowLabelsFormat: #right.</codeblock></p></li></ol></p></body></topic></topic></dita>

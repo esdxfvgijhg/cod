@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+	<topic id = "vw.help.net.webApps"
+			xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+		<title>Web Applications (AppeX)</title>
+		<body><p>AppeX is a complete framework and tool set for builing web 
+				applications that coordinate server-side Smalltalk with 
+				client-side JavaScript. AppeX provides support for session 
+				management, server push, web sockets, AJAX, active record, 
+				and may be used with any of the popular Javascript libraries.</p>
+			<p>AppeX is provided in a set of parcels. 
+				Use the <xref href="st:ParcelManager open" 
+				format="st" scope="external">Parcel Manager</xref>
+				to browse the <uicontrol>Web Development</uicontrol> folder, and
+				to load the desired components.</p> 
+			<p>For complete documentation, refer to the 
+				<xref href="./doc/WebAppDevGuide.pdf" format="pdf" 
+						scope="external"><i>Web Application Developer's Guide</i></xref>.</p>
+		</body>
+	</topic>
+</dita>

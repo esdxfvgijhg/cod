@@ -1,0 +1,19 @@
+obj_native/process.o: \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/sys/process.c \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/process.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/pt.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/lc.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/lc-switch.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/cc.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/platform/native/./contiki-conf.h \
+ project-conf.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/arg.h
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/sys/process.c :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/process.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/pt.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/lc.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/lc-switch.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/cc.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/platform/native/./contiki-conf.h :
+ project-conf.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/arg.h :

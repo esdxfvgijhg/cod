@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.stLang.errors"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Errors During Compilation</title>
+<body><p>When you evaluate Smalltalk code in a Workspace or 
+<uicontrol>Accept</uicontrol> a method in a browser, the Source Code
+Editor may notify you of an error using red-highlighted text. The error
+message appears directly beneath the line of code in which 
+the error was found, and disappears automatically when the issue 
+has been resolved.</p>
+<p>There are only a few types of errors, most of which can be easily 
+corrected.</p></body>
+<topic id = "vw.help.stLang.errors.undeclared"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Undeclared variables</title>
+<body><p><indexterm>variables<indexterm>undeclared error</indexterm></indexterm><indexterm>errors<indexterm>undeclared
+variable</indexterm></indexterm>If you neglect to declare a variable
+in a method definition and select <uicontrol>Accept</uicontrol> to compile 
+it, the Source Code Editor prompts you with a list of variable types. By 
+picking an item from this list, you may declare the variable as a temporary, 
+instance, shared, or name space variable. Finally, you also have the option 
+to add the variable to the <uicontrol>Undeclared List</uicontrol>.</p>
+</body></topic>
+<topic id = "vw.help.stLang.errors.nothingMore"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>"Nothing more expected"</title>
+<body><p><indexterm>errors<indexterm>nothing more expected</indexterm></indexterm>This
+error usually occurs if you have omitted a period as the end of a 
+message expression.</p></body></topic>
+<topic id = "vw.help.stLang.method.missingSources"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Locate missing source code</title>
+<body><p><indexterm>missing source code</indexterm><indexterm>source
+code<indexterm>missing</indexterm></indexterm>Source code is 
+stored in a single <term>sources file</term> associated with 
+your &Product; development image. Very rarely, if you have 
+improperly moved your development image and/or sources files on 
+your workstation's file system, you may receive an alert that 
+source files cannot be found.</p>
+<p>If you see code in the browser with a comment explaining that it
+is decompiled code, <i>the system source or changes file is not
+correctly identified with your image</i>.</p>
+<p>To correctly identify the sources file, open the 
+<xref href="st:SettingsManager openOrRaise: VisualWorksSettings" 
+format="st" scope="external">Settings Tool</xref>
+(select <uicontrol>System &#x2192; Settings</uicontrol> in the Launcher
+window) and check that the <uicontrol>&Product; Home Directory</uicontrol> 
+(on the <uicontrol>System</uicontrol> tab) is correct. If the 
+missing source code error persists, it may be necessary to edit the
+<uicontrol>Source &#x2192; Source Files</uicontrol> page, making
+sure the prefix of the "<filepath>.sou</filepath>" file agrees 
+with the name of your saved image file (e.g., <filepath>visual.im</filepath> 
+expects to find sources in <filepath>visual.sou</filepath>).</p>
+</body></topic></topic></dita>

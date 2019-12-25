@@ -1,0 +1,72 @@
+
+conda list
+# packages in environment at C:\Users\carlyna.bondiombouy\AppData\Local\Continuum\anaconda3\envs\myenv:
+
+
+:::> https://stackoverflow.com/questions/32565302/python-after-installing-anaconda-how-to-import-pandas
+
+You should first create a new environment in conda. From the terminal, type:
+
+$ conda create --name my_env pandas ipython
+Python will be installed automatically as part of this installation. After selecting [y] to confirm, you now need to activate this environment:
+
+$ conda activate my_env
+On Windows I believe it is just:
+
+$ activate my_env
+Now, confirm installed packages:
+
+$ conda list
+Finally, start python and run your session.
+
+$ ipython
+
+:::> http://docs.continuum.io/anaconda/user-guide/tasks/integration/python-path/
+
+:::> https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Insight and data , capgemini : BU au sein de capgemini (smart BI et du big data). 200 collabo
+Magelon consulting: organisation sectorielle. data gouvernance, opendata, data science
+Softeam: partenaire avec IBM. BI microsoft et big data. Labelisé. industrie
+prologism:recrutement sur mission. Banque
+

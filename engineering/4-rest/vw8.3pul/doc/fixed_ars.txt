@@ -1,0 +1,879 @@
+Bug Fixes and Enhancements Included in this Build:
+
+Base Image
+	68216 #asUppercase doesnt work for some diacritical characters
+			* Associated Resolution: 105310
+	68772 Improve performance of OrderedCollection>>insert:before:
+	70017 Native timers sometime fail to fire
+	70079 Timers don't deal correctly with floating point Durations
+			* Associated Resolution: 105904
+	73842 FontDescription>>pixelSize: allows Fractions and Floats which can't be handled by our font system
+	73883 PCPipeAccessors fail to unregister  correctly in some cases causing test failures
+	74032 Incorporate latest CLDR data in VisualWorks locales
+	74062 Window Messages SurfaceList changes from a WeakArray to an Array after unregister:/copyWithout:
+	74073 Correct typos introduced in 40247 and add additional constants to OSErrorHolder to facilitate retrying Windows network errors
+	74084 SimpleImageInvokerResources should get engineLocation from SimpleImageInvoker
+	74118 Need a feature to unsubscribe the announcement depend on the announcement class and the destination's selector
+	74156 Update locale tests to work with CLDR-derived locales
+	74158 ObjectiveCRuntime should not access the #isa field of ObjectiveC objects directly
+	74241 NumberPrintPolicy>>print:on:using: does not understand periods as character constants inpolicy  formats
+	74307 Menu icons rendering very slowly
+	74312 Remove obsolete Workspace generation from DefineOpcodePool
+	74498 Wrong type definitions when loading prerequisites
+	74517 [MatriX] Extend VirtualMachine startup protocol to allow port and droneScript to be specified
+	74671 Timestamp class>>readFromDateAndTime :needs a parsing logic update after CLDR 30.0.3
+	74705 Text2 widgets should deal with out-of-range characters gracefully
+	74718 Reify search results from FuzzyStringSearch as an object FuzzyStringSuggestion instead of an array
+	74732 New ToolBarView results in CCompositeType dNU: #x:y:
+	74860 Preview parcel to support Squeak-like Array syntax in VisualWorks
+	74952 [Window Messages]Use SequenceableCollectionSorter to improve performance of EventQueue>>nextPutWithPriority:
+	74993 [Window Messages]EventQueue>>nextPut:unique: does not respect the isUnique arg if it is false
+	75003 Better error reporting for some GC errors when used interactively
+	75008 Add class comment for #GarbageCollectionFailNotification
+	75287 [Release Note] ImageWriter Enhancements
+
+CM
+	69432 [Store load] Atomic non-analysis loader incorrectly initializes shared variables marked as constant.
+	70005 [CM parcel] Publishing parcels with overrides of EXDI subclasses raises MNU #includeFiles
+	70205 [CM overrides] Not all sources in pst file
+			* Associated Resolution: 107824
+	71780 [CM parcel] External Interfaces with Macros and Overrides cannot be written to a parcel
+	72434 [CM parcel] Parcel load with multiple class overrides can cause wrong instance sizes
+	73540 [CM parcel] Continue Unloadable Parcel files are created with class extensions of Win32SystemSupport in multiple packages
+	73760 Load problem with AutodetectStreamEncoder in the contributed\Heeg\ByteOrderMarkSupport.pcl and .pst with the new ObjectStudio 8.8 build
+	73787 Infinite Loop in TarredFilename when filename's drive does not exist
+	74175 ExternalLibraryParcelPublishingTest>>testBaseAPI should only be run on Windows for now
+	74294 ExternalDictionary entry is being created by changes in AR 73540 prevents parcels from being published after being modified
+	74367 Store.Glorp.StoreBundle implements #allUniqueItems, but Store.BundleModel doesn't resulting in a walkback when updating spec files
+	74473 ParcelOptions>>at:ifAbsent: doesn't use execute the ifAbsent: block
+	74496 ExternalInterface>>methodsInPackage: fails when argument is a bundle
+	74604 AR 70205 changes cause MNU when publishing parcel with shared initializer containing a CompiledMethod
+	74647 ExternalInteface class>>fillDefineCachesFor:usingMethods: improperly includes a class in ExternalDictionary
+	74687 [Store unload] Unloading bundles may result in unneccessary warnings about modifying the bundle(s) being unloaded
+			* Associated Resolution: 107890
+	74845 AR 69785 changes to compile:notifying:attributes:selectorBlock:ifFail:environment: break Searchlight
+	74924 [Store changes] Loading MARSClient makes Base VisualWorks dirty due to residual problem with changes and overrides
+	74988 AbstractExternalDictionaryTest>>noUnresolvedMessageSends hangs due to #halt
+	75081 [CM parcel] The AppeX-Tools parcel has both #packageName and #bundleName properties causing a Searchlight walkback
+
+COM
+	60988 ActiveXController uses processShortcutKeyEvent:
+	67644 Update COM-related senders of deprecated method UI.UIBuilder>>sendKeyboardTo:
+	72433 COMPersistentDataObject>>saveStateAsTextOn: inconsistency
+	72511 #iid should not call #initialize because it can happen that it's not implemented and doesn't set an IID
+	72742 Interface Code Generator generates Out-parameter-code for GUIDs passed by value
+	73596 Support for all Property-PutRef- and Put-Setter methods
+	73605 Cannot generate interface classes for methods with out string parameters
+	73722 Automation Explainer Browse not working
+	73724 COMInterfacePointer>>signalExceptionForHRESULT: sends #printStringRadix: to hresult
+	74178 IDataObject does not support queries with multiple mediums or indices specified
+	74179 Bug in COM Call-In Tracing
+	74480 Problem with Automation Example and Excel 2015 and later
+	74558 Wrong type definitions in COMInterfacePointer subclasses when loading
+
+DLLCC
+	73742 PPC64: alignment of pointers in structs
+	74047 DLLCCTestSuite missing library directories causing tests to fail on AIX64 and LinuxARM platforms
+	74082 DLLCCTestSuite-Generator package has a newer version than the one shipping - needs to be updated
+
+Documentation
+	74299 Update Internationalization Guide
+	74396 [Documentation] Update Install Guide
+	74441 Update NetClientsDevGuide
+	74521 Update the Installation Guide for 8.3.
+	74586 Release Notes for 8.3
+	74594 Update Welcome.pdf for 8.3
+	74627 Update DLLCC Guide
+	74810 Update the Web Services Guide for 8.3
+	74856 Update the Basic Libraries Guide PDF
+	74875 Update the Application Developer's Guide
+	74901 Minor Documentation update to repair some broken hyperlinks
+	74902 Update the Security Guide PDF
+	74904 Update the Database Application Developer's Guide
+	74910 [Documentation]  Document AppeX Generic JavaScript support in WebAppDevGuide.pdf
+	74913 Update the Web Application Developer's Guide
+	74914 Update the Web Server Developer's Guide
+	75071 Replace Help XML content with Help2 DITA-XML
+	75125 [Help] Update Help Content
+	75126 Update the Security Guide
+	75209 Update the documentation index
+	75229 Update the Glorp Guide
+	75239 Update the DotNET Connect User's Guide
+	75244 Update the Tools Guide for 8.3
+	75248 Update the Glorp Guide for 8.3
+	75249 Update the Release Notes
+	75262 [Release Note] Store Enhancements
+	75270 [Release Note] Enhanced Functionality for Parcels
+	75281 Move /doc/ReleaseNotes7.10.pdf to /doc/ReleaseNotesArchive
+	75283 Update the Release Notes
+	75291 Update Database Guide to document changes in ODBC APIs
+	75295 Update the Glorp Guide
+	75299 Problems with text selection in some PDFs
+	75303 Update the Release Notes
+	75305 Add ReleaseNotes7.10.pdf to /doc/ReleaseNotesArchive
+	75309 Correct minor issues in the Help content
+	75311 Update the Web Services Guide
+	75315 Update the WebAppDevGuide
+	75316 Update the documentation index
+	75332 Fix problems with documentation Part Numbers
+	75340 Release Notes 8.3 mis-statement on VM support
+
+DOTNET
+	72374 support for cast operator
+	74664 update dlls to .NET framework version 4.0
+	74782 proxy for .NET object can be of the wrong class
+
+EXDI
+	71062 PostgresSocketConnection should catch OS socket errors and rethrow them using an ExternalDatabaseException.
+	74148 PostgresSocketConnection: encoding bug for queries with bindings
+	74308 Make Postgres robust to Locale date formats
+	74321 Memory allocation problem using DB2EXDI on 64-bit Linux.
+			* Associated Resolution: 107496
+	74340 Move lastUsedProfile from ConnectionDialog to ConnectionProfile to eliminate unnecessary UI dependency
+	74366 In OracleEXDI, two unused instance variables in class OracleColumnDescription should be removed.
+	74492 Improve boolean conversion from Glorp to DB2, SQLite, MySQL and Oracle
+	74606 Adding support of 64-bit Mac OSX to MySQL connect.
+	74745 DBProfileManager subclasses ApplicationModel:  complete its UI
+	74843 Make OraclePlatform's RelativeUpdate command use bound outputs to return values.
+	75057 DB2EXDI needs to be rebuilt because it has one undeclared.
+	75213 DB2 still has undeclared on loading parcel.
+	75282 [Release Note] Making ODBC3Connection to be the default ODBCConnection
+
+Glorp
+	54101 Allow building of ConditionalMappings whose cases do not all return a buildable object
+	54102 Unify the #translateField and #translateFields: mechanisms that enable EmbeddedMappings
+	54103 SQL for ordering / grouping by alsoFetched fields must reference outer table, same-name fields can need aliasing
+	54108 When returned objects have primaryKeys, use identity, not equality, to check #hasCompleteAnswerFor:
+	61493 Enable aggregation and platform-specific functions in #retrieve:, #AND: or #OR: blocks
+	64276 Allow #sqlCount and other subselects in #retrieve: blocks and ANDed / ORed queries.
+	65233 Add support for "relative attributes" to Glorp
+	66475 Finding link table, check two constraints not identical, also fix ActiveRecordTests #targetFields fail in SQLite
+	66652 Glorp Query with ConstantExpression returns incorrect results from UNION operation
+	73346 ConditionalMappings do not add themselves to the transitive closure
+	73891 Support link table and recursion-computed data in recursive queries
+	73989 Support arbitrary composite comparisons for in: , = and <>
+	74123 OuterJoins and ConditionalMappings need better handling in adjustWhereClause
+	74157 Return the first answer stream (or #noMoreAnswers) when a Command prints multiple SQL statements
+	74168 Allow computed retrieval expressions in recursion queries
+	74230 Fix typo in ConditionalMapping>>controlsTables
+	74352 Streamline conditional mappings in Glorp
+	74360 Use consistent uppercase table names in GlorpDBTests since SQL Server is case sensitive.
+	74463 Adapt GlorpBooleanType to DatabasePlatform subclasses that don't offer a boolean column type
+	74600 Read conditional values from Glorp element builders
+	74609 Enhance Glorp recursion to support compound queries and complex recursive joins
+	74675 isWritable check returns the answer to isReadable and vice versa
+	74713 VariableJoin not polymorphic with Join when an object gets a primary key via a horizontal mapping
+	74727 Make more platforms return values updated by relative attributes
+	74755 Relative attributes: OraclePlatform returns values, unchanged fields handled
+	74761 Adapt the GlorpVWLauncherTool to the new UI.
+	74790 Relative fields: handle changed fields in group-write; fix update permissions; allow NULLability
+	74792 Group batchStatementBindings into same-fields-changed subgroups, as for arrayBindings, in UpdateCommand
+	74807 Relative attributes on Oracle: support returning multiple final values bound
+	74815 Handle tables with both relative fields and lock keys
+	74849 Union of two queries retrieving constants returns the first constant for both queries
+	74868 Support recursive proxies and recursive alsoFetch (e.g. of StoreBlob chains) in Glorp
+	74916 SQLServer demands that SELECT fields that are in fact relational expressions should be aliased.
+	74948 Improve recursive alsoFetching
+	75029 Test batchBinding in updates with varying lock key fields
+	75079 Replace direct references to DatabaseIndex class with message send to allow subclassing
+	75080 Push method executeSQLStringsNoResult: up from VWDatabaseAccessor to DatabaseAccessor since it's not dialect specific
+	75179 in recursion API, clarify system-altering recursive mapping definition, distinguish from mapping expression
+	75246 [Release Note] Glorp Performance Improvements
+	75247 [Release Note] Glorp Functional Impovements
+
+Goodies
+	72650 Add 64-bit CairoGraphics libraries for OS X
+	74060 SimpleImageInvoker update for changes to LinuxPPC64, Macx64, AIX64, LinuxARM
+	74149 Remove the >>isEventDriven: call from ClockExample class>>example
+	74201 Support changes for Advanced2
+			* Associated Resolutions: 107128 107146
+	74490 Remove OmniBase from contributed on the distro
+	74728 Update parcels BraceConstructor and Gremlin to load in 8.1.1 and after
+	74730 RBSUnitExtensions must be updated to use the latest ToolBarView instead of StatusBar
+	74759 Ensure Gremlin parcel can be loaded as a package from Store.
+	75139 Update contributed: SpiderSolitaire, RBSUnit*
+
+GUI
+	69670 [Widgets] Double click on dataset column heading button handled by dataset
+	70537 [UISkinning] Complete the implementation of the Slider Widget in UxTheme based skins
+	72545 [Text2] BIDI: Select-All and Margins are visually incorrect with some bidi content
+	72552 [Text2] BIDI: Home and End keys are flipped for bidi content
+	73144 primitiveFailed when raising the existing window, because the window&#8217;s handle was nil, continuation
+	73434 Make it possible for the selected item in a list view to have multiple lines
+	73445 [UISkinning] Windows/X11: You can't type-to-select in menus.
+	73452 The InputEditor doesn't fire onChange events like InputField does (or the other notifications you can set in the UI painter)
+	73462 [SCE] Right click in to an inactive DocumentView/SourceCodeEditor with a find open is ignored
+	73594 [UISkinning] Remove obsolete font/text management now moved to Skins from UILookPolicy
+	73675 Copying text in Preview pane of a ByteString inspector DNUs on isEqualTo:
+	73830 [UISkinning] Update text style management support in standard and classic skins
+	73833 [Widgets] ComboBox does not scroll by mouse wheel
+			* Associated Resolution: 107302
+	73901 Upon sending #close to a Window, the mapped instance variable is untouched allowing #isMapped to return true
+	73906 Dialog message not centered horizontally under Windows
+			* Associated Resolutions: 107115 107596
+	73970 Mouse move events can cause performance hit on non-cached lists in ComboBoxes
+	73973 [Examples] Trigger Event Testers references obsolete or missing classes
+	74023 BasicButtonView>>#update:with:from restricts super updates only for ones where aspectSymbol is #value unnecessarily
+			* Associated Resolution: 107237
+	74091 Right justified modifiable Spin Buttons place the edit cursor over the up and down arrow buttons on Windows platform
+			* Associated Resolution: 107470
+	74176 [UI] Remove Deferred Drawing
+	74193 Menus longer than screen height continue to scroll when mouse is not over the bottom of the menu
+			* Associated Resolution: 107378
+	74204 [UISkinning] Keyboard matching selection UHE in combo box drop down menus
+			* Associated Resolution: 107741
+	74242 Typing spaces into password inputfields raises a UHE.
+			* Associated Resolution: 107502
+	74262 Restore Combo Boxes to support an image with the label
+	74274 [Text2] Bidi: Cursor residue remains behind during backspace + right-arrow through Arabic RTL text.
+			* Associated Resolution: 107898
+	74283 Walkback when setting Strike-Through adornment in ExampleDocumentEditor
+	74286 [Text2] Add check mark support to Text2
+	74287 [Text2] Paragraph boundaries that aren't newlines aren't honoured properly
+	74316 Text2 - checkmarks that are 2 or 3 or more deep centre their checkmark for the whole area
+	74318 [Tools] Add right and center alignment to Text2 InputEditor
+	74392 A password InputField should not respond to any #selectingWord behavior
+			* Associated Resolution: 107502
+	74420 Remove the obsolete Slider2Example from examples
+	74458 Using left and right cursor keys with <CTRL> pressed should move cursor to the beginning or end of password fields
+			* Associated Resolution: 107502
+	74484 ApplicationModel class>>raiseSingleInstance must not open an already open existing window
+	74534 [Text2] characterWrap does not happen
+			* Associated Resolution: 107674
+	74552 CocoaGraphicsSupport needs linkedIn in its libraries  for some functions to work
+	74561 Setting DocumentView>>characterWrap: does not affect its instance of Flow
+			* Associated Resolution: 107674
+	74625 Validation change notifications are sent when navigating combo box menu items
+	74637 InputEditor - cursor is often not visible when against the right side
+			* Associated Resolution: 107904
+	74655 OSX: Obsolete unused Cursor >> macContextCursor
+	74688 [UI2] Implement a new layout system
+	74691 [UI2] Add input field and combo box artists for new layout system
+	74707 [UI] ComboBox drop down menu insta-closes on Windows when you release the mouse button
+	74709 [UI] Launcher toolbar is mis-sized when saved on one platform and opened on another
+	74715 [UI[ Make sure #releaseArtist is called when newGraphicsDevice: is called
+	74735 Group box with empty label renders with a gap
+	74740 [SCE] Subscript out of bounds in DocumentAutocompleteModel>>privateSuggestions:
+	74749 [UI] ClickableGraphic often loses click events
+	74762 [Text2] Regression: Flow unable to compute paragraph-or line-number of position
+	74765 [UI] BorderDecorator needs its own intrinsicWidth/intrinsicHeight
+	74766 [UI] OS X Scrolling can DNU on #asNSPoint when using fractions not integers
+	74767 [UI] ViewEventController StateChangeEvent fires for the state it's changing to, not the state it was
+	74781 [Text2] Typing Bidi characters does not refresh when the characters reshape themselves
+	74787 [Text2] BIDI: Cursor positioning doesn't work correctly with Arabic
+	74816 [Widgets] Alignment broken on InputField widget
+	74826 [Windows] [UI2] Toolbar and Statusbar differences between Windows platform versions
+	74827 [UI2] Implement ToolBar, StatusBar, InputField and ComboBox artists for Emulated Windows skin
+	74831 HeadlessImage>>becomeHeadfull fails on X11
+	74832 Incorporate SymbolicPaint color functionality to skinned UIs
+	74852 horizontal scrolling of a List does not draw scrolled-in area
+	74864 Preview parcel for hi-dpi graphics on Windows
+	74874 [Text2] Windows: Bidi: Arabic DOT <Shift+.> appears on the right on Windows
+	74880 InputState>>send:eventWindowMessage: sends obsolete msg #setKeyboardAndButtonStateFromEventDataArray:
+	74881 ConstraintWrapper>>absOrigin returns wrong values if used in a ScrollWrapper
+	74889 ToolBarViews expect to start at the left hand edge of a window
+	74893 Remove the halt in SequenceView>>preferredExtent
+	74899 [UI] Add intrinsinc(Width/Height/Baseline)Constraint to PassiveLabel
+	74900 [Text2] Regression of editing list items and newlines together from AR74762
+	74905 [Constraints] StoreProgressOverlay (Panel) destroys widget constraints during #updateChildFrames:
+	74921 Enable color preferences to restore custom color usage in many widgets
+	74934 Slider widget doesn't send Validation/Notification from mouse events
+	74935 UIPainter cannot open or create #windowSpecs that refer to non-existing toolbar methods
+	74942 [Text2] Certain list item edits can leave future list items with the wrong number
+	74943 [Text2] FlowSegment.baseLevel is redundant and never used by any segments, it  should be removed
+	74944 Fix for progress bar for new color work AR74832
+	74954 Clicking on ComboBox with undefined choices raises MNU #do:
+	74961 Add trigger event support for ToolBarView
+	74964 [UI] Use InputFieldWrapper for  InputEditors as well
+	74966 [UI] Regression: ViewEventController StateChangeEvent doesn't fire for #* states anymore
+	74980 [UI] Remove old input field and combo box wrappers
+	74981 Some problems with the GUI Examples
+	75005 Remove the halt in DataSetColumn>>decodeFromLiteralArray:
+	75014 Dataset scrolls down following a selection or page up key
+	75020 [Text2] Additional refresh improvements for Bidi characters
+	75038 [UI] PassiveLabel does not draw at its margin
+	75042 Combo Box does not send #listExposed or #listClosed events
+	75059 The InputEditor does not autoAccept on lost-focus, but treats autoAccept as continuousAccept
+	75061 Button unresponsive for combo box on scrolled canvas or dataset
+	75064 [UI2] SubCanvasView needs to get tools in the status bar released
+	75076 Remove unused status bar classes VisualLauncherStatusBar and StatusBar
+	75101 [UI] InputFieldWrapper updates graphicsContext and coordinates properly, but not invalidation
+	75104 Remaining TextStyle cleanup
+	75107 Datasets have no entry or selection display
+	75112 [UISkinning] Relax size restrictions on unbordered buttons
+	75113 [GUI] ComboBox widget needs to allow widget specific maxLines specification.
+			* Associated Resolution: 108290
+	75121 EventDispatcher's lastControlObject can be released
+	75143 Bring SymbolicPaint initialization code up to date with Store, and republish the new SymbolicPaintConstants
+	75168 Improve color property usage on bordered/unbordered buttons
+	75169 Launcher status bar no longer paints the Store MiniRepositoryManager widget after being overlaid with another window
+	75175 DataSetView's column titles are not drawn when the list is not scrolled to the top
+	75176 Comboboxes stay open and don't release keyboard focus on <Tab>
+	75204 [Text2] DocumentView instances end up creating lots of suspended processes to animate the cursor blinking
+	75251 [ClassicSkins] Image crash when unloading classic skins package with one of the skins in use
+	75252 Cursor animation timer code causes significant performance problem
+	75258 Remove legacy layout debug code from artist drawing code
+	75271 [Release Note] Support for UI Painter Custom Colors
+	75272 [Release Note] Interim Support to Remove Size Restrictions on Bordered/Unbordered Action Buttons
+	75273 [Release Note] Upgrading an Existing Application using Classic Skins
+	75274 [Release Note] Migration note from 8.x to 8.3
+	75314 [UI] Combobox drop down button bounds contains most of the widget making clicks broken
+
+I18n
+	74692 [Release Note] Enhancements to Internationalization Support
+	74693 Investigate failure  of Internationalization's postLoad block to fire and remedy need for initialization of Locale subsystem
+	74985 TimestampPrintPolicyTimestampReaderTest>>testPrintAndReadFidelity fails due to anomaly sense failure in hinted read
+
+Installation
+	74620 Update VM default selection to match new Intel Linux VM component
+	74624 Update VM component selection for new platform components containing both 32- and 64-bit VMs
+
+Modeling Tool
+	75134 Add BOSS as a prerequisite for the Modeling Tool as StoreBase is no longer by default in the build of OST
+
+Net Clients
+	73363 [HTTP] RFC7231#section-3.1.2.1 requires a recipient  parse any line break for "text"
+	73611 Handle the uhe: mnu: #do: within the expiration period in LDAP
+			* Associated Resolution: 107249
+	73912 Add LDAP/LDAPS to Networking Parcel Manager
+	74071 [HTTP] Parsing and setting secure cookie is broken
+	74244 Remove obsoleted WebClient, Pop3Client and Cookie2 classes
+	74589 Deprecate NTLM support
+	74876 Sending #printString to MailMessage instances with file attachments leaves an open file handle
+			* Associated Resolution: 108001
+
+ODBC Connect
+	73933 Making ODBC3Connection to be the default ODBCConnection.
+	73985 Adding missing class comments to ODBCEXDI.
+	73993 Removing class ODBCDataType from ODBCEXDI.
+	74203 Array-bound queries repeat all statements per row in ODBC: make Glorp polymorphic to this and document
+	74440 Using ODBCEXDI and the old SQL Server ODBC driver, binding an empty string triggers error "[Microsoft][ODBC SQL Server Driver]Invalid precision value&#8221;.
+	74685 Using ODBCEXDI and the old SQL Server ODBC driver, publishing ObjectStudio's Modeling Tool triggers error "[Microsoft][ODBC SQL Server Driver]Invalid precision value&#8221;.
+	74697 In ODBCEXDI, when using ODBC2Connection, getting string based connection attributes may cause image to crash.
+	74734 In ODBCEXDI parcel load leads to walkback but loading from Store. publishing new parcel and loading parcel works fine
+	74764 Adding convenient methods to make getting connection attributes easier.
+
+OE
+	69959 Instructions for customers to build VMs from source are out of date
+	73653 Fix callbacks on OS X 64-bit
+	73927 Foundational changes for Windows hi-def
+	73949 Revive Solaris11 FD fix from AR 71606
+	73956 fast AIX64 VM crashes
+	73961 Performance improvements on Raspberry Pi
+	73994 Deploy Linux ARM preview OEs
+	74019 Complete initial work on AIX-64, promote to preview status
+	74021 Promote Linux PPC 64 to supported
+	74058 Socket problems on AIX 64
+	74059 Move 64-bit macOS OEs from preview to supported
+	74061 vwaix64 crashes when loading the GUI library
+	74085 Add error code (ERROR_TOO_MANY_POSTS) for Win OE
+	74115 SIGBUS in callbacks on solaris64
+	74146 Win64 OE: remove restrictions on position of OE code
+	74192 Update Windows VM build to use the latest Cincom digital signature certificate
+	74265 VM crashes when entering Chinese characters via an IME on Windows 8.1
+			* Associated Resolution: 107603
+	74344 segmentation faults and assert failures on Windows 64 with Nov16.2 build
+	74426 64-bit fixes for ImageWriter
+	74500 Enable 64-bit perm space as a build-time alternative choice
+	74544 Move retina display support for 32 bit MacOS out of preview
+	74599 raiseSingleWindow does not activate the window on OS X
+	74608 MacOS 64-bit DLLCC seems to mangle returned structs from THAPI callbacks
+	74616 Fractional character widths on MacOS
+	74833 In transitioning from headless to headful image on X11, HostGraphicsSupport class>>graphicsPlatformName can invoke the wrong primitive
+	74891 Windows: UIs unusable on Windows with system DPI = 125%
+	75288 [Release Note] Improved loading of 64-bit images on MS-Windows
+	75289 [Release Note] Enhanced support for 64-bit VMs on OS X and Linux PPC64 bit Mac and 64 bit Linux PPC
+	75290 [Release Note] Enhanced support for retina displays on OS X
+	75313 Speed up and simplify the VM code to copy regions from Windows or Pixmaps on MacOS
+
+OpenTalk
+	52681 [CORE] Extract listener parameter defaults to conform to the scheme used for other config parameters
+	71610 Opentalk request timeout should limit total execution time including request transmission
+	74806 Move #nestedStackTraceOn:indentedTo: from Opentalk to Protocols-Common
+
+Oracle Connect
+	74044 In OracleEXDI, changing the default value of defaultDisplayLobSize in OracleSession to be the same as that of lobBufferSize.
+	74284 In OracleEXDI, two unused instance variables in class OracleColumnDescription should be removed.
+
+OST
+	70939 ListViewCtrl>>privateSelectionChangedTo: is called too often
+	71150 Loading ucs format files into a workspace are cut to 64k
+	71559 Search options #wrapscan and #ignorecase do not work in TextEditorCtrl
+	72453 Font>>pitch: and Font>>family: need to handle Integer args as well as Symbols
+	72479 OLE2 Tests do not properly register components
+	72603 FormString does not display the right value if you hide it, set a new value and then show it again
+			* Associated Resolution: 105754
+	72874 UIAbstractModalDialogController OK/Cancel buttons don't follow windows style guidelines
+	73012 Spy Tool display problem when browsing a class from store that is not loaded in the image
+	73470 missing parentheses in Win32PrinterInterface>>getPrinter2Named: error message
+	73967 Give GlobalDictionary its own >>myEventTable so it can trigger events
+	73986 GlobalDictionary should trigger events when #prepareToSaveImage/#prepareToResumeImage
+	74006 The mouse scroll wheel does not work in drop down lists on Windows 10
+	74024 WPENFIN storeDisconnect UHE MNU: typeData:
+			* Associated Resolution: 107445
+	74068 UIFontDialog does not show initial font size
+	74139 Change announcement implementation in InterfacePart to use subscriptionRegistryOrNil
+	74177 Move CompiledMethod>>reference from package 'ObjectStudio Compatibility 1' to 'MethodReference RB Tool' 
+	74197 Relative path references don't work after open file dialog changes the default directory
+			* Associated Resolution: 107382
+	74298 Improve Form>>setFocus so that it won't try to set focus to a FormItem that is hidden
+	74304 FormButton icons are clipped on the top due to an error in Rectangle>>positionVAdjustTo:align:yAxisInvert:
+			* Associated Resolution: 107825
+	74319 MNU #controllerName when you load an InterfaceComponent
+	74343 UHE: MNU: #privatePrepareToSaveImage using OStudioRuntimePackager in OST 8.8, okay in 8.7.1
+	74422 Remove the ChangeList class>>changeListMenu override and instead use a menu pragma for the extra menu
+	74423 Move the package MethodReference RB Tool to later in the load order, after the methods that it uses are defined
+	74461 Move C types, structures and Windows API wrapper methods from OST TimeZone to OST WinAPI Support package
+	74518 Move Font class>>fromHandle: back to OST NG UI package, since it needs WndHandle
+	74712 Add a new setting module which can open external tool for selection but with persistent state
+	74750 Remove hard-coded references to StoreBase classes from Base ObjectStudio
+	74808 Ctrl+Backspace crashes classic text editor
+	74814 Remove hard-coded references to StoreBase classes from Base ObjectStudio bundle properties
+	74823 Process>>print answers nil instead of a string if (self name isNil) and (self description isNil)
+	74837 ControllerItem does not understand #canReceiveFocusNow
+	74841 The Edit-in-Designer button from the browser is missing for ObjectStudio InterfacePart subclasses
+	74859 Make {} array syntax match ObjectStudio 7.x more exactly, to prepare for introducing {} arrays to Cincom Smalltalk foundation
+	74869 InterfacePart subclasses should announce InterfacePartClassRemoving when they are removed from system
+	74984 [Spy Tool] Restore Spy menu and functionality in inspectors
+	75025 In ObjectStudio's DB2 wrapper, we should only load user tables when they are needed.
+	75077 NullWindowManager need to implement whenIdleSend:to:withArguments:unique: after AR 70939
+	75088 ObjectStudioParser problem loading .CLS files after AR 74859
+	75116 "I18n for ObjectStudio" has overrides to ObjectStudioParser that need to react to parser changes in AR 74859 and 75088
+	75196 OStudio runtime image creation fails with UHEs
+	75322 Update ObjectStudio doc set to 8.9
+
+OSTDatabase
+	73924 Adding method OracleDatabase class >>logOnServer: user: password: to ObjectStudio's Oracle wrapper.
+	74174 Making ODBC 3 as the default behavior in ObjectStudio's ODBC via EXDI wrapper.
+	74180 In ObjectStudio's Oracle wrapper, we should only load user tables when they are needed.
+	74303 Cleanup and improve ObjectStudio's Oracle database wrapper.
+	74346 Cleanup and improve ObjectStudio's ODBC via EXDI database wrapper.
+	74347 Cleanup and improve ObjectStudio's DB2 wrapper.
+	74348 Cleanup and improve ObjectStudio's Sybase wrapper.
+	74349 Cleanup and improve ObjectStudio's DATABASE package.
+	74383 Cleanup and improve ObjectStudio's ODBC database wrapper.
+	74393 In ObjectStudio Oracle wrapper, we should change the default lobValueSize in OracleDatabase class to 32768, the same as lobBufferSize.
+	74487 In ObjectStudio's ODBC via ODBCEXDI wrappers, a few more changes should be done in  areas like class description, method references.
+	74504 In ObjectStudio ODBC Wrapper Via ODBCEXDI, we need to fix method ODBCDatabase>>maxTableNameLength and remove 3 class methods in ODBCTable class.
+	74575 In ObjectStudio ODBC Wrapper Via ODBCEXDI, we need to make a few more code and comment changes.
+	74584 In ObjectStudio ODBC Wrapper Via ODBCEXDI, method ODBCTable>>statistics does not work properly.
+	74650 Fix ObjectStudio.ESDatabaseLogonWindowView class>>createInstanceName: after AR 74347
+	74665 In ObjectStudio ODBC wrapper, we need to replace the hard coded numbers with SQL constants to improve code readability.
+	74676 In ObjectStudio ODBC wrapper, we need to fix a few issues in the demo class.
+	74701 In ObjectStudio ODBC wrapper, getting string based connection attributes may cause image to crash.
+	74809 In ObjectStudio's old ODBC wrapper, after connecting to a database, calling ODBCDatabase>>isConnected still returns false.
+	74866 In ObjectStudio's DATABASE package, we need to improve and change the way to handle information like database name, username, password and alias.
+	74873 In the old ObjectStudio ODBC wrapper, connecting process needs to be improved.
+	74895 In ObjectStudio's DB2 wrapper, we need to make changes to the logon process.
+	74896 In ObjectStudio's ODBC wrapper via ODBCEXDI, we need to make changes to the logon process.
+	74947 In ObjectStudio's Oracle wrapper, we need to make changes to the logon process.
+	74975 In ObjectStudio's old ODBC wrapper, we need to make changes to the logon process.
+	74994 In ObjectStudio's Sybase wrapper, we need to make changes to the logon process.
+	75034 In ObjectStudio's ODBC wrapper via ODBCEXDI, we should only load user tables when they are needed.
+	75035 In ObjectStudio's old ODBC wrapper, we should only load user tables when they are needed.
+	75062 ObjectStudio ODBC Wrapper has undeclared: activeConnection
+	75068 In ObjectStudio's Sybase wrapper, we should only load user tables when they are needed.
+	75074 In ObjectStudio's Oracle wrapper, after logon into one database, calling OracleDatabase class>>logOff causes the debugger to open.
+	75086 In ObjectStudio's Sybase wrapper, SybaseDatabase class>>logOff does not work as expected.
+	75120 In ObjectStudio's ODBC wrapper via ODBCEXDI, creating scrollable cursors causes an exception.
+	75127 In ObjectStudio's old ODBC wrapper, creating scrollable cursors causes an exception.
+	75133 In ObjectStudio's old ODBC wrapper, calling ODBCConnection>>databaseName causes an exception.
+	75144 In ObjectStudio's ODBC Wrapper via ODBCEXDI, at the database level, we need to add more convenience methods and fix exising ones.
+	75149 ExternalDatabase>>loadInfo sometimes causes "message not understood" error.
+	75212 In ObjectStudio, opening a table through Database Notebook causes error.
+	75298 ObjectStudio's Sybase Wrapper does not work well with the Logon Window and the Database Notebook.
+
+OSTDoc
+	75182 Make changes to ObjectStudio's Database Users Manual to reflect the improvement efforts on the Database Wrappers.
+
+OSTNextGenUI
+	72933 Make OSTLauncher respond to the parcel&pundle load and unload events
+	73077 Fix bold font problem -- UIIPAddress destroys its font handle when you close it
+	73821 OSTLauncher: extended user settings
+	73831 Provide option to not repaint OSTLauncher while resizing/moving to avoid flickering
+	73832 Fixes to UIFindDialog and UIReplaceDialog
+	73868 Improve UIAbstractView>>children, allChildren, and consolidate duplicate shared variables like EnumChildWindowCollection/EnumChildWndProc
+	73869 #center should work with closed windows as well as open ones
+	73885 OSTWorkspace: create new class method to run scripts
+	73895 Add a keyboard shortcut (Del) to close the selected window from Launcher's Open Windows tab
+	73896 Launcher tabs that aren't updated dynamically should be updated when they or the Launcher are activated
+	73903 UIInPlaceTooltips are not shown in ListView/TreeView
+	73910 Rename setMainWindowStyle mainWindowStyle
+	73911 Rename classes named *Annoucement to *Announcement
+	73915 [OSTLauncher] some 'Controllers' tab page items (e.g. abstract classes) debug when you try to open them
+			* Associated Resolution: 107444
+	73938 Improve performance appending string to edit controls
+	73966 Properly restore workspaces that were open when restarting a saved image
+	73998 add threads to OSProcess and get the windows opened by that thread
+	74022 Add new sample for composite item
+	74033 UIRichEdit: #findText: returns Array and values are 1 off
+	74034 UICharFormat class>>fromFont:fontColor:bgColor: initializes fontPitchAndFamiliy wrong
+	74035 Map Non-Client window messages in UIView
+	74036 Shared variable DefaultKeyboard needs to be initialized on image startup
+	74037 UIMultilineEdit: method #selectCurrentLine is missing
+	74038 OSTWorkspace: Add ToolbarIcon to create a new buffer
+	74040 OSTLauncher: if nothing is selected in the Launcher Transcript pane, don't execute anything
+	74048 OSTLauncher: List of Open Windows should allow multiple selections
+	74049 UIFontDialog API is not consistent
+	74050 NamedImageList should allow to replace an existing icon with another one with same name
+	74055 Add Packages/Bundles Dialog in the new Launcher isn't responsive
+	74056 UIMenuBar should support assigning names(#symbol:) to its menu item
+	74057 MenuBar and menus clean up at destroying them
+	74079 Resolve the conflicting mnemonics of the menu items of a same parent in OST Launcher
+	74095 Add Settings for OSTWorkspace
+	74097 cannot set background color in UIRichEdit
+	74114 UIListView: Drag&Drop can cause exception in OSTLauncher
+	74128 Announcements from UIView and UIAbstractController need to #subscriptionRegistryOrNil and #subscriptionRegistry:
+	74131 Support dynamically adding menu item to a live UIMenu instance
+	74132 Launcher may throw error when a probed method is removed(UnLoaded) from the system
+	74147 remove menubar inst var from UIAbstractController
+	74202 UIMaskedEdit>>privateEditUpdate crashed if mask and regExpMatcher are nil.
+	74206 Implement class method isAbstract in UIAbstractView hierarchy
+	74207 ObjectStudio.Screenshot class>>newHwnd:rect: should use desktop window if hwnd is nil
+	74222 NG UI: Eliminate dependencies on OST dialect and extensions
+	74236 Change UICommonDialog and subclasses >>showDialog to answer false if cancelled, and to provide accessors for results
+	74237 OSTLauncher: StatusbarMenu is not updated correctly
+	74254 Launcher settings page -- icon overlay check box is in the middle of treeview user preference settings
+	74263 OSTLauncher: methods to set the font need to be updated after AR 74236
+	74271 Move OSWindow>>sendMenu: to the 'Windows User Input Simulation' package
+	74277 ImageList created for Drag-n-Drop needs to be destroyed by user when it is no longer needed
+	74278 replace the usage of PMHandle in NG UI with OSHandle
+	74279 UIControlFormat needs a default backgroundColor
+	74280 ImageList class>>findFromHandle: was broken by AR 74222
+	74281 new method to create an empty RECT structure
+	74305 Make OST NG UI Samples package loadable after moving NG UI from ObjectStudio.Object to Core.Object
+	74310 rename UIRadioButtonGroup>>itemCliked:
+	74314 UIImgDisplay>>filename: throws an error if the arg is an empty string
+	74323 UIAbstractControllers should remember their main window location and size in saved images
+	74324 OSTLauncher: add moveable borders
+	74325 OSTWorkspace: add moveable borders
+	74326 MoveableBorders: simplify the mechanism of resizing dependent controls by adding a MoveableBorderLayoutManager
+	74327 UIDateTimePicker and UITimePicker should ignore milliseconds from sysTime since the UI only sets seconds
+	74329 Double-clicking on the scrollbar of the UIListBox in a ModalDialog announces UIDblClicked
+	74358 Extend handling of different Keyboard Layouts
+	74364 OSTWorkspace: allow multiple files to be dropped into Workspace
+	74373 The mainwindow's announcement unsubscribing needs to be sent to the mainWindow, not to the UIController
+	74382 Launcher and Workspace need to be aware of monitor settings
+	74387 Rectangle>>asRECTFStruct not initialized
+	74388 update the OST System Tools to latest NG UI changes
+	74389 OSModule should implement <=
+	74390 call to GetCursor() returns CPointer, not Integer
+	74397 Pressing Enter in a UIEdit throws an UHE: Key not found: 1
+	74402 OSTWorkspace needs to recalculate toolbar and statusbar height in the layout when size changes
+	74407 UICheckBox>>privateSetInternalObject wants to set the text to the status of the checkbox
+	74408 Memory Leak in class Screenshot
+	74414 OStudioRuntimePackager should close UIAbstractController instances when preparing image
+	74434 OSTLauncher: better handling of selection in Package-TreeView
+	74445 rename UIAbstractController>>init* methods when they mean initial instead of initialize
+	74503 re-integrate 74147: "remove menubar inst var from UIAbstractController" in OSTWorkspace
+	74516 OST NG UI UIEdit does not update the Smalltalk representation of the edit field contents when the Windows API contents change
+			* Associated Resolution: 107859
+	74528 OSTLauncher: Live preview fails with High DPI monitor
+	74529 OSTLauncher: preview icon in taskbar is black
+	74566 Add enable/disable options for the "Add/Remove to favorite list" menus in the Pundle navigator
+	74585 Bring forth the pundle navigater menus to the context menu of pundles in the OST Launcher Pundle treeview
+	74615 Some of the classes from NG UI package lost (VW) tools icon due to Hierarchy changes
+	74623 In NG UI Treeview samples, the class hierachiy of some pundles are incorrect
+	74641 Screenshot needs to hide/show the caret
+	74649 Add test if UIEdit is read-only (ES_READONLY) and method to remove that style
+	74657 re-integrate OST NG Workspace part of 74147: "remove menubar inst var from UIAbstractController" in OSTWorkspace
+	74659 UIControls should use non-default format if defined
+	74673 Move converted menu creation for NG UI from Visualworks tools to separate resource class
+	74683 Move #isOpen api from OSTLauncher to UIAbstractController
+	74686 Replace the pop-up menu brought up on Statusbar, using the OSTResourceRegistry to avoid code duplication
+	74719 OSTLauncher Page settings can throw UHE when some settings are changed without starting ObjectStudio
+	74725 Make it possible for Font settings in OSTLauncher & workspace settings pages to be saved
+	74726 OSTLauncher submenus of  File->New not working after changing menu creation in AR 74673
+	74739 Get always the same value for default values in OSTLauncher & Workspace settings
+	74746 UIUpDown>>getRange should return an Interval, not an Array
+	74756 Change Direct reference of StoreBase classes for OST Launcher classes
+	74783 When switching between tabs in OSTLauncher, the treeview in the Controllers tab doesn't always maintain its expansion state and selection
+	74784 Switching to the OSTLauncher's Controllers tab can be too slow in large images
+	74804 Consolidate re-open process for Launcher
+	74805 UIGraph throw UHEs 
+	74811 OSTLauncher: st/cls files are not loaded when dropped on Launcher
+	74812 OSTLauncher: UHE when a Controller class is removed, before the controller is removed from the Launcher
+	74813 UIMonthCalendar>>getFirstDayOfWeek should return simple number
+	74819 Adapt the NG UI sample controllers also to the changes from AR74804
+	74820 TreeNode sample does not always build the correct class hierarchy tree
+	74847 Add test methods >>isAbstract, >>needsParentToOpen, >>canOpenAutonomously and >>shouldDropOnDesktop in UIAbstractController hierarchy
+	74850 Make UIListViews respond to keyboard type-select by connecting LVN_ODFINDITEM to >>privateNotifyODFindItem:
+	74857 OSTLauncher: remove Searchlight prerequisite, and just do a browser search if Searchlight has not been loaded
+	74858 OSTLauncher: Trying to open a Workspace using the menu causes UHE
+	74861 remove obsolete UIRebar>>insertComboBox: aComboBox
+	74877 OSTLauncher: The Open menu item should not be enabled for UIAbstractCompositeItem class and UIAbstractModalDialogController subclasses
+	74878 Make UIAbstractController announce when subclasses are added or removed, and OSTLauncher adjust its Controllers tab accordingly
+	74882 UIList: extend handling of #accessPath hand #listAccessPath for easier configuration
+	74922 Move layout setting logic from class method to UIView>>layout:parentRect:, remove name:title:* UIView class methods
+	74923 Implement UIUpDown>>getBuddy
+	74925 Implement UIMonthCalendar>>setToday:
+	74926 UIMonthCalendar should not use MCS_DAYSTATE style until it can get and set DayState properly
+	74937 Implement nicer printStrings for UIMenu/UIMenuItem/UIMenuBar
+	74941 Remove GdipBase>>releaseHandle and privateFree implementors, use self handle deleteResource instead
+	74991 Remove OrderedCollection and EventQueue performance improvements now that they are in the Cincom Smalltalk Foundation
+	75001 OSTLauncher should update its Favorite Pundles and Controllers tab pages as code is loaded/unloaded/renamed
+	75017 fix tests to react to changing from ObjectStudio compiler to VW compiler
+	75019 relocate initilization from lazy initialized methods to #initialize
+	75045 UITreeView>>deleteAllItems initializes #objects to nil, should be Dictionary new
+	75047 UIVerticalToolbar button positioning problem
+	75060 Move the UIAbstractControllerClassAnnouncement class hierarchy to the ObjectStudio NameSpace
+	75073 [OSTLauncher] MenuBar building can throw exceptions if we try to insert submenu for not yet available parent menu
+	75082 Rename unRegisterMainWindowAnnouncements unregisterMainWindowAnnouncements
+	75084 Rename unscribeAnnouncements unsubscribeAnnouncements
+	75094 [OSTLauncher] Fix problems in OSTLauncher menu bar building caused by loading StoreBase from parcel
+	75130 [OSTLauncher] Don't add nil values to OSTUIResourceRegistry's externalResourceDict if the external resource is not found
+	75136 rename unScribeListViewItem to unsubscribeListViewItem
+	75141 [OSTLauncher] Do not intialize externalResourceDict of OSTUIResourceRegistry with nil values
+	75150 Text2.DocumentStyle>>asUICharFormat throw UHE
+	75151 ObjectStudio.UIAbstractCompositeItem>>parentController: throws UHE: MNU: #add:
+	75152 MNU #name:text: in NG UI Samples after AR 74922
+	75173 UHE in UIAbstractView>>asParameter
+	75181 use a fork when opening instances of UIAbstractModalDialogController
+	75210 Update the VisualLauncher class>>instanceMethodsChanged override in OST Launcher package
+	75217 Correct typo in ObjectStudio.UIAbstractCompositeItem>>open
+	75219 Reference LiteralBindingReferences in UIView class>>initializeOSinVW with ifDefinedDo:, for Runtime Packager
+	75233 OST IncrementalSearchDialog has duplicate entries, UILists>>addAllItems should delete the old list first
+	75240 Title corrections to the UIGraph samples
+	75241 UIStatic>>backgroundBrush always returns a default value, regardless of values set
+	75250 UILists>>list should not throw an exception, but return nil
+	75266 System Tools Process Monitor: List of loaded modules throws UHE with latest NG UI changes
+	75268 When subclasses of UIAbstractControllers are loaded from parcel they are not listed on the Launcher's Controllers tab
+	75275 OSTLauncher: List of Probes and OpenWindows throws UHE when selected
+	75312 OSTLauncher: UHE when previous search term is selected in DropDownCombo
+
+Seaside
+	73800 [Seaside] Remove GoogleMaps components
+
+Security
+	52070 [ASN.1] The type-less marshaling is badly broken
+	71851 Implement ECC wrappers for bcrypt.dll
+	71978 [TLS] [X509] Ensure all cached values have easy way to be flushed .
+	72186 Class Security.X509.Certificate [X509] should implement equivalence behaviour
+	72495 [X509] Implement SubjectAltName validation
+	72692 [TLS] Support for SubjectAltNames extension
+	73729 IMAPS is not listed with HTTPS, POP3S, and SMTPS under the Parcel Manager's Suggestions listing for Security
+	73846 [Crypto] Implement bcrypt.dll wrappers for AES+GCM ciphers & AEAD cipher suites - phase 1
+	74209 [TLS] Add SNI extension
+	74248 [Crypto] Implement bcrypt.dll wrappers for AES+GCM ciphers & AEAD cipher suites - phase 2
+	74258 [Crypto] Rebuild External Cryptography parcels
+	74290 [Crypto] Ensure proper LibCrypto and BCryptDll initialization
+	74355 [Xtreams] Fix AEAD cipher streams to work with block size of any size, namely those supported by bcrypt.dll
+	74368 [Xtreams] Setup test resource to disable Xtreams-Crypto-Tests on Linux-ARM  platforms
+	74563 [TLS] Implement tls12 extensions in BCryptCipher
+	74617 [HTTP2] Disable compression and renegotiation when using TLS1.2
+	74638 [TLS] Implement Extended Master Secret Extension RFC7627
+	74660 Add support for new Signature and Hash algorithms
+			* Associated Resolution: 107814
+	74703 [TLS] Write separate test methods for CBC and GCM cipher suites
+	74794 [TLS] Fix session resumption failure when using extended master secret extension
+	74796 [TLS] Review defaults resets on #aboutToSnapshot system event
+	74798 [TLS] Raise an error if non-empty acceptedServerNames end up with empty serverCertificates
+	74799 HCRYPTPROV not present in Win32SystemSupportDictionary - Republish CiphersBase parcel
+	74800 [TLS] Multiple TLS failures in post build, probably due to TLSClientHandshake not handling extended master secret properly
+	74821 [TLS] Update cipher suite categorization to reflect changes in cipher security
+	74898 [TLS] Bcrypt cipher stream is broken with AEAD.
+	74906 Replace all references to old LibCryptoEVP with LibCrypto
+	74974 [X509] Move #subjectAltNames from TLS to X509 package where it belongs.
+	75004 [Security] Implement ECDH key exchange algorithm.
+	75015 [Security] Remove ARC4 package from Security-Xtreams prerequisites
+	75030 [Security] Implement ECDSA algorithm and fix broken DSA tests on Windows
+	75043 [TLS] Remove the #libcryptoOnly tags in TLSCipherSuite definitions
+	75066 [ECC] Add ASN1-Support to ECC prerequisites
+	75105 [X509] Possibly replace #deny: with a conditional exit from some X509 tests
+	75167 [Crypto] Move Wiper functionality to Cryptgoraphy-Support so it's available to all Crypto users.
+	75308 Incorrect SecurityBase prerequisite results in separate problems in VisualWorks PUL and ObjectStudio PUL
+
+StORE
+	69785 [Store changes] After overriding an extension method it appears to belong to two packages at once
+	72647 [Store unload] Unloading a package may remove definitions from other packages without warning
+	73117 Store loading methods for NameSpaces and Shareds contain overly broad error handlers
+	73983 Recursion in Merge Tool - Store.Glorp.MethodChangeResolver>>undo
+	74041 Make consistent notification of classes on all loading mechanisms
+	74083 Remove hard coded StoreDescriptorSystem subclasses in Store
+	74205 Make the deletion descriptor system a subclass of the normal descriptor system, not a clone
+	74266 PackageCategories-Tests parcel has missing definitions
+	74436 Improve prereq loading from Store by eliminating query that's unnecessary when prereq version not specified.
+	74523 StoreReplicator UI problem in cst17.dec16.4
+	74621 Update StoreReconnectTest to check ExternalDatabaseException-compliant error parameter
+	74684 [Store unload] Unloading StoreBase bundle causes walkback due to out-of-order methods
+			* Associated Resolution: 107890
+	74694 [Store unload] Unloading and reloading StoreBase parcel results in obsolete Store policy instances
+			* Associated Resolution: 107890
+	74731 Store version lists are sending tooltip error messages to the Transcript when you move your mouse over them
+	74736 MiniRepositoryManager cannot update its toolbar
+	74747 2 new StoreBase test failures caused by changes in mar17.1
+	74748 More Store UI tooltip errors
+	74788 MiniRepositoryManager miscalculates menu groups if there are no repositories defined
+	74835 PackageInstall>>needsDLLCC: fails with SubscriptOutOfBoundsError on method with selector: #C:
+	74836 [Store database] Convert Oracle BLOB database fields to LONG RAW in schema creation to improve performance
+	74839 [Store test] Modify testOracleInstallScript to create a script runnable in a database with an existing Store repository
+	74872 Make StoreReconnectTest and AR51708 robust to image config
+	74915 [Store schema] Enhance Store Schema creation to allow user to set role for developer privileges and table owner
+	75036 Make recursion in Store a setting
+	75098 [Store ui] MiniRepositoryManager>>release causes a walkback when loading from parcel because DbRegistry is nil
+	75099 [Store load] DefNameSpaceModel MNU: #fullClassSymbol in PundleAccess>>cleanseModels:
+	75198 [Store repository creation] Add SQLite3 support and UI enhancements to enhancedRepositoryCreation capabilities
+	75223 [Store schema] Enhance Store schema creation to add DB2 support and fix user cancellation handling
+	75228 Debugger in StoreDescriptorSystem>>installStoreDatabaseTablesUsing without VisualWorks-Launcher
+			* Associated Resolution: 108393
+
+Testing
+	74191 MatriX-Tests has a broken test that causes testing to hang intermittently
+	74208 Make executing Matrix-Tests faster by adding option to use pre-loaded Drone images
+	74363 Change Sunit prerequisite in LocaleTests to be applicable to load from either parcel or store.
+	74661 Update Locale Tests for CLDR 30.0.3 in VW 8.3
+	74672 Update Base VIsualWorks - Tests for CLDR 30.0.3 changes
+	75206 [Text2] BIDI: Temporarily pull BIDI related tests out of Base VisualWorks-Tests until they can be upgraded
+
+Tools
+	68325 E: [Help2] Add a new help system using DITA maps and Text2
+	72673 Attempting to save a new SharedVariable in the Create Shared Variable dialog with a syntax error closes the dialog
+	72799 Inspector in package properties does not react on Ctrl-s although menu shows it as shortcut for Accept
+	73242 [CompareTools] Method-Rename detection is incorrect
+			* Associated Resolution: 106596
+	73314 E: Make CodeCritic excempt SUnit tests from the list of methods implemented but not sent
+			* Associated Resolution: 106667
+	73379 [SCE] Comment at the beginning of a block with temporary variables is not colored
+	73459 MNU: #state in SourceCodeEditor>>preserveFindWhile:
+	73670 [Commands] Implement code for the replaceNext editor command
+			* Associated Resolution: 107316
+	73850 [SCE] Regression of AR72322 allow browsing 'super' variable
+	73899 Aragon.EnhancedActionButtonView raises MNU #border when used in UIPainter
+	73987 Confusing text in Accept dialog after editing a conditional probe
+			* Associated Resolution: 107211
+	74088 Text>>computeMinimumTabWidthsUsing: can crash on Linux
+	74120 [Browser] Double-click to open inspector on a Shared Variable
+	74311 Remove references to unimplemented methods in ProcessMonitorService
+	74395 SpellingCorrector sometimes doesn't return expected results
+			* Associated Resolution: 107573
+	74452 Restore the calling of SourceCodeEditor>>mouseWheelZoomWindows: when CTRL+Mouse scroll-wheel is used
+			* Associated Resolution: 108037
+	74570 Renaming some Namespaces raises MNU: #includesSelector:
+			* Associated Resolution: 108030
+	74591 SharedVariableCreationDialog calls an API that is only available if Store is loaded
+	74592 [Commands] BindingEditor missing CommandGroup: #evaluating
+	74602 ParcelFavoritesTool references obsolete items
+	74682 [Browser] Incorrect menu item specification in Refactory.Browser.RefactoringBrowser>>menuBar
+	74699 [Tools] Use new ToolBarView for status bars and tool bars in the RB, Launcher and  Find tool
+	74706 [Tools] Hiding the workspace status bar only half hides it
+	74708 [Tools] RB cannot hide/show status bar now that that behaviour isn't owned by the status bar
+	74710 [Tools] UI Painter does not drag+drop or keyboard-move input field and combo boxes correctly
+	74716 [Tools] Right align the store mini repository tool
+	74722 [RB] Removing a tool from the status bar does not update the status bar
+	74724 [Tools] Restore Find field to the FileBrowser
+	74737 Compatibility method for new ToolBarView
+	74897 Glorp.DefinitionForListTool needs a new statusBar using ToolBarView variant #statusbar
+	75010 [Help2] Paragraphs could use a small lower margin
+	75012 [Help2] <apiname> could auto-generate tool tips
+	75027 Roll back AR 74938: "I: Remove unused Tools icons "
+	75051 [Help2] <p/> and <p> </p> do not render as a blank line
+	75069 [Help2] Issues with indenting
+	75070 [Help2] <b> in <codeblock> is not rendered consistently
+	75092 [Help2] Make Help2 parcels optional
+	75097 [UIPainter] Fix color buttons on Color page
+	75102 [Help2] System Browser Help menu should be consistent with other tools
+	75106 [Help2] Simplify opening PDFs from <xref>
+	75108 Show toolbar in middle of debugger setting not working
+	75110 [Help2] Cleanup items from may17.4 build
+	75145 [Help2] Search problems
+	75153 [UIPainter] Color patches on the Color tab should indicate when unassigned
+	75203 [SCE] Annotations appearing for compiled methods in the RB and Debugger even before editing
+
+Web Services
+	73981 Opentalk-CGI-Tests timeout on new Windows VMs
+	74080 Publishing web pages with eastern european characters on the web.
+
+WWW
+	72213 [AppeX] Add a test case for #respondWithJavascriipt:
+	72864 [HTTP2] Implement HTTP2 graceful shut down
+	73491 [Seaside] Integrate Seaside 3.2.0
+	73496 [HTTP2] Add a timer for SettingsFrame acknowledge after updating Settings
+	73502 [HTTP2] Implement Http2 server push
+	73505 [HTTP2] Create a performance benchmark test to compare HTTP1 & HTTP2, as well as other HTTP2 servers
+	73559 [HTTP2] Implement Flow-Control strategy
+	73697 [AppeX] Simplify initialization of base Javascript extensions  (CoreCode) by making it consistent with initialization of user defined classes
+	73712 [HTTP2] HTTPv20 should stop multiplexing  process on sending response errors
+	73788 [HTTP2] Http2 #maxConcurrentStreams should check active streams only
+	73823 [HTTP2] Stream Priority and Dependencies
+	73826 [AppeX] Implement equivalent demo to Akamai's example of HTTP2
+	73829 [AppeX] Improve all Examples package comments
+	73856 [AppeX] Add AppeX-Internationalization and AppeX-ThirdPartyLibraries to  ParcelManager
+	73874 [AppeX} In Internet Explorer, the ServerMonitor page may not display the list of responders
+	73890 [AppeX] JSFiles: Fix initialization of default script directory
+	73900 [AppeX]  Implement ECMAScript 5  syntactic differences to ECMAScript 3
+	73905 [AppeX] Documentation button on Welcome Application should open up WebAppDevGuide.pdf instead of WebServerGuide.pdf
+	73918 [AppeX]  Make "Default Chrome" the default editor theme when editing JavaScript (only)
+	73975 [AppeX] Fix Chrome developer tools search capability for Chrome on Windows in AppeX javascriptlibrary resources
+	73976 [AppeX] Ensure backward compatibility of user code after CoreCode refactor
+	73988 [Seaside] Fix duplicate binding for GRCountingStream
+	73995 Remove all deprecated method with #version '8.1' or lower
+	74001 [AppeX] JavascriptCode (as vs JavascriptObject) enhancements: Enable specifying multiple libraryNames, plus fixes
+	74004 [HTTP2] Return flow control for closed streams
+	74064 [Seaside] Javascript and JQuery test failures
+	74092 Use super implementation to avoid issue with Grease.GRCodecStream>>json: parameter
+	74108 [Seaside] Grease.GRUtf8CodecTest>>#testCodecUtf8ShortestForm fails
+	74169 [AppeX] Refactoring: Changes related to the removal of  SharedCodeLibrary, plus create new packages
+	74170 [AppeX] Make sure that Chrome Workspace round-trip development works correctly with GenericJavascript
+	74217 [AppeX] Fix circular reference in Appex-Client
+	74219 [AppeX] Add package AppeX-GenericJavascript to parcel specification and packing list
+	74221 [AppeX]  Fix SharedSession demo
+	74246 [AppeX] Fix serve scripts as combined file for HelloLocalizedExample
+	74251 [AppeX]  Performance cleanup for javascript libraries
+	74253 [SiouX] Remove a responder position from pragma configuration
+	74264 [SiouX] Fix find responder mechanism
+	74296 [AppeX] Fix ScaffoldingToolTest tests
+	74297 [AppeX] Switch finding files for javascript code from application to registered libraries (was Fix JSFileTest tests)
+	74339 [AppeX] Fix client javascript library name in Seaside example
+	74345 [AppeX] Internationalization enhancements: embedded quote treatment, add support for url path language specification
+	74384 [AppeX] Fix error - MNU: #javascript in tests
+	74405 [AppeX] BrowserNavigator>>appexGenerateClientMethod needs exception handling
+	74469 [HTTP2] Test Http2 secure server with web browsers
+	74505 [AppeX] Fix testGetCatalogFromServer
+	74506 [AppeX] Internationalization - lbl file cleanup
+	74507 Implement Server-Sent events (SSE) with Http2 connection
+	74510 [AppeX] Remove  reference to ftp://ftp.cincomsmalltalk.com/pub/appex in Amber example htmlDocument
+	74524 [AppeX] Ensure ETag random string generation works properly
+	74525 [AppeX] Replace mistakenly deleted separator in amber-appex-counter/ url
+	74540 Move HTTP2 server support out of preview
+	74574 [HTTP2] PRIORITY frame doesn't change the number of concurrent streams
+	74576 [AppeX] Fix GenericJavascriptTest errors and HelloLocalized  when Examples are loaded from parcel.
+	74603 [AppeX] Simplify serving favicon.ico
+	74610 Add SiouX-Http2 parcel to Parcel Manager
+	74618 [HTTP2]  Disable HTTP/2 dependencies for EvenStream only
+	74619 [HTTP2] Reuse response buffers instead of allocating for each stream
+	74678 Xtreams.EncodeReadStream runs indefinetly reading invalid encoded UTF8-Data
+			* Associated Resolution: 107818
+	74679 WebSocket freezes image when Close fragment with status 1001 is parsed
+			* Associated Resolution: 107817
+	74680 WebSocket responses allocate too much memory
+			* Associated Resolution: 107816
+	74681 WebSocket cannot send data of size between 126 and 254 characters
+			* Associated Resolution: 107813
+	74714 [HTTP2] Refactor HTTP2RecyclingCenter not to allocate buffers upfront
+	74729 [AppeX] Add HTTP2-push to "Akamai like" HTTP2 Example
+	74741 [Xtreams] Xtreams.EncodeReadStream doesn't returns correct data for RingBuffer
+	74753 [HTTP] Fortify HTTP/1.1 SiouX server implementation based on RFC7230
+	74760 [HTTP2] Use all applicable cipher suites in #useHTTP2Protocol
+	74773 [AppeX] Separate the APpeX-Examples-Seaside to be outside of AppeX bundle
+	74774 Add ECDHE suites to TLSContext for Http/2
+	74776 Remove references to pixel-based fonts now in compatibility package
+	74828 [AppeX]  Create Smalltalk JSEvaluator which tasks web browsers to compile/execute Javascript
+	74829 [Crypto] Test failures on ARM because crypto is not configured
+	74834 [AppeX] Add AppeX-Examples-HTTP2 in to Parcel Manager
+	74840 [AppeX] Replace AppeXHTTP2Demo faviconIcoBytes
+	74862 [AppeX]  HTTP server should accept POST with an empty body
+	74930 [AppeX] Create AppeX-JS-Automation package for automating/testing Web Browser  applications
+	74971 [HTTP2] Refactor writing frames from a multiplexer in to a separate class
+	75075 [AppeX] Fix  HTTP2 Demo Ruleset ignored due to bad selector.
+	75090 [HTTP2] Fix AppeX H2 demo with new version of SiouX for Firefox, Edge
+	75119 [AppeX] Update ParcelManager to include refactored parcels
+	75124 [AppeX] Add prereqs and default web browser behavior for AppeX-Examples-JSEvaluator
+	75137 [AppeX] Make requiredRecognizedPragmas independent of serviceTypePragmas
+	75157 [HTTP2] Write scheduler should not queue a stream close
+	75160 [HTTP2]  Improve HTTP2 framework performance
+	75189 [AppeX] Fix prerequisites fo AppeX-JS-Automation and AppeX-Tests-AutomatedExamples
+	75192 [Release Notes] Javascript Web Automation
+	75193 [AppeX]  Add detailed usage comments for JS Automation packages
+	75214 [AppeX] Fix prerequisites for AppeX-Examples-JSEvaluator and AppeX-JS-Automation
+	75216 [HTTP2] EventStream stopped working with HTTP2
+	75242 [HTTP2] Changing default sizes for output and frame buffers can suspend writing process forever

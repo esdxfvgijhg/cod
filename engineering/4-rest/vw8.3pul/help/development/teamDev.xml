@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product      "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.teamDevelopment"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+	<title>team Development</title>
+	<body><p>Team development with &Product; is managed
+	using the Store version control system.</p></body>
+</topic>
+</dita>

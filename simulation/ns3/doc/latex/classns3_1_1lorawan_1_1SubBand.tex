@@ -1,0 +1,193 @@
+\hypertarget{classns3_1_1lorawan_1_1SubBand}{}\section{ns3\+:\+:lorawan\+:\+:Sub\+Band Class Reference}
+\label{classns3_1_1lorawan_1_1SubBand}\index{ns3\+::lorawan\+::\+Sub\+Band@{ns3\+::lorawan\+::\+Sub\+Band}}
+
+
+{\ttfamily \#include $<$sub-\/band.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Sub\+Band\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{classns3_1_1lorawan_1_1SubBand__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Sub\+Band\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{classns3_1_1lorawan_1_1SubBand__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classns3_1_1lorawan_1_1SubBand_ae4b384695f2aa059cb9b58121ad92190}{Sub\+Band} (double first\+Frequency, double last\+Frequency, double duty\+Cycle, double max\+Tx\+Power\+Dbm)
+\item 
+double \hyperlink{classns3_1_1lorawan_1_1SubBand_a56fd6d9c25be89a8c7df74c0c675ae79}{Get\+First\+Frequency} (void)
+\item 
+double \hyperlink{classns3_1_1lorawan_1_1SubBand_a4777b7540f6ce04df576395823f0d4d2}{Get\+Duty\+Cycle} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1SubBand_a5868e39cf48f0a104003cba5c383d6fa}{Set\+Next\+Transmission\+Time} (Time next\+Time)
+\item 
+Time \hyperlink{classns3_1_1lorawan_1_1SubBand_a5303173d70f98effe8586d34d83172d8}{Get\+Next\+Transmission\+Time} (void)
+\item 
+bool \hyperlink{classns3_1_1lorawan_1_1SubBand_a2ae058fe3857811e9bf094e64c30fb41}{Belongs\+To\+Sub\+Band} (double frequency)
+\item 
+bool \hyperlink{classns3_1_1lorawan_1_1SubBand_ae63724cfdd997fb554d076b513637d07}{Belongs\+To\+Sub\+Band} (Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LogicalLoraChannel}{Logical\+Lora\+Channel} $>$ channel)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1SubBand_ae7d62f0bfad6a386b1d7036da38d82b7}{Set\+Max\+Tx\+Power\+Dbm} (double max\+Tx\+Power\+Dbm)
+\item 
+double \hyperlink{classns3_1_1lorawan_1_1SubBand_ae8a66a1d4c75b67f98c045b906cae2f9}{Get\+Max\+Tx\+Power\+Dbm} (void)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1SubBand_a79b51c62431c087ab62d75603d64f704}\label{classns3_1_1lorawan_1_1SubBand_a79b51c62431c087ab62d75603d64f704}} 
+static Type\+Id {\bfseries Get\+Type\+Id} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class representing a \hyperlink{classns3_1_1lorawan_1_1SubBand}{Sub\+Band}, i.\+e., a frequency band subject to some regulations on duty cycle and transmission power. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1SubBand_ae4b384695f2aa059cb9b58121ad92190}\label{classns3_1_1lorawan_1_1SubBand_ae4b384695f2aa059cb9b58121ad92190}} 
+\index{ns3\+::lorawan\+::\+Sub\+Band@{ns3\+::lorawan\+::\+Sub\+Band}!Sub\+Band@{Sub\+Band}}
+\index{Sub\+Band@{Sub\+Band}!ns3\+::lorawan\+::\+Sub\+Band@{ns3\+::lorawan\+::\+Sub\+Band}}
+\subsubsection{\texorpdfstring{Sub\+Band()}{SubBand()}}
+{\footnotesize\ttfamily ns3\+::lorawan\+::\+Sub\+Band\+::\+Sub\+Band (\begin{DoxyParamCaption}\item[{double}]{first\+Frequency,  }\item[{double}]{last\+Frequency,  }\item[{double}]{duty\+Cycle,  }\item[{double}]{max\+Tx\+Power\+Dbm }\end{DoxyParamCaption})}
+
+Create a new \hyperlink{classns3_1_1lorawan_1_1SubBand}{Sub\+Band} by specifying all of its properties.
+
+
+\begin{DoxyParams}{Parameters}
+{\em first\+Frequency} & The \hyperlink{classns3_1_1lorawan_1_1SubBand}{Sub\+Band}\textquotesingle{}s lowest frequency. \\
+\hline
+{\em last\+Frequency} & The \hyperlink{classns3_1_1lorawan_1_1SubBand}{Sub\+Band}\textquotesingle{}s highest frequency. \\
+\hline
+{\em duty\+Cycle} & The duty cycle (as a fraction) allowed on this \hyperlink{classns3_1_1lorawan_1_1SubBand}{Sub\+Band}. \\
+\hline
+{\em max\+Tx\+Power\+Dbm} & The maximum transmission power \mbox{[}d\+Bm\mbox{]} allowed on this \hyperlink{classns3_1_1lorawan_1_1SubBand}{Sub\+Band}. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1SubBand_a2ae058fe3857811e9bf094e64c30fb41}\label{classns3_1_1lorawan_1_1SubBand_a2ae058fe3857811e9bf094e64c30fb41}} 
+\index{ns3\+::lorawan\+::\+Sub\+Band@{ns3\+::lorawan\+::\+Sub\+Band}!Belongs\+To\+Sub\+Band@{Belongs\+To\+Sub\+Band}}
+\index{Belongs\+To\+Sub\+Band@{Belongs\+To\+Sub\+Band}!ns3\+::lorawan\+::\+Sub\+Band@{ns3\+::lorawan\+::\+Sub\+Band}}
+\subsubsection{\texorpdfstring{Belongs\+To\+Sub\+Band()}{BelongsToSubBand()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool ns3\+::lorawan\+::\+Sub\+Band\+::\+Belongs\+To\+Sub\+Band (\begin{DoxyParamCaption}\item[{double}]{frequency }\end{DoxyParamCaption})}
+
+Return whether or not a frequency belongs to this \hyperlink{classns3_1_1lorawan_1_1SubBand}{Sub\+Band}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em frequency} & the frequency we want to test against the current subband \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the frequency is between first\+Frequency and last\+Frequency, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1SubBand_ae63724cfdd997fb554d076b513637d07}\label{classns3_1_1lorawan_1_1SubBand_ae63724cfdd997fb554d076b513637d07}} 
+\index{ns3\+::lorawan\+::\+Sub\+Band@{ns3\+::lorawan\+::\+Sub\+Band}!Belongs\+To\+Sub\+Band@{Belongs\+To\+Sub\+Band}}
+\index{Belongs\+To\+Sub\+Band@{Belongs\+To\+Sub\+Band}!ns3\+::lorawan\+::\+Sub\+Band@{ns3\+::lorawan\+::\+Sub\+Band}}
+\subsubsection{\texorpdfstring{Belongs\+To\+Sub\+Band()}{BelongsToSubBand()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool ns3\+::lorawan\+::\+Sub\+Band\+::\+Belongs\+To\+Sub\+Band (\begin{DoxyParamCaption}\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LogicalLoraChannel}{Logical\+Lora\+Channel} $>$}]{channel }\end{DoxyParamCaption})}
+
+Return whether or not a channel belongs to this \hyperlink{classns3_1_1lorawan_1_1SubBand}{Sub\+Band}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel} & the channel we want to test against the current subband \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the channel\textquotesingle{}s center frequency is between first\+Frequency and last\+Frequency, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1SubBand_a4777b7540f6ce04df576395823f0d4d2}\label{classns3_1_1lorawan_1_1SubBand_a4777b7540f6ce04df576395823f0d4d2}} 
+\index{ns3\+::lorawan\+::\+Sub\+Band@{ns3\+::lorawan\+::\+Sub\+Band}!Get\+Duty\+Cycle@{Get\+Duty\+Cycle}}
+\index{Get\+Duty\+Cycle@{Get\+Duty\+Cycle}!ns3\+::lorawan\+::\+Sub\+Band@{ns3\+::lorawan\+::\+Sub\+Band}}
+\subsubsection{\texorpdfstring{Get\+Duty\+Cycle()}{GetDutyCycle()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+Sub\+Band\+::\+Get\+Duty\+Cycle (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the last frequency of the subband.
+
+\begin{DoxyReturn}{Returns}
+The lowest frequency of the \hyperlink{classns3_1_1lorawan_1_1SubBand}{Sub\+Band}. Get the duty cycle of the subband.
+
+The duty cycle (as a fraction) that needs to be enforced on this \hyperlink{classns3_1_1lorawan_1_1SubBand}{Sub\+Band}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1SubBand_a56fd6d9c25be89a8c7df74c0c675ae79}\label{classns3_1_1lorawan_1_1SubBand_a56fd6d9c25be89a8c7df74c0c675ae79}} 
+\index{ns3\+::lorawan\+::\+Sub\+Band@{ns3\+::lorawan\+::\+Sub\+Band}!Get\+First\+Frequency@{Get\+First\+Frequency}}
+\index{Get\+First\+Frequency@{Get\+First\+Frequency}!ns3\+::lorawan\+::\+Sub\+Band@{ns3\+::lorawan\+::\+Sub\+Band}}
+\subsubsection{\texorpdfstring{Get\+First\+Frequency()}{GetFirstFrequency()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+Sub\+Band\+::\+Get\+First\+Frequency (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the lowest frequency of the \hyperlink{classns3_1_1lorawan_1_1SubBand}{Sub\+Band}.
+
+\begin{DoxyReturn}{Returns}
+The lowest frequency of the \hyperlink{classns3_1_1lorawan_1_1SubBand}{Sub\+Band}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1SubBand_ae8a66a1d4c75b67f98c045b906cae2f9}\label{classns3_1_1lorawan_1_1SubBand_ae8a66a1d4c75b67f98c045b906cae2f9}} 
+\index{ns3\+::lorawan\+::\+Sub\+Band@{ns3\+::lorawan\+::\+Sub\+Band}!Get\+Max\+Tx\+Power\+Dbm@{Get\+Max\+Tx\+Power\+Dbm}}
+\index{Get\+Max\+Tx\+Power\+Dbm@{Get\+Max\+Tx\+Power\+Dbm}!ns3\+::lorawan\+::\+Sub\+Band@{ns3\+::lorawan\+::\+Sub\+Band}}
+\subsubsection{\texorpdfstring{Get\+Max\+Tx\+Power\+Dbm()}{GetMaxTxPowerDbm()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+Sub\+Band\+::\+Get\+Max\+Tx\+Power\+Dbm (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Return the maximum transmission power that is allowed on this \hyperlink{classns3_1_1lorawan_1_1SubBand}{Sub\+Band}
+
+\begin{DoxyReturn}{Returns}
+The maximum transmission power, in d\+Bm. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1SubBand_a5303173d70f98effe8586d34d83172d8}\label{classns3_1_1lorawan_1_1SubBand_a5303173d70f98effe8586d34d83172d8}} 
+\index{ns3\+::lorawan\+::\+Sub\+Band@{ns3\+::lorawan\+::\+Sub\+Band}!Get\+Next\+Transmission\+Time@{Get\+Next\+Transmission\+Time}}
+\index{Get\+Next\+Transmission\+Time@{Get\+Next\+Transmission\+Time}!ns3\+::lorawan\+::\+Sub\+Band@{ns3\+::lorawan\+::\+Sub\+Band}}
+\subsubsection{\texorpdfstring{Get\+Next\+Transmission\+Time()}{GetNextTransmissionTime()}}
+{\footnotesize\ttfamily Time ns3\+::lorawan\+::\+Sub\+Band\+::\+Get\+Next\+Transmission\+Time (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Returns the next time from which transmission on this subband will be possible.
+
+\begin{DoxyReturn}{Returns}
+The next time at which transmission in this \hyperlink{classns3_1_1lorawan_1_1SubBand}{Sub\+Band} will be allowed. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1SubBand_ae7d62f0bfad6a386b1d7036da38d82b7}\label{classns3_1_1lorawan_1_1SubBand_ae7d62f0bfad6a386b1d7036da38d82b7}} 
+\index{ns3\+::lorawan\+::\+Sub\+Band@{ns3\+::lorawan\+::\+Sub\+Band}!Set\+Max\+Tx\+Power\+Dbm@{Set\+Max\+Tx\+Power\+Dbm}}
+\index{Set\+Max\+Tx\+Power\+Dbm@{Set\+Max\+Tx\+Power\+Dbm}!ns3\+::lorawan\+::\+Sub\+Band@{ns3\+::lorawan\+::\+Sub\+Band}}
+\subsubsection{\texorpdfstring{Set\+Max\+Tx\+Power\+Dbm()}{SetMaxTxPowerDbm()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Sub\+Band\+::\+Set\+Max\+Tx\+Power\+Dbm (\begin{DoxyParamCaption}\item[{double}]{max\+Tx\+Power\+Dbm }\end{DoxyParamCaption})}
+
+Set the maximum transmission power that is allowed on this \hyperlink{classns3_1_1lorawan_1_1SubBand}{Sub\+Band}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+Tx\+Power\+Dbm} & The maximum transmission power \mbox{[}d\+Bm\mbox{]} to set. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1SubBand_a5868e39cf48f0a104003cba5c383d6fa}\label{classns3_1_1lorawan_1_1SubBand_a5868e39cf48f0a104003cba5c383d6fa}} 
+\index{ns3\+::lorawan\+::\+Sub\+Band@{ns3\+::lorawan\+::\+Sub\+Band}!Set\+Next\+Transmission\+Time@{Set\+Next\+Transmission\+Time}}
+\index{Set\+Next\+Transmission\+Time@{Set\+Next\+Transmission\+Time}!ns3\+::lorawan\+::\+Sub\+Band@{ns3\+::lorawan\+::\+Sub\+Band}}
+\subsubsection{\texorpdfstring{Set\+Next\+Transmission\+Time()}{SetNextTransmissionTime()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Sub\+Band\+::\+Set\+Next\+Transmission\+Time (\begin{DoxyParamCaption}\item[{Time}]{next\+Time }\end{DoxyParamCaption})}
+
+Update the next transmission time.
+
+This function is used by \hyperlink{classns3_1_1lorawan_1_1LogicalLoraChannelHelper}{Logical\+Lora\+Channel\+Helper}, which computes the time based on the \hyperlink{classns3_1_1lorawan_1_1SubBand}{Sub\+Band}\textquotesingle{}s duty cycle and on the transmission duration.
+
+
+\begin{DoxyParams}{Parameters}
+{\em next\+Time} & The future time from which transmission should be allowed again. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sub-\/band.\+h\item 
+sub-\/band.\+cc\end{DoxyCompactItemize}

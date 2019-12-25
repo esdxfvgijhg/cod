@@ -1,0 +1,979 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.textFonts"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Text and Fonts</title>
+<body>
+<p>A <apiname>ComposedText</apiname> object is the displayable counterpart 
+of a <apiname>String</apiname>. A <apiname>ComposedText</apiname> consists 
+of a string plus a set of attributes that control the appearance 
+of that string, such as boldness and font.</p>
+<p>A <apiname>Text</apiname> object is an intermediate text object between 
+a string and a composed text. It holds a string plus an array of emphasis 
+values that apply to the string.</p>
+</body>
+<topic id = "vw.help.textFonts.createText"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a ComposedText object</title>
+<body><p><indexterm>text<indexterm>create composed text</indexterm></indexterm>A <apiname>ComposedText</apiname> is
+graphical object consisting of a string and a set of display attributes,
+such as boldness, font, and color. Use a composed text to format
+a text’s appearance.</p>
+<p>To create a composed text object, send an <apiname>asComposedText</apiname> message to
+a string.
+<codeblock otherprops="smalltalk expression">| string txt gc |
+gc := (ScratchPad prepareWindow) graphicsContext.
+string := ComposedText comment.
+txt := string asComposedText.
+txt displayOn: gc at: 5@5.</codeblock></p></body></topic>
+<topic id = "vw.help.textFonts.setTextAttributes"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set text display attributes</title>
+<body><p><indexterm>text<indexterm>set display attributes</indexterm></indexterm><ol>
+<li><p>Create an instance of <apiname>Text</apiname>, typically by
+sending an <apiname>asText</apiname> message to the string that is
+the basis for the composed text.</p></li>
+<li><p>Create a <apiname>TextAttributes</apiname>, or get one from
+the dictionary that is held by the <apiname>TextAttributes</apiname> class
+by sending a <apiname>styleNamed:</apiname> message to <apiname>TextAttributes</apiname>.</p></li>
+<li><p>Send a <apiname>withText:style:</apiname> message to the <apiname>ComposedText</apiname> class.
+The first argument is the text. The second argument is the <apiname>TextAttributes</apiname>.
+<codeblock otherprops="smalltalk expression">| txt gc textStyle |
+gc := (ScratchPad prepareWindow) graphicsContext.
+txt := ComposedText comment asText.
+textStyle := TextAttributes styleNamed: #large.
+txt := ComposedText
+		withText: txt
+		style: textStyle.
+txt displayOn: gc at:5@5.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.textFonts.getTextStyles"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get available text styles</title>
+<body><p><indexterm>text<indexterm>get styles</indexterm></indexterm>Instances
+of <apiname>TextAttributes</apiname>, <apiname>VariableTextAttributes</apiname>,
+or its subclasses are used to define and share text styles throughout
+&Product;. The most common of these instances are available from
+a class dictionary in <apiname>TextAttributes</apiname>. The dictionary
+keys of these text styles may be determined by sending the message <apiname>styles</apiname> to <apiname>TextAttributes</apiname>.
+ The answer is a set with a symbol for each style in the dictionary.
+<codeblock otherprops="smalltalk expression">^TextAttributes styles</codeblock></p>
+<p>To access a text style, send the message <apiname>styleNamed:</apiname> to
+the class <apiname>TextAttributes</apiname> and provide the text style
+name symbol as argument.
+<codeblock otherprops="smalltalk expression">^TextAttributes styleNamed: #large</codeblock></p>
+<p>Text style selections are identified in the &Product; Settings
+Tool at its <uicontrol>Default Font</uicontrol> page and in the
+UI Painter Properties Tool for any widget that displays text.  These
+selections correspond to the following text style symbols in the <apiname>TextAttributes</apiname> dictionary.
+ Note that <codeph>#default</codeph>, <codeph>#large</codeph>, <codeph>#systemDefault</codeph>, <codeph>#small</codeph>,
+and <codeph>#fixed</codeph> are scaled text styles (i.e. instances
+of <apiname>VariableSizeTextAttributes</apiname>).
+<table frame = "topbot" colsep = "0" rowsep = "0">
+<tgroup cols = "3" colsep = "0" rowsep = "0"
+    outputclass = "3Column NoTitle">
+<colspec colnum = "1" colname = "1" colwidth = "40*" colsep = "0"/>
+<colspec colnum = "2" colname = "2" colwidth = "30*" colsep = "0"/>
+<colspec colnum = "3" colname = "3" colwidth = "30*" colsep = "0"/>
+<thead>
+<row rowsep = "0">
+<entry colname = "1"><b>Properties Tool Font</b></entry>
+<entry colname = "2"><b>Style</b></entry>
+<entry colname = "3"><b>Settings Tool - Default Font</b></entry>
+</row>
+</thead>
+<tbody>
+<row rowsep = "0">
+<entry colname = "1">Default</entry>
+<entry colname = "2">#default</entry>
+<entry colname = "3">Medium</entry>
+</row>
+<row rowsep = "0">
+<entry colname = "1">Constant Large</entry>
+<entry colname = "2">#pixelLarge</entry>
+<entry colname = "3"></entry>
+</row>
+<row rowsep = "0">
+<entry colname = "1">Constant Medium</entry>
+<entry colname = "2">#pixelDefault</entry>
+<entry colname = "3"></entry>
+</row>
+<row rowsep = "0">
+<entry colname = "1">Constant Small</entry>
+<entry colname = "2">#pixelSmall</entry>
+<entry colname = "3"></entry>
+</row>
+<row rowsep = "0">
+<entry colname = "1">Constant Fixed</entry>
+<entry colname = "2">#pixelFixed</entry>
+<entry colname = "3"></entry>
+</row>
+<row rowsep = "0">
+<entry colname = "1">Scaled Large</entry>
+<entry colname = "2">#large</entry>
+<entry colname = "3">Large</entry>
+</row>
+<row rowsep = "0">
+<entry colname = "1">Scaled Medium</entry>
+<entry colname = "2">#systemDefault</entry>
+<entry colname = "3"></entry>
+</row>
+<row rowsep = "0">
+<entry colname = "1">Scaled Small</entry>
+<entry colname = "2">#small</entry>
+<entry colname = "3">Small</entry>
+</row>
+<row rowsep = "0">
+<entry colname = "1">Scaled Fixed</entry>
+<entry colname = "2">#fixed</entry>
+<entry colname = "3">Fixed</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</p></body></topic>
+<topic id = "vw.help.textFonts.displayText"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Display a text object</title>
+<body><p><indexterm>text<indexterm>display composed text</indexterm></indexterm>A <apiname>ComposedText</apiname> is
+a visual component, so you can display it on a display surface.
+The example shows how to display on a graphics context, but more
+usually you display it on a textual widget using its access procedures.<ol>
+<li><p>Get the graphics context from the display surface by sending
+a <apiname>graphicsContext</apiname> message.</p></li>
+<li><p>Send a <apiname>displayOn:</apiname> message to the composed
+text. The argument is the graphics context of the display surface.
+<codeblock otherprops="smalltalk expression">| txt gc |
+txt := ComposedText comment asComposedText.
+gc := (ScratchPad prepareWindow) graphicsContext.
+txt displayOn: gc at: 5@5.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.textFonts.setLineLength"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set the text line length</title>
+<body><p><indexterm>text<indexterm>set line length</indexterm></indexterm>When
+a composed text is displayed in a text widget, its width is adjusted
+automatically by the widget. This example shows how to set the line
+length if the text is displayed directly on a scratch window. <ol><li><p>Send
+a <apiname>compositionWidth:</apiname> message to the composed text.
+The argument is the line length in pixels.</p></li>
+<li><p>To get the current line length, send a <apiname>compositionWidth</apiname> message.
+<codeblock otherprops="smalltalk expression">| txt gc |
+gc := (ScratchPad prepareWindow) graphicsContext.
+txt := VisualComponent comment asComposedText.
+txt compositionWidth: 380.
+txt displayOn: gc at: 5@5.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.textFonts.wordWrap"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Disable word wrapping</title>
+<body><p><indexterm>text<indexterm>set word wrap</indexterm></indexterm>Word-wrapping
+for text can be disabled for columnar material or other text that
+would be disrupted by wrapping. This only works when displaying
+a text directly on a display surface. Text widgets do not consult
+the text about word wrapping, so you must turn off word wrapping
+in the text widget itself.</p>
+<p>Send a <apiname>wordWrap:</apiname> message to the composed text.
+The argument is <codeph>false</codeph> to disable wrapping and <codeph>true</codeph> to
+turn it on.
+<codeblock otherprops="smalltalk expression">| txt gc |
+gc := (ScratchPad prepareWindow) graphicsContext.
+txt := ComposedText comment asComposedText.
+txt compositionWidth: 380.
+txt wordWrap: false.
+txt displayOn: gc at: 5@5.</codeblock></p></body></topic>
+<topic id = "vw.help.textFonts.alignment"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set text alignment</title>
+<body><p><indexterm>text<indexterm>set alignment</indexterm></indexterm>By
+default, a composed text starts each new line flush against the
+left margin. The alignment can be changed for the text. <ol><li><p>For
+flush-left text (the default), send a <apiname>leftFlush</apiname> message
+to the composed text.</p></li>
+<li><p>For flush-right text, send <apiname>rightFlush</apiname>.</p></li>
+<li><p>For centered text, send <apiname>centered</apiname>.</p></li>
+<li><p>For text that aligns with both left and right margins, send <apiname>justified</apiname>.
+<codeblock otherprops="smalltalk expression">| txt gc |
+gc := (ScratchPad prepareWindow) graphicsContext.
+txt := VisualComponent comment asComposedText.
+txt compositionWidth: 380.
+txt rightFlush.
+txt displayOn: gc at: 5@5.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.textFonts.setIndent"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set text indents</title>
+<body><p><indexterm>text<indexterm>set indents</indexterm></indexterm><ol>
+<li><p>Send a <apiname>firstIndent:</apiname> message to the composed
+text. The argument is the width in pixels of the first line’s indentation
+from the left edge.</p></li>
+<li><p>To set the indent for later lines, send a <apiname>restIndent:</apiname> message
+to the composed text. The argument is the width of the indentation
+from the left edge for all lines after the first line.
+<codeblock otherprops="smalltalk expression">| txt gc |
+gc := (ScratchPad prepareWindow) graphicsContext.
+txt := 'Line 1\Line 2\Line 3\Line 4' 
+		withCRs asComposedText.
+txt compositionWidth: 380.
+txt firstIndent: 50.
+txt restIndent: 100.
+txt displayOn: gc at: 5@5.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.textFonts.setTab"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set tab stops</title>
+<body><p><indexterm>text<indexterm>set tab stops</indexterm></indexterm><ol>
+<li><p>Get a copy of the <apiname>TextAttributes</apiname> from the
+composed text by sending a <apiname>textStyle</apiname> message followed
+by a <apiname>copy</apiname> message.</p></li>
+<li><p>Send a <apiname>useTabs:</apiname> message to the text style.
+The argument is an array containing one or more tab settings. Each
+setting is an integer indicating how many pixels separate that tab
+stop from the <apiname>restIndent</apiname> setting. When each tab
+is an equal distance from its predecessor, the array can contain
+a single integer indicating that separation distance.</p></li>
+<li><p>Install the modified text style in the composed text by sending
+a <apiname>textStyle:</apiname> message to the text, with the style
+as the argument.
+<codeblock otherprops="smalltalk expression">| txt gc style tab |
+gc := (ScratchPad prepareWindow) graphicsContext.
+tab := String with: Character tab.
+txt := ('Line 1\Line 2\Line 3\',
+			tab, '1 Tab\',
+			tab, tab, '2 Tabs\',
+			tab, tab, tab, '3 Tabs').
+txt := txt withCRs asComposedText.
+txt compositionWidth: 380.
+txt firstIndent: 50.
+txt restIndent: 100.
+style := txt textStyle copy.
+style useTabs: #( 15 ).
+txt textStyle: style.
+txt displayOn: gc at: 5@5.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.textFonts.getCharCount"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get text size in characters</title>
+<body><p><indexterm>text<indexterm>get character count</indexterm></indexterm>A <apiname>ComposedText</apiname> holds
+a <apiname>Text</apiname>, which in turn holds a <apiname>String</apiname>.
+Like a <apiname>String</apiname>, a <apiname>Text</apiname> can supply
+its size, measured in characters. When you need to know how many
+characters a <apiname>ComposedText</apiname> contains, the basic steps
+show how to query the underlying <apiname>Text</apiname>.<ol><li><p>Get
+the underlying <apiname>Text</apiname> object from the composed text
+by sending a <apiname>text</apiname> message.</p></li>
+<li><p>Send a <apiname>size</apiname> message to the <apiname>Text</apiname>.
+<codeblock otherprops="smalltalk expression">| composedText plainText |
+composedText := Object comment asComposedText.
+plainText := composedText text.
+^plainText size</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.textFonts.printText"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Print a text object</title>
+<body><p><indexterm>text<indexterm>print</indexterm></indexterm>A
+composed text can be printed on the default printer by sending a <apiname>hardcopy</apiname> message
+to the text.</p>
+<p>Send a <apiname>hardcopy</apiname> message to a composed text.
+<codeblock otherprops="smalltalk expression">| txt |
+txt := Object comment asComposedText.
+txt hardcopy.</codeblock></p></body></topic>
+<topic id = "vw.help.textFonts.findReplace"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Find/replace in text</title>
+<body><p><indexterm>text<indexterm>find and replace</indexterm></indexterm>A <apiname>ComposedText</apiname> has
+a <apiname>Text</apiname>, which has a <apiname>String</apiname>. The
+normal string search and replace techniques for strings are used
+on the embedded string.<ol><li><p>Get the string from the composed
+text by sending a <apiname>string</apiname> message to the text.</p></li>
+<li><p>Send a <apiname>findString:startingAt:ignoreCase:useWildcards:</apiname> message
+to the string. The <codeph>findString</codeph> argument is the substring
+to be found. The <codeph>startingAt</codeph> argument is the index
+position at which the search is to begin. The <codeph>ignoreCase</codeph> argument
+is <codeph>true</codeph> when case difference is to be disregarded.
+The <codeph>useWildcards</codeph> argument is <codeph>true</codeph> when
+the pound sign (<codeph>#</codeph>) and asterisk (<codeph>*</codeph>)
+are to be treated as wildcard characters, with the pound sign taking
+the place of any single character and the asterisk taking the place
+of zero or more characters.
+<codeblock otherprops="smalltalk expression">| composedText string |
+composedText := Object comment asComposedText.
+string := composedText string.
+^string
+		 findString: 'Var*:'
+		startingAt: 1
+		ignoreCase: true
+		useWildcards: true.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.textFonts.compareTexts"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Compare text objects</title>
+<body><p><indexterm>text<indexterm>compare text objects</indexterm></indexterm>A <apiname>ComposedText</apiname> can
+only tell whether it is the same object as another text. The equality
+(<apiname>=</apiname>) comparison has the same effect as an identity
+(<apiname>==</apiname>) comparison. For more detailed comparisons,
+test the underlying <apiname>Text</apiname> objects, which compare
+their underlying strings.<ol><li><p>To test whether two variables
+reference the same <apiname>ComposedText</apiname> object, send an <apiname>=</apiname> message
+to one variable, with the second variable as the argument.</p></li>
+<li><p>To test whether two different instances of <apiname>ComposedText</apiname> have equal <apiname>Text</apiname> objects
+and hence equal strings, get the text from each composed text and
+compare using an <apiname>=</apiname> message.
+<codeblock otherprops="smalltalk expression">| txt1 txt2 equal equivalent |
+txt1 := Object comment asComposedText.
+txt2 := Object comment asComposedText.
+equal := txt1 = txt2.
+equivalent := txt1 text = txt2 text.
+^Array with: equal with: equivalent</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.textFonts.changeCase"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Change case</title>
+<body><p><indexterm>text<indexterm>change case</indexterm></indexterm>The
+underlying <apiname>Text</apiname> that is held by a composed text
+can be converted to uppercase or lowercase. <ol><li><p>Get the underlying <apiname>Text</apiname> from
+the composed text by sending a <apiname>text</apiname> message, and
+then change the case by sending either an <apiname>asUppercase</apiname> or <apiname>asLowercase</apiname> message.</p></li>
+<li><p>Install the changed text by sending a <apiname>text:</apiname> message
+to the composed text. The argument is the changed text.
+<codeblock otherprops="smalltalk expression">| composedText capText gc |
+gc := (ScratchPad prepareWindow) graphicsContext.
+composedText := 'Hello, World' asComposedText.
+capText := composedText text asUppercase.
+composedText text: capText.
+composedText displayOn: gc at: 5@5.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.textFonts.charFormats"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Apply character formats</title>
+<body><p><indexterm>text<indexterm>apply character formats</indexterm></indexterm>A
+composed text has a <apiname>TextAttributes</apiname> object, which
+specifies the display characteristics of each character in the text.
+A default set of text attributes are used unless you supply an alternate.</p>
+<p>Send an <apiname>emphasizeFrom:to:with:</apiname> message to a <apiname>Text</apiname>.
+The first and second arguments identify the character range to be
+modified. The third argument is the emphasis value. Standard emphases
+are <codeph>#bold</codeph>, <codeph>#italic</codeph>, <codeph>#serif</codeph>, <codeph>#underline</codeph>, <codeph>#strikeout</codeph>, <codeph>#large</codeph>,
+and <codeph>#small</codeph>.
+<codeblock otherprops="smalltalk expression">| txt gc |
+gc := (ScratchPad prepareWindow) graphicsContext.
+txt := 'normal bold italic serif underline strikeout large small' asText.
+txt emphasizeFrom: 8 to: 11 with: #bold.
+txt emphasizeFrom: 13 to: 18 with: #italic.
+txt emphasizeFrom: 20 to: 24 with: #serif.
+txt emphasizeFrom: 26 to: 34 with: #underline.
+txt emphasizeFrom: 36 to: 44 with: #strikeout.
+txt emphasizeFrom: 46 to: 50 with: #large.
+txt emphasizeFrom: 52 to: 56 with: #small.
+txt displayOn: gc at: 5@25.</codeblock></p>
+<p>To apply multiple attributes to a range of characters, such as
+bold and italic, an array containing the emphases is be used.
+<codeblock otherprops="smalltalk expression">| txt gc |
+gc := (ScratchPad prepareWindow) graphicsContext.
+txt := 'normal bold&amp;italic large&amp;bold&amp;italic&amp;underline' asText.
+txt emphasizeFrom: 8 to: 18 with: #( #bold #italic).
+txt emphasizeFrom: 20 to: txt size 
+		with: #( #large #bold #italic #underline).
+txt displayOn: gc at: 5@25.</codeblock></p>
+<p>When an entire text is to be given the same emphasis, you can
+send an <apiname>emphasizeAllWith:</apiname> message to the <apiname>Text</apiname>.
+ The argument is the emphasis value or an array containing multiple
+emphasis values:
+<codeblock otherprops="smalltalk expression">txt emphasizeAllWith: #( #bold #italic).</codeblock></p>
+<p>Because boldfacing an entire text is a common operation, a convenient
+means of applying the <codeph>#bold</codeph> emphasis to a text
+is provided.  Send an <apiname>allBold</apiname> message to the <apiname>Text</apiname>.
+<codeblock otherprops="smalltalk expression">txt allBold displayOn: gc at: 5@25.</codeblock></p>
+<p>Color and typeface family emphases may also be specified for
+text using a text style with the default set of text attributes.</p></body></topic>
+<topic id = "vw.help.textFonts.applyHTML"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Apply HTML text formats</title>
+<body><p><indexterm>text<indexterm>apply HTML format</indexterm></indexterm>The
+default set of text attributes also includes text emphases that emulate
+text formatting tags in HTML.  Simply use the HTML tag name as the
+emphasis symbol over the desired range of text.</p>
+<p>Send an <apiname>emphasizeFrom:to:with:</apiname> message to a <apiname>Text</apiname>.
+The first and second arguments identify the range of characters
+to be affected.  The third argument is the emphasis value.  Standard
+text emphases that emulate the HTML tag formats are <codeph>#H1</codeph> through <codeph>#H6</codeph>, <codeph>#STRONG</codeph>, <codeph>#CITE</codeph>, <codeph>#CODE</codeph>, <codeph>#EM</codeph>, <codeph>#VAR</codeph>, <codeph>#KBD</codeph>, <codeph>#SAMP</codeph>,
+and <codeph>#TT</codeph>. Many of these HTML tags have equivalents.
+<codeblock otherprops="smalltalk expression">| txt gc |
+gc := (ScratchPad prepareWindow) graphicsContext.
+txt := 'H1 H2 H3 H4 H5 H6 STRONG CITE CODE' asText.
+txt emphasizeFrom: 1 to: 2 with: #H1.				     		"Level 1 Heading"
+txt emphasizeFrom: 4 to: 5 with: #H2.							"Level 2 Heading"
+txt emphasizeFrom: 7 to: 8 with: #H3.							"Level 3 Heading"
+txt emphasizeFrom: 10 to: 11 with: #H4.							"Level 4 Heading"
+txt emphasizeFrom: 13 to: 14 with: #H5.							"Level 5 Heading"
+txt emphasizeFrom: 16 to: 17 with: #H6.							"Level 6 Heading"
+txt emphasizeFrom: 19 to: 24 with: #STRONG.							"Bold"
+txt emphasizeFrom: 26 to: 29 with: #CITE.						"Citation"
+txt emphasizeFrom: 31 to: 34 with: #CODE.							"Fixed width"
+txt displayOn: gc at: 5@25.
+txt := 'EM VAR KBD SAMP TT' asText.
+txt emphasizeFrom: 1 to: 2 with: #EM.							"Emphasis"
+txt emphasizeFrom: 4 to: 6 with: #VAR.							"Variable name"
+txt emphasizeFrom: 8 to: 10 with: #KBD.							"Typewriter"
+txt emphasizeFrom: 12 to: 15 with: #SAMP.							"Literal"
+txt emphasizeFrom: 17 to: 18 with: #TT.							"Teletype"
+txt displayOn: gc at: 5@50.</codeblock></p></body></topic>
+<topic id = "vw.help.textFonts.setFontSize"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set font size</title>
+<body><p><indexterm>text<indexterm>set font size</indexterm></indexterm><indexterm>font<indexterm>set
+size</indexterm></indexterm>Two of the standard text emphases, <codeph>#small</codeph> and <codeph>#large</codeph>,
+give you control over the font size within a narrow range.<ol><li><p>Send
+an <apiname>emphasizeFrom:to:with:</apiname> message to the composed
+text’s underlying <apiname>Text</apiname>. The first and second arguments
+define the character range by specifying the starting and stopping
+indexes. The third argument is <codeph>#small</codeph> or <codeph>#large</codeph>,
+depending on whether you want the font size to be slightly smaller
+or slightly larger than normal. The actual size depends on the fonts
+available from the operating system, and on some platforms it may
+not differ at all.</p></li>
+<li><p>To return to the default size, apply a <codeph>nil</codeph> emphasis
+to the text.
+<codeblock otherprops="smalltalk expression">| txt gc |
+gc := (ScratchPad prepareWindow) graphicsContext.
+txt := 'large small' asText.
+txt emphasizeFrom: 1 to: 5 with: #large.
+txt emphasizeFrom: 7 to: 11 with: #small.
+txt displayOn: gc at: 5@25.
+txt emphasizeAllWith: nil.
+txt displayOn: gc at: 5@40.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.textFonts.setTextColor"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set text color</title>
+<body><p><indexterm>text<indexterm>set color</indexterm></indexterm>The
+default text style that supports standard emphasis values for text objects
+also supports color and patterns.</p>
+<p>Send an <apiname>emphasizeFrom:to:with:</apiname> message to the
+underlying <apiname>Text</apiname> of a composed text. The first and
+second arguments identify the range of characters to be affected.
+The third argument is an association, which is created by sending
+a <apiname>-></apiname> message to the lookup key (<codeph>#color</codeph>),
+with the desired color as the argument.
+<codeblock otherprops="smalltalk expression">| txt gc boldBlue |
+gc := (ScratchPad prepareWindow) graphicsContext.
+txt := 'BLACK RED GRAY BOLDBLUE' asText.
+txt emphasizeFrom: 7 to: 9 with: #color -> ColorValue red.
+txt emphasizeFrom: 11 to: 14 with: #color -> ColorValue gray.
+boldBlue := Array with: #bold with: #color -> ColorValue blue.
+txt emphasizeFrom: 16 to: 23 with: boldBlue.
+txt displayOn: gc at: 5@25.</codeblock></p></body></topic>
+<topic id = "vw.help.textFonts.setTypeface"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set text typeface family</title>
+<body><p><indexterm>text<indexterm>set font family</indexterm></indexterm><indexterm>font<indexterm>set
+family</indexterm></indexterm>The default font belongs to Helvetica,
+Arial, or a similar font family, depending on the operating system.
+ For other fonts a text emphasis attribute may be set to choose
+a font from a another typeface family.  This emphasis is available
+for any text style set for default character attributes.</p>
+<p>Send an <apiname>emphasizeFrom:to:with:</apiname> message to the
+underlying <apiname>Text</apiname> of a <apiname>ComposedText</apiname>.
+The first and second arguments identify the range of characters
+to be affected.  The third argument is an association, which is
+created by sending a <apiname>-></apiname> message to the lookup key
+(<codeph>#family</codeph>), with the name string or an array of
+name strings for the font family to use. The name may include the
+wildcard character '<codeph>*</codeph>' to match a family name with
+a partial description.  The font available for the family that matches
+closest to the name offered in the argument will be used.  If an
+array of family names is specified the first matching font family
+in the array will be used.  If no font is available from any family
+name specified a font from the text style’s default font family
+is used.</p>
+<p>There are also two predefined single key text emphases that offer some
+control over the choice of font family: <codeph>#serif</codeph> (for
+a serif font such as Times) and <codeph>#sansSerif</codeph> (for
+a sans serif font such as Helvetica).
+<codeblock otherprops="smalltalk expression">| txt gc |
+gc := (ScratchPad prepareWindow) graphicsContext.
+txt := 'normal courier times helvetica terminal foobar' asText.
+txt emphasizeFrom: 8 to: 14 with: #family -> 'courier'.
+txt emphasizeFrom: 16 to: 20 with: #family -> 'times*'. "Matches Times New Roman or Times"
+txt emphasizeFrom: 22 to: 30 with: #family -> 'helvetica'.
+txt emphasizeFrom: 32 to: 39 with: #family -> 'terminal'.
+"Use the default font for a family unknown to the installation"
+txt emphasizeFrom: 40 to: 46 with: #family -> 'foobar'.
+txt displayOn: gc at: 5@25.</codeblock></p></body></topic>
+<topic id = "vw.help.textFonts.createStyle"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a text style with new emphases</title>
+<body><p><indexterm>text<indexterm>create text style</indexterm></indexterm>A
+composed text’s <apiname>TextAttributes</apiname> holds an instance
+of <apiname>CharacterAttributes</apiname>, which defines the emphases
+that are available to the text. Associated with each emphasis symbol
+is a block that operates on a <apiname>FontDescription</apiname>,
+held by the <apiname>CharacterAttributes</apiname>, which specifies
+the font size, family, boldness, and so on.</p>
+<p>Note that a composed text applies the same line spacing to its
+entire text, so mixing font sizes is effective within only a narrow
+range for each composed text. Similarly, only a single alignment,
+indent, and tab stop setting remain in effect for a composed text.
+ Separate instances of <apiname>ComposedText</apiname> are recommended
+in such situations.<ol><li><p>Create a new instance of <apiname>CharacterAttributes</apiname> by
+sending a <apiname>newWithDefaultAttributes</apiname> message to the <apiname>CharacterAttributes</apiname> class. This
+message initializes the <apiname>CharacterAttributes</apiname> with
+the standard emphases such as <codeph>#bold</codeph> and <codeph>#italic</codeph>,
+so you don’t have to redefine them.</p></li>
+<li><p>Install an instance of <apiname>FontDescription</apiname> in
+the new <apiname>CharacterAttributes</apiname> by sending a <apiname>setDefaultQuery:</apiname> message.
+The argument can be either a new instance of <apiname>FontDescription</apiname> or,
+as in the example, a copy of the default font description from an
+existing text style’s character attributes. The advantage of copying
+an existing font description is that you retain the existing settings.</p></li>
+<li><p>Customize the <apiname>CharacterAttributes</apiname> as desired.
+Define a new emphasis by sending an <apiname>at:put:</apiname> message
+to the character attributes. The first argument is the name of the
+emphasis (<codeph>#title</codeph>). The second argument is a block
+that sends a <apiname>pixelSize:</apiname> message to the block argument,
+with the desired size of the font (in pixels, not in points).  The
+example defines a new emphasis called <codeph>#title</codeph>, which
+specifies that the font must be 24 pixels in height.</p></li>
+<li><p>Create a new <apiname>TextAttributes</apiname> by sending a <apiname>characterAttributes:</apiname> message
+to the <apiname>TextAttributes</apiname> class. The argument is the <apiname>CharacterAttributes</apiname> that
+you customized in step 3.</p></li>
+<li><p>If you intend to display unusually large or small text, as
+in the example, adjust the line spacing and baseline of the text
+style. The line spacing is set by sending a <apiname>lineGrid:</apiname> message
+to the text style, with an argument at least a few pixels larger
+than the largest font size. To set the baseline, which is the distance between
+the top of the line and the imaginary line on which capital letters
+rest, send a <apiname>baseline:</apiname> message to the text style;
+the argument is the distance in pixels.</p></li>
+<li><p>Install the custom text style by sending a <apiname>textStyle:</apiname> message
+to the composed text. The argument is the custom <apiname>TextAttributes</apiname> from step
+5.</p></li>
+<li><p>Apply the new emphasis to the desired portions of the composed text’s
+underlying <apiname>Text</apiname>.
+<codeblock otherprops="smalltalk expression">| txt gc ca ta |
+gc := (ScratchPad prepareWindow) graphicsContext.
+txt := Object comment asComposedText.
+txt compositionWidth: 300.
+"Create and install a custom text style."
+ca := CharacterAttributes newWithDefaultAttributes.
+ca setDefaultQuery: txt textStyle defaultFont.
+ca at: #title put: [ :fontDesc | fontDesc pixelSize: 24].
+ta := TextAttributes characterAttributes: ca.
+ta lineGrid: 27; baseline: 18.
+txt textStyle: ta.
+txt text emphasizeAllWith: #title.
+txt displayOn: gc at: 5@25.</codeblock></p><p>In this example text emphases <codeph>#redlined</codeph> and <codeph>#fixed</codeph> are
+added to the <apiname>CharacterAttributes</apiname> instance.  The <codeph>#redlined</codeph> emphasis
+colors text red and underlines it whereas <codeph>#fixed</codeph> selects
+a fixed width font. Three windows are opened to show variations
+of <codeph>#title</codeph>, <codeph>#redlined</codeph>, and <codeph>#fixed</codeph> emphases
+to its text displayed.
+<codeblock otherprops="smalltalk expression">| displayBlock txt ca textAttr |
+"This block enables a window to be opened displaying its composed text argument"
+	displayBlock := 
+		[:text | 
+		| view |
+		view := ComposedTextView new 
+				model: text asValue; 
+				textStyle: text textStyle.
+			ScheduledWindow new
+				 label: text; 
+				 component: (LookPreferences edgeDecorator on: view); 
+				 openWithExtent: 300 @ 200].
+	ca := CharacterAttributes newWithDefaultAttributes.
+	ca setDefaultQuery: FontDescription new.
+	ca at: #title put: [:fontDesc | fontDesc pixelSize: 24].
+	ca at: #fixed put: [:fontDesc | fontDesc fixedWidth: true].
+	ca at: #redlined put: [:fontDesc | fontDesc underline: true; color: ColorValue red].
+	textAttr := TextAttributes characterAttributes: ca.
+	textAttr gridForFont: #title withLead: 2.
+	"Display a window with text emphasized in title size"
+	txt := ('This is title font' asText emphasizeAllWith: #title) asComposedText.
+	txt textStyle: textAttr.
+	displayBlock value: txt.
+	"Change the text to display redlined and display it in a new window"
+	txt text: ('This is red lined font' asText emphasizeAllWith: #redlined).
+	displayBlock value: txt.
+	"Change the text to display redlined, bold, fixed width at title size and display it in a new window"
+	txt text: ('This is bold red lined title fixed font' 
+		asText emphasizeAllWith: #(#redlined #bold #title #fixed)).
+	displayBlock value: txt</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.textFonts.lineSpacing"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Adjust line spacing and baseline</title>
+<body><p><indexterm>text<indexterm>line spacing</indexterm></indexterm><indexterm>text<indexterm>baseline</indexterm></indexterm>When
+a text style is created its line spacing and baseline may be changed
+using the <apiname>lineGrid:</apiname> and <apiname>baseline:</apiname> messages.
+ These changes are often necessary to adjust spacing between lines
+of small or large text.  The line spacing is set by sending a <apiname>lineGrid:</apiname> message
+to the text style, with an argument at least a few pixels larger
+that the largest font size.  To set the baseline, which is the distance
+between the top of the line and the imaginary line on which capital
+letters rest, send a <apiname>baseline:</apiname> message to the text
+style; the argument is the distance in pixels.</p>
+<p>Alternately, instead of declaring text line spacing and baseline
+these quantities may be setup appropriately for an given text emphasis
+by using the <apiname>gridForFont:withLead:</apiname> message.  Send
+a <apiname>gridForFont:withLead:</apiname> message to the <apiname>TextAttributes</apiname> that
+is held by the composed text. The first argument is the name of
+the text emphasis (<codeph>#title</codeph>). If this argument is <codeph>nil</codeph> then
+the spacing adjustments apply to text without emphasis.  The second
+argument is the leading, which is the vertical space to be left
+between one line and the next &#x2014; typically zero to two pixels. This
+adjusts both the line spacing and the baseline to suit the font’s
+size.
+<codeblock otherprops="smalltalk expression">| txt gc ca ta |
+gc := (ScratchPad prepareWindow) graphicsContext.
+txt := Object comment asComposedText.
+"Create and install a custom text style."
+ca := CharacterAttributes newWithDefaultAttributes.
+ca setDefaultQuery: txt textStyle defaultFont.
+ca at: #title put: [ :fontDesc | fontDesc pixelSize: 24].
+ta := TextAttributes characterAttributes: ca.
+ta gridForFont: #title
+		withLead: 2.
+txt textStyle: ta.
+txt text emphasizeAllWith: #title.
+txt compositionWidth: 300.
+txt displayOn: gc at: 5@25.</codeblock></p></body></topic>
+<topic id = "vw.help.textFonts.setFontPref"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set font preferences for a text style</title>
+<body><p><indexterm>text<indexterm>set font preference</indexterm></indexterm><indexterm>font<indexterm>set
+preference for style</indexterm></indexterm>A <apiname>FontDescription</apiname> is
+a specification for a font based on typeface family, encoding, name,
+size or other attributes.  An attribute in a <apiname>FontDescription</apiname> may
+be left at or set to <codeph>nil</codeph> so that particular attribute is
+ignored in the search for an appropriate font.  A <apiname>CharacterAttributes</apiname> or <apiname>VariableCharacterAttributes</apiname> references
+a <apiname>FontDescription</apiname> instance to which it may further
+refine according to the emphases applied in a <apiname>Text</apiname> instance.
+ The <apiname>FontDescription</apiname> is ultimately used to search
+for the best platform font that matches its specification.  A <apiname>FontDescription</apiname> may
+be so loosely specified that any font may be chosen or so tightly
+specified that it may find no font that satisfies its criteria.</p>
+<p>A <apiname>FontDescription</apiname> may have the following attributes
+set:<dl><dlentry><dt>name</dt>
+<dd>the name for the font as a string.  The wildcard pattern '<codeph>*</codeph>'
+may be included to match any characters in its position.  Setting
+the font name implies that an exact match for this font is wanted
+on the platform.  This is often too restrictive for use between
+several installations.</dd></dlentry>
+<dlentry><dt>family</dt>
+<dd>a string or an array containing one or more strings.  Each string names
+a font family or includes the wildcard pattern '<codeph>*</codeph>'
+for partial matching.  When an array is used a match is attempted
+up on the first element before succeeding elements are tried.  A
+string containing only an asterisk is used as the final element
+in the array to indicate that any alternate is preferable to a <codeph>"font
+not found"</codeph> error.</dd></dlentry>
+<dlentry><dt>encoding</dt>
+<dd>a string for the desired font encoding</dd></dlentry>
+<dlentry><dt>manufacturer</dt>
+<dd>a string or array of strings indentifying the font manufactruer
+to match.  A wildcard pattern may be included for partial matching.
+ For some platforms this specification is not relevant.</dd></dlentry>
+<dlentry><dt>pixelSize</dt>
+<dd>the font size in pixels</dd></dlentry>
+<dlentry><dt>boldness</dt>
+<dd>a number between 0 and 1 for the font boldness desired.  A value above
+0.5 implies the font should appear bold.</dd></dlentry>
+<dlentry><dt>serif</dt>
+<dd><codeph>true</codeph> if a serif font should be used.</dd></dlentry>
+<dlentry><dt>color</dt>
+<dd>the color the font should appear in other than black.</dd></dlentry>
+<dlentry><dt>fixedWidth</dt>
+<dd><codeph>true</codeph> if a fixed width font should be used (e.g.
+Courier).</dd></dlentry>
+<dlentry><dt>italic</dt>
+<dd><codeph>true</codeph> for an italic font.</dd></dlentry>
+<dlentry><dt>strikeout</dt>
+<dd><codeph>true</codeph> if a line should be drawn through the
+text.</dd></dlentry>
+<dlentry><dt>underline</dt>
+<dd><codeph>true</codeph> to underline the font.</dd></dlentry></dl></p>
+<p>Create a new instance of <apiname>FontDescription</apiname> and
+set the preferences desired.  Alternately, the <apiname>FontDescription</apiname> may
+be modified from a copy obtained from the default text style as
+in
+<codeblock otherprops="smalltalk expression">defaultFontDesc := TextAttributes default defaultFont copy.</codeblock></p>
+<p>Create a <apiname>TextAttributes</apiname> with default text attributes
+by sending the message <apiname>defaultFontQuery:</apiname> to it.
+ Use the <apiname>FontDescription</apiname> created earlier as its
+argument.  If you wish to create a text style with custom text attributes
+then install the <apiname>FontDescription</apiname> to the <apiname>CharacterAttributes</apiname> instance
+with the message <apiname>setDefaultQuery:</apiname> then create the <apiname>TextAttributes</apiname> instance
+by passing the message <apiname>characterAttributes:</apiname> with the <apiname>CharacterAttributes</apiname> instance.</p>
+<p>The example shows how new text styles for <apiname>ComposedText</apiname> instances may
+be created by specifying only the <apiname>FontDescription</apiname>.
+<codeblock otherprops="smalltalk expression">| displayBlock txt |
+"This block enables a window to be opened displaying its composed text argument"
+displayBlock := [:text | | view |
+view := ComposedTextView  new
+	model:  text asValue;
+	textStyle:  text textStyle.
+ScheduledWindow new
+	label: text;
+	component: (LookPreferences edgeDecorator on: view);
+	openWithExtent: 300@200].
+"Display a window with text emphasized 24 pixels high"
+txt := 'This is title font'  asComposedText.
+txt textStyle: (TextAttributes defaultFontQuery: (FontDescription new pixelSize: 24)).
+displayBlock value: txt.
+"Display a window with text emphasized red and underlined"
+txt := 'This is red lined font'  asComposedText.
+txt textStyle:  (TextAttributes defaultFontQuery: (FontDescription new underline: true; color: ColorValue red)).
+displayBlock value: txt.
+"Display red lined, bold, and fixed width text in 24 pixel size in a new window"
+txt := 'This is red lined bold title serif font'  asComposedText.
+txt textStyle: (TextAttributes defaultFontQuery: (FontDescription new 
+												pixelSize: 24;
+												boldness: 0.8;
+												color: ColorValue red;
+												underline: true;
+												fixedWidth: true)).
+displayBlock value: txt.</codeblock></p></body></topic>
+<topic id = "vw.help.textFonts.setFontFamily"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set font family for a text style</title>
+<body><p><indexterm>text<indexterm>set font family</indexterm></indexterm><indexterm>font<indexterm>set
+family for style</indexterm></indexterm>The default font belongs
+to Helvetica, Arial, or a similar font family, depending on the
+operating system.  To use a font from one or more alternate families
+modify the family attribute of the <apiname>FontDescription</apiname> for the
+text style.  If you wish to change the font for a limited range
+of text use the <codeph>#family</codeph> text emphasis and provide
+a string or array of strings for the font family to use.<ol><li><p>Create
+a new <apiname>FontDescription</apiname> and send a <apiname>family:</apiname> message
+to it. The argument is an array containing one or more strings.
+Each string names a font family or a wildcard pattern for partial matching.
+A string containing an asterisk is frequently used as the final
+element in the array to indicate that any alternate is preferable
+to a <codeph>"font not found"</codeph> error.</p></li>
+<li><p>Create a text style by sending a <apiname>defaultFontQuery:</apiname> message
+to the <apiname>TextAttributes</apiname> class. The argument is the <apiname>FontDescription</apiname> from
+step 2.</p></li>
+<li><p>Adjust the line spacing to suit the font by sending a <apiname>gridForFont:withLead:</apiname> message
+to the text style. The first argument is <codeph>nil</codeph> in
+this case. The second argument is the amount of leading (space)
+between lines of text (typically zero to two pixels).</p></li>
+<li><p>Install the text style in the composed text by sending a <apiname>textStyle:</apiname> message
+to the composed text. The argument is the text style from step 2.
+<codeblock otherprops="smalltalk expression">| txt gc ta fd |
+gc := (ScratchPad prepareWindow) graphicsContext.
+txt := Object comment asComposedText.
+"Create and use a text style for this font."
+fd := FontDescription new
+		family: #( 'bookman' 'times*' '*' );
+		serif: true;
+		fixedWidth: false;
+		pixelSize: 14.
+ta := TextAttributes defaultFontQuery: fd.
+ta gridForFont: nil
+		withLead: 2.
+txt textStyle: ta.
+txt compositionWidth: 300.
+txt displayOn: gc at: 5@25.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.textFonts.setFontName"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set font name for a text style</title>
+<body><p><indexterm>font<indexterm>set font name</indexterm></indexterm>Create
+a new <apiname>FontDescription</apiname> and send a <apiname>name:</apiname> message
+to it. The argument is a string that names a font family or a wildcard
+pattern for partial matching. (The example takes the list of available
+fonts from the operating system and uses the first one.)
+<codeblock otherprops="smalltalk expression">| txt gc ca ta fd |
+gc := (ScratchPad prepareWindow) graphicsContext.
+txt := Object comment asComposedText.
+"Create and install a custom text style."
+fd := FontDescription new
+		name: (Screen default listFontNames at: 1).
+ta := TextAttributes defaultFontQuery: fd.
+ta gridForFont: nil
+		withLead: 2.
+txt textStyle: ta.
+txt compositionWidth: 300.
+txt displayOn: gc at: 5@25.</codeblock></p></body></topic>
+<topic id = "vw.help.textFonts.setFontSizePixels"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set font pixel size</title>
+<body><p><indexterm>font<indexterm>set pixel size</indexterm></indexterm>Create
+a new <apiname>FontDescription</apiname> or access an existing one
+and send a <apiname>pixelSize:</apiname> message to it.  The argument
+is the desired font size in pixels.</p>
+<p>On platforms such as MS Windows or for PostScript printers font
+size is usually measured in points.  On MS Windows, the font pixel
+size equivalent to a given point size is given by the following
+relationship for most VGA or better screen resolutions:
+<codeblock otherprops="smalltalk expression">pixelSize := (pointSize * (96/72) asFloat) rounded.</codeblock></p>
+<p>The example below creates a text style for a 22 pixel font given
+the default font preferences.
+<codeblock otherprops="smalltalk expression">| txt gc ca ta fd |
+gc := (ScratchPad prepareWindow) graphicsContext.
+txt := Object comment asComposedText.
+"Copy the default font description and set its pixel size to 22"
+fd := txt textStyle defaultFont copy.
+fd pixelSize: 22.
+ta := TextAttributes defaultFontQuery: fd.
+ta gridForFont: nil
+		withLead: 2.
+txt textStyle: ta.
+txt compositionWidth: 300.
+txt displayOn: gc at: 5@25.</codeblock></p>
+<p>If the text style is scaled (i.e. the text style is an instance
+of <apiname>VariableSizeTextAttributes</apiname>) then changing the
+pixel size of its FontDescription will have no effect in text size.
+Scaled text styles need to be rescaled instead.  Text styles <codeph>#default</codeph>, <codeph>#small</codeph>, <codeph>#large</codeph>, <codeph>#systemDefault</codeph>,
+and <codeph>#fixed</codeph> are scaled. Send the message <apiname>scalingFactor:</apiname> to
+the scaled text style.  The argument is a ratio of the desired pixel size
+to the preferred pixel size.</p></body></topic>
+<topic id = "vw.help.textFonts.scaledTextStyle"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a scaled text style</title>
+<body><p><indexterm>text<indexterm>create scaled style</indexterm></indexterm>When
+text is displayed on different screen sizes or resolutions often there
+is a need to resize text for better visibility.  A text style based
+on an instance of  <apiname>VariableSizeTextAttributes</apiname> permits
+composed text to be scaled relative to a single preferred font pixel
+size set for the &Product; <apiname>Locale</apiname>. A <apiname>VariableCharacterAttributes</apiname> instance
+is used with a <apiname>VariableSizeTextAttributes</apiname> to define
+the emphases and scaling applied to a composed text.  Instances
+of <apiname>VariableSizeTextAttributes</apiname> and <apiname>VariableCharacterAttributes</apiname> will
+work in place of <apiname>TextAttributes</apiname> and <apiname>CharacterAttributes</apiname> instances;
+all respond to the same methods to define emphases and format text.
+ The pixel size attribute for a <apiname>FontDescription</apiname> installed
+in a <apiname>VariableCharacterAttributes</apiname> instance is not
+used however.  Instead, the <apiname>scalingFactor:</apiname> message
+to either a <apiname>VariableSizeTextAttributes</apiname> or <apiname>VariableCharacterAttributes</apiname> instance determines
+text size. <ol><li><p>Create a new text style from <apiname>VariableSizeTextAttributes</apiname> by
+sending its class the message <apiname>defaultFontQuery:</apiname> with
+a <apiname>FontDescription</apiname>.  The example uses the <apiname>FontDescription</apiname> from
+the default text style. Alternately, an instance of <apiname>VariableSizeTextAttributes</apiname> may
+be created by sending the message <apiname>characterAttributes:</apiname> with
+an instance of <apiname>VariableCharacterAttributes</apiname>.</p></li>
+<li><p>To scale the text style either larger or smaller than the
+preferred pixel size send the message <apiname>scalingFactor:</apiname> to
+the text style from step 1.  The argument is a ratio of the desired
+pixel size to the preferred pixel size.  For example, if the preferred
+pixel size is 16 a scaling of 1.5 displays the font at a pixel size
+of 24.</p></li>
+<li><p>Install the text style in the composed text by sending a <apiname>textStyle:</apiname> message
+to the composed text. The argument is the text style from step 2.
+<codeblock otherprops="smalltalk expression">| gc fd largeScaledStyle smallScaledStyle txt |
+gc := (ScratchPad prepareWindow) graphicsContext.
+fd := TextAttributes default defaultFont.
+"Create scaled text styles"
+smallScaledStyle := VariableSizeTextAttributes defaultFontQuery: fd. smallScaledStyle scalingFactor: 0.5.
+largeScaledStyle := VariableSizeTextAttributes defaultFontQuery: fd. largeScaledStyle scalingFactor: 2.
+"Display text one half the preferred pixel size"
+txt:= ComposedText withText: 'This text is scaled small' style: smallScaledStyle.
+txt displayOn: gc at: 5@25.
+"Display text normal size"
+txt:= 'This text is scaled normal' asComposedText.
+txt displayOn: gc at: 5@50. 
+"Display text twice the preferred pixel size"
+txt:= ComposedText withText: 'This text is scaled large' style: largeScaledStyle.
+ txt displayOn: gc at: 5@75.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.textFonts.setPreferredFamily"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set preferred font family</title>
+<body><p><indexterm>font<indexterm>set preferred family</indexterm></indexterm>Each
+text style that displays a different typeface will use a <apiname>FontDescription</apiname> with
+a font family list different by either name, number, or order (without
+use of emphasis).  There is a way to override this and have all
+text styles choose first a font from a common list of one or more
+preferred font families.  If no font is found from this family preference
+list then the text style searches its own list of font families.
+ <ol><li><p>Access the current <apiname>Locale</apiname> and send
+the message <apiname>preferredFontFamily:</apiname> to it.  For the
+argument provide an array with one or more font family name strings.
+ The wildcard character '<codeph>*</codeph>' may be used in a name
+for partial matching.  The example shown below sets the preferred
+font family to be <codeph>'system'</codeph> or, if that is not available,
+then <codeph>'gill'</codeph>.</p></li>
+<li><p>Refresh the windows that are already open by sending a <apiname>resetViews</apiname> message
+to the <apiname>TextAttributes</apiname> class. When they are redisplayed,
+they will use the new family preferences.
+<codeblock otherprops="smalltalk expression">Locale current preferredFontFamily: #('system' 'gill'). 
+TextAttributes resetViews.</codeblock></p><p>Normally the family preference list is empty.
+ To clear family preferences set the list to be empty. 
+<codeblock otherprops="smalltalk expression">Locale current preferredFontFamily: #().</codeblock></p><p>To determine what the current font family preferences
+are, if any, send the accessor message <apiname>preferredFontFamily</apiname> to
+the current <apiname>Locale</apiname>.
+<codeblock otherprops="smalltalk expression">^Locale current preferredFontFamily</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.textFonts.setPrefPixelSize"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set preferred font pixel size</title>
+<body><p><indexterm>font<indexterm>set preferred pixel size</indexterm></indexterm>When
+a scaled text style is used such as <codeph>#default</codeph> the
+font is scaled relative to the preferred pixel size set for the
+current <apiname>Locale</apiname>.  One can globally resize all scaled
+text styles in &Product; by changing the preferred font pixel
+size.<ol><li><p>Access the current Locale and send the message <apiname>preferredPixelSize:</apiname> to
+it.  Provide a font pixel size as an integer for the argument. 
+</p></li>
+<li><p>Refresh the windows that are already open by sending a <apiname>resetViews</apiname> message
+to the <apiname>TextAttributes</apiname> class. When they are redisplayed,
+text using a scaled text style will be resized.
+<codeblock otherprops="smalltalk expression">Locale current preferredPixelSize:18.
+TextAttributes resetViews.</codeblock></p><p>To determine what the preferred font pixel size
+is send the accessor message <apiname>preferredPixelSize</apiname> to
+the current <apiname>Locale</apiname>.
+<codeblock otherprops="smalltalk expression">^Locale current preferredPixelSize</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.textFonts.getPlatformFonts"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get platform fonts</title>
+<body><p><indexterm>font<indexterm>get system fonts</indexterm></indexterm>When
+you develop an application for a single platform, rather than for portability
+to several platforms, specifying a platform-specific font directly
+gives you the greatest control over font selection.
+<ol><li><p>Get
+the default <apiname>Screen</apiname> by sending a <apiname>default</apiname> message
+to that class.</p></li>
+<li><p>Get the list of platform font names by sending a <apiname>listPlatformFonts</apiname> message
+to the default screen.
+<codeblock otherprops="smalltalk method">initialize
+		platformFonts := SelectionInList 
+			with: Screen default listFontNames.
+		platformFonts selectionIndexHolder onChangeSend: #changedFont to: self.</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Font2-Example:Examples.Font2Example open" 
+format="st" scope="external">Font2Example</xref></p>
+</body></topic>
+<topic id = "vw.help.textFonts.setDefaultFont"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Change the default font</title>
+<body><p><indexterm>font<indexterm>set default</indexterm></indexterm>The
+default font that is used by &Product; tools to display textual information
+can be changed as shown in the basic steps. Widgets in which the <apiname>Default</apiname> font
+has been selected, both in system tools and in your applications,
+are also affected.<ol><li><p>Send a <apiname>setDefaultTo:</apiname> message
+to the <apiname>TextAttributes</apiname> class. The argument is the <apiname>Symbol</apiname> that
+names the desired text style. The text style must have been defined
+and installed in the fonts menu previously.</p></li>
+<li><p>Refresh the windows that are already open by sending a <apiname>resetViews</apiname> message
+to the <apiname>TextAttributes</apiname> class. When they are redisplayed,
+they will use the new default.
+<codeblock otherprops="smalltalk expression">TextAttributes setDefaultTo: #default.
+TextAttributes resetViews.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.textFonts.applyDefaultFont"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Apply the platform default font</title>
+<body><p><indexterm>font<indexterm>apply default font</indexterm></indexterm>The <apiname>System</apiname> font
+is selected to mimic the appearance of the platform font for the
+current UI look. A widget that uses the <apiname>System</apiname> font
+has the best chance of looking like other applications on any platform
+on which it is deployed.</p>
+<p>The <apiname>System</apiname> text style can be applied to any
+composed text.<ol><li><p>Get the look policy class as set by the
+UI look settings by sending a <apiname>preferenceFor:</apiname> message
+to the <apiname>UISettings</apiname> class, with the argument <codeph>#defaultLook</codeph>.</p></li>
+<li><p>Obtain the system text style by sending message <apiname>systemTextStyle</apiname> to
+the look policy class from step 1.</p></li>
+<li><p>Send a <apiname>textStyle:</apiname> message to the composed
+text. The argument is the text style from step 2.
+<codeblock otherprops="smalltalk expression">| txt gc lookPolicyClass |
+gc := (ScratchPad prepareWindow) graphicsContext.
+txt := 'Hello, World' asComposedText.
+lookPolicyClass := UISettings preferenceFor: #defaultLook.
+txt textStyle: lookPolicyClass systemTextStyle.
+txt displayOn: gc at: 5@25.</codeblock></p></li></ol></p>
+<p></p></body></topic></topic></dita>

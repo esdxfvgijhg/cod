@@ -1,0 +1,138 @@
+\hypertarget{classns3_1_1lorawan_1_1NewChannelReq}{}\section{ns3\+:\+:lorawan\+:\+:New\+Channel\+Req Class Reference}
+\label{classns3_1_1lorawan_1_1NewChannelReq}\index{ns3\+::lorawan\+::\+New\+Channel\+Req@{ns3\+::lorawan\+::\+New\+Channel\+Req}}
+
+
+{\ttfamily \#include $<$mac-\/command.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:New\+Channel\+Req\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{classns3_1_1lorawan_1_1NewChannelReq__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:New\+Channel\+Req\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=343pt]{classns3_1_1lorawan_1_1NewChannelReq__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classns3_1_1lorawan_1_1NewChannelReq_ac9b80e4338cce4c29c01f6c0c1d0a9e9}{New\+Channel\+Req} (uint8\+\_\+t ch\+Index, double frequency, uint8\+\_\+t min\+Data\+Rate, uint8\+\_\+t max\+Data\+Rate)
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1NewChannelReq_aa61501c0d31796aea70b93b011b3a0ee}{Serialize} (Buffer\+::\+Iterator \&start) const
+\item 
+virtual uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1NewChannelReq_a133e0fa9c46335f9ccfd35a1bf3cfdf3}{Deserialize} (Buffer\+::\+Iterator \&start)
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1NewChannelReq_af60960cdfafc846b66a657a25678f90e}{Print} (std\+::ostream \&os) const
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NewChannelReq_a48fcdf496b74875aaefc943e8c66a06d}\label{classns3_1_1lorawan_1_1NewChannelReq_a48fcdf496b74875aaefc943e8c66a06d}} 
+uint8\+\_\+t {\bfseries Get\+Channel\+Index} (void)
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NewChannelReq_a6bbce5a0046d5fe7bfcf06ab3b3739f6}\label{classns3_1_1lorawan_1_1NewChannelReq_a6bbce5a0046d5fe7bfcf06ab3b3739f6}} 
+double {\bfseries Get\+Frequency} (void)
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NewChannelReq_ad5b0f00a54589a370c8761b3b8297bad}\label{classns3_1_1lorawan_1_1NewChannelReq_ad5b0f00a54589a370c8761b3b8297bad}} 
+uint8\+\_\+t {\bfseries Get\+Min\+Data\+Rate} (void)
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NewChannelReq_aa5b556fa35b948723732b1ff399247df}\label{classns3_1_1lorawan_1_1NewChannelReq_aa5b556fa35b948723732b1ff399247df}} 
+uint8\+\_\+t {\bfseries Get\+Max\+Data\+Rate} (void)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Implementation of the \hyperlink{classns3_1_1lorawan_1_1NewChannelReq}{New\+Channel\+Req} Lo\+Ra\+W\+AN M\+AC command. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NewChannelReq_ac9b80e4338cce4c29c01f6c0c1d0a9e9}\label{classns3_1_1lorawan_1_1NewChannelReq_ac9b80e4338cce4c29c01f6c0c1d0a9e9}} 
+\index{ns3\+::lorawan\+::\+New\+Channel\+Req@{ns3\+::lorawan\+::\+New\+Channel\+Req}!New\+Channel\+Req@{New\+Channel\+Req}}
+\index{New\+Channel\+Req@{New\+Channel\+Req}!ns3\+::lorawan\+::\+New\+Channel\+Req@{ns3\+::lorawan\+::\+New\+Channel\+Req}}
+\subsubsection{\texorpdfstring{New\+Channel\+Req()}{NewChannelReq()}}
+{\footnotesize\ttfamily ns3\+::lorawan\+::\+New\+Channel\+Req\+::\+New\+Channel\+Req (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{ch\+Index,  }\item[{double}]{frequency,  }\item[{uint8\+\_\+t}]{min\+Data\+Rate,  }\item[{uint8\+\_\+t}]{max\+Data\+Rate }\end{DoxyParamCaption})}
+
+Constructor providing initialization of all parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ch\+Index} & The index of the channel this command wants to operate on. \\
+\hline
+{\em frequency} & The new frequency for this channel. \\
+\hline
+{\em min\+Data\+Rate} & The minimum data rate allowed on this channel. \\
+\hline
+{\em max\+Data\+Rate} & The minimum data rate allowed on this channel. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NewChannelReq_a133e0fa9c46335f9ccfd35a1bf3cfdf3}\label{classns3_1_1lorawan_1_1NewChannelReq_a133e0fa9c46335f9ccfd35a1bf3cfdf3}} 
+\index{ns3\+::lorawan\+::\+New\+Channel\+Req@{ns3\+::lorawan\+::\+New\+Channel\+Req}!Deserialize@{Deserialize}}
+\index{Deserialize@{Deserialize}!ns3\+::lorawan\+::\+New\+Channel\+Req@{ns3\+::lorawan\+::\+New\+Channel\+Req}}
+\subsubsection{\texorpdfstring{Deserialize()}{Deserialize()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+New\+Channel\+Req\+::\+Deserialize (\begin{DoxyParamCaption}\item[{Buffer\+::\+Iterator \&}]{start }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Deserialize the buffer into a M\+AC command.
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & A pointer to the buffer that contains the serialized command. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of bytes that were consumed. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1MacCommand_af12d223a71a67196bce498f1240eda75}{ns3\+::lorawan\+::\+Mac\+Command}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NewChannelReq_af60960cdfafc846b66a657a25678f90e}\label{classns3_1_1lorawan_1_1NewChannelReq_af60960cdfafc846b66a657a25678f90e}} 
+\index{ns3\+::lorawan\+::\+New\+Channel\+Req@{ns3\+::lorawan\+::\+New\+Channel\+Req}!Print@{Print}}
+\index{Print@{Print}!ns3\+::lorawan\+::\+New\+Channel\+Req@{ns3\+::lorawan\+::\+New\+Channel\+Req}}
+\subsubsection{\texorpdfstring{Print()}{Print()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+New\+Channel\+Req\+::\+Print (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Print the contents of this M\+AC command in human-\/readable format.
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The std\+::ostream instance on which to print the M\+AC command. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1MacCommand_a6bf88db38dab7dcd817811a9fb59f920}{ns3\+::lorawan\+::\+Mac\+Command}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NewChannelReq_aa61501c0d31796aea70b93b011b3a0ee}\label{classns3_1_1lorawan_1_1NewChannelReq_aa61501c0d31796aea70b93b011b3a0ee}} 
+\index{ns3\+::lorawan\+::\+New\+Channel\+Req@{ns3\+::lorawan\+::\+New\+Channel\+Req}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!ns3\+::lorawan\+::\+New\+Channel\+Req@{ns3\+::lorawan\+::\+New\+Channel\+Req}}
+\subsubsection{\texorpdfstring{Serialize()}{Serialize()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+New\+Channel\+Req\+::\+Serialize (\begin{DoxyParamCaption}\item[{Buffer\+::\+Iterator \&}]{start }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Serialize the contents of this M\+AC command into a buffer, according to the Lo\+Ra\+W\+AN standard.
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & A pointer to the buffer into which to serialize the command. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1MacCommand_a0ed44b33942ddc3dc9694dc06ab0b87f}{ns3\+::lorawan\+::\+Mac\+Command}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+mac-\/command.\+h\item 
+mac-\/command.\+cc\end{DoxyCompactItemize}

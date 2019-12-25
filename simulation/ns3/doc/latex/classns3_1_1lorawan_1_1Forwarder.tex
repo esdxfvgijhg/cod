@@ -1,0 +1,125 @@
+\hypertarget{classns3_1_1lorawan_1_1Forwarder}{}\section{ns3\+:\+:lorawan\+:\+:Forwarder Class Reference}
+\label{classns3_1_1lorawan_1_1Forwarder}\index{ns3\+::lorawan\+::\+Forwarder@{ns3\+::lorawan\+::\+Forwarder}}
+
+
+{\ttfamily \#include $<$forwarder.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Forwarder\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{classns3_1_1lorawan_1_1Forwarder__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Forwarder\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{classns3_1_1lorawan_1_1Forwarder__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1Forwarder_ac945060ea56bc2bd25d2b4ff18d80a2d}{Set\+Lora\+Net\+Device} (Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraNetDevice}{Lora\+Net\+Device} $>$ lora\+Net\+Device)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1Forwarder_a05e97fcfcdeafe425477f6e0c06509f8}{Set\+Point\+To\+Point\+Net\+Device} (Ptr$<$ Point\+To\+Point\+Net\+Device $>$ point\+To\+Point\+Net\+Device)
+\item 
+bool \hyperlink{classns3_1_1lorawan_1_1Forwarder_a92407f3228e9cf5b1b84cc7d62dff2c2}{Receive\+From\+Lora} (Ptr$<$ \hyperlink{classNetDevice}{Net\+Device} $>$ lora\+Net\+Device, Ptr$<$ const Packet $>$ packet, uint16\+\_\+t protocol, const Address \&sender)
+\item 
+bool \hyperlink{classns3_1_1lorawan_1_1Forwarder_a004f5126baf8e3a264cab68f59921f77}{Receive\+From\+Point\+To\+Point} (Ptr$<$ \hyperlink{classNetDevice}{Net\+Device} $>$ point\+To\+Point\+Net\+Device, Ptr$<$ const Packet $>$ packet, uint16\+\_\+t protocol, const Address \&sender)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1Forwarder_ae94ef5057f8c5fb01db2c6c7ed17eb9d}{Start\+Application} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1Forwarder_a8980a4b970c9b20e3ef27d2ab6d3d1d9}{Stop\+Application} (void)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1Forwarder_abb352183dd8738c5aab43be37199295b}\label{classns3_1_1lorawan_1_1Forwarder_abb352183dd8738c5aab43be37199295b}} 
+static Type\+Id {\bfseries Get\+Type\+Id} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This application forwards packets between Net\+Devices\+: \hyperlink{classns3_1_1lorawan_1_1LoraNetDevice}{Lora\+Net\+Device} -\/$>$ Point\+To\+Point\+Net\+Device and vice versa. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1Forwarder_a92407f3228e9cf5b1b84cc7d62dff2c2}\label{classns3_1_1lorawan_1_1Forwarder_a92407f3228e9cf5b1b84cc7d62dff2c2}} 
+\index{ns3\+::lorawan\+::\+Forwarder@{ns3\+::lorawan\+::\+Forwarder}!Receive\+From\+Lora@{Receive\+From\+Lora}}
+\index{Receive\+From\+Lora@{Receive\+From\+Lora}!ns3\+::lorawan\+::\+Forwarder@{ns3\+::lorawan\+::\+Forwarder}}
+\subsubsection{\texorpdfstring{Receive\+From\+Lora()}{ReceiveFromLora()}}
+{\footnotesize\ttfamily bool ns3\+::lorawan\+::\+Forwarder\+::\+Receive\+From\+Lora (\begin{DoxyParamCaption}\item[{Ptr$<$ \hyperlink{classNetDevice}{Net\+Device} $>$}]{lora\+Net\+Device,  }\item[{Ptr$<$ const Packet $>$}]{packet,  }\item[{uint16\+\_\+t}]{protocol,  }\item[{const Address \&}]{sender }\end{DoxyParamCaption})}
+
+Receive a packet from the \hyperlink{classns3_1_1lorawan_1_1LoraNetDevice}{Lora\+Net\+Device}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lora\+Net\+Device} & The \hyperlink{classns3_1_1lorawan_1_1LoraNetDevice}{Lora\+Net\+Device} we received the packet from. \\
+\hline
+{\em packet} & The packet we received. \\
+\hline
+{\em protocol} & The protocol number associated to this packet. \\
+\hline
+{\em sender} & The address of the sender. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if we can handle the packet, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1Forwarder_a004f5126baf8e3a264cab68f59921f77}\label{classns3_1_1lorawan_1_1Forwarder_a004f5126baf8e3a264cab68f59921f77}} 
+\index{ns3\+::lorawan\+::\+Forwarder@{ns3\+::lorawan\+::\+Forwarder}!Receive\+From\+Point\+To\+Point@{Receive\+From\+Point\+To\+Point}}
+\index{Receive\+From\+Point\+To\+Point@{Receive\+From\+Point\+To\+Point}!ns3\+::lorawan\+::\+Forwarder@{ns3\+::lorawan\+::\+Forwarder}}
+\subsubsection{\texorpdfstring{Receive\+From\+Point\+To\+Point()}{ReceiveFromPointToPoint()}}
+{\footnotesize\ttfamily bool ns3\+::lorawan\+::\+Forwarder\+::\+Receive\+From\+Point\+To\+Point (\begin{DoxyParamCaption}\item[{Ptr$<$ \hyperlink{classNetDevice}{Net\+Device} $>$}]{point\+To\+Point\+Net\+Device,  }\item[{Ptr$<$ const Packet $>$}]{packet,  }\item[{uint16\+\_\+t}]{protocol,  }\item[{const Address \&}]{sender }\end{DoxyParamCaption})}
+
+Receive a packet from the Point\+To\+Point\+Net\+Device \mbox{\Hypertarget{classns3_1_1lorawan_1_1Forwarder_ac945060ea56bc2bd25d2b4ff18d80a2d}\label{classns3_1_1lorawan_1_1Forwarder_ac945060ea56bc2bd25d2b4ff18d80a2d}} 
+\index{ns3\+::lorawan\+::\+Forwarder@{ns3\+::lorawan\+::\+Forwarder}!Set\+Lora\+Net\+Device@{Set\+Lora\+Net\+Device}}
+\index{Set\+Lora\+Net\+Device@{Set\+Lora\+Net\+Device}!ns3\+::lorawan\+::\+Forwarder@{ns3\+::lorawan\+::\+Forwarder}}
+\subsubsection{\texorpdfstring{Set\+Lora\+Net\+Device()}{SetLoraNetDevice()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Forwarder\+::\+Set\+Lora\+Net\+Device (\begin{DoxyParamCaption}\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraNetDevice}{Lora\+Net\+Device} $>$}]{lora\+Net\+Device }\end{DoxyParamCaption})}
+
+Sets the device to use to communicate with the E\+Ds.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lora\+Net\+Device} & The \hyperlink{classns3_1_1lorawan_1_1LoraNetDevice}{Lora\+Net\+Device} on this node. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1Forwarder_a05e97fcfcdeafe425477f6e0c06509f8}\label{classns3_1_1lorawan_1_1Forwarder_a05e97fcfcdeafe425477f6e0c06509f8}} 
+\index{ns3\+::lorawan\+::\+Forwarder@{ns3\+::lorawan\+::\+Forwarder}!Set\+Point\+To\+Point\+Net\+Device@{Set\+Point\+To\+Point\+Net\+Device}}
+\index{Set\+Point\+To\+Point\+Net\+Device@{Set\+Point\+To\+Point\+Net\+Device}!ns3\+::lorawan\+::\+Forwarder@{ns3\+::lorawan\+::\+Forwarder}}
+\subsubsection{\texorpdfstring{Set\+Point\+To\+Point\+Net\+Device()}{SetPointToPointNetDevice()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Forwarder\+::\+Set\+Point\+To\+Point\+Net\+Device (\begin{DoxyParamCaption}\item[{Ptr$<$ Point\+To\+Point\+Net\+Device $>$}]{point\+To\+Point\+Net\+Device }\end{DoxyParamCaption})}
+
+Sets the P2P device to use to communicate with the NS.
+
+
+\begin{DoxyParams}{Parameters}
+{\em point\+To\+Point\+Net\+Device} & The P2\+P\+Net\+Device on this node. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1Forwarder_ae94ef5057f8c5fb01db2c6c7ed17eb9d}\label{classns3_1_1lorawan_1_1Forwarder_ae94ef5057f8c5fb01db2c6c7ed17eb9d}} 
+\index{ns3\+::lorawan\+::\+Forwarder@{ns3\+::lorawan\+::\+Forwarder}!Start\+Application@{Start\+Application}}
+\index{Start\+Application@{Start\+Application}!ns3\+::lorawan\+::\+Forwarder@{ns3\+::lorawan\+::\+Forwarder}}
+\subsubsection{\texorpdfstring{Start\+Application()}{StartApplication()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Forwarder\+::\+Start\+Application (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Start the application \mbox{\Hypertarget{classns3_1_1lorawan_1_1Forwarder_a8980a4b970c9b20e3ef27d2ab6d3d1d9}\label{classns3_1_1lorawan_1_1Forwarder_a8980a4b970c9b20e3ef27d2ab6d3d1d9}} 
+\index{ns3\+::lorawan\+::\+Forwarder@{ns3\+::lorawan\+::\+Forwarder}!Stop\+Application@{Stop\+Application}}
+\index{Stop\+Application@{Stop\+Application}!ns3\+::lorawan\+::\+Forwarder@{ns3\+::lorawan\+::\+Forwarder}}
+\subsubsection{\texorpdfstring{Stop\+Application()}{StopApplication()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Forwarder\+::\+Stop\+Application (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Stop the application 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+forwarder.\+h\item 
+forwarder.\+cc\end{DoxyCompactItemize}

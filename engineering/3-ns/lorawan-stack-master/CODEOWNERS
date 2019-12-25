@@ -1,0 +1,48 @@
+# Root
+/ @johanstokking @htdvisser
+/CODEOWNERS @johanstokking
+/LICENSE @johanstokking
+
+# Clear common folders
+/doc
+/config
+/pkg
+
+# Dependencies
+/go.mod @johanstokking @htdvisser
+/go.sum @johanstokking @htdvisser
+
+# Build pipeline
+/Makefile @htdvisser @rvolosatovs
+/magefile.go @htdvisser @rvolosatovs
+/.make @htdvisser @rvolosatovs
+/.mage @htdvisser @rvolosatovs
+
+# API and CLI compatibility
+/api @johanstokking @htdvisser @rvolosatovs
+/cmd @johanstokking @htdvisser
+/pkg/ttnpb @johanstokking @htdvisser @rvolosatovs
+
+# Security
+/pkg/auth @johanstokking @htdvisser
+/pkg/crypto @johanstokking @htdvisser
+
+# Shared components
+/pkg/component @johanstokking @htdvisser
+/pkg/types @johanstokking @htdvisser @rvolosatovs
+/pkg/webui @bafonins @kschiffer
+
+# Subsystems
+/pkg/applicationserver @johanstokking @adriansmares
+/pkg/console @bafonins @kschiffer
+/pkg/gatewayserver @johanstokking @KrishnaIyer
+/pkg/identityserver @htdvisser @bafonins
+/pkg/interop @johanstokking @rvolosatovs
+/pkg/joinserver @johanstokking @rvolosatovs
+/pkg/networkserver @johanstokking @rvolosatovs
+
+# SDKs
+/sdk/js @bafonins @kschiffer
+
+# Clear generated code
+/sdk/js/generated

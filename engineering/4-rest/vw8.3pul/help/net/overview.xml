@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+	<topic id = "vw.help.net.overview"
+			xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+		<title>Web and Network Applications</title>
+		<body><p>&Product; provides a rich set of add-on frameworks for network 
+				and web application development.</p>
+				<p>Use the AppeX framework and tools to build web applications 
+				that combine server-side Smalltalk with client-side Javascript,
+				and SiouX to build scalable, high-performance web servers.</p>
+				<p>The Net Clients framework enables your application to 
+				work with standard internet services such as FTP, HTTP, and 
+				e-mail, while the Web Services framework provides a full 
+				implementation of WSDL and SOAP. The Security framework 
+				provides components to enable transport layer security and 
+				widely-used cryptographic algorithms.</p>
+				<p>Finally, you can build distributed applications using 
+				the Opentalk and DST frameworks.</p>
+		</body>
+	</topic>
+</dita>

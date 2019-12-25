@@ -1,0 +1,383 @@
+\hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModel}{}\section{ns3\+:\+:lorawan\+:\+:Lora\+Radio\+Energy\+Model Class Reference}
+\label{classns3_1_1lorawan_1_1LoraRadioEnergyModel}\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}}
+
+
+A Wi\+Fi radio energy model.  
+
+
+
+
+{\ttfamily \#include $<$lora-\/radio-\/energy-\/model.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Lora\+Radio\+Energy\+Model\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{classns3_1_1lorawan_1_1LoraRadioEnergyModel__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Lora\+Radio\+Energy\+Model\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{classns3_1_1lorawan_1_1LoraRadioEnergyModel__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef Callback$<$ void $>$ \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a14be2fabbb8f8bab0e0c3c909f1f5662}{Lora\+Radio\+Energy\+Depletion\+Callback}
+\item 
+typedef Callback$<$ void $>$ \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_aa621913a2b37844d79e4033f85d650dc}{Lora\+Radio\+Energy\+Recharged\+Callback}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a871b6cd0b3c0505c2be884599e85929b}{Set\+Energy\+Source} (Ptr$<$ Energy\+Source $>$ source)
+\begin{DoxyCompactList}\small\item\em Sets pointer to Energy\+Souce installed on node. \end{DoxyCompactList}\item 
+double \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_ad9ec43f91272ff72606281bca23c15ae}{Get\+Total\+Energy\+Consumption} (void) const
+\item 
+double \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_aac27a85a815b2d7bc50a85a7d014c6ca}{Get\+Standby\+CurrentA} (void) const
+\begin{DoxyCompactList}\small\item\em Gets idle current. \end{DoxyCompactList}\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a4a0211bc19870f3b4940f6b7b08a0616}{Set\+Standby\+CurrentA} (double idle\+CurrentA)
+\begin{DoxyCompactList}\small\item\em Sets idle current. \end{DoxyCompactList}\item 
+double \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_ab468b8f51d83a402deec1fee502d1ffb}{Get\+Tx\+CurrentA} (void) const
+\begin{DoxyCompactList}\small\item\em Gets transmit current. \end{DoxyCompactList}\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_ac25339a3bd35ba6bc40c866d147ebbef}{Set\+Tx\+CurrentA} (double tx\+CurrentA)
+\begin{DoxyCompactList}\small\item\em Sets transmit current. \end{DoxyCompactList}\item 
+double \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_af71e644f848fa5d758fdbe58f8b996d8}{Get\+Rx\+CurrentA} (void) const
+\begin{DoxyCompactList}\small\item\em Gets receive current. \end{DoxyCompactList}\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_ab88d08184a9ac29d243527b936d87d7d}{Set\+Rx\+CurrentA} (double rx\+CurrentA)
+\begin{DoxyCompactList}\small\item\em Sets receive current. \end{DoxyCompactList}\item 
+double \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a123158238bad02a388251990d51d5b5b}{Get\+Sleep\+CurrentA} (void) const
+\begin{DoxyCompactList}\small\item\em Gets sleep current. \end{DoxyCompactList}\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_aad4d63790bb240462087aca4f316d439}{Set\+Sleep\+CurrentA} (double sleep\+CurrentA)
+\begin{DoxyCompactList}\small\item\em Sets sleep current. \end{DoxyCompactList}\item 
+\hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_adc84e4ce7796e19f19f077df9592af15}{End\+Device\+Lora\+Phy\+::\+State} \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a1cbca39200c00dca551d70af876f4f0d}{Get\+Current\+State} (void) const
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_aa97b7cea7d3d916579478aca37c534bf}{Set\+Energy\+Depletion\+Callback} (\hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a14be2fabbb8f8bab0e0c3c909f1f5662}{Lora\+Radio\+Energy\+Depletion\+Callback} callback)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a8cae43df0c796eaa137dc823651f7426}{Set\+Energy\+Recharged\+Callback} (\hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_aa621913a2b37844d79e4033f85d650dc}{Lora\+Radio\+Energy\+Recharged\+Callback} callback)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_ae9478485a13a8c582009c0aab0b66796}{Set\+Tx\+Current\+Model} (Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraTxCurrentModel}{Lora\+Tx\+Current\+Model} $>$ model)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a4a2460272aa7dc8048e7b3a9360f675c}{Set\+Tx\+Current\+From\+Model} (double tx\+Power\+Dbm)
+\begin{DoxyCompactList}\small\item\em Calls the Calc\+Tx\+Current method of the tx current model to compute the tx current based on such model. \end{DoxyCompactList}\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a6be2e24f42f160bb2cf738baa852ead0}{Change\+State} (int new\+State)
+\begin{DoxyCompactList}\small\item\em Changes state of the Lora\+Radio\+Energy\+Mode. \end{DoxyCompactList}\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a71bb7a383f4c6b97a34f0185fb059996}{Handle\+Energy\+Depletion} (void)
+\begin{DoxyCompactList}\small\item\em Handles energy depletion. \end{DoxyCompactList}\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a273129f01f327c1201269703e5a45b08}{Handle\+Energy\+Changed} (void)
+\begin{DoxyCompactList}\small\item\em Handles energy recharged. \end{DoxyCompactList}\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a6aaebbbe9d57a1ed344ab16e9f0c9bb5}{Handle\+Energy\+Recharged} (void)
+\begin{DoxyCompactList}\small\item\em Handles energy recharged. \end{DoxyCompactList}\item 
+\hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener}{Lora\+Radio\+Energy\+Model\+Phy\+Listener} $\ast$ \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_afed097f1370397dfe2f2e887566806de}{Get\+Phy\+Listener} (void)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Type\+Id \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a87828851482c17605655408a87c01873}{Get\+Type\+Id} (void)
+\begin{DoxyCompactList}\small\item\em Get the type ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A Wi\+Fi radio energy model. 
+
+4 states are defined for the radio\+: TX, RX, S\+T\+A\+N\+D\+BY, S\+L\+E\+EP. Default state is S\+T\+A\+N\+D\+BY. The different types of transactions that are defined are\+:
+\begin{DoxyEnumerate}
+\item Tx\+: State goes from S\+T\+A\+N\+D\+BY to TX, radio is in TX state for T\+X\+\_\+duration, then state goes from TX to S\+T\+A\+N\+D\+BY.
+\item Rx\+: State goes from S\+T\+A\+N\+D\+BY to RX, radio is in RX state for R\+X\+\_\+duration, then state goes from RX to S\+T\+A\+N\+D\+BY.
+\item Go\+\_\+to\+\_\+\+Sleep\+: State goes from S\+T\+A\+N\+D\+BY to S\+L\+E\+EP.
+\item End\+\_\+of\+\_\+\+Sleep\+: State goes from S\+L\+E\+EP to S\+T\+A\+N\+D\+BY. The class keeps track of what state the radio is currently in.
+\end{DoxyEnumerate}
+
+Energy calculation\+: For each transaction, this model notifies Energy\+Source object. The Energy\+Source object will query this model for the total current. Then the Energy\+Source object uses the total current to calculate energy. 
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a14be2fabbb8f8bab0e0c3c909f1f5662}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a14be2fabbb8f8bab0e0c3c909f1f5662}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}!Lora\+Radio\+Energy\+Depletion\+Callback@{Lora\+Radio\+Energy\+Depletion\+Callback}}
+\index{Lora\+Radio\+Energy\+Depletion\+Callback@{Lora\+Radio\+Energy\+Depletion\+Callback}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}}
+\subsubsection{\texorpdfstring{Lora\+Radio\+Energy\+Depletion\+Callback}{LoraRadioEnergyDepletionCallback}}
+{\footnotesize\ttfamily typedef Callback$<$void$>$ \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a14be2fabbb8f8bab0e0c3c909f1f5662}{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+::\+Lora\+Radio\+Energy\+Depletion\+Callback}}
+
+Callback type for energy depletion handling. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModel_aa621913a2b37844d79e4033f85d650dc}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModel_aa621913a2b37844d79e4033f85d650dc}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}!Lora\+Radio\+Energy\+Recharged\+Callback@{Lora\+Radio\+Energy\+Recharged\+Callback}}
+\index{Lora\+Radio\+Energy\+Recharged\+Callback@{Lora\+Radio\+Energy\+Recharged\+Callback}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}}
+\subsubsection{\texorpdfstring{Lora\+Radio\+Energy\+Recharged\+Callback}{LoraRadioEnergyRechargedCallback}}
+{\footnotesize\ttfamily typedef Callback$<$void$>$ \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_aa621913a2b37844d79e4033f85d650dc}{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+::\+Lora\+Radio\+Energy\+Recharged\+Callback}}
+
+Callback type for energy recharged handling. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a6be2e24f42f160bb2cf738baa852ead0}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a6be2e24f42f160bb2cf738baa852ead0}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}!Change\+State@{Change\+State}}
+\index{Change\+State@{Change\+State}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}}
+\subsubsection{\texorpdfstring{Change\+State()}{ChangeState()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+::\+Change\+State (\begin{DoxyParamCaption}\item[{int}]{new\+State }\end{DoxyParamCaption})}
+
+
+
+Changes state of the Lora\+Radio\+Energy\+Mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+State} & New state the lora radio is in.\\
+\hline
+\end{DoxyParams}
+Implements Device\+Energy\+Model\+::\+Change\+State. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a1cbca39200c00dca551d70af876f4f0d}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a1cbca39200c00dca551d70af876f4f0d}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}!Get\+Current\+State@{Get\+Current\+State}}
+\index{Get\+Current\+State@{Get\+Current\+State}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}}
+\subsubsection{\texorpdfstring{Get\+Current\+State()}{GetCurrentState()}}
+{\footnotesize\ttfamily \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_adc84e4ce7796e19f19f077df9592af15}{End\+Device\+Lora\+Phy\+::\+State} ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+::\+Get\+Current\+State (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Current state. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModel_afed097f1370397dfe2f2e887566806de}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModel_afed097f1370397dfe2f2e887566806de}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}!Get\+Phy\+Listener@{Get\+Phy\+Listener}}
+\index{Get\+Phy\+Listener@{Get\+Phy\+Listener}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}}
+\subsubsection{\texorpdfstring{Get\+Phy\+Listener()}{GetPhyListener()}}
+{\footnotesize\ttfamily \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener}{Lora\+Radio\+Energy\+Model\+Phy\+Listener} $\ast$ ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+::\+Get\+Phy\+Listener (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+Pointer to the P\+HY listener. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModel_af71e644f848fa5d758fdbe58f8b996d8}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModel_af71e644f848fa5d758fdbe58f8b996d8}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}!Get\+Rx\+CurrentA@{Get\+Rx\+CurrentA}}
+\index{Get\+Rx\+CurrentA@{Get\+Rx\+CurrentA}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}}
+\subsubsection{\texorpdfstring{Get\+Rx\+Current\+A()}{GetRxCurrentA()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+::\+Get\+Rx\+CurrentA (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets receive current. 
+
+\begin{DoxyReturn}{Returns}
+receive current of the lora device. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a123158238bad02a388251990d51d5b5b}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a123158238bad02a388251990d51d5b5b}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}!Get\+Sleep\+CurrentA@{Get\+Sleep\+CurrentA}}
+\index{Get\+Sleep\+CurrentA@{Get\+Sleep\+CurrentA}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}}
+\subsubsection{\texorpdfstring{Get\+Sleep\+Current\+A()}{GetSleepCurrentA()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+::\+Get\+Sleep\+CurrentA (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets sleep current. 
+
+\begin{DoxyReturn}{Returns}
+sleep current of the lora device. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModel_aac27a85a815b2d7bc50a85a7d014c6ca}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModel_aac27a85a815b2d7bc50a85a7d014c6ca}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}!Get\+Standby\+CurrentA@{Get\+Standby\+CurrentA}}
+\index{Get\+Standby\+CurrentA@{Get\+Standby\+CurrentA}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}}
+\subsubsection{\texorpdfstring{Get\+Standby\+Current\+A()}{GetStandbyCurrentA()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+::\+Get\+Standby\+CurrentA (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets idle current. 
+
+\begin{DoxyReturn}{Returns}
+idle current of the lora device. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModel_ad9ec43f91272ff72606281bca23c15ae}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModel_ad9ec43f91272ff72606281bca23c15ae}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}!Get\+Total\+Energy\+Consumption@{Get\+Total\+Energy\+Consumption}}
+\index{Get\+Total\+Energy\+Consumption@{Get\+Total\+Energy\+Consumption}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}}
+\subsubsection{\texorpdfstring{Get\+Total\+Energy\+Consumption()}{GetTotalEnergyConsumption()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+::\+Get\+Total\+Energy\+Consumption (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Total energy consumption of the wifi device.
+\end{DoxyReturn}
+Implements Device\+Energy\+Model\+::\+Get\+Total\+Energy\+Consumption. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModel_ab468b8f51d83a402deec1fee502d1ffb}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModel_ab468b8f51d83a402deec1fee502d1ffb}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}!Get\+Tx\+CurrentA@{Get\+Tx\+CurrentA}}
+\index{Get\+Tx\+CurrentA@{Get\+Tx\+CurrentA}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}}
+\subsubsection{\texorpdfstring{Get\+Tx\+Current\+A()}{GetTxCurrentA()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+::\+Get\+Tx\+CurrentA (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets transmit current. 
+
+\begin{DoxyReturn}{Returns}
+transmit current of the lora device. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a87828851482c17605655408a87c01873}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a87828851482c17605655408a87c01873}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}!Get\+Type\+Id@{Get\+Type\+Id}}
+\index{Get\+Type\+Id@{Get\+Type\+Id}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}}
+\subsubsection{\texorpdfstring{Get\+Type\+Id()}{GetTypeId()}}
+{\footnotesize\ttfamily Type\+Id ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+::\+Get\+Type\+Id (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get the type ID. 
+
+\begin{DoxyReturn}{Returns}
+the object Type\+Id 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a273129f01f327c1201269703e5a45b08}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a273129f01f327c1201269703e5a45b08}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}!Handle\+Energy\+Changed@{Handle\+Energy\+Changed}}
+\index{Handle\+Energy\+Changed@{Handle\+Energy\+Changed}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}}
+\subsubsection{\texorpdfstring{Handle\+Energy\+Changed()}{HandleEnergyChanged()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+::\+Handle\+Energy\+Changed (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Handles energy recharged. 
+
+Implements Device\+Energy\+Model\+::\+Handle\+Energy\+Changed \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a71bb7a383f4c6b97a34f0185fb059996}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a71bb7a383f4c6b97a34f0185fb059996}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}!Handle\+Energy\+Depletion@{Handle\+Energy\+Depletion}}
+\index{Handle\+Energy\+Depletion@{Handle\+Energy\+Depletion}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}}
+\subsubsection{\texorpdfstring{Handle\+Energy\+Depletion()}{HandleEnergyDepletion()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+::\+Handle\+Energy\+Depletion (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Handles energy depletion. 
+
+Implements Device\+Energy\+Model\+::\+Handle\+Energy\+Depletion \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a6aaebbbe9d57a1ed344ab16e9f0c9bb5}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a6aaebbbe9d57a1ed344ab16e9f0c9bb5}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}!Handle\+Energy\+Recharged@{Handle\+Energy\+Recharged}}
+\index{Handle\+Energy\+Recharged@{Handle\+Energy\+Recharged}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}}
+\subsubsection{\texorpdfstring{Handle\+Energy\+Recharged()}{HandleEnergyRecharged()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+::\+Handle\+Energy\+Recharged (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Handles energy recharged. 
+
+Implements Device\+Energy\+Model\+::\+Handle\+Energy\+Recharged \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModel_aa97b7cea7d3d916579478aca37c534bf}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModel_aa97b7cea7d3d916579478aca37c534bf}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}!Set\+Energy\+Depletion\+Callback@{Set\+Energy\+Depletion\+Callback}}
+\index{Set\+Energy\+Depletion\+Callback@{Set\+Energy\+Depletion\+Callback}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}}
+\subsubsection{\texorpdfstring{Set\+Energy\+Depletion\+Callback()}{SetEnergyDepletionCallback()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+::\+Set\+Energy\+Depletion\+Callback (\begin{DoxyParamCaption}\item[{\hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a14be2fabbb8f8bab0e0c3c909f1f5662}{Lora\+Radio\+Energy\+Depletion\+Callback}}]{callback }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & Callback function.\\
+\hline
+\end{DoxyParams}
+Sets callback for energy depletion handling. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a8cae43df0c796eaa137dc823651f7426}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a8cae43df0c796eaa137dc823651f7426}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}!Set\+Energy\+Recharged\+Callback@{Set\+Energy\+Recharged\+Callback}}
+\index{Set\+Energy\+Recharged\+Callback@{Set\+Energy\+Recharged\+Callback}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}}
+\subsubsection{\texorpdfstring{Set\+Energy\+Recharged\+Callback()}{SetEnergyRechargedCallback()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+::\+Set\+Energy\+Recharged\+Callback (\begin{DoxyParamCaption}\item[{\hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel_aa621913a2b37844d79e4033f85d650dc}{Lora\+Radio\+Energy\+Recharged\+Callback}}]{callback }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & Callback function.\\
+\hline
+\end{DoxyParams}
+Sets callback for energy recharged handling. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a871b6cd0b3c0505c2be884599e85929b}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a871b6cd0b3c0505c2be884599e85929b}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}!Set\+Energy\+Source@{Set\+Energy\+Source}}
+\index{Set\+Energy\+Source@{Set\+Energy\+Source}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}}
+\subsubsection{\texorpdfstring{Set\+Energy\+Source()}{SetEnergySource()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+::\+Set\+Energy\+Source (\begin{DoxyParamCaption}\item[{Ptr$<$ Energy\+Source $>$}]{source }\end{DoxyParamCaption})}
+
+
+
+Sets pointer to Energy\+Souce installed on node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & Pointer to Energy\+Source installed on node.\\
+\hline
+\end{DoxyParams}
+Implements Device\+Energy\+Model\+::\+Set\+Energy\+Source. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModel_ab88d08184a9ac29d243527b936d87d7d}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModel_ab88d08184a9ac29d243527b936d87d7d}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}!Set\+Rx\+CurrentA@{Set\+Rx\+CurrentA}}
+\index{Set\+Rx\+CurrentA@{Set\+Rx\+CurrentA}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}}
+\subsubsection{\texorpdfstring{Set\+Rx\+Current\+A()}{SetRxCurrentA()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+::\+Set\+Rx\+CurrentA (\begin{DoxyParamCaption}\item[{double}]{rx\+CurrentA }\end{DoxyParamCaption})}
+
+
+
+Sets receive current. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rx\+CurrentA} & the receive current \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModel_aad4d63790bb240462087aca4f316d439}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModel_aad4d63790bb240462087aca4f316d439}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}!Set\+Sleep\+CurrentA@{Set\+Sleep\+CurrentA}}
+\index{Set\+Sleep\+CurrentA@{Set\+Sleep\+CurrentA}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}}
+\subsubsection{\texorpdfstring{Set\+Sleep\+Current\+A()}{SetSleepCurrentA()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+::\+Set\+Sleep\+CurrentA (\begin{DoxyParamCaption}\item[{double}]{sleep\+CurrentA }\end{DoxyParamCaption})}
+
+
+
+Sets sleep current. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sleep\+CurrentA} & the sleep current \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a4a0211bc19870f3b4940f6b7b08a0616}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a4a0211bc19870f3b4940f6b7b08a0616}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}!Set\+Standby\+CurrentA@{Set\+Standby\+CurrentA}}
+\index{Set\+Standby\+CurrentA@{Set\+Standby\+CurrentA}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}}
+\subsubsection{\texorpdfstring{Set\+Standby\+Current\+A()}{SetStandbyCurrentA()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+::\+Set\+Standby\+CurrentA (\begin{DoxyParamCaption}\item[{double}]{idle\+CurrentA }\end{DoxyParamCaption})}
+
+
+
+Sets idle current. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em idle\+CurrentA} & the idle current \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModel_ac25339a3bd35ba6bc40c866d147ebbef}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModel_ac25339a3bd35ba6bc40c866d147ebbef}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}!Set\+Tx\+CurrentA@{Set\+Tx\+CurrentA}}
+\index{Set\+Tx\+CurrentA@{Set\+Tx\+CurrentA}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}}
+\subsubsection{\texorpdfstring{Set\+Tx\+Current\+A()}{SetTxCurrentA()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+::\+Set\+Tx\+CurrentA (\begin{DoxyParamCaption}\item[{double}]{tx\+CurrentA }\end{DoxyParamCaption})}
+
+
+
+Sets transmit current. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tx\+CurrentA} & the transmit current \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a4a2460272aa7dc8048e7b3a9360f675c}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModel_a4a2460272aa7dc8048e7b3a9360f675c}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}!Set\+Tx\+Current\+From\+Model@{Set\+Tx\+Current\+From\+Model}}
+\index{Set\+Tx\+Current\+From\+Model@{Set\+Tx\+Current\+From\+Model}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}}
+\subsubsection{\texorpdfstring{Set\+Tx\+Current\+From\+Model()}{SetTxCurrentFromModel()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+::\+Set\+Tx\+Current\+From\+Model (\begin{DoxyParamCaption}\item[{double}]{tx\+Power\+Dbm }\end{DoxyParamCaption})}
+
+
+
+Calls the Calc\+Tx\+Current method of the tx current model to compute the tx current based on such model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tx\+Power\+Dbm} & the nominal tx power in d\+Bm \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModel_ae9478485a13a8c582009c0aab0b66796}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModel_ae9478485a13a8c582009c0aab0b66796}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}!Set\+Tx\+Current\+Model@{Set\+Tx\+Current\+Model}}
+\index{Set\+Tx\+Current\+Model@{Set\+Tx\+Current\+Model}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model}}
+\subsubsection{\texorpdfstring{Set\+Tx\+Current\+Model()}{SetTxCurrentModel()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+::\+Set\+Tx\+Current\+Model (\begin{DoxyParamCaption}\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraTxCurrentModel}{Lora\+Tx\+Current\+Model} $>$}]{model }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & the model used to compute the lora tx current. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lora-\/radio-\/energy-\/model.\+h\item 
+lora-\/radio-\/energy-\/model.\+cc\end{DoxyCompactItemize}

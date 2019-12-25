@@ -1,0 +1,1 @@
+encoding: #UTF_8catalog: db2DBdb2DatabaseException = 'DB2 Database Exception.'unableToQueryStatementAttributes = 'Unable to query statement attributes.'

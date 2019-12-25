@@ -1,0 +1,326 @@
+\hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus}{}\section{ns3\+:\+:lorawan\+:\+:End\+Device\+Status Class Reference}
+\label{classns3_1_1lorawan_1_1EndDeviceStatus}\index{ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}}
+
+
+{\ttfamily \#include $<$end-\/device-\/status.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:End\+Device\+Status\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classns3_1_1lorawan_1_1EndDeviceStatus__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:End\+Device\+Status\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classns3_1_1lorawan_1_1EndDeviceStatus__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structns3_1_1lorawan_1_1EndDeviceStatus_1_1PacketInfoPerGw}{Packet\+Info\+Per\+Gw}
+\item 
+struct \hyperlink{structns3_1_1lorawan_1_1EndDeviceStatus_1_1ReceivedPacketInfo}{Received\+Packet\+Info}
+\item 
+struct \hyperlink{structns3_1_1lorawan_1_1EndDeviceStatus_1_1Reply}{Reply}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_a85bd7a844d001f0a3e04d14165e3be70}\label{classns3_1_1lorawan_1_1EndDeviceStatus_a85bd7a844d001f0a3e04d14165e3be70}} 
+typedef std\+::map$<$ Address, \hyperlink{structns3_1_1lorawan_1_1EndDeviceStatus_1_1PacketInfoPerGw}{Packet\+Info\+Per\+Gw} $>$ {\bfseries Gateway\+List}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_a081d59ec2c06b37e925710efca555da0}\label{classns3_1_1lorawan_1_1EndDeviceStatus_a081d59ec2c06b37e925710efca555da0}} 
+typedef std\+::list$<$ std\+::pair$<$ Ptr$<$ Packet const  $>$, \hyperlink{structns3_1_1lorawan_1_1EndDeviceStatus_1_1ReceivedPacketInfo}{Received\+Packet\+Info} $>$ $>$ {\bfseries Received\+Packet\+List}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus_a25e0c2769696c42a5e62088b2ba0bb2a}{Needs\+Reply} (void)
+\item 
+Ptr$<$ Packet $>$ \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus_a816b1769aefdd36fdc06f8f2a5af34f3}{Get\+Complete\+Reply\+Packet} (void)
+\item 
+\hyperlink{classns3_1_1lorawan_1_1LoraMacHeader}{Lora\+Mac\+Header} \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus_aec276e89a9a780dce296822f3f7b25b9}{Get\+Reply\+Mac\+Header} (void)
+\item 
+\hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader}{Lora\+Frame\+Header} \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus_af2095509552ac48da422cbd14f7e975b}{Get\+Reply\+Frame\+Header} (void)
+\item 
+Ptr$<$ Packet $>$ \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus_a718b9f8457df5793a03d9442a4ffed60}{Get\+Reply\+Payload} (void)
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_adb0f7234e45ea0051e26c6d8bc323c75}\label{classns3_1_1lorawan_1_1EndDeviceStatus_adb0f7234e45ea0051e26c6d8bc323c75}} 
+{\bfseries End\+Device\+Status} (\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} end\+Device\+Address, Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac}{End\+Device\+Lora\+Mac} $>$ end\+Device\+Mac)
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus_aff3f9a544427d61022b526f2a131d614}{Get\+First\+Receive\+Window\+Spreading\+Factor} (void)
+\item 
+double \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus_afdb51088fb0af238160ba8bfec7bf0de}{Get\+First\+Receive\+Window\+Frequency} (void)
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus_a9dc3c9107e16f19ccf96e462c01d1fe3}{Get\+Second\+Receive\+Window\+Offset} (void)
+\item 
+double \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus_a29a72fd91a4cd5ea1d4010ba990ec5b6}{Get\+Second\+Receive\+Window\+Frequency} (void)
+\item 
+Received\+Packet\+List \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus_af0ea395ca783b6bd3d55fc8f5cba704d}{Get\+Received\+Packet\+List} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus_ac39c49bf91b1bcdbf08add2694bca011}{Set\+First\+Receive\+Window\+Spreading\+Factor} (uint8\+\_\+t sf)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus_a0a5445bfba22ce6dd318128eb4e8bc59}{Set\+First\+Receive\+Window\+Frequency} (double frequency)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus_ac901c8879c93c79c7cc6fae82cb14909}{Set\+Second\+Receive\+Window\+Offset} (uint8\+\_\+t offset)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus_a19b88dd518ed0885f7e4a59a5cd3feb7}{Set\+Second\+Receive\+Window\+Frequency} (double frequency)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus_a68017acffb75ff0ccf70347dcd325b84}{Set\+Reply\+Mac\+Header} (\hyperlink{classns3_1_1lorawan_1_1LoraMacHeader}{Lora\+Mac\+Header} mac\+Header)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus_a2f8b9b43a6d4b3af2be53777877e6787}{Set\+Reply\+Frame\+Header} (\hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader}{Lora\+Frame\+Header} frame\+Header)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus_aa21d19b3898ae972c644ec94993813ec}{Set\+Reply\+Payload} (Ptr$<$ Packet $>$ reply\+Payload)
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_a4fee5c291db27d3656ef5268b5e31137}\label{classns3_1_1lorawan_1_1EndDeviceStatus_a4fee5c291db27d3656ef5268b5e31137}} 
+Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac}{End\+Device\+Lora\+Mac} $>$ {\bfseries Get\+Mac} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus_a57c324b1fc3708fab5b3a6c638226d91}{Insert\+Received\+Packet} (Ptr$<$ Packet const $>$ received\+Packet, const Address \&gw\+Address)
+\item 
+Ptr$<$ Packet const  $>$ \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus_ab4ead237afea3a967bced521bc474e47}{Get\+Last\+Packet\+Received\+From\+Device} (void)
+\item 
+\hyperlink{structns3_1_1lorawan_1_1EndDeviceStatus_1_1ReceivedPacketInfo}{End\+Device\+Status\+::\+Received\+Packet\+Info} \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus_a282dab8b89f752ae913e22d348b24c3f}{Get\+Last\+Received\+Packet\+Info} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus_a9d25dab867d40f0ef85881527d3467e8}{Initialize\+Reply} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus_ab9a84efe386e3677ecf9c817ba936dda}{Add\+M\+A\+C\+Command} (Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1MacCommand}{Mac\+Command} $>$ mac\+Command)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus_a1cd60fc88eb88c1990f28e8aee71e05f}{Update\+Gateway\+Data} (Gateway\+List gw\+List, Address gw\+Address, double rcv\+Power)
+\item 
+Address \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus_a08f78817278989d57c515af97b9b9204}{Get\+Best\+Gateway\+For\+Reply} (void)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_af8792a24e34cc46530849ebcaa9896e1}\label{classns3_1_1lorawan_1_1EndDeviceStatus_af8792a24e34cc46530849ebcaa9896e1}} 
+static Type\+Id {\bfseries Get\+Type\+Id} (void)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_a5ff004b81ff7c6d555bbe670c42bec0b}\label{classns3_1_1lorawan_1_1EndDeviceStatus_a5ff004b81ff7c6d555bbe670c42bec0b}} 
+struct \hyperlink{structns3_1_1lorawan_1_1EndDeviceStatus_1_1Reply}{Reply} {\bfseries m\+\_\+reply}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_a60b7ba4fdaf30e9824f355beca66c617}\label{classns3_1_1lorawan_1_1EndDeviceStatus_a60b7ba4fdaf30e9824f355beca66c617}} 
+\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} {\bfseries m\+\_\+end\+Device\+Address}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_a8b9f34fb2bce772f0a8887243ded0977}\label{classns3_1_1lorawan_1_1EndDeviceStatus_a8b9f34fb2bce772f0a8887243ded0977}} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&os, const \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus}{End\+Device\+Status} \&status)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class represents the Network Server\textquotesingle{}s knowledge about an End Device in the Lo\+Ra\+W\+AN network it is administering.
+
+The Network Server\textquotesingle{}s \hyperlink{classns3_1_1lorawan_1_1NetworkStatus}{Network\+Status} component contains a list of instances of this class, one for each device in the network. Each instance contains all the parameters and information of the end device and the packets received from it. Furthermore, this class holds the reply packet that the network server will send to this device at the first available receive window. Upon new packet arrivals at the Network Server, the On\+Received\+Packet method is called to update the information regarding the last received packet and its parameters. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_ab9a84efe386e3677ecf9c817ba936dda}\label{classns3_1_1lorawan_1_1EndDeviceStatus_ab9a84efe386e3677ecf9c817ba936dda}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}!Add\+M\+A\+C\+Command@{Add\+M\+A\+C\+Command}}
+\index{Add\+M\+A\+C\+Command@{Add\+M\+A\+C\+Command}!ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}}
+\subsubsection{\texorpdfstring{Add\+M\+A\+C\+Command()}{AddMACCommand()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Status\+::\+Add\+M\+A\+C\+Command (\begin{DoxyParamCaption}\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1MacCommand}{Mac\+Command} $>$}]{mac\+Command }\end{DoxyParamCaption})}
+
+Add M\+AC command to the list. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_a08f78817278989d57c515af97b9b9204}\label{classns3_1_1lorawan_1_1EndDeviceStatus_a08f78817278989d57c515af97b9b9204}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}!Get\+Best\+Gateway\+For\+Reply@{Get\+Best\+Gateway\+For\+Reply}}
+\index{Get\+Best\+Gateway\+For\+Reply@{Get\+Best\+Gateway\+For\+Reply}!ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}}
+\subsubsection{\texorpdfstring{Get\+Best\+Gateway\+For\+Reply()}{GetBestGatewayForReply()}}
+{\footnotesize\ttfamily Address ns3\+::lorawan\+::\+End\+Device\+Status\+::\+Get\+Best\+Gateway\+For\+Reply (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Return the best gateway that\+:
+\begin{DoxyItemize}
+\item Can reach this device
+\item Is available to send a packet 
+\end{DoxyItemize}\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_a816b1769aefdd36fdc06f8f2a5af34f3}\label{classns3_1_1lorawan_1_1EndDeviceStatus_a816b1769aefdd36fdc06f8f2a5af34f3}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}!Get\+Complete\+Reply\+Packet@{Get\+Complete\+Reply\+Packet}}
+\index{Get\+Complete\+Reply\+Packet@{Get\+Complete\+Reply\+Packet}!ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}}
+\subsubsection{\texorpdfstring{Get\+Complete\+Reply\+Packet()}{GetCompleteReplyPacket()}}
+{\footnotesize\ttfamily Ptr$<$ Packet $>$ ns3\+::lorawan\+::\+End\+Device\+Status\+::\+Get\+Complete\+Reply\+Packet (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the reply packet.
+
+\begin{DoxyReturn}{Returns}
+A pointer to the packet reply (data + headers). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_afdb51088fb0af238160ba8bfec7bf0de}\label{classns3_1_1lorawan_1_1EndDeviceStatus_afdb51088fb0af238160ba8bfec7bf0de}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}!Get\+First\+Receive\+Window\+Frequency@{Get\+First\+Receive\+Window\+Frequency}}
+\index{Get\+First\+Receive\+Window\+Frequency@{Get\+First\+Receive\+Window\+Frequency}!ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}}
+\subsubsection{\texorpdfstring{Get\+First\+Receive\+Window\+Frequency()}{GetFirstReceiveWindowFrequency()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+End\+Device\+Status\+::\+Get\+First\+Receive\+Window\+Frequency (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the first window frequency of this device. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_aff3f9a544427d61022b526f2a131d614}\label{classns3_1_1lorawan_1_1EndDeviceStatus_aff3f9a544427d61022b526f2a131d614}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}!Get\+First\+Receive\+Window\+Spreading\+Factor@{Get\+First\+Receive\+Window\+Spreading\+Factor}}
+\index{Get\+First\+Receive\+Window\+Spreading\+Factor@{Get\+First\+Receive\+Window\+Spreading\+Factor}!ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}}
+\subsubsection{\texorpdfstring{Get\+First\+Receive\+Window\+Spreading\+Factor()}{GetFirstReceiveWindowSpreadingFactor()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+End\+Device\+Status\+::\+Get\+First\+Receive\+Window\+Spreading\+Factor (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the spreading factor this device is using in the first receive window.
+
+\begin{DoxyReturn}{Returns}
+An unsigned 8-\/bit integer containing the spreading factor. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_ab4ead237afea3a967bced521bc474e47}\label{classns3_1_1lorawan_1_1EndDeviceStatus_ab4ead237afea3a967bced521bc474e47}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}!Get\+Last\+Packet\+Received\+From\+Device@{Get\+Last\+Packet\+Received\+From\+Device}}
+\index{Get\+Last\+Packet\+Received\+From\+Device@{Get\+Last\+Packet\+Received\+From\+Device}!ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}}
+\subsubsection{\texorpdfstring{Get\+Last\+Packet\+Received\+From\+Device()}{GetLastPacketReceivedFromDevice()}}
+{\footnotesize\ttfamily Ptr$<$ Packet const  $>$ ns3\+::lorawan\+::\+End\+Device\+Status\+::\+Get\+Last\+Packet\+Received\+From\+Device (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Return the last packet that was received from this device. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_a282dab8b89f752ae913e22d348b24c3f}\label{classns3_1_1lorawan_1_1EndDeviceStatus_a282dab8b89f752ae913e22d348b24c3f}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}!Get\+Last\+Received\+Packet\+Info@{Get\+Last\+Received\+Packet\+Info}}
+\index{Get\+Last\+Received\+Packet\+Info@{Get\+Last\+Received\+Packet\+Info}!ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}}
+\subsubsection{\texorpdfstring{Get\+Last\+Received\+Packet\+Info()}{GetLastReceivedPacketInfo()}}
+{\footnotesize\ttfamily \hyperlink{structns3_1_1lorawan_1_1EndDeviceStatus_1_1ReceivedPacketInfo}{End\+Device\+Status\+::\+Received\+Packet\+Info} ns3\+::lorawan\+::\+End\+Device\+Status\+::\+Get\+Last\+Received\+Packet\+Info (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Return the information about the last packet that was received from the device. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_af0ea395ca783b6bd3d55fc8f5cba704d}\label{classns3_1_1lorawan_1_1EndDeviceStatus_af0ea395ca783b6bd3d55fc8f5cba704d}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}!Get\+Received\+Packet\+List@{Get\+Received\+Packet\+List}}
+\index{Get\+Received\+Packet\+List@{Get\+Received\+Packet\+List}!ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}}
+\subsubsection{\texorpdfstring{Get\+Received\+Packet\+List()}{GetReceivedPacketList()}}
+{\footnotesize\ttfamily End\+Device\+Status\+::\+Received\+Packet\+List ns3\+::lorawan\+::\+End\+Device\+Status\+::\+Get\+Received\+Packet\+List (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the received packet list.
+
+\begin{DoxyReturn}{Returns}
+The received packet list. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_af2095509552ac48da422cbd14f7e975b}\label{classns3_1_1lorawan_1_1EndDeviceStatus_af2095509552ac48da422cbd14f7e975b}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}!Get\+Reply\+Frame\+Header@{Get\+Reply\+Frame\+Header}}
+\index{Get\+Reply\+Frame\+Header@{Get\+Reply\+Frame\+Header}!ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}}
+\subsubsection{\texorpdfstring{Get\+Reply\+Frame\+Header()}{GetReplyFrameHeader()}}
+{\footnotesize\ttfamily \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader}{Lora\+Frame\+Header} ns3\+::lorawan\+::\+End\+Device\+Status\+::\+Get\+Reply\+Frame\+Header (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the reply packet frame header.
+
+\begin{DoxyReturn}{Returns}
+The packet reply frame header. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_aec276e89a9a780dce296822f3f7b25b9}\label{classns3_1_1lorawan_1_1EndDeviceStatus_aec276e89a9a780dce296822f3f7b25b9}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}!Get\+Reply\+Mac\+Header@{Get\+Reply\+Mac\+Header}}
+\index{Get\+Reply\+Mac\+Header@{Get\+Reply\+Mac\+Header}!ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}}
+\subsubsection{\texorpdfstring{Get\+Reply\+Mac\+Header()}{GetReplyMacHeader()}}
+{\footnotesize\ttfamily \hyperlink{classns3_1_1lorawan_1_1LoraMacHeader}{Lora\+Mac\+Header} ns3\+::lorawan\+::\+End\+Device\+Status\+::\+Get\+Reply\+Mac\+Header (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the reply packet mac header.
+
+\begin{DoxyReturn}{Returns}
+The packet reply mac header. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_a718b9f8457df5793a03d9442a4ffed60}\label{classns3_1_1lorawan_1_1EndDeviceStatus_a718b9f8457df5793a03d9442a4ffed60}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}!Get\+Reply\+Payload@{Get\+Reply\+Payload}}
+\index{Get\+Reply\+Payload@{Get\+Reply\+Payload}!ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}}
+\subsubsection{\texorpdfstring{Get\+Reply\+Payload()}{GetReplyPayload()}}
+{\footnotesize\ttfamily Ptr$<$ Packet $>$ ns3\+::lorawan\+::\+End\+Device\+Status\+::\+Get\+Reply\+Payload (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the data of the reply packet.
+
+\begin{DoxyReturn}{Returns}
+A pointer to the packet reply. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_a29a72fd91a4cd5ea1d4010ba990ec5b6}\label{classns3_1_1lorawan_1_1EndDeviceStatus_a29a72fd91a4cd5ea1d4010ba990ec5b6}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}!Get\+Second\+Receive\+Window\+Frequency@{Get\+Second\+Receive\+Window\+Frequency}}
+\index{Get\+Second\+Receive\+Window\+Frequency@{Get\+Second\+Receive\+Window\+Frequency}!ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}}
+\subsubsection{\texorpdfstring{Get\+Second\+Receive\+Window\+Frequency()}{GetSecondReceiveWindowFrequency()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+End\+Device\+Status\+::\+Get\+Second\+Receive\+Window\+Frequency (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Return the second window frequency of this device. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_a9dc3c9107e16f19ccf96e462c01d1fe3}\label{classns3_1_1lorawan_1_1EndDeviceStatus_a9dc3c9107e16f19ccf96e462c01d1fe3}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}!Get\+Second\+Receive\+Window\+Offset@{Get\+Second\+Receive\+Window\+Offset}}
+\index{Get\+Second\+Receive\+Window\+Offset@{Get\+Second\+Receive\+Window\+Offset}!ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}}
+\subsubsection{\texorpdfstring{Get\+Second\+Receive\+Window\+Offset()}{GetSecondReceiveWindowOffset()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+End\+Device\+Status\+::\+Get\+Second\+Receive\+Window\+Offset (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the offset of spreading factor this device is using in the second receive window with respect to the first receive window.
+
+\begin{DoxyReturn}{Returns}
+An unsigned 8-\/bit integer containing the spreading factor. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_a9d25dab867d40f0ef85881527d3467e8}\label{classns3_1_1lorawan_1_1EndDeviceStatus_a9d25dab867d40f0ef85881527d3467e8}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}!Initialize\+Reply@{Initialize\+Reply}}
+\index{Initialize\+Reply@{Initialize\+Reply}!ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}}
+\subsubsection{\texorpdfstring{Initialize\+Reply()}{InitializeReply()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Status\+::\+Initialize\+Reply (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Initialize reply. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_a57c324b1fc3708fab5b3a6c638226d91}\label{classns3_1_1lorawan_1_1EndDeviceStatus_a57c324b1fc3708fab5b3a6c638226d91}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}!Insert\+Received\+Packet@{Insert\+Received\+Packet}}
+\index{Insert\+Received\+Packet@{Insert\+Received\+Packet}!ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}}
+\subsubsection{\texorpdfstring{Insert\+Received\+Packet()}{InsertReceivedPacket()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Status\+::\+Insert\+Received\+Packet (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet const $>$}]{received\+Packet,  }\item[{const Address \&}]{gw\+Address }\end{DoxyParamCaption})}
+
+Insert a received packet in the packet list. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_a25e0c2769696c42a5e62088b2ba0bb2a}\label{classns3_1_1lorawan_1_1EndDeviceStatus_a25e0c2769696c42a5e62088b2ba0bb2a}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}!Needs\+Reply@{Needs\+Reply}}
+\index{Needs\+Reply@{Needs\+Reply}!ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}}
+\subsubsection{\texorpdfstring{Needs\+Reply()}{NeedsReply()}}
+{\footnotesize\ttfamily bool ns3\+::lorawan\+::\+End\+Device\+Status\+::\+Needs\+Reply (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Whether the end device needs a reply.
+
+This is determined by looking at headers and payload of the \hyperlink{structns3_1_1lorawan_1_1EndDeviceStatus_1_1Reply}{Reply} structure\+: if they are empty, no reply should be needed.
+
+\begin{DoxyReturn}{Returns}
+A boolean value signaling if the end device needs a reply. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_a0a5445bfba22ce6dd318128eb4e8bc59}\label{classns3_1_1lorawan_1_1EndDeviceStatus_a0a5445bfba22ce6dd318128eb4e8bc59}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}!Set\+First\+Receive\+Window\+Frequency@{Set\+First\+Receive\+Window\+Frequency}}
+\index{Set\+First\+Receive\+Window\+Frequency@{Set\+First\+Receive\+Window\+Frequency}!ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}}
+\subsubsection{\texorpdfstring{Set\+First\+Receive\+Window\+Frequency()}{SetFirstReceiveWindowFrequency()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Status\+::\+Set\+First\+Receive\+Window\+Frequency (\begin{DoxyParamCaption}\item[{double}]{frequency }\end{DoxyParamCaption})}
+
+Set the first window frequency of this device. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_ac39c49bf91b1bcdbf08add2694bca011}\label{classns3_1_1lorawan_1_1EndDeviceStatus_ac39c49bf91b1bcdbf08add2694bca011}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}!Set\+First\+Receive\+Window\+Spreading\+Factor@{Set\+First\+Receive\+Window\+Spreading\+Factor}}
+\index{Set\+First\+Receive\+Window\+Spreading\+Factor@{Set\+First\+Receive\+Window\+Spreading\+Factor}!ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}}
+\subsubsection{\texorpdfstring{Set\+First\+Receive\+Window\+Spreading\+Factor()}{SetFirstReceiveWindowSpreadingFactor()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Status\+::\+Set\+First\+Receive\+Window\+Spreading\+Factor (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{sf }\end{DoxyParamCaption})}
+
+Set the spreading factor this device is using in the first receive window. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_a2f8b9b43a6d4b3af2be53777877e6787}\label{classns3_1_1lorawan_1_1EndDeviceStatus_a2f8b9b43a6d4b3af2be53777877e6787}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}!Set\+Reply\+Frame\+Header@{Set\+Reply\+Frame\+Header}}
+\index{Set\+Reply\+Frame\+Header@{Set\+Reply\+Frame\+Header}!ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}}
+\subsubsection{\texorpdfstring{Set\+Reply\+Frame\+Header()}{SetReplyFrameHeader()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Status\+::\+Set\+Reply\+Frame\+Header (\begin{DoxyParamCaption}\item[{\hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader}{Lora\+Frame\+Header}}]{frame\+Header }\end{DoxyParamCaption})}
+
+Set the reply packet frame header. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_a68017acffb75ff0ccf70347dcd325b84}\label{classns3_1_1lorawan_1_1EndDeviceStatus_a68017acffb75ff0ccf70347dcd325b84}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}!Set\+Reply\+Mac\+Header@{Set\+Reply\+Mac\+Header}}
+\index{Set\+Reply\+Mac\+Header@{Set\+Reply\+Mac\+Header}!ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}}
+\subsubsection{\texorpdfstring{Set\+Reply\+Mac\+Header()}{SetReplyMacHeader()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Status\+::\+Set\+Reply\+Mac\+Header (\begin{DoxyParamCaption}\item[{\hyperlink{classns3_1_1lorawan_1_1LoraMacHeader}{Lora\+Mac\+Header}}]{mac\+Header }\end{DoxyParamCaption})}
+
+Set the reply packet mac header. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_aa21d19b3898ae972c644ec94993813ec}\label{classns3_1_1lorawan_1_1EndDeviceStatus_aa21d19b3898ae972c644ec94993813ec}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}!Set\+Reply\+Payload@{Set\+Reply\+Payload}}
+\index{Set\+Reply\+Payload@{Set\+Reply\+Payload}!ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}}
+\subsubsection{\texorpdfstring{Set\+Reply\+Payload()}{SetReplyPayload()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Status\+::\+Set\+Reply\+Payload (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet $>$}]{reply\+Payload }\end{DoxyParamCaption})}
+
+Set the packet reply payload. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_a19b88dd518ed0885f7e4a59a5cd3feb7}\label{classns3_1_1lorawan_1_1EndDeviceStatus_a19b88dd518ed0885f7e4a59a5cd3feb7}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}!Set\+Second\+Receive\+Window\+Frequency@{Set\+Second\+Receive\+Window\+Frequency}}
+\index{Set\+Second\+Receive\+Window\+Frequency@{Set\+Second\+Receive\+Window\+Frequency}!ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}}
+\subsubsection{\texorpdfstring{Set\+Second\+Receive\+Window\+Frequency()}{SetSecondReceiveWindowFrequency()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Status\+::\+Set\+Second\+Receive\+Window\+Frequency (\begin{DoxyParamCaption}\item[{double}]{frequency }\end{DoxyParamCaption})}
+
+Set the second window frequency of this device. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_ac901c8879c93c79c7cc6fae82cb14909}\label{classns3_1_1lorawan_1_1EndDeviceStatus_ac901c8879c93c79c7cc6fae82cb14909}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}!Set\+Second\+Receive\+Window\+Offset@{Set\+Second\+Receive\+Window\+Offset}}
+\index{Set\+Second\+Receive\+Window\+Offset@{Set\+Second\+Receive\+Window\+Offset}!ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}}
+\subsubsection{\texorpdfstring{Set\+Second\+Receive\+Window\+Offset()}{SetSecondReceiveWindowOffset()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Status\+::\+Set\+Second\+Receive\+Window\+Offset (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{offset }\end{DoxyParamCaption})}
+
+Set the spreading factor this device is using in the first receive window. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceStatus_a1cd60fc88eb88c1990f28e8aee71e05f}\label{classns3_1_1lorawan_1_1EndDeviceStatus_a1cd60fc88eb88c1990f28e8aee71e05f}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}!Update\+Gateway\+Data@{Update\+Gateway\+Data}}
+\index{Update\+Gateway\+Data@{Update\+Gateway\+Data}!ns3\+::lorawan\+::\+End\+Device\+Status@{ns3\+::lorawan\+::\+End\+Device\+Status}}
+\subsubsection{\texorpdfstring{Update\+Gateway\+Data()}{UpdateGatewayData()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Status\+::\+Update\+Gateway\+Data (\begin{DoxyParamCaption}\item[{Gateway\+List}]{gw\+List,  }\item[{Address}]{gw\+Address,  }\item[{double}]{rcv\+Power }\end{DoxyParamCaption})}
+
+Update Gateway data when more then one gateway receive the same packet. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+end-\/device-\/status.\+h\item 
+end-\/device-\/status.\+cc\end{DoxyCompactItemize}

@@ -1,0 +1,235 @@
+#USE "course.lib"
+DATA TYPE Voisin
+  RECORD
+    INT LinkIndex, Direction:
+:
+VAL INT Nil IS -1:
+VAL INT N IS 0:
+VAL INT  NW IS  1:
+VAL INT  W IS 2:
+VAL INT  SW IS  3:
+VAL INT  S IS  4:
+VAL INT  SE IS  5:
+VAL INT  E IS 6:
+VAL INT  NE IS 7:
+VAL [][2]BYTE Cardinales IS ["N ", "NW","W ","SW","S ","SE","E ","NE"]:
+
+DATA TYPE TabVoisin 
+  RECORD
+    INT limit:
+    [MaxFanOut] Voisin lesVoisins:
+:
+PROC InitTabVoisin(TabVoisin tv)
+  tv[limit] := 0
+:
+PROC AddTabVoisin(VAL INT LinkIndex, Direction, TabVoisin tv)
+  Voisin unVoisin:
+  INT limit:
+  SEQ
+    unVoisin[LinkIndex] := LinkIndex
+    unVoisin[Direction] := Direction
+    limit := tv[limit] 
+    tv[lesVoisins][limit] :=unVoisin
+    tv[limit] := limit+1
+:
+PROC LinkIndexFor(INT linkIndex, direction, TabVoisin tv)
+  Voisin ceVoisin:
+  SEQ
+    direction := Nil
+    SEQ i=0 FOR tv[limit]
+      SEQ
+        ceVoisin := tv[lesVoisins][i]
+        IF
+          ceVoisin[Direction] = direction
+            linkIndex := ceVoisin[LinkIndex]
+          TRUE
+            SKIP
+:
+PROC PrintTabVoisin(TabVoisin tv, CHAN OF BYTE toMux)
+  Voisin ceVoisin:
+  INT direction:
+  SEQ
+    SEQ i=0 FOR tv[limit]
+      SEQ
+        ceVoisin := tv[lesVoisins][i]
+        out.string( Cardinales [ceVoisin[Direction]],4,toMux) 
+        out.number( ceVoisin[LinkIndex],4,toMux) 
+:
+PROC DirectionFor(INT linkIndex, direction, TabVoisin tv)
+  Voisin ceVoisin:
+  SEQ
+    direction := Nil
+    SEQ i=0 FOR tv[limit]
+      SEQ
+        ceVoisin := tv[lesVoisins][i]
+        IF
+          ceVoisin[LinkIndex] = linkIndex
+            direction := ceVoisin[Direction]
+          TRUE
+            SKIP
+:
+
+PROC EncodeMooreDirection(Location maLoc,saLoc, INT direction)
+  SEQ
+    direction := Nil
+    IF 
+      saLoc[xLoc] = ( maLoc[xLoc]) 
+        IF
+          saLoc[yLoc] = ( maLoc[yLoc] + 1)
+            direction := S
+          saLoc[yLoc] = ( maLoc[yLoc] - 1)
+            direction := N
+          TRUE
+            SKIP
+      saLoc[xLoc] = ( maLoc[xLoc]-1)
+        IF
+          saLoc[yLoc] = ( maLoc[yLoc] + 1)
+            direction := SW
+          saLoc[yLoc] = ( maLoc[yLoc] - 1)
+            direction := NW
+          saLoc[yLoc] = ( maLoc[yLoc])
+            direction := W
+          TRUE
+            SKIP
+      saLoc[xLoc] = (maLoc[xLoc]+1)
+        IF
+          saLoc[yLoc] = ( maLoc[yLoc] + 1)
+            direction := SE
+          saLoc[yLoc] = ( maLoc[yLoc] - 1)
+            direction := NE
+          saLoc[yLoc] = ( maLoc[yLoc])
+            direction := E
+          TRUE
+            SKIP
+      TRUE
+        SKIP
+:
+
+DATA TYPE RealBBox
+  RECORD
+    REAL64 Top,Left,Bottom,Right:
+:
+
+PROTOCOL diam.proto 
+  CASE
+    real64; RealBBox
+    locationXY; Location
+:
+
+PROC CellNode([]CHAN OF diam.proto in,out, VAL INT Identity, CHAN OF BYTE toMux)
+  [MaxFanOut] RealBBox bufIn,bufOut:
+  RealBBox myBBox:
+  TabVoisin maTabVoisin:
+
+  PROC PrintRealBBox(RealBBox box)
+    SEQ 
+      out.real64 ( box[Left], 0, 0, toMux)
+      toMux ! '*t'
+      out.real64 ( box[Bottom], 0, 0, toMux)
+      toMux ! '*t'
+      out.real64 ( box[Right], 0, 0, toMux)
+      toMux ! '*t'
+      out.real64 ( box[Top], 0, 0, toMux)
+      toMux ! '*n'
+  :
+
+
+  PROC InitRealBBox(RealBBox box)
+    CellArray MaCellDef:
+    CellPosition position:
+    SEQ 
+      MaCellDef := Cells[Identity]
+      position := MaCellDef[position]
+      box[Left] := position [longitude]
+      box[Right] := position [longitude]
+      box[Top] := position [latitude]
+      box[Bottom] := position [latitude]
+  :
+
+  PROC MergeBBox(RealBBox box,thisBox)
+    SEQ 
+      IF 
+        thisBox[Left] < box [Left] 
+          box [Left] := thisBox[Left]
+        TRUE
+          SKIP
+      IF 
+        thisBox[Right] > box [Right] 
+          box [Right] := thisBox[Right]
+        TRUE
+          SKIP
+      IF 
+        thisBox[Top] < box [Top] 
+          box [Top] := thisBox[Top]
+        TRUE
+          SKIP
+      IF 
+        thisBox[Bottom] > box [Bottom] 
+          box [Bottom] := thisBox[Bottom]
+        TRUE
+          SKIP
+  :
+
+  PROC DiscoverNeighbors()
+    [MaxFanOut] Location locIn,locOut:
+    INT direction:
+    Location myLoc:
+    SEQ
+      myLoc := NetLocation[Identity]
+      SEQ i=0 FOR SIZE out
+        locOut [i] :=  myLoc
+      PAR
+        PAR i=0 FOR SIZE in
+          in [i] ? CASE
+            locationXY ; locIn[i] 
+              SKIP
+        PAR j=0 FOR SIZE out
+          out [j] ! locationXY ; locOut[j] 
+      SEQ i=0 FOR SIZE in
+        SEQ
+          EncodeMooreDirection(myLoc,locIn[i],direction)
+          AddTabVoisin(i, direction, maTabVoisin )
+      PrintTabVoisin(maTabVoisin, toMux)
+      toMux ! '*n'
+  :
+
+
+  SEQ
+    InitTabVoisin(maTabVoisin)
+    DiscoverNeighbors()
+    InitRealBBox(myBBox)
+    SEQ i=0 FOR SIZE out
+      bufOut[i] :=  myBBox
+    SEQ tour=0 FOR MaxNodes-1
+      SEQ
+        PAR
+          PAR i=0 FOR SIZE in
+            in [i] ? CASE
+              real64 ; bufIn[i] 
+                SKIP
+          PAR j=0 FOR SIZE out
+            out [j] ! real64 ; bufOut[j] 
+        SEQ i=0 FOR SIZE in
+          MergeBBox(myBBox,bufIn[i])
+        SEQ i=0 FOR SIZE out
+          bufOut[i] :=  myBBox
+    out.number(Identity, 4, toMux)
+    toMux ! '*t'
+    PrintRealBBox(myBBox)    
+:
+
+PROC Mux([]CHAN OF BYTE fromNodes, CHAN OF BYTE out)
+  BYTE char:
+  SEQ
+    SEQ tours = 0 FOR 2
+      SEQ nbNodes = 0 FOR MaxNodes
+        ALT canalIndex =0 FOR MaxNodes
+          fromNodes[canalIndex] ? char
+            SEQ
+              out ! char
+              WHILE char <> '*n'
+                SEQ
+                  fromNodes[canalIndex] ? char
+                  out ! char
+:
+

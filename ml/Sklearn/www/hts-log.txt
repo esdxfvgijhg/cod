@@ -1,0 +1,23 @@
+HTTrack3.48-24 launched on Fri, 03 May 2019 23:42:26 at https://scikit-learn.org/stable/
+(httrack https://scikit-learn.org/stable/ )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+23:51:08	Error: 	"Not Found" (404) at link https://scikit-learn.org/stable/category_encoders (from https://scikit-learn.org/stable/glossary.html)
+23:55:20	Error: 	"Not Found" (404) at link https://scikit-learn.org/stable/modules/inertia (from https://scikit-learn.org/stable/modules/clustering.html)
+23:55:20	Error: 	"Not Found" (404) at link https://scikit-learn.org/stable/modules/PCA (from https://scikit-learn.org/stable/modules/clustering.html)
+23:55:20	Error: 	"Not Found" (404) at link https://scikit-learn.org/stable/modules/www.di.ens.fr/~fbach/sspca_AISTATS2010.pdf (from https://scikit-learn.org/stable/modules/decomposition.html)
+23:55:20	Error: 	"Not Found" (404) at link https://scikit-learn.org/stable/adamklec (from https://scikit-learn.org/stable/whats_new.html)
+23:55:20	Error: 	"Not Found" (404) at link https://scikit-learn.org/stable/whats_new/adamklec (from https://scikit-learn.org/stable/whats_new/v0.19.html)
+23:55:20	Error: 	"Not Found" (404) at link https://scikit-learn.org/stable/contributing (from https://scikit-learn.org/stable/governance)
+23:55:20	Error: 	"Not Found" (404) at link https://scikit-learn.org/stable/_static/jquery.min.js (from https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html)
+23:55:20	Error: 	"Not Found" (404) at link https://scikit-learn.org/stable/auto_examples/bicluster/images/sphx_glr_plot_spectral_coclustering_003.png (from https://scikit-learn.org/stable/modules/biclustering.html)
+23:55:20	Error: 	"Not Found" (404) at link https://scikit-learn.org/stable/auto_examples/bicluster/images/sphx_glr_plot_spectral_biclustering_003.png (from https://scikit-learn.org/stable/modules/biclustering.html)
+23:55:20	Error: 	"Not Found" (404) at link https://scikit-learn.org/stable/auto_examples/neighbors/sphx_glr_plot_lof_outlier_detection.html (from https://scikit-learn.org/stable/modules/outlier_detection.html)
+23:55:20	Error: 	"Not Found" (404) at link https://scikit-learn.org/stable/auto_examples/neighbors/sphx_glr_plot_lof_novelty_detection.html (from https://scikit-learn.org/stable/modules/outlier_detection.html)
+
+HTTrack Website Copier/3.48-24 mirror complete in 12 minutes 54 seconds : 2981 links scanned, 2968 files written (143313191 bytes overall) [122707960 bytes received at 158537 bytes/sec], 29231454 bytes transferred using HTTP compression in 1597 files, ratio 22%, 119.3 requests per connection
+(12 errors, 0 warnings, 0 messages)

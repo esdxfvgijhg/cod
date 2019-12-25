@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA BookMap//EN" "bookmap.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<map title = "VisualWorks Shortcut Keys"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+	<topicref navtitle = "Text Editing" href = "textEdit.xml" type = "topic"/>
+	<topicref navtitle = "Find/Replace" href = "findReplace.xml" type = "topic"/>
+	<topicref navtitle = "Coding Shortcuts and Commands" href = "codingt.xml" type = "topic"/>
+</map>

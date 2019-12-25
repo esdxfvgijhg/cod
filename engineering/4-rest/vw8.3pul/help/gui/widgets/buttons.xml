@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.widgets.buttons"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Working with Buttons</title>
+<body><p>Buttons come in several flavors. 
+<i>Action buttons</i> trigger some action via an Event. 
+Each button has a <term>label</term>, which may be 
+an image or styled text. <i>Radio buttons</i> 
+allow the user to select one item from a range of 
+choices. <i>Check boxes</i> allow users to enable 
+or disable a specific attribute.</p></body>
+<topic id = "vw.help.widgets.addActionButton"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Add an action button to a canvas</title>
+<body><p><indexterm>action button<indexterm>add to canvas</indexterm></indexterm><ol>
+<li><p>Use a Palette to add an action button to the canvas, leaving
+it selected.</p></li>
+<li><p>In the GUI Painter Tool, fill in the button’s <uicontrol>Label</uicontrol> property
+with a descriptive label (in the example, "Tell time").</p></li>
+<li><p>Fill in the button’s <uicontrol>Action</uicontrol> property
+with the name of the method that performs the action (<codeph>#tellTime</codeph>).</p></li>
+<li><p><uicontrol>Apply</uicontrol> the properties and <uicontrol>Install</uicontrol> the
+canvas.</p></li>
+<li><p>Create the method named in step 3 (<codeph>tellTime</codeph>)
+in an <codeph>actions</codeph> protocol.
+<codeblock otherprops="smalltalk method">tellTime
+	| t tString |
+	t := Time now.
+	tString := String new.
+	"Assemble the time string based on the check boxes."
+	self showHours value
+		ifTrue: [tString := tString, t hours printString].
+	self showMinutes value
+		ifTrue: [tString := tString, ':', t minutes printString, ':']
+		ifFalse: [tString := tString, '::'].
+	self showSeconds value
+		ifTrue: [tString := tString, t seconds printString].
+	"Send the time string to the output channel set by
+	the radio buttons."
+	self outputMode value == #transcript
+		ifTrue: [Transcript show: tString; cr]
+		ifFalse: [DialogView warn: tString]</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Button-Example:Examples.ButtonExample open" 
+format="st" scope="external">Button-Example</xref></p>
+</body></topic>
+
+<topic id = "vw.help.widgets.addRadioButton"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Add radio buttons to a canvas</title>
+<body><p><indexterm>radio button<indexterm>add to canvas</indexterm></indexterm>Use
+radio buttons to select exactly one item from a limited set of choices.<ol>
+<li><p>Select a group of new radio buttons on the canvas.</p></li>
+<li><p>On the <uicontrol>Basics</uicontrol> page of the GUI Painter Tool, 
+change the <uicontrol>Label</uicontrol> property
+for each to name its particular choice (in the example, "Dialog"
+and "Transcript").</p></li>
+<li><p>For all buttons, enter the same <uicontrol>Aspect</uicontrol> property
+(<apiname>outputMode</apiname>).</p></li>
+<li><p>For each button, enter a different <uicontrol>Select</uicontrol> property
+(<codeph>#dialog</codeph> and <codeph>#transcript</codeph>). This
+is the symbol that is stored in the <uicontrol>Aspect</uicontrol> value holder
+whenever the button is selected.</p></li>
+<li><p><uicontrol>Apply</uicontrol> the properties and <uicontrol>Install</uicontrol> the
+canvas.</p></li>
+<li><p>Use the canvas’s <uicontrol>define</uicontrol> command to
+add an instance variable for the aspect that is shared by the buttons
+(<codeph>outputMode</codeph>), and to create a method for accessing
+the aspect variable (<codeph>outputMode</codeph>), in an <codeph>aspects</codeph> protocol.
+<codeblock otherprops="smalltalk method">outputMode
+		^outputMode</codeblock></p></li>
+<li><p>Create an <codeph>initialize</codeph> method to assign the
+aspect variable to hold a value holder containing one of the valid <uicontrol>Select</uicontrol> symbols
+(<codeph>#dialog</codeph>). Your choice of symbol determines which
+radio button will be selected as a default.
+<codeblock otherprops="smalltalk method">initialize
+		super initialize.
+		outputMode := #dialog asValue.
+		showMinutes := true asValue.
+		showHours := true asValue.
+		showSeconds := true asValue.</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Button-Example:Examples.ButtonExample open" 
+format="st" scope="external">Button-Example</xref></p>
+</body></topic>
+
+<topic id = "vw.help.widgets.labels.replaceDefault"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Relocate a default widget label</title>
+<body><p><indexterm>label<indexterm>relocate on widget</indexterm></indexterm><indexterm>GUI
+development<indexterm>label position</indexterm></indexterm>All
+labeled widgets provide for a fixed, default label location. To
+place the label in a different location, turn off the widget’s <uicontrol>Label</uicontrol> property and
+use a separate label widget.</p></body></topic>
+
+<topic id = "vw.help.widgets.addCheckbox"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Add a check box to a canvas</title>
+<body><p><indexterm>checkbox<indexterm>add to canvas</indexterm></indexterm>Use
+a check box to turn on or off an attribute.<ol><li><p>Use a Palette
+to add a check box to the canvas.</p></li>
+<li><p>For each check box, enter a descriptive name in its <uicontrol>Label</uicontrol> property (for
+example, "Hours").</p></li>
+<li><p>For each checkbox, fill in its <uicontrol>Aspect</uicontrol> property
+with the name of the method that accesses the check box’s value
+holder (<codeph>showHours</codeph>). This value holder will contain <codeph>true</codeph> when
+the check box is selected and <codeph>false</codeph> when it is
+not selected.</p></li>
+<li><p><uicontrol>Apply</uicontrol> the properties and <uicontrol>Install</uicontrol> the
+canvas.</p></li>
+<li><p>Use the canvas’s <uicontrol>define</uicontrol> command to
+create an instance variable in which to store the check box’s value
+holder (<codeph>showHours</codeph>), and the method(s) named in
+step 3 (<codeph>showHours</codeph>) in an aspects protocol.
+<codeblock otherprops="smalltalk method">showHours
+		^showHours</codeblock></p></li>
+<li><p>In the <codeph>initialize</codeph> method, initialize the
+variable to a value holder containing <codeph>true</codeph> if you
+want the check box to be selected by default and <codeph>false</codeph> otherwise.
+<codeblock otherprops="smalltalk method">initialize
+		super initialize.
+		outputMode := #dialog asValue.
+		showHours := true asValue.
+		showMinutes := true asValue.
+		showSeconds := true asValue.</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Button-Example:Examples.ButtonExample open" 
+format="st" scope="external">Button-Example</xref></p>
+</body></topic>
+</topic></dita>

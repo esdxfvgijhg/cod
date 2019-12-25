@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.charString"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Characters and Strings</title>
+<body><p>The class library provides a rich set of character and string 
+functions. Instances of class <apiname>Character</apiname> are elements 
+of strings. Characters are represented as a <apiname>SmallInteger</apiname> 
+code, mapped to ASCII (ISO 8859-1) and the Unicode Character Code Standard.</p>
+<p>Class <apiname>String</apiname> inherits basic collection protocol from 
+<apiname>SequenceableCollection</apiname>, and serves as an abstract 
+superclass for all string and symbol implementations, such as 
+<apiname>ByteString</apiname>, <apiname>TwoByteString</apiname>, and 
+<apiname>Symbol</apiname>. A Symbol is a string whose uniqueness is 
+assured.</p></body>
+<topic id = "vw.help.charString.createLitChar"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a character literal</title>
+<body><p><indexterm>character<indexterm>literal</indexterm></indexterm>To
+create a character as a separate entity, rather than as part of
+a string, use its literal form preceding the character with a dollar
+sign.
+<codeblock otherprops="smalltalk expression">| char |
+char := $C.
+^char</codeblock></p></body></topic>
+<topic id = "vw.help.charString.nondisplayChar"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a non-displaying character</title>
+<body><p><indexterm>character<indexterm>nondisplaying</indexterm></indexterm>Several
+non-displaying characters have <apiname>Character</apiname> class messages
+to create them: <apiname>backspace</apiname>, <apiname>cr</apiname>, <apiname>del</apiname>, 
+<apiname>esc</apiname>, <apiname>leftArrow</apiname>, <apiname>lf</apiname>, <apiname>newPage</apiname>, 
+<apiname>space</apiname>, <apiname>tab</apiname>.
+<codeblock otherprops="smalltalk expression">| char |
+char := Character cr.
+^char</codeblock></p></body></topic>
+<topic id = "vw.help.charString.charFromNum"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a character from a numeric code</title>
+<body><p><indexterm>character<indexterm>from number</indexterm></indexterm><indexterm>number<indexterm>to
+character</indexterm></indexterm>Send a <apiname>value:</apiname> message
+to the <apiname>Character</apiname> class. The argument is the numeric
+Unicode representation for the character. 
+<codeblock otherprops="smalltalk expression">| char |
+char := Character value: 67.
+^char</codeblock></p></body></topic>
+<topic id = "vw.help.charString.compChar"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a composed character</title>
+<body><p><indexterm>character<indexterm>composed</indexterm></indexterm>Send
+a <apiname>composeDiacritical:</apiname> message to a character. The
+argument is a diacritical character, which can be obtained by sending <apiname>diacriticalNamed:</apiname> to
+the <apiname>Character</apiname> class with a symbol naming the diacritical
+character.
+<codeblock otherprops="smalltalk expression">| baseChar diacrit composedChar |
+baseChar := $a.
+diacrit := Character diacriticalNamed: #grave.
+composedChar := baseChar composeDiacritical: diacrit.
+^composedChar</codeblock></p></body></topic>
+<topic id = "vw.help.charString.createLitString"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a string literal</title>
+<body><p><indexterm>string<indexterm>literal</indexterm></indexterm>Enclose
+the desired characters in single quotes.
+<codeblock otherprops="smalltalk expression">| string |
+string := 'This is a string.'.
+^string</codeblock></p></body></topic>
+<topic id = "vw.help.charString.setStringSize"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a string of a set size</title>
+<body><p><indexterm>string<indexterm>create of set size</indexterm></indexterm>Send
+a <apiname>new:</apiname> message to the <apiname>String</apiname> class
+with an integer specifying the string length.</p>
+<p>By default, each character is a null. To supply another character, send
+a <apiname>new:withAll:</apiname> message to the <apiname>String</apiname> class
+with the number of characters, and the fill character as the second
+argument.
+<codeblock otherprops="smalltalk expression">| nullString zeroString |
+nullString := String new: 10.
+zeroString := String new: 10 withAll: $0.
+^Array with: nullString with: zeroString</codeblock></p></body></topic>
+<topic id = "vw.help.charString.stringFromChar"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a string from a character</title>
+<body><p><indexterm>string<indexterm>create string of one character</indexterm></indexterm>Send
+a <apiname>with:</apiname> message to the <apiname>String</apiname> class.
+The argument is the character that is to be the sole element of
+the string.
+<codeblock otherprops="smalltalk expression">| oneCharString |
+oneCharString := String with: Character tab.
+^oneCharString</codeblock></p></body></topic>
+<topic id = "vw.help.charString.testChar"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Test for character attributes</title>
+<body><p><indexterm>character<indexterm>test attributes</indexterm></indexterm>Messages
+are provided in the Character class to test whether a character
+is alphabetic (English a–z or A–Z), alphanumeric (a–z, A–Z, or 0–9),
+a letter (a–z, A–Z, or in a set of non-English letters), and a vowel.
+<codeblock otherprops="smalltalk expression">| char responses |
+char := $a.
+responses := Array new: 4.
+responses 
+		at: 1 put: char isAlphabetic;
+		at: 2 put: char isAlphaNumeric;
+		at: 3 put: char isLetter;
+		at: 4 put: char isVowel.
+^responses</codeblock></p></body></topic>
+<topic id = "vw.help.charString.testForDigit"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Test if a character is a digit</title>
+<body><p><indexterm>character<indexterm>test for number</indexterm></indexterm>Send
+an <apiname>isDigit</apiname> message to a character. The response
+is <codeph>true</codeph> when the character is in the range 0–9.
+<codeblock otherprops="smalltalk expression">| char |
+char := $5.
+^char isDigit</codeblock></p></body></topic>
+<topic id = "vw.help.charString.testCase"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Test for upper- and lower-case</title>
+<body><p><indexterm>character<indexterm>test case</indexterm></indexterm>Send
+an <apiname>isLowercase</apiname> message to the character. The response
+is <codeph>true</codeph> when the character is a lowercase letter.</p>
+<p>Send an <apiname>isUppercase</apiname> message to find out whether
+the character is an uppercase letter.
+<codeblock otherprops="smalltalk expression">| char isLower isUpper |
+char := $C.
+isLower := char isLowercase.
+isUpper := char isUppercase.
+^Array with: isLower with: isUpper.</codeblock></p></body></topic>
+<topic id = "vw.help.charString.testForWhite"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Test for white space</title>
+<body><p><indexterm>character<indexterm>test for white space</indexterm></indexterm>Send
+an <apiname>isSeparator</apiname> message to the character. The response
+is <codeph>true</codeph> when the character is a space, tab, carriage
+return, line feed, form feed, or null.
+<codeblock otherprops="smalltalk expression">| char |
+char := Character cr.
+^char isSeparator</codeblock></p></body></topic>
+<topic id = "vw.help.charString.testForComposed"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Test for composed character</title>
+<body><p><indexterm>character<indexterm>composed character</indexterm></indexterm>Send
+an <apiname>isComposed</apiname> message to the character. The response
+is <codeph>true</codeph> when the character is composed of a base
+character plus a diacritical mark.</p>
+<p>To find out whether a character is a diacritical mark (alone),
+send an <apiname>isDiacritical</apiname> message.
+<codeblock otherprops="smalltalk expression">| char |
+char := Character diacriticalNamed: #grave.
+^Array
+		with: char isComposed
+		with: char isDiacritical</codeblock></p></body></topic>
+<topic id = "vw.help.charString.changeCharCase"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Change character case</title>
+<body><p><indexterm>character<indexterm>change case</indexterm></indexterm>To
+convert a string to all lowercase letters, send an <apiname>asLowercase</apiname> message
+to the string. To convert a string to all uppercase, send an <apiname>asUppercase</apiname> message.
+<codeblock otherprops="smalltalk expression">| string |
+string := 'North American Fertilizer Company'.
+^string asUppercase</codeblock></p>
+<p>To change the case of a selected character, send an <apiname>asUppercase</apiname> or <apiname>asLowercase</apiname> message
+to the character. 
+<codeblock otherprops="smalltalk expression">| string prevCharIsSeparator newChar |
+string := 'NORTH AMERICAN FERTILIZER COMPANY'.
+prevCharIsSeparator := true.
+string keysAndValuesDo: [ :index :char |
+		prevCharIsSeparator
+			ifTrue: [newChar := char asUppercase]
+			ifFalse: [newChar := char asLowercase].
+		string at: index put: newChar.
+		prevCharIsSeparator := char isSeparator].
+^string</codeblock></p></body></topic>
+<topic id = "vw.help.charString.getStringLength"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get a string’s length</title>
+<body><p><indexterm>string<indexterm>get length</indexterm></indexterm>Send
+a <apiname>size</apiname> message to the string.
+<codeblock otherprops="smalltalk expression">| string |
+string := '123456789'.
+^string size</codeblock></p></body></topic>
+<topic id = "vw.help.charString.compare"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Compare characters and strings</title>
+<body><p><indexterm>character<indexterm>compare characters</indexterm></indexterm><indexterm>string<indexterm>compare
+strings</indexterm></indexterm><indexterm>string<indexterm>compare
+strings, sort order</indexterm></indexterm>Characters and strings
+respond to the same comparison messages as most objects: <apiname>=</apiname>, <apiname>==</apiname>, 
+<apiname>&lt;</apiname>, <apiname>&gt;</apiname>,
+and so on.</p>
+<p>Characters are compared based on their numeric equivalents. 
+<codeblock otherprops="smalltalk expression">char1 = char2																"equality"</codeblock></p>
+<p>To compare based on identity, send an <apiname>==</apiname> or <apiname>~~</apiname> (not
+identical) message to the object. Two different strings cannot be
+identical, though two variables that refer to the same string are
+identical.
+<codeblock otherprops="smalltalk expression">| str1 str2 str3 |
+str1 := 'Excellent'.
+str2 := 'Excellent'.
+str3 := str1.
+^Array
+		with: (str1 == str2) with: (str1 == str3)</codeblock></p>
+<p>In most cases, ordering is determined by alphabetical order,
+without regarding case.  However, if two strings have the same letters
+but differ by case, their order is determined by the numeric value
+of the characters. 
+<codeblock otherprops="smalltalk expression">| str1 str2 str3 |
+str1 := 'north'.
+str2 := 'North'.
+str3 := 'northwest'.
+^Array
+		with: (str1 &lt; str2)
+		with: (str2 &lt; str1)
+		with: (str1 &lt; str3)
+		with: (str2 &lt; str3)</codeblock></p>
+<p>To compare, ignoring case, send a <apiname>sameAs:</apiname> message
+to one of the strings. The argument is the second string.
+<codeblock otherprops="smalltalk expression">| str1 str2 str3 |
+str1 := 'north'.
+str2 := 'North'.
+str3 := 'northwest'.
+^Array
+		with: (str1 sameAs: str2)
+		with: (str1 sameAs: str3)
+		with: (str2 sameAs: str3)</codeblock></p></body></topic>
+<topic id = "vw.help.charString.searchStrings"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Search strings</title>
+<body><p><indexterm>string<indexterm>search</indexterm></indexterm>To
+get the index of a character, send an <apiname>indexOf:</apiname> message
+to the string. The argument is the search character. If it is not
+found, zero is returned.</p>
+<p>To find the starting index of a substring, send a <apiname>findString:startingAt:ifAbsent:</apiname> message
+to the string. The first argument is the substring to be found.
+The second argument is the character position at which the search
+is to begin. The third argument is a block containing actions to
+be taken if the substring is not found (often an empty block, to
+avoid the default error).
+<codeblock otherprops="smalltalk expression">| classComment searchChar searchString index1 index2 |
+classComment := String comment.
+searchChar := $&lt;.
+searchString := 'Class Variables:'.
+index1 := classComment indexOf: searchChar.
+index2 := classComment 
+		findString: searchString
+		startingAt: 1
+		ifAbsent: [ ].
+^Array with: index1 with: index2</codeblock></p>
+<p>To ignore case, send a <apiname>findString:ignoreCase:useWildcards:</apiname> message with
+the <codeph>ignoreCase</codeph> argument set to true. </p></body></topic>
+<topic id = "vw.help.charString.combineStrings"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Combine two strings</title>
+<body><p><indexterm>string<indexterm>concatenate</indexterm></indexterm>In
+simple situations, you can combine two strings using a comma. 
+<codeblock otherprops="smalltalk expression">| firstName lastName fullName space |
+firstName := 'Bill'.
+lastName := 'Clinton'.
+space := String with: Character space.
+fullName := firstName, space, lastName.
+^fullName</codeblock></p></body></topic>
+<topic id = "vw.help.charString.combineStringsOnStream"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Combine strings using a stream</title>
+<body><p><indexterm>string<indexterm>concatenate from stream</indexterm></indexterm>For
+concatenating several strings, it is more efficient to use a stream.<ol>
+<li><p>Create a stream by sending an <apiname>on:</apiname> message
+to the <apiname>WriteStream</apiname> class. The argument is typically
+an empty string, but it could be any string, such as a preassembled
+report heading.</p></li>
+<li><p>Append each string in the series to the stream by sending
+a <apiname>nextPutAll:</apiname> message to the stream, with the string
+as argument.</p></li>
+<li><p>Get the stream contents in the form of a string by sending
+a <apiname>contents</apiname> message to the stream.
+<codeblock otherprops="smalltalk expression">| classNames formalList |
+classNames := Smalltalk classNames.
+formalList := WriteStream on: String new.
+classNames do: [ :name |
+		formalList nextPutAll: 'Class: ';
+			nextPutAll: name;						
+			cr].
+^formalList contents</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.charString.extractSubstring"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Extract a substring</title>
+<body><p><indexterm>string<indexterm>extract substring</indexterm></indexterm>When
+a string contains two or more parts, getting the parts as separate
+strings is a common requirement.</p>
+<p>Send a <apiname>copyFrom:to:</apiname> message to the string. The
+first argument is the starting index and the second argument is
+the ending index of the desired substring.
+<codeblock otherprops="smalltalk expression">| fullName firstName lastName spaceIndex |
+fullName := 'Mahatma Gandhi'.
+spaceIndex := fullName indexOf: Character space.
+firstName := fullName
+		copyFrom: 1 
+		to: spaceIndex - 1.
+lastName := fullName 
+		copyFrom: spaceIndex + 1 
+		to: fullName size.
+^Array with: firstName with: lastName</codeblock></p></body></topic>
+<topic id = "vw.help.charString.copyPrefix"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Copy a prefix</title>
+<body><p><indexterm>string<indexterm>copy initial substring</indexterm></indexterm>Send
+a <apiname>copyUpTo:</apiname> message to the string. The argument
+is the character that marks the end of the prefix (but is not included
+in it).
+<codeblock otherprops="smalltalk expression">| fullName firstName |
+fullName := 'Boris Yeltsin'.
+firstName := fullName copyUpTo: Character space.
+^firstName</codeblock></p></body></topic>
+<topic id = "vw.help.charString.replaceSubstring"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Remove or replace a substring</title>
+<body><p><indexterm>string<indexterm>remove or replace substring</indexterm></indexterm>Removing
+characters is accomplished by creating a copy in which the unwanted
+characters have been replaced by an empty string.<ol><li><p>Send
+a <apiname>copyReplaceFrom:to:with:</apiname> message to the string.
+The first and second arguments are the index locations of the starting
+and stopping characters in the substring that is to be replaced.
+The <codeph>with:</codeph> argument is the new substring, which
+need not be the same size as the original substring.</p></li>
+<li><p>To insert a substring without removing any characters in
+the existing string, make the ending index less than the starting index.</p></li>
+<li><p>To remove characters, replace them with an empty string.
+<codeblock otherprops="smalltalk expression">| colorNames magentaStart yellowStart |
+colorNames := 'cyan magenta yellow'.
+magentaStart := colorNames findString: 'magenta' startingAt: 1.
+"Replace magenta with oddDarkReddishColor."
+colorNames := colorNames
+		copyReplaceFrom: magentaStart
+		to: magentaStart + 'magenta' size - 1
+		with: 'oddDarkReddishColor'.
+"Insert newColor before oddDarkReddishColor."
+colorNames := colorNames
+		copyReplaceFrom: magentaStart
+		to: magentaStart - 1
+		with: 'newColor '.
+"Remove yellow."
+yellowStart := colorNames findString: 'yellow' startingAt: 1.
+colorNames := colorNames
+		copyReplaceFrom: yellowStart
+		to: yellowStart + 'yellow' size - 1
+		with: String new.
+^colorNames</codeblock></p></li></ol></p>
+<p>When a string contains multiple occurrences of a substring, you
+can replace all occurrences by using this technique.</p>
+<p>Send a <apiname>copyReplaceAll:with:</apiname> message to the string.
+The first argument is the substring that is to be replaced. The
+second argument is the replacement substring.
+<codeblock otherprops="smalltalk expression">| colorNames |
+colorNames := String new.
+ColorValue constantNames do: [ :name |
+		colorNames := colorNames, name asString, ' '].
+colorNames := colorNames
+		copyReplaceAll: 'Gray'
+		with: 'Grey'.
+^colorNames</codeblock></p></body></topic>
+<topic id = "vw.help.charString.ellipsis"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Abbreviate a string by ellipsis</title>
+<body><p><indexterm>string<indexterm>abbreviate with ellipsis</indexterm></indexterm>For
+long strings, you can display the beginning and ending of the string,
+inserting an ellipsis (...) in place of the missing characters.</p>
+<p>Send a <apiname>contractTo:</apiname> message to the string. The
+argument is the number of characters in the abbreviation, including
+three for the ellipsis. Half of the abbreviation will be taken from
+the beginning of the string and the other half from the end.
+<codeblock otherprops="smalltalk expression">| string contractedString |
+string := 'North American Free Trade Agreement'.
+contractedString := string contractTo: 15.
+^contractedString</codeblock></p></body></topic>
+<topic id = "vw.help.charString.addLineEndChar"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Insert line-end characters</title>
+<body><p><indexterm>string<indexterm>insert line-end character</indexterm></indexterm>In
+Smalltalk methods, certain conventions of indentation and line wrapping
+make the code more readable. Sometimes a string disrupts the readability
+of the code because it contains embedded carriage returns. This
+technique allows you to keep the entire string on one line without
+sacrificing the embedded returns.<ol><li><p>For each embedded carriage
+return in the string, substitute a backslash character (\).</p></li>
+<li><p>Send a <apiname>withCRs</apiname> message to the string to
+convert the backslashes back to carriage returns.
+<codeblock otherprops="smalltalk expression">Dialog 
+		request: 'This string\has 3 lines\when displayed.' withCRs
+		initialAnswer: 'No response needed'.</codeblock></p></li></ol></p></body></topic></topic></dita>

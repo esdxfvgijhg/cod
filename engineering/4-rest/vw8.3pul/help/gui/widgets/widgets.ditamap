@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA BookMap//EN" "bookmap.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<map title = "Widgets" 
+	xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+	<topicref navtitle = "Overview" href = "widgets.xml" type = "topic">
+		<topicref navtitle = "Widget Basics" href = "widgetBasics.xml" type = "topic"/>
+		<topicref navtitle = "Buttons" href = "buttons.xml" type = "topic"/>
+		<topicref navtitle = "Charts" href = "charts.xml" type = "topic"/>
+		<topicref navtitle = "Click Map" href = "clickMap.xml" type = "topic"/>
+		<topicref navtitle = "Datasets" href = "datasets.xml" type = "topic"/>
+		<topicref navtitle = "Dialogs" href = "dialogs.xml" type = "topic"/>
+		<topicref navtitle = "Fields" href = "fields.xml" type = "topic"/>
+		<topicref navtitle = "Hierarchical List" href = "hierarchicalList.xml" type = "topic"/>
+		<topicref navtitle = "Labels" href = "labels.xml" type = "topic"/>
+		<topicref navtitle = "Lines" href = "lines.xml" type = "topic"/>
+		<topicref navtitle = "Lists" href = "lists.xml" type = "topic"/>
+		<topicref navtitle = "Percent Done" href = "percentDone.xml" type = "topic"/>
+		<topicref navtitle = "Resizer" href = "resizer.xml" type = "topic"/>
+		<topicref navtitle = "Sliders" href = "sliders.xml" type = "topic"/>
+		<topicref navtitle = "Spin Button" href = "spinButton.xml" type = "topic"/>
+		<topicref navtitle = "Subcanvas" href = "subcanvas.xml" type = "topic"/>
+		<topicref navtitle = "Tab Control" href = "tabControl.xml" type = "topic"/>
+		<topicref navtitle = "Tables" href = "tables.xml" type = "topic"/>
+		<topicref navtitle = "Text Editors" href = "textEditors.xml" type = "topic"/>
+	</topicref>
+</map>

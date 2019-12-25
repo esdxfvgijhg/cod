@@ -1,0 +1,35 @@
+<HTML>
+<BODY>
+<p>This goodie contains a minimal framework for database connection pooling using VisualWorks.</p>
+
+<p>It provides a LogicalConnection class which can be used as a connection pool. For example,
+<pre>
+	basicConnection = PostgreSQLEXDIConnection new
+		username 'username';
+		password 'password';	
+		environment 'host5432_dbname'.
+	connection = LogicalConnection new basicConnection.
+	connection maxSessions 10.
+	connection connectionTimeout 15 * 60.
+</pre>
+<br>
+We can connect this sesssion.
+<pre>
+	connection connect.
+</pre>
+<br>
+get a session to execute database commands
+<pre>
+	connection getSession.
+</pre>
+<br>
+and eventually disconnect
+<br>
+<pre>
+	connection disconnect.
+</pre>
+</p>
+<p>Note that this currently only handles pooling of connections for read. For write acess you will need to obtain a connection with its own non-shared transactional context.</p>
+
+</body>
+</html>

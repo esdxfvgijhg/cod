@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.adaptors"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Adapting Domain Models to Widgets</title>
+<topic id = "vw.help.adaptors.valueHolder"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set up a simple value model (ValueHolder)</title>
+<body><p><indexterm>value model</indexterm><indexterm>GUI development:value
+holder</indexterm>Send an <apiname>asValue</apiname> message to the
+data object that is to be contained (in the example, the number
+0 is asked to return a value holder containing itself).
+<codeblock otherprops="smalltalk method">initializeID
+		accountID := 0 asValue.
+		accountID onChangeSend: #changedID to: self.</codeblock></p>
+<p>Some specifc creators are available in the <apiname>ValueHolder</apiname> class.
+For example, the message <apiname>newString</apiname> creates a value
+holder on an empty <apiname>String</apiname>:
+<codeblock otherprops="smalltalk method">initializeName
+		name := ValueHolder newString.
+			name onChangeSend: #changedName to: self.</codeblock></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Adapt1-Example:Examples.Adaptor1Example open" 
+format="st" scope="external">Adaptor1-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.adaptors.aspectAdaptor"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Adapt part of a domain model (AspectAdaptor)</title>
+<body><p><indexterm>aspect adaptor</indexterm><indexterm>GUI development:aspect
+adaptor</indexterm>Data widgets are commonly used for presenting
+data that is held by some object in the domain model. In such cases,
+the appropriate value model is an <apiname>AspectAdaptor</apiname>,
+which is a reference to remote data.</p>
+<p>An aspect adaptor has a subject, which is the relevant domain
+model, and an aspect, which is the name of the instance variable
+that holds the relevant data.</p>
+<p>This example below shows how to set up an aspect adaptor with
+a subject channel, a value holder from which the aspect adaptor
+will obtain its subject.
+<ol><li><p>In an <codeph>initialize</codeph> method
+in the application model, initialize an instance variable (<codeph>selectedCustomer</codeph>)
+with a value holder that holds the domain model (a <apiname>Customer1Example</apiname>).
+<codeblock otherprops="smalltalk method">initialize
+		customers := SelectionInList new.
+		customers selectionIndexHolder
+			onChangeSend: #changedCustomer to self.
+		selectedCustomer := Customer1Example new asValue</codeblock></p></li>
+<li><p>In an aspect method (<codeph>accountID</codeph>), send a <apiname>subjectChannel:</apiname> message to
+the <apiname>AspectAdaptor</apiname> class. The argument is the value
+holder you created in step 1.</p></li>
+<li><p>Tell the aspect adaptor which aspect of the domain model
+to monitor by sending a <apiname>forAspect:</apiname> message to the
+adaptor. The argument is a <apiname>Symbol</apiname>, typically the
+name of the desired instance variable (e.g., <codeph>accountID</codeph>)
+in the domain model.
+<codeblock otherprops="smalltalk method">accountID
+		| adaptor |
+		adaptor := AspectAdaptor subjectChannel: self selectedCustomer.
+		adaptor forAspect: #accountID.
+		adaptor onChangeSend: #redisplayList to: self.
+		^adaptor</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Adapt2-Example:Examples.Adaptor2Example open" 
+format="st" scope="external">Adaptor2-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.adaptors.bufferValueChanges"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Synchronize updates (buffering)</title>
+<body><p><indexterm>GUI development:synchronize data updates</indexterm><indexterm>synchronize
+data updates</indexterm>Frequently, it is useful to delay updating
+a particular widget’s value until other widgets in the same series
+are ready to be updated. Using a <apiname>BufferedValueHolder</apiname> enables
+you to arrange a trigger channel that is monitored by all of the
+widgets in the series.</p>
+<p>The trigger channel is a value holder that contains <codeph>true</codeph> or <codeph>false</codeph>.
+When <codeph>true</codeph>, all of the dependent adaptors update
+the model. Putting <codeph>false</codeph> in the trigger channel
+discards the buffered values, canceling the update.<ol><li><p>In
+the application model, create an instance variable (in the example, <codeph>updateTrigger</codeph>)
+to contain the true/false value that triggers updates.</p></li>
+<li><p>Create an accessing method for the variable.
+<codeblock otherprops="smalltalk method">updateTrigger
+		^updateTrigger</codeblock></p></li>
+<li><p>Initialize the variable to a value holder containing <codeph>false</codeph>.
+<codeblock otherprops="smalltalk method">initialize
+		customers := SelectionInList new.
+		customers selectionIndexHolder onChangeSend: #changedCustomer to: self.
+		selectedCustomer := Customer1Example new asValue.
+		updateTrigger := false asValue.</codeblock></p></li>
+<li><p>For each widget in the series, place the widget’s value model
+in a <apiname>BufferedValueHolder</apiname> by sending a <apiname>subject:triggerChannel:</apiname> message
+to the <apiname>BufferedValueHolder</apiname> class. The first argument
+is the widget’s value model (in the example, an <apiname>AspectAdaptor</apiname>).
+The second argument is the trigger channel (<apiname>updateTrigger</apiname>). 
+<codeblock otherprops="smalltalk method">accountID
+		| adaptor bufferedAdaptor |
+		adaptor := AspectAdaptor subjectChannel: self selectedCustomer.
+		adaptor forAspect: #accountID.
+		bufferedAdaptor := BufferedValueHolder
+			subject: adaptor
+			triggerChannel: self updateTrigger.
+		^bufferedAdaptor</codeblock></p></li>
+<li><p>Provide a button, a menu command, or other device with which the
+user can indicate that the series of values have all been edited
+as much as necessary (in the example, completion is indicated using
+an <uicontrol>OK</uicontrol> button that triggers an <codeph>accept</codeph> action).</p></li>
+<li><p>In the action method (<codeph>accept</codeph>), send a <apiname>value:</apiname> message
+to the trigger channel (<apiname>updateTrigger</apiname>). The argument
+is <codeph>true</codeph>.
+<codeblock otherprops="smalltalk method">accept
+		self updateTrigger value: true.
+		self redisplayList.</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Adapt3-Example:Examples.Adaptor3Example open" 
+format="st" scope="external">Adaptor3-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.adaptors.adaptCollection"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Adapt a collection (SelectionInList)</title>
+<body><p><indexterm>GUI development:adapt a collection</indexterm>A
+list or notebook widget is designed to work with a <apiname>SelectionInList</apiname>, which
+contains a value holder for holding the collection to be displayed.
+When the domain model supplies a simple collection, you can set
+up a <apiname>SelectionInList</apiname> to adapt to it, as shown in
+the basic step.</p>
+<p>In the example below, the application model is <apiname>Adaptor4Example</apiname>,
+and the domain model is a <apiname>Customer2Example</apiname>, which
+holds an <apiname>OrderedCollection</apiname> of customers.</p>
+<p>Put the domain model’s collection in a <apiname>SelectionInList</apiname> by
+sending an <apiname>adapt:aspect:list:selection:</apiname> message
+to the <apiname>SelectionInList</apiname> class. The <apiname>adapt:</apiname> argument
+is the domain model (in the example, <codeph>collectionModel</codeph>). The <codeph>aspect:</codeph> argument
+is typically the name of the domain model’s collection variable.
+The <apiname>list:</apiname> argument is the name of the domain model’s
+method that returns the collection. The <apiname>selection:</apiname> argument
+is the name of the domain model’s method that sets the selection
+in the collection.
+<codeblock otherprops="smalltalk method">initialize
+		collectionModel := Customer2Example new.
+		customers := SelectionInList
+			adapt: collectionModel
+			aspect: #customers
+			list: #customers
+			selection: #selectedCustomer:.
+		customers selectionIndexHolder 
+			onChangeSend: #changedCustomer to: self.
+		selectedCustomer := Customer1Example new asValue.</codeblock></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Adapt4-Example:Examples.Adaptor4Example open" 
+format="st" scope="external">Adaptor4-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.adaptors.adaptElement"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Adapt a collection element</title>
+<body><p><indexterm>GUI development:adapt an element</indexterm>Sometimes
+a widget is used to display a single element in a collection.</p>
+<p>An <apiname>IndexedAdaptor</apiname> has a subject (the collection)
+or subject channel (when the collection is in a value holder) and
+an index number (the position of the desired element in the collection). <ol>
+<li><p>Send a <apiname>subjectChannel:</apiname> message to the <apiname>IndexedAdaptor</apiname> class,
+with the value holder containing the collection as the argument.
+If the collection is not contained in a value holder, send a <apiname>subject:</apiname> message
+instead, with the collection as the argument.</p></li>
+<li><p>Send a <apiname>forIndex:</apiname> message to the adaptor.
+The argument is the position of the desired element in the collection.
+<codeblock otherprops="smalltalk method">xAxis
+		| adaptor |
+		adaptor := IndexedAdaptor subjectChannel: self vector.
+		^1adaptor forIndex: 1</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Adapt5-Example:Examples.Adaptor5Example open" 
+format="st" scope="external">Adaptor5-Example</xref></p>
+</body></topic></topic></dita>

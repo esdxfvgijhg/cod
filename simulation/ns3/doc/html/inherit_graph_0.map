@@ -1,0 +1,8 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classApplication.html" title="Application" alt="" coords="5,107,92,133"/>
+<area shape="rect" id="node2" href="$classns3_1_1lorawan_1_1Forwarder.html" title="ns3::lorawan::Forwarder" alt="" coords="157,5,319,32"/>
+<area shape="rect" id="node3" href="$classns3_1_1lorawan_1_1NetworkServer.html" title="ns3::lorawan::NetworkServer" alt="" coords="143,56,333,83"/>
+<area shape="rect" id="node4" href="$classns3_1_1lorawan_1_1OneShotSender.html" title="ns3::lorawan::OneShotSender" alt="" coords="140,107,336,133"/>
+<area shape="rect" id="node5" href="$classns3_1_1lorawan_1_1PeriodicSender.html" title="ns3::lorawan::PeriodicSender" alt="" coords="142,157,334,184"/>
+<area shape="rect" id="node6" href="$classns3_1_1lorawan_1_1SimpleNetworkServer.html" title="ns3::lorawan::SimpleNetwork\lServer" alt="" coords="141,209,335,250"/>
+</map>

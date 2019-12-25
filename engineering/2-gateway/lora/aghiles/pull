@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+# Script to perform an automated backup of my home directory to an
+# rsync server
+#
+BACKUP_SERVER=pi@192.168.200.1:
+
+/usr/bin/rsync -avz $BACKUP_SERVER~/aghiles /home/aghiles/Aghiles/Program/gateway/lora/

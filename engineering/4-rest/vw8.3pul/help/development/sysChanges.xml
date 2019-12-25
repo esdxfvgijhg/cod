@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product   "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+	<topic id = "vw.help.systemChanges"
+			xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+		<title>Changes and Change Sets</title>
+		<body><p>The state of your &Product; development image is 
+		determined by a collection of changes (additions, deletions, 
+		edits, and evaluations) performed on the original image. All of
+		these are tracked in the <term>changes file</term> associated with
+		the image.</p>
+		<p>You can use the <xref href="st:ChangeList open" format="st" 
+		scope="external">Change List</xref> and <xref href="st:ChangeSetManager open" 
+		format="st" scope="external">Change Set Browser</xref> to maintain 
+		the image and manage your development process.</p></body>
+		<topic id = "vw.help.systemChanges.changeList"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Open a change list tool</title>
+			<body>
+				<p><indexterm>change list<indexterm>open</indexterm></indexterm>To
+					open a new Change List, select <uicontrol>Tools&#xA0;&#x2192;&#xA0;Change&#xA0;List</uicontrol> in
+					the &Product; Launcher window.</p>
+				<p><xref href="st:ChangeList open" 
+					format="st" scope="external">Open the Change List for me</xref></p>
+			</body>
+		</topic>
+		<topic id = "vw.help.systemChanges.viewChanges"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>View groups of changes</title>
+			<body>
+				<p><indexterm>system<indexterm>view changes</indexterm></indexterm><indexterm>change list<indexterm>view changes</indexterm>
+					</indexterm>To load and display
+					the changes that have occurred since the last snapshot was taken,
+					select <uicontrol>file&#xA0;in/out&#xA0;&#x2192;&#xA0;recover&#xA0;last&#xA0;changes</uicontrol> in
+					the &lt;Operate&gt; menu of the list view at the top.</p>
+				<p>To load and display changes that are in the current Change Set, select <uicontrol>file&#xA0;in/out&#xA0;&#x2192;&#xA0;display&#xA0;system&#xA0;changes</uicontrol>.</p>
+				<p>To view the contents of a file-in (or a group of file-ins) as
+					a collection of changes, select <uicontrol>file&#xA0;in/out&#xA0;&#x2192;&#xA0;read&#xA0;file/directory... </uicontrol>and
+					supply the name of the file at the prompt.</p>
+				<p>To view the contents of a loaded parcel as a collection of changes, select <uicontrol>Display&#xA0;Parcel...</uicontrol> on
+					the <uicontrol>File</uicontrol> menu, and choose the name of a parcel
+					in the dialog box.</p>
+				<p>To display all changes saved, ignoring snapshot boundaries, select <uicontrol>file&#xA0;in/out&#xA0;&#x2192;&#xA0;read&#xA0;file/directory...</uicontrol> from
+					the &lt;Operate&gt; menu, and supply the name of the changes file (<filepath>image.cha</filepath>).</p>
+				<p>Changes from different sources can be loaded and viewed simultaneously
+					in a single Change List.</p>
+				<p>When you select an entry, the code for the affected class or
+					method appears in the lower text view as it existed after the change.</p>
+			</body>
+		</topic>
+		<topic id = "vw.help.systemChanges.filterList"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Filter the list of changes</title>
+			<body>
+				<p><indexterm>change list<indexterm>filter list</indexterm></indexterm>Use
+					the switches in the upper right region of the Change List to filter the
+					displayed list of changes.</p>
+				<p>Change List filter switches:
+				<dl>
+						<dlentry>
+							<dt>
+								<uicontrol>file</uicontrol>
+							</dt>
+							<dd>Display only entries that are recorded in the same disk file
+								as the selected entry.</dd>
+						</dlentry>
+						<dlentry>
+							<dt>
+								<uicontrol>type</uicontrol>
+							</dt>
+							<dd>Display only entries of the same type as the selected entry
+								(for example, all doIts, which represent executed expressions).</dd>
+						</dlentry>
+						<dlentry>
+							<dt>
+								<uicontrol>class</uicontrol>
+							</dt>
+							<dd>Display only entries that affect the same class as the selected entry.</dd>
+						</dlentry>
+						<dlentry>
+							<dt>
+								<uicontrol>protocol</uicontrol>
+							</dt>
+							<dd>Display only entries that affect a class or message in the same protocol
+								as the selected entry.</dd>
+						</dlentry>
+						<dlentry>
+							<dt>
+								<uicontrol>selector</uicontrol>
+							</dt>
+							<dd>Display only entries that involve the same message selector
+								as the selected entry.</dd>
+						</dlentry>
+						<dlentry>
+							<dt>
+								<uicontrol>same</uicontrol>
+							</dt>
+							<dd>Display only entries that have the same type as the selected entry
+								and affect the same class or method. Although the entries in the
+								change list appear identical, the underlying code may be different
+								for each entry. Use this switch to examine the evolution of a change.
+							</dd>
+						</dlentry>
+					</dl>
+				</p>
+			</body>
+		</topic>
+		<topic id = "vw.help.systemChanges.changeEvolution"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Examine the evolution of a change</title>
+			<body>
+				<p>With the <uicontrol>same</uicontrol> filter turned on,
+					you can examine the evolution of a class, method, or protocol. Typically,
+					this filter is used to examine the evolution of a single class or
+					a method, but it can be used to filter any type of change.</p>
+			</body>
+		</topic>
+		<topic id = "vw.help.systemChanges.cullChanges"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Cull the list of changes</title>
+			<body>
+				<p><indexterm>change list<indexterm>cull list</indexterm></indexterm>To
+					pair down the list of displayed changes, mark those item(s) to be deleted
+					by choosing <uicontrol>remove&#xA0;selection</uicontrol> or <uicontrol>remove&#xA0;all</uicontrol> from
+					the &lt;Operate&gt; menu, and then <uicontrol>forget</uicontrol>. To
+					un-mark item(s), choose either <uicontrol>restore&#xA0;selection</uicontrol> or <uicontrol>restore&#xA0;all</uicontrol>.
+					Note that the <uicontrol>forget</uicontrol> operation does not permanently
+					affect the system Change Set.</p>
+				<p>As a short-cut, you can also mark an item for removal by double-clicking
+					on the list entry; items marked for removal are display is struck
+					text. Double-clicking on the item a second time will restore it
+					to the list.</p>
+			</body>
+		</topic>
+		<topic id = "vw.help.systemChanges.recoverChanges"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Recover changes</title>
+			<body>
+				<p><indexterm>recover changes</indexterm><indexterm>change list<indexterm>recover changes</indexterm></indexterm>To display
+					the changes that have occurred since the last snapshot was taken,
+					select <uicontrol>file&#xA0;in/out&#xA0;&#x2192;&#xA0;recover&#xA0;last&#xA0;changes</uicontrol> on
+					the &lt;Operate&gt; menu of the list view in the top-left region of
+					the window.</p>
+				<p>When recovering from a system failure, you must eliminate any changes
+					that may have contributed to the crash.<ol>
+						<li>
+							<p>To cull unnecessary
+								entries such as doIts, edit the displayed list.</p>
+						</li>
+						<li>
+							<p>To delete all doIts, which are usually unnecessary for recovery purposes,
+								select any doIt in the list view and select the <uicontrol>type</uicontrol> switch.</p>
+						</li>
+						<li>
+							<p>Choose <uicontrol>remove&#xA0;all</uicontrol> in the
+								&lt;Operate&gt; menu to mark all the doIts for deletion, then select <uicontrol>forget</uicontrol> to
+								clear them from the list.</p>
+						</li>
+						<li>
+							<p>Deselect the type switch to display the remaining changes.</p>
+						</li>
+						<li>
+							<p>When the displayed list contains only the desired changes,
+								select <uicontrol>replay&#xA0;all&#xA0;&#x2192;&#xA0;from&#xA0;top</uicontrol> in
+								the &lt;Operate&gt; menu.</p>
+						</li>
+					</ol>
+				</p>
+			</body>
+		</topic>
+		<topic id = "vw.help.systemChanges.compress"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Condense the system changes file</title>
+			<body>
+				<p><indexterm>condense changes</indexterm><indexterm>changes file<indexterm>condense</indexterm>
+					</indexterm>In a large development
+					effort spanning months or years of programming, the changes file
+					can become very large. To condense it so that it contains only the
+					most recent change for each method, select <uicontrol>Changes&#xA0;&#x2192;&#xA0;Condense&#xA0;Changes </uicontrol>from
+					the Launcher’s <uicontrol>System</uicontrol> menu. Changes involving
+					anything other than a method &#x2014; such as a class addition or redefinition &#x2014; will
+					also be purged from the file permanently. It’s a good idea to make
+					a backup copy of the changes file before condensing it.</p>
+			</body>
+		</topic>
+		<topic id = "vw.help.systemChanges.revertToChange"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Revert to a prior version of a change</title>
+			<body>
+				<p>
+					<indexterm>revert to prior version</indexterm>
+					<indexterm>change
+						list<indexterm>revert</indexterm>
+					</indexterm>Use the <uicontrol>same</uicontrol> filter
+					to see the evolution of the particular change you want to revert.
+					To revert the code to a prior version, select the entry representing
+					that version and then select <uicontrol>replay&#xA0;selection</uicontrol> in
+					the &lt;Operate&gt; menu. You can also use the options under <uicontrol>replay&#xA0;all</uicontrol>, when
+					you want to incorporate all of the listed changes. The menu item <uicontrol>replay&#xA0;all&#xA0;&#x2192;&#xA0;from&#xA0;here</uicontrol> will
+					revert every change listed from the current selection to the end
+					of this list, while <uicontrol>replay&#xA0;all&#xA0;&#x2192;&#xA0;from&#xA0;top </uicontrol>will revert
+					every change in the list. Note that any change entries marked for
+					removal will not be reverted. If an exception occurs during the replay,
+					the selection is left at the item which caused it.</p>
+			</body>
+		</topic>
+		<topic id = "vw.help.systemChanges.changeSetManager"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Open a Change Set Browser</title>
+			<body>
+				<p><indexterm>change set<indexterm>open</indexterm></indexterm>Change
+					sets are listed in the Change Set Browser window. To open the browser,
+					select <uicontrol>Changes&#xA0;&#x2192;&#xA0;Change&#xA0;Sets</uicontrol> from
+					the Launcher’s <uicontrol>System</uicontrol> menu. To browse the
+					changes in a particular change set, select the change set then select <uicontrol>Browse</uicontrol> in
+					the &lt;Operate&gt; menu. This will open a separate Change Set Browser.</p>
+				<p><xref href="st:ChangeSetManager open" 
+					format="st" scope="external">Open the Change Set Browser for me</xref></p>
+				<p>To browse the changes in a specific change set, select the change set
+					in the Change Set Browser, then select <uicontrol>Browse</uicontrol> in
+					the <uicontrol>ChangeSet</uicontrol> or &lt;Operate&gt; menu.</p>
+				<p>Unlike the Change List, the change set browser does not show
+					the evolution of changes. Instead, change sets are used to organize groups
+					of changes. The Change Set Browser lists the affected parts of the
+					system so you can use the <uicontrol>File&#xA0;out&#xA0;as... </uicontrol>command
+					to store your work in a set of disk files.</p>
+			</body>
+		</topic>
+		<topic id = "vw.help.systemChanges.createChangeSet"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Create a new change set</title>
+			<body>
+				<p><indexterm>change set<indexterm>create new</indexterm></indexterm>To
+					create a new change set, open the Change Set Browser in the Launcher
+					window (select <uicontrol>Changes&#xA0;&#x2192;&#xA0;Change&#xA0;Sets</uicontrol> from
+					the <uicontrol>System</uicontrol> menu), and in the new Browser,
+					select <uicontrol>Add...</uicontrol> from the <uicontrol>ChangeSet</uicontrol> or the
+					&lt;Operate&gt; menu. Enter a name for the new change set in the prompter
+					dialog, and click <uicontrol>OK</uicontrol>.</p>
+				<p>To make this the current change set, select it so it is highlighted.
+					All subsequent changes will be recorded to this change set.</p>
+			</body>
+		</topic>
+		<topic id = "vw.help.systemChanges.saveChangeSet"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Save the contents of a single change set</title>
+			<body>
+				<p><indexterm>change set<indexterm>save contents</indexterm></indexterm>Use 
+					<uicontrol>File&#xA0;out&#xA0;as...</uicontrol> in
+					the left view’s &lt;Operate&gt; menu. To file out all projects into
+					a directory, use <uicontrol>File&#xA0;out&#xA0;all...</uicontrol>.</p>
+				<p>Change sets only keep track of the parts of the system that have been
+					modified. Unlike Change Lists, change sets do not keep track of the
+					evolution of changes.</p>
+			</body>
+		</topic>
+		<topic id = "vw.help.systemChanges.emptyChangeSet"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Empty a change set</title>
+			<body>
+				<p><indexterm>change set<indexterm>empty</indexterm></indexterm>To
+					empty the active change set, in readiness for a new batch of work, select <uicontrol>Empty...</uicontrol> in
+					the &lt;Operate&gt; menu.</p>
+			</body>
+		</topic>
+		<topic id = "vw.help.systemChanges.conflicts"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Identify conflicts in file-Ins</title>
+			<body>
+				<p><indexterm>change list<indexterm>find conflicts</indexterm></indexterm> <indexterm>code conflicts</indexterm>To 
+					identify conflicting methods in a source
+					file (or group of source files) displayed in the Change List, 
+					select <uicontrol>Read&#xA0;different&#xA0;source&#xA0;from&#xA0;file/directory...</uicontrol> on
+					the <uicontrol>File</uicontrol> menu. This command will build a
+					list of changes using only those definitions in the source file
+					which differ from the system. A full source text comparison is performed,
+					so any changes to formatting or comments will be flagged, and the
+					corresponding methods or classes will be added to the list of changes.</p>
+				<p>If you want to perform this operation using code analysis instead
+					of raw source comparison, select <uicontrol>Read&#xA0;different&#xA0;code&#xA0;from&#xA0;file/directory...</uicontrol> on the <uicontrol>File</uicontrol> menu.
+					Changes to formatting or comments will be ignored, and only methods
+					or classes with code changes will be added to the list of changes.
+					Note that although names of temporary variables are often considered
+					part of the source, they are treated as code changes by this analysis.</p>
+				<p>These commands are equivalent to <uicontrol>file in/out&#xA0;&#x2192;&#xA0;read
+						file/directory...</uicontrol>, followed by <uicontrol>Same...</uicontrol>.</p>
+			</body>
+		</topic>
+		<topic id = "vw.help.systemChanges.saveConflictsFile"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Create a conflicts file</title>
+			<body>
+				<p><indexterm>code conflicts</indexterm>To locate places where
+					the same method or class is affected in the Change List, use the <uicontrol>conflicts&#xA0;&#x2192;&#xA0;check&#xA0;conflicts,&#xA0;save&#xA0;as...</uicontrol> command on
+					the &lt;Operate&gt; menu in the upper-left view. Every duplicate entry in
+					the change list will be checked, and all versions of the conflicting code
+					are then saved in the designated file. This command can be used
+					to identify conflicts when you are integrating code from multiple files.</p>
+				<p>To perform a similar conflict-check between the list of changes
+					and the corresponding definitions in the current image, use the <uicontrol>conflicts&#xA0;&#x2192;&#xA0;check&#xA0;with&#xA0;system,&#xA0;save&#xA0;as...</uicontrol> command.</p>
+			</body>
+		</topic>
+	</topic>
+</dita>

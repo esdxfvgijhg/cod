@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+	<topic id="vw.help.intro.introduction" 
+		xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+		<title>Introduction to &Product; Smalltalk</title>
+		<body>
+			<p>This <i>Introduction to Smalltalk</i> describes the main concepts of Smalltalk 
+			in general, and &Product; Smalltalk in particular. It explains the language, the 
+			environment, its tools, essential components, and the basics of developing a complete 
+			Smalltalk application. The text is interactive, in that you can execute all examples.</p>
+		</body>
+	</topic>
+</dita>

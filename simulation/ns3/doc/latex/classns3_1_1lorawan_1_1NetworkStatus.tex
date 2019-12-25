@@ -1,0 +1,157 @@
+\hypertarget{classns3_1_1lorawan_1_1NetworkStatus}{}\section{ns3\+:\+:lorawan\+:\+:Network\+Status Class Reference}
+\label{classns3_1_1lorawan_1_1NetworkStatus}\index{ns3\+::lorawan\+::\+Network\+Status@{ns3\+::lorawan\+::\+Network\+Status}}
+
+
+{\ttfamily \#include $<$network-\/status.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Network\+Status\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{classns3_1_1lorawan_1_1NetworkStatus__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Network\+Status\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classns3_1_1lorawan_1_1NetworkStatus__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1NetworkStatus_afa1672e18a2f461795bcc625c62208fd}{Add\+Node} (Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac}{End\+Device\+Lora\+Mac} $>$ ed\+Mac)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1NetworkStatus_aaf864a8020870ec04cefe03232541dd5}{Add\+Gateway} (Address \&address, Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1GatewayStatus}{Gateway\+Status} $>$ gw\+Status)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1NetworkStatus_a3145ab9250630584f436fad43ed1df0d}{On\+Received\+Packet} (Ptr$<$ const Packet $>$ packet, const Address \&gwaddress)
+\item 
+bool \hyperlink{classns3_1_1lorawan_1_1NetworkStatus_a5175d3ffc372da6af985f7f32eb9b910}{Needs\+Reply} (\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} device\+Address)
+\item 
+Address \hyperlink{classns3_1_1lorawan_1_1NetworkStatus_a1febf85e27405aefebab17c2860c3c35}{Get\+Best\+Gateway\+For\+Device} (\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} device\+Address)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1NetworkStatus_a7b7b94a295a6306a6babcc97cd2f5491}{Send\+Through\+Gateway} (Ptr$<$ Packet $>$ packet, Address gw\+Address)
+\item 
+Ptr$<$ Packet $>$ \hyperlink{classns3_1_1lorawan_1_1NetworkStatus_aea166a6fa4379e993de7e309db64c9d5}{Get\+Reply\+For\+Device} (\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} ed\+Address, int window\+Number)
+\item 
+Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus}{End\+Device\+Status} $>$ \hyperlink{classns3_1_1lorawan_1_1NetworkStatus_a83251eb432e1e0c22cbe4a6e2ad9ec52}{Get\+End\+Device\+Status} (Ptr$<$ Packet const $>$ packet)
+\item 
+Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus}{End\+Device\+Status} $>$ \hyperlink{classns3_1_1lorawan_1_1NetworkStatus_a4f75e1f86d6e90931e71d362222c39b3}{Get\+End\+Device\+Status} (\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} address)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkStatus_a63a26932edea60efc8e69ad235ffbd11}\label{classns3_1_1lorawan_1_1NetworkStatus_a63a26932edea60efc8e69ad235ffbd11}} 
+static Type\+Id {\bfseries Get\+Type\+Id} (void)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkStatus_a75aa2ef5af97d128fb242d15928f72d5}\label{classns3_1_1lorawan_1_1NetworkStatus_a75aa2ef5af97d128fb242d15928f72d5}} 
+std\+::map$<$ \hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address}, Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus}{End\+Device\+Status} $>$ $>$ {\bfseries m\+\_\+end\+Device\+Statuses}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkStatus_aae9b5ba96201394290e23f0a906d74e7}\label{classns3_1_1lorawan_1_1NetworkStatus_aae9b5ba96201394290e23f0a906d74e7}} 
+std\+::map$<$ Address, Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1GatewayStatus}{Gateway\+Status} $>$ $>$ {\bfseries m\+\_\+gateway\+Statuses}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class represents the knowledge about the state of the network that is available at the Network Server. It is essentially a collection of two maps\+: one containing \hyperlink{classns3_1_1lorawan_1_1DeviceStatus}{Device\+Status} objects, and the other containing \hyperlink{classns3_1_1lorawan_1_1GatewayStatus}{Gateway\+Status} objects.
+
+This class is meant to be queried by \hyperlink{classns3_1_1lorawan_1_1NetworkController}{Network\+Controller} components, which can decide to take action based on the current status of the network. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkStatus_aaf864a8020870ec04cefe03232541dd5}\label{classns3_1_1lorawan_1_1NetworkStatus_aaf864a8020870ec04cefe03232541dd5}} 
+\index{ns3\+::lorawan\+::\+Network\+Status@{ns3\+::lorawan\+::\+Network\+Status}!Add\+Gateway@{Add\+Gateway}}
+\index{Add\+Gateway@{Add\+Gateway}!ns3\+::lorawan\+::\+Network\+Status@{ns3\+::lorawan\+::\+Network\+Status}}
+\subsubsection{\texorpdfstring{Add\+Gateway()}{AddGateway()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Network\+Status\+::\+Add\+Gateway (\begin{DoxyParamCaption}\item[{Address \&}]{address,  }\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1GatewayStatus}{Gateway\+Status} $>$}]{gw\+Status }\end{DoxyParamCaption})}
+
+Add this gateway to the list of gateways connected to the network.
+
+Each GW is identified by its Address in the N\+S-\/\+GW network. \mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkStatus_afa1672e18a2f461795bcc625c62208fd}\label{classns3_1_1lorawan_1_1NetworkStatus_afa1672e18a2f461795bcc625c62208fd}} 
+\index{ns3\+::lorawan\+::\+Network\+Status@{ns3\+::lorawan\+::\+Network\+Status}!Add\+Node@{Add\+Node}}
+\index{Add\+Node@{Add\+Node}!ns3\+::lorawan\+::\+Network\+Status@{ns3\+::lorawan\+::\+Network\+Status}}
+\subsubsection{\texorpdfstring{Add\+Node()}{AddNode()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Network\+Status\+::\+Add\+Node (\begin{DoxyParamCaption}\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac}{End\+Device\+Lora\+Mac} $>$}]{ed\+Mac }\end{DoxyParamCaption})}
+
+Add a device to the ones that are tracked by this \hyperlink{classns3_1_1lorawan_1_1NetworkStatus}{Network\+Status} object. \mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkStatus_a1febf85e27405aefebab17c2860c3c35}\label{classns3_1_1lorawan_1_1NetworkStatus_a1febf85e27405aefebab17c2860c3c35}} 
+\index{ns3\+::lorawan\+::\+Network\+Status@{ns3\+::lorawan\+::\+Network\+Status}!Get\+Best\+Gateway\+For\+Device@{Get\+Best\+Gateway\+For\+Device}}
+\index{Get\+Best\+Gateway\+For\+Device@{Get\+Best\+Gateway\+For\+Device}!ns3\+::lorawan\+::\+Network\+Status@{ns3\+::lorawan\+::\+Network\+Status}}
+\subsubsection{\texorpdfstring{Get\+Best\+Gateway\+For\+Device()}{GetBestGatewayForDevice()}}
+{\footnotesize\ttfamily Address ns3\+::lorawan\+::\+Network\+Status\+::\+Get\+Best\+Gateway\+For\+Device (\begin{DoxyParamCaption}\item[{\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address}}]{device\+Address }\end{DoxyParamCaption})}
+
+Return whether we have a gateway that is available to send a reply to the specified device.
+
+
+\begin{DoxyParams}{Parameters}
+{\em device\+Address} & the address of the device we are interested in. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkStatus_a83251eb432e1e0c22cbe4a6e2ad9ec52}\label{classns3_1_1lorawan_1_1NetworkStatus_a83251eb432e1e0c22cbe4a6e2ad9ec52}} 
+\index{ns3\+::lorawan\+::\+Network\+Status@{ns3\+::lorawan\+::\+Network\+Status}!Get\+End\+Device\+Status@{Get\+End\+Device\+Status}}
+\index{Get\+End\+Device\+Status@{Get\+End\+Device\+Status}!ns3\+::lorawan\+::\+Network\+Status@{ns3\+::lorawan\+::\+Network\+Status}}
+\subsubsection{\texorpdfstring{Get\+End\+Device\+Status()}{GetEndDeviceStatus()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus}{End\+Device\+Status} $>$ ns3\+::lorawan\+::\+Network\+Status\+::\+Get\+End\+Device\+Status (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet const $>$}]{packet }\end{DoxyParamCaption})}
+
+Get the \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus}{End\+Device\+Status} for the device that sent a packet. \mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkStatus_a4f75e1f86d6e90931e71d362222c39b3}\label{classns3_1_1lorawan_1_1NetworkStatus_a4f75e1f86d6e90931e71d362222c39b3}} 
+\index{ns3\+::lorawan\+::\+Network\+Status@{ns3\+::lorawan\+::\+Network\+Status}!Get\+End\+Device\+Status@{Get\+End\+Device\+Status}}
+\index{Get\+End\+Device\+Status@{Get\+End\+Device\+Status}!ns3\+::lorawan\+::\+Network\+Status@{ns3\+::lorawan\+::\+Network\+Status}}
+\subsubsection{\texorpdfstring{Get\+End\+Device\+Status()}{GetEndDeviceStatus()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus}{End\+Device\+Status} $>$ ns3\+::lorawan\+::\+Network\+Status\+::\+Get\+End\+Device\+Status (\begin{DoxyParamCaption}\item[{\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address}}]{address }\end{DoxyParamCaption})}
+
+Get the \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus}{End\+Device\+Status} corresponding to a \hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address}. \mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkStatus_aea166a6fa4379e993de7e309db64c9d5}\label{classns3_1_1lorawan_1_1NetworkStatus_aea166a6fa4379e993de7e309db64c9d5}} 
+\index{ns3\+::lorawan\+::\+Network\+Status@{ns3\+::lorawan\+::\+Network\+Status}!Get\+Reply\+For\+Device@{Get\+Reply\+For\+Device}}
+\index{Get\+Reply\+For\+Device@{Get\+Reply\+For\+Device}!ns3\+::lorawan\+::\+Network\+Status@{ns3\+::lorawan\+::\+Network\+Status}}
+\subsubsection{\texorpdfstring{Get\+Reply\+For\+Device()}{GetReplyForDevice()}}
+{\footnotesize\ttfamily Ptr$<$ Packet $>$ ns3\+::lorawan\+::\+Network\+Status\+::\+Get\+Reply\+For\+Device (\begin{DoxyParamCaption}\item[{\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address}}]{ed\+Address,  }\item[{int}]{window\+Number }\end{DoxyParamCaption})}
+
+Get the reply for the specified device address. \mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkStatus_a5175d3ffc372da6af985f7f32eb9b910}\label{classns3_1_1lorawan_1_1NetworkStatus_a5175d3ffc372da6af985f7f32eb9b910}} 
+\index{ns3\+::lorawan\+::\+Network\+Status@{ns3\+::lorawan\+::\+Network\+Status}!Needs\+Reply@{Needs\+Reply}}
+\index{Needs\+Reply@{Needs\+Reply}!ns3\+::lorawan\+::\+Network\+Status@{ns3\+::lorawan\+::\+Network\+Status}}
+\subsubsection{\texorpdfstring{Needs\+Reply()}{NeedsReply()}}
+{\footnotesize\ttfamily bool ns3\+::lorawan\+::\+Network\+Status\+::\+Needs\+Reply (\begin{DoxyParamCaption}\item[{\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address}}]{device\+Address }\end{DoxyParamCaption})}
+
+Return whether the specified device needs a reply.
+
+
+\begin{DoxyParams}{Parameters}
+{\em device\+Address} & the address of the device we are interested in. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkStatus_a3145ab9250630584f436fad43ed1df0d}\label{classns3_1_1lorawan_1_1NetworkStatus_a3145ab9250630584f436fad43ed1df0d}} 
+\index{ns3\+::lorawan\+::\+Network\+Status@{ns3\+::lorawan\+::\+Network\+Status}!On\+Received\+Packet@{On\+Received\+Packet}}
+\index{On\+Received\+Packet@{On\+Received\+Packet}!ns3\+::lorawan\+::\+Network\+Status@{ns3\+::lorawan\+::\+Network\+Status}}
+\subsubsection{\texorpdfstring{On\+Received\+Packet()}{OnReceivedPacket()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Network\+Status\+::\+On\+Received\+Packet (\begin{DoxyParamCaption}\item[{Ptr$<$ const Packet $>$}]{packet,  }\item[{const Address \&}]{gwaddress }\end{DoxyParamCaption})}
+
+Update network status on the received packet.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & the received packet. \\
+\hline
+{\em address} & the gateway this packet was received from. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkStatus_a7b7b94a295a6306a6babcc97cd2f5491}\label{classns3_1_1lorawan_1_1NetworkStatus_a7b7b94a295a6306a6babcc97cd2f5491}} 
+\index{ns3\+::lorawan\+::\+Network\+Status@{ns3\+::lorawan\+::\+Network\+Status}!Send\+Through\+Gateway@{Send\+Through\+Gateway}}
+\index{Send\+Through\+Gateway@{Send\+Through\+Gateway}!ns3\+::lorawan\+::\+Network\+Status@{ns3\+::lorawan\+::\+Network\+Status}}
+\subsubsection{\texorpdfstring{Send\+Through\+Gateway()}{SendThroughGateway()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Network\+Status\+::\+Send\+Through\+Gateway (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet $>$}]{packet,  }\item[{Address}]{gw\+Address }\end{DoxyParamCaption})}
+
+Send a packet through a Gateway.
+
+This function assumes that the packet is already tagged with a \hyperlink{classns3_1_1lorawan_1_1LoraTag}{Lora\+Tag} that will inform the gateway of the parameters to use for the transmission. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+network-\/status.\+h\item 
+network-\/status.\+cc\end{DoxyCompactItemize}

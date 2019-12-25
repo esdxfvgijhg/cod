@@ -1,0 +1,2094 @@
+Archive member included to satisfy reference by file (symbol)
+
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/application_filesystem.a(main.o)
+                              /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o (main)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/board.a(board_init.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o (board_init)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/application_filesystem.a(main.o) (constfs_file_system)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(kernel_init.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o (kernel_init)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(assert.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o (_assert_failure)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(thread.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(kernel_init.o) (thread_create)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(panic.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(assert.o) (assert_crash_message)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(sched.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(thread.o) (sched_num_threads)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o (real_exit)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o) (native_interrupts_enabled)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(native_cpu.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(thread.o) (thread_stack_init)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(tramp.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o) (_native_sig_leave_tramp)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/application_filesystem.a(main.o) (littlefs_file_system)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd.a(mtd.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o) (mtd_init)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd_native.a(mtd_native.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/board.a(board_init.o) (native_flash_driver)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native-drivers.a(native-led.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/board.a(board_init.o) (_native_LED_GREEN_ON)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native_vfs.a(native_vfs.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/application_filesystem.a(main.o) (open)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(uart.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o (tty_uart_setup)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(pm.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(kernel_init.o) (pm_set_lowest)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/ps.a(ps.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(panic.o) (ps)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell.a(shell.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/application_filesystem.a(main.o) (shell_run)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(shell_commands.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell.a(shell.o) (_shell_command_list)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_sys.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(shell_commands.o) (_reboot_handler)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_ps.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(shell_commands.o) (_ps_handler)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_vfs.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(shell_commands.o) (_ls_handler)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native_vfs.a(native_vfs.o) (vfs_close)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph_common.a(init.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o (periph_init)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/auto_init.a(auto_init.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(kernel_init.o) (auto_init)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(mutex.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o) (_mutex_lock)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(async_read.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(uart.o) (native_async_read_setup)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o) (lfs_traverse)
+/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs_util.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o) (lfs_crc)
+/usr/lib/gcc/x86_64-linux-gnu/6/32/libgcc.a(_popcountsi2.o)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o) (__popcountsi2)
+/usr/lib32/libc_nonshared.a(elf-init.oS)
+                              /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o (__libc_csu_init)
+/usr/lib32/libc_nonshared.a(stack_chk_fail_local.oS)
+                              /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o (__stack_chk_fail_local)
+
+Discarded input sections
+
+ .rodata        0x0000000000000000        0x4 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ .data          0x0000000000000000        0x4 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/crti.o
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/crti.o
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/crti.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/crti.o
+ .group         0x0000000000000000        0x8 /usr/lib/gcc/x86_64-linux-gnu/6/32/crtbeginS.o
+ .group         0x0000000000000000        0x8 /usr/lib/gcc/x86_64-linux-gnu/6/32/crtbeginS.o
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/6/32/crtbeginS.o
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /usr/lib/gcc/x86_64-linux-gnu/6/32/crtbeginS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/6/32/crtbeginS.o
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+ .bss._native_unix_socket_path
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/application_filesystem.a(main.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/application_filesystem.a(main.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/application_filesystem.a(main.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/application_filesystem.a(main.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/application_filesystem.a(main.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/application_filesystem.a(main.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/board.a(board_init.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/board.a(board_init.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/board.a(board_init.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/board.a(board_init.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/board.a(board_init.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/board.a(board_init.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(kernel_init.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(kernel_init.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(kernel_init.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(kernel_init.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(kernel_init.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(kernel_init.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(assert.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(assert.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(assert.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(assert.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(assert.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(assert.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(thread.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(thread.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(thread.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(thread.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(thread.o)
+ .text.clist_lpoprpush
+                0x0000000000000000       0x4a /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(thread.o)
+ .text.pid_is_valid
+                0x0000000000000000       0x4f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(thread.o)
+ .text.thread_get
+                0x0000000000000000       0x62 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(thread.o)
+ .text.thread_getstatus
+                0x0000000000000000       0x5f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(thread.o)
+ .text.thread_getname
+                0x0000000000000000       0x5b /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(thread.o)
+ .text.thread_sleep
+                0x0000000000000000       0x70 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(thread.o)
+ .text.thread_wakeup
+                0x0000000000000000       0xb4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(thread.o)
+ .text.thread_yield
+                0x0000000000000000       0x8a /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(thread.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(thread.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(thread.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(thread.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(panic.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(panic.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(panic.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(panic.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(panic.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(panic.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(panic.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(panic.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(sched.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(sched.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(sched.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(sched.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(sched.o)
+ .openocd       0x0000000000000000        0x2 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(sched.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(sched.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(sched.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(sched.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+ .text._native_read
+                0x0000000000000000       0x6c /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+ .text._native_writev
+                0x0000000000000000       0x6c /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+ .text.print_thread_sigmask
+                0x0000000000000000      0x111 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+ .text.print_sigmasks
+                0x0000000000000000       0xab /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+ .text.native_print_signals
+                0x0000000000000000      0x1d4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+ .text.register_interrupt
+                0x0000000000000000       0x77 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(native_cpu.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(native_cpu.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(native_cpu.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(native_cpu.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(native_cpu.o)
+ .text.thread_print_stack
+                0x0000000000000000       0x2f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(native_cpu.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(native_cpu.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(native_cpu.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(native_cpu.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(tramp.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(tramp.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd.a(mtd.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd.a(mtd.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd.a(mtd.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd.a(mtd.o)
+ .text.mtd_power
+                0x0000000000000000       0x79 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd.a(mtd.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd.a(mtd.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd.a(mtd.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd_native.a(mtd_native.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd_native.a(mtd_native.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd_native.a(mtd_native.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd_native.a(mtd_native.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd_native.a(mtd_native.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd_native.a(mtd_native.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd_native.a(mtd_native.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd_native.a(mtd_native.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native-drivers.a(native-led.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native-drivers.a(native-led.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native-drivers.a(native-led.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native-drivers.a(native-led.o)
+ .text._native_LED_GREEN_OFF
+                0x0000000000000000       0x48 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native-drivers.a(native-led.o)
+ .text._native_LED_GREEN_TOGGLE
+                0x0000000000000000       0x48 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native-drivers.a(native-led.o)
+ .text._native_LED_RED_ON
+                0x0000000000000000       0x48 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native-drivers.a(native-led.o)
+ .text._native_LED_RED_TOGGLE
+                0x0000000000000000       0x48 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native-drivers.a(native-led.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native-drivers.a(native-led.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native-drivers.a(native-led.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native_vfs.a(native_vfs.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native_vfs.a(native_vfs.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native_vfs.a(native_vfs.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native_vfs.a(native_vfs.o)
+ .text.fstat    0x0000000000000000       0x73 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native_vfs.a(native_vfs.o)
+ .text.stat     0x0000000000000000       0x73 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native_vfs.a(native_vfs.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native_vfs.a(native_vfs.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native_vfs.a(native_vfs.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(uart.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(uart.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(uart.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(uart.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(uart.o)
+ .bss.uart_config
+                0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(uart.o)
+ .bss.tty_fds   0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(uart.o)
+ .text.io_signal_handler
+                0x0000000000000000       0xf0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(uart.o)
+ .text.uart_init
+                0x0000000000000000      0x338 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(uart.o)
+ .text.uart_write
+                0x0000000000000000       0x64 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(uart.o)
+ .text.uart_poweron
+                0x0000000000000000       0x35 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(uart.o)
+ .text.uart_poweroff
+                0x0000000000000000       0x35 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(uart.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(uart.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(uart.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(uart.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(pm.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(pm.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(pm.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(pm.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(pm.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(pm.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/ps.a(ps.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/ps.a(ps.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/ps.a(ps.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/ps.a(ps.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/ps.a(ps.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/ps.a(ps.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell.a(shell.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell.a(shell.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell.a(shell.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell.a(shell.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell.a(shell.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell.a(shell.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell.a(shell.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell.a(shell.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(shell_commands.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(shell_commands.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(shell_commands.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(shell_commands.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_sys.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_sys.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_sys.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_sys.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_sys.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_sys.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_ps.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_ps.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_ps.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_ps.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_ps.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_ps.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_vfs.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_vfs.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_vfs.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_vfs.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_vfs.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_vfs.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_vfs.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_vfs.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .text.vfs_fstat
+                0x0000000000000000       0xa2 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .text.vfs_fstatvfs
+                0x0000000000000000       0xfa /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .text.vfs_mkdir
+                0x0000000000000000       0xcb /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .text.vfs_rmdir
+                0x0000000000000000       0xbf /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .text.vfs_stat
+                0x0000000000000000       0xd1 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .text.vfs_bind
+                0x0000000000000000       0xa6 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph_common.a(init.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph_common.a(init.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph_common.a(init.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph_common.a(init.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph_common.a(init.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph_common.a(init.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/auto_init.a(auto_init.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/auto_init.a(auto_init.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/auto_init.a(auto_init.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/auto_init.a(auto_init.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/auto_init.a(auto_init.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/auto_init.a(auto_init.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(mutex.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(mutex.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(mutex.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(mutex.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(mutex.o)
+ .text.mutex_unlock_and_sleep
+                0x0000000000000000       0xcc /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(mutex.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(mutex.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(mutex.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(mutex.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(async_read.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(async_read.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(async_read.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(async_read.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(async_read.o)
+ .bss._args     0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(async_read.o)
+ .bss._native_async_read_callbacks
+                0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(async_read.o)
+ .text._async_io_isr
+                0x0000000000000000      0x1f9 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(async_read.o)
+ .text.native_async_read_setup
+                0x0000000000000000       0x4a /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(async_read.o)
+ .text.native_async_read_continue
+                0x0000000000000000       0x35 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(async_read.o)
+ .rodata        0x0000000000000000       0x98 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(async_read.o)
+ .text.native_async_read_add_handler
+                0x0000000000000000      0x105 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(async_read.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(async_read.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(async_read.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(async_read.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_max  0x0000000000000000       0x44 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_dir_seek
+                0x0000000000000000       0xcd /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_dir_tell
+                0x0000000000000000       0x40 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_dir_rewind
+                0x0000000000000000       0x91 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_file_truncate
+                0x0000000000000000      0x1a2 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_file_tell
+                0x0000000000000000       0x40 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_file_rewind
+                0x0000000000000000       0x5f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_file_size
+                0x0000000000000000       0x6a /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs_util.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs_util.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs_util.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs_util.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs_util.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs_util.o)
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/6/32/libgcc.a(_popcountsi2.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/6/32/libgcc.a(_popcountsi2.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/6/32/libgcc.a(_popcountsi2.o)
+ .group         0x0000000000000000        0x8 /usr/lib32/libc_nonshared.a(elf-init.oS)
+ .data          0x0000000000000000        0x0 /usr/lib32/libc_nonshared.a(elf-init.oS)
+ .bss           0x0000000000000000        0x0 /usr/lib32/libc_nonshared.a(elf-init.oS)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /usr/lib32/libc_nonshared.a(elf-init.oS)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib32/libc_nonshared.a(elf-init.oS)
+ .group         0x0000000000000000        0x8 /usr/lib32/libc_nonshared.a(stack_chk_fail_local.oS)
+ .data          0x0000000000000000        0x0 /usr/lib32/libc_nonshared.a(stack_chk_fail_local.oS)
+ .bss           0x0000000000000000        0x0 /usr/lib32/libc_nonshared.a(stack_chk_fail_local.oS)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /usr/lib32/libc_nonshared.a(stack_chk_fail_local.oS)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib32/libc_nonshared.a(stack_chk_fail_local.oS)
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/6/32/crtendS.o
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/6/32/crtendS.o
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/6/32/crtendS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/6/32/crtendS.o
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/crtn.o
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/crtn.o
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/crtn.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+LOAD /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/crti.o
+LOAD /usr/lib/gcc/x86_64-linux-gnu/6/32/crtbeginS.o
+LOAD /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+START GROUP
+LOAD /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/application_filesystem.a
+LOAD /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/auto_init.a
+LOAD /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/board.a
+LOAD /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a
+LOAD /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a
+LOAD /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a
+LOAD /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a
+LOAD /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a
+LOAD /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd.a
+LOAD /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd_native.a
+LOAD /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native-drivers.a
+LOAD /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native_vfs.a
+LOAD /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a
+LOAD /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/ps.a
+LOAD /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell.a
+LOAD /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a
+LOAD /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/sys.a
+LOAD /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a
+LOAD /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph_common.a
+LOAD /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/libm.so
+END GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/libdl.so
+LOAD /usr/lib/gcc/x86_64-linux-gnu/6/32/libgcc.a
+LOAD /usr/lib/gcc/x86_64-linux-gnu/6/32/libgcc_s.so
+START GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/6/32/libgcc_s.so.1
+LOAD /usr/lib/gcc/x86_64-linux-gnu/6/32/libgcc.a
+END GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/libc.so
+START GROUP
+LOAD /lib32/libc.so.6
+LOAD /usr/lib32/libc_nonshared.a
+LOAD /lib32/ld-linux.so.2
+END GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/6/32/libgcc.a
+LOAD /usr/lib/gcc/x86_64-linux-gnu/6/32/libgcc_s.so
+START GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/6/32/libgcc_s.so.1
+LOAD /usr/lib/gcc/x86_64-linux-gnu/6/32/libgcc.a
+END GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/6/32/crtendS.o
+LOAD /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/crtn.o
+                [!provide]                        PROVIDE (__executable_start, SEGMENT_START ("text-segment", 0x0))
+                0x0000000000000154                . = (SEGMENT_START ("text-segment", 0x0) + SIZEOF_HEADERS)
+
+.interp         0x0000000000000154       0x13
+ *(.interp)
+ .interp        0x0000000000000154       0x13 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+
+.note.ABI-tag   0x0000000000000168       0x20
+ .note.ABI-tag  0x0000000000000168       0x20 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+
+.note.gnu.build-id
+                0x0000000000000188       0x24
+ *(.note.gnu.build-id)
+ .note.gnu.build-id
+                0x0000000000000188       0x24 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+
+.hash
+ *(.hash)
+
+.gnu.hash       0x00000000000001ac       0xe4
+ *(.gnu.hash)
+ .gnu.hash      0x00000000000001ac       0xe4 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+
+.dynsym         0x0000000000000290      0x490
+ *(.dynsym)
+ .dynsym        0x0000000000000290      0x490 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+
+.dynstr         0x0000000000000720      0x2b5
+ *(.dynstr)
+ .dynstr        0x0000000000000720      0x2b5 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+
+.gnu.version    0x00000000000009d6       0x92
+ *(.gnu.version)
+ .gnu.version   0x00000000000009d6       0x92 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+
+.gnu.version_d  0x0000000000000a68        0x0
+ *(.gnu.version_d)
+ .gnu.version_d
+                0x0000000000000a68        0x0 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+
+.gnu.version_r  0x0000000000000a68       0x80
+ *(.gnu.version_r)
+ .gnu.version_r
+                0x0000000000000a68       0x80 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+
+.rel.dyn        0x0000000000000ae8      0x3f0
+ *(.rel.init)
+ *(.rel.text .rel.text.* .rel.gnu.linkonce.t.*)
+ .rel.text.core_panic
+                0x0000000000000ae8        0x0 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ .rel.text      0x0000000000000ae8       0x38 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ *(.rel.fini)
+ *(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.*)
+ *(.rel.data.rel.ro .rel.data.rel.ro.* .rel.gnu.linkonce.d.rel.ro.*)
+ .rel.data.rel.ro
+                0x0000000000000b20        0x0 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ .rel.data.rel.ro.local.long_opts
+                0x0000000000000b20       0x48 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ .rel.data.rel.ro.local.shell_commands
+                0x0000000000000b68       0x78 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ .rel.data.rel.ro.local.constfs_fs_ops
+                0x0000000000000be0       0x28 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ .rel.data.rel.ro.local.constfs_file_ops
+                0x0000000000000c08       0x30 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ .rel.data.rel.ro.local.constfs_dir_ops
+                0x0000000000000c38       0x18 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ .rel.data.rel.ro.local.constfs_file_system
+                0x0000000000000c50       0x18 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ .rel.data.rel.ro.local.littlefs_fs_ops
+                0x0000000000000c68       0x48 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ .rel.data.rel.ro.local.littlefs_file_ops
+                0x0000000000000cb0       0x28 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ .rel.data.rel.ro.local.littlefs_dir_ops
+                0x0000000000000cd8       0x18 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ .rel.data.rel.ro.local.littlefs_file_system
+                0x0000000000000cf0       0x18 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ .rel.data.rel.ro.local.native_flash_driver
+                0x0000000000000d08       0x28 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ .rel.data.rel.ro._shell_command_list
+                0x0000000000000d30       0x60 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ *(.rel.data .rel.data.* .rel.gnu.linkonce.d.*)
+ .rel.data.rel.local
+                0x0000000000000d90        0x8 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ .rel.data.rel.flash_mount
+                0x0000000000000d98       0x18 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ .rel.data.rel.local.constfs_files
+                0x0000000000000db0       0x20 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ .rel.data.rel.local.constfs_desc
+                0x0000000000000dd0        0x8 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ .rel.data.rel.const_mount
+                0x0000000000000dd8       0x18 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ .rel.data.rel.mtd0_dev
+                0x0000000000000df0       0x10 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ .rel.data.rel.local.mtd0
+                0x0000000000000e00        0x8 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ .rel.data.rel.local.main_name
+                0x0000000000000e08        0x8 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ .rel.data.rel.local.idle_name
+                0x0000000000000e10        0x8 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ .rel.data.rel.local.state_names
+                0x0000000000000e18       0x58 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ .rel.data.rel.local.INCORRECT_QUOTING.2583
+                0x0000000000000e70        0x8 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ *(.rel.tdata .rel.tdata.* .rel.gnu.linkonce.td.*)
+ *(.rel.tbss .rel.tbss.* .rel.gnu.linkonce.tb.*)
+ *(.rel.ctors)
+ *(.rel.dtors)
+ *(.rel.got)
+ .rel.got       0x0000000000000e78       0x48 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ *(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.*)
+ .rel.bss       0x0000000000000ec0        0x0 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ *(.rel.ifunc)
+ .rel.fini_array
+                0x0000000000000ec0        0x8 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ .rel.init_array
+                0x0000000000000ec8       0x10 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+
+.rel.plt        0x0000000000000ed8      0x120
+ *(.rel.plt)
+ .rel.plt       0x0000000000000ed8      0x120 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+                [!provide]                        PROVIDE (__rel_iplt_start, .)
+ *(.rel.iplt)
+                [!provide]                        PROVIDE (__rel_iplt_end, .)
+
+.init           0x0000000000000ff8       0x23
+ *(SORT(.init))
+ .init          0x0000000000000ff8       0x1e /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/crti.o
+                0x0000000000000ff8                _init
+ .init          0x0000000000001016        0x5 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/crtn.o
+
+.plt            0x0000000000001020      0x250
+ *(.plt)
+ .plt           0x0000000000001020      0x250 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ *(.iplt)
+
+.plt.got        0x0000000000001270       0x10
+ *(.plt.got)
+ .plt.got       0x0000000000001270       0x10 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+
+.text           0x0000000000001280     0xfa14
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ .text.startup  0x0000000000001280      0x34d /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+ *(.text.hot .text.hot.*)
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x00000000000015cd       0x36 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+                0x00000000000015cd                _start
+ *fill*         0x0000000000001603        0xd 
+ .gnu.linkonce.t.__x86.get_pc_thunk.bx
+                0x0000000000001610        0x4 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/crti.o
+                0x0000000000001610                __x86.get_pc_thunk.bx
+ *fill*         0x0000000000001614        0xc 
+ .text          0x0000000000001620      0x11c /usr/lib/gcc/x86_64-linux-gnu/6/32/crtbeginS.o
+ .text.__x86.get_pc_thunk.dx
+                0x000000000000173c        0x4 /usr/lib/gcc/x86_64-linux-gnu/6/32/crtbeginS.o
+                0x000000000000173c                __x86.get_pc_thunk.dx
+ .text._native_input
+                0x0000000000001740       0x9c /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+                0x0000000000001740                _native_input
+ .text._native_log_output
+                0x00000000000017dc      0x162 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+                0x00000000000017dc                _native_log_output
+ .text.daemonize
+                0x000000000000193e      0x106 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+                0x000000000000193e                daemonize
+ .text.filter_daemonize_argv
+                0x0000000000001a44       0xba /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+ .text.usage_exit
+                0x0000000000001afe       0xb4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+                0x0000000000001afe                usage_exit
+ .text._mount   0x0000000000001bb2       0x98 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/application_filesystem.a(main.o)
+ .text._format  0x0000000000001c4a       0x98 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/application_filesystem.a(main.o)
+ .text._umount  0x0000000000001ce2       0x98 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/application_filesystem.a(main.o)
+ .text._cat     0x0000000000001d7a       0xe3 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/application_filesystem.a(main.o)
+ .text._tee     0x0000000000001e5d      0x118 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/application_filesystem.a(main.o)
+ .text.main     0x0000000000001f75       0xbe /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/application_filesystem.a(main.o)
+                0x0000000000001f75                main
+ .text.board_init
+                0x0000000000002033       0x50 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/board.a(board_init.o)
+                0x0000000000002033                board_init
+ .text.constfs_mount
+                0x0000000000002083       0x39 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+ .text.constfs_umount
+                0x00000000000020bc       0x39 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+ .text.constfs_unlink
+                0x00000000000020f5       0x3f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+ .text.constfs_stat
+                0x0000000000002134       0xd6 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+ .text.constfs_statvfs
+                0x000000000000220a      0x11c /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+ .text.constfs_close
+                0x0000000000002326       0x39 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+ .text.constfs_fstat
+                0x000000000000235f       0x66 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+ .text.constfs_lseek
+                0x00000000000023c5       0x98 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+ .text.constfs_open
+                0x000000000000245d       0xd5 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+ .text.constfs_read
+                0x0000000000002532       0xc9 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+ .text.constfs_write
+                0x00000000000025fb       0x45 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+ .text.constfs_opendir
+                0x0000000000002640       0x78 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+ .text.constfs_readdir
+                0x00000000000026b8       0xfa /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+ .text.constfs_closedir
+                0x00000000000027b2       0x39 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+ .text._constfs_write_stat
+                0x00000000000027eb       0x8e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000002879        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+                0x0000000000002879                __x86.get_pc_thunk.ax
+ .text.main_trampoline
+                0x000000000000287d       0x5a /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(kernel_init.o)
+ .text.idle_thread
+                0x00000000000028d7       0x2a /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(kernel_init.o)
+ .text.kernel_init
+                0x0000000000002901       0x7d /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(kernel_init.o)
+                0x0000000000002901                kernel_init
+ .text._assert_failure
+                0x000000000000297e       0x52 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(assert.o)
+                0x000000000000297e                _assert_failure
+ .text.cib_init
+                0x00000000000029d0       0x8b /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(thread.o)
+ .text.thread_add_to_list
+                0x0000000000002a5b       0xbf /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(thread.o)
+                0x0000000000002a5b                thread_add_to_list
+ .text.thread_measure_stack_free
+                0x0000000000002b1a       0x5c /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(thread.o)
+                0x0000000000002b1a                thread_measure_stack_free
+ .text.thread_create
+                0x0000000000002b76      0x272 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(thread.o)
+                0x0000000000002b76                thread_create
+ .text.panic_arch
+                0x0000000000002de8       0x2f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(panic.o)
+                0x0000000000002de8                panic_arch
+ .text.core_panic
+                0x0000000000002e17       0xa1 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(panic.o)
+                0x0000000000002e17                core_panic
+ .text.bitarithm_lsb
+                0x0000000000002eb8       0x51 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(sched.o)
+ .text.clist_rpush
+                0x0000000000002f09       0x6c /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(sched.o)
+ .text.clist_lpop
+                0x0000000000002f75       0x72 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(sched.o)
+ .text.sched_run
+                0x0000000000002fe7       0xbd /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(sched.o)
+                0x0000000000002fe7                sched_run
+ .text.sched_set_status
+                0x00000000000030a4      0x11f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(sched.o)
+                0x00000000000030a4                sched_set_status
+ .text.sched_switch
+                0x00000000000031c3       0x90 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(sched.o)
+                0x00000000000031c3                sched_switch
+ .text.sched_task_exit
+                0x0000000000003253       0x67 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(sched.o)
+                0x0000000000003253                sched_task_exit
+ .text._native_syscall_enter
+                0x00000000000032ba       0x43 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x00000000000032ba                _native_syscall_enter
+ .text._native_syscall_leave
+                0x00000000000032fd      0x137 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x00000000000032fd                _native_syscall_leave
+ .text.malloc   0x0000000000003434       0xa8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x0000000000003434                malloc
+ .text.free     0x00000000000034dc       0x55 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x00000000000034dc                free
+ .text.calloc   0x0000000000003531       0xb1 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x0000000000003531                calloc
+ .text.realloc  0x00000000000035e2       0x63 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x00000000000035e2                realloc
+ .text._native_write
+                0x0000000000003645       0x6c /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x0000000000003645                _native_write
+ .text.putchar  0x00000000000036b1       0x4c /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x00000000000036b1                putchar
+ .text.puts     0x00000000000036fd       0x6d /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x00000000000036fd                puts
+ .text.make_message
+                0x000000000000376a       0xd8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000000376a                make_message
+ .text.printf   0x0000000000003842       0x5c /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x0000000000003842                printf
+ .text.vprintf  0x000000000000389e       0x55 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000000389e                vprintf
+ .text.fprintf  0x00000000000038f3       0x5b /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x00000000000038f3                fprintf
+ .text.vfprintf
+                0x000000000000394e       0xb5 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000000394e                vfprintf
+ .text.vwarn    0x0000000000003a03      0x14e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x0000000000003a03                vwarn
+ .text.vwarnx   0x0000000000003b51      0x103 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x0000000000003b51                vwarnx
+ .text.verr     0x0000000000003c54       0x4e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x0000000000003c54                verr
+ .text.verrx    0x0000000000003ca2       0x4e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x0000000000003ca2                verrx
+ .text.warn     0x0000000000003cf0       0x4d /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x0000000000003cf0                warn
+ .text.warnx    0x0000000000003d3d       0x4d /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x0000000000003d3d                warnx
+ .text.err      0x0000000000003d8a       0x3f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x0000000000003d8a                err
+ .text.errx     0x0000000000003dc9       0x3f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x0000000000003dc9                errx
+ .text.getpid   0x0000000000003e08       0x46 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x0000000000003e08                getpid
+ .text._native_init_syscalls
+                0x0000000000003e4e      0x5af /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x0000000000003e4e                _native_init_syscalls
+ .text.thread_isr_stack_pointer
+                0x00000000000043fd       0x35 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+                0x00000000000043fd                thread_isr_stack_pointer
+ .text.thread_isr_stack_start
+                0x0000000000004432       0x35 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+                0x0000000000004432                thread_isr_stack_start
+ .text.irq_disable
+                0x0000000000004467       0x85 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+                0x0000000000004467                irq_disable
+ .text.irq_enable
+                0x00000000000044ec       0xa5 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+                0x00000000000044ec                irq_enable
+ .text.irq_restore
+                0x0000000000004591       0x47 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+                0x0000000000004591                irq_restore
+ .text.irq_is_in
+                0x00000000000045d8       0x35 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+                0x00000000000045d8                irq_is_in
+ .text._native_popsig
+                0x000000000000460d       0x9f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+                0x000000000000460d                _native_popsig
+ .text.native_irq_handler
+                0x00000000000046ac       0x8f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+                0x00000000000046ac                native_irq_handler
+ .text.isr_set_sigmask
+                0x000000000000473b       0x60 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+                0x000000000000473b                isr_set_sigmask
+ .text.native_isr_entry
+                0x000000000000479b      0x18f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+                0x000000000000479b                native_isr_entry
+ .text.set_signal_handler
+                0x000000000000492a      0x15d /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+                0x000000000000492a                set_signal_handler
+ .text.unregister_interrupt
+                0x0000000000004a87       0x72 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+                0x0000000000004a87                unregister_interrupt
+ .text.native_shutdown
+                0x0000000000004af9       0x4e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+ .text.native_interrupt_init
+                0x0000000000004b47      0x3fe /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+                0x0000000000004b47                native_interrupt_init
+ .text._native_mod_ctx_leave_sigh
+                0x0000000000004f45       0x54 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(native_cpu.o)
+ .text.thread_isr_stack_usage
+                0x0000000000004f99       0x33 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(native_cpu.o)
+                0x0000000000004f99                thread_isr_stack_usage
+ .text.thread_stack_init
+                0x0000000000004fcc      0x10d /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(native_cpu.o)
+                0x0000000000004fcc                thread_stack_init
+ .text.isr_cpu_switch_context_exit
+                0x00000000000050d9       0x97 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(native_cpu.o)
+                0x00000000000050d9                isr_cpu_switch_context_exit
+ .text.cpu_switch_context_exit
+                0x0000000000005170       0xd1 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(native_cpu.o)
+                0x0000000000005170                cpu_switch_context_exit
+ .text.isr_thread_yield
+                0x0000000000005241       0x95 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(native_cpu.o)
+                0x0000000000005241                isr_thread_yield
+ .text.thread_yield_higher
+                0x00000000000052d6      0x100 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(native_cpu.o)
+                0x00000000000052d6                thread_yield_higher
+ .text.native_cpu_init
+                0x00000000000053d6       0xb1 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(native_cpu.o)
+                0x00000000000053d6                native_cpu_init
+ .text          0x0000000000005487       0x3f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(tramp.o)
+                0x0000000000005487                _native_sig_leave_tramp
+                0x00000000000054b5                _native_sig_leave_handler
+ .text.mutex_init
+                0x00000000000054c6       0x3e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text.mutex_lock
+                0x0000000000005504       0x4c /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text.littlefs_err_to_errno
+                0x0000000000005550       0xa5 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text._dev_read
+                0x00000000000055f5       0xa5 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text._dev_write
+                0x000000000000569a       0xed /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text._dev_erase
+                0x0000000000005787       0x92 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text._dev_sync
+                0x0000000000005819       0x39 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text.prepare  0x0000000000005852      0x14f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text._format  0x00000000000059a1       0x99 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text._mount   0x0000000000005a3a       0x99 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text._umount  0x0000000000005ad3       0x86 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text._unlink  0x0000000000005b59       0x8f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text._rename  0x0000000000005be8       0x98 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text._mkdir   0x0000000000005c80       0x95 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text._rmdir   0x0000000000005d15       0x8f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text._open    0x0000000000005da4      0x12d /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text._close   0x0000000000005ed1       0x95 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text._write   0x0000000000005f66       0xa4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text._read    0x000000000000600a       0xa4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text._lseek   0x00000000000060ae       0xa4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text._stat    0x0000000000006152      0x104 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text._traverse_cb
+                0x0000000000006256       0x52 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text._statvfs
+                0x00000000000062a8      0x103 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text._opendir
+                0x00000000000063ab       0xa4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text._readdir
+                0x000000000000644f      0x112 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text._closedir
+                0x0000000000006561       0x95 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .text.mtd_init
+                0x00000000000065f6       0x6e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd.a(mtd.o)
+                0x00000000000065f6                mtd_init
+ .text.mtd_read
+                0x0000000000006664       0x88 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd.a(mtd.o)
+                0x0000000000006664                mtd_read
+ .text.mtd_write
+                0x00000000000066ec       0x88 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd.a(mtd.o)
+                0x00000000000066ec                mtd_write
+ .text.mtd_erase
+                0x0000000000006774       0x82 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd.a(mtd.o)
+                0x0000000000006774                mtd_erase
+ .text._init    0x00000000000067f6       0xf4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd_native.a(mtd_native.o)
+ .text._read    0x00000000000068ea       0xf8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd_native.a(mtd_native.o)
+ .text._write   0x00000000000069e2      0x173 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd_native.a(mtd_native.o)
+ .text._erase   0x0000000000006b55      0x147 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd_native.a(mtd_native.o)
+ .text._power   0x0000000000006c9c       0x3f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd_native.a(mtd_native.o)
+ .text._native_LED_GREEN_ON
+                0x0000000000006cdb       0x48 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native-drivers.a(native-led.o)
+                0x0000000000006cdb                _native_LED_GREEN_ON
+ .text._native_LED_RED_OFF
+                0x0000000000006d23       0x48 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native-drivers.a(native-led.o)
+                0x0000000000006d23                _native_LED_RED_OFF
+ .text.open     0x0000000000006d6b       0x99 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native_vfs.a(native_vfs.o)
+                0x0000000000006d6b                open
+ .text.read     0x0000000000006e04       0x7a /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native_vfs.a(native_vfs.o)
+                0x0000000000006e04                read
+ .text.write    0x0000000000006e7e       0x7a /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native_vfs.a(native_vfs.o)
+                0x0000000000006e7e                write
+ .text.close    0x0000000000006ef8       0x68 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native_vfs.a(native_vfs.o)
+                0x0000000000006ef8                close
+ .text.fcntl    0x0000000000006f60       0x89 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native_vfs.a(native_vfs.o)
+                0x0000000000006f60                fcntl
+ .text.lseek    0x0000000000006fe9       0x7a /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native_vfs.a(native_vfs.o)
+                0x0000000000006fe9                lseek
+ .text.unlink   0x0000000000007063       0x6a /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native_vfs.a(native_vfs.o)
+                0x0000000000007063                unlink
+ .text.tty_uart_setup
+                0x00000000000070cd       0x5f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(uart.o)
+                0x00000000000070cd                tty_uart_setup
+ .text.pm_set_lowest
+                0x000000000000712c       0x89 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(pm.o)
+                0x000000000000712c                pm_set_lowest
+ .text.pm_off   0x00000000000071b5       0x3e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(pm.o)
+                0x00000000000071b5                pm_off
+ .text.pm_reboot
+                0x00000000000071f3       0x81 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(pm.o)
+                0x00000000000071f3                pm_reboot
+ .text.ps       0x0000000000007274      0x1d5 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/ps.a(ps.o)
+                0x0000000000007274                ps
+ .text.find_handler
+                0x0000000000007449       0xa5 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell.a(shell.o)
+ .text.print_help
+                0x00000000000074ee       0xcc /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell.a(shell.o)
+ .text.handle_input_line
+                0x00000000000075ba      0x32f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell.a(shell.o)
+ .text.readline
+                0x00000000000078e9      0x121 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell.a(shell.o)
+ .text.print_prompt
+                0x0000000000007a0a       0x4e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell.a(shell.o)
+ .text.shell_run
+                0x0000000000007a58       0x80 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell.a(shell.o)
+                0x0000000000007a58                shell_run
+ .text._reboot_handler
+                0x0000000000007ad8       0x4c /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_sys.o)
+                0x0000000000007ad8                _reboot_handler
+ .text._ps_handler
+                0x0000000000007b24       0x4c /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_ps.o)
+                0x0000000000007b24                _ps_handler
+ .text._ls_usage
+                0x0000000000007b70       0x64 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_vfs.o)
+ .text._vfs_usage
+                0x0000000000007bd4      0x160 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_vfs.o)
+ .text._errno_string
+                0x0000000000007d34      0x1d7 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_vfs.o)
+ .text._print_df
+                0x0000000000007f0b       0xd6 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_vfs.o)
+ .text._df_handler
+                0x0000000000007fe1       0xa7 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_vfs.o)
+ .text._read_handler
+                0x0000000000008088      0x402 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_vfs.o)
+ .text._dehex   0x000000000000848a       0x78 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_vfs.o)
+ .text._write_handler
+                0x0000000000008502      0x523 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_vfs.o)
+ .text._cp_handler
+                0x0000000000008a25      0x36a /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_vfs.o)
+ .text._mv_handler
+                0x0000000000008d8f       0xd7 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_vfs.o)
+ .text._rm_handler
+                0x0000000000008e66       0xcb /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_vfs.o)
+ .text._ls_handler
+                0x0000000000008f31      0x227 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_vfs.o)
+                0x0000000000008f31                _ls_handler
+ .text._vfs_handler
+                0x0000000000009158      0x222 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_vfs.o)
+                0x0000000000009158                _vfs_handler
+ .text.clist_rpush
+                0x000000000000937a       0x6c /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .text.clist_lpop
+                0x00000000000093e6       0x72 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .text.clist_find_before
+                0x0000000000009458       0x75 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .text.clist_find
+                0x00000000000094cd       0x60 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .text.clist_remove
+                0x000000000000952d       0xa1 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .text.mutex_lock
+                0x00000000000095ce       0x4c /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .text.thread_getpid
+                0x000000000000961a       0x38 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .text.vfs_close
+                0x0000000000009652       0x97 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+                0x0000000000009652                vfs_close
+ .text.vfs_fcntl
+                0x00000000000096e9       0xb1 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+                0x00000000000096e9                vfs_fcntl
+ .text.vfs_lseek
+                0x000000000000979a       0xdf /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+                0x000000000000979a                vfs_lseek
+ .text.vfs_open
+                0x0000000000009879      0x133 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+                0x0000000000009879                vfs_open
+ .text.vfs_read
+                0x00000000000099ac       0xd8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+                0x00000000000099ac                vfs_read
+ .text.vfs_write
+                0x0000000000009a84       0xd9 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+                0x0000000000009a84                vfs_write
+ .text.vfs_opendir
+                0x0000000000009b5d      0x10d /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+                0x0000000000009b5d                vfs_opendir
+ .text.vfs_readdir
+                0x0000000000009c6a       0x7f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+                0x0000000000009c6a                vfs_readdir
+ .text.vfs_closedir
+                0x0000000000009ce9       0xad /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+                0x0000000000009ce9                vfs_closedir
+ .text.check_mount
+                0x0000000000009d96       0xd7 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .text.vfs_format
+                0x0000000000009e6d       0xa0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+                0x0000000000009e6d                vfs_format
+ .text.vfs_mount
+                0x0000000000009f0d       0xd9 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+                0x0000000000009f0d                vfs_mount
+ .text.vfs_umount
+                0x0000000000009fe6      0x154 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+                0x0000000000009fe6                vfs_umount
+ .text.vfs_rename
+                0x000000000000a13a      0x139 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+                0x000000000000a13a                vfs_rename
+ .text.vfs_unlink
+                0x000000000000a273       0xbf /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+                0x000000000000a273                vfs_unlink
+ .text.vfs_statvfs
+                0x000000000000a332       0xd1 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+                0x000000000000a332                vfs_statvfs
+ .text.vfs_normalize_path
+                0x000000000000a403      0x1c8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+                0x000000000000a403                vfs_normalize_path
+ .text.vfs_iterate_mounts
+                0x000000000000a5cb       0x74 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+                0x000000000000a5cb                vfs_iterate_mounts
+ .text._allocate_fd
+                0x000000000000a63f       0xe2 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .text._free_fd
+                0x000000000000a721       0x77 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .text._init_fd
+                0x000000000000a798       0xae /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .text._find_mount
+                0x000000000000a846      0x193 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .text._fd_is_valid
+                0x000000000000a9d9       0x7d /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .text.periph_init
+                0x000000000000aa56       0x2f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph_common.a(init.o)
+                0x000000000000aa56                periph_init
+ .text.auto_init
+                0x000000000000aa85       0x2f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/auto_init.a(auto_init.o)
+                0x000000000000aa85                auto_init
+ .text.list_remove_head
+                0x000000000000aab4       0x4f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(mutex.o)
+ .text._mutex_lock
+                0x000000000000ab03       0xf3 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(mutex.o)
+                0x000000000000ab03                _mutex_lock
+ .text.mutex_unlock
+                0x000000000000abf6       0xef /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(mutex.o)
+                0x000000000000abf6                mutex_unlock
+ .text.native_async_read_cleanup
+                0x000000000000ace5       0x74 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(async_read.o)
+                0x000000000000ace5                native_async_read_cleanup
+ .text.lfs_min  0x000000000000ad59       0x44 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_npw2
+                0x000000000000ad9d       0x49 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_ctz  0x000000000000ade6       0x3b /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_popc
+                0x000000000000ae21       0x49 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_scmp
+                0x000000000000ae6a       0x40 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_fromle32
+                0x000000000000aeaa       0x37 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_tole32
+                0x000000000000aee1       0x42 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_malloc
+                0x000000000000af23       0x49 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_free
+                0x000000000000af6c       0x4a /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_cache_read
+                0x000000000000afb6      0x2b8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_cache_cmp
+                0x000000000000b26e       0xc6 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_cache_crc
+                0x000000000000b334       0xbf /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_cache_drop
+                0x000000000000b3f3       0x44 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_cache_zero
+                0x000000000000b437       0x6b /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_cache_flush
+                0x000000000000b4a2       0xff /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_cache_prog
+                0x000000000000b5a1      0x283 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_bd_read
+                0x000000000000b824       0x6f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_bd_prog
+                0x000000000000b893       0x6f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_bd_cmp
+                0x000000000000b902       0x6f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_bd_crc
+                0x000000000000b971       0x6f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_bd_erase
+                0x000000000000b9e0       0x53 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_bd_sync
+                0x000000000000ba33       0x84 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_alloc_lookahead
+                0x000000000000bab7       0xb8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_alloc
+                0x000000000000bb6f      0x1eb /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_alloc_ack
+                0x000000000000bd5a       0x43 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_dir_fromle32
+                0x000000000000bd9d       0x9b /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_dir_tole32
+                0x000000000000be38       0x9b /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_entry_fromle32
+                0x000000000000bed3       0x69 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_entry_tole32
+                0x000000000000bf3c       0x69 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_superblock_fromle32
+                0x000000000000bfa5       0xb7 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_superblock_tole32
+                0x000000000000c05c       0xb7 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_pairswap
+                0x000000000000c113       0x53 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_pairisnull
+                0x000000000000c166       0x5a /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_paircmp
+                0x000000000000c1c0       0x8a /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_pairsync
+                0x000000000000c24a       0x8d /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_entry_size
+                0x000000000000c2d7       0x59 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_dir_alloc
+                0x000000000000c330      0x10f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_dir_fetch
+                0x000000000000c43f      0x213 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_dir_commit
+                0x000000000000c652      0x4dc /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_dir_update
+                0x000000000000cb2e       0xdf /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_dir_append
+                0x000000000000cc0d      0x278 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_dir_remove
+                0x000000000000ce85      0x234 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_dir_next
+                0x000000000000d0b9      0x14f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_dir_find
+                0x000000000000d208      0x2ed /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_mkdir
+                0x000000000000d4f5      0x1b2 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+                0x000000000000d4f5                lfs_mkdir
+ .text.lfs_dir_open
+                0x000000000000d6a7       0xf6 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+                0x000000000000d6a7                lfs_dir_open
+ .text.lfs_dir_close
+                0x000000000000d79d       0x71 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+                0x000000000000d79d                lfs_dir_close
+ .text.lfs_dir_read
+                0x000000000000d80e      0x1cf /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+                0x000000000000d80e                lfs_dir_read
+ .text.lfs_ctz_index
+                0x000000000000d9dd       0xc6 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_ctz_find
+                0x000000000000daa3      0x19e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_ctz_extend
+                0x000000000000dc41      0x329 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_ctz_traverse
+                0x000000000000df6a      0x174 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_file_opencfg
+                0x000000000000e0de      0x306 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+                0x000000000000e0de                lfs_file_opencfg
+ .text.lfs_file_open
+                0x000000000000e3e4       0x5f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+                0x000000000000e3e4                lfs_file_open
+ .text.lfs_file_close
+                0x000000000000e443       0xb7 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+                0x000000000000e443                lfs_file_close
+ .text.lfs_file_relocate
+                0x000000000000e4fa      0x18b /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_file_flush
+                0x000000000000e685      0x224 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_file_sync
+                0x000000000000e8a9      0x19b /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+                0x000000000000e8a9                lfs_file_sync
+ .text.lfs_file_read
+                0x000000000000ea44      0x1ff /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+                0x000000000000ea44                lfs_file_read
+ .text.lfs_file_write
+                0x000000000000ec43      0x382 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+                0x000000000000ec43                lfs_file_write
+ .text.lfs_file_seek
+                0x000000000000efc5       0xeb /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+                0x000000000000efc5                lfs_file_seek
+ .text.lfs_stat
+                0x000000000000f0b0      0x115 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+                0x000000000000f0b0                lfs_stat
+ .text.lfs_remove
+                0x000000000000f1c5      0x19b /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+                0x000000000000f1c5                lfs_remove
+ .text.lfs_rename
+                0x000000000000f360      0x4b2 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+                0x000000000000f360                lfs_rename
+ .text.lfs_deinit
+                0x000000000000f812       0x8f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_init
+                0x000000000000f8a1      0x285 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_format
+                0x000000000000fb26      0x385 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+                0x000000000000fb26                lfs_format
+ .text.lfs_mount
+                0x000000000000feab      0x190 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+                0x000000000000feab                lfs_mount
+ .text.lfs_unmount
+                0x000000000001003b       0x47 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+                0x000000000001003b                lfs_unmount
+ .text.lfs_traverse
+                0x0000000000010082      0x270 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+                0x0000000000010082                lfs_traverse
+ .text.lfs_pred
+                0x00000000000102f2       0xf5 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_parent
+                0x00000000000103e7      0x128 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_moved
+                0x000000000001050f      0x13d /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_relocate
+                0x000000000001064c      0x138 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .text.lfs_deorphan
+                0x0000000000010784      0x37b /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+                0x0000000000010784                lfs_deorphan
+ .text.lfs_crc  0x0000000000010aff       0xcb /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs_util.o)
+                0x0000000000010aff                lfs_crc
+ *fill*         0x0000000000010bca        0x6 
+ .text          0x0000000000010bd0       0x37 /usr/lib/gcc/x86_64-linux-gnu/6/32/libgcc.a(_popcountsi2.o)
+                0x0000000000010bd0                __popcountsi2
+ *fill*         0x0000000000010c07        0x9 
+ .text          0x0000000000010c10       0x62 /usr/lib32/libc_nonshared.a(elf-init.oS)
+                0x0000000000010c10                __libc_csu_init
+                0x0000000000010c70                __libc_csu_fini
+ *fill*         0x0000000000010c72        0xe 
+ .text          0x0000000000010c80       0x14 /usr/lib32/libc_nonshared.a(stack_chk_fail_local.oS)
+                0x0000000000010c80                __stack_chk_fail_local
+ *(.gnu.warning)
+
+.fini           0x0000000000010c94       0x14
+ *(SORT(.fini))
+ .fini          0x0000000000010c94        0xf /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/crti.o
+                0x0000000000010c94                _fini
+ .fini          0x0000000000010ca3        0x5 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/crtn.o
+                [!provide]                        PROVIDE (__etext, .)
+                [!provide]                        PROVIDE (_etext, .)
+                [!provide]                        PROVIDE (etext, .)
+
+.rodata         0x0000000000010cc0     0x1aa0
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.cst4   0x0000000000010cc0        0x4 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+                0x0000000000010cc0                _IO_stdin_used
+ .rodata.short_opts
+                0x0000000000010cc4        0xf /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+ *fill*         0x0000000000010cd3        0x1 
+ .rodata        0x0000000000010cd4      0x51f /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+ *fill*         0x00000000000111f3        0x1 
+ .rodata        0x00000000000111f4      0x239 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/application_filesystem.a(main.o)
+ *fill*         0x000000000001142d        0x3 
+ .rodata        0x0000000000011430       0x2a /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/board.a(board_init.o)
+ .rodata        0x000000000001145a        0x2 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+ .rodata        0x000000000001145c       0x33 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(kernel_init.o)
+ .rodata        0x000000000001148f        0xa /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(assert.o)
+ .rodata        0x0000000000011499        0xe /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(thread.o)
+ *fill*         0x00000000000114a7        0x1 
+ .rodata.assert_crash_message
+                0x00000000000114a8       0x12 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(panic.o)
+                0x00000000000114a8                assert_crash_message
+ .rodata        0x00000000000114ba       0x2d /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(panic.o)
+ *fill*         0x00000000000114e7        0x1 
+ .rodata        0x00000000000114e8      0x1b2 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+ *fill*         0x000000000001169a        0x2 
+ .rodata        0x000000000001169c      0x3bc /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+ .rodata        0x0000000000011a58      0x1a5 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(native_cpu.o)
+ *fill*         0x0000000000011bfd        0x3 
+ .rodata.littlefs_err_to_errno
+                0x0000000000011c00       0xd4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .rodata        0x0000000000011cd4        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd_native.a(mtd_native.o)
+ .rodata        0x0000000000011cdc       0x52 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native-drivers.a(native-led.o)
+ *fill*         0x0000000000011d2e        0x2 
+ .rodata        0x0000000000011d30       0x5e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(pm.o)
+ *fill*         0x0000000000011d8e        0x2 
+ .rodata        0x0000000000011d90      0x15b /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/ps.a(ps.o)
+ *fill*         0x0000000000011eeb        0x1 
+ .rodata        0x0000000000011eec       0x84 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell.a(shell.o)
+ .rodata        0x0000000000011f70       0x79 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(shell_commands.o)
+ *fill*         0x0000000000011fe9        0x3 
+ .rodata        0x0000000000011fec      0x62b /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_vfs.o)
+ *fill*         0x0000000000012617        0x1 
+ .rodata._errno_string
+                0x0000000000012618       0x94 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_vfs.o)
+ .rodata        0x00000000000126ac        0x2 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ *fill*         0x00000000000126ae        0x2 
+ .rodata        0x00000000000126b0       0x63 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ *fill*         0x0000000000012713        0xd 
+ .rodata.rtable.2202
+                0x0000000000012720       0x40 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs_util.o)
+
+.rodata1
+ *(.rodata1)
+
+.eh_frame_hdr   0x0000000000012760      0x8cc
+ *(.eh_frame_hdr)
+ .eh_frame_hdr  0x0000000000012760      0x8cc /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+                0x0000000000012760                __GNU_EH_FRAME_HDR
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame       0x000000000001302c     0x2640
+ *(.eh_frame)
+ .eh_frame      0x000000000001302c       0x3c /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+                                         0x40 (size before relaxing)
+ .eh_frame      0x0000000000013068       0x14 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+                                         0x2c (size before relaxing)
+ .eh_frame      0x000000000001307c       0xd8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+                                        0x104 (size before relaxing)
+ .eh_frame      0x0000000000013154       0xf0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/application_filesystem.a(main.o)
+                                        0x11c (size before relaxing)
+ .eh_frame      0x0000000000013244       0x24 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/board.a(board_init.o)
+                                         0x50 (size before relaxing)
+ .eh_frame      0x0000000000013268      0x210 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+                                        0x23c (size before relaxing)
+ .eh_frame      0x0000000000013478       0x5c /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(kernel_init.o)
+                                         0x88 (size before relaxing)
+ .eh_frame      0x00000000000134d4       0x1c /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(assert.o)
+                                         0x48 (size before relaxing)
+ .eh_frame      0x00000000000134f0       0x8c /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(thread.o)
+                                        0x1dc (size before relaxing)
+ .eh_frame      0x000000000001357c       0x3c /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(panic.o)
+                                         0x7c (size before relaxing)
+ .eh_frame      0x00000000000135b8       0xe8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(sched.o)
+                                        0x128 (size before relaxing)
+ .eh_frame      0x00000000000136a0      0x334 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                                        0x3bc (size before relaxing)
+ .eh_frame      0x00000000000139d4      0x200 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+                                        0x2e0 (size before relaxing)
+ .eh_frame      0x0000000000013bd4      0x108 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(native_cpu.o)
+                                        0x168 (size before relaxing)
+ .eh_frame      0x0000000000013cdc      0x398 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+                                        0x3d8 (size before relaxing)
+ .eh_frame      0x0000000000014074       0x80 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd.a(mtd.o)
+                                         0xcc (size before relaxing)
+ .eh_frame      0x00000000000140f4       0xb0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd_native.a(mtd_native.o)
+                                         0xf0 (size before relaxing)
+ .eh_frame      0x00000000000141a4       0x48 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native-drivers.a(native-led.o)
+                                        0x104 (size before relaxing)
+ .eh_frame      0x00000000000141ec       0xfc /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native_vfs.a(native_vfs.o)
+                                        0x170 (size before relaxing)
+ .eh_frame      0x00000000000142e8       0x24 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(uart.o)
+                                        0x110 (size before relaxing)
+ .eh_frame      0x000000000001430c       0x5c /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(pm.o)
+                                         0x88 (size before relaxing)
+ .eh_frame      0x0000000000014368       0x30 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/ps.a(ps.o)
+                                         0x5c (size before relaxing)
+ .eh_frame      0x0000000000014398       0xdc /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell.a(shell.o)
+                                        0x11c (size before relaxing)
+ .eh_frame      0x0000000000014474       0x24 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_sys.o)
+                                         0x50 (size before relaxing)
+ .eh_frame      0x0000000000014498       0x24 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_ps.o)
+                                         0x50 (size before relaxing)
+ .eh_frame      0x00000000000144bc      0x1dc /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_vfs.o)
+                                        0x21c (size before relaxing)
+ .eh_frame      0x0000000000014698      0x408 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+                                        0x514 (size before relaxing)
+ .eh_frame      0x0000000000014aa0       0x20 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph_common.a(init.o)
+                                         0x4c (size before relaxing)
+ .eh_frame      0x0000000000014ac0       0x20 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/auto_init.a(auto_init.o)
+                                         0x4c (size before relaxing)
+ .eh_frame      0x0000000000014ae0       0x68 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(mutex.o)
+                                         0xcc (size before relaxing)
+ .eh_frame      0x0000000000014b48       0x24 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(async_read.o)
+                                         0xfc (size before relaxing)
+ .eh_frame      0x0000000000014b6c      0xa44 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+                                        0xb90 (size before relaxing)
+ .eh_frame      0x00000000000155b0       0x28 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs_util.o)
+                                         0x54 (size before relaxing)
+ .eh_frame      0x00000000000155d8       0x14 /usr/lib/gcc/x86_64-linux-gnu/6/32/libgcc.a(_popcountsi2.o)
+                                         0x2c (size before relaxing)
+ .eh_frame      0x00000000000155ec       0x60 /usr/lib32/libc_nonshared.a(elf-init.oS)
+                                         0x8c (size before relaxing)
+ .eh_frame      0x000000000001564c       0x1c /usr/lib32/libc_nonshared.a(stack_chk_fail_local.oS)
+                                         0x48 (size before relaxing)
+ .eh_frame      0x0000000000015668        0x4 /usr/lib/gcc/x86_64-linux-gnu/6/32/crtendS.o
+ *(.eh_frame.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges .exception_ranges*)
+                0x0000000000016c90                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges .exception_ranges*)
+
+.tdata
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array  0x0000000000016c90        0x0
+                [!provide]                        PROVIDE (__preinit_array_start, .)
+ *(.preinit_array)
+                [!provide]                        PROVIDE (__preinit_array_end, .)
+
+.init_array     0x0000000000016c90        0x8
+                0x0000000000016c90                PROVIDE (__init_array_start, .)
+ *(SORT(.init_array.*) SORT(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+ .init_array    0x0000000000016c90        0x4 /usr/lib/gcc/x86_64-linux-gnu/6/32/crtbeginS.o
+ .init_array    0x0000000000016c94        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+                0x0000000000016c98                PROVIDE (__init_array_end, .)
+
+.fini_array     0x0000000000016c98        0x4
+                [!provide]                        PROVIDE (__fini_array_start, .)
+ *(SORT(.fini_array.*) SORT(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+ .fini_array    0x0000000000016c98        0x4 /usr/lib/gcc/x86_64-linux-gnu/6/32/crtbeginS.o
+                [!provide]                        PROVIDE (__fini_array_end, .)
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT(.dtors.*))
+ *(.dtors)
+
+.jcr            0x0000000000016c9c        0x4
+ *(.jcr)
+ .jcr           0x0000000000016c9c        0x0 /usr/lib/gcc/x86_64-linux-gnu/6/32/crtbeginS.o
+ .jcr           0x0000000000016c9c        0x4 /usr/lib/gcc/x86_64-linux-gnu/6/32/crtendS.o
+
+.data.rel.ro    0x0000000000016ca0      0x21c
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ .data.rel.ro.local.long_opts
+                0x0000000000016ca0       0xa0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+ .data.rel.ro.local.shell_commands
+                0x0000000000016d40       0x48 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/application_filesystem.a(main.o)
+ *fill*         0x0000000000016d88       0x18 
+ .data.rel.ro.local.constfs_fs_ops
+                0x0000000000016da0       0x28 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+ .data.rel.ro.local.constfs_file_ops
+                0x0000000000016dc8       0x1c /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+ .data.rel.ro.local.constfs_dir_ops
+                0x0000000000016de4        0xc /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+ .data.rel.ro.local.constfs_file_system
+                0x0000000000016df0        0xc /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+                0x0000000000016df0                constfs_file_system
+ *fill*         0x0000000000016dfc        0x4 
+ .data.rel.ro.local.littlefs_fs_ops
+                0x0000000000016e00       0x28 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .data.rel.ro.local.littlefs_file_ops
+                0x0000000000016e28       0x1c /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .data.rel.ro.local.littlefs_dir_ops
+                0x0000000000016e44        0xc /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .data.rel.ro.local.littlefs_file_system
+                0x0000000000016e50        0xc /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+                0x0000000000016e50                littlefs_file_system
+ .data.rel.ro.local.native_flash_driver
+                0x0000000000016e5c       0x14 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd_native.a(mtd_native.o)
+                0x0000000000016e5c                native_flash_driver
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+ .data.rel.ro   0x0000000000016e70        0x0 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ *fill*         0x0000000000016e70       0x10 
+ .data.rel.ro._shell_command_list
+                0x0000000000016e80       0x3c /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(shell_commands.o)
+                0x0000000000016e80                _shell_command_list
+
+.dynamic        0x0000000000016ebc      0x110
+ *(.dynamic)
+ .dynamic       0x0000000000016ebc      0x110 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+                0x0000000000016ebc                _DYNAMIC
+
+.got            0x0000000000016fcc       0x24
+ *(.got)
+ .got           0x0000000000016fcc       0x24 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ *(.igot)
+                0x0000000000016ff4                . = DATA_SEGMENT_RELRO_END (., (SIZEOF (.got.plt) >= 0xc)?0xc:0x0)
+
+.got.plt        0x0000000000017000       0x9c
+ *(.got.plt)
+ .got.plt       0x0000000000017000       0x9c /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+                0x0000000000017000                _GLOBAL_OFFSET_TABLE_
+ *(.igot.plt)
+
+.data           0x00000000000170a0       0xb4
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data.rel.local
+                0x00000000000170a0        0x4 /usr/lib/gcc/x86_64-linux-gnu/6/32/crtbeginS.o
+                0x00000000000170a0                __dso_handle
+ .data.rel.flash_mount
+                0x00000000000170a4       0x18 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/application_filesystem.a(main.o)
+ .data.rel.local.constfs_files
+                0x00000000000170bc       0x18 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/application_filesystem.a(main.o)
+ .data.rel.local.constfs_desc
+                0x00000000000170d4        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/application_filesystem.a(main.o)
+ .data.rel.const_mount
+                0x00000000000170dc       0x18 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/application_filesystem.a(main.o)
+ .data.rel.mtd0_dev
+                0x00000000000170f4       0x14 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/board.a(board_init.o)
+ .data.rel.local.mtd0
+                0x0000000000017108        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/board.a(board_init.o)
+                0x0000000000017108                mtd0
+ .data.rel.local.main_name
+                0x000000000001710c        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(kernel_init.o)
+                0x000000000001710c                main_name
+ .data.rel.local.idle_name
+                0x0000000000017110        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(kernel_init.o)
+                0x0000000000017110                idle_name
+ *fill*         0x0000000000017114        0xc 
+ .data.rel.local.state_names
+                0x0000000000017120       0x30 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/ps.a(ps.o)
+ .data.rel.local.INCORRECT_QUOTING.2583
+                0x0000000000017150        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell.a(shell.o)
+
+.tm_clone_table
+                0x0000000000017154        0x0
+ .tm_clone_table
+                0x0000000000017154        0x0 /usr/lib/gcc/x86_64-linux-gnu/6/32/crtbeginS.o
+ .tm_clone_table
+                0x0000000000017154        0x0 /usr/lib/gcc/x86_64-linux-gnu/6/32/crtendS.o
+
+.data1
+ *(.data1)
+                0x0000000000017154                _edata = .
+                [!provide]                        PROVIDE (edata, .)
+                0x0000000000017154                . = .
+                0x0000000000017154                __bss_start = .
+
+.bss            0x0000000000017160     0xc0b8
+ *(.dynbss)
+ .dynbss        0x0000000000017160        0x0 /usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib32/Scrt1.o
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x0000000000017160        0x1 /usr/lib/gcc/x86_64-linux-gnu/6/32/crtbeginS.o
+ *fill*         0x0000000000017161        0x3 
+ .bss._native_null_in_pipe
+                0x0000000000017164        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+                0x0000000000017164                _native_null_in_pipe
+ .bss._native_null_out_file
+                0x000000000001716c        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+                0x000000000001716c                _native_null_out_file
+ .bss._progname
+                0x0000000000017170        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+                0x0000000000017170                _progname
+ .bss._native_argv
+                0x0000000000017174        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+                0x0000000000017174                _native_argv
+ .bss._native_pid
+                0x0000000000017178        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+                0x0000000000017178                _native_pid
+ .bss._native_id
+                0x000000000001717c        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+                0x000000000001717c                _native_id
+ .bss._native_rng_seed
+                0x0000000000017180        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+                0x0000000000017180                _native_rng_seed
+ .bss._native_rng_mode
+                0x0000000000017184        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+                0x0000000000017184                _native_rng_mode
+ *fill*         0x0000000000017188       0x18 
+ .bss.fs_desc   0x00000000000171a0       0x98 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/application_filesystem.a(main.o)
+ *fill*         0x0000000000017238        0x8 
+ .bss.main_stack
+                0x0000000000017240     0x3000 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(kernel_init.o)
+ .bss.idle_stack
+                0x000000000001a240     0x2000 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(kernel_init.o)
+ .bss.crashed   0x000000000001c240        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(panic.o)
+ .bss.sched_num_threads
+                0x000000000001c244        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(sched.o)
+                0x000000000001c244                sched_num_threads
+ .bss.sched_context_switch_request
+                0x000000000001c248        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(sched.o)
+                0x000000000001c248                sched_context_switch_request
+ *fill*         0x000000000001c24c       0x14 
+ .bss.sched_threads
+                0x000000000001c260       0x84 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(sched.o)
+                0x000000000001c260                sched_threads
+ .bss.sched_active_thread
+                0x000000000001c2e4        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(sched.o)
+                0x000000000001c2e4                sched_active_thread
+ .bss.sched_active_pid
+                0x000000000001c2e8        0x2 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(sched.o)
+                0x000000000001c2e8                sched_active_pid
+ *fill*         0x000000000001c2ea       0x16 
+ .bss.sched_runqueues
+                0x000000000001c300       0x40 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(sched.o)
+                0x000000000001c300                sched_runqueues
+ .bss.runqueue_bitcache
+                0x000000000001c340        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(sched.o)
+ .bss.real_read
+                0x000000000001c344        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c344                real_read
+ .bss.real_write
+                0x000000000001c348        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c348                real_write
+ .bss.real_fread
+                0x000000000001c34c        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c34c                real_fread
+ .bss.real_clearerr
+                0x000000000001c350        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c350                real_clearerr
+ .bss.real_exit
+                0x000000000001c354        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c354                real_exit
+ .bss.real_free
+                0x000000000001c358        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c358                real_free
+ .bss.real_malloc
+                0x000000000001c35c        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c35c                real_malloc
+ .bss.real_calloc
+                0x000000000001c360        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c360                real_calloc
+ .bss.real_realloc
+                0x000000000001c364        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c364                real_realloc
+ .bss.real_freeaddrinfo
+                0x000000000001c368        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c368                real_freeaddrinfo
+ .bss.real_freeifaddrs
+                0x000000000001c36c        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c36c                real_freeifaddrs
+ .bss.real_srandom
+                0x000000000001c370        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c370                real_srandom
+ .bss.real_accept
+                0x000000000001c374        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c374                real_accept
+ .bss.real_bind
+                0x000000000001c378        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c378                real_bind
+ .bss.real_connect
+                0x000000000001c37c        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c37c                real_connect
+ .bss.real_printf
+                0x000000000001c380        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c380                real_printf
+ .bss.real_getaddrinfo
+                0x000000000001c384        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c384                real_getaddrinfo
+ .bss.real_getifaddrs
+                0x000000000001c388        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c388                real_getifaddrs
+ .bss.real_gettimeofday
+                0x000000000001c38c        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c38c                real_gettimeofday
+ .bss.real_getpid
+                0x000000000001c390        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c390                real_getpid
+ .bss.real_chdir
+                0x000000000001c394        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c394                real_chdir
+ .bss.real_close
+                0x000000000001c398        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c398                real_close
+ .bss.real_fcntl
+                0x000000000001c39c        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c39c                real_fcntl
+ .bss.real_creat
+                0x000000000001c3a0        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c3a0                real_creat
+ .bss.real_dup2
+                0x000000000001c3a4        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c3a4                real_dup2
+ .bss.real_execve
+                0x000000000001c3a8        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c3a8                real_execve
+ .bss.real_fork
+                0x000000000001c3ac        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c3ac                real_fork
+ .bss.real_feof
+                0x000000000001c3b0        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c3b0                real_feof
+ .bss.real_ferror
+                0x000000000001c3b4        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c3b4                real_ferror
+ .bss.real_listen
+                0x000000000001c3b8        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c3b8                real_listen
+ .bss.real_ioctl
+                0x000000000001c3bc        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c3bc                real_ioctl
+ .bss.real_open
+                0x000000000001c3c0        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c3c0                real_open
+ .bss.real_pause
+                0x000000000001c3c4        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c3c4                real_pause
+ .bss.real_pipe
+                0x000000000001c3c8        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c3c8                real_pipe
+ .bss.real_select
+                0x000000000001c3cc        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c3cc                real_select
+ .bss.real_setitimer
+                0x000000000001c3d0        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c3d0                real_setitimer
+ .bss.real_setsid
+                0x000000000001c3d4        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c3d4                real_setsid
+ .bss.real_setsockopt
+                0x000000000001c3d8        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c3d8                real_setsockopt
+ .bss.real_socket
+                0x000000000001c3dc        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c3dc                real_socket
+ .bss.real_unlink
+                0x000000000001c3e0        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c3e0                real_unlink
+ .bss.real_random
+                0x000000000001c3e4        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c3e4                real_random
+ .bss.real_gai_strerror
+                0x000000000001c3e8        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c3e8                real_gai_strerror
+ .bss.real_fopen
+                0x000000000001c3ec        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c3ec                real_fopen
+ .bss.real_fclose
+                0x000000000001c3f0        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c3f0                real_fclose
+ .bss.real_fseek
+                0x000000000001c3f4        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c3f4                real_fseek
+ .bss.real_fputc
+                0x000000000001c3f8        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c3f8                real_fputc
+ .bss.real_fgetc
+                0x000000000001c3fc        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c3fc                real_fgetc
+ .bss.real_umask
+                0x000000000001c400        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c400                real_umask
+ .bss.real_writev
+                0x000000000001c404        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c404                real_writev
+ .bss.real_clock_gettime
+                0x000000000001c408        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c408                real_clock_gettime
+ .bss._native_in_malloc
+                0x000000000001c40c        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c40c                _native_in_malloc
+ .bss._native_in_calloc
+                0x000000000001c410        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+                0x000000000001c410                _native_in_calloc
+ .bss.native_interrupts_enabled
+                0x000000000001c414        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+                0x000000000001c414                native_interrupts_enabled
+ .bss._native_in_isr
+                0x000000000001c418        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+                0x000000000001c418                _native_in_isr
+ .bss._native_in_syscall
+                0x000000000001c41c        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+                0x000000000001c41c                _native_in_syscall
+ .bss._native_sig_set
+                0x000000000001c420       0x80 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+ .bss._native_sig_set_dint
+                0x000000000001c4a0       0x80 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+ .bss.__isr_stack
+                0x000000000001c520     0x2000 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+                0x000000000001c520                __isr_stack
+ .bss.native_isr_context
+                0x000000000001e520      0x15c /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+                0x000000000001e520                native_isr_context
+ .bss._native_cur_ctx
+                0x000000000001e67c        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+                0x000000000001e67c                _native_cur_ctx
+ .bss._native_isr_ctx
+                0x000000000001e680        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+                0x000000000001e680                _native_isr_ctx
+ .bss._native_saved_eip
+                0x000000000001e684        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+                0x000000000001e684                _native_saved_eip
+ .bss._native_sigpend
+                0x000000000001e688        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+                0x000000000001e688                _native_sigpend
+ .bss._sig_pipefd
+                0x000000000001e68c        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+                0x000000000001e68c                _sig_pipefd
+ *fill*         0x000000000001e694        0xc 
+ .bss.native_irq_handlers
+                0x000000000001e6a0      0x3fc /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+ *fill*         0x000000000001ea9c        0x4 
+ .bss.sigalt_stk
+                0x000000000001eaa0     0x2000 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+                0x000000000001eaa0                sigalt_stk
+ .bss.sigstk.5067
+                0x0000000000020aa0        0xc /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+ *fill*         0x0000000000020aac       0x14 
+ .bss.end_context
+                0x0000000000020ac0      0x15c /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(native_cpu.o)
+                0x0000000000020ac0                end_context
+ *fill*         0x0000000000020c1c        0x4 
+ .bss.__end_stack
+                0x0000000000020c20     0x2000 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(native_cpu.o)
+                0x0000000000020c20                __end_stack
+ .bss.tty_device_filenames
+                0x0000000000022c20        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(uart.o)
+ *fill*         0x0000000000022c24       0x1c 
+ .bss._shell_vfs_data_buffer
+                0x0000000000022c40      0x100 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_vfs.o)
+ .bss._vfs_open_files
+                0x0000000000022d40      0x4c0 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .bss._vfs_mounts_list
+                0x0000000000023200        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .bss._mount_mutex
+                0x0000000000023204        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .bss._open_mutex
+                0x0000000000023208        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .bss._next_index
+                0x000000000002320c        0x4 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(async_read.o)
+ .bss._fds      0x0000000000023210        0x8 /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(async_read.o)
+ *(COMMON)
+                0x0000000000023218                . = ALIGN ((. != 0x0)?0x4:0x1)
+                0x0000000000023218                . = ALIGN (0x4)
+                0x0000000000023218                . = SEGMENT_START ("ldata-segment", .)
+                0x0000000000023218                . = ALIGN (0x4)
+                0x0000000000023218                _end = .
+                [!provide]                        PROVIDE (end, .)
+                0x0000000000023218                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x2d
+ *(.comment)
+ .comment       0x0000000000000000       0x2d /usr/lib/gcc/x86_64-linux-gnu/6/32/crtbeginS.o
+                                         0x2e (size before relaxing)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu/startup.o
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/application_filesystem.a(main.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/board.a(board_init.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/constfs.a(constfs.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(kernel_init.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(assert.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(thread.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(panic.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(sched.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(syscalls.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(irq_cpu.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(native_cpu.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs_fs.a(littlefs_fs.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd.a(mtd.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/mtd_native.a(mtd_native.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native-drivers.a(native-led.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/native_vfs.a(native_vfs.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(uart.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph.a(pm.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/ps.a(ps.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell.a(shell.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(shell_commands.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_sys.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_ps.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/shell_commands.a(sc_vfs.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/vfs.a(vfs.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/periph_common.a(init.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/auto_init.a(auto_init.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/core.a(mutex.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/cpu.a(async_read.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs.o)
+ .comment       0x000000000000002d       0x2e /home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/littlefs.a(lfs_util.o)
+ .comment       0x000000000000002d       0x2e /usr/lib/gcc/x86_64-linux-gnu/6/32/crtendS.o
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info .gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line .debug_line.* .debug_line_end)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_addr
+ *(.debug_addr)
+
+.gnu.attributes
+ *(.gnu.attributes)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(/home/aghiles/Aghiles/Program/boards/riot/filesystem/bin/native/filesystem.elf elf32-i386)

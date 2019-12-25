@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.shortcuts.coding"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Coding Shortcuts and Commands</title>
+<body><p><table frame = "topbot" colsep = "0" rowsep = "0">
+<tgroup cols = "2" colsep = "0" rowsep = "0"
+    outputclass = "2Column NoTitle">
+<colspec colnum = "1" colname = "1" colwidth = "33*" colsep = "0"/>
+<colspec colnum = "2" colname = "2" colwidth = "67*" colsep = "0"/>
+<tbody>
+<row rowsep = "1">
+<entry colname = "1">Ctrl+Shift+F</entry>
+<entry colname = "2">ifFalse:</entry>
+</row>
+<row rowsep = "1">
+<entry colname = "1">Alt+G</entry>
+<entry colname = "2">:= (Windows and X11)</entry>
+</row>
+<row rowsep = "1">
+<entry colname = "1">Ctrl+;</entry>
+<entry colname = "2">:= (OSX and X11)</entry>
+</row>
+<row rowsep = "1">
+<entry colname = "1">Ctrl+Shift+T</entry>
+<entry colname = "2">ifTrue:</entry>
+</row>
+<row rowsep = "1">
+<entry colname = "1">Ctrl+D</entry>
+<entry colname = "2">Do It</entry>
+</row>
+<row rowsep = "1">
+<entry colname = "1">Ctrl+E</entry>
+<entry colname = "2">Explain</entry>
+</row>
+<row rowsep = "1">
+<entry colname = "1">Ctrl+P</entry>
+<entry colname = "2">Print It</entry>
+</row>
+<row rowsep = "1">
+<entry colname = "1">Ctrl+Q</entry>
+<entry colname = "2">Inspect It</entry>
+</row>
+<row rowsep = "1">
+<entry colname = "1">Ctrl+B</entry>
+<entry colname = "2">Debug It</entry>
+</row>
+<row rowsep = "1">
+<entry colname = "1">Ctrl+S</entry>
+<entry colname = "2">Save/Accept</entry>
+</row>
+<row rowsep = "1">
+<entry colname = "1">Ctrl+Y</entry>
+<entry colname = "2">User interrupt</entry>
+</row>
+<row rowsep = "0">
+<entry colname = "1">Ctrl+\</entry>
+<entry colname = "2">Process interrupt</entry>
+</row>
+</tbody>
+</tgroup></table></p></body></topic></dita>

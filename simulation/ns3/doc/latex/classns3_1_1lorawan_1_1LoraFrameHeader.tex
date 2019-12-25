@@ -1,0 +1,510 @@
+\hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader}{}\section{ns3\+:\+:lorawan\+:\+:Lora\+Frame\+Header Class Reference}
+\label{classns3_1_1lorawan_1_1LoraFrameHeader}\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+
+
+{\ttfamily \#include $<$lora-\/frame-\/header.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Lora\+Frame\+Header\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classns3_1_1lorawan_1_1LoraFrameHeader__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Lora\+Frame\+Header\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classns3_1_1lorawan_1_1LoraFrameHeader__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_aaedd3f371a6e3090b0dd88baaff19532}\label{classns3_1_1lorawan_1_1LoraFrameHeader_aaedd3f371a6e3090b0dd88baaff19532}} 
+virtual Type\+Id {\bfseries Get\+Instance\+Type\+Id} (void) const
+\item 
+virtual uint32\+\_\+t \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_afa018a888ac159129f4ec309ff1c27fa}{Get\+Serialized\+Size} (void) const
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_a736fa7bd7de7cea2179784433f6c5adb}{Serialize} (Buffer\+::\+Iterator start) const
+\item 
+virtual uint32\+\_\+t \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_acafb500a3b2c2a4b41d22ee984031b26}{Deserialize} (Buffer\+::\+Iterator start)
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_a2578ff0866c0af15bb5239ccbb0c7964}{Print} (std\+::ostream \&os) const
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_a89181ba734f2b52ffc171d5d5f4ba123}{Set\+As\+Uplink} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_aeeade331e76a7260c583a64706b3b4ec}{Set\+As\+Downlink} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_af04f957858d8af6d72288cd44b557090}{Set\+F\+Port} (uint8\+\_\+t f\+Port)
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_ab859b1d3f527b8cb1b9f8b3e02b2c12d}{Get\+F\+Port} (void) const
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_a65a8f5de3c705d18df13171c680e133f}{Set\+Address} (\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} address)
+\item 
+\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_af4f6f7e63f75b330293996a13adef033}{Get\+Address} (void) const
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_a55264b1b0ff05231d142164a7b5a43b2}{Set\+Adr} (bool adr)
+\item 
+bool \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_ab0d26c72b277ac3acec6bb3805f7a2db}{Get\+Adr} (void) const
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_a97022ac4ffee6dd63f1541b948460fe9}{Set\+Adr\+Ack\+Req} (bool adr\+Ack\+Req)
+\item 
+bool \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_af14c6220e994d4804c84d8b0109af882}{Get\+Adr\+Ack\+Req} (void) const
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_a4a7c35d0c20670d6e4471e56b51c3c8f}{Set\+Ack} (bool ack)
+\item 
+bool \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_a7f0e234436440b35b450d818c5502c6a}{Get\+Ack} (void) const
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_aaa9aab8d0d40206c82711b62bf0f2165}{Set\+F\+Pending} (bool f\+Pending)
+\item 
+bool \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_a425e56d3f473048ba6986bd1ac716e6c}{Get\+F\+Pending} (void) const
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_af9e5cbf58842f7527fbbceba2e6818fe}{Get\+F\+Opts\+Len} (void) const
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_a29821504b7f5958226cab2d92e486928}{Set\+F\+Cnt} (uint16\+\_\+t f\+Cnt)
+\item 
+uint16\+\_\+t \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_aca554586ea869137a7ab1f5db6c81a1f}{Get\+F\+Cnt} (void) const
+\item 
+{\footnotesize template$<$typename T $>$ }\\Ptr$<$ T $>$ \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_acdb8505e2b4f1dc3d94fd33b3213ff46}{Get\+Mac\+Command} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_a685ca6cad5d37101f0e652ec183d74f6}{Add\+Link\+Check\+Req} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_aaee911e70a141b512d68b6825c508f5f}{Add\+Link\+Check\+Ans} (uint8\+\_\+t margin, uint8\+\_\+t gw\+Cnt)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_accbe167e292fdcae11c28f294004fd6a}{Add\+Link\+Adr\+Req} (uint8\+\_\+t data\+Rate, uint8\+\_\+t tx\+Power, std\+::list$<$ int $>$ enabled\+Channels, int repetitions)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_abf2caf5f060666e1e896e698ac783232}{Add\+Link\+Adr\+Ans} (bool power\+Ack, bool data\+Rate\+Ack, bool channel\+Mask\+Ack)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_a09b2408b1481fe4d4ca84e6f977c19d7}{Add\+Duty\+Cycle\+Req} (uint8\+\_\+t duty\+Cycle)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_ade22e8653e98a0ceeada027f16a41fa7}{Add\+Duty\+Cycle\+Ans} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_af7aef278503cd2e152b36c9abaf2ed63}{Add\+Rx\+Param\+Setup\+Req} (uint8\+\_\+t rx1\+Dr\+Offset, uint8\+\_\+t rx2\+Data\+Rate, double frequency)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_a455c58eda429169dffe119433cb8d70b}{Add\+Rx\+Param\+Setup\+Ans} ()
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_a567bccb9daf4936cb13c70f245e563bd}{Add\+Dev\+Status\+Req} ()
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_a30b475f8cbb1151fbe0369ffc5ee6441}{Add\+New\+Channel\+Req} (uint8\+\_\+t ch\+Index, double frequency, uint8\+\_\+t min\+Data\+Rate, uint8\+\_\+t max\+Data\+Rate)
+\item 
+std\+::list$<$ Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1MacCommand}{Mac\+Command} $>$ $>$ \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_a8cabc618a1b97c66e06d6058f038887d}{Get\+Commands} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader_a238abef9aa4e39c628e395485abb89b8}{Add\+Command} (Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1MacCommand}{Mac\+Command} $>$ mac\+Command)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_a5a61dedc573c98255e53d8f0e091be5d}\label{classns3_1_1lorawan_1_1LoraFrameHeader_a5a61dedc573c98255e53d8f0e091be5d}} 
+static Type\+Id {\bfseries Get\+Type\+Id} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class represents the Frame header (F\+H\+DR) used in a Lora\+W\+AN network.
+
+Although the specification divides the F\+H\+DR from the F\+Port field, this implementation considers them as a unique entity (i.\+e., F\+Port is treated as if it were a part of F\+H\+DR).
+
+\begin{DoxyRemark}{Remarks}
+Prior to using it, this class needs to be informed of whether the header is for an uplink or downlink message. This is necessary due to the fact that UL and DL messages have subtly different structure and, hence, serialization and deserialization schemes. 
+\end{DoxyRemark}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_a238abef9aa4e39c628e395485abb89b8}\label{classns3_1_1lorawan_1_1LoraFrameHeader_a238abef9aa4e39c628e395485abb89b8}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Add\+Command@{Add\+Command}}
+\index{Add\+Command@{Add\+Command}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Add\+Command()}{AddCommand()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Add\+Command (\begin{DoxyParamCaption}\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1MacCommand}{Mac\+Command} $>$}]{mac\+Command }\end{DoxyParamCaption})}
+
+Add a predefined command to the list. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_a567bccb9daf4936cb13c70f245e563bd}\label{classns3_1_1lorawan_1_1LoraFrameHeader_a567bccb9daf4936cb13c70f245e563bd}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Add\+Dev\+Status\+Req@{Add\+Dev\+Status\+Req}}
+\index{Add\+Dev\+Status\+Req@{Add\+Dev\+Status\+Req}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Add\+Dev\+Status\+Req()}{AddDevStatusReq()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Add\+Dev\+Status\+Req (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Add a \hyperlink{classns3_1_1lorawan_1_1DevStatusReq}{Dev\+Status\+Req} command. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_ade22e8653e98a0ceeada027f16a41fa7}\label{classns3_1_1lorawan_1_1LoraFrameHeader_ade22e8653e98a0ceeada027f16a41fa7}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Add\+Duty\+Cycle\+Ans@{Add\+Duty\+Cycle\+Ans}}
+\index{Add\+Duty\+Cycle\+Ans@{Add\+Duty\+Cycle\+Ans}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Add\+Duty\+Cycle\+Ans()}{AddDutyCycleAns()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Add\+Duty\+Cycle\+Ans (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Add a \hyperlink{classns3_1_1lorawan_1_1DutyCycleAns}{Duty\+Cycle\+Ans} command. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_a09b2408b1481fe4d4ca84e6f977c19d7}\label{classns3_1_1lorawan_1_1LoraFrameHeader_a09b2408b1481fe4d4ca84e6f977c19d7}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Add\+Duty\+Cycle\+Req@{Add\+Duty\+Cycle\+Req}}
+\index{Add\+Duty\+Cycle\+Req@{Add\+Duty\+Cycle\+Req}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Add\+Duty\+Cycle\+Req()}{AddDutyCycleReq()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Add\+Duty\+Cycle\+Req (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{duty\+Cycle }\end{DoxyParamCaption})}
+
+Add a \hyperlink{classns3_1_1lorawan_1_1DutyCycleReq}{Duty\+Cycle\+Req} command.
+
+This command accepts an 8-\/bit integer as duty\+Cycle. The actual duty\+Cycle that will be implemented in the end-\/device will then be, in fraction form, 1/2$^\wedge$(duty\+Cycle).
+
+
+\begin{DoxyParams}{Parameters}
+{\em duty\+Cycle} & The duty\+Cycle in 8-\/bit form. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_abf2caf5f060666e1e896e698ac783232}\label{classns3_1_1lorawan_1_1LoraFrameHeader_abf2caf5f060666e1e896e698ac783232}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Add\+Link\+Adr\+Ans@{Add\+Link\+Adr\+Ans}}
+\index{Add\+Link\+Adr\+Ans@{Add\+Link\+Adr\+Ans}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Add\+Link\+Adr\+Ans()}{AddLinkAdrAns()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Add\+Link\+Adr\+Ans (\begin{DoxyParamCaption}\item[{bool}]{power\+Ack,  }\item[{bool}]{data\+Rate\+Ack,  }\item[{bool}]{channel\+Mask\+Ack }\end{DoxyParamCaption})}
+
+Add a \hyperlink{classns3_1_1lorawan_1_1LinkAdrAns}{Link\+Adr\+Ans} command.
+
+
+\begin{DoxyParams}{Parameters}
+{\em power\+Ack} & Whether the power can be set or not. \\
+\hline
+{\em data\+Rate\+Ack} & Whether the data rate can be set or not. \\
+\hline
+{\em channel\+Mask\+Ack} & Whether the channel mask is coherent with the device\textquotesingle{}s current state or not. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_accbe167e292fdcae11c28f294004fd6a}\label{classns3_1_1lorawan_1_1LoraFrameHeader_accbe167e292fdcae11c28f294004fd6a}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Add\+Link\+Adr\+Req@{Add\+Link\+Adr\+Req}}
+\index{Add\+Link\+Adr\+Req@{Add\+Link\+Adr\+Req}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Add\+Link\+Adr\+Req()}{AddLinkAdrReq()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Add\+Link\+Adr\+Req (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{data\+Rate,  }\item[{uint8\+\_\+t}]{tx\+Power,  }\item[{std\+::list$<$ int $>$}]{enabled\+Channels,  }\item[{int}]{repetitions }\end{DoxyParamCaption})}
+
+Add a \hyperlink{classns3_1_1lorawan_1_1LinkAdrReq}{Link\+Adr\+Req} command.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data\+Rate} & The data rate at which the receiver should transmit. \\
+\hline
+{\em tx\+Power} & The power at which the receiver should transmit, encoded according to the Lo\+Ra\+W\+AN specification of the region. \\
+\hline
+{\em enabled\+Channels} & A list containing the indices of channels enabled by this command. \\
+\hline
+{\em repetitions} & The number of repetitions the receiver should send when transmitting. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_aaee911e70a141b512d68b6825c508f5f}\label{classns3_1_1lorawan_1_1LoraFrameHeader_aaee911e70a141b512d68b6825c508f5f}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Add\+Link\+Check\+Ans@{Add\+Link\+Check\+Ans}}
+\index{Add\+Link\+Check\+Ans@{Add\+Link\+Check\+Ans}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Add\+Link\+Check\+Ans()}{AddLinkCheckAns()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Add\+Link\+Check\+Ans (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{margin,  }\item[{uint8\+\_\+t}]{gw\+Cnt }\end{DoxyParamCaption})}
+
+Add a \hyperlink{classns3_1_1lorawan_1_1LinkCheckAns}{Link\+Check\+Ans} command.
+
+
+\begin{DoxyParams}{Parameters}
+{\em margin} & The demodulation margin the \hyperlink{classns3_1_1lorawan_1_1LinkCheckReq}{Link\+Check\+Req} packet was received with. \\
+\hline
+{\em gw\+Cnt} & The number of gateways the \hyperlink{classns3_1_1lorawan_1_1LinkCheckReq}{Link\+Check\+Req} packet was received by. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_a685ca6cad5d37101f0e652ec183d74f6}\label{classns3_1_1lorawan_1_1LoraFrameHeader_a685ca6cad5d37101f0e652ec183d74f6}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Add\+Link\+Check\+Req@{Add\+Link\+Check\+Req}}
+\index{Add\+Link\+Check\+Req@{Add\+Link\+Check\+Req}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Add\+Link\+Check\+Req()}{AddLinkCheckReq()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Add\+Link\+Check\+Req (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Add a \hyperlink{classns3_1_1lorawan_1_1LinkCheckReq}{Link\+Check\+Req} command. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_a30b475f8cbb1151fbe0369ffc5ee6441}\label{classns3_1_1lorawan_1_1LoraFrameHeader_a30b475f8cbb1151fbe0369ffc5ee6441}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Add\+New\+Channel\+Req@{Add\+New\+Channel\+Req}}
+\index{Add\+New\+Channel\+Req@{Add\+New\+Channel\+Req}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Add\+New\+Channel\+Req()}{AddNewChannelReq()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Add\+New\+Channel\+Req (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{ch\+Index,  }\item[{double}]{frequency,  }\item[{uint8\+\_\+t}]{min\+Data\+Rate,  }\item[{uint8\+\_\+t}]{max\+Data\+Rate }\end{DoxyParamCaption})}
+
+Add a \hyperlink{classns3_1_1lorawan_1_1NewChannelReq}{New\+Channel\+Req} command. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_a455c58eda429169dffe119433cb8d70b}\label{classns3_1_1lorawan_1_1LoraFrameHeader_a455c58eda429169dffe119433cb8d70b}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Add\+Rx\+Param\+Setup\+Ans@{Add\+Rx\+Param\+Setup\+Ans}}
+\index{Add\+Rx\+Param\+Setup\+Ans@{Add\+Rx\+Param\+Setup\+Ans}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Add\+Rx\+Param\+Setup\+Ans()}{AddRxParamSetupAns()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Add\+Rx\+Param\+Setup\+Ans (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Add a \hyperlink{classns3_1_1lorawan_1_1RxParamSetupAns}{Rx\+Param\+Setup\+Ans} command. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_af7aef278503cd2e152b36c9abaf2ed63}\label{classns3_1_1lorawan_1_1LoraFrameHeader_af7aef278503cd2e152b36c9abaf2ed63}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Add\+Rx\+Param\+Setup\+Req@{Add\+Rx\+Param\+Setup\+Req}}
+\index{Add\+Rx\+Param\+Setup\+Req@{Add\+Rx\+Param\+Setup\+Req}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Add\+Rx\+Param\+Setup\+Req()}{AddRxParamSetupReq()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Add\+Rx\+Param\+Setup\+Req (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{rx1\+Dr\+Offset,  }\item[{uint8\+\_\+t}]{rx2\+Data\+Rate,  }\item[{double}]{frequency }\end{DoxyParamCaption})}
+
+Add a \hyperlink{classns3_1_1lorawan_1_1RxParamSetupReq}{Rx\+Param\+Setup\+Req} command.
+
+
+\begin{DoxyParams}{Parameters}
+{\em rx1\+Dr\+Offset} & The requested data rate offset for the first receive window. \\
+\hline
+{\em rx2\+Data\+Rate} & The requested data rate for the second receive window. \\
+\hline
+{\em frequency} & The frequency at which to listen for the second receive window. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_acafb500a3b2c2a4b41d22ee984031b26}\label{classns3_1_1lorawan_1_1LoraFrameHeader_acafb500a3b2c2a4b41d22ee984031b26}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Deserialize@{Deserialize}}
+\index{Deserialize@{Deserialize}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Deserialize()}{Deserialize()}}
+{\footnotesize\ttfamily uint32\+\_\+t ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Deserialize (\begin{DoxyParamCaption}\item[{Buffer\+::\+Iterator}]{start }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Deserialize the contents of the buffer into a \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader}{Lora\+Frame\+Header} object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & A pointer to the buffer we need to deserialize. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of consumed bytes. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_a7f0e234436440b35b450d818c5502c6a}\label{classns3_1_1lorawan_1_1LoraFrameHeader_a7f0e234436440b35b450d818c5502c6a}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Get\+Ack@{Get\+Ack}}
+\index{Get\+Ack@{Get\+Ack}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Get\+Ack()}{GetAck()}}
+{\footnotesize\ttfamily bool ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Get\+Ack (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Get the Ack bit value.
+
+\begin{DoxyReturn}{Returns}
+True if the A\+CK bit is set, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_af4f6f7e63f75b330293996a13adef033}\label{classns3_1_1lorawan_1_1LoraFrameHeader_af4f6f7e63f75b330293996a13adef033}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Get\+Address@{Get\+Address}}
+\index{Get\+Address@{Get\+Address}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Get\+Address()}{GetAddress()}}
+{\footnotesize\ttfamily \hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Get\+Address (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Get this header\textquotesingle{}s device address value.
+
+\begin{DoxyReturn}{Returns}
+The address value stored in this header. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_ab0d26c72b277ac3acec6bb3805f7a2db}\label{classns3_1_1lorawan_1_1LoraFrameHeader_ab0d26c72b277ac3acec6bb3805f7a2db}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Get\+Adr@{Get\+Adr}}
+\index{Get\+Adr@{Get\+Adr}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Get\+Adr()}{GetAdr()}}
+{\footnotesize\ttfamily bool ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Get\+Adr (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Get the Adr value.
+
+\begin{DoxyReturn}{Returns}
+The Adr value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_af14c6220e994d4804c84d8b0109af882}\label{classns3_1_1lorawan_1_1LoraFrameHeader_af14c6220e994d4804c84d8b0109af882}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Get\+Adr\+Ack\+Req@{Get\+Adr\+Ack\+Req}}
+\index{Get\+Adr\+Ack\+Req@{Get\+Adr\+Ack\+Req}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Get\+Adr\+Ack\+Req()}{GetAdrAckReq()}}
+{\footnotesize\ttfamily bool ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Get\+Adr\+Ack\+Req (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Get the Adr\+Ack\+Req value.
+
+\begin{DoxyReturn}{Returns}
+The Adr\+Ack\+Req value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_a8cabc618a1b97c66e06d6058f038887d}\label{classns3_1_1lorawan_1_1LoraFrameHeader_a8cabc618a1b97c66e06d6058f038887d}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Get\+Commands@{Get\+Commands}}
+\index{Get\+Commands@{Get\+Commands}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Get\+Commands()}{GetCommands()}}
+{\footnotesize\ttfamily std\+::list$<$ Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1MacCommand}{Mac\+Command} $>$ $>$ ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Get\+Commands (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Return a list of pointers to all the M\+AC commands saved in this header. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_aca554586ea869137a7ab1f5db6c81a1f}\label{classns3_1_1lorawan_1_1LoraFrameHeader_aca554586ea869137a7ab1f5db6c81a1f}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Get\+F\+Cnt@{Get\+F\+Cnt}}
+\index{Get\+F\+Cnt@{Get\+F\+Cnt}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Get\+F\+Cnt()}{GetFCnt()}}
+{\footnotesize\ttfamily uint16\+\_\+t ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Get\+F\+Cnt (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Get the F\+Cnt value.
+
+\begin{DoxyReturn}{Returns}
+The F\+Cnt value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_af9e5cbf58842f7527fbbceba2e6818fe}\label{classns3_1_1lorawan_1_1LoraFrameHeader_af9e5cbf58842f7527fbbceba2e6818fe}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Get\+F\+Opts\+Len@{Get\+F\+Opts\+Len}}
+\index{Get\+F\+Opts\+Len@{Get\+F\+Opts\+Len}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Get\+F\+Opts\+Len()}{GetFOptsLen()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Get\+F\+Opts\+Len (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Get the F\+Opts\+Len value.
+
+\begin{DoxyRemark}{Remarks}
+This value cannot be set since it\textquotesingle{}s directly extracted from the number and kind of M\+AC commands.
+\end{DoxyRemark}
+\begin{DoxyReturn}{Returns}
+The F\+Opts\+Len value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_a425e56d3f473048ba6986bd1ac716e6c}\label{classns3_1_1lorawan_1_1LoraFrameHeader_a425e56d3f473048ba6986bd1ac716e6c}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Get\+F\+Pending@{Get\+F\+Pending}}
+\index{Get\+F\+Pending@{Get\+F\+Pending}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Get\+F\+Pending()}{GetFPending()}}
+{\footnotesize\ttfamily bool ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Get\+F\+Pending (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Get the F\+Pending value.
+
+\begin{DoxyReturn}{Returns}
+The F\+Pending value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_ab859b1d3f527b8cb1b9f8b3e02b2c12d}\label{classns3_1_1lorawan_1_1LoraFrameHeader_ab859b1d3f527b8cb1b9f8b3e02b2c12d}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Get\+F\+Port@{Get\+F\+Port}}
+\index{Get\+F\+Port@{Get\+F\+Port}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Get\+F\+Port()}{GetFPort()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Get\+F\+Port (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Get the F\+Port value.
+
+\begin{DoxyReturn}{Returns}
+The F\+Port value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_acdb8505e2b4f1dc3d94fd33b3213ff46}\label{classns3_1_1lorawan_1_1LoraFrameHeader_acdb8505e2b4f1dc3d94fd33b3213ff46}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Get\+Mac\+Command@{Get\+Mac\+Command}}
+\index{Get\+Mac\+Command@{Get\+Mac\+Command}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Get\+Mac\+Command()}{GetMacCommand()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+Ptr$<$ T $>$ ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Get\+Mac\+Command (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Return a pointer to a \hyperlink{classns3_1_1lorawan_1_1MacCommand}{Mac\+Command}, or 0 if the \hyperlink{classns3_1_1lorawan_1_1MacCommand}{Mac\+Command} does not exist in this header. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_afa018a888ac159129f4ec309ff1c27fa}\label{classns3_1_1lorawan_1_1LoraFrameHeader_afa018a888ac159129f4ec309ff1c27fa}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Get\+Serialized\+Size@{Get\+Serialized\+Size}}
+\index{Get\+Serialized\+Size@{Get\+Serialized\+Size}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Get\+Serialized\+Size()}{GetSerializedSize()}}
+{\footnotesize\ttfamily uint32\+\_\+t ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Get\+Serialized\+Size (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Return the size required for serialization of this header
+
+\begin{DoxyReturn}{Returns}
+The serialized size in bytes 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_a2578ff0866c0af15bb5239ccbb0c7964}\label{classns3_1_1lorawan_1_1LoraFrameHeader_a2578ff0866c0af15bb5239ccbb0c7964}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Print@{Print}}
+\index{Print@{Print}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Print()}{Print()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Print (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Print the header in a human-\/readable format.
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The std\+::ostream on which to print the header. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_a736fa7bd7de7cea2179784433f6c5adb}\label{classns3_1_1lorawan_1_1LoraFrameHeader_a736fa7bd7de7cea2179784433f6c5adb}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Serialize()}{Serialize()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Serialize (\begin{DoxyParamCaption}\item[{Buffer\+::\+Iterator}]{start }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Serialize the header.
+
+See Page 15 of Lora\+W\+AN specification for a representation of fields.
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & A pointer to the buffer that will be filled with the serialization. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_a4a7c35d0c20670d6e4471e56b51c3c8f}\label{classns3_1_1lorawan_1_1LoraFrameHeader_a4a7c35d0c20670d6e4471e56b51c3c8f}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Set\+Ack@{Set\+Ack}}
+\index{Set\+Ack@{Set\+Ack}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Set\+Ack()}{SetAck()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Set\+Ack (\begin{DoxyParamCaption}\item[{bool}]{ack }\end{DoxyParamCaption})}
+
+Set the Ack bit.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ack} & Whether or not to set the A\+CK bit. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_a65a8f5de3c705d18df13171c680e133f}\label{classns3_1_1lorawan_1_1LoraFrameHeader_a65a8f5de3c705d18df13171c680e133f}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Set\+Address@{Set\+Address}}
+\index{Set\+Address@{Set\+Address}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Set\+Address()}{SetAddress()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Set\+Address (\begin{DoxyParamCaption}\item[{\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address}}]{address }\end{DoxyParamCaption})}
+
+Set the address.
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The \hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} to set. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_a55264b1b0ff05231d142164a7b5a43b2}\label{classns3_1_1lorawan_1_1LoraFrameHeader_a55264b1b0ff05231d142164a7b5a43b2}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Set\+Adr@{Set\+Adr}}
+\index{Set\+Adr@{Set\+Adr}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Set\+Adr()}{SetAdr()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Set\+Adr (\begin{DoxyParamCaption}\item[{bool}]{adr }\end{DoxyParamCaption})}
+
+Set the Adr value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Adr} & The Adr to set. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_a97022ac4ffee6dd63f1541b948460fe9}\label{classns3_1_1lorawan_1_1LoraFrameHeader_a97022ac4ffee6dd63f1541b948460fe9}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Set\+Adr\+Ack\+Req@{Set\+Adr\+Ack\+Req}}
+\index{Set\+Adr\+Ack\+Req@{Set\+Adr\+Ack\+Req}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Set\+Adr\+Ack\+Req()}{SetAdrAckReq()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Set\+Adr\+Ack\+Req (\begin{DoxyParamCaption}\item[{bool}]{adr\+Ack\+Req }\end{DoxyParamCaption})}
+
+Set the Adr\+Ack\+Req value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em adr\+Ack\+Req} & The Adr\+Ack\+Req to set. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_aeeade331e76a7260c583a64706b3b4ec}\label{classns3_1_1lorawan_1_1LoraFrameHeader_aeeade331e76a7260c583a64706b3b4ec}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Set\+As\+Downlink@{Set\+As\+Downlink}}
+\index{Set\+As\+Downlink@{Set\+As\+Downlink}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Set\+As\+Downlink()}{SetAsDownlink()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Set\+As\+Downlink (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+State that this is a downlink message.
+
+This method needs to be called at least once before any serialization or deserialization. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_a89181ba734f2b52ffc171d5d5f4ba123}\label{classns3_1_1lorawan_1_1LoraFrameHeader_a89181ba734f2b52ffc171d5d5f4ba123}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Set\+As\+Uplink@{Set\+As\+Uplink}}
+\index{Set\+As\+Uplink@{Set\+As\+Uplink}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Set\+As\+Uplink()}{SetAsUplink()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Set\+As\+Uplink (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+State that this is an uplink message.
+
+This method needs to be called at least once before any serialization or deserialization. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_a29821504b7f5958226cab2d92e486928}\label{classns3_1_1lorawan_1_1LoraFrameHeader_a29821504b7f5958226cab2d92e486928}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Set\+F\+Cnt@{Set\+F\+Cnt}}
+\index{Set\+F\+Cnt@{Set\+F\+Cnt}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Set\+F\+Cnt()}{SetFCnt()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Set\+F\+Cnt (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{f\+Cnt }\end{DoxyParamCaption})}
+
+Set the F\+Cnt value
+
+
+\begin{DoxyParams}{Parameters}
+{\em F\+Cnt} & The F\+Cnt to set. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_aaa9aab8d0d40206c82711b62bf0f2165}\label{classns3_1_1lorawan_1_1LoraFrameHeader_aaa9aab8d0d40206c82711b62bf0f2165}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Set\+F\+Pending@{Set\+F\+Pending}}
+\index{Set\+F\+Pending@{Set\+F\+Pending}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Set\+F\+Pending()}{SetFPending()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Set\+F\+Pending (\begin{DoxyParamCaption}\item[{bool}]{f\+Pending }\end{DoxyParamCaption})}
+
+Set the F\+Pending value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em f\+Pending} & The F\+Pending to set. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraFrameHeader_af04f957858d8af6d72288cd44b557090}\label{classns3_1_1lorawan_1_1LoraFrameHeader_af04f957858d8af6d72288cd44b557090}} 
+\index{ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}!Set\+F\+Port@{Set\+F\+Port}}
+\index{Set\+F\+Port@{Set\+F\+Port}!ns3\+::lorawan\+::\+Lora\+Frame\+Header@{ns3\+::lorawan\+::\+Lora\+Frame\+Header}}
+\subsubsection{\texorpdfstring{Set\+F\+Port()}{SetFPort()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Frame\+Header\+::\+Set\+F\+Port (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{f\+Port }\end{DoxyParamCaption})}
+
+Set the F\+Port value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em f\+Port} & The F\+Port to set. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lora-\/frame-\/header.\+h\item 
+lora-\/frame-\/header.\+cc\end{DoxyCompactItemize}

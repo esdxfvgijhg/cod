@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <iostream>
+#include "mbed.h"
+#include "../SX1276Lib/registers/sx1276Regs-LoRa.h"
+#include "../SX1276Lib/sx1276/sx1276-inAir.h"
+
+
+I2C i2c(I2C_SDA, I2C_SCL);
+Serial      pc(USBTX, USBRX);
+
+const int addr = 0x90;
+const int addrW = 0xB8; // 8bit I2C address + Write, 0xB8+0x00
+const int addrR = 0xB9; // 8bit I2C address + Read, 0xB8+0x01
+char data_i2c[8] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+
+int main() {
+
+
+    wait_ms(500); // start delay
+
+    // configure uart port
+    pc.baud(57600);
+    pc.format(8, SerialBase::None, 1);
+
+    pc.printf("je suis la\n");
+    int i;
+    char cmd[3];
+    	cmd[0] = 0x03;
+    	cmd[1] = 0x00;
+    	cmd[2] = 0x04;
+    	for (i=1; i<10; i++)
+    	{
+    	i2c.write(addrW);//Wake up the sensor
+    	i2c.write(addrW, cmd, 3);//Write to the sensor
+    	wait_ms(2);
+    	i2c.read(addrR, data_i2c, 8);
+    	wait(2.5);
+    	i2c.read(addrR, data_i2c, 8);//Read from the sensor second time
+    	pc.printf("%x %x %x %x %x %x %x %x\r\n",data_i2c[0], data_i2c[1], data_i2c[2], data_i2c[3], data_i2c[4], data_i2c[5], data_i2c[6], data_i2c[7]);
+
+    	wait(3);
+
+    	}
+
+/*    char cmd[2];
+    while (1) {
+        cmd[0] = 0x01;
+        cmd[1] = 0x00;
+        i2c.write(addr, cmd, 2);
+
+        wait(0.5);
+
+        cmd[0] = 0x00;
+        i2c.write(addr, cmd, 1);
+        i2c.read(addr, cmd, 2);
+
+        float tmp = (float((cmd[0]<<8)|cmd[1]) / 256.0);
+        pc.printf("Temp = %.2f\n", tmp);
+        */
+
+}

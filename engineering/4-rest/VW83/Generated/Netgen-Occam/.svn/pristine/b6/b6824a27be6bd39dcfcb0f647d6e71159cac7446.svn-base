@@ -1,0 +1,364 @@
+#INCLUDE "rastergraphics.module"
+#INCLUDE "rasterio.module"
+#INCLUDE "string.module"
+
+VAL INT MaxTour IS 180:
+
+PROTOCOL diam.proto 
+  CASE
+    number; INT
+    null; INT
+:
+
+
+PROC CellNode([]CHAN OF diam.proto in,out, VAL INT id, CHAN OF BYTE toMux)
+  CellPosition position:
+  [MaxFanOut] INT bufIn,bufOut:
+  [MaxFanOut] BOOL dansLaMer:
+  [MaxFanOut] INT  exports:
+  INT nbVoisinsMer:
+  BOOL isSource,inTheSea:
+  Location myLoc:
+  REAL64 elevation:
+  INT integerElevation,outgoing,population:
+
+  PROC GetIdFromLocation(INT xLoc,yLoc,identity)
+    CellPosition position:
+    Location loc:
+    SEQ
+      identity := -1
+      SEQ i=0 FOR MaxNodes
+        SEQ
+          -- loc := NetLocation[i]
+          position := Cells[i][position]
+          IF
+            -- (loc[xLoc] = xLoc) AND (loc[yLoc] = yLoc)
+            (position[x] = xLoc) AND (position[y] = yLoc)
+              identity := i
+            TRUE
+              SKIP
+  :
+
+  PROC SetUpPopulation(INT population, Location loc)
+  -- PROC SetUpPopulation(INT population, CellPosition position)
+    SEQ
+      inTheSea := integerElevation <=0
+      isSource := FALSE
+      IF 
+        -- (position[x]=20) AND (position[y]=7)
+        (loc[xLoc]=20) AND (loc[yLoc]=7)
+          SEQ
+            population := 100
+            isSource := TRUE
+        TRUE
+          population:=0
+  :
+
+        
+  PROC ExploreVoisinage( [] BOOL voisinsValides, INT voisinsMer, BOOL inTheSea)
+    [MaxFanOut] INT bufIn,bufOut:
+    SEQ
+      voisinsMer := 0
+      PAR
+        PAR j=0 FOR SIZE in
+          in[j] ? CASE
+            null ; bufIn[j]
+              voisinsValides[j] := FALSE
+            number ; bufIn[j]
+              SEQ
+                voisinsValides[j] := TRUE
+                voisinsMer:=voisinsMer +1
+        PAR j=0 FOR SIZE out
+          IF
+            inTheSea
+              out[j] ! number ;  0
+            TRUE
+              out[j] ! null ; integerElevation
+  :
+
+  PROC ExportNumbers(VAL BOOL inTheSea, [] INT exports, [] BOOL valid, INT MaxExport)
+    -- quantites de poissons exportes
+    INT seed,nbExport:
+    SEQ
+      seed := id
+      nbExport := 0
+      SEQ i=0 FOR SIZE out
+        IF 
+          inTheSea AND valid[i]
+            SEQ
+              exports[i], seed := random (100, seed)
+              nbExport := nbExport + exports[i]
+          TRUE
+            exports[i] := 0
+      SEQ  i=0 FOR SIZE out
+        IF
+          nbExport>0
+            exports[i] := ( exports[i] * MaxExport)  / nbExport
+          TRUE
+            exports[i] :=0
+  :
+
+
+  SEQ
+    position := Cells [id][position]
+    myLoc := NetLocation [id]
+    elevation := position[elevation]
+    integerElevation := ( INT ROUND ( elevation + 1.0)) -1
+    inTheSea := integerElevation <=0
+    ExploreVoisinage(dansLaMer, nbVoisinsMer, inTheSea)
+    -- SetUpPopulation(population, position)
+    SetUpPopulation(population, myLoc)
+    -- buffer out
+    IF 
+      nbVoisinsMer>0
+        outgoing := ( population/2) / nbVoisinsMer
+      TRUE
+        outgoing:=0 
+    ExportNumbers(integerElevation = 0, exports, dansLaMer, outgoing)
+    SEQ i=0 FOR SIZE out
+      IF 
+        NOT dansLaMer[i]
+          bufOut [i] := 0
+        TRUE      
+          SEQ
+            bufOut [i] := outgoing / (nbVoisinsMer)
+            population := population - bufOut [i]
+    SEQ tours = 0 FOR  MaxTour
+      SEQ
+        PAR -- communications
+          PAR i=0 FOR SIZE in
+            in[i] ? CASE
+              number ; bufIn[i]
+                SKIP
+              null ; bufIn[i]
+                SKIP
+          PAR j=0 FOR SIZE out
+            IF
+              dansLaMer[j] AND inTheSea
+                out[j] ! number ; bufOut [j]
+              TRUE
+                out[j] ! null ; 0
+        SEQ j=0 FOR SIZE in
+          population:= population + bufIn[j]
+        IF 
+          nbVoisinsMer>0
+            outgoing := (population / 2) / (nbVoisinsMer)
+          TRUE
+            outgoing := 0
+        IF
+          isSource
+            population := population + (10 * (tours / 4))
+          TRUE
+            SKIP
+        SEQ i=0 FOR SIZE out
+          IF 
+            (NOT dansLaMer[i]) OR (nbVoisinsMer=0)
+              bufOut [i] := 0
+            TRUE      
+              SEQ
+                bufOut [i] := outgoing / (nbVoisinsMer)
+                population := population - bufOut [i]
+        toMux ! '.'
+        out.number(position [x],0,toMux)
+        toMux ! ' '
+        out.number(position [y],0,toMux)
+        toMux ! ' '
+        out.number(myLoc [xLoc],0,toMux)
+        toMux ! ' '
+        out.number(myLoc [yLoc],0,toMux)
+        toMux ! ' '
+        out.number(id ,0,toMux)
+        toMux ! ' '
+        out.number(position [identity],0,toMux)
+        toMux ! ' '
+        out.number(population,0,toMux)
+        toMux ! '*n'
+    
+:
+
+
+--DATA TYPE SystemOrganization
+--  RECORD
+--    INT width, height:
+--    INT cellWidth, cellHeight:
+--    REAL64 longitude, latitude:
+--    INT zoom:
+--:
+--VAL SystemOrganization systemOrganization WAS [782 , 675 , 15 , 15 , -4.5275688171387 , 48.398436885272 , 13 ]: 
+
+VAL INT cellSizeX IS systemOrganization[cellWidth]:
+VAL INT cellSizeY IS systemOrganization[cellHeight]:
+VAL INT ImageDimX IS (systemOrganization[ImageDimX]):
+VAL INT ImageDimY IS (systemOrganization[ImageDimY]):
+
+PROC Mux([]CHAN OF BYTE fromProc, CHAN OF BYTE out)
+  INT maxX, maxY:
+  VAL INT MaxString IS 200:
+  [ImageDimY*cellSizeY][ImageDimX*cellSizeX] INT  raster: 
+  [MaxString] BYTE fileName:
+  INT nameLen:
+  PROC PrintSystem()
+    SEQ
+      out.number(ImageDimX,4,out)
+      out ! '*n'
+      out.number(cellSizeX,4,out)
+      out ! '*n'
+      out.number(ImageDimY,4,out)
+      out ! '*n'
+      out.number(cellSizeY,4,out)
+      out ! '*n'
+      out.number((ImageDimY*cellSizeY)*(ImageDimX*cellSizeX),8,out)
+      out ! '*n'
+  :
+
+  PROC MakeString(VAL INT n, [] BYTE fileName, INT nameLen)
+    VAL [] BYTE name IS "image":
+    SEQ
+      nameLen:=0
+      SEQ i=0 FOR MaxString
+        fileName[i] := (BYTE 0)
+      append.text (nameLen, fileName,name) 
+      append.int (nameLen, fileName , n , 0 )
+      append.text (nameLen, fileName, ".ppm")
+  :
+
+
+  PROC RGBToRaster( Depth24ByteArray rgbArray, [cellSizeY][cellSizeX]INT cellRaster)
+    RGBPixel rgb:
+    INT rgbColour:
+
+    SEQ
+      SEQ j=0 FOR cellSizeY
+        SEQ i=0 FOR cellSizeX
+          SEQ
+            rgb := rgbArray[(j*cellSizeY) + i]
+            rgbColour := pack.colour(rgb[red],rgb[green],rgb[blue])
+            cellRaster[j][i] := rgbColour
+  :
+
+  PROC GetIdFromLocation(INT xLoc,yLoc,identity)
+    CellPosition position:
+    Location loc:
+    SEQ
+      identity := -1
+      SEQ i=0 FOR MaxNodes
+        SEQ
+          -- loc := NetLocation[i]
+          position := Cells[i][position]
+          IF
+            -- (loc[xLoc] = xLoc) AND (loc[yLoc] = yLoc)
+            (position[x] = xLoc) AND (position[y] = yLoc)
+              identity := i
+            TRUE
+              SKIP
+  :
+
+
+  PROC Draw()
+    CellPosition cell:
+    [cellSizeY][cellSizeX] INT cellRaster:
+    CellImage image:
+    INT x,y:
+    SEQ
+      SEQ i=0 FOR SIZE Cells
+        SEQ
+          cell := Cells[i][position]
+          x:=  (cell[x]-1) *cellSizeX
+          y:=  (cell[y]-1) *cellSizeY
+          image := Cells[i][image]
+          RGBToRaster(image[pixelArray],cellRaster)
+          copy.raster(cellRaster,x,y,0,0,raster)
+  :
+  VAL INT Density IS 2:
+  PROC UpDate(VAL INT id, INT popu, INT xLoc,yLoc)
+    CellPosition position,cell:
+    CellImage image:
+    [cellSizeY][cellSizeX] INT cellRaster:
+    INT colour, width, height:
+    INT x,y:
+    INT xOffset,yOffset:
+    INT xRand,yRand,seed,identity:
+    SEQ
+      -- position := Cells[id][position]
+      GetIdFromLocation(xLoc,yLoc,identity)
+--      out.number(identity,4,out)
+--      out ! '*t'
+--      out.number(xLoc,4,out)
+--      out ! '*t'
+--      out.number(yLoc,4,out)
+--      out ! '*n'
+      seed := identity
+      cell := Cells[identity][position]
+      -- x:=  (cell[x]-1) *cellSizeX
+      -- y:=  (cell[y]-1) *cellSizeY
+      x:=  (xLoc-1) *cellSizeX
+      y:=  (yLoc-1) *cellSizeY
+      image := Cells[identity][image]
+      RGBToRaster(image[pixelArray],cellRaster)
+      width := cellSizeX
+      height := cellSizeY
+      colour := COLOUR.RED
+      IF
+        (xLoc=20) AND (yLoc=7)
+          draw.rectangle (1, 1, width-2, height-2, colour,  cellRaster)
+        TRUE
+          SKIP
+      colour := COLOUR.NAVY
+      SEQ i=0 FOR popu*Density
+        SEQ
+          xRand,seed := random(cellSizeX, seed)
+          yRand,seed := random(cellSizeY, seed)
+          fill.circle.diameter(xRand,yRand,1, colour, cellRaster) 
+      copy.raster(cellRaster,x,y,0,0,raster)
+  :
+
+
+  BYTE ch,digit:
+  INT popu,xPos,yPos,xLoc,yLoc,idVal, idStored:
+  BOOL ok:
+  SEQ
+    PrintSystem()
+    popu:=0
+    -- Draw()
+    SEQ i=1 FOR ImageDimY
+      SEQ j=1 FOR ImageDimX
+        SEQ
+          xLoc := j
+          yLoc := i
+          UpDate(0,popu,xLoc,yLoc)
+    SEQ tour=0 FOR MaxTour
+      SEQ
+        SEQ i=0 FOR MaxNodes
+          ALT canalIndex = 0 FOR SIZE fromProc
+            fromProc [canalIndex] ? ch
+              SEQ
+                file.in.int (xPos , 5, ok,fromProc [canalIndex]) 
+                file.in.int (yPos , 5, ok,fromProc [canalIndex]) 
+                file.in.int (xLoc , 5, ok,fromProc [canalIndex]) 
+                file.in.int (yLoc , 5, ok,fromProc [canalIndex]) 
+                file.in.int (idVal , 5, ok,fromProc [canalIndex]) 
+                file.in.int (idStored , 5, ok,fromProc [canalIndex]) 
+                file.in.int (popu , 5, ok,fromProc [canalIndex]) 
+                IF
+                  popu>0
+                    SEQ
+                      UpDate(canalIndex,popu,xLoc,yLoc)
+--                      out ! 'X'
+--                      out ! ' '
+--                      out.number(canalIndex,6,out)
+--                      out.number(xPos,6,out)
+--                      out.number(yPos,6,out)
+--                      out.number(xLoc,6,out)
+--                      out.number(yLoc,6,out)
+--                      out.number(popu,6,out)
+--                      out ! '*n'
+                  TRUE
+                    SKIP
+        
+        MakeString(tour, fileName, nameLen )
+        fileName[nameLen] := (BYTE 0)
+        out.string(fileName,nameLen,out)
+        out ! '*n'
+        write.raster.ppm(fileName,raster)
+        out ! '*n'
+:

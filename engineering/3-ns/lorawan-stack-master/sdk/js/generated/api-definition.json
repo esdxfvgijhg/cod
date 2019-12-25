@@ -1,0 +1,3231 @@
+{
+  "ApplicationAccess": {
+    "ListRights": {
+      "file": "lorawan-stack/api/application_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/applications/{application_id}/rights",
+          "parameters": [
+            "application_id"
+          ]
+        }
+      ]
+    },
+    "CreateAPIKey": {
+      "file": "lorawan-stack/api/application_services.proto",
+      "http": [
+        {
+          "method": "post",
+          "pattern": "/applications/{application_ids.application_id}/api-keys",
+          "body": "*",
+          "parameters": [
+            "application_ids.application_id"
+          ]
+        }
+      ]
+    },
+    "ListAPIKeys": {
+      "file": "lorawan-stack/api/application_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/applications/{application_ids.application_id}/api-keys",
+          "parameters": [
+            "application_ids.application_id"
+          ]
+        }
+      ]
+    },
+    "GetAPIKey": {
+      "file": "lorawan-stack/api/application_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/applications/{application_ids.application_id}/api-keys/{key_id}",
+          "parameters": [
+            "application_ids.application_id",
+            "key_id"
+          ]
+        }
+      ]
+    },
+    "UpdateAPIKey": {
+      "file": "lorawan-stack/api/application_services.proto",
+      "http": [
+        {
+          "method": "put",
+          "pattern": "/applications/{application_ids.application_id}/api-keys/{api_key.id}",
+          "body": "*",
+          "parameters": [
+            "application_ids.application_id",
+            "api_key.id"
+          ]
+        }
+      ]
+    },
+    "GetCollaborator": {
+      "file": "lorawan-stack/api/application_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/applications/{application_ids.application_id}/collaborator",
+          "parameters": [
+            "application_ids.application_id"
+          ]
+        },
+        {
+          "method": "get",
+          "pattern": "/applications/{application_ids.application_id}/collaborator/user/{collaborator.user_ids.user_id}",
+          "parameters": [
+            "application_ids.application_id",
+            "collaborator.user_ids.user_id"
+          ]
+        },
+        {
+          "method": "get",
+          "pattern": "/applications/{application_ids.application_id}/collaborator/organization/{collaborator.organization_ids.organization_id}",
+          "parameters": [
+            "application_ids.application_id",
+            "collaborator.organization_ids.organization_id"
+          ]
+        }
+      ]
+    },
+    "SetCollaborator": {
+      "file": "lorawan-stack/api/application_services.proto",
+      "http": [
+        {
+          "method": "put",
+          "pattern": "/applications/{application_ids.application_id}/collaborators",
+          "body": "*",
+          "parameters": [
+            "application_ids.application_id"
+          ]
+        }
+      ]
+    },
+    "ListCollaborators": {
+      "file": "lorawan-stack/api/application_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/applications/{application_ids.application_id}/collaborators",
+          "parameters": [
+            "application_ids.application_id"
+          ]
+        }
+      ]
+    }
+  },
+  "ApplicationRegistry": {
+    "Create": {
+      "file": "lorawan-stack/api/application_services.proto",
+      "http": [
+        {
+          "method": "post",
+          "pattern": "/users/{collaborator.user_ids.user_id}/applications",
+          "body": "*",
+          "parameters": [
+            "collaborator.user_ids.user_id"
+          ]
+        },
+        {
+          "method": "post",
+          "pattern": "/organizations/{collaborator.organization_ids.organization_id}/applications",
+          "body": "*",
+          "parameters": [
+            "collaborator.organization_ids.organization_id"
+          ]
+        }
+      ]
+    },
+    "Get": {
+      "file": "lorawan-stack/api/application_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/applications/{application_ids.application_id}",
+          "parameters": [
+            "application_ids.application_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "attributes",
+        "contact_info",
+        "created_at",
+        "description",
+        "ids",
+        "ids.application_id",
+        "name",
+        "updated_at"
+      ]
+    },
+    "List": {
+      "file": "lorawan-stack/api/application_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/applications",
+          "parameters": []
+        },
+        {
+          "method": "get",
+          "pattern": "/users/{collaborator.user_ids.user_id}/applications",
+          "parameters": [
+            "collaborator.user_ids.user_id"
+          ]
+        },
+        {
+          "method": "get",
+          "pattern": "/organizations/{collaborator.organization_ids.organization_id}/applications",
+          "parameters": [
+            "collaborator.organization_ids.organization_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "attributes",
+        "contact_info",
+        "created_at",
+        "description",
+        "ids",
+        "ids.application_id",
+        "name",
+        "updated_at"
+      ]
+    },
+    "Update": {
+      "file": "lorawan-stack/api/application_services.proto",
+      "http": [
+        {
+          "method": "put",
+          "pattern": "/applications/{application.ids.application_id}",
+          "body": "*",
+          "parameters": [
+            "application.ids.application_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "attributes",
+        "contact_info",
+        "created_at",
+        "description",
+        "ids",
+        "ids.application_id",
+        "name",
+        "updated_at"
+      ]
+    },
+    "Delete": {
+      "file": "lorawan-stack/api/application_services.proto",
+      "http": [
+        {
+          "method": "delete",
+          "pattern": "/applications/{application_id}",
+          "parameters": [
+            "application_id"
+          ]
+        }
+      ]
+    }
+  },
+  "AppAs": {
+    "Subscribe": {
+      "file": "lorawan-stack/api/applicationserver.proto",
+      "http": []
+    },
+    "DownlinkQueuePush": {
+      "file": "lorawan-stack/api/applicationserver.proto",
+      "http": [
+        {
+          "method": "post",
+          "pattern": "/as/applications/{end_device_ids.application_ids.application_id}/devices/{end_device_ids.device_id}/down/push",
+          "body": "*",
+          "parameters": [
+            "end_device_ids.application_ids.application_id",
+            "end_device_ids.device_id"
+          ]
+        }
+      ]
+    },
+    "DownlinkQueueReplace": {
+      "file": "lorawan-stack/api/applicationserver.proto",
+      "http": [
+        {
+          "method": "post",
+          "pattern": "/as/applications/{end_device_ids.application_ids.application_id}/devices/{end_device_ids.device_id}/down/replace",
+          "body": "*",
+          "parameters": [
+            "end_device_ids.application_ids.application_id",
+            "end_device_ids.device_id"
+          ]
+        }
+      ]
+    },
+    "DownlinkQueueList": {
+      "file": "lorawan-stack/api/applicationserver.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/as/applications/{application_ids.application_id}/devices/{device_id}/down",
+          "parameters": [
+            "application_ids.application_id",
+            "device_id"
+          ]
+        }
+      ]
+    },
+    "GetMQTTConnectionInfo": {
+      "file": "lorawan-stack/api/applicationserver.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/as/applications/{application_id}/mqtt-connection-info",
+          "parameters": [
+            "application_id"
+          ]
+        }
+      ]
+    }
+  },
+  "As": {
+    "GetLink": {
+      "file": "lorawan-stack/api/applicationserver.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/as/applications/{application_ids.application_id}/link",
+          "parameters": [
+            "application_ids.application_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "api_key",
+        "default_formatters",
+        "default_formatters.down_formatter",
+        "default_formatters.down_formatter_parameter",
+        "default_formatters.up_formatter",
+        "default_formatters.up_formatter_parameter",
+        "network_server_address",
+        "tls"
+      ]
+    },
+    "SetLink": {
+      "file": "lorawan-stack/api/applicationserver.proto",
+      "http": [
+        {
+          "method": "put",
+          "pattern": "/as/applications/{application_ids.application_id}/link",
+          "body": "*",
+          "parameters": [
+            "application_ids.application_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "api_key",
+        "default_formatters",
+        "default_formatters.down_formatter",
+        "default_formatters.down_formatter_parameter",
+        "default_formatters.up_formatter",
+        "default_formatters.up_formatter_parameter",
+        "network_server_address",
+        "tls"
+      ]
+    },
+    "DeleteLink": {
+      "file": "lorawan-stack/api/applicationserver.proto",
+      "http": [
+        {
+          "method": "delete",
+          "pattern": "/as/applications/{application_id}/link",
+          "parameters": [
+            "application_id"
+          ]
+        }
+      ]
+    },
+    "GetLinkStats": {
+      "file": "lorawan-stack/api/applicationserver.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/as/applications/{application_id}/link/stats",
+          "parameters": [
+            "application_id"
+          ]
+        }
+      ]
+    }
+  },
+  "AsEndDeviceRegistry": {
+    "Get": {
+      "file": "lorawan-stack/api/applicationserver.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/as/applications/{end_device_ids.application_ids.application_id}/devices/{end_device_ids.device_id}",
+          "parameters": [
+            "end_device_ids.application_ids.application_id",
+            "end_device_ids.device_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "formatters",
+        "formatters.down_formatter",
+        "formatters.down_formatter_parameter",
+        "formatters.up_formatter",
+        "formatters.up_formatter_parameter",
+        "ids",
+        "ids.application_ids",
+        "ids.application_ids.application_id",
+        "ids.dev_addr",
+        "ids.dev_eui",
+        "ids.device_id",
+        "ids.join_eui",
+        "pending_session",
+        "pending_session.dev_addr",
+        "pending_session.keys",
+        "pending_session.keys.app_s_key",
+        "pending_session.keys.app_s_key.key",
+        "pending_session.keys.session_key_id",
+        "pending_session.last_a_f_cnt_down",
+        "session",
+        "session.dev_addr",
+        "session.keys",
+        "session.keys.app_s_key",
+        "session.keys.app_s_key.key",
+        "session.keys.session_key_id",
+        "session.last_a_f_cnt_down",
+        "version_ids",
+        "version_ids.brand_id",
+        "version_ids.firmware_version",
+        "version_ids.hardware_version",
+        "version_ids.model_id"
+      ]
+    },
+    "Set": {
+      "file": "lorawan-stack/api/applicationserver.proto",
+      "http": [
+        {
+          "method": "put",
+          "pattern": "/as/applications/{end_device.ids.application_ids.application_id}/devices/{end_device.ids.device_id}",
+          "body": "*",
+          "parameters": [
+            "end_device.ids.application_ids.application_id",
+            "end_device.ids.device_id"
+          ]
+        },
+        {
+          "method": "post",
+          "pattern": "/as/applications/{end_device.ids.application_ids.application_id}/devices",
+          "body": "*",
+          "parameters": [
+            "end_device.ids.application_ids.application_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "formatters",
+        "formatters.down_formatter",
+        "formatters.down_formatter_parameter",
+        "formatters.up_formatter",
+        "formatters.up_formatter_parameter",
+        "ids",
+        "ids.application_ids",
+        "ids.application_ids.application_id",
+        "ids.dev_eui",
+        "ids.device_id",
+        "ids.join_eui",
+        "session.dev_addr",
+        "session.keys.app_s_key",
+        "session.keys.app_s_key.key",
+        "session.last_a_f_cnt_down",
+        "session.keys.session_key_id",
+        "version_ids",
+        "version_ids.brand_id",
+        "version_ids.firmware_version",
+        "version_ids.hardware_version",
+        "version_ids.model_id"
+      ]
+    },
+    "Delete": {
+      "file": "lorawan-stack/api/applicationserver.proto",
+      "http": [
+        {
+          "method": "delete",
+          "pattern": "/as/applications/{application_ids.application_id}/devices/{device_id}",
+          "parameters": [
+            "application_ids.application_id",
+            "device_id"
+          ]
+        }
+      ]
+    }
+  },
+  "ApplicationPackageRegistry": {
+    "List": {
+      "file": "lorawan-stack/api/applicationserver_packages.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/as/applications/{application_ids.application_id}/devices/{device_id}/packages",
+          "parameters": [
+            "application_ids.application_id",
+            "device_id"
+          ]
+        }
+      ]
+    },
+    "GetAssociation": {
+      "file": "lorawan-stack/api/applicationserver_packages.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/as/applications/{ids.end_device_ids.application_ids.application_id}/devices/{ids.end_device_ids.device_id}/packages/associations/{ids.f_port}",
+          "parameters": [
+            "ids.end_device_ids.application_ids.application_id",
+            "ids.end_device_ids.device_id",
+            "ids.f_port"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "created_at",
+        "data",
+        "ids",
+        "ids.end_device_ids",
+        "ids.end_device_ids.application_ids",
+        "ids.end_device_ids.application_ids.application_id",
+        "ids.end_device_ids.dev_addr",
+        "ids.end_device_ids.dev_eui",
+        "ids.end_device_ids.device_id",
+        "ids.end_device_ids.join_eui",
+        "ids.f_port",
+        "package_name",
+        "updated_at"
+      ]
+    },
+    "ListAssociations": {
+      "file": "lorawan-stack/api/applicationserver_packages.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/as/applications/{ids.application_ids.application_id}/devices/{ids.device_id}/packages/associations",
+          "parameters": [
+            "ids.application_ids.application_id",
+            "ids.device_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "created_at",
+        "data",
+        "ids",
+        "ids.end_device_ids",
+        "ids.end_device_ids.application_ids",
+        "ids.end_device_ids.application_ids.application_id",
+        "ids.end_device_ids.dev_addr",
+        "ids.end_device_ids.dev_eui",
+        "ids.end_device_ids.device_id",
+        "ids.end_device_ids.join_eui",
+        "ids.f_port",
+        "package_name",
+        "updated_at"
+      ]
+    },
+    "SetAssociation": {
+      "file": "lorawan-stack/api/applicationserver_packages.proto",
+      "http": [
+        {
+          "method": "put",
+          "pattern": "/as/applications/{association.ids.end_device_ids.application_ids.application_id}/devices/{association.ids.end_device_ids.device_id}/packages/associations/{association.ids.f_port}",
+          "body": "*",
+          "parameters": [
+            "association.ids.end_device_ids.application_ids.application_id",
+            "association.ids.end_device_ids.device_id",
+            "association.ids.f_port"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "created_at",
+        "data",
+        "ids",
+        "ids.end_device_ids",
+        "ids.end_device_ids.application_ids",
+        "ids.end_device_ids.application_ids.application_id",
+        "ids.end_device_ids.dev_addr",
+        "ids.end_device_ids.dev_eui",
+        "ids.end_device_ids.device_id",
+        "ids.end_device_ids.join_eui",
+        "ids.f_port",
+        "package_name",
+        "updated_at"
+      ]
+    },
+    "DeleteAssociation": {
+      "file": "lorawan-stack/api/applicationserver_packages.proto",
+      "http": [
+        {
+          "method": "delete",
+          "pattern": "/as/applications/{end_device_ids.application_ids.application_id}/devices/{end_device_ids.device_id}/packages/associations/{f_port}",
+          "parameters": [
+            "end_device_ids.application_ids.application_id",
+            "end_device_ids.device_id",
+            "f_port"
+          ]
+        }
+      ]
+    }
+  },
+  "ApplicationPubSubRegistry": {
+    "GetFormats": {
+      "file": "lorawan-stack/api/applicationserver_pubsub.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/as/pubsub-formats",
+          "parameters": []
+        }
+      ]
+    },
+    "Get": {
+      "file": "lorawan-stack/api/applicationserver_pubsub.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/as/pubsub/{ids.application_ids.application_id}/{ids.pub_sub_id}",
+          "parameters": [
+            "ids.application_ids.application_id",
+            "ids.pub_sub_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "base_topic",
+        "created_at",
+        "downlink_ack",
+        "downlink_ack.topic",
+        "downlink_failed",
+        "downlink_failed.topic",
+        "downlink_nack",
+        "downlink_nack.topic",
+        "downlink_push",
+        "downlink_push.topic",
+        "downlink_queued",
+        "downlink_queued.topic",
+        "downlink_replace",
+        "downlink_replace.topic",
+        "downlink_sent",
+        "downlink_sent.topic",
+        "format",
+        "ids",
+        "ids.application_ids",
+        "ids.application_ids.application_id",
+        "ids.pub_sub_id",
+        "join_accept",
+        "join_accept.topic",
+        "location_solved",
+        "location_solved.topic",
+        "provider",
+        "provider.mqtt",
+        "provider.mqtt.client_id",
+        "provider.mqtt.password",
+        "provider.mqtt.publish_qos",
+        "provider.mqtt.server_url",
+        "provider.mqtt.subscribe_qos",
+        "provider.mqtt.tls_ca",
+        "provider.mqtt.tls_client_cert",
+        "provider.mqtt.tls_client_key",
+        "provider.mqtt.use_tls",
+        "provider.mqtt.username",
+        "provider.nats",
+        "provider.nats.server_url",
+        "updated_at",
+        "uplink_message",
+        "uplink_message.topic"
+      ]
+    },
+    "List": {
+      "file": "lorawan-stack/api/applicationserver_pubsub.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/as/pubsub/{application_ids.application_id}",
+          "parameters": [
+            "application_ids.application_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "base_topic",
+        "created_at",
+        "downlink_ack",
+        "downlink_ack.topic",
+        "downlink_failed",
+        "downlink_failed.topic",
+        "downlink_nack",
+        "downlink_nack.topic",
+        "downlink_push",
+        "downlink_push.topic",
+        "downlink_queued",
+        "downlink_queued.topic",
+        "downlink_replace",
+        "downlink_replace.topic",
+        "downlink_sent",
+        "downlink_sent.topic",
+        "format",
+        "ids",
+        "ids.application_ids",
+        "ids.application_ids.application_id",
+        "ids.pub_sub_id",
+        "join_accept",
+        "join_accept.topic",
+        "location_solved",
+        "location_solved.topic",
+        "provider",
+        "provider.mqtt",
+        "provider.mqtt.client_id",
+        "provider.mqtt.password",
+        "provider.mqtt.publish_qos",
+        "provider.mqtt.server_url",
+        "provider.mqtt.subscribe_qos",
+        "provider.mqtt.tls_ca",
+        "provider.mqtt.tls_client_cert",
+        "provider.mqtt.tls_client_key",
+        "provider.mqtt.use_tls",
+        "provider.mqtt.username",
+        "provider.nats",
+        "provider.nats.server_url",
+        "updated_at",
+        "uplink_message",
+        "uplink_message.topic"
+      ]
+    },
+    "Set": {
+      "file": "lorawan-stack/api/applicationserver_pubsub.proto",
+      "http": [
+        {
+          "method": "put",
+          "pattern": "/as/pubsub/{pubsub.ids.application_ids.application_id}/{pubsub.ids.pub_sub_id}",
+          "body": "*",
+          "parameters": [
+            "pubsub.ids.application_ids.application_id",
+            "pubsub.ids.pub_sub_id"
+          ]
+        },
+        {
+          "method": "post",
+          "pattern": "/as/pubsub/{pubsub.ids.application_ids.application_id}",
+          "body": "*",
+          "parameters": [
+            "pubsub.ids.application_ids.application_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "base_topic",
+        "created_at",
+        "downlink_ack",
+        "downlink_ack.topic",
+        "downlink_failed",
+        "downlink_failed.topic",
+        "downlink_nack",
+        "downlink_nack.topic",
+        "downlink_push",
+        "downlink_push.topic",
+        "downlink_queued",
+        "downlink_queued.topic",
+        "downlink_replace",
+        "downlink_replace.topic",
+        "downlink_sent",
+        "downlink_sent.topic",
+        "format",
+        "ids",
+        "ids.application_ids",
+        "ids.application_ids.application_id",
+        "ids.pub_sub_id",
+        "join_accept",
+        "join_accept.topic",
+        "location_solved",
+        "location_solved.topic",
+        "provider",
+        "provider.mqtt",
+        "provider.mqtt.client_id",
+        "provider.mqtt.password",
+        "provider.mqtt.publish_qos",
+        "provider.mqtt.server_url",
+        "provider.mqtt.subscribe_qos",
+        "provider.mqtt.tls_ca",
+        "provider.mqtt.tls_client_cert",
+        "provider.mqtt.tls_client_key",
+        "provider.mqtt.use_tls",
+        "provider.mqtt.username",
+        "provider.nats",
+        "provider.nats.server_url",
+        "updated_at",
+        "uplink_message",
+        "uplink_message.topic"
+      ]
+    },
+    "Delete": {
+      "file": "lorawan-stack/api/applicationserver_pubsub.proto",
+      "http": [
+        {
+          "method": "delete",
+          "pattern": "/as/pubsub/{application_ids.application_id}/{pub_sub_id}",
+          "parameters": [
+            "application_ids.application_id",
+            "pub_sub_id"
+          ]
+        }
+      ]
+    }
+  },
+  "ApplicationWebhookRegistry": {
+    "GetFormats": {
+      "file": "lorawan-stack/api/applicationserver_web.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/as/webhook-formats",
+          "parameters": []
+        }
+      ]
+    },
+    "GetTemplate": {
+      "file": "lorawan-stack/api/applicationserver_web.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/as/webhook-templates/{ids.template_id}",
+          "parameters": [
+            "ids.template_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "base_url",
+        "description",
+        "documentation_url",
+        "downlink_ack",
+        "downlink_ack.path",
+        "downlink_failed",
+        "downlink_failed.path",
+        "downlink_nack",
+        "downlink_nack.path",
+        "downlink_queued",
+        "downlink_queued.path",
+        "downlink_sent",
+        "downlink_sent.path",
+        "fields",
+        "format",
+        "headers",
+        "ids",
+        "ids.template_id",
+        "info_url",
+        "join_accept",
+        "join_accept.path",
+        "location_solved",
+        "location_solved.path",
+        "logo_url",
+        "name",
+        "uplink_message",
+        "uplink_message.path"
+      ]
+    },
+    "ListTemplates": {
+      "file": "lorawan-stack/api/applicationserver_web.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/as/webhook-templates",
+          "parameters": []
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "base_url",
+        "description",
+        "documentation_url",
+        "downlink_ack",
+        "downlink_ack.path",
+        "downlink_failed",
+        "downlink_failed.path",
+        "downlink_nack",
+        "downlink_nack.path",
+        "downlink_queued",
+        "downlink_queued.path",
+        "downlink_sent",
+        "downlink_sent.path",
+        "fields",
+        "format",
+        "headers",
+        "ids",
+        "ids.template_id",
+        "info_url",
+        "join_accept",
+        "join_accept.path",
+        "location_solved",
+        "location_solved.path",
+        "logo_url",
+        "name",
+        "uplink_message",
+        "uplink_message.path"
+      ]
+    },
+    "Get": {
+      "file": "lorawan-stack/api/applicationserver_web.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/as/webhooks/{ids.application_ids.application_id}/{ids.webhook_id}",
+          "parameters": [
+            "ids.application_ids.application_id",
+            "ids.webhook_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "base_url",
+        "created_at",
+        "downlink_ack",
+        "downlink_ack.path",
+        "downlink_failed",
+        "downlink_failed.path",
+        "downlink_nack",
+        "downlink_nack.path",
+        "downlink_queued",
+        "downlink_queued.path",
+        "downlink_sent",
+        "downlink_sent.path",
+        "format",
+        "headers",
+        "ids",
+        "ids.application_ids",
+        "ids.application_ids.application_id",
+        "ids.webhook_id",
+        "join_accept",
+        "join_accept.path",
+        "location_solved",
+        "location_solved.path",
+        "template_fields",
+        "template_ids",
+        "template_ids.template_id",
+        "updated_at",
+        "uplink_message",
+        "uplink_message.path"
+      ]
+    },
+    "List": {
+      "file": "lorawan-stack/api/applicationserver_web.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/as/webhooks/{application_ids.application_id}",
+          "parameters": [
+            "application_ids.application_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "base_url",
+        "created_at",
+        "downlink_ack",
+        "downlink_ack.path",
+        "downlink_failed",
+        "downlink_failed.path",
+        "downlink_nack",
+        "downlink_nack.path",
+        "downlink_queued",
+        "downlink_queued.path",
+        "downlink_sent",
+        "downlink_sent.path",
+        "format",
+        "headers",
+        "ids",
+        "ids.application_ids",
+        "ids.application_ids.application_id",
+        "ids.webhook_id",
+        "join_accept",
+        "join_accept.path",
+        "location_solved",
+        "location_solved.path",
+        "template_fields",
+        "template_ids",
+        "template_ids.template_id",
+        "updated_at",
+        "uplink_message",
+        "uplink_message.path"
+      ]
+    },
+    "Set": {
+      "file": "lorawan-stack/api/applicationserver_web.proto",
+      "http": [
+        {
+          "method": "put",
+          "pattern": "/as/webhooks/{webhook.ids.application_ids.application_id}/{webhook.ids.webhook_id}",
+          "body": "*",
+          "parameters": [
+            "webhook.ids.application_ids.application_id",
+            "webhook.ids.webhook_id"
+          ]
+        },
+        {
+          "method": "post",
+          "pattern": "/as/webhooks/{webhook.ids.application_ids.application_id}",
+          "body": "*",
+          "parameters": [
+            "webhook.ids.application_ids.application_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "base_url",
+        "created_at",
+        "downlink_ack",
+        "downlink_ack.path",
+        "downlink_failed",
+        "downlink_failed.path",
+        "downlink_nack",
+        "downlink_nack.path",
+        "downlink_queued",
+        "downlink_queued.path",
+        "downlink_sent",
+        "downlink_sent.path",
+        "format",
+        "headers",
+        "ids",
+        "ids.application_ids",
+        "ids.application_ids.application_id",
+        "ids.webhook_id",
+        "join_accept",
+        "join_accept.path",
+        "location_solved",
+        "location_solved.path",
+        "template_fields",
+        "template_ids",
+        "template_ids.template_id",
+        "updated_at",
+        "uplink_message",
+        "uplink_message.path"
+      ]
+    },
+    "Delete": {
+      "file": "lorawan-stack/api/applicationserver_web.proto",
+      "http": [
+        {
+          "method": "delete",
+          "pattern": "/as/webhooks/{application_ids.application_id}/{webhook_id}",
+          "parameters": [
+            "application_ids.application_id",
+            "webhook_id"
+          ]
+        }
+      ]
+    }
+  },
+  "ClientAccess": {
+    "ListRights": {
+      "file": "lorawan-stack/api/client_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/clients/{client_id}/rights",
+          "parameters": [
+            "client_id"
+          ]
+        }
+      ]
+    },
+    "GetCollaborator": {
+      "file": "lorawan-stack/api/client_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/clients/{client_ids.client_id}/collaborator",
+          "parameters": [
+            "client_ids.client_id"
+          ]
+        },
+        {
+          "method": "get",
+          "pattern": "/clients/{client_ids.client_id}/collaborator/user/{collaborator.user_ids.user_id}",
+          "parameters": [
+            "client_ids.client_id",
+            "collaborator.user_ids.user_id"
+          ]
+        },
+        {
+          "method": "get",
+          "pattern": "/clients/{client_ids.client_id}/collaborator/organization/{collaborator.organization_ids.organization_id}",
+          "parameters": [
+            "client_ids.client_id",
+            "collaborator.organization_ids.organization_id"
+          ]
+        }
+      ]
+    },
+    "SetCollaborator": {
+      "file": "lorawan-stack/api/client_services.proto",
+      "http": [
+        {
+          "method": "put",
+          "pattern": "/clients/{client_ids.client_id}/collaborators",
+          "body": "*",
+          "parameters": [
+            "client_ids.client_id"
+          ]
+        }
+      ]
+    },
+    "ListCollaborators": {
+      "file": "lorawan-stack/api/client_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/clients/{client_ids.client_id}/collaborators",
+          "parameters": [
+            "client_ids.client_id"
+          ]
+        }
+      ]
+    }
+  },
+  "ClientRegistry": {
+    "Create": {
+      "file": "lorawan-stack/api/client_services.proto",
+      "http": [
+        {
+          "method": "post",
+          "pattern": "/users/{collaborator.user_ids.user_id}/clients",
+          "body": "*",
+          "parameters": [
+            "collaborator.user_ids.user_id"
+          ]
+        },
+        {
+          "method": "post",
+          "pattern": "/organizations/{collaborator.organization_ids.organization_id}/clients",
+          "body": "*",
+          "parameters": [
+            "collaborator.organization_ids.organization_id"
+          ]
+        }
+      ]
+    },
+    "Get": {
+      "file": "lorawan-stack/api/client_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/clients/{client_ids.client_id}",
+          "parameters": [
+            "client_ids.client_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "attributes",
+        "contact_info",
+        "created_at",
+        "description",
+        "endorsed",
+        "grants",
+        "ids",
+        "ids.client_id",
+        "name",
+        "redirect_uris",
+        "rights",
+        "skip_authorization",
+        "state",
+        "updated_at"
+      ]
+    },
+    "List": {
+      "file": "lorawan-stack/api/client_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/clients",
+          "parameters": []
+        },
+        {
+          "method": "get",
+          "pattern": "/users/{collaborator.user_ids.user_id}/clients",
+          "parameters": [
+            "collaborator.user_ids.user_id"
+          ]
+        },
+        {
+          "method": "get",
+          "pattern": "/organizations/{collaborator.organization_ids.organization_id}/clients",
+          "parameters": [
+            "collaborator.organization_ids.organization_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "attributes",
+        "contact_info",
+        "created_at",
+        "description",
+        "endorsed",
+        "grants",
+        "ids",
+        "ids.client_id",
+        "name",
+        "redirect_uris",
+        "rights",
+        "skip_authorization",
+        "state",
+        "updated_at"
+      ]
+    },
+    "Update": {
+      "file": "lorawan-stack/api/client_services.proto",
+      "http": [
+        {
+          "method": "put",
+          "pattern": "/clients/{client.ids.client_id}",
+          "body": "*",
+          "parameters": [
+            "client.ids.client_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "attributes",
+        "contact_info",
+        "created_at",
+        "description",
+        "endorsed",
+        "grants",
+        "ids",
+        "ids.client_id",
+        "name",
+        "redirect_uris",
+        "rights",
+        "secret",
+        "skip_authorization",
+        "state",
+        "updated_at"
+      ]
+    },
+    "Delete": {
+      "file": "lorawan-stack/api/client_services.proto",
+      "http": [
+        {
+          "method": "delete",
+          "pattern": "/clients/{client_id}",
+          "parameters": [
+            "client_id"
+          ]
+        }
+      ]
+    }
+  },
+  "Configuration": {
+    "ListFrequencyPlans": {
+      "file": "lorawan-stack/api/configuration_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/configuration/frequency-plans",
+          "parameters": []
+        }
+      ]
+    }
+  },
+  "ContactInfoRegistry": {
+    "RequestValidation": {
+      "file": "lorawan-stack/api/contact_info.proto",
+      "http": [
+        {
+          "method": "post",
+          "pattern": "/contact_info/validation",
+          "parameters": []
+        }
+      ]
+    },
+    "Validate": {
+      "file": "lorawan-stack/api/contact_info.proto",
+      "http": [
+        {
+          "method": "patch",
+          "pattern": "/contact_info/validation",
+          "parameters": []
+        }
+      ]
+    }
+  },
+  "EndDeviceClaimingServer": {
+    "Claim": {
+      "file": "lorawan-stack/api/deviceclaimingserver.proto",
+      "http": [
+        {
+          "method": "post",
+          "pattern": "/edcs/claim",
+          "body": "*",
+          "parameters": []
+        }
+      ]
+    },
+    "AuthorizeApplication": {
+      "file": "lorawan-stack/api/deviceclaimingserver.proto",
+      "http": [
+        {
+          "method": "post",
+          "pattern": "/edcs/applications/{application_ids.application_id}/authorize",
+          "body": "*",
+          "parameters": [
+            "application_ids.application_id"
+          ]
+        }
+      ]
+    },
+    "UnauthorizeApplication": {
+      "file": "lorawan-stack/api/deviceclaimingserver.proto",
+      "http": [
+        {
+          "method": "delete",
+          "pattern": "/edcs/applications/{application_id}/authorize",
+          "parameters": [
+            "application_id"
+          ]
+        }
+      ]
+    }
+  },
+  "EndDeviceRegistry": {
+    "Create": {
+      "file": "lorawan-stack/api/end_device_services.proto",
+      "http": [
+        {
+          "method": "post",
+          "pattern": "/applications/{end_device.ids.application_ids.application_id}/devices",
+          "body": "*",
+          "parameters": [
+            "end_device.ids.application_ids.application_id"
+          ]
+        }
+      ]
+    },
+    "Get": {
+      "file": "lorawan-stack/api/end_device_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/applications/{end_device_ids.application_ids.application_id}/devices/{end_device_ids.device_id}",
+          "parameters": [
+            "end_device_ids.application_ids.application_id",
+            "end_device_ids.device_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "application_server_address",
+        "attributes",
+        "created_at",
+        "description",
+        "ids",
+        "ids.application_ids",
+        "ids.application_ids.application_id",
+        "ids.dev_eui",
+        "ids.device_id",
+        "ids.join_eui",
+        "join_server_address",
+        "locations",
+        "name",
+        "network_server_address",
+        "service_profile_id",
+        "updated_at",
+        "version_ids",
+        "version_ids.brand_id",
+        "version_ids.firmware_version",
+        "version_ids.hardware_version",
+        "version_ids.model_id"
+      ]
+    },
+    "GetIdentifiersForEUIs": {
+      "file": "lorawan-stack/api/end_device_services.proto",
+      "http": []
+    },
+    "List": {
+      "file": "lorawan-stack/api/end_device_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/applications/{application_ids.application_id}/devices",
+          "parameters": [
+            "application_ids.application_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "application_server_address",
+        "attributes",
+        "created_at",
+        "description",
+        "ids",
+        "ids.application_ids",
+        "ids.application_ids.application_id",
+        "ids.dev_eui",
+        "ids.device_id",
+        "ids.join_eui",
+        "join_server_address",
+        "locations",
+        "name",
+        "network_server_address",
+        "service_profile_id",
+        "updated_at",
+        "version_ids",
+        "version_ids.brand_id",
+        "version_ids.firmware_version",
+        "version_ids.hardware_version",
+        "version_ids.model_id"
+      ]
+    },
+    "Update": {
+      "file": "lorawan-stack/api/end_device_services.proto",
+      "http": [
+        {
+          "method": "put",
+          "pattern": "/applications/{end_device.ids.application_ids.application_id}/devices/{end_device.ids.device_id}",
+          "body": "*",
+          "parameters": [
+            "end_device.ids.application_ids.application_id",
+            "end_device.ids.device_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "application_server_address",
+        "attributes",
+        "description",
+        "ids",
+        "ids.dev_eui",
+        "ids.join_eui",
+        "join_server_address",
+        "locations",
+        "name",
+        "network_server_address",
+        "service_profile_id",
+        "version_ids",
+        "version_ids.brand_id",
+        "version_ids.firmware_version",
+        "version_ids.hardware_version",
+        "version_ids.model_id"
+      ]
+    },
+    "Delete": {
+      "file": "lorawan-stack/api/end_device_services.proto",
+      "http": [
+        {
+          "method": "delete",
+          "pattern": "/applications/{application_ids.application_id}/devices/{device_id}",
+          "parameters": [
+            "application_ids.application_id",
+            "device_id"
+          ]
+        }
+      ]
+    }
+  },
+  "EndDeviceTemplateConverter": {
+    "ListFormats": {
+      "file": "lorawan-stack/api/end_device_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/edtc/formats",
+          "parameters": []
+        }
+      ]
+    },
+    "Convert": {
+      "file": "lorawan-stack/api/end_device_services.proto",
+      "http": [
+        {
+          "method": "post",
+          "pattern": "/edtc/convert",
+          "body": "*",
+          "parameters": [],
+          "stream": true
+        }
+      ]
+    }
+  },
+  "Events": {
+    "Stream": {
+      "file": "lorawan-stack/api/events.proto",
+      "http": [
+        {
+          "method": "post",
+          "pattern": "/events",
+          "body": "*",
+          "parameters": [],
+          "stream": true
+        }
+      ]
+    }
+  },
+  "GatewayAccess": {
+    "ListRights": {
+      "file": "lorawan-stack/api/gateway_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/gateways/{gateway_id}/rights",
+          "parameters": [
+            "gateway_id"
+          ]
+        }
+      ]
+    },
+    "CreateAPIKey": {
+      "file": "lorawan-stack/api/gateway_services.proto",
+      "http": [
+        {
+          "method": "post",
+          "pattern": "/gateways/{gateway_ids.gateway_id}/api-keys",
+          "body": "*",
+          "parameters": [
+            "gateway_ids.gateway_id"
+          ]
+        }
+      ]
+    },
+    "ListAPIKeys": {
+      "file": "lorawan-stack/api/gateway_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/gateways/{gateway_ids.gateway_id}/api-keys",
+          "parameters": [
+            "gateway_ids.gateway_id"
+          ]
+        }
+      ]
+    },
+    "GetAPIKey": {
+      "file": "lorawan-stack/api/gateway_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/gateways/{gateway_ids.gateway_id}/api-keys/{key_id}",
+          "parameters": [
+            "gateway_ids.gateway_id",
+            "key_id"
+          ]
+        }
+      ]
+    },
+    "UpdateAPIKey": {
+      "file": "lorawan-stack/api/gateway_services.proto",
+      "http": [
+        {
+          "method": "put",
+          "pattern": "/gateways/{gateway_ids.gateway_id}/api-keys/{api_key.id}",
+          "body": "*",
+          "parameters": [
+            "gateway_ids.gateway_id",
+            "api_key.id"
+          ]
+        }
+      ]
+    },
+    "GetCollaborator": {
+      "file": "lorawan-stack/api/gateway_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/gateways/{gateway_ids.gateway_id}/collaborator",
+          "parameters": [
+            "gateway_ids.gateway_id"
+          ]
+        },
+        {
+          "method": "get",
+          "pattern": "/gateways/{gateway_ids.gateway_id}/collaborator/user/{collaborator.user_ids.user_id}",
+          "parameters": [
+            "gateway_ids.gateway_id",
+            "collaborator.user_ids.user_id"
+          ]
+        },
+        {
+          "method": "get",
+          "pattern": "/gateways/{gateway_ids.gateway_id}/collaborator/organization/{collaborator.organization_ids.organization_id}",
+          "parameters": [
+            "gateway_ids.gateway_id",
+            "collaborator.organization_ids.organization_id"
+          ]
+        }
+      ]
+    },
+    "SetCollaborator": {
+      "file": "lorawan-stack/api/gateway_services.proto",
+      "http": [
+        {
+          "method": "put",
+          "pattern": "/gateways/{gateway_ids.gateway_id}/collaborators",
+          "body": "*",
+          "parameters": [
+            "gateway_ids.gateway_id"
+          ]
+        }
+      ]
+    },
+    "ListCollaborators": {
+      "file": "lorawan-stack/api/gateway_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/gateways/{gateway_ids.gateway_id}/collaborators",
+          "parameters": [
+            "gateway_ids.gateway_id"
+          ]
+        }
+      ]
+    }
+  },
+  "GatewayConfigurator": {
+    "PullConfiguration": {
+      "file": "lorawan-stack/api/gateway_services.proto",
+      "http": []
+    }
+  },
+  "GatewayRegistry": {
+    "Create": {
+      "file": "lorawan-stack/api/gateway_services.proto",
+      "http": [
+        {
+          "method": "post",
+          "pattern": "/users/{collaborator.user_ids.user_id}/gateways",
+          "body": "*",
+          "parameters": [
+            "collaborator.user_ids.user_id"
+          ]
+        },
+        {
+          "method": "post",
+          "pattern": "/organizations/{collaborator.organization_ids.organization_id}/gateways",
+          "body": "*",
+          "parameters": [
+            "collaborator.organization_ids.organization_id"
+          ]
+        }
+      ]
+    },
+    "Get": {
+      "file": "lorawan-stack/api/gateway_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/gateways/{gateway_ids.gateway_id}",
+          "parameters": [
+            "gateway_ids.gateway_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "antennas",
+        "attributes",
+        "auto_update",
+        "contact_info",
+        "created_at",
+        "description",
+        "downlink_path_constraint",
+        "enforce_duty_cycle",
+        "frequency_plan_id",
+        "gateway_server_address",
+        "ids",
+        "ids.eui",
+        "ids.gateway_id",
+        "location_public",
+        "name",
+        "schedule_downlink_late",
+        "status_public",
+        "update_channel",
+        "updated_at",
+        "version_ids",
+        "version_ids.brand_id",
+        "version_ids.firmware_version",
+        "version_ids.hardware_version",
+        "version_ids.model_id"
+      ]
+    },
+    "GetIdentifiersForEUI": {
+      "file": "lorawan-stack/api/gateway_services.proto",
+      "http": []
+    },
+    "List": {
+      "file": "lorawan-stack/api/gateway_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/gateways",
+          "parameters": []
+        },
+        {
+          "method": "get",
+          "pattern": "/users/{collaborator.user_ids.user_id}/gateways",
+          "parameters": [
+            "collaborator.user_ids.user_id"
+          ]
+        },
+        {
+          "method": "get",
+          "pattern": "/organizations/{collaborator.organization_ids.organization_id}/gateways",
+          "parameters": [
+            "collaborator.organization_ids.organization_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "antennas",
+        "attributes",
+        "auto_update",
+        "contact_info",
+        "created_at",
+        "description",
+        "downlink_path_constraint",
+        "enforce_duty_cycle",
+        "frequency_plan_id",
+        "gateway_server_address",
+        "ids",
+        "ids.eui",
+        "ids.gateway_id",
+        "location_public",
+        "name",
+        "schedule_downlink_late",
+        "status_public",
+        "update_channel",
+        "updated_at",
+        "version_ids",
+        "version_ids.brand_id",
+        "version_ids.firmware_version",
+        "version_ids.hardware_version",
+        "version_ids.model_id"
+      ]
+    },
+    "Update": {
+      "file": "lorawan-stack/api/gateway_services.proto",
+      "http": [
+        {
+          "method": "put",
+          "pattern": "/gateways/{gateway.ids.gateway_id}",
+          "body": "*",
+          "parameters": [
+            "gateway.ids.gateway_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "antennas",
+        "attributes",
+        "auto_update",
+        "contact_info",
+        "created_at",
+        "description",
+        "downlink_path_constraint",
+        "enforce_duty_cycle",
+        "frequency_plan_id",
+        "gateway_server_address",
+        "ids",
+        "ids.eui",
+        "ids.gateway_id",
+        "location_public",
+        "name",
+        "schedule_downlink_late",
+        "status_public",
+        "update_channel",
+        "updated_at",
+        "version_ids",
+        "version_ids.brand_id",
+        "version_ids.firmware_version",
+        "version_ids.hardware_version",
+        "version_ids.model_id"
+      ]
+    },
+    "Delete": {
+      "file": "lorawan-stack/api/gateway_services.proto",
+      "http": [
+        {
+          "method": "delete",
+          "pattern": "/gateways/{gateway_id}",
+          "parameters": [
+            "gateway_id"
+          ]
+        }
+      ]
+    }
+  },
+  "Gs": {
+    "GetGatewayConnectionStats": {
+      "file": "lorawan-stack/api/gatewayserver.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/gs/gateways/{gateway_id}/connection/stats",
+          "parameters": [
+            "gateway_id"
+          ]
+        }
+      ]
+    }
+  },
+  "GtwGs": {
+    "LinkGateway": {
+      "file": "lorawan-stack/api/gatewayserver.proto",
+      "http": []
+    },
+    "GetConcentratorConfig": {
+      "file": "lorawan-stack/api/gatewayserver.proto",
+      "http": []
+    },
+    "GetMQTTConnectionInfo": {
+      "file": "lorawan-stack/api/gatewayserver.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/gs/gateways/{gateway_id}/mqtt-connection-info",
+          "parameters": [
+            "gateway_id"
+          ]
+        }
+      ]
+    },
+    "GetMQTTV2ConnectionInfo": {
+      "file": "lorawan-stack/api/gatewayserver.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/gs/gateways/{gateway_id}/mqttv2-connection-info",
+          "parameters": [
+            "gateway_id"
+          ]
+        }
+      ]
+    }
+  },
+  "NsGs": {
+    "ScheduleDownlink": {
+      "file": "lorawan-stack/api/gatewayserver.proto",
+      "http": []
+    }
+  },
+  "EntityAccess": {
+    "AuthInfo": {
+      "file": "lorawan-stack/api/identityserver.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/auth_info",
+          "parameters": []
+        }
+      ]
+    }
+  },
+  "ApplicationCryptoService": {
+    "DeriveAppSKey": {
+      "file": "lorawan-stack/api/joinserver.proto",
+      "http": []
+    },
+    "GetAppKey": {
+      "file": "lorawan-stack/api/joinserver.proto",
+      "http": []
+    }
+  },
+  "AsJs": {
+    "GetAppSKey": {
+      "file": "lorawan-stack/api/joinserver.proto",
+      "http": []
+    }
+  },
+  "Js": {
+    "GetJoinEUIPrefixes": {
+      "file": "lorawan-stack/api/joinserver.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/js/join_eui_prefixes",
+          "parameters": []
+        }
+      ]
+    }
+  },
+  "JsEndDeviceRegistry": {
+    "Get": {
+      "file": "lorawan-stack/api/joinserver.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/js/applications/{end_device_ids.application_ids.application_id}/devices/{end_device_ids.device_id}",
+          "parameters": [
+            "end_device_ids.application_ids.application_id",
+            "end_device_ids.device_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "application_server_address",
+        "application_server_id",
+        "application_server_kek_label",
+        "claim_authentication_code",
+        "claim_authentication_code.value",
+        "claim_authentication_code.valid_to",
+        "claim_authentication_code.valid_from",
+        "ids",
+        "ids.application_ids",
+        "ids.application_ids.application_id",
+        "ids.dev_addr",
+        "ids.dev_eui",
+        "ids.device_id",
+        "ids.join_eui",
+        "last_dev_nonce",
+        "last_join_nonce",
+        "last_rj_count_0",
+        "last_rj_count_1",
+        "net_id",
+        "network_server_address",
+        "provisioner_id",
+        "provisioning_data",
+        "resets_join_nonces",
+        "root_keys",
+        "root_keys.app_key",
+        "root_keys.app_key.key",
+        "root_keys.nwk_key",
+        "root_keys.nwk_key.key",
+        "root_keys.root_key_id",
+        "used_dev_nonces"
+      ]
+    },
+    "Set": {
+      "file": "lorawan-stack/api/joinserver.proto",
+      "http": [
+        {
+          "method": "put",
+          "pattern": "/js/applications/{end_device.ids.application_ids.application_id}/devices/{end_device.ids.device_id}",
+          "body": "*",
+          "parameters": [
+            "end_device.ids.application_ids.application_id",
+            "end_device.ids.device_id"
+          ]
+        },
+        {
+          "method": "post",
+          "pattern": "/js/applications/{end_device.ids.application_ids.application_id}/devices",
+          "body": "*",
+          "parameters": [
+            "end_device.ids.application_ids.application_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "application_server_address",
+        "application_server_id",
+        "application_server_kek_label",
+        "claim_authentication_code",
+        "claim_authentication_code.value",
+        "claim_authentication_code.valid_to",
+        "claim_authentication_code.valid_from",
+        "ids",
+        "ids.application_ids",
+        "ids.application_ids.application_id",
+        "ids.dev_eui",
+        "ids.device_id",
+        "ids.join_eui",
+        "last_dev_nonce",
+        "last_join_nonce",
+        "last_rj_count_0",
+        "last_rj_count_1",
+        "net_id",
+        "network_server_address",
+        "provisioner_id",
+        "provisioning_data",
+        "resets_join_nonces",
+        "root_keys",
+        "root_keys.app_key",
+        "root_keys.app_key.key",
+        "root_keys.nwk_key",
+        "root_keys.nwk_key.key",
+        "root_keys.root_key_id",
+        "used_dev_nonces"
+      ]
+    },
+    "Provision": {
+      "file": "lorawan-stack/api/joinserver.proto",
+      "http": [
+        {
+          "method": "put",
+          "pattern": "/js/applications/{application_ids.application_id}/provision-devices",
+          "body": "*",
+          "parameters": [
+            "application_ids.application_id"
+          ],
+          "stream": true
+        }
+      ]
+    },
+    "Delete": {
+      "file": "lorawan-stack/api/joinserver.proto",
+      "http": [
+        {
+          "method": "delete",
+          "pattern": "/js/applications/{application_ids.application_id}/devices/{device_id}",
+          "parameters": [
+            "application_ids.application_id",
+            "device_id"
+          ]
+        }
+      ]
+    }
+  },
+  "NetworkCryptoService": {
+    "JoinRequestMIC": {
+      "file": "lorawan-stack/api/joinserver.proto",
+      "http": []
+    },
+    "JoinAcceptMIC": {
+      "file": "lorawan-stack/api/joinserver.proto",
+      "http": []
+    },
+    "EncryptJoinAccept": {
+      "file": "lorawan-stack/api/joinserver.proto",
+      "http": []
+    },
+    "EncryptRejoinAccept": {
+      "file": "lorawan-stack/api/joinserver.proto",
+      "http": []
+    },
+    "DeriveNwkSKeys": {
+      "file": "lorawan-stack/api/joinserver.proto",
+      "http": []
+    },
+    "GetNwkKey": {
+      "file": "lorawan-stack/api/joinserver.proto",
+      "http": []
+    }
+  },
+  "NsJs": {
+    "HandleJoin": {
+      "file": "lorawan-stack/api/joinserver.proto",
+      "http": []
+    },
+    "GetNwkSKeys": {
+      "file": "lorawan-stack/api/joinserver.proto",
+      "http": []
+    }
+  },
+  "DownlinkMessageProcessor": {
+    "Process": {
+      "file": "lorawan-stack/api/message_services.proto",
+      "http": []
+    }
+  },
+  "UplinkMessageProcessor": {
+    "Process": {
+      "file": "lorawan-stack/api/message_services.proto",
+      "http": []
+    }
+  },
+  "AsNs": {
+    "LinkApplication": {
+      "file": "lorawan-stack/api/networkserver.proto",
+      "http": []
+    },
+    "DownlinkQueueReplace": {
+      "file": "lorawan-stack/api/networkserver.proto",
+      "http": []
+    },
+    "DownlinkQueuePush": {
+      "file": "lorawan-stack/api/networkserver.proto",
+      "http": []
+    },
+    "DownlinkQueueList": {
+      "file": "lorawan-stack/api/networkserver.proto",
+      "http": []
+    }
+  },
+  "GsNs": {
+    "HandleUplink": {
+      "file": "lorawan-stack/api/networkserver.proto",
+      "http": []
+    }
+  },
+  "Ns": {
+    "GenerateDevAddr": {
+      "file": "lorawan-stack/api/networkserver.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/ns/dev_addr",
+          "parameters": []
+        }
+      ]
+    }
+  },
+  "NsEndDeviceRegistry": {
+    "Get": {
+      "file": "lorawan-stack/api/networkserver.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/ns/applications/{end_device_ids.application_ids.application_id}/devices/{end_device_ids.device_id}",
+          "parameters": [
+            "end_device_ids.application_ids.application_id",
+            "end_device_ids.device_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "battery_percentage",
+        "created_at",
+        "downlink_margin",
+        "frequency_plan_id",
+        "ids",
+        "ids.application_ids",
+        "ids.application_ids.application_id",
+        "ids.dev_addr",
+        "ids.dev_eui",
+        "ids.device_id",
+        "ids.join_eui",
+        "lorawan_phy_version",
+        "lorawan_version",
+        "mac_settings",
+        "mac_settings.adr_margin",
+        "mac_settings.class_b_timeout",
+        "mac_settings.class_c_timeout",
+        "mac_settings.desired_adr_ack_delay_exponent",
+        "mac_settings.desired_adr_ack_delay_exponent.value",
+        "mac_settings.desired_adr_ack_limit_exponent",
+        "mac_settings.desired_adr_ack_limit_exponent.value",
+        "mac_settings.desired_max_duty_cycle",
+        "mac_settings.desired_max_duty_cycle.value",
+        "mac_settings.desired_rx1_data_rate_offset",
+        "mac_settings.desired_rx1_delay",
+        "mac_settings.desired_rx1_delay.value",
+        "mac_settings.desired_rx2_data_rate_index",
+        "mac_settings.desired_rx2_data_rate_index.value",
+        "mac_settings.desired_rx2_frequency",
+        "mac_settings.factory_preset_frequencies",
+        "mac_settings.max_duty_cycle",
+        "mac_settings.max_duty_cycle.value",
+        "mac_settings.ping_slot_data_rate_index",
+        "mac_settings.ping_slot_data_rate_index.value",
+        "mac_settings.ping_slot_frequency",
+        "mac_settings.ping_slot_periodicity",
+        "mac_settings.ping_slot_periodicity.value",
+        "mac_settings.resets_f_cnt",
+        "mac_settings.rx1_data_rate_offset",
+        "mac_settings.rx1_delay",
+        "mac_settings.rx1_delay.value",
+        "mac_settings.rx2_data_rate_index",
+        "mac_settings.rx2_data_rate_index.value",
+        "mac_settings.rx2_frequency",
+        "mac_settings.status_count_periodicity",
+        "mac_settings.status_time_periodicity",
+        "mac_settings.supports_32_bit_f_cnt",
+        "mac_settings.use_adr",
+        "mac_state",
+        "mac_state.current_parameters",
+        "mac_state.current_parameters.adr_ack_delay",
+        "mac_state.current_parameters.adr_ack_delay_exponent",
+        "mac_state.current_parameters.adr_ack_delay_exponent.value",
+        "mac_state.current_parameters.adr_ack_limit",
+        "mac_state.current_parameters.adr_ack_limit_exponent",
+        "mac_state.current_parameters.adr_ack_limit_exponent.value",
+        "mac_state.current_parameters.adr_data_rate_index",
+        "mac_state.current_parameters.adr_nb_trans",
+        "mac_state.current_parameters.adr_tx_power_index",
+        "mac_state.current_parameters.beacon_frequency",
+        "mac_state.current_parameters.channels",
+        "mac_state.current_parameters.downlink_dwell_time",
+        "mac_state.current_parameters.max_duty_cycle",
+        "mac_state.current_parameters.max_eirp",
+        "mac_state.current_parameters.ping_slot_data_rate_index",
+        "mac_state.current_parameters.ping_slot_frequency",
+        "mac_state.current_parameters.rejoin_count_periodicity",
+        "mac_state.current_parameters.rejoin_time_periodicity",
+        "mac_state.current_parameters.rx1_data_rate_offset",
+        "mac_state.current_parameters.rx1_delay",
+        "mac_state.current_parameters.rx2_data_rate_index",
+        "mac_state.current_parameters.rx2_frequency",
+        "mac_state.current_parameters.uplink_dwell_time",
+        "mac_state.desired_parameters",
+        "mac_state.desired_parameters.adr_ack_delay",
+        "mac_state.desired_parameters.adr_ack_delay_exponent",
+        "mac_state.desired_parameters.adr_ack_delay_exponent.value",
+        "mac_state.desired_parameters.adr_ack_limit",
+        "mac_state.desired_parameters.adr_ack_limit_exponent",
+        "mac_state.desired_parameters.adr_ack_limit_exponent.value",
+        "mac_state.desired_parameters.adr_data_rate_index",
+        "mac_state.desired_parameters.adr_nb_trans",
+        "mac_state.desired_parameters.adr_tx_power_index",
+        "mac_state.desired_parameters.beacon_frequency",
+        "mac_state.desired_parameters.channels",
+        "mac_state.desired_parameters.downlink_dwell_time",
+        "mac_state.desired_parameters.max_duty_cycle",
+        "mac_state.desired_parameters.max_eirp",
+        "mac_state.desired_parameters.ping_slot_data_rate_index",
+        "mac_state.desired_parameters.ping_slot_frequency",
+        "mac_state.desired_parameters.rejoin_count_periodicity",
+        "mac_state.desired_parameters.rejoin_time_periodicity",
+        "mac_state.desired_parameters.rx1_data_rate_offset",
+        "mac_state.desired_parameters.rx1_delay",
+        "mac_state.desired_parameters.rx2_data_rate_index",
+        "mac_state.desired_parameters.rx2_frequency",
+        "mac_state.desired_parameters.uplink_dwell_time",
+        "mac_state.device_class",
+        "mac_state.last_confirmed_downlink_at",
+        "mac_state.last_dev_status_f_cnt_up",
+        "mac_state.lorawan_version",
+        "mac_state.pending_application_downlink",
+        "mac_state.pending_application_downlink.class_b_c",
+        "mac_state.pending_application_downlink.class_b_c.absolute_time",
+        "mac_state.pending_application_downlink.class_b_c.gateways",
+        "mac_state.pending_application_downlink.confirmed",
+        "mac_state.pending_application_downlink.correlation_ids",
+        "mac_state.pending_application_downlink.decoded_payload",
+        "mac_state.pending_application_downlink.f_cnt",
+        "mac_state.pending_application_downlink.f_port",
+        "mac_state.pending_application_downlink.frm_payload",
+        "mac_state.pending_application_downlink.priority",
+        "mac_state.pending_application_downlink.session_key_id",
+        "mac_state.pending_join_request",
+        "mac_state.pending_join_request.cf_list",
+        "mac_state.pending_join_request.cf_list.ch_masks",
+        "mac_state.pending_join_request.cf_list.freq",
+        "mac_state.pending_join_request.cf_list.type",
+        "mac_state.pending_join_request.correlation_ids",
+        "mac_state.pending_join_request.dev_addr",
+        "mac_state.pending_join_request.downlink_settings",
+        "mac_state.pending_join_request.downlink_settings.opt_neg",
+        "mac_state.pending_join_request.downlink_settings.rx1_dr_offset",
+        "mac_state.pending_join_request.downlink_settings.rx2_dr",
+        "mac_state.pending_join_request.net_id",
+        "mac_state.pending_join_request.payload",
+        "mac_state.pending_join_request.payload.Payload",
+        "mac_state.pending_join_request.payload.Payload.join_accept_payload",
+        "mac_state.pending_join_request.payload.Payload.join_accept_payload.cf_list",
+        "mac_state.pending_join_request.payload.Payload.join_accept_payload.cf_list.ch_masks",
+        "mac_state.pending_join_request.payload.Payload.join_accept_payload.cf_list.freq",
+        "mac_state.pending_join_request.payload.Payload.join_accept_payload.cf_list.type",
+        "mac_state.pending_join_request.payload.Payload.join_accept_payload.dev_addr",
+        "mac_state.pending_join_request.payload.Payload.join_accept_payload.dl_settings",
+        "mac_state.pending_join_request.payload.Payload.join_accept_payload.dl_settings.opt_neg",
+        "mac_state.pending_join_request.payload.Payload.join_accept_payload.dl_settings.rx1_dr_offset",
+        "mac_state.pending_join_request.payload.Payload.join_accept_payload.dl_settings.rx2_dr",
+        "mac_state.pending_join_request.payload.Payload.join_accept_payload.encrypted",
+        "mac_state.pending_join_request.payload.Payload.join_accept_payload.join_nonce",
+        "mac_state.pending_join_request.payload.Payload.join_accept_payload.net_id",
+        "mac_state.pending_join_request.payload.Payload.join_accept_payload.rx_delay",
+        "mac_state.pending_join_request.payload.Payload.join_request_payload",
+        "mac_state.pending_join_request.payload.Payload.join_request_payload.dev_eui",
+        "mac_state.pending_join_request.payload.Payload.join_request_payload.dev_nonce",
+        "mac_state.pending_join_request.payload.Payload.join_request_payload.join_eui",
+        "mac_state.pending_join_request.payload.Payload.mac_payload",
+        "mac_state.pending_join_request.payload.Payload.mac_payload.decoded_payload",
+        "mac_state.pending_join_request.payload.Payload.mac_payload.f_hdr",
+        "mac_state.pending_join_request.payload.Payload.mac_payload.f_hdr.dev_addr",
+        "mac_state.pending_join_request.payload.Payload.mac_payload.f_hdr.f_cnt",
+        "mac_state.pending_join_request.payload.Payload.mac_payload.f_hdr.f_ctrl",
+        "mac_state.pending_join_request.payload.Payload.mac_payload.f_hdr.f_ctrl.ack",
+        "mac_state.pending_join_request.payload.Payload.mac_payload.f_hdr.f_ctrl.adr",
+        "mac_state.pending_join_request.payload.Payload.mac_payload.f_hdr.f_ctrl.adr_ack_req",
+        "mac_state.pending_join_request.payload.Payload.mac_payload.f_hdr.f_ctrl.class_b",
+        "mac_state.pending_join_request.payload.Payload.mac_payload.f_hdr.f_ctrl.f_pending",
+        "mac_state.pending_join_request.payload.Payload.mac_payload.f_hdr.f_opts",
+        "mac_state.pending_join_request.payload.Payload.mac_payload.f_port",
+        "mac_state.pending_join_request.payload.Payload.mac_payload.frm_payload",
+        "mac_state.pending_join_request.payload.Payload.rejoin_request_payload",
+        "mac_state.pending_join_request.payload.Payload.rejoin_request_payload.dev_eui",
+        "mac_state.pending_join_request.payload.Payload.rejoin_request_payload.join_eui",
+        "mac_state.pending_join_request.payload.Payload.rejoin_request_payload.net_id",
+        "mac_state.pending_join_request.payload.Payload.rejoin_request_payload.rejoin_cnt",
+        "mac_state.pending_join_request.payload.Payload.rejoin_request_payload.rejoin_type",
+        "mac_state.pending_join_request.payload.m_hdr",
+        "mac_state.pending_join_request.payload.m_hdr.m_type",
+        "mac_state.pending_join_request.payload.m_hdr.major",
+        "mac_state.pending_join_request.payload.mic",
+        "mac_state.pending_join_request.raw_payload",
+        "mac_state.pending_join_request.rx_delay",
+        "mac_state.pending_join_request.selected_mac_version",
+        "mac_state.pending_requests",
+        "mac_state.ping_slot_periodicity",
+        "mac_state.queued_join_accept",
+        "mac_state.queued_join_accept.keys",
+        "mac_state.queued_join_accept.keys.app_s_key",
+        "mac_state.queued_join_accept.keys.app_s_key.key",
+        "mac_state.queued_join_accept.keys.f_nwk_s_int_key",
+        "mac_state.queued_join_accept.keys.f_nwk_s_int_key.key",
+        "mac_state.queued_join_accept.keys.nwk_s_enc_key",
+        "mac_state.queued_join_accept.keys.nwk_s_enc_key.key",
+        "mac_state.queued_join_accept.keys.s_nwk_s_int_key",
+        "mac_state.queued_join_accept.keys.s_nwk_s_int_key.key",
+        "mac_state.queued_join_accept.keys.session_key_id",
+        "mac_state.queued_join_accept.payload",
+        "mac_state.queued_join_accept.request",
+        "mac_state.queued_join_accept.request.cf_list",
+        "mac_state.queued_join_accept.request.cf_list.ch_masks",
+        "mac_state.queued_join_accept.request.cf_list.freq",
+        "mac_state.queued_join_accept.request.cf_list.type",
+        "mac_state.queued_join_accept.request.correlation_ids",
+        "mac_state.queued_join_accept.request.dev_addr",
+        "mac_state.queued_join_accept.request.downlink_settings",
+        "mac_state.queued_join_accept.request.downlink_settings.opt_neg",
+        "mac_state.queued_join_accept.request.downlink_settings.rx1_dr_offset",
+        "mac_state.queued_join_accept.request.downlink_settings.rx2_dr",
+        "mac_state.queued_join_accept.request.net_id",
+        "mac_state.queued_join_accept.request.payload",
+        "mac_state.queued_join_accept.request.payload.Payload",
+        "mac_state.queued_join_accept.request.payload.Payload.join_accept_payload",
+        "mac_state.queued_join_accept.request.payload.Payload.join_accept_payload.cf_list",
+        "mac_state.queued_join_accept.request.payload.Payload.join_accept_payload.cf_list.ch_masks",
+        "mac_state.queued_join_accept.request.payload.Payload.join_accept_payload.cf_list.freq",
+        "mac_state.queued_join_accept.request.payload.Payload.join_accept_payload.cf_list.type",
+        "mac_state.queued_join_accept.request.payload.Payload.join_accept_payload.dev_addr",
+        "mac_state.queued_join_accept.request.payload.Payload.join_accept_payload.dl_settings",
+        "mac_state.queued_join_accept.request.payload.Payload.join_accept_payload.dl_settings.opt_neg",
+        "mac_state.queued_join_accept.request.payload.Payload.join_accept_payload.dl_settings.rx1_dr_offset",
+        "mac_state.queued_join_accept.request.payload.Payload.join_accept_payload.dl_settings.rx2_dr",
+        "mac_state.queued_join_accept.request.payload.Payload.join_accept_payload.encrypted",
+        "mac_state.queued_join_accept.request.payload.Payload.join_accept_payload.join_nonce",
+        "mac_state.queued_join_accept.request.payload.Payload.join_accept_payload.net_id",
+        "mac_state.queued_join_accept.request.payload.Payload.join_accept_payload.rx_delay",
+        "mac_state.queued_join_accept.request.payload.Payload.join_request_payload",
+        "mac_state.queued_join_accept.request.payload.Payload.join_request_payload.dev_eui",
+        "mac_state.queued_join_accept.request.payload.Payload.join_request_payload.dev_nonce",
+        "mac_state.queued_join_accept.request.payload.Payload.join_request_payload.join_eui",
+        "mac_state.queued_join_accept.request.payload.Payload.mac_payload",
+        "mac_state.queued_join_accept.request.payload.Payload.mac_payload.decoded_payload",
+        "mac_state.queued_join_accept.request.payload.Payload.mac_payload.f_hdr",
+        "mac_state.queued_join_accept.request.payload.Payload.mac_payload.f_hdr.dev_addr",
+        "mac_state.queued_join_accept.request.payload.Payload.mac_payload.f_hdr.f_cnt",
+        "mac_state.queued_join_accept.request.payload.Payload.mac_payload.f_hdr.f_ctrl",
+        "mac_state.queued_join_accept.request.payload.Payload.mac_payload.f_hdr.f_ctrl.ack",
+        "mac_state.queued_join_accept.request.payload.Payload.mac_payload.f_hdr.f_ctrl.adr",
+        "mac_state.queued_join_accept.request.payload.Payload.mac_payload.f_hdr.f_ctrl.adr_ack_req",
+        "mac_state.queued_join_accept.request.payload.Payload.mac_payload.f_hdr.f_ctrl.class_b",
+        "mac_state.queued_join_accept.request.payload.Payload.mac_payload.f_hdr.f_ctrl.f_pending",
+        "mac_state.queued_join_accept.request.payload.Payload.mac_payload.f_hdr.f_opts",
+        "mac_state.queued_join_accept.request.payload.Payload.mac_payload.f_port",
+        "mac_state.queued_join_accept.request.payload.Payload.mac_payload.frm_payload",
+        "mac_state.queued_join_accept.request.payload.Payload.rejoin_request_payload",
+        "mac_state.queued_join_accept.request.payload.Payload.rejoin_request_payload.dev_eui",
+        "mac_state.queued_join_accept.request.payload.Payload.rejoin_request_payload.join_eui",
+        "mac_state.queued_join_accept.request.payload.Payload.rejoin_request_payload.net_id",
+        "mac_state.queued_join_accept.request.payload.Payload.rejoin_request_payload.rejoin_cnt",
+        "mac_state.queued_join_accept.request.payload.Payload.rejoin_request_payload.rejoin_type",
+        "mac_state.queued_join_accept.request.payload.m_hdr",
+        "mac_state.queued_join_accept.request.payload.m_hdr.m_type",
+        "mac_state.queued_join_accept.request.payload.m_hdr.major",
+        "mac_state.queued_join_accept.request.payload.mic",
+        "mac_state.queued_join_accept.request.raw_payload",
+        "mac_state.queued_join_accept.request.rx_delay",
+        "mac_state.queued_join_accept.request.selected_mac_version",
+        "mac_state.queued_responses",
+        "mac_state.rx_windows_available",
+        "max_frequency",
+        "min_frequency",
+        "multicast",
+        "pending_session",
+        "pending_session.dev_addr",
+        "pending_session.keys",
+        "pending_session.keys.f_nwk_s_int_key",
+        "pending_session.keys.f_nwk_s_int_key.key",
+        "pending_session.keys.nwk_s_enc_key",
+        "pending_session.keys.nwk_s_enc_key.key",
+        "pending_session.keys.s_nwk_s_int_key",
+        "pending_session.keys.s_nwk_s_int_key.key",
+        "pending_session.keys.session_key_id",
+        "pending_session.last_conf_f_cnt_down",
+        "pending_session.last_f_cnt_up",
+        "pending_session.last_n_f_cnt_down",
+        "power_state",
+        "queued_application_downlinks",
+        "recent_adr_uplinks",
+        "recent_downlinks",
+        "recent_uplinks",
+        "session",
+        "session.dev_addr",
+        "session.keys",
+        "session.keys.f_nwk_s_int_key",
+        "session.keys.f_nwk_s_int_key.key",
+        "session.keys.nwk_s_enc_key",
+        "session.keys.nwk_s_enc_key.key",
+        "session.keys.s_nwk_s_int_key",
+        "session.keys.s_nwk_s_int_key.key",
+        "session.keys.session_key_id",
+        "session.last_conf_f_cnt_down",
+        "session.last_f_cnt_up",
+        "session.last_n_f_cnt_down",
+        "session.started_at",
+        "supports_class_b",
+        "supports_class_c",
+        "supports_join",
+        "updated_at",
+        "version_ids",
+        "version_ids.brand_id",
+        "version_ids.firmware_version",
+        "version_ids.hardware_version",
+        "version_ids.model_id"
+      ]
+    },
+    "Set": {
+      "file": "lorawan-stack/api/networkserver.proto",
+      "http": [
+        {
+          "method": "put",
+          "pattern": "/ns/applications/{end_device.ids.application_ids.application_id}/devices/{end_device.ids.device_id}",
+          "body": "*",
+          "parameters": [
+            "end_device.ids.application_ids.application_id",
+            "end_device.ids.device_id"
+          ]
+        },
+        {
+          "method": "post",
+          "pattern": "/ns/applications/{end_device.ids.application_ids.application_id}/devices",
+          "body": "*",
+          "parameters": [
+            "end_device.ids.application_ids.application_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "frequency_plan_id",
+        "ids",
+        "ids.application_ids",
+        "ids.application_ids.application_id",
+        "ids.dev_eui",
+        "ids.device_id",
+        "ids.join_eui",
+        "lorawan_phy_version",
+        "lorawan_version",
+        "mac_settings",
+        "mac_settings.adr_margin",
+        "mac_settings.class_b_timeout",
+        "mac_settings.class_c_timeout",
+        "mac_settings.desired_adr_ack_delay_exponent",
+        "mac_settings.desired_adr_ack_delay_exponent.value",
+        "mac_settings.desired_adr_ack_limit_exponent",
+        "mac_settings.desired_adr_ack_limit_exponent.value",
+        "mac_settings.desired_max_duty_cycle",
+        "mac_settings.desired_max_duty_cycle.value",
+        "mac_settings.desired_rx1_data_rate_offset",
+        "mac_settings.desired_rx1_delay",
+        "mac_settings.desired_rx1_delay.value",
+        "mac_settings.desired_rx2_data_rate_index",
+        "mac_settings.desired_rx2_data_rate_index.value",
+        "mac_settings.desired_rx2_frequency",
+        "mac_settings.factory_preset_frequencies",
+        "mac_settings.max_duty_cycle",
+        "mac_settings.max_duty_cycle.value",
+        "mac_settings.ping_slot_data_rate_index",
+        "mac_settings.ping_slot_data_rate_index.value",
+        "mac_settings.ping_slot_frequency",
+        "mac_settings.ping_slot_periodicity",
+        "mac_settings.ping_slot_periodicity.value",
+        "mac_settings.resets_f_cnt",
+        "mac_settings.rx1_data_rate_offset",
+        "mac_settings.rx1_delay",
+        "mac_settings.rx1_delay.value",
+        "mac_settings.rx2_data_rate_index",
+        "mac_settings.rx2_data_rate_index.value",
+        "mac_settings.rx2_frequency",
+        "mac_settings.status_count_periodicity",
+        "mac_settings.status_time_periodicity",
+        "mac_settings.supports_32_bit_f_cnt",
+        "mac_settings.use_adr",
+        "mac_state.desired_parameters.adr_ack_delay_exponent",
+        "mac_state.desired_parameters.adr_ack_delay_exponent.value",
+        "mac_state.desired_parameters.adr_ack_limit_exponent",
+        "mac_state.desired_parameters.adr_ack_limit_exponent.value",
+        "mac_state.desired_parameters.adr_nb_trans",
+        "mac_state.desired_parameters.adr_tx_power_index",
+        "mac_state.desired_parameters.beacon_frequency",
+        "mac_state.desired_parameters.downlink_dwell_time",
+        "mac_state.desired_parameters.max_duty_cycle",
+        "mac_state.desired_parameters.max_eirp",
+        "mac_state.desired_parameters.ping_slot_data_rate_index",
+        "mac_state.desired_parameters.ping_slot_frequency",
+        "mac_state.desired_parameters.rejoin_count_periodicity",
+        "mac_state.desired_parameters.rejoin_time_periodicity",
+        "mac_state.desired_parameters.rx1_data_rate_offset",
+        "mac_state.desired_parameters.rx1_delay",
+        "mac_state.desired_parameters.rx2_data_rate_index",
+        "mac_state.desired_parameters.rx2_frequency",
+        "mac_state.desired_parameters.uplink_dwell_time",
+        "mac_state.device_class",
+        "mac_state.lorawan_version",
+        "mac_state.ping_slot_periodicity",
+        "max_frequency",
+        "min_frequency",
+        "multicast",
+        "session.dev_addr",
+        "session.keys.f_nwk_s_int_key",
+        "session.keys.f_nwk_s_int_key.key",
+        "session.keys.nwk_s_enc_key",
+        "session.keys.nwk_s_enc_key.key",
+        "session.keys.s_nwk_s_int_key",
+        "session.keys.s_nwk_s_int_key.key",
+        "session.keys.session_key_id",
+        "session.last_conf_f_cnt_down",
+        "session.last_f_cnt_up",
+        "session.last_n_f_cnt_down",
+        "session.started_at",
+        "supports_class_b",
+        "supports_class_c",
+        "supports_join",
+        "version_ids",
+        "version_ids.brand_id",
+        "version_ids.firmware_version",
+        "version_ids.hardware_version",
+        "version_ids.model_id"
+      ]
+    },
+    "Delete": {
+      "file": "lorawan-stack/api/networkserver.proto",
+      "http": [
+        {
+          "method": "delete",
+          "pattern": "/ns/applications/{application_ids.application_id}/devices/{device_id}",
+          "parameters": [
+            "application_ids.application_id",
+            "device_id"
+          ]
+        }
+      ]
+    }
+  },
+  "OAuthAuthorizationRegistry": {
+    "List": {
+      "file": "lorawan-stack/api/oauth_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/users/{user_ids.user_id}/authorizations",
+          "parameters": [
+            "user_ids.user_id"
+          ]
+        }
+      ]
+    },
+    "ListTokens": {
+      "file": "lorawan-stack/api/oauth_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/users/{user_ids.user_id}/authorizations/{client_ids.client_id}/tokens",
+          "parameters": [
+            "user_ids.user_id",
+            "client_ids.client_id"
+          ]
+        }
+      ]
+    },
+    "Delete": {
+      "file": "lorawan-stack/api/oauth_services.proto",
+      "http": [
+        {
+          "method": "delete",
+          "pattern": "/users/{user_ids.user_id}/authorizations/{client_ids.client_id}",
+          "parameters": [
+            "user_ids.user_id",
+            "client_ids.client_id"
+          ]
+        }
+      ]
+    },
+    "DeleteToken": {
+      "file": "lorawan-stack/api/oauth_services.proto",
+      "http": [
+        {
+          "method": "delete",
+          "pattern": "/users/{user_ids.user_id}/authorizations/{client_ids.client_id}/tokens/{id}",
+          "parameters": [
+            "user_ids.user_id",
+            "client_ids.client_id",
+            "id"
+          ]
+        }
+      ]
+    }
+  },
+  "OrganizationAccess": {
+    "ListRights": {
+      "file": "lorawan-stack/api/organization_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/organizations/{organization_id}/rights",
+          "parameters": [
+            "organization_id"
+          ]
+        }
+      ]
+    },
+    "CreateAPIKey": {
+      "file": "lorawan-stack/api/organization_services.proto",
+      "http": [
+        {
+          "method": "post",
+          "pattern": "/organizations/{organization_ids.organization_id}/api-keys",
+          "body": "*",
+          "parameters": [
+            "organization_ids.organization_id"
+          ]
+        }
+      ]
+    },
+    "ListAPIKeys": {
+      "file": "lorawan-stack/api/organization_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/organizations/{organization_ids.organization_id}/api-keys",
+          "parameters": [
+            "organization_ids.organization_id"
+          ]
+        }
+      ]
+    },
+    "GetAPIKey": {
+      "file": "lorawan-stack/api/organization_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/organizations/{organization_ids.organization_id}/api-keys/{key_id}",
+          "parameters": [
+            "organization_ids.organization_id",
+            "key_id"
+          ]
+        }
+      ]
+    },
+    "UpdateAPIKey": {
+      "file": "lorawan-stack/api/organization_services.proto",
+      "http": [
+        {
+          "method": "put",
+          "pattern": "/organizations/{organization_ids.organization_id}/api-keys/{api_key.id}",
+          "body": "*",
+          "parameters": [
+            "organization_ids.organization_id",
+            "api_key.id"
+          ]
+        }
+      ]
+    },
+    "GetCollaborator": {
+      "file": "lorawan-stack/api/organization_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/organizations/{organization_ids.organization_id}/collaborator",
+          "parameters": [
+            "organization_ids.organization_id"
+          ]
+        },
+        {
+          "method": "get",
+          "pattern": "/organizations/{organization_ids.organization_id}/collaborator/user/{collaborator.user_ids.user_id}",
+          "parameters": [
+            "organization_ids.organization_id",
+            "collaborator.user_ids.user_id"
+          ]
+        }
+      ]
+    },
+    "SetCollaborator": {
+      "file": "lorawan-stack/api/organization_services.proto",
+      "http": [
+        {
+          "method": "put",
+          "pattern": "/organizations/{organization_ids.organization_id}/collaborators",
+          "body": "*",
+          "parameters": [
+            "organization_ids.organization_id"
+          ]
+        }
+      ]
+    },
+    "ListCollaborators": {
+      "file": "lorawan-stack/api/organization_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/organizations/{organization_ids.organization_id}/collaborators",
+          "parameters": [
+            "organization_ids.organization_id"
+          ]
+        }
+      ]
+    }
+  },
+  "OrganizationRegistry": {
+    "Create": {
+      "file": "lorawan-stack/api/organization_services.proto",
+      "http": [
+        {
+          "method": "post",
+          "pattern": "/users/{collaborator.user_ids.user_id}/organizations",
+          "body": "*",
+          "parameters": [
+            "collaborator.user_ids.user_id"
+          ]
+        }
+      ]
+    },
+    "Get": {
+      "file": "lorawan-stack/api/organization_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/organizations/{organization_ids.organization_id}",
+          "parameters": [
+            "organization_ids.organization_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "attributes",
+        "contact_info",
+        "created_at",
+        "description",
+        "ids",
+        "ids.organization_id",
+        "name",
+        "updated_at"
+      ]
+    },
+    "List": {
+      "file": "lorawan-stack/api/organization_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/organizations",
+          "parameters": []
+        },
+        {
+          "method": "get",
+          "pattern": "/users/{collaborator.user_ids.user_id}/organizations",
+          "parameters": [
+            "collaborator.user_ids.user_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "attributes",
+        "contact_info",
+        "created_at",
+        "description",
+        "ids",
+        "ids.organization_id",
+        "name",
+        "updated_at"
+      ]
+    },
+    "Update": {
+      "file": "lorawan-stack/api/organization_services.proto",
+      "http": [
+        {
+          "method": "put",
+          "pattern": "/organizations/{organization.ids.organization_id}",
+          "body": "*",
+          "parameters": [
+            "organization.ids.organization_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "attributes",
+        "contact_info",
+        "created_at",
+        "description",
+        "ids",
+        "ids.organization_id",
+        "name",
+        "updated_at"
+      ]
+    },
+    "Delete": {
+      "file": "lorawan-stack/api/organization_services.proto",
+      "http": [
+        {
+          "method": "delete",
+          "pattern": "/organizations/{organization_id}",
+          "parameters": [
+            "organization_id"
+          ]
+        }
+      ]
+    }
+  },
+  "EndDeviceQRCodeGenerator": {
+    "GetFormat": {
+      "file": "lorawan-stack/api/qrcodegenerator.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/qr-codes/end-devices/formats/{format_id}",
+          "parameters": [
+            "format_id"
+          ]
+        }
+      ]
+    },
+    "ListFormats": {
+      "file": "lorawan-stack/api/qrcodegenerator.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/qr-codes/end-devices/formats",
+          "parameters": []
+        }
+      ]
+    },
+    "Generate": {
+      "file": "lorawan-stack/api/qrcodegenerator.proto",
+      "http": [
+        {
+          "method": "post",
+          "pattern": "/qr-codes/end-devices",
+          "body": "*",
+          "parameters": []
+        }
+      ]
+    }
+  },
+  "EndDeviceRegistrySearch": {
+    "SearchEndDevices": {
+      "file": "lorawan-stack/api/search_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/search/applications/{application_ids.application_id}/devices",
+          "parameters": [
+            "application_ids.application_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "application_server_address",
+        "attributes",
+        "created_at",
+        "description",
+        "ids",
+        "ids.application_ids",
+        "ids.application_ids.application_id",
+        "ids.dev_eui",
+        "ids.device_id",
+        "ids.join_eui",
+        "join_server_address",
+        "locations",
+        "name",
+        "network_server_address",
+        "service_profile_id",
+        "updated_at",
+        "version_ids",
+        "version_ids.brand_id",
+        "version_ids.firmware_version",
+        "version_ids.hardware_version",
+        "version_ids.model_id"
+      ]
+    }
+  },
+  "EntityRegistrySearch": {
+    "SearchApplications": {
+      "file": "lorawan-stack/api/search_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/search/applications",
+          "parameters": []
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "attributes",
+        "contact_info",
+        "created_at",
+        "description",
+        "ids",
+        "ids.application_id",
+        "name",
+        "updated_at"
+      ]
+    },
+    "SearchClients": {
+      "file": "lorawan-stack/api/search_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/search/clients",
+          "parameters": []
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "attributes",
+        "contact_info",
+        "created_at",
+        "description",
+        "endorsed",
+        "grants",
+        "ids",
+        "ids.client_id",
+        "name",
+        "redirect_uris",
+        "rights",
+        "skip_authorization",
+        "state",
+        "updated_at"
+      ]
+    },
+    "SearchGateways": {
+      "file": "lorawan-stack/api/search_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/search/gateways",
+          "parameters": []
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "antennas",
+        "attributes",
+        "auto_update",
+        "contact_info",
+        "created_at",
+        "description",
+        "downlink_path_constraint",
+        "enforce_duty_cycle",
+        "frequency_plan_id",
+        "gateway_server_address",
+        "ids",
+        "ids.eui",
+        "ids.gateway_id",
+        "location_public",
+        "name",
+        "schedule_downlink_late",
+        "status_public",
+        "update_channel",
+        "updated_at",
+        "version_ids",
+        "version_ids.brand_id",
+        "version_ids.firmware_version",
+        "version_ids.hardware_version",
+        "version_ids.model_id"
+      ]
+    },
+    "SearchOrganizations": {
+      "file": "lorawan-stack/api/search_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/search/organizations",
+          "parameters": []
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "attributes",
+        "contact_info",
+        "created_at",
+        "description",
+        "ids",
+        "ids.organization_id",
+        "name",
+        "updated_at"
+      ]
+    },
+    "SearchUsers": {
+      "file": "lorawan-stack/api/search_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/search/users",
+          "parameters": []
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "admin",
+        "attributes",
+        "contact_info",
+        "created_at",
+        "description",
+        "ids",
+        "ids.email",
+        "ids.user_id",
+        "name",
+        "password_updated_at",
+        "primary_email_address",
+        "primary_email_address_validated_at",
+        "profile_picture",
+        "profile_picture.embedded",
+        "profile_picture.embedded.data",
+        "profile_picture.embedded.mime_type",
+        "profile_picture.sizes",
+        "require_password_update",
+        "state",
+        "temporary_password_created_at",
+        "temporary_password_expires_at",
+        "updated_at"
+      ]
+    }
+  },
+  "UserAccess": {
+    "ListRights": {
+      "file": "lorawan-stack/api/user_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/users/{user_id}/rights",
+          "parameters": [
+            "user_id"
+          ]
+        }
+      ]
+    },
+    "CreateAPIKey": {
+      "file": "lorawan-stack/api/user_services.proto",
+      "http": [
+        {
+          "method": "post",
+          "pattern": "/users/{user_ids.user_id}/api-keys",
+          "body": "*",
+          "parameters": [
+            "user_ids.user_id"
+          ]
+        }
+      ]
+    },
+    "ListAPIKeys": {
+      "file": "lorawan-stack/api/user_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/users/{user_ids.user_id}/api-keys",
+          "parameters": [
+            "user_ids.user_id"
+          ]
+        }
+      ]
+    },
+    "GetAPIKey": {
+      "file": "lorawan-stack/api/user_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/users/{user_ids.user_id}/api-keys/{key_id}",
+          "parameters": [
+            "user_ids.user_id",
+            "key_id"
+          ]
+        }
+      ]
+    },
+    "UpdateAPIKey": {
+      "file": "lorawan-stack/api/user_services.proto",
+      "http": [
+        {
+          "method": "put",
+          "pattern": "/users/{user_ids.user_id}/api-keys/{api_key.id}",
+          "body": "*",
+          "parameters": [
+            "user_ids.user_id",
+            "api_key.id"
+          ]
+        }
+      ]
+    }
+  },
+  "UserInvitationRegistry": {
+    "Send": {
+      "file": "lorawan-stack/api/user_services.proto",
+      "http": [
+        {
+          "method": "post",
+          "pattern": "/invitations",
+          "body": "*",
+          "parameters": []
+        }
+      ]
+    },
+    "List": {
+      "file": "lorawan-stack/api/user_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/invitations",
+          "parameters": []
+        }
+      ]
+    },
+    "Delete": {
+      "file": "lorawan-stack/api/user_services.proto",
+      "http": [
+        {
+          "method": "delete",
+          "pattern": "/invitations",
+          "parameters": []
+        }
+      ]
+    }
+  },
+  "UserRegistry": {
+    "Create": {
+      "file": "lorawan-stack/api/user_services.proto",
+      "http": [
+        {
+          "method": "post",
+          "pattern": "/users",
+          "body": "*",
+          "parameters": []
+        }
+      ]
+    },
+    "Get": {
+      "file": "lorawan-stack/api/user_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/users/{user_ids.user_id}",
+          "parameters": [
+            "user_ids.user_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "admin",
+        "attributes",
+        "contact_info",
+        "created_at",
+        "description",
+        "ids",
+        "ids.email",
+        "ids.user_id",
+        "name",
+        "password_updated_at",
+        "primary_email_address",
+        "primary_email_address_validated_at",
+        "profile_picture",
+        "profile_picture.embedded",
+        "profile_picture.embedded.data",
+        "profile_picture.embedded.mime_type",
+        "profile_picture.sizes",
+        "require_password_update",
+        "state",
+        "temporary_password_created_at",
+        "temporary_password_expires_at",
+        "updated_at"
+      ]
+    },
+    "Update": {
+      "file": "lorawan-stack/api/user_services.proto",
+      "http": [
+        {
+          "method": "put",
+          "pattern": "/users/{user.ids.user_id}",
+          "body": "*",
+          "parameters": [
+            "user.ids.user_id"
+          ]
+        }
+      ],
+      "allowedFieldMaskPaths": [
+        "admin",
+        "attributes",
+        "contact_info",
+        "created_at",
+        "description",
+        "ids",
+        "ids.email",
+        "ids.user_id",
+        "name",
+        "primary_email_address",
+        "primary_email_address_validated_at",
+        "profile_picture",
+        "profile_picture.embedded",
+        "profile_picture.embedded.data",
+        "profile_picture.embedded.mime_type",
+        "profile_picture.sizes",
+        "require_password_update",
+        "state",
+        "temporary_password",
+        "temporary_password_created_at",
+        "temporary_password_expires_at",
+        "updated_at"
+      ]
+    },
+    "CreateTemporaryPassword": {
+      "file": "lorawan-stack/api/user_services.proto",
+      "http": [
+        {
+          "method": "post",
+          "pattern": "/users/{user_ids.user_id}/temporary_password",
+          "parameters": [
+            "user_ids.user_id"
+          ]
+        }
+      ]
+    },
+    "UpdatePassword": {
+      "file": "lorawan-stack/api/user_services.proto",
+      "http": [
+        {
+          "method": "put",
+          "pattern": "/users/{user_ids.user_id}/password",
+          "body": "*",
+          "parameters": [
+            "user_ids.user_id"
+          ]
+        }
+      ]
+    },
+    "Delete": {
+      "file": "lorawan-stack/api/user_services.proto",
+      "http": [
+        {
+          "method": "delete",
+          "pattern": "/users/{user_id}",
+          "parameters": [
+            "user_id"
+          ]
+        }
+      ]
+    }
+  },
+  "UserSessionRegistry": {
+    "List": {
+      "file": "lorawan-stack/api/user_services.proto",
+      "http": [
+        {
+          "method": "get",
+          "pattern": "/users/{user_ids.user_id}/sessions",
+          "parameters": [
+            "user_ids.user_id"
+          ]
+        }
+      ]
+    },
+    "Delete": {
+      "file": "lorawan-stack/api/user_services.proto",
+      "http": [
+        {
+          "method": "delete",
+          "pattern": "/users/{user_ids.user_id}/sessions/{session_id}",
+          "parameters": [
+            "user_ids.user_id",
+            "session_id"
+          ]
+        }
+      ]
+    }
+  }
+}

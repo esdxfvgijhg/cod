@@ -1,0 +1,545 @@
+<?xml version="1.0"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+<!ENTITY arrow		"&#x2192;">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+	<topic id="vw.help.intro.coding" 
+			xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+		<title>Creating and Editing Methods and Classes</title>
+		<body>
+			<p>Smalltalk applications consist of classes with methods. The topics 
+				that follow show how to create and edit them. We'll start with methods in  
+				an existing class, see how to debug errors, and then explore how to create 
+				new classes.</p>
+		</body>
+
+		<topic id="vw.help.intro.coding.methods" 
+				xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+			<title>Defining a New Method or Editing an Existing One</title>
+			<body>
+				<p>To define a new method:
+					<ul>
+						<li>Open a Browser and select the class in which the methods will be defined,</li>
+						<li>select the <uicontrol>instance</uicontrol> or <uicontrol>class</uicontrol> tab 
+							in the Browser as appropriate,</li>
+						<li>select a method protocol or create a new one using <uicontrol>New...</uicontrol> in 
+							the <uicontrol>&lt;Operate&gt;</uicontrol> menu of the protocol view,</li>
+						<li>write the method in the code view at the bottom of the browser, and 
+							<uicontrol>Accept</uicontrol> it.</li>
+					</ul></p>
+
+				<p>To modify an existing method, use the same procedure but edit and 
+					<uicontrol>Accept</uicontrol> the existing text instead of retyping it.</p>
+				<p>As an example, assume that we want to define a method to calculate the cube of a number. 
+					The method would be used like this:
+					<codeblock otherprops="smalltalk expression">15 cubed</codeblock></p>
+				<p>or:
+					<codeblock otherprops="smalltalk expression">1.5 cubed</codeblock></p>
+
+				<p>The method is an instance method because we send it to concrete numbers, 
+					i,e., instances of various number classes. Clearly, the message should be understood 
+					by all types of numbers, just like method <codeph>squared</codeph>. The logical class 
+					to put it in is thus where the <codeph>squared</codeph> method is defined, the 
+					instance protocol <codeph>mathematical functions</codeph> in class <codeph>ArithmeticValue</codeph>. 
+					(To find this, I browsed implemetors of <codeph>squared</codeph> from the Launcher.) 
+					The definition (explained below) will be as follows:
+					<codeblock otherprops="smalltalk method">cubed
+						^self * self * self</codeblock></p>
+
+				<p>Type (or copy and paste) the text into the code view on the <uicontrol>instance</uicontrol> 
+					side and <codeph>mathematical functions</codeph> protocol of class <codeph>ArithmeticValue</codeph> 
+					and click <uicontrol>Accept</uicontrol> in the <uicontrol>&lt;Operate&gt;</uicontrol> menu. 
+					If you have not made any mistakes, this compiles the code, the protocol list 
+					should now display the selector <codeph>cubed</codeph>, and the method is added 
+					to the class library. (To make sure that the new method is saved in the <term>image file</term> 
+					when you quit &Product;, use <uicontrol>File &arrow; Save Image</uicontrol> in the 
+					Launcher either now or later, or save the image befor exitting the IDE. 
+					If you exit &Product; without saving, all work that you have done since the last save 
+					is lost, because the image file doesn't save automatically.)</p>
+				<p>Test that the method works, for example by evaluating:
+					<codeblock otherprops="smalltalk expression">3 cubed
+
+						- 3 cubed</codeblock></p>
+
+				<p>and:
+
+					<codeblock otherprops="smalltalk expression">(3.55) cubed</codeblock></p>
+
+				<section>
+					<title>Notes</title>
+					<ul>
+						<li>The method <codeph>cubed</codeph> is now available to all numbers because 
+							it is defined in the abstract supeclass <codeph>ArithmeticValue</codeph>, the 
+							superclass of all number classes. This is what abstract classes are for.</li>
+						<li>The word <codeph>self</codeph> in the body of the method refers to the receiver. 
+							As an example, in <codeph>3 cubed</codeph>, <codeph>self</codeph> is <codeph>3</codeph>, 
+							and <codeph>3.14 </codeph> is <codeph>self</codeph> in the execution of <codeph>3.14 cubed</codeph></li>
+						<li>The <term>return operator</term><codeph>^</codeph> in the definition means 
+							"<i>execute the following expression and exit from this method returning the result of 
+								the expression</i>". 
+							If a method does not contain the return operator, it returns the <i>receiver</i>, which 
+							is OK if you want to return the receiver or don't care about the returned object. 
+							To see the effect of not including the return operator, remove the <codeph>^</codeph> 
+							from the definition of <codeph>cubed</codeph> and run the tests again. Forgetting the return 
+							operator is a very common mistake.</li>
+						<li>If the code does not work quite as you expected or if you want to make cosmetic changes, 
+							open the method, edit the text, and <uicontrol>Accept</uicontrol> again. You can also make corrections 
+							at run-time with the Debugger (explained below).</li>
+						<li>Some people like to format (indent, etc.) their code manually as they type. I prefer to 
+							ignore formatting as I type and use the <uicontrol>Format</uicontrol> command from the 
+							<uicontrol>Edit</uicontrol> menu in the Browser to format the code automatically before 
+							trying <uicontrol>Accept</uicontrol>. <uicontrol>Format</uicontrol> first checks the syntax 
+							of the code and formats it if there are no syntax errors.</li>
+					</ul>
+					<p>In summary, my technique is:
+						<ul>
+							<li>Type or edit the code</li>
+							<li><uicontrol>Format</uicontrol> and correct if necessary</li>
+							<li><uicontrol>Accept</uicontrol></li>
+							<li>Test</li>
+						</ul>
+					</p>
+					<p>Developers using Extreme Programming's "test-driven design" write tests before they 
+						implement the method.</p>
+				</section>
+
+				<section>
+					<title>Exercises</title>
+					<ol>
+						<li>Define a unary method <codeph>inc</codeph> that returns its receiver incremented by 1. 
+							As an example, <codeph>34 inc</codeph> should return <codeph>35</codeph></li>
+						<li>Define a unary method <codeph>isPalindrome</codeph> that returns <codeph>true</codeph> 
+							if its receiver string spells the same in reverse. As an example, <codeph>'aba' isPalindrome</codeph> 
+							should return <codeph>true</codeph>, but  <codeph>'abs' isPalindrome</codeph> should return 
+							<codeph>false</codeph>. (Hints: Use method <codeph>reverse</codeph> and don't forget the 
+							return operator. Define the method in the most abstract class defining <codeph>reverse</codeph>.)</li>
+						<li>Define a binary method <codeph>+*</codeph> that returns the sum of the receiver and the 
+							argument, all multiplied by the argument. As an example <codeph>3 +* 5</codeph> should return (3 + 5) * 5 or 40.</li>
+						<li>Define a keyword method <codeph>smallerThan:orGreaterThan:</codeph> that returns 
+							<codeph>true</codeph> or <codeph>false</codeph> under obvious circumstances. 
+							(Hint: This method is the logical negation of message <codeph>between:and:</codeph> and 
+							the negation message is <codeph>not</codeph>.)</li>
+						<li>Define a keyword method <codeph>implies:</codeph> that returns <codeph>true</codeph> for 
+							any combination of receiver <codeph>true</codeph> and <codeph>false</codeph>, except when the 
+							receiver is <codeph>true</codeph> and the argument is <codeph>false</codeph>. As an example 
+							<codeph>true implies: true</codeph> should return <codeph>true</codeph>, but <codeph>true implies: false</codeph> 
+							should return <codeph>false</codeph>. (Hints: Write a <codeph>subclassResponsibility</codeph> 
+							definition in class <codeph>Boolean</codeph>, and override it in class <codeph>False</codeph> 
+							and in class <codeph>True</codeph>. Don't forget the return operator.)</li>
+						<li>Is there a method that inverts a number? If not, define one in the most appropriate class.</li>
+					</ol>
+				</section>
+			</body>
+		</topic>
+
+		<topic id="vw.help.intro.coding.debugging" 
+				xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+			<title>Debugging</title>
+			<body>
+				<p>Sooner or later, you will write code that compiles but does not work. The problem may have 
+					several causes. The two typical reasons are that you are sending a message to the wrong receiver, 
+					or making a mistake in the "logic" of your program. I both cases, when the problem is not obvious, 
+					you may want to use the Debugger, a very powerful development tool described briefly below, and in 
+					much more detail in the Tools Help. Let's now look at the two aforementioned possibilities.</p>
+				<p>If your mistake is that you are <term>sending a message to the wrong object</term>, for example 
+					<codeph>asUppercase</codeph> to a number as in:
+					<codeblock otherprops="smalltalk expression">3 asUppercase	"Try it"</codeblock></p>
+				<p>&Product; opens a Debugger window that can be used to see what is wrong. You can then correct 
+					the code and accept it in the Debugger just as you would in the Browser (using the <uicontrol>Accept</uicontrol> 
+					command), possibly edit the data, and continue execution. Or, you can terminate execution and correct 
+					your code in the Browser.</p>
+				<p>The most important parts of the Debugger are:
+					<ul>
+						<li>The execution stack is the list at the top. It shows the methods waiting for completion 
+							(waiting for a returned object). The currently invoked method is at the top, the method that 
+							called it is below, and so on. The expression at which execution paused is highlighted. You can 
+							select any method in the list and continue with its execution inside the Debugger, or proceed 
+							normally outside the Debugger, or terminate execution completely. There are several ways to 
+							continue in the Debugger and the two most important ones are to step 'into' the current message 
+							send which is pushed on top of the stack, or just step, in other words, let the message execute 
+							(invisibly) and proceed to the next message. These two actions are invoked by the two leftmost 
+							buttons above the list.</li>
+						<li>The code view below the list shows the code of the selected method and highlights the current 
+							place of execution. Besides continuing execution as explained above, you can also modify the code, 
+							accept it as in a Browser, and continue with execution from the start of the current method. 
+							There are many other possibilities and they are explained in On-line Tools Help.</li>
+						<li>The bottom part of the Debugger contains two abbreviated inspectors. The one on the left shows 
+							the instance variables of the receiver, the one on the right shows the temporary variables and 
+							arguments of the method. If you wish, you can change their values (by selecting the item, typing 
+							in the new value, and accepting &#x2014; or even by typing in and evaluating an expression to calculate 
+							the new value and accepting) and proceed without exiting or recompiling.</li>
+					</ul></p>
+				<p>If your application is executing but the behavior is not as expected, the error is in the 
+					<term>logic of the code</term>. The first thing that you might want to do is to read your code 
+					and see if you can correct it. If you don't see the problem but think that you know its approximate 
+					location, or a place where you might start searching for the problem, you can insert a 
+					<term>breakpoint</term>. When execution reaches this point, Smalltalk will open a Debugger. 
+					You can then continue executing the code step by step to find and correct the problem.</p>
+				<p>As an example, evaluate the following faulty code and then correct the mistake by placing
+					the caret at the code comment, and choosing <uicontrol>Insert Breakpoint</uicontrol> from the 
+					<uicontrol>&lt;Operate&gt;</uicontrol> menu:
+					<codeblock otherprops="smalltalk expression">| price tax total |
+						price := (Dialog request: 'Please enter price' initialAnswer: '100') asNumber.
+						tax := (Dialog request: 'Please enter price %' initialAnswer: '10') asNumber.
+						"Insert a breakpoint here to open a Debugger."
+						total := price + (price * tax / 10).
+						Transcript clear;
+						show: 'price: ' , price printString; cr;
+						show: 'tax: ' , tax printString; cr;
+						show: 'total: ' , total printString</codeblock></p>
+				<p>When you add the breakpoint and open the Debugger, select <codeph>'unbound method'</codeph> 
+					in the execution stack (it refers to the code from this workspace), and continue executing it 
+					using some combination of the methods explained above. When you find the problem, correct it 
+					directly in the Debugger and <uicontrol>Accept</uicontrol> the change.</p>
+				<p>Smalltalk developers depend on the Debugger so much that some actually write code with it, 
+					and the Debugger provides means to make this easier.</p>
+			</body>
+		</topic>
+
+		<topic id="vw.help.intro.coding.nameSpaces" 
+				xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+			<title>Name Spaces</title>
+			<body>
+				<p>Before you can start creating your own classes, you must first understand the concept of 
+					a <term>name space</term>. As you already know, classes are organized using components. In 
+					a similar but completely independent perspective, classes are also collected in <term>name spaces</term>. 
+					Whereas a component is mainly an organizing device with no effect on run-time behavior 
+					(as long as the component is part of the image), name spaces have a more profound effect on 
+					execution.</p>
+				<p>To understand why &Product; has name spaces, consider a familiar analogy. My office phone 
+					number is 585-1467. If you call me from within my area, that's all you need. However, if you 
+					are in another area, for example in Toronto or in San Francisco, this number is either unassigned 
+					or belongs to another person; to reach me, you must put my area prefix 902 in front of the 
+					seven-digit code. And if you want to call me from Europe, you must put even more digits in 
+					front of that to select North America. The area code prefix of a phone number thus partitions 
+					phone numbers into unambiguous sets &#x2014; one or more for Ontario, one or more for Montana,
+					etc. &#x2014; and allows the basic seven-digit codes to be assigned to many different people 
+					across North America with no confusion. The idea of name spaces implements exactly the same 
+					principle for Smalltalk classes.</p>
+
+				<p>A name space is simply a way to get around the serious limitation of earlier versions of 
+					Smalltalk that required that every class have a unique name. This meant that code from different 
+					vendors could only be combined if the vendors did not define classes with the same names. 
+					If I wrote, for example, a library catalog program with a class called <codeph>Book</codeph> 
+					and loaded my program and another library service application, my <codeph>Book</codeph> class 
+					could clash with the <codeph>Book</codeph> class defined by that other application. In fact, 
+					one of the <codeph>Book</codeph> classes would overwrite and destroy the other and one 
+					application would stop working.</p>
+				<p>Name spaces partition class names and make it possible to name classes in one name space 
+					without any regard for class names in other name spaces. Within one name space, class names 
+					must be unique, but two different name spaces may contain classes with identical names without 
+					any conflict. As a consequence, if I put my <codeph>Book</codeph> class into my own name space, 
+					called for example <codeph>LibraryCatalog.*</codeph>, &Product; doesn't mind that there is another 
+					<codeph>Book</codeph> class in the (for example) <codeph>BookService.*</codeph> name space and 
+					will not confuse one for the other because the other class is invisible to my name space 
+					&#x2014; unless I "import" the other name space into it.</p>
+				<p>Name spaces are organized in a tree-like structure with the name space <codeph>Root.*</codeph> 
+					at the very top, the name space <codeph>Smalltalk.*</codeph> underneath, and other name spaces 
+					below <codeph>Smalltalk.*</codeph>. The structure of the name space hierarchy is relevant mainly 
+					for accessing a name in a different name space and for defining your own name spaces: should you 
+					need to access class <codeph>Y</codeph> in name space <codeph>X.*</codeph> contained in name space 
+					<codeph>Smalltalk.*</codeph>, you can use the dot notation as in <codeph>Smalltalk.X.Y</codeph>. 
+					(The mechanism is designed so that you can leave the name space <codeph>Root.*</codeph> out of 
+					these expressions.) Better still, you can import the required name space or class by specifying 
+					it in the <codeph>import:</codeph> argument of the name space definition message in the Browser. 
+					We will use this feature in a moment.</p>
+				<p>As you see, the concept of name spaces is very important, but I am not going to explore it 
+					further except for giving a simple example of class creation, how to create your own name space, 
+					and refer you to the documentation for additional details.</p>
+
+				<section>
+					<title>Exercises</title>
+					<ol>
+						<li>Draw the whole name space hierarchy of your class library. Note that its elements depend on 
+							the parcels that you loaded, because parcels may add new name spaces. (Hint: There is probably a 
+							message that returns all sub-name spaces of a given name space. To find it, I used 
+							<uicontrol>Find Implementors of Selector ...</uicontrol> on the Launcher's <uicontrol>Browse</uicontrol> 
+							menu, and specified <codeph>*namespace*</codeph> as the selector pattern. Among the many 
+							displayed options, I found message <apiname>withAllnamespaces</apiname>. I then tried: 
+							<codeph>Root withAllname spaces</codeph> and obtained a list of all name spaces of <codeph>Root.*</codeph>, 
+							expressed in the dot notation explained above.</li>
+						<li>Name spaces form a name space tree in the same way that classes form a class tree. Is the 
+							class concept of inheritance valid in the name space tree? (Hint: See the documentation.)</li>
+					</ol>
+				</section>
+			</body>
+		</topic>
+
+		<topic id="vw.help.intro.coding.creatingAClass" 
+				xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+			<title>Creating a New Class</title>
+			<body>
+				<p>To define a new class, you must know which name space should contain it. 
+					If the name space doesn't yet exist, you can create it using the Browser. 
+					The next decision is to select the superclass of the new class. Because a 
+					subclass specializes (extends) the properties and functionality of its 
+					superclass, the superclass should be a class that serves a similar but 
+					more general purpose than the new class.</p>
+				<p>As an example, <codeph>Vehicle</codeph> 
+					would be a reasonable superclass for <codeph>Car</codeph> if your 
+					application deals with several kinds of vehicles and each of them requires 
+					its own class, and <codeph>Account</codeph> is a good superclass of 
+					<codeph>SavingsAccount</codeph> if you have several kinds of accounts. 
+					If you can't think of a suitable existing superclass, make your class a 
+					subclass of <codeph>Object</codeph>. This is the most common case.</p>
+				<p>After deciding these basics, you must decide on instance variables, 
+					complete the class definition and then <uicontrol>Accept</uicontrol> it 
+					in a Browser. You should then add a comment to the class by selecting 
+					the <uicontrol>Comment</uicontrol> tab in the Browser, editing the comment 
+					template, and clicking <uicontrol>Accept</uicontrol>. Finally, create 
+					the necessary instance and class protocols, and define methods. To illustrate 
+					this procedure, let's consider a simple example.</p>
+				<p><b>Example:</b> I want to create class <codeph>Name</codeph> with 
+					superclass <codeph>Object</codeph> in name space <codeph>Smalltalk.Test.*</codeph> 
+					and class category <codeph>Examples</codeph>. The class will have instance 
+					variables <codeph>firstName</codeph> (a <codeph>String</codeph>), <codeph>middleName</codeph> 
+					(a <codeph>Character</codeph>), and <codeph>lastName</codeph> (a <codeph>String</codeph>). 
+					Its protocols will include <codeph>instance creation</codeph> and 
+					instance variable <codeph>accessing</codeph>. The class is a simple "data holder" 
+					or "application mode" class, not a very good example from the point of view of 
+					class design, but almost the simplest example of a class definition.</p>
+				<p>There is no pre-existing name space called <codeph>Test.*</codeph> within 
+					the <codeph>Smalltalk.*</codeph> name space, so I must create it. In the 
+					Browser, select <uicontrol>Class &arrow; New &arrow; Name Space...</uicontrol> 
+					from the menu bar and fill out the dialog:
+					<table frame = "topbot" colsep = "0" rowsep = "0">
+						<tgroup cols = "2" colsep = "0" rowsep = "0"
+								outputclass = "2Column NoTitle">
+							<colspec colnum = "1" colname = "1" colwidth = "55*" colsep = "0"/>
+							<colspec colnum = "2" colname = "2" colwidth = "45*" colsep = "0"/>
+							<tbody>
+								<row rowsep = "0">
+									<entry colname = "1"><b>Package</b></entry>
+									<entry colname = "2">(none)</entry>
+								</row>
+								<row rowsep = "0">
+									<entry colname = "1"><b>Name space</b></entry>
+									<entry colname = "2">XXX</entry>
+								</row>
+								<row rowsep = "0">
+									<entry colname = "1"><b>Name</b></entry>
+									<entry colname = "2">Test</entry>
+								</row>
+								<row rowsep = "0">
+									<entry colname = "1"><b>Private</b></entry>
+									<entry colname = "2">false</entry>
+								</row>
+								<row rowsep = "0">
+									<entry colname = "1"><b>Imports</b></entry>
+									<entry colname = "2">private Smalltalk.*</entry>
+								</row>
+							</tbody>
+						</tgroup>
+					</table>
+				</p>
+				<p>For this example, we'll use the default package, which is 
+					<uicontrol>(none)</uicontrol>, though in practice this would be
+					one of the packages that contains your application model classes.
+					The value of <uicontrol>Imports</uicontrol> gives my new name space 
+					access to all classes in name space <codeph>Smalltalk.*</codeph> 
+					which, in turn, provides access to other very important name spaces 
+					and their classes.</p>
+				<p>I could equally have created this name space by editing an existing
+					name space definition in the Browser, and selecting <uicontrol>Accept</uicontrol>,
+					for example:
+					<codeblock otherprops="smalltalk expression">Smalltalk defineNameSpace: #Test
+						private: false
+						imports: '
+						private Smalltalk.*
+						'
+						category: 'As yet unclassified'</codeblock></p>
+
+				<p>I can now create a new class in the new name space. Again, 
+					this can be done either via the <uicontrol>Class &arrow; New Class...</uicontrol> 
+					dialog, or by editing an existing class definition using the 
+					<uicontrol>Definition</uicontrol> code tool, and selecting 
+					<uicontrol>Accept</uicontrol>. For this example, let's try the 
+					second approach.</p>
+				<p>By default, a class definition template for your name space 
+					looks like this:
+					<codeblock otherprops="smalltalk expression">Smalltalk.Test defineClass: #NameOfClass
+						superclass: #{NameOfSuperclass}
+						indexedType: #none
+						private: false
+						instanceVariableNames: 'instVarName1 instVarName2'
+						classInstanceVariableNames: ''
+						imports: ''
+						category: '<b>As yet unclassified</b>'</codeblock></p>
+				<p>Of course, when you start from an existing class definition, 
+					it looks different. Note that this class definition is, in fact, 
+					a message to your newly-created name space &#x2014; you can read 
+					it as a command to the name space <codeph>Smalltalk.Test.*</codeph> 
+					to create a new class. (Because it is an ordinary message, you 
+					could even use it inside an application, thus creating a new class 
+					at runtime. The same, of course, holds for the creation of a name space 
+					for categories, protocols, methods, and all other items.)</p>
+				<p>Now, edit the definition text as follows:
+					<codeblock otherprops="smalltalk expression">Smalltalk.Test defineClass: #<b>Name</b>
+						superclass: #{Core.<b>Object</b>}
+						indexedType: #none
+						private: false
+						instanceVariableNames: '<b>firstName middleInitial lastName</b>'
+						classInstanceVariableNames: ''
+						imports: ''
+						category: '<b>Examples</b>'</codeblock></p>
+				<p>and click <uicontrol>Accept</uicontrol> on the <uicontrol>&lt;Operate&gt;</uicontrol> 
+					menu. Smalltalk adds the <codeph>Core.</codeph> part in front of <codeph>Object</codeph>, 
+					creates the class, adds it to the library, and displays it in the Browser. 
+					It also creates the <codeph>Examples</codeph> class category that I specified 
+					in the last line.</p>
+				<p>The next step is to write the <term>class comment</term>. With the new class 
+					selected, select <uicontrol>Comment</uicontrol> above the code tool and edit 
+					the template, for example as follows:</p>
+				<pre>Instances of this class represent simple person names.
+
+<b>Instance Variables</b>
+firstName		&lt;String&gt;
+middleInitial		&lt;Character&gt;
+lastName		&lt;String&gt;</pre>
+				<p>The comment is, of course, only for documentation and has no run-time effect. 
+					It is, however, poor programming practice to neglect it because comments are 
+					very useful for important an unfamiliar class. Unfortunately, not all classes 
+					in the library are commented.</p>
+
+				<p>It is now time to write some <term>methods</term>. I will start with instance 
+					creation, because I want to test everything as soon as possible and I can't test 
+					any instance methods without reasonable instances. I could create instances with 
+					the <codeph>new</codeph> message and then assign values to instance variables by 
+					a sequence of cascaded "setter messages", e.g.:
+					<codeblock otherprops="smalltalk expression"><b>Tests</b>.Name <b>new</b> <i>firstName: 'John'; middleInitial: $C; lastName: 'LeCarre'</i></codeblock></p>
+				<p>asssuming that I have already defined <codeph>firstName:</codeph>, <codeph>middleInitial:</codeph>, and <codeph>lastName:</codeph>. 
+					However, I will assume that when my (fictitious) application runs, it gets names 
+					from a dialog window and so a <codeph>Name</codeph> will always be created with 
+					known components. I thus decided that my instance-creation message should have the 
+					following pattern:
+					<codeblock otherprops="smalltalk expression">Tests.Name <b>firstName: 'John' middleInitial: $C lastName: 'LeCarre'</b></codeblock></p>
+				<p>The new message <codeph>firstName:middleInitial:lastName:</codeph> is a 
+					<term>class-side</term> message because it creates an instance and its receiver 
+					is class <codeph>Name</codeph>. What should the message do? It must create a 
+					new instance of <codeph>Name</codeph>, send it an instance message to initialize 
+					the instance variables, and return the resulting initialized object. The method
+					definition is thus:
+					<codeblock otherprops="smalltalk method">firstName: string1 middleInitial: aCharacter lastName: string2
+						^self new
+						firstName: string1		"This is the instance message to be written."
+						middleInitial: aCharacter
+						lastName: string2</codeblock></p>
+
+				<p>Note the argument names: Smalltalk developers prefer to use names that 
+					suggest the type (class) of the argument (such as <codeph>aCharacter</codeph> &#x2014; 
+					indicating an <i>instance</i> of <codeph>Character</codeph>) because the keyword 
+					clearly identifies its role. This style helps future users of the method to use 
+					proper arguments when sending the message.</p>
+				<p>To define the method, create a new <term>class-side</term> protocol 
+					<codeph>instance creation</codeph> and define this message in this protocol 
+					by typing (or pasting) it over the method template text under the 
+					<uicontrol>Source</uicontrol> tab. As a rule, method comments are a good 
+					idea, but not really necessary in this case because the purpose and logic 
+					of the method are obvious enough. Select <uicontrol>Edit &arrow; Format</uicontrol> 
+					and then <uicontrol>Accept</uicontrol>. The method appears in the protocol list. 
+					If you now tried to evaluate the <codeph>Name</codeph>-creation expression above, 
+					you would get an exception because you have not yet defined the instance message 
+					used inside our definition (try this to see). To define the <term>instance-side</term> 
+					method, go to the instance side of the Browser (i.e., click on the 
+					<uicontrol>Instance</uicontrol> tab). The method <codeph>firstName:middleInitial:lastName:</codeph> 
+					simply assigns argument values to the instance variables, thus its definition is:
+					<codeblock otherprops="smalltalk method">firstName: string1 middleInitial: aCharacter lastName: string2
+						firstName := string1.
+						middleInitial := aCharacter.
+						lastName := string2</codeblock></p>
+
+				<p>Put this code into the instance-side <codeph>initialize-release</codeph> protocol, 
+					click <uicontrol>Format</uicontrol> and <uicontrol>Accept</uicontrol>, as before. Now, 
+					test the new code by evaluating:
+					<codeblock otherprops="smalltalk expression">Tests.Name firstName: 'John' middleInitial: $C lastName: 'LeCarre'</codeblock></p>
+
+				<p>with <uicontrol>Inspect it</uicontrol> to check that the new methods produce the 
+					expected result. (Note that <uicontrol>Print it</uicontrol> does not produce anything 
+					interesting until I redefine the operation of <codeph>printString</codeph> as I explained 
+					in a previous exercise. Try it.)</p>
+
+				<section>
+					<title>Exercises</title>
+					<ol>
+						<li>Extend class <codeph>Name</codeph> by adding "getters" such as <codeph>firstName</codeph> 
+							(a method that returns the value of <codeph>firstName</codeph>). Test them by creating a 
+							<codeph>Name</codeph> object and using the getters to print a description of the object 
+							in the Transcript.</li>
+						<li>Write a <codeph>printOn: aStream</codeph> message to make it possible to get 
+							<codeph>printString</codeph> to produce <codeph>Name</codeph> descriptions such as:
+							<codeblock otherprops="smalltalk expression">a Name first name: 'John' middle name: $C last name: 'LeCarre</codeblock>
+							Test it by evaluating the above instance creation expression with <uicontrol>Print it</uicontrol>. 
+							(Hint: Look at the definition of other <codeph>printOn:</codeph> methods, for example 
+							in class <codeph>Rectangle</codeph>, and follow the same style. This kind of "black box" 
+							reuse of existing code is common.)</li>
+						<li>Create class <codeph>Book</codeph> in name space <codeph>Tests.*</codeph>, the default 
+							package, and the <codeph>Examples</codeph> class category. Class <codeph>Book</codeph> should 
+							have the instance variables <codeph>title</codeph> (a <codeph>String</codeph>), 
+							<codeph>author</codeph> (a <codeph>Name</codeph>), and <codeph>year</codeph> (an <codeph>Integer</codeph>). 
+							It should have an initializing instance creation message and getters for all instance variables.</li>
+					</ol>
+				</section>
+			</body>
+		</topic>
+
+		<topic id="vw.help.intro.coding.shareds" 
+				xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+			<title>Shared and Class Instance Variables</title>
+			<body>		
+				<p>To complete this basic overview of coding in Smalltalk, I will now explain two new types 
+					of variables, less common in simple applications. They are <term>class instance variables</term> 
+					and <term>shared variables</term>.</p>
+
+				<p>Since classes are objects, they can have their own instance variables and, although they 
+					are not really special, they have a special name. They are called <term>class instance variables</term>. 
+					There is really nothing unusual about them and they follow all the rules of instance variables 
+					except that they are attached to classes rather than instances. In particular, if a class defines 
+					some class instance variables, they are inherited by its subclasses, and each of these subclasses 
+					has its own private values independent of other classes. As an example, if class <codeph>Animal</codeph> 
+					defines a class instance variable called <codeph>Sound</codeph>, then its subclasses <codeph>Dog</codeph> 
+					and <codeph>Cat</codeph> inherit <codeph>Sound</codeph>, but its value in <codeph>Dog</codeph> may 
+					be 'bark', while the value in <codeph>Cat</codeph> may be 'meow'. As this example shows, class 
+					instance variables are used mainly for various constants. Note that <i>instances</i> of a class 
+					cannot access class instance variables directly just as a class cannot directly access instance 
+					variables of their instances; in both cases, access requires accessor methods. Class instance variables 
+					are relatively rare.</p>
+				<p>Whereas class instance variables are private to a class, it is sometimes useful to create objects 
+					that can be shared by <i>several</i> classes. As an example, many classes use various "text constants" 
+					such as the backspace character, the <i>italic</i> style of text, or the "centered paragraph" style 
+					of paragraphs. The kinds of variables discussed so far do not allow this sharing because their scope 
+					is limited. This is why &Product; also has <term>shared variables</term>. These can be defined in a 
+					class (see the <uicontrol>Shared Variable</uicontrol> tab in a Browser) and accessed by the class and 
+					its subclasses or their instances, or even in a separate name space. Two examples of class-based 
+					shared variables are <codeph>Pi</codeph> and <codeph>RadiansPerDegree</codeph>, both defined in 
+					classes <codeph>Double</codeph> and <codeph>Float</codeph>. An example of a shared name space defined 
+					to hold shared variables is <codeph>Graphics.TextConstants</codeph>, which includes numerous constants 
+					divided into several categories such as <codeph>Characters</codeph> and <codeph>Emphases</codeph>. 
+					Shared variables are more common than class instance variables and they replace the (older) concepts 
+					of pools and class variables (not to be confused with class instance variables) used in earlier versions 
+					of &Product;.</p>
+
+				<section>
+					<title>Exercises</title>
+					<ol>
+						<li>Class <codeph>SmallInteger</codeph> defines class instance variables. Examine their definition, 
+							values, and accessors.</li>
+						<li>Examine 20 randomly-selected class definitions and count how many of them include class instance variables.</li>
+						<li>Study the <codeph>Graphics.TextConstants</codeph> name space, its categories, and some of its 
+							shared variables. Browse references to the shared variable <codeph>CR</codeph> and explain why only a 
+							shared variable can provide this scope of access.</li>
+					</ol>
+					<p>This completes the introduction to the basic principles of Smalltalk. In the next section, I will 
+						introduce some of the essential Smalltalk classes and explain a few additional principles.</p>
+				</section>
+			</body>
+		</topic>
+	</topic>
+</dita>

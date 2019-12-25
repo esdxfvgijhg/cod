@@ -1,0 +1,73 @@
+November 15, 2004
+=============
+Patch "StoreForInterBasePatch.st" is removed.
+
+November 4, 2004
+=============
+The method name spelling: 
+#maxPropertySearchStringSize instead #propertySearchStringMaxSize.
+
+November 3, 2004
+=============
+Added #propertySearchStringMaxSize to the InterBaseBroker class.
+
+October 20, 2004
+=============
+Release for VW 7.3
+
+Thanks to Carl Mascott for bug fixes of IBLens.
+
+October 13, 2003
+=============
+Release for VW 7.2
+
+February 20, 2003:
+==================
+VW 7.1 version.
+Minor changes & fixes.
+IBEXDI - updated to new signal handling.
+Added IBLensTest parcel (45 tests).
+
+October 5, 2002:
+==================
+Fixed InterBaseContext>>getTableNamed:in:
+Thanks to Bernhard Hofner.
+
+September 25, 2002:
+==================
+Added IBLens parcel. This parcel provides the facilities to use 
+the Lens on InterBase(6.x) and Firebird(0.9.x and higher) database servers. 
+
+March 18, 2002:
+==============
+Added a patch for speedup of some operations (load, compare) -
+the query for comparing of metaclasses is rewritten. 
+I hope, it's at least safe and for other StORE back-ends.
+
+File-in "StoreForInterBasePatch.st" from 'extra' directory.
+
+
+
+March 12, 2002:
+==============
+Fixed minor UI look problems, added compatibility with StoreReplicator
+
+March 4, 2002:
+==============
+Added PDF manual. Removed HTML files.
+
+February 27, 2002:
+=================
+StorePatch is removed (code now integrated into StoreBase);
+
+January 21, 2002:
+=================
+General: 
+	- updated for VW 7 ( jan02.1);
+	- updated class categories;
+	- minor fixes;
+StoreForInterBase
+	- added patch StorePatch (allow more robust queries);
+
+
+

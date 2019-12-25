@@ -1,0 +1,221 @@
+VisualWorks(R) 7.7 Windows Packaging ReadMe
+Copyright Cincom Systems, Inc. 2000-2009. All rights reserved.
+
+
+Packaging an Application as a Single .exe
+
+With this release, we are releasing functionality that allows one to
+package an application as a single .exe file on Windows which contains both
+the  ObjectEngine and the image.  The image can optionally be in a compressed
+format, so that  the resulting .exe file is roughly half the size.
+
+We do this by allowing the image to be stored as a resource in the executable
+file.  You take one of our ObjectEngine executables and your image file,
+and create a new executable file with our ObjectEngine as the code and the
+image file as a resource  One can also optionally include resources in the
+executable file for
+ - program icon; the default icon that Windows will use
+ - application name; which appears in the title bars of ObjectEngine
+   error messages (which you've never seen, of course)
+ - splash screen bitmap, which appears at startup
+ - startup sound file
+ - command-line arguments for the engine
+
+When that executable starts up, the ObjectEngine checks to see if any of these
+resources are included.  If there are image, bitmap or sound resources the
+ObjectEngine will use these resources rather than the image, bitmap or sound
+file that it would otherwise use.  In addition, if there is an image resource,
+then the ObjectEngine will ignore any command-line parameters except those
+optionally included in the resources.  This allows the packaged application
+unfettered access to the command line.
+
+
+Adding Resources
+
+In order to take our ObjectEngine exeutable file and add resources to it you
+will need a resource editing tool which we do not supply.  It appears that
+Microsoft's tools cannot add resources to .exe files, and only support adding
+resources at  link time.  Fortunately there is a freeware tool written and
+generously provided by Angus Johnson called ResourceHacker(TM), see
+
+     http://www.users.on.net/~johnson/resourcehacker/
+
+You will need version 3.1 or better of ResourceHacker.  Version 3.4.0 is in
+ResHack.zip in this directory. 
+
+The resources must have these resource names and identifiers, which are used
+by the ObjectEngine to look-up the resources:
+
+     image: 332, 332
+     icon: icon, 323
+     startup bitmap: bitmap, 324
+     application name:  325, 325
+     startup sound: 326, 326
+
+The icon should be in .ico format, the bitmap in .bmp format, the
+application name in .txt format and the sound file in .wav format.
+
+Note that with the non-commercial version it is not possible to change the
+application name or the startup bitmap.
+
+To create an exe containing an image using ResHacker, you can use the
+following.  Make sure you specify a different name for the output executable,
+here  called myapp.exe!  If you use tha same name (e.g. visual.exe) then you
+will modify the standard ObjectEngine.
+
+     ResHacker -addoverwrite \vw5i.3\bin\win\visual.exe, myapp.exe, image.im, 332,332,
+
+You can then add your icon, bitmap, application name and sound similarly
+
+     ResHacker -addoverwrite myapp.exe, myapp.exe, iconfile.ico, icon,323,1
+     ResHacker -addoverwrite myapp.exe, myapp.exe, bitmapfile.bmp, bitmap,324,
+     ResHacker -addoverwrite myapp.exe, myapp.exe, appname.txt, 325,325,
+     ResHacker -addoverwrite myapp.exe, myapp.exe, soundfile.wav, 326,326,
+
+After each step check ResHacker.log as if there are any errors they will be
+reported there-in.
+
+
+Specifying Command Line Arguments
+
+Command-line arguments must be added as the elements of a stringtable, 
+numbered from 1 on up.  ResHacker cannot add stringtable resources on 
+the command-line.  Further, it fails to correctly compile stringtable 
+resources in RC files.  One must use RES files compiled with a correct 
+resource compiler such as RC.EXE.  RC.EXE is now available for free as 
+part of Microsoft's eMbedded Visual C++ v4.0.  See 
+
+     http://www.microsoft.com/downloads/details.aspx?familyid=1DACDB3D-50D1-41B2-A107-FA75AE960856&displaylang=en  
+     
+Note that Microsoft's license does not permit us to redistribute 
+RC.EXE and RCDLL.DLL.  You will have to download and install EVC4.exe 
+and obtain them yourself.
+
+To add command-line arguments to an exe file do the following:
+
+a) Define your commandline arguments as a stringtable in an rc file, 
+   e.g. stringtable.rc:
+
+     STRINGTABLE
+     LANGUAGE 1033, 1
+     BEGIN
+          1 "-nologo"
+          2 "-nosound"
+          3 "-z"
+          4 "8m"
+     END
+
+   1033 is the code for LANGUAGE ENGLISH.  
+   1 is the code for SUBLANGUAGE US_ENGLISH.
+
+b) Compile the RC file to produce a RES file:
+
+        RC stringtable.rc
+
+c) Start ResHacker and open an engine, e.g. vwnt.exe. Use 
+   Action->Add STRINGTABLE Resource, and select the resource 1033.
+
+d) Save the exe.
+
+Currently we do not know of any way to automate the adding of the 
+STRINGTABLE.  If you are likely to change the image more often than 
+you change the command-line arguments then can ameleorate the problem 
+by splitting the build into two phases.  In the first phase create a 
+.EXE containing the command-line STRINGTABLE and save this somewhere.  
+In subsequent builds use ResHacker in command-line mode to add the image 
+to the saved .EXE containg the STRINGTABLE to produce the final .EXE.
+
+
+Compressing a Distribution.
+
+For compactness, there are two options to consider.
+
+First, one can compress the image file before adding it as an image resource.
+This usually compresses the image by over 50% and does not appear to slow down
+start up appreciably on machines of the performance of a 400 MHz Pentium II.
+Your results may vary, depending on processor and disk speed.
+
+You can compress the file in one of two ways.  Within Smalltalk you can load the
+packaging ImageCompression parcel and use "Launcher->File->Compress image file".
+At the command line you can compress using the file imageCompress.exe in the
+same directory as this file. 
+
+Both "Compress image file" and imageCompress use the zlib library to compress
+the image file compressed.
+
+Note that as of 7.2 compressed images can be loaded just like normal images,
+and can be loaded as resources.
+
+The second option, available on Windows and Linux x86 and PowerPC platforms,
+is to add an uncompressed image as a resource to the VM executable, and then
+to compress the resulting executable with UPX (http://upx.sourceforge.net).
+This will result in further compression as UPX's compression algorithm is
+stronger than zlib's.  In addition, UPX will also compress the VM itself
+leading to additional savings.  Typically, an executable made with UPX will
+be smaller than a .zip file containing the VM and the image.
+
+To compress an executable with UPX, simply perform
+
+  upx executableFile.exe
+
+Or, to make UPX try harder,
+
+  upx -9 executableFile.exe
+
+Note that UPX is designed so that decompression speed is given priority,
+and as such loading times will not be impacted significantly.
+
+UPX is released under the GPL.  However, programs compressed by UPX do not
+inherit UPX's license since they are not derivatives of UPX itself.
+
+
+Image Startup Considerations
+
+If you've read the memory management documentation in detail, you will know
+that an image file is essentially a dump of the Smalltalk object space.  The
+addresses of objects in an image file are therefore those of the objects in
+the system that snapshotted the image file.  Different platforms may place
+the object space at different addresses.
+
+If an image is started on the same platform as it was saved, and if it
+loads the base of the object space at the same memory location, then the
+image's pointers are known to be correct and do not need to be updated.
+But if the base of the object space changes, for example because an image
+is loaded on a different platform or because the snapshot was a "perm save",
+then all of the image's pointers will need to be updated, or "swizzled".
+This should increase image start-up time slightly.
+
+Although the base of the object space is affected by a number of factors,
+in general it will be the same if a snapshot is loaded on the same platform
+on which the snapshot was made, so this swizzling is usually  avoided.  But
+adding signficantly large resources to an executable will push the base of
+the object space to a higher address, so executables created as describe above,
+from an image created by a non-resourced ObjectEngine, will need to be swizzled
+and will have slower than necessary start-up time.
+
+To get an image that will probably load at the same base, you merely need
+to snapshot it from an already-packaged exeutable (containing that image or
+something close).  It appears that Windows rounds the program heap to a
+64Kbyte boundary, so  the original image can differ slightly without causing
+a change in the actual heap base.  There's currently no way to confirm whether
+swizzling is/was necessary.  But we expect to provide a way to check in the
+next release.
+
+As an example of such application image production using RuntimePackager,
+and compressing the image, you would need to go through the following steps
+carefully
+ 1.  Create the first Runtime Packager image
+ 1.5 Optionally compress the image with imageCompress
+ 2.  Create a single .exe containing the image and any other resources
+ 3.  Launch this .exe which will snapshot to produce the second image
+ 3.5 Compress  the second image if you're compressing
+ 4.  Replace the image in your single .exe with the new image
+ 5.  Launch this .exe which will snapshot to provide the final image
+ 5.5 Optionally compress the final image
+ 6.  Replace the image in your single .exe with the final image
+
+
+
+5/26/04  bb
+4/26/07  av
+8/26/09  bb

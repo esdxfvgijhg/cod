@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product      "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.graphicImages"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Images, Cursors, and Icons</title>
+<body>
+<p>The <apiname otherprops="pundle" title="Open a browser on this component">Graphics</apiname> 
+framework includes a large number of specialized 
+classes for raster graphics and GUI functions. The abstract class 
+<apiname>Image</apiname> represents a rectangular array of pixels, while 
+a <apiname>Palette</apiname> is used to interpret its pixel values. Concrete 
+subclasses of <apiname>Image</apiname> provide specific representations 
+for images of different color depths. An <apiname>Image</apiname> is not a 
+display surface; for that, you can use a window, a <apiname>Pixmap</apiname> 
+or a <apiname>Mask</apiname>.</p>
+<p>Instances of class <apiname>Icon</apiname> are composed of a figure and 
+a shape, both of which are <apiname>CachedImage</apiname> objects.</p>
+</body>
+<topic id = "vw.help.graphicImages.screenCapture"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Capturing a screen image programmatically</title>
+<body><p><indexterm>screen capture</indexterm><indexterm>graphics<indexterm>screen
+capture</indexterm></indexterm><ol><li><p>In a Workspace, send a <apiname>fromUser</apiname> message
+to the <apiname>Image</apiname> class. The cursor changes to a cross-hair.
+<codeblock otherprops="smalltalk expression">| gc capturedImage |
+gc := (ScratchPad prepareWindow) graphicsContext.
+capturedImage := Image fromUser.
+capturedImage displayOn: gc.</codeblock></p></li>
+<li><p>Press the &lt;Select&gt; mouse button at the upper-left corner
+of the desired rectangle, drag to the lower-right corner, and then release
+the mouse button.</p></li></ol></p></body></topic>
+<topic id = "vw.help.graphicImages.createBlankImage"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Creating a blank image</title>
+<body><p><indexterm>graphics<indexterm>create image</indexterm></indexterm>Send
+an <apiname>extent:depth:palette:</apiname> message to the <apiname>Image</apiname> class.
+The <codeph>extent</codeph> argument is a <apiname>Point</apiname> whose
+x coordinate controls the width of the image (in pixels) and whose
+y coordinate controls the height. The <codeph>depth</codeph> argument
+is an integer indicating the color depth of the image. The <codeph>palette</codeph> argument
+is a color palette from which the image draws its colors.
+<codeblock otherprops="smalltalk expression">| blankImage palette |
+palette := Screen default colorPalette.
+blankImage := Image
+			extent: 8@8
+			depth: (palette depth)
+			palette: palette.
+^blankImage</codeblock></p></body></topic>
+<topic id = "vw.help.graphicImages.createFromDisplaySurface"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create an image from a display surface</title>
+<body><p><indexterm>graphics<indexterm>create image from display
+surface</indexterm></indexterm>Send an <apiname>asImage</apiname> message
+to a display surface (window, <apiname>Pixmap</apiname>, or <apiname>Mask</apiname>).
+In the case of a window, the window must not be overlapped by other
+windows.
+<codeblock otherprops="smalltalk expression">| gc window image |
+gc := (ScratchPad prepareWindow) graphicsContext.
+window := Window currentWindow.
+			window raise.
+image := window asImage.
+image displayOn: gc.</codeblock></p></body></topic>
+<topic id = "vw.help.graphicImages.createFromByteArray"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create an image from a byte array</title>
+<body><p><indexterm>graphics<indexterm>create image from byte array</indexterm></indexterm>Send
+an <apiname>extent:depth:palette:bits:pad:</apiname> message to the <apiname>Image</apiname> class. The <codeph>bits</codeph> argument
+is a <apiname>ByteArray</apiname> specifying the color for each pixel, using
+the color encodings from the palette with a multiple of 32 bits per
+row. The <codeph>pad</codeph> argument is 8, 16, or 32. Because
+each row in the byte array must contain a multiple of 32 bits, the
+pad size appends 8 bits to a 24-bit row, 16 bits to a 16-bit row
+(as in the example), or none to a 32-bit row, as a convenience.
+<codeblock otherprops="smalltalk expression">| gc lampImage |
+gc := (ScratchPad prepareWindow) graphicsContext.
+lampImage := Image
+			extent: 16@16
+			depth: 1
+			palette: MappedPalette whiteBlack
+			bits: #[
+				2r00011111 2r11111000
+				2r00011111 2r11111000
+				2r00111111 2r11111100
+				2r00111111 2r11111100
+				2r00111111 2r11111100
+				2r01111111 2r11111110
+				2r01111111 2r11111110
+				2r11111111 2r11111111
+				2r11111111 2r11111111
+				2r00000011 2r11000000
+				2r00001111 2r11110000
+				2r00011111 2r11111000
+				2r00011111 2r11111000
+				2r00001111 2r11110000
+				2r00001111 2r11110000
+				2r00000111 2r11100000]
+			pad: 16.
+lampImage displayOn: gc at: 10@10.</codeblock></p></body></topic>
+<topic id = "vw.help.graphicImages.loadImageFromFile"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Reading an Image from a File</title>
+<body><p>To access <apiname>ImageReader</apiname> and its subclasses,
+load the <filepath>ImageReaders</filepath> parcel. Subclasses support 
+several popular graphic file formats.</p>
+<p><indexterm class = "- topic/indexterm ">graphic image<indexterm>read
+from file</indexterm></indexterm><indexterm class = "- topic/indexterm
+">graphic image<indexterm>save as resource</indexterm></indexterm>To
+creating an <apiname>Image</apiname> from an external source, such
+as a file, send a <indexterm class = "- topic/indexterm ">fromFile:</indexterm><apiname>fromFile:</apiname> message
+to the <apiname>ImageReader</apiname> class, with the name of the
+file as a <apiname>String</apiname>. The result is an instance of
+the <apiname>ImageReader</apiname> subclass appropriate for the image
+format, such as <apiname>GIFImageReader</apiname>. To get the image
+from the image reader, send an <indexterm class = "- topic/indexterm
+">image</indexterm><apiname>image</apiname> message to it. For example:
+<codeblock otherprops="smalltalk expression">image := (ImageReader fromFile: '..\bin\win\herald.bmp') image</codeblock></p>
+<p>This returns an <apiname>Image</apiname> instance.</p>
+<p>It is often useful to store the image in a resource method. To
+do so, send an <indexterm class = "- topic/indexterm ">imageFromFile:toClass:selector:</indexterm><apiname>imageFromFile:toClass:selector:</apiname> message,
+with the file name, the target class name, and the resource selector
+name as arguments:
+<codeblock otherprops="smalltalk expression">ImageReader 
+	imageFromFile: 'herald.bmp' 
+	toClass: DummyTree 
+	selector: #herald</codeblock></p></body></topic>
+<topic id = "vw.help.graphicImages.displayImage"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Display an image</title>
+<body><p><indexterm>graphics<indexterm>display image</indexterm></indexterm>An
+image can display itself on a graphics context. Note that an image’s
+palette cannot be color-based if you intend to display it on a coverage-based <apiname>Mask</apiname> rather
+than a color-based <apiname>Window</apiname> or <apiname>Pixmap</apiname>.<ol>
+<li><p>Send a <apiname>displayOn:</apiname> message to the image.
+The argument is the graphics context of the display surface on which
+the image is to be displayed.</p></li>
+<li><p>To specify a display origin other than the default <codeph>0@0</codeph>,
+send a <apiname>displayOn:at:</apiname> message to the image. The
+first argument is the graphics context and the second argument is
+a <apiname>Point</apiname> indicating the origin of the image relative
+to the display surface’s origin.
+<codeblock otherprops="smalltalk expression">| gc logo |
+gc := (ScratchPad prepareWindow) graphicsContext.
+logo := LogoExample logo.
+logo convertForGraphicsDevice: Screen default. 
+logo displayOn: gc.
+logo displayOn: gc at: 50@50.</codeblock></p></li></ol></p>
+<p>The <apiname>convertForGraphicsDevice:</apiname> message is necessary
+to ensure that the image displays properly, by making sure that
+the color depth and bits per pixel are correct. While it is not
+always required, it is strongly recommended, especially for images
+that are read from files.</p></body></topic>
+<topic id = "vw.help.graphicImages.createDisplaySurface"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a display surface bearing an image</title>
+<body><p><indexterm>graphics<indexterm>create display surface for
+image</indexterm></indexterm>A common situation requires creating
+a hidden display surface (<apiname>Mask</apiname> or <apiname>Pixmap</apiname>)
+of the same size as an image and then displaying the image on it.</p>
+<p>Send an <apiname>asRetainedMedium</apiname> message to the image.
+If the image has a color-based palette, a <apiname>Pixmap</apiname> will
+be returned. If the image has a coverage-based palette, a <apiname>Mask</apiname> will
+be returned.
+<codeblock otherprops="smalltalk expression">| image pixmap |
+image := LogoExample logo.
+pixmap := image asRetainedMedium.
+^pixmap</codeblock></p></body></topic>
+<topic id = "vw.help.graphicImages.displayOnLabel"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Display a masked image on a label or button</title>
+<body><p><indexterm>graphics<indexterm>display masked image</indexterm></indexterm>A
+graphic label may be displayed in place of text for an action button, radio
+button, check box, or label.<ol><li><p>Select the action button,
+radio button, check box, or label in the canvas.</p></li>
+<li><p>In the GUI Painter tool, turn on the widget’s <uicontrol>Label&#xA0;is&#xA0;Image</uicontrol> property.</p></li>
+<li><p>In the <uicontrol>Message</uicontrol> property field, enter
+the name of the method that returns a graphic image (usually a resource
+method).</p></li>
+<li><p><uicontrol>Apply</uicontrol> the properties and <uicontrol>Install</uicontrol> the
+canvas.</p></li></ol></p>
+<p>An <apiname>OpaqueImage</apiname> may be used as the graphic label
+with the image background subtracted when it is created from an <apiname>Image</apiname> and
+a <apiname>Mask</apiname>.<ol><li><p>Create an accessor method that
+answers a new <apiname>OpaqueImage</apiname> created by sending the
+message <apiname>figure:mask:</apiname> to it.  Provide as arguments
+the <apiname>Image</apiname> to serve as the graphic and a matching <apiname>Mask</apiname> whose
+pixels for the background to be subtracted are white and the remaining
+pixels are black.</p></li>
+<li><p>Enter the name of this method in the <uicontrol>Message</uicontrol> property
+field for the widget as in step 3 above.
+<codeblock otherprops="smalltalk expression">	"Show an opaque image to be used as a label"
+	| gc logo |
+	gc := (ScratchPad prepareWindow) graphicsContext.
+	logo := OpaqueImage
+				figure: OpaqueLabelExample logoImage
+				shape: OpaqueLabelExample logoMask.
+	logo displayOn: gc.</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:OpaqueLabel-Example:Examples.OpaqueLabelExample open" 
+format="st" scope="external">OpaqueLabel-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.graphicImages.setPixelColor"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set the color of a pixel</title>
+<body><p><indexterm>graphics<indexterm>set pixel color</indexterm></indexterm>Individual
+pixel colors can be changed to any color in the image’s palette,
+using either a <apiname>ColorValue</apiname> or a color number.</p>
+<p>To get the current color value of a pixel, send a <apiname>valueAtPoint:</apiname> message to
+the image. The argument is a <apiname>Point</apiname> indicating the
+coordinates of the pixel in the image. </p>
+<p>To change the color of a pixel, send a <apiname>valueAtPoint:put:</apiname> message
+to the image. The first argument is the location of the pixel, and
+the second is a color value. 
+<codeblock otherprops="smalltalk expression">| gc logo oldColor newColor white black |
+gc := (ScratchPad prepareWindow) graphicsContext.
+logo := LogoExample logo.
+white := ColorValue white.
+black := ColorValue black.
+"Change each black pixel to white, and vice versa."
+0 to: logo height -1 do: [ :y |
+	0 to: logo width - 1 do: [ :x |
+		oldColor := logo valueAtPoint: x@y.
+		oldColor = white
+			ifTrue: [newColor := black]
+			ifFalse: [newColor := white].
+		logo valueAtPoint: x@y put: newColor]].
+logo displayOn: gc</codeblock></p>
+<p>To get the current color number of a pixel, send an <apiname>atPoint:</apiname> message to
+the image. The argument is a <apiname>Point</apiname> indicating the
+coordinates of the pixel in the image. The number that identifies
+the pixel color is returned.</p>
+<p>To change the color number of a pixel, send an <apiname>atPoint:put:</apiname> message to
+the image. The first argument is the location of the pixel and the second
+argument is a color number. 
+<codeblock otherprops="smalltalk expression">| gc logo oldColor newColor |
+gc := (ScratchPad prepareWindow) graphicsContext.
+logo := LogoExample logo.
+"Change each black pixel to white, and vice versa."
+0 to: logo height -1 do: [ :y |
+	0 to: logo width - 1 do: [ :x |
+		oldColor := logo atPoint: x@y.
+		oldColor = 1
+			ifTrue: [newColor := 0]
+			ifFalse: [newColor := 1].
+		logo atPoint: x@y put: newColor]].
+logo displayOn: gc</codeblock></p></body></topic>
+<topic id = "vw.help.graphicImages.clipping"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Clipping an image</title>
+<body><p><indexterm>graphic image<indexterm>clipping</indexterm></indexterm>Sometimes
+an image contains extraneous material that needs to be removed.
+Clipping allows you to cut down an image to a rectangle.<ol><li><p>Create
+a display surface containing the image by sending an <apiname>asRetainedMedium</apiname> message
+to the image.</p></li>
+<li><p>Send a <apiname>completeContentsOfArea:</apiname> message to
+the display surface. The argument is a rectangle that defines the
+desired portion of the image. The copied portion is returned as
+an image.
+<codeblock otherprops="smalltalk expression">| gc logo subImage pixmap copyRect |
+gc := (ScratchPad prepareWindow) graphicsContext.
+logo := LogoExample logo magnifiedBy: 2@2.
+pixmap := logo asRetainedMedium.
+copyRect := 0@0 extent: (logo width @ logo height / 2) rounded.
+subImage := pixmap completeContentsOfArea: copyRect.
+subImage displayOn: gc at: 10@10.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.graphicImages.masking"><title>Masking an image</title>
+<body><p>When the desired portion of an image is not rectangular,
+you can either create a <indexterm class = "- topic/indexterm ">mask</indexterm><indexterm
+class = "- topic/indexterm ">graphic image<indexterm>masking</indexterm></indexterm><apiname>Mask</apiname> of
+the desired geometric shape, or specify a mask resource. The mask
+is then used as a stencil through which the image is displayed.<ol><li><p>Create
+a display surface (Pixmap) for the image by sending <apiname>asRetainedMedium</apiname> to
+the image.</p></li>
+<li><p>Create the desired mask, if necessary.</p><p>The mask may
+be created in a resource method built by the Image Editor, in another
+method, or on the fly in the displaying message.</p></li>
+<li><p>Send a <indexterm class = "- topic/indexterm ">copyArea:from:sourceOffset:destinationOffset:</indexterm><apiname>copyArea:from:sourceOffset:destinationOffset:</apiname> message
+to the graphics context of the destination display surface.</p><p>The <codeph>copyArea</codeph> argument
+is the mask. The <codeph>from</codeph> argument is the graphics
+context of the source display surface. The <codeph>sourceOffset</codeph> argument
+is a <codeph>Point</codeph> indicating the origin of the mask when
+placed over the source display surface. The <codeph>destinationOffset</codeph> argument
+is the origin of the subimage when displayed on the destination display
+surface.
+<codeblock otherprops="smalltalk expression">| gc logo pixmap ovalMask |
+gc := (ScratchPad prepareWindow) graphicsContext.
+logo := LogoExample logo magnifiedBy: 2@2.
+pixmap := logo asRetainedMedium.
+ovalMask := Mask extent: 66@66.
+ovalMask graphicsContext
+	displayWedgeBoundedBy: ovalMask bounds
+	startAngle: 0
+	sweepAngle: 360.
+gc copyArea: ovalMask
+	from: pixmap graphicsContext
+	sourceOffset: 0@0
+	destinationOffset: 10@10.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.graphicImages.expandShrink"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Expand/shrink an image</title>
+<body><p><indexterm>graphic image<indexterm>expand</indexterm><indexterm>shrink</indexterm></indexterm>You
+can get a copy of an image that has been magnified or shrunken in
+the x dimension, the y dimension.<ol><li><p>To get an expanded copy
+of an image, send a <apiname>magnifiedBy:</apiname> message to the
+image. The argument is a <apiname>Point</apiname> whose <codeph>x</codeph> value
+is multiplied by the width of the image to derive the width of the expanded
+version; similarly, the <codeph>y</codeph> value controls the height
+of the expanded version.</p></li>
+<li><p>To shrink an image, send a <apiname>shrunkenBy:</apiname> message
+to the image. The argument is a point that is used as a divisor
+to reduce the width and height in the shrunken version.
+<codeblock otherprops="smalltalk expression">| gc logo bigLogo tinyLogo |
+gc := (ScratchPad prepareWindow) graphicsContext.
+logo := LogoExample logo.
+bigLogo := logo magnifiedBy: 1@2.
+tinyLogo := logo shrunkenBy: 1@2.
+logo displayOn: gc.
+bigLogo displayOn: gc at: logo extent.
+tinyLogo displayOn: gc at: logo extent + bigLogo extent.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.graphicImages.flipImage"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Flip an image</title>
+<body><p><indexterm>graphic image<indexterm>flipping</indexterm></indexterm>Sometimes
+you need a mirror copy of an image. The basic steps show how to
+get a reflected copy in which the imaginary mirror is aligned with
+the x axis, the y axis, or both. This process of rotating an image
+about the x axis or the y axis is known as flopping an image, from
+the photographic process in which a negative is flopped onto its backside
+to produce a mirror image.<ol><li><p>To flop an image about the
+x axis, send a <apiname>reflectedInX</apiname> message to the image.</p></li>
+<li><p>To flop an image about the y axis, send a <apiname>reflectedInY</apiname> message.</p></li>
+<li><p>To flop an image about both axes, send a <apiname>reflectedInX</apiname> message followed
+by a <apiname>reflectedInY</apiname> message.
+<codeblock otherprops="smalltalk expression">| gc helpImage |
+gc := (ScratchPad prepareWindow) graphicsContext.
+helpImage := ToolbarIconLibrary help20x20 image.
+helpImage 
+			displayOn: gc at: 10@10.
+helpImage reflectedInX 
+			displayOn: gc at: 60@10.
+helpImage reflectedInY
+			displayOn: gc at: 10@60.
+helpImage reflectedInX reflectedInY
+		displayOn: gc at: 60@60.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.graphicImages.rotateImage"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Rotate an image</title>
+<body><p><indexterm>graphic image<indexterm>rotating</indexterm></indexterm>You
+can rotate an image about the z axis in 90-degree increments.</p>
+<p>Send a <apiname>rotatedByQuadrants:</apiname> message to the image.
+The argument is an integer indicating how many 90-degree rotations
+you want. A rotated copy of the image is returned.
+<codeblock otherprops="smalltalk expression">| gc helpImage rotatedImage |
+gc := (ScratchPad prepareWindow) graphicsContext.
+helpImage := ToolbarIconLibrary help20x20 image.
+rotatedImage := helpImage rotatedByQuadrants: 1.
+helpImage 
+		displayOn: gc at: 10@10.
+rotatedImage 
+		displayOn: gc at: 60@10.</codeblock></p>
+<p>Each rotated copy uses time and memory resources. For a series
+of rotations, you can reduce the resources required by reusing the
+same scratch image for each subsequent copy. The scratch image must
+be of the same size as the unrotated image, so this technique works only
+when all images in the series are the same size.<ol><li><p>Create
+a scratch image the same size as the image that is to be rotated
+by sending a <apiname>copyEmpty</apiname> message to the original
+image.</p></li>
+<li><p>Send a <apiname>rotateByQuadrants:to:</apiname> message to
+the image to be copied. The first argument is the number of quadrants
+to rotate the image. The second argument is the scratch image.
+<codeblock otherprops="smalltalk expression">| gc helpImage scratchImage |
+gc := (ScratchPad prepareWindow) graphicsContext.
+helpImage := ToolbarIconLibrary help20x20 image.
+scratchImage := helpImage copyEmpty.
+1 to: 4 do: [ :quads |
+			helpImage rotateByQuadrants: quads to: scratchImage.
+		scratchImage displayOn: gc at: (60 * quads) @ 10]</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.graphicImages.layerImages"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Layer images</title>
+<body><p><indexterm>graphic image<indexterm>layering</indexterm></indexterm>You
+can achieve a variety of layering effects by combining two images and
+applying a filtering algorithm to the overlapping portions. &Product;
+provides 16 built-in algorithms, called combination rules, numbered
+0 through 15, and the more commonly used rules have names. <ol><li><p>To
+preserve the destination image in its unchanged state, make a copy
+on which to merge the source image.</p></li>
+<li><p>Send a <apiname>copy:from:in:rule:</apiname> message to the
+destination image (in the example, <apiname>triangle</apiname>). The <codeph>copy</codeph> argument
+is a rectangle identifying the region in the destination image to
+be merged with the source image (the lower part of the triangle).
+The <codeph>from</codeph> argument is the origin of the rectangle
+within the source image (the origin of the circle, because we want
+to copy the entire circle). The <codeph>in</codeph> argument is
+the source image. The <codeph>rule</codeph> argument is an integer identifying
+a combination rule (which can be derived by sending <apiname>and</apiname>, <apiname>over</apiname>, <apiname>erase</apiname>, <apiname>reverse</apiname>, <apiname>under</apiname>,
+or <apiname>reverseUnder</apiname> to the <apiname>RasterOp</apiname> class).
+<codeblock otherprops="smalltalk expression">| gc triangle circle scratch |
+gc := (ScratchPad prepareWindow) graphicsContext.
+triangle := Pixmap extent: 50@100.
+triangle graphicsContext
+			displayPolygon: (Array
+				with: 0@0
+				with: 0@50
+				with: 50@50).
+triangle := triangle asImage.
+circle := Pixmap extent: 50@50.
+circle graphicsContext
+			displayDotOfDiameter: 50
+			at: 25@25.
+circle := circle asImage.
+0 to: 15 do: [ :rule |
+			scratch := triangle copy.
+			scratch
+				copy: (0@20 extent: 50@50)
+				from: 0@0
+				in: circle
+				rule: rule.
+		scratch displayOn: gc at: (50 * rule \\ 400) @ (50 * rule // 400 * 100)]</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.graphicImages.cacheImage"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Cache an image</title>
+<body><p><indexterm>graphic image<indexterm>caching</indexterm></indexterm>A <apiname>CachedImage</apiname> combines
+the longevity of an <apiname>Image</apiname> with the displaying speed
+of a display surface. Whenever its display surface is unavailable,
+as when it has been destroyed by a save-and-restart operation, it
+is recreated from the image automatically. This relieves your application
+from having to recreate such display surfaces manually.</p>
+<p>Note that a <apiname>CachedImage</apiname> must be treated like
+a display surface, not an image.</p>
+<p>Create a <apiname>CachedImage</apiname> by sending an <apiname>on:</apiname> message
+to that class. The argument is the image that is to be cached.
+<codeblock otherprops="smalltalk expression">| gc logo |
+gc := (ScratchPad prepareWindow) graphicsContext.
+logo := CachedImage on: LogoExample logo.
+logo displayOn: gc.</codeblock></p></body></topic>
+<topic id = "vw.help.graphicImages.animateImage"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Animate an image</title>
+<body><p><indexterm>graphic image<indexterm>animate</indexterm></indexterm>Animating
+an image, or any graphic object, consists of creating a loop in
+which the object is drawn and erased at successive locations along a
+path. For smooth animation, use double buffering, which erases and
+draws only changed pixels. <ol><li><p>Create a <apiname>Pixmap</apiname> of
+the same size as the window on which the animation is to take place
+by sending an <apiname>extent:</apiname> message to the <apiname>Pixmap</apiname> class.
+The argument is a rectangle with the window’s dimensions, which
+can be derived by sending a <apiname>clippingBounds</apiname> message
+to the window’s graphics context.</p></li>
+<li><p>Create a loop in which the erase-and-display operations occur.</p></li>
+<li><p>Inside the loop, begin by moving the origin of each object
+to be animated.</p></li>
+<li><p>Still inside the loop, erase the <apiname>Pixmap</apiname> by
+sending a <apiname>clear</apiname> message to it.</p></li>
+<li><p>Still inside the loop, display each animated object in its
+new location.</p></li>
+<li><p>Still inside the loop, display the <apiname>Pixmap</apiname> on
+the window.
+<codeblock otherprops="smalltalk expression">| gc buffer logo windowSize origin1 origin2 jump bufferGC |
+gc := (ScratchPad prepareWindow) graphicsContext.
+windowSize := gc clippingBounds extent.
+logo := LogoExample logo.
+origin1 := 0@0.
+origin2 := 360@0.
+jump := 5.
+buffer := Pixmap extent: windowSize.
+bufferGC := buffer graphicsContext.
+80 timesRepeat: [ 
+			origin1 := origin1 + jump.
+			origin2 := (origin2 x - jump) @ (origin2 y + jump).
+			
+			"Clear the buffer, then assemble the next scene."
+			buffer clear.
+			logo displayOn: bufferGC at: origin1.
+			logo displayOn: bufferGC at: origin2.
+			"Display the next scene."
+		buffer displayOn: gc]</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.graphicImages.useCursor"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Use a standard cursor</title>
+<body><p><indexterm>graphic image<indexterm>display cursor</indexterm></indexterm>The <apiname>Cursor</apiname> class
+provides methods for accessing the built-in cursors.</p>
+<p>Send a <apiname>showWhile:</apiname> message to the cursor, with
+a block containing the actions that are to take place while the
+cursor is in its changed state. After the actions in the block are
+finished, the cursor will return to normal automatically. (In the
+example, the controller changes the cursor for as long as it holds
+onto control.)
+<codeblock otherprops="smalltalk method">controlLoop
+	"Change the cursor to a cross-hair for drawing."
+	Cursor crossHair showWhile: [super controlLoop].</codeblock></p></body></topic>
+<topic id = "vw.help.graphicImages.createCursor"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a new cursor</title>
+<body><p><indexterm>graphic image<indexterm>create cursor</indexterm></indexterm><indexterm>cursor<indexterm>create
+new cursor</indexterm></indexterm><ol><li><p>Create an image that
+provides the pictorial element in the cursor. If you use the Image
+Editor to create the image, you must convert its palette to a color-based
+palette rather than a coverage-based one. To do so, edit the resource
+method that defines the image, substituting <codeph>MappedPalette
+whiteBlack</codeph> (or another two-color palette) for the default <codeph>CoveragePalette
+monoMaskPalette</codeph>.</p></li>
+<li><p>Create a coverage-based image that defines the opaque portion of
+the first image. The Image Editor can be used to create this image.
+Typically, it is the same shape as the image from step 1, but completely
+darkened and one pixel larger on each side.</p></li>
+<li><p>Create the cursor by sending an <apiname>image:mask:hotSpot:name:</apiname> message
+to the <apiname>Cursor</apiname> class. The <codeph>image</codeph> argument
+is the color-based image that you created in step 1. The <codeph>mask</codeph> argument
+is the coverage-based image from step 2. The <codeph>hotSpot</codeph> argument
+is a point indicating which pixel in the image is the control point. The <codeph>name</codeph> argument
+is a string containing a descriptive name for the cursor. The name
+is of little importance, but it is displayed when you inspect a
+cursor.
+<codeblock otherprops="smalltalk expression">| cursor colorImage maskImage |
+colorImage := CursorExample townCrierForCursor.
+maskImage := CursorExample shadow.
+cursor := Cursor
+		image: colorImage
+		mask: maskImage
+		hotSpot: 8@8
+		name: 'townCrier'.
+cursor showWhile: [(Delay forSeconds: 3) wait].</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Cursor-Example:Examples.CursorExample browse" 
+format="st" scope="external">Cursor-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.graphicImages.createIcon"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create an icon</title>
+<body><p><indexterm>graphic image<indexterm>create icon</indexterm></indexterm><indexterm>icon<indexterm>create
+new</indexterm></indexterm>Most often used to represent a collapsed
+window, an icon typically provides a pictorial clue to the nature
+of the window. <ol><li><p>Create an <apiname>Image</apiname> containing
+the pictorial element for the icon. You can use the Image Editor
+to create the image and save it in a method (in the example, the
+image is returned by the <apiname>townCrier</apiname> method of the <apiname>CursorExample</apiname> class).</p></li>
+<li><p>Create a <apiname>Mask</apiname> containing the image by sending
+an <apiname>asRetainedMedium</apiname> message to the image.</p></li>
+<li><p>Create an icon by sending an <apiname>image:</apiname> message
+to the <apiname>Icon</apiname> class. The argument is the mask from
+step 2.
+<codeblock otherprops="smalltalk expression">| icon gc image mask |
+image := CursorExample townCrier.
+mask := image asRetainedMedium.
+gc := (ScratchPad prepareWindow) graphicsContext.
+icon := Icon image: mask.
+icon displayOn: gc at: 10@10.</codeblock></p></li></ol></p>
+<p>Note that the <apiname>Icon</apiname> instance takes care of reconstructing
+the <apiname>Mask</apiname> instance when you quit and restart &Product;.</p></body></topic></topic></dita>

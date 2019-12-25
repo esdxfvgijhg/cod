@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY fmv1      "VisualWorks Application Developer's Guide">
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.inetClient.ftp"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>FTP</title>
+<topic id = "vw.help.inetClient.ftp.ftpURL"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Using FtpURL</title>
+<body><p><indexterm>FtpURL</indexterm>An URL (Uniform Resource Locator)
+is the standard way to specify the location of a resource that is
+available electronically. In &Product;, an FTP URL is represented
+by class <apiname>FtpURL</apiname>.</p>
+<p><apiname>FtpURL</apiname> mimics <apiname>Filename</apiname>, so
+you can access remote files just like local files. Although this
+makes accessing remote files easy, you will need the following:<ul><li><p>You
+must know exact names of directories and files on the remote server.</p></li>
+<li><p>You must know the user name and password for access to a secured
+FTP server.</p></li></ul></p></body>
+<topic id = "vw.help.inetClient.ftp.ftpURL.remoteServer"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Identify a remote FTP server</title>
+<body><p><indexterm>ftp<indexterm>specify server</indexterm></indexterm>Following
+is the standard syntax for accessing a remote FTP server:
+<pre>		ftp://&lt;username>:&lt;password>@&lt;host>:&lt;port>/&lt;path></pre></p>
+<p>The <filepath>&lt;port></filepath>, <filepath>&lt;username></filepath>,
+and <filepath>&lt;password></filepath> parameters are all optional; specifically:<ul>
+<li><p>If you do not specify a port, the default (21) will be used.</p></li>
+<li><p>If you do not specify a user, the default (anonymous) will
+be used.</p></li>
+<li><p>If you do not specify a password, the default (your e-mail address)
+will be used.</p></li></ul></p>
+<note type="caution">It can be dangerous to use the 
+<filepath>&lt;username&gt;:&lt;password&gt;</filepath> combination
+in the URL, because the password is not encrypted. If you are sending
+a password, it will be visible to anyone monitoring your network
+traffic. Therefore, it is preferable to use "anonymous" access (the
+default) whenever possible.</note>
+<p>The "minimum" URL will look like this:
+<pre>		ftp://&lt;host&gt;/&lt;path&gt;</pre></p>
+<p>The <filepath>host</filepath> is the fully qualified domain name
+of the system, and the <filepath>path</filepath> is the hierarchical
+directory path of the form <filepath>directory/directory/filename</filepath>.
+The host can be left as an empty string or "localhost" to refer to
+local files on the client on which the URL is being interpreted.</p>
+<section>
+<title>Using special symbols</title>
+<p>If your password includes certain symbols (for example, an "@"
+in an e-mail address), you must replace the symbol with a string representing
+its hex value (for example, replace "@" with "%40"). Other characters
+(especially in the password) should also be encoded so they are
+not confused with the URL syntax.</p>
+<p>Some of the more common symbols are:
+<table frame = "topbot" colsep = "0" rowsep = "0">
+<tgroup cols = "2" colsep = "0" rowsep = "0"
+    outputclass = "2Column NoTitle">
+<colspec colnum = "1" colname = "1" colwidth = "67*" colsep = "0"/>
+<colspec colnum = "2" colname = "2" colwidth = "33*" colsep = "0"/>
+<thead>
+<row rowsep = "0">
+<entry colname = "1">Symbol</entry>
+<entry colname = "2">Replacement String</entry>
+</row>
+</thead>
+<tbody>
+<row rowsep = "0">
+<entry colname = "1">% (percent)</entry>
+<entry colname = "2">%25</entry>
+</row>
+<row rowsep = "0">
+<entry colname = "1">, (comma)</entry>
+<entry colname = "2">%2C</entry>
+</row>
+<row rowsep = "0">
+<entry colname = "1">/ (forward slash)</entry>
+<entry colname = "2">%2F</entry>
+</row>
+<row rowsep = "0">
+<entry colname = "1">: (colon)</entry>
+<entry colname = "2">%3A</entry>
+</row>
+<row rowsep = "0">
+<entry colname = "1">; (semi-colon)</entry>
+<entry colname = "2">%3B</entry>
+</row>
+<row rowsep = "0">
+<entry colname = "1">@ (at sign)</entry>
+<entry colname = "2">%40</entry>
+</row>
+<row rowsep = "0">
+<entry colname = "1"> (space)</entry>
+<entry colname = "2">%20</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</p>
+</section>
+</body></topic>
+<topic id = "vw.help.inetClient.ftp.ftpURL.downloadFile"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Download a file from a remote server (Binary mode)</title>
+<body><p><indexterm>ftp<indexterm>download file binary</indexterm></indexterm>The
+following code copies the file <filepath>hello.txt</filepath> from the <filepath>visualworks</filepath> directory
+into the "home" directory of &Product; on the local machine. The
+user <filepath>zzuser</filepath> with password <filepath>zzpassword</filepath> is
+used to logon to the <filepath>yourftpserver</filepath> FTP server.
+The file will be transferred in Binary (image) mode, the default
+transfer mode for URI.
+<codeblock otherprops="smalltalk expression">'ftp://zzuser:zzpassword@yourftpserver/visualworks/hello.txt' asURI 
+	copyTo: 'helloworld.txt' asFilename asURI.</codeblock></p>
+<p>The following code copies the file <filepath>hello.txt</filepath> using
+text mode, to <filepath>helloworld.txt</filepath>. 
+<codeblock otherprops="smalltalk expression">| output |
+output := 'helloworld.txt' asFilename writeStream.
+'ftp://zzuser:zzpassword@yourftpserver/visualworks/hello.txt' asURI
+	readStreamDo: [:stream :params | stream text.
+	[stream atEnd] whileFalse: [output nextPut: stream next]].
+output close.</codeblock></p>
+<note type = "note">For uploading/downloading files in Text (ASCII) mode,
+it is best to use either the Stream methods for FtpURL or, better
+yet, FTPClient commands.</note></body></topic>
+<topic id = "vw.help.inetClient.ftp.ftpURL.uploadFile"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Upload a file to a remote server (Binary mode)</title>
+<body><p><indexterm>ftp<indexterm>upload file binary</indexterm></indexterm>The
+following code copies the file <filepath>vwlogo.jpg</filepath> (found
+in the "home" directory of &Product; on the local machine) to
+the <filepath>visualworks</filepath> directory. The user <filepath>zzuser</filepath> with
+password <filepath>zzpassword</filepath> is used to logon to the <filepath>yourftpserver</filepath> FTP
+server. 
+<codeblock otherprops="smalltalk expression">'vwlogo.jpg' asFilename asURI copyTo:
+	'ftp://zzuser:zzpassword@yourftpserver/visualworks/vwlogo.jpg' asURI.</codeblock></p>
+<p>The following code copies the file <filepath>hello.txt</filepath> (found
+in the "home" directory of &Product; on the local machine) to
+the <filepath>visualworks</filepath> directory. The user <filepath>zzuser</filepath> with
+password <filepath>zzpassword</filepath> is used to logon to the <filepath>yourftpserver</filepath> FTP
+server. It is assumed that <filepath>hello.txt</filepath> is a simple text
+file, since streams are being used.
+<codeblock otherprops="smalltalk expression">| input |
+input := 'hello.txt' asFilename readStream.
+'ftp://zzuser:zzpassword@yourftpserver/visualworks/hello.txt' asURI 
+	writeStreamDo: [ :stream | stream nextPutAll: input text; cr].
+input close.</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.ftp.ftpURL.createDirectory"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a new directory</title>
+<body><p><indexterm>ftp<indexterm>create remote directory</indexterm></indexterm>The
+following code creates the directory <filepath>testDir2</filepath> under
+the existing <filepath>visualworks</filepath> directory. The user <filepath>zzuser</filepath> with
+password <filepath>zzpassword</filepath> is used to logon to the <filepath>yourftpserver</filepath> FTP
+server.
+<codeblock otherprops="smalltalk expression">'ftp://zzuser:zzpassword@yourftpserver/visualworks/testDir2' asURI makeDirectory.</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.ftp.ftpURL.listDirectory"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>List files in a directory</title>
+<body><p><indexterm>ftp<indexterm>list remote files</indexterm></indexterm>The
+following code collects the contents of the <filepath>visualworks</filepath> directory. The
+user <filepath>zzuser</filepath> with password <filepath>zzpassword</filepath> is
+used to logon to the <filepath>yourftpserver</filepath> FTP server.
+This will return an Ordered Collection of file details.
+<codeblock otherprops="smalltalk expression">'ftp://zzuser:zzpassword@yourftpserver/visualworks' asURI directoryContents.</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.ftp.ftpURL.deleteFile"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Delete a file</title>
+<body><p><indexterm>ftp<indexterm>delete remote file</indexterm></indexterm>The
+following code deletes the file <filepath>file1.txt</filepath> from
+the <filepath>visualworks</filepath> directory. The user <filepath>zzuser</filepath> with
+password <filepath>zzpassword</filepath> is used to logon to the <filepath>yourftpserver</filepath> FTP
+server. An error will result if the file cannot be found:  "550
+: The system cannot find the file specified".
+<codeblock otherprops="smalltalk expression">'ftp://zzuser:zzpassword@yourftpserver/visualworks/file1.txt' asURI delete.</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.ftp.ftpURL.getFileSize"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Determine the size of a file</title>
+<body><p><indexterm>ftp<indexterm>get file size</indexterm></indexterm>The
+following code returns the size (in bytes) of the file <filepath>file1.txt</filepath> found in
+the <filepath>visualworks</filepath> directory. The user <filepath>zzuser</filepath> with
+password <filepath>zzpassword</filepath> is used to logon to the <filepath>yourftpserver</filepath> FTP
+server.
+<codeblock otherprops="smalltalk expression">'ftp://zzuser:zzpassword@yourftpserver/visualworks/file1.txt' asURI fileSize.</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.ftp.ftpURL.checkFileExist"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Determine if a file or directory exists</title>
+<body><p><indexterm>ftp<indexterm>check file existence</indexterm></indexterm>The
+following code returns either true or false, depending on the existence
+of the file <filepath>file1.txt</filepath> in the <filepath>visualworks</filepath> directory.
+The user <filepath>zzuser</filepath> with password <filepath>zzpassword</filepath> is
+used to logon to the <filepath>yourftpserver</filepath> FTP server.
+<codeblock otherprops="smalltalk expression">'ftp://zzuser:zzpassword@yourftpserver/visualworks/file1.txt' asURI exists.</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.ftp.ftpURL.checkDirectory"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Determine if the URI is a directory</title>
+<body><p><indexterm>ftp<indexterm>check for directory</indexterm></indexterm>The
+following code returns either true or false depending on whether or
+not the file <filepath>file1.txt</filepath> in the <filepath>visualworks</filepath> directory
+is a directory. The user <filepath>zzuser</filepath> with password <filepath>zzpassword</filepath> is
+used to logon to the <filepath>yourftpserver</filepath> FTP server.
+<codeblock otherprops="smalltalk expression">'ftp://zzuser:zzpassword@yourftpserver/visualworks/file1.txt' asURI isDirectory.</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.ftp.ftpURL.streamOps"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Stream operations</title>
+<body><p><indexterm>ftp<indexterm>stream operations</indexterm></indexterm>There
+are two stream operations. Both of these methods use guarded transfer,
+which ensures that streams are closed after use:<dl><dlentry><dt>readStreamDo:</dt>
+<dd>Read the resource that the URI represents. The argument to the message
+is a block that takes a stream as its first argument and a Dictionary
+of properties as its second argument. If the URI allows you to know
+or guess the MIME type of the data, that will appear in the dictionary
+under the key <codeph>#MIME</codeph>. The dictionary may have other
+keys, depending on the type of URI and the server which has the
+resource. The stream must be used within the block only. It will
+be closed when the block finishes executing. The return value of 
+<apiname>readStreamDo:</apiname> will
+be the value returned by the block.</dd></dlentry>
+<dlentry><dt>writeStreamDo:</dt>
+<dd>Write a new resource at its address. The argument to the message
+is a block that takes a stream as its only argument. The stream
+must be used within the block only. It will be closed when the block
+finishes executing. The return value of <apiname>writeStreamDo:</apiname> will
+be the value returned by the block.</dd></dlentry></dl></p>
+<p>For more information about stream operations, refer to the <cite>&fmv1;</cite>.</p></body></topic></topic>
+<topic id = "vw.help.inetClient.ftp.ftpClient"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Using FTPClient (FTP Protocol Level)</title>
+<topic id = "vw.help.inetClient.ftp.ftpClient.downloadFile"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Download a file from a remote server</title>
+<body><p><indexterm>ftp<indexterm>download file</indexterm></indexterm>The
+following code copies the file <filepath>hello.txt</filepath> from the <filepath>visualworks</filepath> directory
+into the "home" directory of &Product; on the local machine. On
+the local system, however, the file will be called <filepath>helloworld.txt</filepath>.
+The user <filepath>zzuser</filepath> with password <filepath>zzpassword</filepath> is
+used to logon to the <filepath>yourftpserver</filepath> FTP server.
+The file will be transferred in text (ASCII) mode, since the default
+transfer of Binary (Image) is being overridden with the <apiname>textTransfer</apiname> method. 
+<codeblock otherprops="smalltalk expression">| ftpClient |
+ftpClient := FTPClient loginToHost: 'yourftpserver' 
+	asUser: 'zzuser' withPassword: 'zzpassword'.
+ftpClient beCurrentDirectory: 'visualworks'.
+ftpClient textTransfer.
+ftpClient retrieveFileNamed: 'hello.txt' as: 'helloworld.txt'.
+ftpClient close.</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.ftp.ftpClient.uploadFile"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Upload a file to a remote server (Text mode)</title>
+<body><p><indexterm>ftp<indexterm>upload file text</indexterm></indexterm>The
+following code copies the file <filepath>helloworld.txt</filepath> from
+the "home" directory of &Product; on the local machine to the <filepath>visualworks</filepath> directory
+on the server. On the remote server, however, the file will be called <filepath>hello.txt</filepath>.
+The user <filepath>zzuser</filepath> with password <filepath>zzpassword</filepath> is
+used to logon to the <filepath>yourftpserver</filepath> FTP server.
+The file will be transferred in text (ASCII) mode, since the default
+transfer of Binary (Image) is being overridden with the <apiname>textTransfer</apiname> method.
+<codeblock otherprops="smalltalk expression">| ftpClient |
+ftpClient := FTPClient loginToHost: 'yourftpserver' 
+	asUser: 'zzuser' withPassword: 'zzpassword'.
+ftpClient beCurrentDirectory: 'visualworks'.
+ftpClient textTransfer.
+ftpClient storeFileNamed: 'helloworld.txt' to: 'hello.txt'.
+ftpClient close.</codeblock></p>
+<p>The following code copies the file <filepath>vwlogo.jpg</filepath> to
+the <filepath>visualworks</filepath> directory on the server, renaming
+it to <filepath>vwlogo2.jpg</filepath>. Although not necessary, the <apiname>binaryTransfer</apiname> method
+is being used here to ensure that the file will be transferred in
+Binary (Image) mode. 
+<codeblock otherprops="smalltalk expression">| ftpClient |
+ftpClient := FTPClient loginToHost: 'yourftpserver' 
+	asUser: 'zzuser' withPassword: 'zzpassword'.
+ftpClient beCurrentDirectory: 'visualworks'.
+ftpClient binaryTransfer.
+ftpClient storeFileNamed: 'vwlogo.jpg' to: 'vwlogo2.jpg'.
+ftpClient close.</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.ftp.ftpClient.createDirectory"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a new directory</title>
+<body><p><indexterm>ftp<indexterm>create remote directory</indexterm></indexterm>The
+following code creates the directory <filepath>visualworks</filepath> under
+the existing "root" directory. The user <filepath>zzuser</filepath> with
+password <filepath>zzpassword</filepath> is used to logon to the <filepath>yourftpserver</filepath> FTP
+server.
+<codeblock otherprops="smalltalk expression">| ftpClient |
+ftpClient := FTPClient loginToHost: 'yourftpserver' 
+	asUser: 'zzuser' withPassword: 'zzpassword'.
+ftpClient makeDirectory: 'visualworks'.
+ftpClient close.</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.ftp.ftpClient.deleteDirectory"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Delete a directory</title>
+<body><p><indexterm>ftp<indexterm>delete remote directory</indexterm></indexterm>The
+following code deletes the directory <filepath>testDir2</filepath> under
+the existing <filepath>visualworks</filepath> directory. The user <filepath>zzuser</filepath> with
+password <filepath>zzpassword</filepath> is used to logon to the <filepath>yourftpserver</filepath> FTP
+server. If the directory is not empty, an error will result:  "550
+: The directory is not empty". An error will also result if the
+directory cannot be found:  "550 : The system cannot find the file
+specified".
+<codeblock otherprops="smalltalk expression">| ftpClient |
+ftpClient := FTPClient loginToHost: 'yourftpserver' 
+	asUser: 'zzuser' withPassword: 'zzpassword'.
+ftpClient removeDirectory: 'visualworks'.
+ftpClient close.</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.ftp.ftpClient.listDirectory"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>List files in a remote directory</title>
+<body><p><indexterm>ftp<indexterm>list files</indexterm></indexterm>The
+following code collects the contents of the <filepath>visualworks</filepath> directory. The
+user <filepath>zzuser</filepath> with password <filepath>zzpassword</filepath> is
+used to logon to the <filepath>yourftpserver</filepath> FTP server.
+This code will return an <apiname>OrderedCollection</apiname> of file
+details.
+<codeblock otherprops="smalltalk expression">| ftpClient |
+ftpClient := FTPClient loginToHost: 'yourftpserver' 
+	asUser: 'zzuser' withPassword: 'zzpassword'.
+ftpClient beCurrentDirectory: 'visualworks'.
+ftpClient directoryContents: #() do:
+	[ :entry | Transcript show: entry; cr ].
+ftpClient close.</codeblock></p>
+<p>The following code collects only those files and directories
+that begin with the letter "T". 
+<codeblock otherprops="smalltalk expression">| ftpClient |
+ftpClient := FTPClient loginToHost: 'yourftpserver' 
+	asUser: 'zzuser' withPassword: 'zzpassword'.
+ftpClient beCurrentDirectory: 'visualworks'.
+ftpClient directoryContents: #('t*') do: 
+	[ :entry | Transcript show: entry; cr ].
+ftpClient close.</codeblock></p>
+<p>The following code collects only the names of the files (no details).
+<codeblock otherprops="smalltalk expression">| ftpClient |
+ftpClient := FTPClient loginToHost: 'yourftpserver' 
+	asUser: 'zzuser' withPassword: 'zzpassword'.
+ftpClient beCurrentDirectory: 'visualworks'.
+ftpClient filesInDirectory: #() do: 
+	[ :entry | Transcript show: entry; cr ].
+ftpClient close.</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.ftp.ftpClient.deleteFile"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Delete a file </title>
+<body><p><indexterm>ftp<indexterm>delete file</indexterm></indexterm>The
+following code deletes the file <filepath>hello.txt</filepath> from
+the <filepath>visualworks</filepath> directory. The user <filepath>zzuser</filepath> with
+password <filepath>zzpassword</filepath> is used to logon to the <filepath>yourftpserver</filepath> FTP
+server. An error will result if the file cannot be found:  "550
+: The system cannot find the file specified".
+<codeblock otherprops="smalltalk expression">| ftpClient |
+ftpClient := FTPClient loginToHost: 'yourftpserver' 
+	asUser: 'zzuser' withPassword: 'zzpassword'.
+ftpClient beCurrentDirectory: 'visualworks'.
+ftpClient deleteFile: 'hello.txt'.
+ftpClient close.</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.ftp.ftpClient.getFileSize"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Determine the size of a file</title>
+<body><p><indexterm>ftp<indexterm>get file size</indexterm></indexterm>The
+following code returns the size (in bytes) of the file <filepath>hello.txt</filepath> found in
+the <filepath>visualworks</filepath> directory. The user <filepath>zzuser</filepath> with
+password <filepath>zzpassword</filepath> is used to logon to the <filepath>yourftpserver</filepath> FTP
+server.
+<codeblock otherprops="smalltalk expression">| ftpClient |
+ftpClient := FTPClient loginToHost: 'yourftpserver' 
+	asUser: 'zzuser' withPassword: 'zzpassword'.
+ftpClient beCurrentDirectory: 'visualworks'.
+ftpClient fileSize: 'hello.txt'.
+ftpClient close.</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.ftp.ftpClient.serverXfer"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Direct transfer between two FTP servers</title>
+<body><p><indexterm>ftp<indexterm>transfer between servers</indexterm></indexterm>The
+following code copies the file <filepath>rfc-index</filepath> found
+in the <filepath>inet/rfc</filepath> directory of the UUNet FTP server
+(<filepath>ftp.uu.net</filepath>) into the root directory of the XXX_ZZZ
+FTP server (<filepath>xxx_zzz.site.com</filepath>). The user <filepath>username</filepath> with
+password password is used to logon to the <filepath>xxx_zzz.site.com</filepath> FTP
+server, and the user <filepath>anonymous</filepath> with password user@zzz.com is
+used to logon to the <filepath>ftp.uu.net</filepath> FTP server. The
+file will be called <filepath>rfc-index</filepath> on the <filepath>xxx_zzz.site.com</filepath> server.
+<codeblock otherprops="smalltalk expression">| ftpClient uunetClient |
+[ftpClient := FTPClient loginToHost: 'xxx_zzz.site.com' 
+	asUser: 'username' withPassword: 'password.
+		uunetClient := FTPClient loginToHost: 'ftp.uu.net' 
+			asUser: 'anonymous' withPassword: 'user@zzz.com' withAcct: nil.
+		ftpClient copyFromFTP: uunetClient file: 'inet/rfc/rfc-index'
+	toFile: 'rfc-index' passive: false.
+] ensure: [uunetClient disconnect.ftpClient disconnect.].</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.ftp.ftpClient.setStreamMode"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Change mode to stream</title>
+<body><p><indexterm>ftp<indexterm>stream mode</indexterm></indexterm>The
+following code will change the mode to stream. Although there are
+codes for block mode and compressed mode, only stream mode is supported
+at this time. 
+<codeblock otherprops="smalltalk expression">| ftpClient |
+"S=Stream  B=Block  C=Compressed"
+" Only Stream is supported at this time "
+ftpClient := FTPClient loginToHost: 'yourftpserver' 
+	asUser: 'zzuser' withPassword: 'zzpassword'.
+ftpClient mode: $S.
+ftpClient close.</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.ftp.ftpClient.getServerInfo"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Display the remote server information</title>
+<body><p><indexterm>ftp<indexterm>get server information</indexterm></indexterm>The
+following code will inspect the details of the remote server. 
+<codeblock otherprops="smalltalk expression">| ftpClient |
+ftpClient := FTPClient loginToHost: 'yourftpserver' 
+	asUser: 'zzuser' withPassword: 'zzpassword'.
+(ftpClient remoteSystemType) inspect.
+ftpClient close.</codeblock></p>
+<p>The following code will inspect the details of the remote server.
+All FTP servers will recognize this command, although the returned response
+is not very descriptive. 
+<codeblock otherprops="smalltalk expression">| ftpClient |
+ftpClient := FTPClient loginToHost: 'yourftpserver' 
+	asUser: 'zzuser' withPassword: 'zzpassword'.
+(ftpClient stat) inspect.
+ftpClient close.</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.ftp.ftpClient.renameFile"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Rename a file on the remote server</title>
+<body><p><indexterm>ftp<indexterm>rename file</indexterm></indexterm>The
+following code will rename the file <filepath>hello4.txt</filepath> found
+in the <filepath>visualworks</filepath> directory to <filepath>hellofour.txt</filepath>.
+The user <filepath>zzuser</filepath> with password <filepath>zzpassword</filepath> is
+used to logon to the <filepath>yourftpserver</filepath> FTP server.
+<codeblock otherprops="smalltalk expression">| ftpClient |
+ftpClient := FTPClient loginToHost: 'yourftpserver' 
+	asUser: 'zzuser' withPassword: 'zzpassword'.
+ftpClient beCurrentDirectory: 'visualworks'.
+ftpClient rename: 'hello4.txt' to: 'hellofour.txt'.
+ftpClient close.</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.ftp.ftpClient.ftpCommands"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Using FTP commands and responses</title>
+<body><p><indexterm>ftp<indexterm>use commnds</indexterm></indexterm><apiname>FTPClient</apiname> allows
+sending FTP commands almost as if you were at an FTP client command
+prompt. This is generally useful only for simple cases as illustrated
+here.</p>
+<p>The following code deletes the file <filepath>helloX.txt</filepath> from
+the <filepath>visualworks</filepath> directory. An error will result
+if the file cannot be found:  "550 : The system cannot find the
+file specified".
+<codeblock otherprops="smalltalk expression">| ftpClient |
+ftpClient := FTPClient loginToHost: 'yourftpserver' 
+	asUser: 'zzuser' withPassword: 'zzpassword'.
+ftpClient executeCommand: 'CWD visualworks'.
+ftpClient executeCommand: 'DELE helloX.txt'.
+ftpClient executeCommand: 'QUIT'.
+ftpClient disconnect.</codeblock></p></body></topic></topic></topic></dita>

@@ -1,0 +1,4 @@
+<map id="PropagationLossModel" name="PropagationLossModel">
+<area shape="rect" id="node2" href="$classns3_1_1lorawan_1_1BuildingPenetrationLoss.html" title="{ns3::lorawan::BuildingPenetrationLoss\n||+ BuildingPenetrationLoss()\l+ ~BuildingPenetrationLoss()\l+ GetTypeId()\l}" alt="" coords="5,153,249,259"/>
+<area shape="rect" id="node3" href="$classns3_1_1lorawan_1_1CorrelatedShadowingPropagationLossModel.html" title="{ns3::lorawan::Correlated\lShadowingPropagationLossModel\n||+ CorrelatedShadowingPropagation\lLossModel()\l+ SetCorrelationDistance()\l+ GetCorrelationDistance()\l+ GetTypeId()\l}" alt="" coords="274,131,501,281"/>
+</map>

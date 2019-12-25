@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.gui.toolbar"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Toolbars</title>
+<topic id = "vw.help.gui.toolbar.add"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Add a tool bar</title>
+<body><p><indexterm>tool bar<indexterm>add to canvas</indexterm></indexterm>To
+use a tool bar, add the following parts to your application:<ol><li><p>Create
+resource methods containing the button images. You can use the Image
+Editor to create graphics and save them as resource methods, or
+create them from graphics files.</p></li>
+<li><p>Create a menu that identifies the buttons with specific actions.
+Do not add submenu items. To add a separation distance between buttons,
+add a line. Once the specification is completed, install it to a
+class resource method in your application.</p></li>
+<li><p>Create an application class method that reimplements <apiname>interfaceSpecFor:</apiname>,
+for example:
+<codeblock otherprops="smalltalk method">interfaceSpecFor: aSymbol
+	| spec |
+	spec := super interfaceSpecFor: aSymbol.
+	aSymbol == #windowSpec
+		ifTrue: [spec window toolBar: #toolBar].
+	^spec</codeblock></p></li>
+<li><p>Enable the tool bar. In the Properties Tool for the application canvas,
+to be shown in the window from the canvas Property Tool, on the <uicontrol>Basics</uicontrol> page,
+check the box labeled <uicontrol>Enable</uicontrol> in the <uicontrol>Menu Bar</uicontrol> box.
+The <uicontrol>Menu</uicontrol> field may be left blank if you are
+not including a menu bar in the window.</p></li></ol></p>
+<note type="note">The tool bar height will be the height of the largest image
+for any of the tool bar buttons. It is not necessary to add a decorative border
+to the image since the tool bar button object will provide its own.</note></body></topic>
+<topic id = "vw.help.gui.toolbar.showEnabled"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a tool bar image to show enablement</title>
+<body><p><indexterm>tool bar<indexterm>enabled-disabled graphic</indexterm></indexterm>To
+create tool bar buttons which can be toggled between an enabled and
+disabled state, use instances of <apiname>OpaqueImageWithEnablement</apiname> instead
+of the <apiname>Image</apiname> or <apiname>OpaqueImage</apiname>. An <apiname>OpaqueImageWithEnablement</apiname> includes
+a separate mask to show the disabled image. In most cases you should
+use the first mask for the second disablement mask. 
+<codeblock otherprops="smalltalk method">openIcon
+	^OpaqueImageWithEnablement
+		figure: self openIconImage
+		shape: self openIconMask
+		inactiveMask: self openIconMask.</codeblock></p>
+<p><b>Online example:</b> 
+<xref href="prereq:ToolCommand-Example:Examples.ToolCommandExample open" 
+format="st" scope="external">ToolCommand-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.gui.toolbar.disableEnableButtons"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Enable or disable individual buttons programmatically</title>
+<body><p><indexterm>tool bar<indexterm>enable-disable button</indexterm></indexterm>Send
+the message <apiname>componentAt:</apiname> to access the tool bar
+object from the application builder; supply the <codeph>ID</codeph> symbol
+for the tool bar as the argument. Use <apiname>componentAt:</apiname> to
+access any button from the tool bar object, again using the <codeph>ID</codeph> symbol
+of the button object. To change the state of these button objects,
+use the messages <apiname>enable</apiname> or <apiname>disable</apiname>.
+<codeblock otherprops="smalltalk method">configureMenu
+	"Disable or enable the menu items depending on whether
+	a file is selected."
+	| menu submenu toolBar |
+	menu := self builder menuAt: #fileMenu.
+	submenu := (menu menuItemLabeled: 'File') submenu.
+	<b>toolBar := self builder componentAt: #toolBar.</b>
+	self files selection isNil
+		ifTrue: [
+			(submenu menuItemLabeled: 'Open') disable.
+			(submenu menuItemLabeled: 'Delete') disable.
+			<b>(toolBar componentAt:#openIcon) disable.</b>
+			<b>(toolBar componentAt:#deleteIcon) disable]</b>
+			ifFalse:
+				[(submenu menuItemLabeled: 'Open') enable.
+				(submenu menuItemLabeled: 'Delete') enable.
+				<b>(toolBar componentAt:#openIcon) enable.</b>
+				<b>(toolBar componentAt:#deleteIcon) enable]</b></codeblock></p>
+<p><b>Online example:</b> 
+<xref href="prereq:ToolCommand-Example:Examples.ToolCommandExample open" 
+format="st" scope="external">ToolCommand-Example</xref></p>
+</body></topic></topic></dita>
