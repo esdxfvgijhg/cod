@@ -1,0 +1,55 @@
+// Copyright © 2019 The Things Network Foundation, The Things Industries B.V.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+.navigation
+  border-normal(right)
+  max-width: 18rem
+  min-width: 16rem
+  height: 100%
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+
+  &-minimized
+    min-width: auto
+    display: inline-flex
+
+  &-button
+    align-self: center
+
+.header
+  display: flex
+  align-content: center
+  padding: $cs.xl $cs.l
+  font-weight: 600
+
+  &-minimized
+    padding: $cs.l $cs.m
+    display: inline-block
+
+    .message
+      display: none
+
+    .icon
+      margin-right: 0
+
+.message
+  display: block
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+.icon
+  nudge('down', 3px)
+  margin-right: $cs.xs

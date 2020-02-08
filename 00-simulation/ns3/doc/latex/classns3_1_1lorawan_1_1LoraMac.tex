@@ -1,0 +1,479 @@
+\hypertarget{classns3_1_1lorawan_1_1LoraMac}{}\section{ns3\+:\+:lorawan\+:\+:Lora\+Mac Class Reference}
+\label{classns3_1_1lorawan_1_1LoraMac}\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+
+
+{\ttfamily \#include $<$lora-\/mac.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Lora\+Mac\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classns3_1_1lorawan_1_1LoraMac__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Lora\+Mac\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classns3_1_1lorawan_1_1LoraMac__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_af23a473da8e20faebc278e599c6e4a46}\label{classns3_1_1lorawan_1_1LoraMac_af23a473da8e20faebc278e599c6e4a46}} 
+typedef std\+::array$<$ std\+::array$<$ uint8\+\_\+t, 6 $>$, 8 $>$ {\bfseries Reply\+Data\+Rate\+Matrix}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraMac_a924a856293cc8a21f7c476acb18f8b5f}{Set\+Phy} (Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy}{Lora\+Phy} $>$ phy)
+\item 
+Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy}{Lora\+Phy} $>$ \hyperlink{classns3_1_1lorawan_1_1LoraMac_a991b6aa211889b6321e64f772c64cbfc}{Get\+Phy} (void)
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1LoraMac_ac2f3fd92536658192bfa3d1523fff716}{Send} (Ptr$<$ Packet $>$ packet)=0
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1LoraMac_a6eda46656789a277b8e103afcefdc21a}{Receive} (Ptr$<$ Packet const $>$ packet)=0
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1LoraMac_afcd55472bbfa299c4d0239d5fa9957e3}{Failed\+Reception} (Ptr$<$ Packet const $>$ packet)=0
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1LoraMac_aa64037192af83dc459487bccccd10bdf}{Tx\+Finished} (Ptr$<$ const Packet $>$ packet)=0
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraMac_a3b5d08b43f747474078bb78c45af01aa}{Set\+Device} (Ptr$<$ \hyperlink{classNetDevice}{Net\+Device} $>$ device)
+\item 
+Ptr$<$ \hyperlink{classNetDevice}{Net\+Device} $>$ \hyperlink{classns3_1_1lorawan_1_1LoraMac_a1037ae338de4f96866666697ddfc5809}{Get\+Device} (void)
+\item 
+\hyperlink{classns3_1_1lorawan_1_1LogicalLoraChannelHelper}{Logical\+Lora\+Channel\+Helper} \hyperlink{classns3_1_1lorawan_1_1LoraMac_a1f2ade596a55c0baa9a0252f5b7d04a7}{Get\+Logical\+Lora\+Channel\+Helper} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraMac_a831dc8e920c489e90bc643ee807ac434}{Set\+Logical\+Lora\+Channel\+Helper} (\hyperlink{classns3_1_1lorawan_1_1LogicalLoraChannelHelper}{Logical\+Lora\+Channel\+Helper} helper)
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1LoraMac_ae35eb49a530a0e339340959bcd2413e8}{Get\+Sf\+From\+Data\+Rate} (uint8\+\_\+t data\+Rate)
+\item 
+double \hyperlink{classns3_1_1lorawan_1_1LoraMac_a0b17634f15b5808b0fa992464f0197d0}{Get\+Bandwidth\+From\+Data\+Rate} (uint8\+\_\+t data\+Rate)
+\item 
+double \hyperlink{classns3_1_1lorawan_1_1LoraMac_a9c94b957556a38e2d1eba4a6d95121fe}{Get\+Dbm\+For\+Tx\+Power} (uint8\+\_\+t tx\+Power)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraMac_a54d20add4e60e76ad45bd34a95fce0c2}{Set\+Sf\+For\+Data\+Rate} (std\+::vector$<$ uint8\+\_\+t $>$ sf\+For\+Data\+Rate)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraMac_a7b915e6aa7ec36d1ac2581526afd652c}{Set\+Bandwidth\+For\+Data\+Rate} (std\+::vector$<$ double $>$ bandwidth\+For\+Data\+Rate)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraMac_aba1762b2acb3cc7113e499106bd54cb9}{Set\+Max\+App\+Payload\+For\+Data\+Rate} (std\+::vector$<$ uint32\+\_\+t $>$ max\+App\+Payload\+For\+Data\+Rate)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraMac_a398100d19be0294f87f7c102f8ff141b}{Set\+Tx\+Dbm\+For\+Tx\+Power} (std\+::vector$<$ double $>$ tx\+Dbm\+For\+Tx\+Power)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraMac_a669d1029ecf8039e040df55a5806cd5b}{Set\+Reply\+Data\+Rate\+Matrix} (Reply\+Data\+Rate\+Matrix reply\+Data\+Rate\+Matrix)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraMac_a26b6522eed72c69ebbac6a178521aeb0}{Set\+N\+Preamble\+Symbols} (int n\+Preamble\+Symbols)
+\item 
+int \hyperlink{classns3_1_1lorawan_1_1LoraMac_a8c731405d8a33467119060a3669b4105}{Get\+N\+Preamble\+Symbols} (void)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_a9b0bc1ebadb5c5c41b14ad33e6d30f84}\label{classns3_1_1lorawan_1_1LoraMac_a9b0bc1ebadb5c5c41b14ad33e6d30f84}} 
+static Type\+Id {\bfseries Get\+Type\+Id} (void)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Traced\+Callback$<$ Ptr$<$ const Packet $>$ $>$ \hyperlink{classns3_1_1lorawan_1_1LoraMac_a18ac5a42fe1cf9284f13b024811ea251}{m\+\_\+cannot\+Send\+Because\+Duty\+Cycle}
+\item 
+Traced\+Callback$<$ Ptr$<$ const Packet $>$ $>$ \hyperlink{classns3_1_1lorawan_1_1LoraMac_ab23af7950870011cad7498021b61bdb2}{m\+\_\+received\+Packet}
+\item 
+Traced\+Callback$<$ Ptr$<$ Packet const  $>$ $>$ \hyperlink{classns3_1_1lorawan_1_1LoraMac_a1a4ecee82558b1797b83dd0f459fae29}{m\+\_\+sent\+New\+Packet}
+\item 
+Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy}{Lora\+Phy} $>$ \hyperlink{classns3_1_1lorawan_1_1LoraMac_ab4e9cb7badca494b708d3f46629ab3bd}{m\+\_\+phy}
+\item 
+Ptr$<$ \hyperlink{classNetDevice}{Net\+Device} $>$ \hyperlink{classns3_1_1lorawan_1_1LoraMac_a81e93dafb6adf6ff9c871aaae403e9a6}{m\+\_\+device}
+\item 
+\hyperlink{classns3_1_1lorawan_1_1LogicalLoraChannelHelper}{Logical\+Lora\+Channel\+Helper} \hyperlink{classns3_1_1lorawan_1_1LoraMac_a7248ac03ba4be5a4391fd9a63b92debe}{m\+\_\+channel\+Helper}
+\item 
+std\+::vector$<$ uint8\+\_\+t $>$ \hyperlink{classns3_1_1lorawan_1_1LoraMac_ac8d1d1df404002ef578133d4ed5562ee}{m\+\_\+sf\+For\+Data\+Rate}
+\item 
+std\+::vector$<$ double $>$ \hyperlink{classns3_1_1lorawan_1_1LoraMac_a552da80de353193c4021988b402904ec}{m\+\_\+bandwidth\+For\+Data\+Rate}
+\item 
+std\+::vector$<$ uint32\+\_\+t $>$ \hyperlink{classns3_1_1lorawan_1_1LoraMac_a8e62781e3821750f10b1f242a2dcaef7}{m\+\_\+max\+App\+Payload\+For\+Data\+Rate}
+\item 
+int \hyperlink{classns3_1_1lorawan_1_1LoraMac_ab6688afd97e13515d365fd43e6886b5d}{m\+\_\+n\+Preamble\+Symbols}
+\item 
+std\+::vector$<$ double $>$ \hyperlink{classns3_1_1lorawan_1_1LoraMac_a3b34787f91543563ad0b989fe067120b}{m\+\_\+tx\+Dbm\+For\+Tx\+Power}
+\item 
+Reply\+Data\+Rate\+Matrix \hyperlink{classns3_1_1lorawan_1_1LoraMac_a3ba98173062c0f853dfdd70cba444203}{m\+\_\+reply\+Data\+Rate\+Matrix}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class representing the Lo\+Ra\+W\+AN M\+AC layer.
+
+This class is meant to be extended differently based on whether the layer belongs to an End Device or a Gateway, while holding some functionality that is common to both. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_afcd55472bbfa299c4d0239d5fa9957e3}\label{classns3_1_1lorawan_1_1LoraMac_afcd55472bbfa299c4d0239d5fa9957e3}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!Failed\+Reception@{Failed\+Reception}}
+\index{Failed\+Reception@{Failed\+Reception}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Failed\+Reception()}{FailedReception()}}
+{\footnotesize\ttfamily virtual void ns3\+::lorawan\+::\+Lora\+Mac\+::\+Failed\+Reception (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet const $>$}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Function called by lower layers to inform this layer that reception of a packet we were locked on failed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & the packet we failed to receive \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_ab1fe806e8a0f5aa3a17fd1c39e831d44}{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}, and \hyperlink{classns3_1_1lorawan_1_1GatewayLoraMac_a2d752f0ff766d409e1eb91d7bcd06ad5}{ns3\+::lorawan\+::\+Gateway\+Lora\+Mac}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_a0b17634f15b5808b0fa992464f0197d0}\label{classns3_1_1lorawan_1_1LoraMac_a0b17634f15b5808b0fa992464f0197d0}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!Get\+Bandwidth\+From\+Data\+Rate@{Get\+Bandwidth\+From\+Data\+Rate}}
+\index{Get\+Bandwidth\+From\+Data\+Rate@{Get\+Bandwidth\+From\+Data\+Rate}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Get\+Bandwidth\+From\+Data\+Rate()}{GetBandwidthFromDataRate()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+Lora\+Mac\+::\+Get\+Bandwidth\+From\+Data\+Rate (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{data\+Rate }\end{DoxyParamCaption})}
+
+Get the BW corresponding to a data rate, based on this M\+AC\textquotesingle{}s region
+
+
+\begin{DoxyParams}{Parameters}
+{\em data\+Rate} & The Data Rate we need to convert to a bandwidth value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The bandwidth that corresponds to the parameter Data Rate in this M\+AC\textquotesingle{}s region, or 0 if the data\+Rate is not valid. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_a9c94b957556a38e2d1eba4a6d95121fe}\label{classns3_1_1lorawan_1_1LoraMac_a9c94b957556a38e2d1eba4a6d95121fe}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!Get\+Dbm\+For\+Tx\+Power@{Get\+Dbm\+For\+Tx\+Power}}
+\index{Get\+Dbm\+For\+Tx\+Power@{Get\+Dbm\+For\+Tx\+Power}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Get\+Dbm\+For\+Tx\+Power()}{GetDbmForTxPower()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+Lora\+Mac\+::\+Get\+Dbm\+For\+Tx\+Power (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{tx\+Power }\end{DoxyParamCaption})}
+
+Get the transmission power in d\+Bm that corresponds, in this region, to the encoded 8-\/bit tx\+Power.
+
+
+\begin{DoxyParams}{Parameters}
+{\em tx\+Power} & The 8-\/bit encoded tx\+Power to convert.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The corresponding transmission power in d\+Bm, or 0 if the encoded power was not recognized as valid. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_a1037ae338de4f96866666697ddfc5809}\label{classns3_1_1lorawan_1_1LoraMac_a1037ae338de4f96866666697ddfc5809}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!Get\+Device@{Get\+Device}}
+\index{Get\+Device@{Get\+Device}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Get\+Device()}{GetDevice()}}
+{\footnotesize\ttfamily Ptr$<$ \hyperlink{classNetDevice}{Net\+Device} $>$ ns3\+::lorawan\+::\+Lora\+Mac\+::\+Get\+Device (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the device this M\+AC layer is installed on.
+
+\begin{DoxyReturn}{Returns}
+The \hyperlink{classNetDevice}{Net\+Device} this M\+AC layer will refer to. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_a1f2ade596a55c0baa9a0252f5b7d04a7}\label{classns3_1_1lorawan_1_1LoraMac_a1f2ade596a55c0baa9a0252f5b7d04a7}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!Get\+Logical\+Lora\+Channel\+Helper@{Get\+Logical\+Lora\+Channel\+Helper}}
+\index{Get\+Logical\+Lora\+Channel\+Helper@{Get\+Logical\+Lora\+Channel\+Helper}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Get\+Logical\+Lora\+Channel\+Helper()}{GetLogicalLoraChannelHelper()}}
+{\footnotesize\ttfamily \hyperlink{classns3_1_1lorawan_1_1LogicalLoraChannelHelper}{Logical\+Lora\+Channel\+Helper} ns3\+::lorawan\+::\+Lora\+Mac\+::\+Get\+Logical\+Lora\+Channel\+Helper (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the logical lora channel helper associated with this M\+AC.
+
+\begin{DoxyReturn}{Returns}
+The instance of \hyperlink{classns3_1_1lorawan_1_1LogicalLoraChannelHelper}{Logical\+Lora\+Channel\+Helper} that this M\+AC is using. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_a8c731405d8a33467119060a3669b4105}\label{classns3_1_1lorawan_1_1LoraMac_a8c731405d8a33467119060a3669b4105}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!Get\+N\+Preamble\+Symbols@{Get\+N\+Preamble\+Symbols}}
+\index{Get\+N\+Preamble\+Symbols@{Get\+N\+Preamble\+Symbols}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Get\+N\+Preamble\+Symbols()}{GetNPreambleSymbols()}}
+{\footnotesize\ttfamily int ns3\+::lorawan\+::\+Lora\+Mac\+::\+Get\+N\+Preamble\+Symbols (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the number of P\+HY preamble symbols this M\+AC is set to use.
+
+\begin{DoxyReturn}{Returns}
+The number of preamble symbols to use (typically 8). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_a991b6aa211889b6321e64f772c64cbfc}\label{classns3_1_1lorawan_1_1LoraMac_a991b6aa211889b6321e64f772c64cbfc}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!Get\+Phy@{Get\+Phy}}
+\index{Get\+Phy@{Get\+Phy}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Get\+Phy()}{GetPhy()}}
+{\footnotesize\ttfamily Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy}{Lora\+Phy} $>$ ns3\+::lorawan\+::\+Lora\+Mac\+::\+Get\+Phy (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the underlying P\+HY layer
+
+\begin{DoxyReturn}{Returns}
+The P\+HY layer that this M\+AC is connected to. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_ae35eb49a530a0e339340959bcd2413e8}\label{classns3_1_1lorawan_1_1LoraMac_ae35eb49a530a0e339340959bcd2413e8}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!Get\+Sf\+From\+Data\+Rate@{Get\+Sf\+From\+Data\+Rate}}
+\index{Get\+Sf\+From\+Data\+Rate@{Get\+Sf\+From\+Data\+Rate}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Get\+Sf\+From\+Data\+Rate()}{GetSfFromDataRate()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+Lora\+Mac\+::\+Get\+Sf\+From\+Data\+Rate (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{data\+Rate }\end{DoxyParamCaption})}
+
+Get the SF corresponding to a data rate, based on this M\+AC\textquotesingle{}s region.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data\+Rate} & The Data Rate we need to convert to a Spreading Factor value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The SF that corresponds to a Data Rate in this M\+AC\textquotesingle{}s region, or 0 if the data\+Rate is not valid. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_a6eda46656789a277b8e103afcefdc21a}\label{classns3_1_1lorawan_1_1LoraMac_a6eda46656789a277b8e103afcefdc21a}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!Receive@{Receive}}
+\index{Receive@{Receive}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Receive()}{Receive()}}
+{\footnotesize\ttfamily virtual void ns3\+::lorawan\+::\+Lora\+Mac\+::\+Receive (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet const $>$}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Receive a packet from the lower layer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & the received packet \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a7bb29a550534c631e2ee7cc3407a2bcd}{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}, and \hyperlink{classns3_1_1lorawan_1_1GatewayLoraMac_a8e53a57ec381d76bd47f51581b8c0df7}{ns3\+::lorawan\+::\+Gateway\+Lora\+Mac}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_ac2f3fd92536658192bfa3d1523fff716}\label{classns3_1_1lorawan_1_1LoraMac_ac2f3fd92536658192bfa3d1523fff716}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!Send@{Send}}
+\index{Send@{Send}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Send()}{Send()}}
+{\footnotesize\ttfamily virtual void ns3\+::lorawan\+::\+Lora\+Mac\+::\+Send (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet $>$}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Send a packet.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & The packet to send. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a6566cdcccf21b69267215758f36e7ee9}{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}, and \hyperlink{classns3_1_1lorawan_1_1GatewayLoraMac_adc8823176576f9d19d4ae663d88d869e}{ns3\+::lorawan\+::\+Gateway\+Lora\+Mac}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_a7b915e6aa7ec36d1ac2581526afd652c}\label{classns3_1_1lorawan_1_1LoraMac_a7b915e6aa7ec36d1ac2581526afd652c}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!Set\+Bandwidth\+For\+Data\+Rate@{Set\+Bandwidth\+For\+Data\+Rate}}
+\index{Set\+Bandwidth\+For\+Data\+Rate@{Set\+Bandwidth\+For\+Data\+Rate}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Set\+Bandwidth\+For\+Data\+Rate()}{SetBandwidthForDataRate()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Mac\+::\+Set\+Bandwidth\+For\+Data\+Rate (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$}]{bandwidth\+For\+Data\+Rate }\end{DoxyParamCaption})}
+
+Set the vector to use to check up correspondence between bandwidth and Data\+Rate.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bandwidth\+For\+Data\+Rate} & A vector that contains at position i the bandwidth that should correspond to DR i in this M\+AC\textquotesingle{}s region. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_a3b5d08b43f747474078bb78c45af01aa}\label{classns3_1_1lorawan_1_1LoraMac_a3b5d08b43f747474078bb78c45af01aa}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!Set\+Device@{Set\+Device}}
+\index{Set\+Device@{Set\+Device}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Set\+Device()}{SetDevice()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Mac\+::\+Set\+Device (\begin{DoxyParamCaption}\item[{Ptr$<$ \hyperlink{classNetDevice}{Net\+Device} $>$}]{device }\end{DoxyParamCaption})}
+
+Set the device this M\+AC layer is installed on.
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & The \hyperlink{classNetDevice}{Net\+Device} this M\+AC layer will refer to. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_a831dc8e920c489e90bc643ee807ac434}\label{classns3_1_1lorawan_1_1LoraMac_a831dc8e920c489e90bc643ee807ac434}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!Set\+Logical\+Lora\+Channel\+Helper@{Set\+Logical\+Lora\+Channel\+Helper}}
+\index{Set\+Logical\+Lora\+Channel\+Helper@{Set\+Logical\+Lora\+Channel\+Helper}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Set\+Logical\+Lora\+Channel\+Helper()}{SetLogicalLoraChannelHelper()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Mac\+::\+Set\+Logical\+Lora\+Channel\+Helper (\begin{DoxyParamCaption}\item[{\hyperlink{classns3_1_1lorawan_1_1LogicalLoraChannelHelper}{Logical\+Lora\+Channel\+Helper}}]{helper }\end{DoxyParamCaption})}
+
+Set the \hyperlink{classns3_1_1lorawan_1_1LogicalLoraChannelHelper}{Logical\+Lora\+Channel\+Helper} this M\+AC instance will use.
+
+
+\begin{DoxyParams}{Parameters}
+{\em helper} & The instance of the helper to use. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_aba1762b2acb3cc7113e499106bd54cb9}\label{classns3_1_1lorawan_1_1LoraMac_aba1762b2acb3cc7113e499106bd54cb9}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!Set\+Max\+App\+Payload\+For\+Data\+Rate@{Set\+Max\+App\+Payload\+For\+Data\+Rate}}
+\index{Set\+Max\+App\+Payload\+For\+Data\+Rate@{Set\+Max\+App\+Payload\+For\+Data\+Rate}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Set\+Max\+App\+Payload\+For\+Data\+Rate()}{SetMaxAppPayloadForDataRate()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Mac\+::\+Set\+Max\+App\+Payload\+For\+Data\+Rate (\begin{DoxyParamCaption}\item[{std\+::vector$<$ uint32\+\_\+t $>$}]{max\+App\+Payload\+For\+Data\+Rate }\end{DoxyParamCaption})}
+
+Set the maximum App layer payload for a set Data\+Rate.
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+App\+Payload\+For\+Data\+Rate} & A vector that contains at position i the maximum \hyperlink{classApplication}{Application} layer payload that should correspond to DR i in this M\+AC\textquotesingle{}s region. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_a26b6522eed72c69ebbac6a178521aeb0}\label{classns3_1_1lorawan_1_1LoraMac_a26b6522eed72c69ebbac6a178521aeb0}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!Set\+N\+Preamble\+Symbols@{Set\+N\+Preamble\+Symbols}}
+\index{Set\+N\+Preamble\+Symbols@{Set\+N\+Preamble\+Symbols}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Set\+N\+Preamble\+Symbols()}{SetNPreambleSymbols()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Mac\+::\+Set\+N\+Preamble\+Symbols (\begin{DoxyParamCaption}\item[{int}]{n\+Preamble\+Symbols }\end{DoxyParamCaption})}
+
+Set the number of P\+HY preamble symbols this M\+AC is set to use.
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+Preamble\+Symbols} & The number of preamble symbols to use (typically 8). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_a924a856293cc8a21f7c476acb18f8b5f}\label{classns3_1_1lorawan_1_1LoraMac_a924a856293cc8a21f7c476acb18f8b5f}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!Set\+Phy@{Set\+Phy}}
+\index{Set\+Phy@{Set\+Phy}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Set\+Phy()}{SetPhy()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Mac\+::\+Set\+Phy (\begin{DoxyParamCaption}\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy}{Lora\+Phy} $>$}]{phy }\end{DoxyParamCaption})}
+
+Set the underlying P\+HY layer
+
+
+\begin{DoxyParams}{Parameters}
+{\em phy} & the phy layer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_a669d1029ecf8039e040df55a5806cd5b}\label{classns3_1_1lorawan_1_1LoraMac_a669d1029ecf8039e040df55a5806cd5b}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!Set\+Reply\+Data\+Rate\+Matrix@{Set\+Reply\+Data\+Rate\+Matrix}}
+\index{Set\+Reply\+Data\+Rate\+Matrix@{Set\+Reply\+Data\+Rate\+Matrix}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Set\+Reply\+Data\+Rate\+Matrix()}{SetReplyDataRateMatrix()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Mac\+::\+Set\+Reply\+Data\+Rate\+Matrix (\begin{DoxyParamCaption}\item[{Reply\+Data\+Rate\+Matrix}]{reply\+Data\+Rate\+Matrix }\end{DoxyParamCaption})}
+
+Set the matrix to use when deciding with which Data\+Rate to respond. Region based.
+
+
+\begin{DoxyParams}{Parameters}
+{\em reply\+Data\+Rate\+Matrix} & A matrix containing the reply Data\+Rates, based on the sending Data\+Rate and on the value of the R\+X1\+D\+R\+Offset parameter. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_a54d20add4e60e76ad45bd34a95fce0c2}\label{classns3_1_1lorawan_1_1LoraMac_a54d20add4e60e76ad45bd34a95fce0c2}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!Set\+Sf\+For\+Data\+Rate@{Set\+Sf\+For\+Data\+Rate}}
+\index{Set\+Sf\+For\+Data\+Rate@{Set\+Sf\+For\+Data\+Rate}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Set\+Sf\+For\+Data\+Rate()}{SetSfForDataRate()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Mac\+::\+Set\+Sf\+For\+Data\+Rate (\begin{DoxyParamCaption}\item[{std\+::vector$<$ uint8\+\_\+t $>$}]{sf\+For\+Data\+Rate }\end{DoxyParamCaption})}
+
+Set the vector to use to check up correspondence between SF and Data\+Rate.
+
+
+\begin{DoxyParams}{Parameters}
+{\em sf\+For\+Data\+Rate} & A vector that contains at position i the SF that should correspond to DR i. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_a398100d19be0294f87f7c102f8ff141b}\label{classns3_1_1lorawan_1_1LoraMac_a398100d19be0294f87f7c102f8ff141b}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!Set\+Tx\+Dbm\+For\+Tx\+Power@{Set\+Tx\+Dbm\+For\+Tx\+Power}}
+\index{Set\+Tx\+Dbm\+For\+Tx\+Power@{Set\+Tx\+Dbm\+For\+Tx\+Power}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Set\+Tx\+Dbm\+For\+Tx\+Power()}{SetTxDbmForTxPower()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Mac\+::\+Set\+Tx\+Dbm\+For\+Tx\+Power (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$}]{tx\+Dbm\+For\+Tx\+Power }\end{DoxyParamCaption})}
+
+Set the vector to use to check up which transmission power in Dbm corresponds to a certain Tx\+Power value in this M\+AC\textquotesingle{}s region.
+
+
+\begin{DoxyParams}{Parameters}
+{\em tx\+Dbm\+For\+Tx\+Power} & A vector that contains at position i the transmission power in d\+Bm that should correspond to a T\+X\+P\+O\+W\+ER value of i in this M\+AC\textquotesingle{}s region. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_aa64037192af83dc459487bccccd10bdf}\label{classns3_1_1lorawan_1_1LoraMac_aa64037192af83dc459487bccccd10bdf}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!Tx\+Finished@{Tx\+Finished}}
+\index{Tx\+Finished@{Tx\+Finished}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Tx\+Finished()}{TxFinished()}}
+{\footnotesize\ttfamily virtual void ns3\+::lorawan\+::\+Lora\+Mac\+::\+Tx\+Finished (\begin{DoxyParamCaption}\item[{Ptr$<$ const Packet $>$}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Perform actions after sending a packet.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & The packet that just finished transmission. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a939732c613ae14a71c902ade45ee2e40}{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}, and \hyperlink{classns3_1_1lorawan_1_1GatewayLoraMac_a115cbb38716b278b7bac756386a5ae77}{ns3\+::lorawan\+::\+Gateway\+Lora\+Mac}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_a552da80de353193c4021988b402904ec}\label{classns3_1_1lorawan_1_1LoraMac_a552da80de353193c4021988b402904ec}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!m\+\_\+bandwidth\+For\+Data\+Rate@{m\+\_\+bandwidth\+For\+Data\+Rate}}
+\index{m\+\_\+bandwidth\+For\+Data\+Rate@{m\+\_\+bandwidth\+For\+Data\+Rate}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{m\+\_\+bandwidth\+For\+Data\+Rate}{m\_bandwidthForDataRate}}
+{\footnotesize\ttfamily std\+::vector$<$double$>$ ns3\+::lorawan\+::\+Lora\+Mac\+::m\+\_\+bandwidth\+For\+Data\+Rate\hspace{0.3cm}{\ttfamily [protected]}}
+
+A vector holding the bandwidth each Data Rate corresponds to. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_a18ac5a42fe1cf9284f13b024811ea251}\label{classns3_1_1lorawan_1_1LoraMac_a18ac5a42fe1cf9284f13b024811ea251}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!m\+\_\+cannot\+Send\+Because\+Duty\+Cycle@{m\+\_\+cannot\+Send\+Because\+Duty\+Cycle}}
+\index{m\+\_\+cannot\+Send\+Because\+Duty\+Cycle@{m\+\_\+cannot\+Send\+Because\+Duty\+Cycle}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{m\+\_\+cannot\+Send\+Because\+Duty\+Cycle}{m\_cannotSendBecauseDutyCycle}}
+{\footnotesize\ttfamily Traced\+Callback$<$Ptr$<$const Packet$>$ $>$ ns3\+::lorawan\+::\+Lora\+Mac\+::m\+\_\+cannot\+Send\+Because\+Duty\+Cycle\hspace{0.3cm}{\ttfamily [protected]}}
+
+The trace source that is fired when a packet cannot be sent because of duty cycle limitations.
+
+\begin{DoxySeeAlso}{See also}
+class Call\+Back\+Trace\+Source 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_a7248ac03ba4be5a4391fd9a63b92debe}\label{classns3_1_1lorawan_1_1LoraMac_a7248ac03ba4be5a4391fd9a63b92debe}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!m\+\_\+channel\+Helper@{m\+\_\+channel\+Helper}}
+\index{m\+\_\+channel\+Helper@{m\+\_\+channel\+Helper}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{m\+\_\+channel\+Helper}{m\_channelHelper}}
+{\footnotesize\ttfamily \hyperlink{classns3_1_1lorawan_1_1LogicalLoraChannelHelper}{Logical\+Lora\+Channel\+Helper} ns3\+::lorawan\+::\+Lora\+Mac\+::m\+\_\+channel\+Helper\hspace{0.3cm}{\ttfamily [protected]}}
+
+The \hyperlink{classns3_1_1lorawan_1_1LogicalLoraChannelHelper}{Logical\+Lora\+Channel\+Helper} instance that is assigned to this M\+AC. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_a81e93dafb6adf6ff9c871aaae403e9a6}\label{classns3_1_1lorawan_1_1LoraMac_a81e93dafb6adf6ff9c871aaae403e9a6}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!m\+\_\+device@{m\+\_\+device}}
+\index{m\+\_\+device@{m\+\_\+device}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{m\+\_\+device}{m\_device}}
+{\footnotesize\ttfamily Ptr$<$\hyperlink{classNetDevice}{Net\+Device}$>$ ns3\+::lorawan\+::\+Lora\+Mac\+::m\+\_\+device\hspace{0.3cm}{\ttfamily [protected]}}
+
+The device this M\+AC layer is installed on. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_a8e62781e3821750f10b1f242a2dcaef7}\label{classns3_1_1lorawan_1_1LoraMac_a8e62781e3821750f10b1f242a2dcaef7}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!m\+\_\+max\+App\+Payload\+For\+Data\+Rate@{m\+\_\+max\+App\+Payload\+For\+Data\+Rate}}
+\index{m\+\_\+max\+App\+Payload\+For\+Data\+Rate@{m\+\_\+max\+App\+Payload\+For\+Data\+Rate}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{m\+\_\+max\+App\+Payload\+For\+Data\+Rate}{m\_maxAppPayloadForDataRate}}
+{\footnotesize\ttfamily std\+::vector$<$uint32\+\_\+t$>$ ns3\+::lorawan\+::\+Lora\+Mac\+::m\+\_\+max\+App\+Payload\+For\+Data\+Rate\hspace{0.3cm}{\ttfamily [protected]}}
+
+A vector holding the maximum app payload size that corresponds to a certain Data\+Rate. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_ab6688afd97e13515d365fd43e6886b5d}\label{classns3_1_1lorawan_1_1LoraMac_ab6688afd97e13515d365fd43e6886b5d}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!m\+\_\+n\+Preamble\+Symbols@{m\+\_\+n\+Preamble\+Symbols}}
+\index{m\+\_\+n\+Preamble\+Symbols@{m\+\_\+n\+Preamble\+Symbols}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{m\+\_\+n\+Preamble\+Symbols}{m\_nPreambleSymbols}}
+{\footnotesize\ttfamily int ns3\+::lorawan\+::\+Lora\+Mac\+::m\+\_\+n\+Preamble\+Symbols\hspace{0.3cm}{\ttfamily [protected]}}
+
+The number of symbols to use in the P\+HY preamble. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_ab4e9cb7badca494b708d3f46629ab3bd}\label{classns3_1_1lorawan_1_1LoraMac_ab4e9cb7badca494b708d3f46629ab3bd}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!m\+\_\+phy@{m\+\_\+phy}}
+\index{m\+\_\+phy@{m\+\_\+phy}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{m\+\_\+phy}{m\_phy}}
+{\footnotesize\ttfamily Ptr$<$\hyperlink{classns3_1_1lorawan_1_1LoraPhy}{Lora\+Phy}$>$ ns3\+::lorawan\+::\+Lora\+Mac\+::m\+\_\+phy\hspace{0.3cm}{\ttfamily [protected]}}
+
+The P\+HY instance that sits under this M\+AC layer. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_ab23af7950870011cad7498021b61bdb2}\label{classns3_1_1lorawan_1_1LoraMac_ab23af7950870011cad7498021b61bdb2}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!m\+\_\+received\+Packet@{m\+\_\+received\+Packet}}
+\index{m\+\_\+received\+Packet@{m\+\_\+received\+Packet}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{m\+\_\+received\+Packet}{m\_receivedPacket}}
+{\footnotesize\ttfamily Traced\+Callback$<$Ptr$<$const Packet$>$ $>$ ns3\+::lorawan\+::\+Lora\+Mac\+::m\+\_\+received\+Packet\hspace{0.3cm}{\ttfamily [protected]}}
+
+Trace source that is fired when a packet reaches the M\+AC layer. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_a3ba98173062c0f853dfdd70cba444203}\label{classns3_1_1lorawan_1_1LoraMac_a3ba98173062c0f853dfdd70cba444203}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!m\+\_\+reply\+Data\+Rate\+Matrix@{m\+\_\+reply\+Data\+Rate\+Matrix}}
+\index{m\+\_\+reply\+Data\+Rate\+Matrix@{m\+\_\+reply\+Data\+Rate\+Matrix}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{m\+\_\+reply\+Data\+Rate\+Matrix}{m\_replyDataRateMatrix}}
+{\footnotesize\ttfamily Reply\+Data\+Rate\+Matrix ns3\+::lorawan\+::\+Lora\+Mac\+::m\+\_\+reply\+Data\+Rate\+Matrix\hspace{0.3cm}{\ttfamily [protected]}}
+
+The matrix that decides the DR the GW will use in a reply based on the ED\textquotesingle{}s sending DR and on the value of the R\+X1\+D\+R\+Offset parameter. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_a1a4ecee82558b1797b83dd0f459fae29}\label{classns3_1_1lorawan_1_1LoraMac_a1a4ecee82558b1797b83dd0f459fae29}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!m\+\_\+sent\+New\+Packet@{m\+\_\+sent\+New\+Packet}}
+\index{m\+\_\+sent\+New\+Packet@{m\+\_\+sent\+New\+Packet}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{m\+\_\+sent\+New\+Packet}{m\_sentNewPacket}}
+{\footnotesize\ttfamily Traced\+Callback$<$Ptr$<$Packet const$>$ $>$ ns3\+::lorawan\+::\+Lora\+Mac\+::m\+\_\+sent\+New\+Packet\hspace{0.3cm}{\ttfamily [protected]}}
+
+Trace source that is fired when a new A\+PP layer packet arrives at the M\+AC layer. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_ac8d1d1df404002ef578133d4ed5562ee}\label{classns3_1_1lorawan_1_1LoraMac_ac8d1d1df404002ef578133d4ed5562ee}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!m\+\_\+sf\+For\+Data\+Rate@{m\+\_\+sf\+For\+Data\+Rate}}
+\index{m\+\_\+sf\+For\+Data\+Rate@{m\+\_\+sf\+For\+Data\+Rate}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{m\+\_\+sf\+For\+Data\+Rate}{m\_sfForDataRate}}
+{\footnotesize\ttfamily std\+::vector$<$uint8\+\_\+t$>$ ns3\+::lorawan\+::\+Lora\+Mac\+::m\+\_\+sf\+For\+Data\+Rate\hspace{0.3cm}{\ttfamily [protected]}}
+
+A vector holding the SF each Data Rate corresponds to. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMac_a3b34787f91543563ad0b989fe067120b}\label{classns3_1_1lorawan_1_1LoraMac_a3b34787f91543563ad0b989fe067120b}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}!m\+\_\+tx\+Dbm\+For\+Tx\+Power@{m\+\_\+tx\+Dbm\+For\+Tx\+Power}}
+\index{m\+\_\+tx\+Dbm\+For\+Tx\+Power@{m\+\_\+tx\+Dbm\+For\+Tx\+Power}!ns3\+::lorawan\+::\+Lora\+Mac@{ns3\+::lorawan\+::\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{m\+\_\+tx\+Dbm\+For\+Tx\+Power}{m\_txDbmForTxPower}}
+{\footnotesize\ttfamily std\+::vector$<$double$>$ ns3\+::lorawan\+::\+Lora\+Mac\+::m\+\_\+tx\+Dbm\+For\+Tx\+Power\hspace{0.3cm}{\ttfamily [protected]}}
+
+A vector holding the power that corresponds to a certain Tx\+Power value. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lora-\/mac.\+h\item 
+lora-\/mac.\+cc\end{DoxyCompactItemize}

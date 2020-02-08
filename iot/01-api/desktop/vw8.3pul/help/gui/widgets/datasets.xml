@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.widgets.datasets"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Datasets</title>
+<topic id = "vw.help.widgets.datasets.addToCanvas"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Add a dataset</title>
+<body><p><indexterm>GUI development<indexterm>add dataset</indexterm></indexterm><indexterm>dataset
+widget</indexterm>Use a dataset to present a table of similar objects
+for a user to edit. Datasets allow data to be edited directly.</p>
+<p>A dataset uses a <apiname>SelectionInList</apiname> to hold the
+list of objects to be displayed, along with information about the
+current selection.</p>
+<p><b>Online example:</b> 
+<xref href="prereq:Dataset1-Example:Examples.Dataset1Example open" 
+format="st" scope="external">Dataset1-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.datasets.setColWidth"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Change column widths</title>
+<body><p><indexterm>dataset widget<indexterm>set column width</indexterm></indexterm>By
+default, all columns have a width of 80 pixels. You can set specific widths
+in the dataset’s <uicontrol>Column</uicontrol> properties.</p>
+<p>You can also change the column widths by editing the dataset
+in the canvas: <ol><li><p>In the canvas, &lt;Control&gt;-click a column
+to select it.</p></li>
+<li><p>Place the cursor near the right margin of the column.</p></li>
+<li><p>&lt;Control&gt;-click and hold down the mouse button. If necessary, move
+the pointer toward the right margin of the selected column until
+the cursor changes appearance.</p></li>
+<li><p>Drag the cursor to the right to widen the column; drag the
+cursor to the left to make the column narrower.</p></li>
+<li><p><uicontrol>Install</uicontrol> the canvas.</p></li></ol></p></body></topic>
+<topic id = "vw.help.widgets.datasets.setColOrder"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Change column order</title>
+<body><p><indexterm>dataset widget<indexterm>column order</indexterm></indexterm>You
+can switch the order of a dataset’s columns by editing it in the canvas. <ol>
+<li><p>In the canvas, &lt;Control&gt;-click a column to select it.</p></li>
+<li><p>Place the cursor on the drag handle within the selected column.</p></li>
+<li><p>Click on the handle and drag it to its new position.</p></li>
+<li><p><uicontrol>Install</uicontrol> the canvas.</p></li></ol></p></body></topic>
+<topic id = "vw.help.widgets.datasets.scrolling"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Disable column scrolling</title>
+<body><p><indexterm>dataset widget<indexterm>column scrolling</indexterm></indexterm>You
+can set a dataset’s columns so that they cannot be scrolled horizontally.</p>
+<p>This is useful if you want to keep one or more columns displayed
+on the dataset at all times, while the others continue to scroll. <ol>
+<li><p>Select that column.</p></li>
+<li><p>In the GUI Painter Tool, click the <uicontrol>Fixed</uicontrol> check
+box on the <uicontrol>Column</uicontrol> page.</p></li>
+<li><p><uicontrol>Apply</uicontrol> the change and <uicontrol>Install</uicontrol> the
+canvas.</p></li></ol></p></body></topic>
+<topic id = "vw.help.widgets.datasets.addRows"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Add rows programmatically</title>
+<body><p><indexterm>dataset widget<indexterm>add rows</indexterm></indexterm>You
+can add rows to the dataset programmatically. This is necessary when
+the size of a dataset cannot be determined prior to runtime.<ol><li><p>Use
+the Palette to add an action button to a canvas containing a dataset.
+Leave the button selected.</p></li>
+<li><p>In the GUI Painter Tool, enter <codeph>Add Row</codeph> as
+the button’s <uicontrol>Label</uicontrol> property and <codeph>addRow</codeph> as
+the button’s <uicontrol>Action</uicontrol> property. <uicontrol>Apply</uicontrol> the properties
+and <uicontrol>Install</uicontrol> the canvas.</p></li>
+<li><p>Using the <uicontrol>define</uicontrol> command or a System
+Browser, add the instance method <codeph>addRow</codeph> in the <codeph>actions</codeph> protocol.
+This method adds a new object to the list displayed by the dataset.
+This, in turn, adds a new row to the dataset.
+<codeblock otherprops="smalltalk method">addRow
+		(dsvList list) add: Employee new</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Dataset2-Example:Examples.Dataset2Example open" 
+format="st" scope="external">Dataset2-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.datasets.connectToData"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Connect data to a dataset</title>
+<body><p><indexterm>dataset widget<indexterm>connect data</indexterm></indexterm>Your
+application can arrange for a dataset to display data initially.</p>
+<p>In the application model, create an <codeph>initialize</codeph> method
+that provides the data for your dataset.
+<codeblock otherprops="smalltalk method">initialize
+		| aList anEmp |
+		aList := List new.
+		"The aspect for the dataset should be a list of Employee instances.
+		Create an employee to put in the list."
+		anEmp := Employee new initialize.
+		anEmp name: 'Tami Hayes'; empNo: '341-2'; citizen: true.
+		aList add: anEmp.
+		"Create an employee to put in the list."
+		anEmp := Employee new initialize.
+		anEmp name: 'Leo Mazon'; empNo: '786-9'; citizen: false.
+		aList add: anEmp.
+		"Set the list for the dataset aspect. This list appears when you start."
+		self dsvList list: aList.
+		super initialize.</codeblock></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Dataset3-Example:Examples.Dataset3Example open" 
+format="st" scope="external">Dataset3-Example</xref></p>
+</body></topic></topic></dita>

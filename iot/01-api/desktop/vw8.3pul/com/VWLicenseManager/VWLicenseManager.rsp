@@ -1,0 +1,7 @@
+/win32
+/tlb VWLicenseManager.tlb
+/iid "iid_VWLicenseManager.cpp"
+/h "midl_VWLicenseManager.h"
+/o VWLicenseManager.log
+/proxy "VWLicenseManager_p.c"
+

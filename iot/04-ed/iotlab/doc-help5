@@ -1,0 +1,19 @@
+
+
+iotlab-profile addm3 \
+	-n test_consumption \
+	-p dc \
+	-current \
+	-voltage \
+	-power \
+	-period 140 \
+	-avg 4
+
+iotlab-experiment submit -n riot_ttn \
+	-d 60 \
+	-l 1,archi=st-lrwan1:sx1276+site=saclay
+
+iotlab-experiment wait
+iotlab-ws
+
+iotlab-experiment reload --id 12345

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+make arduPi_pi2.o
+make  SX1272.o
+make lora_gateway_pi2.o
+make lora_gateway_pi2
+sudo ./lora_gateway_pi2 --mode 1

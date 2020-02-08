@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.pundles"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Components and Version Control</title>
+<body><p>&Product; provides a component model, version control system, 
+and extensive tool support for managing and delivering source code. 
+<term>Packages</term> and <term>bundles</term> provide an organizational structure 
+for code, as well as a model for the contents of <term>parcels</term>, the 
+published version of these components.</p>
+<p>Packages and Bundles may be versioned in a Store code repository,
+or saved as parcel files on your workstation. Complete documentation on
+Store is available in the <xref href="./doc/SourceCodeMgmtGuide.pdf" 
+format="pdf" scope="external"><i>Source Code Management Guide</i></xref>.</p>
+</body>
+<topic id = "vw.help.pundles.viewing"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Viewing packages</title>
+<body><p><indexterm>browse<indexterm>packages</indexterm></indexterm><indexterm>package<indexterm>browse</indexterm></indexterm><indexterm>bundle<indexterm>browse</indexterm></indexterm>The
+System Browser displays the loaded packages and bundles in the upper
+left pane. Select the <uicontrol>Package</uicontrol> tab.</p>
+<p>For bundles, expand the tree of each one to view the packages 
+they contain.</p>
+<p>When you select a bundle or package, the classes and name spaces contained
+in them are listed in the adjacent pane.</p></body></topic>
+<topic id = "vw.help.pundles.createPackage"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a new package</title>
+<body><p><indexterm>package<indexterm>create new</indexterm></indexterm>To
+create a new package, select <uicontrol>Package &#x2192; New Package...</uicontrol> 
+in the System Browser. Then provide the package
+name.</p></body></topic>
+<topic id = "vw.help.pundles.addDef"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Add definitions to a package</title>
+<body><p><indexterm>package<indexterm>add code definitions</indexterm></indexterm>You
+can add existing classes, name spaces, protocols, or individual methods
+to a package by simply selecting the item and dragging it to the
+package.  Alternatively, select the item, pick <uicontrol>Move &#x2192; to Package...</uicontrol> and
+specify the target.</p>
+<p>To create new definitions in a package, select the package create
+the new object (e.g., a class). By default the definition goes into
+the selected package.</p></body></topic>
+<topic id = "vw.help.pundles.savePackage"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Save a package</title>
+<body><p><indexterm>package<indexterm>save</indexterm></indexterm>Packages
+are saved in the image. They are also the primary units stored in
+a Store repository.</p>
+<p>Alternatively, you can write a package as a disk file, either
+as a parcel or as a file-out. <ul><li><p>To save as a parcel, pick <uicontrol>Package &#x2192; Publish as Parecl</uicontrol>.</p></li>
+<li><p>To save as a file-out, pick <uicontrol>Package &#x2192; File Out &#x2192; Package...</uicontrol></p></li></ul></p></body></topic>
+<topic id = "vw.help.pundles.load"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Load a package</title>
+<body><p><indexterm>package<indexterm>load</indexterm></indexterm>Packages
+are loaded into the system either from a Store repository, by loading
+a parcel file, or filing in a source file.<ul><li><p>From a Store
+repository, select the package or bundle and a version, and pick <uicontrol>File &#x2192; Load</uicontrol>.</p></li>
+<li><p>From a parcel, use the Parcel Manager to find the parcel,
+select it, and pick <uicontrol>File &#x2192; Load</uicontrol>.</p></li>
+<li><p>From a source file (file-out), use the &Product; File Browser
+to select the file (extension <filepath>.st</filepath>), and pick <uicontrol>File &#x2192; File In</uicontrol>.</p></li></ul>The
+code is loaded and contained in an appropriate package.</p></body></topic>
+<topic id = "vw.help.pundles.unload"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Unload a package</title>
+<body><p><indexterm>package<indexterm>unload</indexterm></indexterm>To
+unload a package, select it in the Browser’s parcels view and choose <uicontrol>Package &#x2192; Remove (Unload)</uicontrol>. The contained code is removed from the system,
+but not from its external storage (repository or file).</p></body></topic>
+<topic id = "vw.help.pundles.overrides"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Browse override extensions</title>
+<body><p><indexterm>package<indexterm>override definitions</indexterm></indexterm><indexterm>override<indexterm>browse</indexterm></indexterm>Definitions
+in a package may override, or be overridden by, definitions in other
+packages. You can browse such overrides by selecting a package,
+then picking  <uicontrol>Package &#x2192; Browse &#x2192; Overrides of others</uicontrol> or
+ <uicontrol>Package &#x2192; Browse &#x2192; Overridden by others</uicontrol>.
+If there are overrides, a conflicts browser opens so you can reconcile
+the code.</p></body></topic></topic></dita>

@@ -1,0 +1,150 @@
+\hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener}{}\section{ns3\+:\+:lorawan\+:\+:Lora\+Radio\+Energy\+Model\+Phy\+Listener Class Reference}
+\label{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener}\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener}}
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Lora\+Radio\+Energy\+Model\+Phy\+Listener\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=265pt]{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Lora\+Radio\+Energy\+Model\+Phy\+Listener\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=265pt]{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef Callback$<$ void, double $>$ \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener_a6e0dbc535ae92d41bf4699ca6d97d229}{Update\+Tx\+Current\+Callback}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener_a6a2e034f5e7b492b952a1ae213d572e3}{Set\+Change\+State\+Callback} (Device\+Energy\+Model\+::\+Change\+State\+Callback callback)
+\begin{DoxyCompactList}\small\item\em Sets the change state callback. Used by helper class. \end{DoxyCompactList}\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener_a6f15e4406f51936ba7c8b8cb03284334}{Set\+Update\+Tx\+Current\+Callback} (\hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener_a6e0dbc535ae92d41bf4699ca6d97d229}{Update\+Tx\+Current\+Callback} callback)
+\begin{DoxyCompactList}\small\item\em Sets the update tx current callback. \end{DoxyCompactList}\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener_a34bb7b2aae72cd8634672bd460247edb}{Notify\+Rx\+Start} (void)
+\begin{DoxyCompactList}\small\item\em Switches the \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel}{Lora\+Radio\+Energy\+Model} to RX state. \end{DoxyCompactList}\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener_a42d031fca675ad2a5b76977a7d79e900}{Notify\+Tx\+Start} (double tx\+Power\+Dbm)
+\begin{DoxyCompactList}\small\item\em Switches the \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel}{Lora\+Radio\+Energy\+Model} to TX state and switches back to S\+T\+A\+N\+D\+BY after TX duration. \end{DoxyCompactList}\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener_ac4e0739b8ae8f0ed5a94eb8c5e830641}{Notify\+Sleep} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener_ad5ce1283ba5c34384307338c24446876}{Notify\+Standby} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener_a6e0dbc535ae92d41bf4699ca6d97d229}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener_a6e0dbc535ae92d41bf4699ca6d97d229}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener}!Update\+Tx\+Current\+Callback@{Update\+Tx\+Current\+Callback}}
+\index{Update\+Tx\+Current\+Callback@{Update\+Tx\+Current\+Callback}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener}}
+\subsubsection{\texorpdfstring{Update\+Tx\+Current\+Callback}{UpdateTxCurrentCallback}}
+{\footnotesize\ttfamily typedef Callback$<$void, double$>$ \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener_a6e0dbc535ae92d41bf4699ca6d97d229}{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener\+::\+Update\+Tx\+Current\+Callback}}
+
+Callback type for updating the transmit current based on the nominal tx power. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener_a34bb7b2aae72cd8634672bd460247edb}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener_a34bb7b2aae72cd8634672bd460247edb}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener}!Notify\+Rx\+Start@{Notify\+Rx\+Start}}
+\index{Notify\+Rx\+Start@{Notify\+Rx\+Start}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener}}
+\subsubsection{\texorpdfstring{Notify\+Rx\+Start()}{NotifyRxStart()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener\+::\+Notify\+Rx\+Start (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Switches the \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel}{Lora\+Radio\+Energy\+Model} to RX state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em duration} & the expected duration of the packet reception.\\
+\hline
+\end{DoxyParams}
+Defined in ns3\+::\+Lora\+End\+Device\+Phy\+Listener 
+
+Implements \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener_acb82563f9dc6082e442c0ec6b1d32d94}{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+Listener}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener_ac4e0739b8ae8f0ed5a94eb8c5e830641}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener_ac4e0739b8ae8f0ed5a94eb8c5e830641}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener}!Notify\+Sleep@{Notify\+Sleep}}
+\index{Notify\+Sleep@{Notify\+Sleep}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener}}
+\subsubsection{\texorpdfstring{Notify\+Sleep()}{NotifySleep()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener\+::\+Notify\+Sleep (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Defined in ns3\+::\+Lora\+End\+Device\+Phy\+Listener 
+
+Implements \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener_a0e9d774b67cbddee98c5f7d76c844c65}{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+Listener}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener_ad5ce1283ba5c34384307338c24446876}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener_ad5ce1283ba5c34384307338c24446876}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener}!Notify\+Standby@{Notify\+Standby}}
+\index{Notify\+Standby@{Notify\+Standby}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener}}
+\subsubsection{\texorpdfstring{Notify\+Standby()}{NotifyStandby()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener\+::\+Notify\+Standby (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Defined in ns3\+::\+Lora\+End\+Device\+Phy\+Listener 
+
+Implements \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener_ab7e6540205cc6a0cefbe226bda967187}{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+Listener}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener_a42d031fca675ad2a5b76977a7d79e900}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener_a42d031fca675ad2a5b76977a7d79e900}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener}!Notify\+Tx\+Start@{Notify\+Tx\+Start}}
+\index{Notify\+Tx\+Start@{Notify\+Tx\+Start}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener}}
+\subsubsection{\texorpdfstring{Notify\+Tx\+Start()}{NotifyTxStart()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener\+::\+Notify\+Tx\+Start (\begin{DoxyParamCaption}\item[{double}]{tx\+Power\+Dbm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Switches the \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModel}{Lora\+Radio\+Energy\+Model} to TX state and switches back to S\+T\+A\+N\+D\+BY after TX duration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em duration} & the expected transmission duration. \\
+\hline
+{\em tx\+Power\+Dbm} & the nominal tx power in d\+Bm\\
+\hline
+\end{DoxyParams}
+Defined in ns3\+::\+Lora\+End\+Device\+Phy\+Listener 
+
+Implements \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener_abf3943484dc182ade9f180cd806d43f4}{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+Listener}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener_a6a2e034f5e7b492b952a1ae213d572e3}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener_a6a2e034f5e7b492b952a1ae213d572e3}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener}!Set\+Change\+State\+Callback@{Set\+Change\+State\+Callback}}
+\index{Set\+Change\+State\+Callback@{Set\+Change\+State\+Callback}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener}}
+\subsubsection{\texorpdfstring{Set\+Change\+State\+Callback()}{SetChangeStateCallback()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener\+::\+Set\+Change\+State\+Callback (\begin{DoxyParamCaption}\item[{Device\+Energy\+Model\+::\+Change\+State\+Callback}]{callback }\end{DoxyParamCaption})}
+
+
+
+Sets the change state callback. Used by helper class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & Change state callback. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener_a6f15e4406f51936ba7c8b8cb03284334}\label{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener_a6f15e4406f51936ba7c8b8cb03284334}} 
+\index{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener}!Set\+Update\+Tx\+Current\+Callback@{Set\+Update\+Tx\+Current\+Callback}}
+\index{Set\+Update\+Tx\+Current\+Callback@{Set\+Update\+Tx\+Current\+Callback}!ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener@{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener}}
+\subsubsection{\texorpdfstring{Set\+Update\+Tx\+Current\+Callback()}{SetUpdateTxCurrentCallback()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener\+::\+Set\+Update\+Tx\+Current\+Callback (\begin{DoxyParamCaption}\item[{\hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener_a6e0dbc535ae92d41bf4699ca6d97d229}{Update\+Tx\+Current\+Callback}}]{callback }\end{DoxyParamCaption})}
+
+
+
+Sets the update tx current callback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & Update tx current callback. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lora-\/radio-\/energy-\/model.\+h\item 
+lora-\/radio-\/energy-\/model.\+cc\end{DoxyCompactItemize}

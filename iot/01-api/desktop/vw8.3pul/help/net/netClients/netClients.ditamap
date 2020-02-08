@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA BookMap//EN" "bookmap.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<map title="Net Clients" 
+	xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+	<topicref navtitle = "Overview" href = "netClients.xml" type = "topic">
+		<topicref navtitle = "FTP" href = "ftp.xml" type = "topic"/>
+		<topicref navtitle = "HTTP" href = "http.xml" type = "topic"/>
+		<topicref navtitle = "POP3" href = "pop3.xml" type = "topic"/>
+		<topicref navtitle = "SMTP" href = "smtp.xml" type = "topic"/>
+		<topicref navtitle = "IMAP" href = "imap.xml" type = "topic"/>
+	</topicref></map>

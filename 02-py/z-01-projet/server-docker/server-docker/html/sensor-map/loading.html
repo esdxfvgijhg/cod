@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+html,body {
+	margin:0;
+	padding:0;
+}
+</style>
+</head>
+<body>
+	<canvas id="loading" width="50" height="50"></canvas>
+	<script>
+
+var cnvs = document.getElementById('loading');
+var ctx = cnvs.getContext('2d');
+var x = cnvs.width/2;
+var y = cnvs.height/2;
+var shortDim = cnvs.width;
+if (shortDim > cnvs.height){
+	shortDim = cnvs.height;
+}
+var w = shortDim/6;
+var r = (shortDim-w)/2;
+var minlen = w/r;
+var maxlen = 2*Math.PI-2*w/r;
+var interval = 30;
+var R = 0;
+var G = 0;
+var B = 255;
+var head = 0;
+var tail = Math.PI;
+var speed1 = 1 *2*Math.PI*interval/1000;
+var speed2 = 0.4 *2*Math.PI*interval/1000;
+var speedt = (speed1+speed2)/2;
+var speedc = Math.round(256*interval/1000);
+var expanding = true;
+var transition = true;
+
+setInterval(draw, interval);
+
+function mod(n, m) {
+	return ((n % m) + m) % m;
+}
+
+function draw() {
+	var length = mod(head-tail,2*Math.PI);
+	//console.log((head-tail) +" " +length);
+	if (transition > 0) {
+		transition --;
+		head += speedt;
+		tail += speedt;
+	} else if (expanding) {
+		if (length >= maxlen) {
+			expanding = false;
+			transition = Math.round(100/interval);
+		}
+		head += speed1;
+		tail += speed2;
+	} else {
+		if (length <= minlen) {
+			expanding = true;
+			transition = Math.round(100/interval);
+		}
+		head += speed2;
+		tail += speed1;
+	}	
+	head = mod(head, 2*Math.PI);
+	tail = mod(tail, 2*Math.PI);
+
+	if (R==255 && G<255){
+		if (B>0){
+			B-=speedc;
+		} else {
+			G+=speedc;
+		}
+	} else if (G==255 && B<255){
+		if (R>0){
+			R-=speedc;
+		} else {
+			B+=speedc;
+		}	
+	} else if (B==255 && R<255){
+		if (G>0){
+			G-=speedc;
+		} else {
+			R+=speedc;
+		}
+	}
+	if (R<0) R=0;
+	if (G<0) G=0;
+	if (B<0) B=0;
+	if (R>255) R=255;
+	if (G>255) G=255;
+	if (B>255) B=255;
+	
+	ctx.clearRect(0,0, cnvs.width, cnvs.height);
+	ctx.beginPath();
+	ctx.arc(x, y, r, head, tail, true);
+	ctx.lineWidth = w;
+	ctx.strokeStyle = 'rgb('+R+','+G+','+B+')';
+	ctx.lineCap = 'round';
+	ctx.stroke();
+}
+	</script>
+</body>
+</html>      

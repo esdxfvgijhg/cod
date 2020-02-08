@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.stLang.namespace"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Name Spaces</title>
+<body><p>&Product; implements <term>name spaces</term> as a language feature. 
+Name spaces provide a way to encapsulate code in a complex, multi-vendor 
+environment. Through judicious use of name spaces, different frameworks
+can define classes without fear of naming collisions when they are integrated.
+E.g., both vendor X and vendor Y could define class <codeph>Customer</codeph> 
+and use name spaces to disambiguate.</p>
+<p>A name space can also define shared variables, which are generally private 
+to its associated classes.</p></body> 
+<topic id = "vw.help.stLang.namespace.create"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a name space</title>
+<body><p><indexterm>name space<indexterm>create</indexterm></indexterm>Use
+the New Name Space tool to create a <term>name space</term> :
+<ol>
+<li><p>Select
+the parent name space (typically, this should be <codeph>Smalltalk.*</codeph> or your
+application’s name space) in the browser’s class view, and choose 
+<uicontrol>Class &#x2192; New &#x2192; Namespace</uicontrol>.</p></li>
+<li><p>In the New Name Space dialog, enter a name for the name space.
+Verify the package and parent name space entries.</p></li>
+<li><p>Click <uicontrol>OK</uicontrol> to create the new name space.</p></li></ol></p></body></topic>
+<topic id = "vw.help.stLang.namespace.naming"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Naming name spaces</title>
+<body><p><indexterm>name space<indexterm>naming</indexterm></indexterm>Name space
+names and hierarchies should be selected to help avoid collisions.
+We recommend using a long form of your company name, since it is
+less likely to be used by someone else.</p>
+<p>Cincom provides <xref href="http://www.cincomsmalltalk.com/main/users/reserved-namespaces/"
+format="html" scope="external">a web page</xref> via which customers 
+can reserve top-level name space names.</p></body></topic>
+<topic id = "vw.help.stLang.namespace.private"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a private name space</title>
+<body><p><indexterm>name space<indexterm>make private</indexterm></indexterm>Name
+spaces, classes, and <term>shared variables</term> are defined as
+either public or private. By default, new name spaces are public
+and thus exported and available for import by another name space
+or class.</p>
+<p>To make a name space private at creation, check the private checkbox
+in the New Name Space dialog.</p>
+<p>To set an existing name space to private, set its <codeph>private</codeph> field
+to <codeph>true</codeph> in the <uicontrol>Definition</uicontrol> pane.</p></body></topic>
+<topic id = "vw.help.stLang.namespace.importing"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Importing to a name space</title>
+<body><p><indexterm>name space<indexterm>import</indexterm></indexterm>Name
+space and class definitions can specify the names of bindings &#x2014; name spaces,
+classes, or shared variables &#x2014; to import. Only public bindings can
+be imported.</p>
+<p>To specify imports when creating a name space, enter the bindings
+in the Imports field of the New Name Space dialog.</p>
+<p>To specify imports for an existing name space, list the bindings
+in the imports: field in the name space definition on the Definition
+page in a System Browser.</p>
+<p>Import declarations may be either specific or general.</p>
+<p>A specific import specifies a single public binding name:
+<pre>Graphics.SymbolicPaintConstants.ButtonHilite</pre></p>
+<p>A general import specifies all public bindings in a class or
+name space by appending an <codeph>*</codeph> (asterisk) as the
+final name in a binding reference:
+<pre>Smalltalk.*</pre></p>
+<p>As a rule, a general import should make its imports <codeph>private</codeph>,
+as in:
+<pre>private Smalltalk.*</pre></p></body></topic>
+<topic id = "vw.help.stLang.namespace.remove"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Remove a name space</title>
+<body><p><indexterm>name space<indexterm>remove</indexterm></indexterm>Removing
+a name space that has classes in it removes the classes also.<ol><li><p>In
+a System Browser, select the name space.</p></li>
+<li><p>Select the <uicontrol>Remove...</uicontrol> command from
+the <uicontrol>Class</uicontrol> menu.</p></li>
+<li><p>If the name space contains classes, you will be asked to
+confirm the removal.</p></li></ol></p></body></topic>
+<topic id = "vw.help.stLang.namespace.rename"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Rename a name space</title>
+<body><p><indexterm>name space<indexterm>rename</indexterm></indexterm>When
+you rename a name space, the new name appears automatically in the
+definition of each class in that category.<ol><li><p>In a System
+Browser, select the name space.</p></li>
+<li><p>Select the <uicontrol>Rename...</uicontrol> command from
+the <uicontrol>Class</uicontrol> menu.</p></li>
+<li><p>In the resulting dialog, supply the new name. Type a blank
+space to cancel the operation.</p></li></ol></p></body></topic></topic></dita>

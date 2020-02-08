@@ -1,0 +1,61 @@
+{
+  "name": "ttn-lw",
+  "version": "3.2.4",
+  "description": "The Things Stack for LoRaWAN JavaScript SDK",
+  "url": "https://github.com/TheThingsNetwork/lorawan-stack/tree/master/sdk/js",
+  "main": "dist/index.js",
+  "browser": {
+    "./dist/api/stream/stream-node.js": "./dist/api/stream/stream.js",
+    "./src/api/stream/stream-node.js": "./src/api/stream/stream.js"
+  },
+  "license": "Apache-2.0",
+  "private": false,
+  "scripts": {
+    "build": "rm -rf dist; babel src -d dist",
+    "build:watch": "rm -rf dist; babel -w src -d dist",
+    "test": "node_modules/.bin/jest --testPathIgnorePatterns=/dist/",
+    "test:watch": "node_modules/.bin/jest --testPathIgnorePatterns=/dist/ --watch",
+    "definitions": "node util/http-mapper.js",
+    "fmt": "prettier './src/**/*.js' './util/**/*.js' --write",
+    "lint": "eslint './src/**/**.js' './util/**/*.js' --no-ignore --color"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-ttn": "^1.2.3",
+    "eslint": "^6.2.2",
+    "jest": "^24.8.0",
+    "jest-preset-ttn": "^0.0.3",
+    "prettier": "^1.18.2"
+  },
+  "babel": {
+    "presets": [
+      "ttn"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "../../config/eslintrc.yaml",
+    "rules": {
+      "import/named": "off",
+      "no-use-before-define": [
+        "warn",
+        {
+          "functions": false,
+          "classes": false
+        }
+      ]
+    }
+  },
+  "prettier": "../../config/.prettierrc.js",
+  "jest": {
+    "preset": "jest-preset-ttn"
+  },
+  "dependencies": {
+    "arraybuffer-to-string": "^1.0.2",
+    "axios": "^0.19.0",
+    "proxy-polyfill": "^0.3.0",
+    "query-string": "^6.2.0",
+    "traverse": "^0.6.6",
+    "web-streams-polyfill": "^2.0.3"
+  }
+}

@@ -1,0 +1,29 @@
+REGEDIT
+
+/***********************************************************************
+/*
+/* VisualWorks COM Persistent Data Object Example
+/* Copyright (c) 1999 Objectshare, Inc.
+/*
+/* Summary of GUIDs:
+/*
+/* CLSID_VWPersistentDataObject:	{9CB9A3A0-BBB9-11D0-843E-444553540000}
+/*
+/* Created by Objectshare, Inc.
+/* Last update: June 16-1999.
+/*
+/***********************************************************************
+
+; Version independent registration. Points to version 1.0
+HKEY_CLASSES_ROOT\VisualWorks.PersistentDataObject = VisualWorks Persistent Data Object
+HKEY_CLASSES_ROOT\VisualWorks.PersistentDataObject\Clsid = {9CB9A3A0-BBB9-11D0-843E-444553540000}
+
+; Version 1.0 registration 
+HKEY_CLASSES_ROOT\VisualWorks.PersistentDataObject.1 = VisualWorks Persistent Data Object 1.0
+HKEY_CLASSES_ROOT\VisualWorks.PersistentDataObject.1\Clsid = {9CB9A3A0-BBB9-11D0-843E-444553540000}
+HKEY_CLASSES_ROOT\CLSID\{9CB9A3A0-BBB9-11D0-843E-444553540000} = VisualWorks Persistent Data Object 1.0
+HKEY_CLASSES_ROOT\CLSID\{9CB9A3A0-BBB9-11D0-843E-444553540000}\ProgID = VisualWorks.PersistentDataObject.1
+HKEY_CLASSES_ROOT\CLSID\{9CB9A3A0-BBB9-11D0-843E-444553540000}\VersionIndependentProgID = VisualWorks.PersistentDataObject
+HKEY_CLASSES_ROOT\CLSID\{9CB9A3A0-BBB9-11D0-843E-444553540000}\LocalServer32 = c:\vw5i\Bin\visual.exe c:\vw5i\com\examples\com\VWPDOSrv.im 
+
+; eof

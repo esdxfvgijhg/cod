@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.inetClient.pop3"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>POP3</title>
+<body><p><indexterm>pop3</indexterm>Post Office Protocol 3 (POP3)
+is a simple mail-reading protocol that can run over TCP/IP. POP3
+enables reading and deleting of messages in a mailbox. (Sending
+mail is done using SMTP.)</p></body>
+<topic id = "vw.help.inetClient.pop3.checkMailboxCount"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Determine the number of messages in the inbox</title>
+<body><p><indexterm>pop3<indexterm>get number of messages</indexterm></indexterm>The
+following code determines the number of messages in the <codeph>inbox</codeph> mailbox
+of user <codeph>jdoe@abc.com</codeph>. The password  for <codeph>jdoe@abc.com</codeph> is <codeph>passwordforjoe</codeph>.</p>
+<p>The (SMTP) server is called <codeph>mail.yourserver.com</codeph>.
+The SMTP server name could also be replaced with just the machine
+name (for example, POSTMAN, where your network will resolve its
+full name) or an IP address.</p>
+<p>The POP3 protocol does not account for multiple mailboxes. All messages
+are assumed to be located in a mailbox named <codeph>inbox</codeph>.</p>
+<p>When all processing on the mailbox is concluded, it is required
+that you <apiname>disconnect</apiname> from the connection. 
+<codeblock otherprops="smalltalk expression">| client user |
+client := Pop3Client host: 'mail.yourserver.com'.
+user := ( NetUser username: 'jdoe@abc.com' 
+	password: 'passwordforjoe' ).
+client user: user; connect; login.
+Dialog warn: 'Your inbox contains ',
+	client status messages printString , ' message(s)'.
+client disconnect.</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.pop3.readFirst"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Read message #1 from the inbox</title>
+<body><p><indexterm>pop3<indexterm>read message</indexterm></indexterm>The
+following code reads message #1 from the <codeph>inbox</codeph>.
+The <apiname>retrieveMessage:</apiname> method returns a <apiname>ByteString</apiname> (which
+is inspected). The <apiname>ByteString</apiname> is then read in as
+a stream to the <apiname>MailMessage</apiname> object (which is also
+inspected). This practice will also be used in later examples. 
+<codeblock otherprops="smalltalk expression">| client user message msg |
+client := Pop3Connection host: 'mail.yourserver.com'.
+user := ( NetUser username: 'jdoe@abc.com' 
+	password: 'passwordforjoe' ) .
+client user: user; connect; login.
+Dialog warn: 'You have ', conn status messages printString , ' messages'.
+message := client retrieveMessage: 1.
+message inspect.
+msg := MailMessage readFrom: message readStream.
+msg inspect.
+client disconnect.</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.pop3.checkAttachments"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Determine if there are any attachments to a message</title>
+<body><p><indexterm>pop3<indexterm>check for attachments</indexterm></indexterm>The
+following code determines if any attachments were included as part
+of a message in the inbox:
+<codeblock otherprops="smalltalk expression">| client user message msg list |
+client := Pop3Connection host: 'mail.yourserver.com'.
+user := ( NetUser username: 'jdoe@abc.com' 
+	password: 'passwordforjoe' ) .
+client user: user; connect; login.
+msg := client retrieveMessage: 29.
+message := MailMessage readFrom: msg readStream. 
+list := message attachmentNames.
+list inspect.
+client disconnect.</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.pop3.saveAttachment"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Save an attachment</title>
+<body><p><indexterm>pop3<indexterm>save attachment</indexterm></indexterm>The
+following code assumes that at least one attachment was included
+as part of message #29. The first attachment (in case there is more
+than one) is then saved to an external file.
+<codeblock otherprops="smalltalk expression">| client user message msg attachment |
+client := Pop3Connection host: 'mail.yourserver.com'.
+user := ( NetUser username: 'jdoe@abc.com' 
+	password: 'passwordforjoe' ) .
+client user: user; connect; login.
+msg := client retrieveMessage: 29.
+message := MailMessage readFrom: msg readStream. 
+attachment := message attachmentAt: 1.
+attachment removeContentTransferEncoding.
+attachment writeContentsOn: ('filename.whatever' asFilename writeStream).
+client disconnect.</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.pop3.bestText"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Extract the best text representation</title>
+<body><p><indexterm>pop3<indexterm>get best text</indexterm></indexterm>Some
+SMTP servers, such as Microsoft's Exchange server, will take an
+existing (simple) message and send it out in multiple parts: plain text
+and HTML. The following code assumes that message #42 is in multi-part
+format and demonstrates how the message can be extracted in those
+two formats:
+<codeblock otherprops="smalltalk expression">| client user message msg text1 text2 |
+client := Pop3Connection host: 'mail.yourserver.com'.
+user := ( NetUser username: 'jdoe@abc.com' 
+	password: 'passwordforjoe' ) .
+client user: user; connect; login.
+msg := client retrieveMessage: 42.
+message := MailMessage readFrom: msg readStream. 
+text1 := message textInPreferenceOrder: #('html' 'plain' '*').
+text1 inspect.
+text2 := message textInPreferenceOrder: #('plain' 'html' '*').
+text2 inspect.
+client disconnect.</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.pop3.headerInfo"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Extract message header information</title>
+<body><p><indexterm>pop3<indexterm>get header</indexterm></indexterm>The
+following code displays parts of the message header in the System
+Transcript:
+<codeblock otherprops="smalltalk expression">| client user message msg text1 text2 |
+client := Pop3Connection host: 'mail.yourserver.com'.
+user := ( NetUser username: 'jdoe@abc.com' 
+	password: 'passwordforjoe' ) .
+client user: user; connect; login.
+msg := client retrieveMessage: 29.
+message := MailMessage readFrom: msg readStream. 
+Transcript clear;
+ show: 'Charset: ', message charset; cr;
+ show: 'Date of message: ', message date printString; cr;
+ show: 'From: ', message from printString; cr;
+ show: 'Content type: ', message contentType; cr;
+ show: 'Type: ', message type; cr;
+ show: 'Subtype: ', message subtype; cr;
+ show: 'Contents: ', message contents printString; cr.
+client disconnect.</codeblock></p>
+<p>The following code retrieves header information from message
+#42 into an <apiname>OrderedCollection</apiname>:
+<codeblock otherprops="smalltalk expression">| client user message msg headerInfo |
+client := Pop3Connection host: 'mail.yourserver.com'.
+user := ( NetUser username: 'jdoe@abc.com' 
+	password: 'passwordforjoe' ) .
+client user: user; connect; login.
+headerInfo := client retrieveMessageLines: 42.
+headerInfo inspect.
+client disconnect.</codeblock></p>
+<p>The following code retrieves header information from message
+#42 into a <apiname>ByteString</apiname>:
+<codeblock otherprops="smalltalk expression">| client user message msg headerInfo |
+client := Pop3Connection host: 'mail.yourserver.com'.
+user := ( NetUser username: 'jdoe@abc.com' 
+	password: 'passwordforjoe' ) .
+client user: user; connect; login.
+headerInfo := client top: 1 of: 42.
+headerInfo inspect.
+client disconnect.</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.pop3.multipartMsg"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Parse a multi-part message</title>
+<body><p><indexterm>pop3<indexterm>parse multi-part message</indexterm></indexterm>The
+following code assumes that message #42 is in multi-part format and
+inspects the various "parts" of the message:
+<codeblock otherprops="smalltalk expression">| client user message msg |
+client := Pop3Connection host: 'mail.yourserver.com'.
+user := (NetUser username: 'jdoe@abc.com' 
+password: 'passwordforjoe') .
+client user: user; connect; login.
+msg := client retrieveMessage: 42.
+message := RFC822Message readFrom: msg readStream.
+message parts inspect.
+(message parts size) inspect.
+((message partAt: 1) contentType) inspect.
+((message parts first contents)) inspect.
+client disconnect.</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.pop3.deleteMessage"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Delete a message</title>
+<body><p><indexterm>pop3<indexterm>delete message</indexterm></indexterm>The
+following code deletes message #5 from the <codeph>inbox</codeph>:
+<codeblock otherprops="smalltalk expression">| client user |
+client := Pop3Connection host: 'mail.yourserver.com'.
+user := ( NetUser username: 'jdoe@abc.com' 
+	password: 'passwordforjoe' ) .
+client user: user; connect; login.
+client delete: 5.
+client disconnect.</codeblock></p></body></topic></topic></dita>

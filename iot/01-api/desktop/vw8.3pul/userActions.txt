@@ -1,0 +1,7 @@
+Certain actions may need to be performed by the user.
+The instructions below are stored in the file:
+	/home/netgen/vw8.3pul/userActions.txt
+
+Please set an environment variable named: VISUALWORKS
+	to the value: /home/netgen/vw8.3pul
+	in the appropriate unix startup file.

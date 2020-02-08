@@ -1,0 +1,12 @@
+Installing VisualWorks 8.3
+	from /media/netgen/CST17PUL/install.map
+	modified 11 août 2017 à 12:44:00
+	install completed 10/06/2018 20:42:27.404
+
+Certain actions may need to be performed by the user.
+The instructions below are stored in the file:
+	/home/netgen/vw8.3pul/userActions.txt
+
+Please set an environment variable named: VISUALWORKS
+	to the value: /home/netgen/vw8.3pul
+	in the appropriate unix startup file.

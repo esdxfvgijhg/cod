@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+	<topic id="vw.help.intro.whatsNext" 
+			xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+		<title>What's Next?</title>
+
+		<body>
+			<p>Now that you've learned the basics, explore Smalltalk in more depth:
+				<ul>
+					<li>Explore the &Product; documentation. At the least, read the 
+						<xref href="./doc/WalkThrough.pdf" format="pdf" 
+						scope="external"><i>Walk Through</i></xref>, 
+						look at the &Product; <xref href="./doc/AppDevGuide.pdf" 
+						format="pdf" scope="external"><i>Application Developer's Guide</i></xref>, 
+						and the <xref href="./doc/GUIDevGuide.pdf" format="pdf" 
+						scope="external"><i>GUI Developer's Guide</i></xref>.</li>
+					<li>Read some of the code in the class library (but remember that although the 
+						code in the image is very instructive, it is not always perfect).</li>
+					<li>Create applications with your own classes.</li>
+					<li>Learn about Extreme Programming (XP).</li>
+				</ul></p>
+
+			<p>When studying source code in the Browser, consider the following:
+				<ul>
+					<li>Take advantage of package names. If you want to know about collections, 
+						then a good place to start is to browse packages in the 
+						<apiname otherprops="pundle">Collections</apiname> bundle.</li>
+					<li>Learn about implementors-of, senders-of, references-to, and other relationships 
+						and examples. Use the options on the <uicontrol>Browse</uicontrol> menu in the Launcher 
+						and similar commands in the Browser itself.</li>
+					<li>Read class comments, and look at the class side for <codeph>examples</codeph> and 
+						<codeph>documentation</codeph> protocols. Examples are also sometimes included as 
+						comments, as in the <codeph>Dialog</codeph> class methods.</li>
+					<li>Find a more experienced Smalltalker or study with a fellow student.</li>
+					<li>Explore some of the resources listed in the <i>References</i> section, at the end 
+						of this introduction.</li>
+				</ul>
+			</p>
+		</body>
+	</topic>
+</dita>

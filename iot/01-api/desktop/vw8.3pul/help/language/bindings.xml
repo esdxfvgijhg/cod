@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.stLang.bindings"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Name Bindings</title>
+<body><p><indexterm>bindings<indexterm>about</indexterm></indexterm>In 
+an environment with name spaces, <term>binding references</term> (instances 
+of <apiname>BindingReference</apiname>) provide a way to reference a shared 
+variable that makes no assumptions about which name space contains its definition.</p>
+<p>Moreover, bindings implement shared objects such as <term>class</term>es, 
+<term>name space</term>s, and <term>shared variable</term>s. Their value is 
+often constant, and they can be referenced, imported, and queried.</p></body>
+<topic id = "vw.help.stLang.bindings.referencing"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Referencing bindings</title>
+<body><p>References
+to bindings use a dotted notation that describes the path through
+the name space hierarchy to the desired binding. Binding references
+begin with the <apiname otherprops="binding">Root</apiname> name space, continuing through
+the hierarchy to the target binding. For example, the full reference
+to the <apiname>ButtonHilite</apiname> constant is:
+<indexterm>bindings<indexterm>referencing</indexterm></indexterm>
+<indexterm>dotted names</indexterm><indexterm>binding reference</indexterm>
+<codeblock otherprops="smalltalk expression">Root.Smalltalk.SymbolicPaintConstants.ButtonHilite</codeblock></p>
+<p>References to bindings in a name space under <apiname otherprops="binding">Smalltalk</apiname> can
+omit the initial segment <apiname otherprops="binding">Root.Smalltalk</apiname>, which
+is assumed. So, the above reference to <apiname>ButtonHilite</apiname> can
+be shortened to:
+<codeblock otherprops="smalltalk expression">SymbolicPaintConstants.ButtonHilite</codeblock></p>
+<p>The dotted names can be used to refer to a binding that has not
+been imported.</p>
+<p>Usually you will refer to a binding that <i>has</i> been imported.
+The notation <codeph>#{MyBinding}</codeph> allows referring to the
+binding <codeph>MyBinding</codeph> without specifying its name space
+path. So, if a name space imports the <apiname otherprops="binding">SymbolicPaintConstants.ButtonHilite</apiname>,
+references to it can be simply:
+<codeblock otherprops="smalltalk expression">#{ButtonHilite}</codeblock></p>
+</body></topic></topic></dita>

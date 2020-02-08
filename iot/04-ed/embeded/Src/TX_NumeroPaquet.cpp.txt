@@ -1,0 +1,293 @@
+// Vahid Meghdadi 20/06/2018
+// Sends a packet everySendPeriod seconds
+//
+
+
+#include "mbed.h"
+#include "../SX1276Lib/registers/sx1276Regs-LoRa.h"
+#include "../SX1276Lib/sx1276/sx1276-inAir.h"
+
+#define DEBOG                           0
+#define MyID 2
+#define SendPeriod						7					// send a packet once after SendPeriod seconds
+#define BUFFER_SIZE                     4          // Define the payload size here
+
+#define RF_FREQUENCY                    868700000           // 868MHz
+#define TX_OUTPUT_POWER                 14                  // 14 dBm for inAir9
+#define LORA_BANDWIDTH                  8                   // 0: 7.8 kHz,  1: 10.4 kHz, 2: 15.6kHz, 3: 20.8kHz,
+                                                            // 4: 31.25kHz, 5: 41.7 kHz, 6: 62.5 kHz,
+                                                            // 7: 125 kHz,  8: 250 kHz,  9: 500 kHz
+#define LORA_SPREADING_FACTOR           12                  // SF7..SF12
+#define LORA_CODINGRATE                 1                   // 1=4/5, 2=4/6, 3=4/7, 4=4/8
+#define LORA_PREAMBLE_LENGTH            8                   // Same for Tx and Rx
+#define LORA_SYMBOL_TIMEOUT             5                   // Symbols
+#define LORA_FIX_LENGTH_PAYLOAD_ON      false
+#define LORA_FHSS_ENABLED               false
+#define LORA_NB_SYMB_HOP                4
+#define LORA_IQ_INVERSION_ON            false
+#define LORA_CRC_ENABLED                true
+
+#define TX_TIMEOUT_VALUE                11000000
+#define RX_TIMEOUT_VALUE                11000000     // in us
+
+
+
+void OnTxDone(void);
+void OnTxTimeout(void);
+void OnRxDone(uint8_t *payload, uint16_t size, int16_t rssi, int8_t snr);
+void OnRxTimeout(void);
+void OnRxError(void);
+
+
+Serial      pc(USBTX, USBRX);   //Use default TX and RX. Available via USB Com port when using PGM-NUCLEO programmer
+SX1276inAir radio(OnTxDone, OnTxTimeout, OnRxDone, OnRxTimeout, OnRxError, NULL, NULL);
+DigitalOut led(LED1);
+
+Ticker mTicker;
+
+//uint8_t data[5] = {0x00, 0x00, 0x00, 0x00, 0x00};
+Timer Compteur;
+
+uint8_t Buffer[BUFFER_SIZE];
+//uint32_t  tx_time_on_air;
+int8_t LoRaSNR;
+uint16_t msgNo=0;
+uint16_t BufferSize = BUFFER_SIZE;
+int16_t LoRaRssi;
+volatile RadioState State = LOWPOWER;
+
+
+void OnTxDone(void)
+{
+#if DEBOG == 1
+    pc.printf("OnTxDone\r\n");
+#endif
+
+    radio.Standby();
+    State = TX_DONE;
+}
+
+void OnTxTimeout(void)
+{
+    //radio.Sleep();
+    State = TX_TIMEOUT;
+
+#if DEBOG == 1
+    pc.printf("OnTxTimeout\r\n");
+#endif
+}
+
+void OnRxDone(uint8_t *payload, uint16_t size, int16_t rssi, int8_t snr)
+{
+    radio.Sleep();
+    BufferSize = size;
+    memcpy(Buffer, payload, BufferSize);
+    //tx_time_on_air=radio.TimeOnAir(MODEM_LORA, BUFFER_SIZE);
+    LoRaRssi = rssi;
+    LoRaSNR = snr;
+    State = RX_DONE;
+
+#if DEBOG == 1
+    pc.printf("OnRxDone\r\n");
+#endif
+}
+
+void OnRxTimeout(void)
+{
+    radio.Sleep();
+    Buffer[BufferSize] = 0;
+    State = RX_TIMEOUT;
+
+#if DEBOG == 1
+    pc.printf("OnRxTimeout\r\n");
+#endif
+}
+
+void OnRxError(void)
+{
+    radio.Sleep();
+    State = RX_ERROR;
+
+#if DEBOG == 1
+    pc.printf("OnRxError\r\n");
+#endif
+}
+
+//fonction permettant de lire le capteur DHT11
+// the output will be Hh Hl Th Tl checkSum
+//void lire_capt(void){
+// demande de lecture 29
+//	DigitalOut DHTecrire(PA_1, 1);
+//	DHTecrire.write(1);
+//	wait_ms(1);
+//	DHTecrire.write(0);
+//	wait_ms(20);
+//	DigitalIn DHTlire(PA_1);
+	// DHT ACK
+//	while(DHTlire.read() == 0);
+//	while(DHTlire.read() == 1);
+//	for (int j = 0; j < 5; j++){ // we fill byte per byte
+//		for (int i = 0; i < 8; i++){ // we fill bit per bit
+			// low for 50 us
+//			while(DHTlire.read() == 0);
+			// read high value
+//			Compteur.start();
+//			Compteur.reset();
+//			while(DHTlire.read() == 1);
+//			int temp = Compteur.read_us(); // function of compteur return, we know
+//			Compteur.stop(); // if we have 26 us or 70 us
+//			data[j] = data[j] << 1;
+//			if(temp > 40)
+//				data[j] = data[j] + 1;
+//		} // end for
+//	} // end for
+//}
+
+
+void ticker_callback() {
+	wait_ms(10);
+	//lire_capt();
+	Buffer[0]=MyID;
+	Buffer[1]=msgNo/256;
+	Buffer[2]=msgNo & 255;
+	msgNo++;
+//	Buffer[3]=data[2];
+//	Buffer[4]='H';
+//	Buffer[5]=data[0];
+	radio.Send(Buffer, BufferSize);
+
+//#if DEBOG == 1
+//	pc.printf("%d  %d  %d  %d  %d\r\n",data[0],data[1],data[2],data[3],data[4]);
+//#endif
+
+}
+
+
+int main() {
+    wait_ms(500); // start delay
+
+    // configure uart port
+    pc.baud(57600);
+    pc.format(8, SerialBase::None, 1);
+
+    mTicker.attach(ticker_callback, SendPeriod);
+
+    // configure radio
+    radio.SetBoardType(BOARD_INAIR9); // the correct hardware for our own board
+
+    led = 0;
+    while (radio.Read(REG_VERSION) == 0x00)
+    {
+        pc.printf("Trying to connect to radio device\r\n");
+        wait_ms(200);
+    }
+    led = 1;
+
+    pc.printf("Radio is initialized\r\n");
+
+    // set radio frequency
+    radio.SetChannel(RF_FREQUENCY);
+
+    // setup the modem
+    radio.SetTxConfig(
+            MODEM_LORA,
+            TX_OUTPUT_POWER,
+            0,
+            LORA_BANDWIDTH,
+            LORA_SPREADING_FACTOR,
+            LORA_CODINGRATE,
+            LORA_PREAMBLE_LENGTH,
+            LORA_FIX_LENGTH_PAYLOAD_ON,
+            LORA_CRC_ENABLED,
+            LORA_FHSS_ENABLED,
+            LORA_NB_SYMB_HOP,
+            LORA_IQ_INVERSION_ON,
+            TX_TIMEOUT_VALUE
+    );
+
+
+   //tx_time_on_air=radio.TimeOnAir(MODEM_LORA, BUFFER_SIZE);
+
+    radio.SetRxConfig(
+            MODEM_LORA,
+            LORA_BANDWIDTH,
+            LORA_SPREADING_FACTOR,
+            LORA_CODINGRATE,
+            0,
+            LORA_PREAMBLE_LENGTH,
+            LORA_SYMBOL_TIMEOUT,
+            LORA_FIX_LENGTH_PAYLOAD_ON,
+            0,
+            LORA_CRC_ENABLED,
+            LORA_FHSS_ENABLED,
+            LORA_NB_SYMB_HOP,
+            LORA_IQ_INVERSION_ON,
+            true
+    );
+
+
+    // uint8_t j = 0;
+	// size_t taille;
+	// char* str;
+
+    while (radio.Read(REG_VERSION) == 0x00)
+    {
+        led = !led;
+        pc.printf("Reconnecting...\r\n");
+        wait_ms(200);
+    }
+
+	while (1)
+    {
+        // Check for connection to radio module
+       // led = 1;
+
+
+// the state possibilities : LOWPOWER = 0, IDLE, INIT, RX_DONE, RX_TIMEOUT, RX_ERROR, TX_DONE, TX_TIMEOUT, TX_MESSAGE, CAD, CAD_DONE
+
+		switch(State)
+		{
+
+			case TX_DONE:
+
+				// if(j<9) j++;
+				// else j=0;
+
+				State = LOWPOWER;
+				led = !led;
+
+				break;
+
+
+			case LOWPOWER:
+
+		        // dynamic allocation to change the payload
+				// add a number to the message sent
+		        // taille = strlen(message);
+		        // str = (char*) malloc(taille + 2);
+		        // strcpy(str, message);
+		        // str[taille] = j + 48;
+		        // str[taille+1] = '\0';
+				//strcpy((char *)Buffer, message);
+				// free(str);
+
+				//wait_ms(10);
+				//radio.Send(Buffer, BufferSize);
+
+				//wait_ms(2000);
+				break;
+
+			default:
+				State = LOWPOWER;
+		//		led =! led;
+			//	wait_ms(200);
+				break;
+
+		}
+	}
+
+
+}
+
+
+/////////////        SLAVE           ////////////////////

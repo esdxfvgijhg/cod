@@ -1,0 +1,1 @@
+encoding: #UTF_8catalog: comboBoxDemoChoices_ = 'Choices:'ClearChoices = 'Clear Choices'ClearWithAjax = 'Clear with Ajax'ComboBoxComponent = 'ComboBoxDemo'ComboboxData = 'Combobox Data'Disabled = 'Disabled'NoAjax = 'No Ajax'Submit = 'Submit'Text_ = 'Text: 'WithAjax = 'With Ajax'

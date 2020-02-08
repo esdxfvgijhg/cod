@@ -1,0 +1,476 @@
+\hypertarget{classns3_1_1lorawan_1_1LoraPhy}{}\section{ns3\+:\+:lorawan\+:\+:Lora\+Phy Class Reference}
+\label{classns3_1_1lorawan_1_1LoraPhy}\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+
+
+{\ttfamily \#include $<$lora-\/phy.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Lora\+Phy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classns3_1_1lorawan_1_1LoraPhy__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Lora\+Phy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classns3_1_1lorawan_1_1LoraPhy__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef Callback$<$ void, Ptr$<$ const Packet $>$ $>$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy_ae9342f40d4eb2b1f004309f6fb444a50}{Rx\+Ok\+Callback}
+\item 
+typedef Callback$<$ void, Ptr$<$ const Packet $>$ $>$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a2229a4841f407ee9931e563622edf663}{Rx\+Failed\+Callback}
+\item 
+typedef Callback$<$ void, Ptr$<$ const Packet $>$ $>$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a3dd8f8ea5717fc775dde00ad54f5402c}{Tx\+Finished\+Callback}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classns3_1_1lorawan_1_1LoraPhy_ae7fcfd340ea8fcf49e32d02df39555be}{Lora\+Phy} ()
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1LoraPhy_aeeccb517d12084e12e36b533db22386b}{Start\+Receive} (Ptr$<$ Packet $>$ packet, double rx\+Power\+Dbm, uint8\+\_\+t sf, Time duration, double frequency\+M\+Hz)=0
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a719f749890c247abc3fda290d384c37f}{End\+Receive} (Ptr$<$ Packet $>$ packet, Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event}{Lora\+Interference\+Helper\+::\+Event} $>$ event)=0
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a2b940beff4a2fbfb2e603d5d9e65d863}{Send} (Ptr$<$ Packet $>$ packet, \hyperlink{structns3_1_1lorawan_1_1LoraTxParameters}{Lora\+Tx\+Parameters} tx\+Params, double frequency\+M\+Hz, double tx\+Power\+Dbm)=0
+\item 
+virtual bool \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a5280764d934ba5ff8d305b0bc6b600ce}{Is\+Transmitting} (void)=0
+\item 
+virtual bool \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a554597e30a17b099e8a7f68242cb16a7}{Is\+On\+Frequency} (double frequency)=0
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a2887a339fd5c66dc509a934d42f188c5}{Set\+Receive\+Ok\+Callback} (\hyperlink{classns3_1_1lorawan_1_1LoraPhy_ae9342f40d4eb2b1f004309f6fb444a50}{Rx\+Ok\+Callback} callback)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a728d263724c20bb591247a4cb5b2641a}{Set\+Receive\+Failed\+Callback} (\hyperlink{classns3_1_1lorawan_1_1LoraPhy_a2229a4841f407ee9931e563622edf663}{Rx\+Failed\+Callback} callback)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraPhy_aed62597e93fd17ccb4cb36d637a41728}{Set\+Tx\+Finished\+Callback} (\hyperlink{classns3_1_1lorawan_1_1LoraPhy_a3dd8f8ea5717fc775dde00ad54f5402c}{Tx\+Finished\+Callback} callback)
+\item 
+Ptr$<$ Mobility\+Model $>$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy_adc4767610ff2a4b7b55dc49d2adf6a2f}{Get\+Mobility} ()
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a72179baf58ace833ad19f2f32e8d8635}{Set\+Mobility} (Ptr$<$ Mobility\+Model $>$ mobility)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraPhy_ac74c8551858eda9ae96dc64ae94f66bb}{Set\+Channel} (Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraChannel}{Lora\+Channel} $>$ channel)
+\item 
+Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraChannel}{Lora\+Channel} $>$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a8f6df296dcad3d8b74eb3682625663d2}{Get\+Channel} (void) const
+\item 
+Ptr$<$ \hyperlink{classNetDevice}{Net\+Device} $>$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a2de97ba546889dfe9fdac9deb3de77c3}{Get\+Device} (void) const
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a75b29c13bf06d571319585871d84f873}{Set\+Device} (Ptr$<$ \hyperlink{classNetDevice}{Net\+Device} $>$ device)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_a159b124546ee7512230e63de24409dff}\label{classns3_1_1lorawan_1_1LoraPhy_a159b124546ee7512230e63de24409dff}} 
+static Type\+Id {\bfseries Get\+Type\+Id} (void)
+\item 
+static Time \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a305f1313d0694ab94193ac8c99f2cda6}{Get\+On\+Air\+Time} (Ptr$<$ Packet $>$ packet, \hyperlink{structns3_1_1lorawan_1_1LoraTxParameters}{Lora\+Tx\+Parameters} tx\+Params)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_acc016e0822a6eb4e302808a67d9d08ca}\label{classns3_1_1lorawan_1_1LoraPhy_acc016e0822a6eb4e302808a67d9d08ca}} 
+Ptr$<$ \hyperlink{classNetDevice}{Net\+Device} $>$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy_acc016e0822a6eb4e302808a67d9d08ca}{m\+\_\+device}
+\begin{DoxyCompactList}\small\item\em The net device this P\+HY is attached to. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_af9ad1e12693171fcb252440b7f4caa78}\label{classns3_1_1lorawan_1_1LoraPhy_af9ad1e12693171fcb252440b7f4caa78}} 
+Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraChannel}{Lora\+Channel} $>$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy_af9ad1e12693171fcb252440b7f4caa78}{m\+\_\+channel}
+\begin{DoxyCompactList}\small\item\em The channel this P\+HY transmits on. \end{DoxyCompactList}\item 
+\hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper}{Lora\+Interference\+Helper} \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a1d262de59f3cc274e5506386ad5ab2fc}{m\+\_\+interference}
+\item 
+Traced\+Callback$<$ Ptr$<$ const Packet $>$, uint32\+\_\+t $>$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a7b9de28c406d2f27a73c4b98c810213c}{m\+\_\+start\+Sending}
+\begin{DoxyCompactList}\small\item\em associated to this P\+HY. \end{DoxyCompactList}\item 
+Traced\+Callback$<$ Ptr$<$ const Packet $>$ $>$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy_acf6240e545a2646a4af53760f8b8895b}{m\+\_\+phy\+Rx\+Begin\+Trace}
+\item 
+Traced\+Callback$<$ Ptr$<$ const Packet $>$ $>$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a1ce0b29764e69e51ee7c723cdb28d8a5}{m\+\_\+phy\+Rx\+End\+Trace}
+\item 
+Traced\+Callback$<$ Ptr$<$ const Packet $>$, uint32\+\_\+t $>$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a78b4d352f67b17df0e720ef276a86fea}{m\+\_\+successfully\+Received\+Packet}
+\item 
+Traced\+Callback$<$ Ptr$<$ const Packet $>$, uint32\+\_\+t $>$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy_aac99cb9ce98149327c0cc3ead3979440}{m\+\_\+under\+Sensitivity}
+\item 
+Traced\+Callback$<$ Ptr$<$ const Packet $>$, uint32\+\_\+t $>$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a39364c3c5adc16798f72bd0b31906d68}{m\+\_\+interfered\+Packet}
+\item 
+\hyperlink{classns3_1_1lorawan_1_1LoraPhy_ae9342f40d4eb2b1f004309f6fb444a50}{Rx\+Ok\+Callback} \hyperlink{classns3_1_1lorawan_1_1LoraPhy_afaa86274f61442506a553c7d877546f4}{m\+\_\+rx\+Ok\+Callback}
+\item 
+\hyperlink{classns3_1_1lorawan_1_1LoraPhy_a2229a4841f407ee9931e563622edf663}{Rx\+Failed\+Callback} \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a3bac183478118ef0e29fcb3131733846}{m\+\_\+rx\+Failed\+Callback}
+\item 
+\hyperlink{classns3_1_1lorawan_1_1LoraPhy_a3dd8f8ea5717fc775dde00ad54f5402c}{Tx\+Finished\+Callback} \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a5badac60ffec5754017967f96b2ffeb3}{m\+\_\+tx\+Finished\+Callback}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Base class for P\+HY layers implementing the Lo\+Ra modulation scheme.
+
+This class features common callbacks and defines the interfaces that are used to send and receive packets at the P\+HY layer. Furthermore, it features an implementation of the Get\+On\+Air\+Time function, used to compute the actual duration of a packet based on a series of parameters that are collected in \hyperlink{structns3_1_1lorawan_1_1LoraTxParameters}{Lora\+Tx\+Parameters} objects. 
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_a2229a4841f407ee9931e563622edf663}\label{classns3_1_1lorawan_1_1LoraPhy_a2229a4841f407ee9931e563622edf663}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!Rx\+Failed\+Callback@{Rx\+Failed\+Callback}}
+\index{Rx\+Failed\+Callback@{Rx\+Failed\+Callback}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Rx\+Failed\+Callback}{RxFailedCallback}}
+{\footnotesize\ttfamily typedef Callback$<$void, Ptr$<$const Packet$>$ $>$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a2229a4841f407ee9931e563622edf663}{ns3\+::lorawan\+::\+Lora\+Phy\+::\+Rx\+Failed\+Callback}}
+
+Type definition for a callback for when a packet reception fails.
+
+This callback can be set by an upper layer that wishes to be informed of failed reception events. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_ae9342f40d4eb2b1f004309f6fb444a50}\label{classns3_1_1lorawan_1_1LoraPhy_ae9342f40d4eb2b1f004309f6fb444a50}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!Rx\+Ok\+Callback@{Rx\+Ok\+Callback}}
+\index{Rx\+Ok\+Callback@{Rx\+Ok\+Callback}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Rx\+Ok\+Callback}{RxOkCallback}}
+{\footnotesize\ttfamily typedef Callback$<$void, Ptr$<$const Packet$>$ $>$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy_ae9342f40d4eb2b1f004309f6fb444a50}{ns3\+::lorawan\+::\+Lora\+Phy\+::\+Rx\+Ok\+Callback}}
+
+Type definition for a callback for when a packet is correctly received.
+
+This callback can be set by an upper layer that wishes to be informed of correct reception events. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_a3dd8f8ea5717fc775dde00ad54f5402c}\label{classns3_1_1lorawan_1_1LoraPhy_a3dd8f8ea5717fc775dde00ad54f5402c}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!Tx\+Finished\+Callback@{Tx\+Finished\+Callback}}
+\index{Tx\+Finished\+Callback@{Tx\+Finished\+Callback}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Tx\+Finished\+Callback}{TxFinishedCallback}}
+{\footnotesize\ttfamily typedef Callback$<$void, Ptr$<$const Packet$>$ $>$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a3dd8f8ea5717fc775dde00ad54f5402c}{ns3\+::lorawan\+::\+Lora\+Phy\+::\+Tx\+Finished\+Callback}}
+
+Type definition for a callback to call when a packet has finished sending.
+
+This callback is used by the M\+AC layer, to determine when to open a receive window. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_ae7fcfd340ea8fcf49e32d02df39555be}\label{classns3_1_1lorawan_1_1LoraPhy_ae7fcfd340ea8fcf49e32d02df39555be}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!Lora\+Phy@{Lora\+Phy}}
+\index{Lora\+Phy@{Lora\+Phy}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Lora\+Phy()}{LoraPhy()}}
+{\footnotesize\ttfamily ns3\+::lorawan\+::\+Lora\+Phy\+::\+Lora\+Phy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructor and destructor 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_a719f749890c247abc3fda290d384c37f}\label{classns3_1_1lorawan_1_1LoraPhy_a719f749890c247abc3fda290d384c37f}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!End\+Receive@{End\+Receive}}
+\index{End\+Receive@{End\+Receive}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{End\+Receive()}{EndReceive()}}
+{\footnotesize\ttfamily virtual void ns3\+::lorawan\+::\+Lora\+Phy\+::\+End\+Receive (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet $>$}]{packet,  }\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event}{Lora\+Interference\+Helper\+::\+Event} $>$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Finish reception of a packet.
+
+This method is scheduled by Start\+Receive, based on the packet duration. By passing a \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper}{Lora\+Interference\+Helper} Event to this method, the class will be able to identify the packet that is being received among all those that were registered as interference by Start\+Receive.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & The received packet. \\
+\hline
+{\em event} & The event that is tied to this packet in the \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper}{Lora\+Interference\+Helper}. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_af5618e5c03f0010244fcde7922d9899f}{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}, \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_a030500acf630f508b12923627cdc4068}{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}, \hyperlink{classns3_1_1lorawan_1_1SimpleEndDeviceLoraPhy_a03a9d0ffdd5f89991a61aa54e5a1e7ba}{ns3\+::lorawan\+::\+Simple\+End\+Device\+Lora\+Phy}, and \hyperlink{classns3_1_1lorawan_1_1SimpleGatewayLoraPhy_aefb2464599926253bfb1003fa14f8fae}{ns3\+::lorawan\+::\+Simple\+Gateway\+Lora\+Phy}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_a8f6df296dcad3d8b74eb3682625663d2}\label{classns3_1_1lorawan_1_1LoraPhy_a8f6df296dcad3d8b74eb3682625663d2}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!Get\+Channel@{Get\+Channel}}
+\index{Get\+Channel@{Get\+Channel}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Get\+Channel()}{GetChannel()}}
+{\footnotesize\ttfamily Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraChannel}{Lora\+Channel} $>$ ns3\+::lorawan\+::\+Lora\+Phy\+::\+Get\+Channel (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Get the channel instance associated to this P\+HY.
+
+\begin{DoxyReturn}{Returns}
+The \hyperlink{classns3_1_1lorawan_1_1LoraChannel}{Lora\+Channel} instance this P\+HY transmits on. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_a2de97ba546889dfe9fdac9deb3de77c3}\label{classns3_1_1lorawan_1_1LoraPhy_a2de97ba546889dfe9fdac9deb3de77c3}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!Get\+Device@{Get\+Device}}
+\index{Get\+Device@{Get\+Device}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Get\+Device()}{GetDevice()}}
+{\footnotesize\ttfamily Ptr$<$ \hyperlink{classNetDevice}{Net\+Device} $>$ ns3\+::lorawan\+::\+Lora\+Phy\+::\+Get\+Device (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Get the \hyperlink{classNetDevice}{Net\+Device} associated to this P\+HY.
+
+\begin{DoxyReturn}{Returns}
+The \hyperlink{classNetDevice}{Net\+Device} associated to this P\+HY. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_adc4767610ff2a4b7b55dc49d2adf6a2f}\label{classns3_1_1lorawan_1_1LoraPhy_adc4767610ff2a4b7b55dc49d2adf6a2f}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!Get\+Mobility@{Get\+Mobility}}
+\index{Get\+Mobility@{Get\+Mobility}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Get\+Mobility()}{GetMobility()}}
+{\footnotesize\ttfamily Ptr$<$ Mobility\+Model $>$ ns3\+::lorawan\+::\+Lora\+Phy\+::\+Get\+Mobility (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the mobility model associated to this P\+HY.
+
+\begin{DoxyReturn}{Returns}
+The Mobility\+Model associated to this P\+HY. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_a305f1313d0694ab94193ac8c99f2cda6}\label{classns3_1_1lorawan_1_1LoraPhy_a305f1313d0694ab94193ac8c99f2cda6}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!Get\+On\+Air\+Time@{Get\+On\+Air\+Time}}
+\index{Get\+On\+Air\+Time@{Get\+On\+Air\+Time}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Get\+On\+Air\+Time()}{GetOnAirTime()}}
+{\footnotesize\ttfamily Time ns3\+::lorawan\+::\+Lora\+Phy\+::\+Get\+On\+Air\+Time (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet $>$}]{packet,  }\item[{\hyperlink{structns3_1_1lorawan_1_1LoraTxParameters}{Lora\+Tx\+Parameters}}]{tx\+Params }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Compute the time that a packet with certain characteristics will take to be transmitted.
+
+Besides from the ones saved in \hyperlink{structns3_1_1lorawan_1_1LoraTxParameters}{Lora\+Tx\+Parameters}, the packet\textquotesingle{}s payload (obtained through a Get\+Size () call to accout for the presence of Headers and Trailers, too) also influences the packet transmit time.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & The packet that needs to be transmitted. \\
+\hline
+{\em tx\+Params} & The set of parameters that will be used for transmission. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The time necessary to transmit the packet. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_a554597e30a17b099e8a7f68242cb16a7}\label{classns3_1_1lorawan_1_1LoraPhy_a554597e30a17b099e8a7f68242cb16a7}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!Is\+On\+Frequency@{Is\+On\+Frequency}}
+\index{Is\+On\+Frequency@{Is\+On\+Frequency}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Is\+On\+Frequency()}{IsOnFrequency()}}
+{\footnotesize\ttfamily virtual bool ns3\+::lorawan\+::\+Lora\+Phy\+::\+Is\+On\+Frequency (\begin{DoxyParamCaption}\item[{double}]{frequency }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Whether this device is listening on the specified frequency or not.
+
+
+\begin{DoxyParams}{Parameters}
+{\em frequency} & The frequency to query. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the device is listening on that frequency, false otherwise. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a70a83e7dde5b2ae33f6f47dbbf4ad0cd}{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}, and \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_a293b678aaaf872fb1d6c0385bbab9d71}{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_a5280764d934ba5ff8d305b0bc6b600ce}\label{classns3_1_1lorawan_1_1LoraPhy_a5280764d934ba5ff8d305b0bc6b600ce}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!Is\+Transmitting@{Is\+Transmitting}}
+\index{Is\+Transmitting@{Is\+Transmitting}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Is\+Transmitting()}{IsTransmitting()}}
+{\footnotesize\ttfamily virtual bool ns3\+::lorawan\+::\+Lora\+Phy\+::\+Is\+Transmitting (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Whether this device is transmitting or not.
+
+\begin{DoxyReturn}{Returns}
+true if the device is currently transmitting a packet, false otherwise. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a3925d5a27b7e1352c04a78f008071d23}{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}, and \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_a9184985bc4da2d1c0cc9fedb105b20f8}{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_a2b940beff4a2fbfb2e603d5d9e65d863}\label{classns3_1_1lorawan_1_1LoraPhy_a2b940beff4a2fbfb2e603d5d9e65d863}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!Send@{Send}}
+\index{Send@{Send}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Send()}{Send()}}
+{\footnotesize\ttfamily virtual void ns3\+::lorawan\+::\+Lora\+Phy\+::\+Send (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet $>$}]{packet,  }\item[{\hyperlink{structns3_1_1lorawan_1_1LoraTxParameters}{Lora\+Tx\+Parameters}}]{tx\+Params,  }\item[{double}]{frequency\+M\+Hz,  }\item[{double}]{tx\+Power\+Dbm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Instruct the P\+HY to send a packet according to some parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & The packet to send. \\
+\hline
+{\em tx\+Params} & The desired transmission parameters. \\
+\hline
+{\em frequency\+M\+Hz} & The frequency on which to transmit. \\
+\hline
+{\em tx\+Power\+Dbm} & The power in d\+Bm with which to transmit the packet. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a47136bcb9a933e69dbf0872fbd667610}{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}, \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_a2f1375c96d37fd05f1e33e1423826299}{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}, \hyperlink{classns3_1_1lorawan_1_1SimpleEndDeviceLoraPhy_a5698d15e92de30b7f9178af3997b89e9}{ns3\+::lorawan\+::\+Simple\+End\+Device\+Lora\+Phy}, and \hyperlink{classns3_1_1lorawan_1_1SimpleGatewayLoraPhy_ab65ad475c7a03520d6e03bdd008b8d93}{ns3\+::lorawan\+::\+Simple\+Gateway\+Lora\+Phy}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_ac74c8551858eda9ae96dc64ae94f66bb}\label{classns3_1_1lorawan_1_1LoraPhy_ac74c8551858eda9ae96dc64ae94f66bb}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!Set\+Channel@{Set\+Channel}}
+\index{Set\+Channel@{Set\+Channel}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Set\+Channel()}{SetChannel()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Phy\+::\+Set\+Channel (\begin{DoxyParamCaption}\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraChannel}{Lora\+Channel} $>$}]{channel }\end{DoxyParamCaption})}
+
+Set the \hyperlink{classns3_1_1lorawan_1_1LoraChannel}{Lora\+Channel} instance P\+HY transmits on.
+
+Typically, there is only one instance per simulation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel} & The \hyperlink{classns3_1_1lorawan_1_1LoraChannel}{Lora\+Channel} instance this P\+HY will transmit on. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_a75b29c13bf06d571319585871d84f873}\label{classns3_1_1lorawan_1_1LoraPhy_a75b29c13bf06d571319585871d84f873}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!Set\+Device@{Set\+Device}}
+\index{Set\+Device@{Set\+Device}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Set\+Device()}{SetDevice()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Phy\+::\+Set\+Device (\begin{DoxyParamCaption}\item[{Ptr$<$ \hyperlink{classNetDevice}{Net\+Device} $>$}]{device }\end{DoxyParamCaption})}
+
+Set the \hyperlink{classNetDevice}{Net\+Device} that owns this P\+HY.
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & The \hyperlink{classNetDevice}{Net\+Device} this P\+HY will reference as its owner. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_a72179baf58ace833ad19f2f32e8d8635}\label{classns3_1_1lorawan_1_1LoraPhy_a72179baf58ace833ad19f2f32e8d8635}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!Set\+Mobility@{Set\+Mobility}}
+\index{Set\+Mobility@{Set\+Mobility}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Set\+Mobility()}{SetMobility()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Phy\+::\+Set\+Mobility (\begin{DoxyParamCaption}\item[{Ptr$<$ Mobility\+Model $>$}]{mobility }\end{DoxyParamCaption})}
+
+Set the mobility model associated to this P\+HY.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mobility} & The mobility model to associate to this P\+HY. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_a728d263724c20bb591247a4cb5b2641a}\label{classns3_1_1lorawan_1_1LoraPhy_a728d263724c20bb591247a4cb5b2641a}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!Set\+Receive\+Failed\+Callback@{Set\+Receive\+Failed\+Callback}}
+\index{Set\+Receive\+Failed\+Callback@{Set\+Receive\+Failed\+Callback}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Set\+Receive\+Failed\+Callback()}{SetReceiveFailedCallback()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Phy\+::\+Set\+Receive\+Failed\+Callback (\begin{DoxyParamCaption}\item[{\hyperlink{classns3_1_1lorawan_1_1LoraPhy_a2229a4841f407ee9931e563622edf663}{Rx\+Failed\+Callback}}]{callback }\end{DoxyParamCaption})}
+
+Set the callback to call upon failed reception of a packet we were previously locked on.
+
+This method is typically called by an upper M\+AC layer that wants to be notified after the failed reception of a packet. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_a2887a339fd5c66dc509a934d42f188c5}\label{classns3_1_1lorawan_1_1LoraPhy_a2887a339fd5c66dc509a934d42f188c5}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!Set\+Receive\+Ok\+Callback@{Set\+Receive\+Ok\+Callback}}
+\index{Set\+Receive\+Ok\+Callback@{Set\+Receive\+Ok\+Callback}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Set\+Receive\+Ok\+Callback()}{SetReceiveOkCallback()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Phy\+::\+Set\+Receive\+Ok\+Callback (\begin{DoxyParamCaption}\item[{\hyperlink{classns3_1_1lorawan_1_1LoraPhy_ae9342f40d4eb2b1f004309f6fb444a50}{Rx\+Ok\+Callback}}]{callback }\end{DoxyParamCaption})}
+
+Set the callback to call upon successful reception of a packet.
+
+This method is typically called by an upper M\+AC layer that wants to be notified after the successful reception of a packet. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_aed62597e93fd17ccb4cb36d637a41728}\label{classns3_1_1lorawan_1_1LoraPhy_aed62597e93fd17ccb4cb36d637a41728}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!Set\+Tx\+Finished\+Callback@{Set\+Tx\+Finished\+Callback}}
+\index{Set\+Tx\+Finished\+Callback@{Set\+Tx\+Finished\+Callback}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Set\+Tx\+Finished\+Callback()}{SetTxFinishedCallback()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Phy\+::\+Set\+Tx\+Finished\+Callback (\begin{DoxyParamCaption}\item[{\hyperlink{classns3_1_1lorawan_1_1LoraPhy_a3dd8f8ea5717fc775dde00ad54f5402c}{Tx\+Finished\+Callback}}]{callback }\end{DoxyParamCaption})}
+
+Set the callback to call after transmission of a packet.
+
+This method is typically called by an upper M\+AC layer that wants to be notified after the transmission of a packet. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_aeeccb517d12084e12e36b533db22386b}\label{classns3_1_1lorawan_1_1LoraPhy_aeeccb517d12084e12e36b533db22386b}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!Start\+Receive@{Start\+Receive}}
+\index{Start\+Receive@{Start\+Receive}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Start\+Receive()}{StartReceive()}}
+{\footnotesize\ttfamily virtual void ns3\+::lorawan\+::\+Lora\+Phy\+::\+Start\+Receive (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet $>$}]{packet,  }\item[{double}]{rx\+Power\+Dbm,  }\item[{uint8\+\_\+t}]{sf,  }\item[{Time}]{duration,  }\item[{double}]{frequency\+M\+Hz }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Start receiving a packet.
+
+This method is typically called by \hyperlink{classns3_1_1lorawan_1_1LoraChannel}{Lora\+Channel}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & The packet that is arriving at this P\+HY layer. \\
+\hline
+{\em rx\+Power\+Dbm} & The power of the arriving packet (assumed to be constant for the whole reception). \\
+\hline
+{\em sf} & The Spreading Factor of the arriving packet. \\
+\hline
+{\em duration} & The on air time of this packet. \\
+\hline
+{\em frequency\+M\+Hz} & The frequency this packet is being transmitted on. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a93fbde8325d792a8fc287201482f89cb}{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}, \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_a08744b321b5f1b1cf84cff8d7ca8bf49}{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}, \hyperlink{classns3_1_1lorawan_1_1SimpleEndDeviceLoraPhy_ad7a421670937fa0c4ece217ae02598ad}{ns3\+::lorawan\+::\+Simple\+End\+Device\+Lora\+Phy}, and \hyperlink{classns3_1_1lorawan_1_1SimpleGatewayLoraPhy_a8ed607e9a11e4c0b759d456a35b68c40}{ns3\+::lorawan\+::\+Simple\+Gateway\+Lora\+Phy}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_a39364c3c5adc16798f72bd0b31906d68}\label{classns3_1_1lorawan_1_1LoraPhy_a39364c3c5adc16798f72bd0b31906d68}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!m\+\_\+interfered\+Packet@{m\+\_\+interfered\+Packet}}
+\index{m\+\_\+interfered\+Packet@{m\+\_\+interfered\+Packet}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{m\+\_\+interfered\+Packet}{m\_interferedPacket}}
+{\footnotesize\ttfamily Traced\+Callback$<$Ptr$<$const Packet$>$, uint32\+\_\+t$>$ ns3\+::lorawan\+::\+Lora\+Phy\+::m\+\_\+interfered\+Packet\hspace{0.3cm}{\ttfamily [protected]}}
+
+The trace source fired when a packet cannot be correctly received because of interference.
+
+\begin{DoxySeeAlso}{See also}
+class Call\+Back\+Trace\+Source 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_a1d262de59f3cc274e5506386ad5ab2fc}\label{classns3_1_1lorawan_1_1LoraPhy_a1d262de59f3cc274e5506386ad5ab2fc}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!m\+\_\+interference@{m\+\_\+interference}}
+\index{m\+\_\+interference@{m\+\_\+interference}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{m\+\_\+interference}{m\_interference}}
+{\footnotesize\ttfamily \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper}{Lora\+Interference\+Helper} ns3\+::lorawan\+::\+Lora\+Phy\+::m\+\_\+interference\hspace{0.3cm}{\ttfamily [protected]}}
+
+The \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper}{Lora\+Interference\+Helper} \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_acf6240e545a2646a4af53760f8b8895b}\label{classns3_1_1lorawan_1_1LoraPhy_acf6240e545a2646a4af53760f8b8895b}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!m\+\_\+phy\+Rx\+Begin\+Trace@{m\+\_\+phy\+Rx\+Begin\+Trace}}
+\index{m\+\_\+phy\+Rx\+Begin\+Trace@{m\+\_\+phy\+Rx\+Begin\+Trace}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{m\+\_\+phy\+Rx\+Begin\+Trace}{m\_phyRxBeginTrace}}
+{\footnotesize\ttfamily Traced\+Callback$<$Ptr$<$const Packet$>$ $>$ ns3\+::lorawan\+::\+Lora\+Phy\+::m\+\_\+phy\+Rx\+Begin\+Trace\hspace{0.3cm}{\ttfamily [protected]}}
+
+The trace source fired when a packet begins the reception process from the medium.
+
+\begin{DoxySeeAlso}{See also}
+class Call\+Back\+Trace\+Source 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_a1ce0b29764e69e51ee7c723cdb28d8a5}\label{classns3_1_1lorawan_1_1LoraPhy_a1ce0b29764e69e51ee7c723cdb28d8a5}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!m\+\_\+phy\+Rx\+End\+Trace@{m\+\_\+phy\+Rx\+End\+Trace}}
+\index{m\+\_\+phy\+Rx\+End\+Trace@{m\+\_\+phy\+Rx\+End\+Trace}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{m\+\_\+phy\+Rx\+End\+Trace}{m\_phyRxEndTrace}}
+{\footnotesize\ttfamily Traced\+Callback$<$Ptr$<$const Packet$>$ $>$ ns3\+::lorawan\+::\+Lora\+Phy\+::m\+\_\+phy\+Rx\+End\+Trace\hspace{0.3cm}{\ttfamily [protected]}}
+
+The trace source fired when a packet reception ends.
+
+\begin{DoxySeeAlso}{See also}
+class Call\+Back\+Trace\+Source 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_a3bac183478118ef0e29fcb3131733846}\label{classns3_1_1lorawan_1_1LoraPhy_a3bac183478118ef0e29fcb3131733846}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!m\+\_\+rx\+Failed\+Callback@{m\+\_\+rx\+Failed\+Callback}}
+\index{m\+\_\+rx\+Failed\+Callback@{m\+\_\+rx\+Failed\+Callback}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{m\+\_\+rx\+Failed\+Callback}{m\_rxFailedCallback}}
+{\footnotesize\ttfamily \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a2229a4841f407ee9931e563622edf663}{Rx\+Failed\+Callback} ns3\+::lorawan\+::\+Lora\+Phy\+::m\+\_\+rx\+Failed\+Callback\hspace{0.3cm}{\ttfamily [protected]}}
+
+The callback to perform upon failed reception of a packet we were locked on. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_afaa86274f61442506a553c7d877546f4}\label{classns3_1_1lorawan_1_1LoraPhy_afaa86274f61442506a553c7d877546f4}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!m\+\_\+rx\+Ok\+Callback@{m\+\_\+rx\+Ok\+Callback}}
+\index{m\+\_\+rx\+Ok\+Callback@{m\+\_\+rx\+Ok\+Callback}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{m\+\_\+rx\+Ok\+Callback}{m\_rxOkCallback}}
+{\footnotesize\ttfamily \hyperlink{classns3_1_1lorawan_1_1LoraPhy_ae9342f40d4eb2b1f004309f6fb444a50}{Rx\+Ok\+Callback} ns3\+::lorawan\+::\+Lora\+Phy\+::m\+\_\+rx\+Ok\+Callback\hspace{0.3cm}{\ttfamily [protected]}}
+
+The callback to perform upon correct reception of a packet. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_a7b9de28c406d2f27a73c4b98c810213c}\label{classns3_1_1lorawan_1_1LoraPhy_a7b9de28c406d2f27a73c4b98c810213c}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!m\+\_\+start\+Sending@{m\+\_\+start\+Sending}}
+\index{m\+\_\+start\+Sending@{m\+\_\+start\+Sending}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{m\+\_\+start\+Sending}{m\_startSending}}
+{\footnotesize\ttfamily Traced\+Callback$<$Ptr$<$const Packet$>$, uint32\+\_\+t$>$ ns3\+::lorawan\+::\+Lora\+Phy\+::m\+\_\+start\+Sending\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+associated to this P\+HY. 
+
+The trace source fired when a packet is sent.
+
+\begin{DoxySeeAlso}{See also}
+class Call\+Back\+Trace\+Source 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_a78b4d352f67b17df0e720ef276a86fea}\label{classns3_1_1lorawan_1_1LoraPhy_a78b4d352f67b17df0e720ef276a86fea}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!m\+\_\+successfully\+Received\+Packet@{m\+\_\+successfully\+Received\+Packet}}
+\index{m\+\_\+successfully\+Received\+Packet@{m\+\_\+successfully\+Received\+Packet}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{m\+\_\+successfully\+Received\+Packet}{m\_successfullyReceivedPacket}}
+{\footnotesize\ttfamily Traced\+Callback$<$Ptr$<$const Packet$>$, uint32\+\_\+t$>$ ns3\+::lorawan\+::\+Lora\+Phy\+::m\+\_\+successfully\+Received\+Packet\hspace{0.3cm}{\ttfamily [protected]}}
+
+The trace source fired when a packet was correctly received.
+
+\begin{DoxySeeAlso}{See also}
+class Call\+Back\+Trace\+Source 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_a5badac60ffec5754017967f96b2ffeb3}\label{classns3_1_1lorawan_1_1LoraPhy_a5badac60ffec5754017967f96b2ffeb3}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!m\+\_\+tx\+Finished\+Callback@{m\+\_\+tx\+Finished\+Callback}}
+\index{m\+\_\+tx\+Finished\+Callback@{m\+\_\+tx\+Finished\+Callback}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{m\+\_\+tx\+Finished\+Callback}{m\_txFinishedCallback}}
+{\footnotesize\ttfamily \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a3dd8f8ea5717fc775dde00ad54f5402c}{Tx\+Finished\+Callback} ns3\+::lorawan\+::\+Lora\+Phy\+::m\+\_\+tx\+Finished\+Callback\hspace{0.3cm}{\ttfamily [protected]}}
+
+The callback to perform upon the end of a transmission. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraPhy_aac99cb9ce98149327c0cc3ead3979440}\label{classns3_1_1lorawan_1_1LoraPhy_aac99cb9ce98149327c0cc3ead3979440}} 
+\index{ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}!m\+\_\+under\+Sensitivity@{m\+\_\+under\+Sensitivity}}
+\index{m\+\_\+under\+Sensitivity@{m\+\_\+under\+Sensitivity}!ns3\+::lorawan\+::\+Lora\+Phy@{ns3\+::lorawan\+::\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{m\+\_\+under\+Sensitivity}{m\_underSensitivity}}
+{\footnotesize\ttfamily Traced\+Callback$<$Ptr$<$const Packet$>$, uint32\+\_\+t$>$ ns3\+::lorawan\+::\+Lora\+Phy\+::m\+\_\+under\+Sensitivity\hspace{0.3cm}{\ttfamily [protected]}}
+
+The trace source fired when a packet cannot be received because its power is below the sensitivity threshold.
+
+\begin{DoxySeeAlso}{See also}
+class Call\+Back\+Trace\+Source 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lora-\/phy.\+h\item 
+lora-\/phy.\+cc\end{DoxyCompactItemize}

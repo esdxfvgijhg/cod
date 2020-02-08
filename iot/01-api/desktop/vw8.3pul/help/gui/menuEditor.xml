@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.gui.menus"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Menus</title>
+<topic id = "vw.help.gui.menus.editResource"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Open a menu resource</title>
+<body><p><indexterm>menu editor<indexterm>open on menu</indexterm></indexterm>To
+edit menu resource methods in the Menu Editor, use the <uicontrol>Menu&#xA0;&#x2192;&#xA0;Load...</uicontrol> command.<ol>
+<li><p>In the <uicontrol>Load&#xA0;from&#xA0;Class</uicontrol> dialog,
+specify the name of an application model.</p></li>
+<li><p>Either click <uicontrol>OK</uicontrol> or use the &lt;Select&gt;
+button to click in the <uicontrol>Selector:</uicontrol> view. A
+list of selectors will appear that you can choose from.</p></li>
+<li><p>Choose a particular menu and click <uicontrol>OK</uicontrol>.
+The menu will be loaded into the Menu Editor.</p></li></ol></p>
+<p>To edit menu resource methods starting in the Resource Finder
+, browse to a specific method and use the <uicontrol>Edit</uicontrol> command.</p>
+<p>To edit a menu that has been applied to a widget, use the <uicontrol>Menu&#xA0;&#x2192;&#xA0;Read</uicontrol> command.</p></body></topic>
+<topic id = "vw.help.gui.menus.installMenuBar"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Install a menu bar on a canvas</title>
+<body><p><indexterm>GUI development<indexterm>install menu in canvas</indexterm></indexterm><indexterm>menu<indexterm>install
+in canvas</indexterm></indexterm>Use <uicontrol>Menu&#xA0;&#x2192;&#xA0;Apply...</uicontrol> to
+install the menu as a menu bar on the currently active canvas. To
+enable the <uicontrol>Menu&#xA0;&#x2192;&#xA0;Apply...</uicontrol> command:<ol>
+<li><p>The menu being applied must be fully hierarchical. Use <uicontrol>Edit&#xA0;&#x2192;&#xA0;New&#xA0;Item</uicontrol> and <uicontrol>Edit&#xA0;&#x2192;&#xA0;New&#xA0;Submenu&#xA0;Item</uicontrol> to
+build the menu hierarchy.</p></li>
+<li><p>Set the <uicontrol>Menu Bar</uicontrol> property for the
+canvas (click on the <uicontrol>Properties</uicontrol> button in
+the Canvas Tool, enable Menu Bar on the <uicontrol>Basics</uicontrol> page, and
+then select <uicontrol>Apply &amp; Close</uicontrol>.)</p></li>
+<li><p>Select <uicontrol>Menu&#xA0;&#x2192;&#xA0;Apply...</uicontrol> in the Menu
+Editor. A dialog will prompt to confirm and/or supply the class
+and selector for the menu bar resource method.</p></li></ol></p></body></topic>
+<topic id = "vw.help.gui.menus.createItem"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a new menu item</title>
+<body><p><indexterm>menu editor<indexterm>create item</indexterm></indexterm>Use
+the Menu Editor’s <uicontrol>Edit&#xA0;&#x2192;&#xA0;New&#xA0;Item</uicontrol> to
+create a new item at the top level of the menu. To create a new
+item at a sub-level, select the desired level before clicking <uicontrol>Edit&#xA0;&#x2192;&#xA0;New&#xA0;Item</uicontrol>.</p>
+<p>In the right-hand view of the Menu Editor, select the <uicontrol>Basic</uicontrol> properties page.
+Use the <uicontrol>Label</uicontrol> property to specify the text
+of the menu item, and the <uicontrol>Value</uicontrol> property
+to specify the method that performs the menu item’s action.</p>
+<p>Use <uicontrol>Edit&#xA0;&#x2192;&#xA0;New&#xA0;Submenu&#xA0;Item</uicontrol> to
+create a new sub-menu item. The new item will be created in a level
+below the currently selected element (if any).</p>
+<p>In the right-hand view of the Menu Editor, select the <uicontrol>Basic</uicontrol> properties page.
+Use the <uicontrol>Value</uicontrol> property to specify the name
+of the method in the application model that performs the menu item’s
+action.</p>
+<note type="note">The Menu Editor does not support the use of BlockClosures as
+menu actions; to use these, you must modify the action methods manually.</note></body></topic>
+<topic id = "vw.help.gui.menus.addShortcut"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a keyboard shortcut</title>
+<body><p><indexterm>menu editor<indexterm>add shortcut</indexterm></indexterm>Use
+the Menu Editor to edit the menu properties to add a keyboard shortcut:<ol>
+<li><p>Select the menu item in the left-hand view. In the right-hand
+view, click on <uicontrol>Details</uicontrol> with the &lt;Select&gt;
+button.</p></li>
+<li><p>Specify the <uicontrol>Shortcut character</uicontrol> on
+the <uicontrol>Details</uicontrol> page.</p></li></ol></p>
+<p>To invoke the keyboard shortcut, press and hold the &lt;Alt&gt;
+key while pressing the shortcut character.</p>
+<p>Alternately, use the "<uicontrol>&amp;</uicontrol>" character
+in the <uicontrol>Label</uicontrol> field on the <uicontrol>Basic</uicontrol> properties
+page. The character in the menu label that is preceded by an "<uicontrol>&amp;</uicontrol>"
+character will function as a mnemonic key; e.g., entering &amp;cut in
+the label field will set "<uicontrol>c</uicontrol>" as the shortcut
+key for that item.</p></body></topic>
+<topic id = "vw.help.gui.menus.addGraphic"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a graphical menu item</title>
+<body><p><indexterm>menu editor<indexterm>add graphic to item</indexterm></indexterm>To
+add a graphical image to a menu item, use the Menu Editor to edit the
+menu properties:<ol><li><p>Select the menu item in the left-hand
+view. In the right-hand view, click on <uicontrol>Details</uicontrol> with
+the &lt;Select&gt; button.</p></li>
+<li><p>Specify the name of the class and resource method in the <uicontrol>Label&#xA0;image</uicontrol> files
+on the <uicontrol>Details</uicontrol> page. The label image resource may
+be created and installed using the Image Editor.</p></li></ol></p></body></topic>
+<topic id = "vw.help.gui.menus.toggle"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set a toggle switch for a menu item</title>
+<body><p><indexterm>menu<indexterm>make toggle</indexterm></indexterm>Edit
+the properties for a menu item to enable and disable it programmatically:<ol>
+<li><p>Select the menu item in the left-hand view. In the right-hand
+view, click on <uicontrol>Defaults</uicontrol> with the &lt;Select&gt;
+button.</p></li>
+<li><p>Set the <uicontrol>On/Off&#xA0;indicator</uicontrol> property
+to control whether a check box appears next to the name of the menu
+item. Set the <uicontrol>Initially&#xA0;enabled</uicontrol> property
+to control the initial state of the menu item. Use <uicontrol>Initially&#xA0;hidden</uicontrol> to
+visually remove the menu item.</p></li></ol></p></body></topic></topic></dita>

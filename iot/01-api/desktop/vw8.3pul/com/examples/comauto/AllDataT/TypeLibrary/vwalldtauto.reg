@@ -1,0 +1,38 @@
+REGEDIT
+
+/***********************************************************************
+/*
+/* VisualWorks COM All Data Types Example
+/* Copyright (c) 2012 Cincom Systems
+/*
+/* Summary of GUIDs:
+/*
+/* CLSID_VWAllDataTypes:	{DB5DE8E3-AD1F-11d0-ACBE-5E86B1000000}
+/* Type library: vwAllDT.tlb	{DB5DE8E1-AD1F-11d0-ACBE-5E86B1000000}
+/*
+/* Created by Gary Gregory
+/* Last update: Nov-2012.
+/*
+/***********************************************************************
+
+; Version independent registration. Points to version 1.0
+HKEY_CLASSES_ROOT\VisualWorks.AllDataTypesAuto = VisualWorks Automation All Data Types
+HKEY_CLASSES_ROOT\VisualWorks.AllDataTypesAuto\Clsid = {DB5DE8E3-AD1F-11d0-ACBE-5E86B1000000}
+
+; Version 1.0 registration 
+HKEY_CLASSES_ROOT\VisualWorks.AllDataTypesAuto.1 = VisualWorks All Data Types 1.0
+HKEY_CLASSES_ROOT\VisualWorks.AllDataTypesAuto.1\Clsid = {DB5DE8E3-AD1F-11d0-ACBE-5E86B1000000}
+HKEY_CLASSES_ROOT\CLSID\{DB5DE8E3-AD1F-11d0-ACBE-5E86B1000000} = VisualWorks Automation All Data Types 1.0
+HKEY_CLASSES_ROOT\CLSID\{DB5DE8E3-AD1F-11d0-ACBE-5E86B1000000}\ProgID = VisualWorks.AllDataTypesAuto.1
+HKEY_CLASSES_ROOT\CLSID\{DB5DE8E3-AD1F-11d0-ACBE-5E86B1000000}\VersionIndependentProgID = VisualWorks.AllDataTypesAuto
+HKEY_CLASSES_ROOT\CLSID\{DB5DE8E3-AD1F-11d0-ACBE-5E86B1000000}\LocalServer32 = c:\vw7.10\bin\visual.exe c:\vw7.10\com\examples\comauto\vwcomsrv.im /Automation
+HKEY_CLASSES_ROOT\CLSID\{DB5DE8E3-AD1F-11d0-ACBE-5E86B1000000}\TypeLib = {6A693FAC-D5E6-4D5B-909B-0C05834A58A1}
+HKEY_CLASSES_ROOT\CLSID\{DB5DE8E3-AD1F-11d0-ACBE-5E86B1000000}\Programmable
+
+
+; About Type Library and interface registrations. 
+; All interfaces that support virtual function table binding must be registered. 
+; The RegisterTypeLib and LoadTypeLib APIs will do this automatically through
+; the COMTypeLibrary services.
+
+; eof

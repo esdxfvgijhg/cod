@@ -1,0 +1,1 @@
+encoding: #UTF_8catalog: sunitToodebugTests = 'Tests debuggen'runTests = 'Tests laufen lassen'stepIntoTest = 'In den Test hineinspringen'

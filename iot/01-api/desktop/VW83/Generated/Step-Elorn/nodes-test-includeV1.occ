@@ -1,0 +1,20 @@
+
+DATA TYPE BBox
+  RECORD
+    INT Top,Left,Bottom,Right:
+:
+
+PROTOCOL diam.proto IS BBox:
+
+PROC Node([]CHAN OF diam.proto in,out, VAL INT Identity, CHAN OF BYTE toMux)
+  SEQ
+    SKIP
+:
+
+PROC Mux([]CHAN OF BYTE fromNodes, CHAN OF BYTE out)
+  SEQ
+    SKIP
+:
+
+
+

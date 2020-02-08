@@ -1,0 +1,1306 @@
+Archive member included to satisfy reference by file (symbol)
+
+/home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/application_hello-world.a(main.o)
+                              /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o (main)
+/home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/board.a(board_init.o)
+                              /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o (board_init)
+/home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(kernel_init.o)
+                              /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o (kernel_init)
+/home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(thread.o)
+                              /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(kernel_init.o) (thread_create)
+/home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(assert.o)
+                              /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o (_assert_failure)
+/home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(panic.o)
+                              /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(assert.o) (assert_crash_message)
+/home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(sched.o)
+                              /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(thread.o) (sched_num_threads)
+/home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                              /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o (real_exit)
+/home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+                              /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o) (native_interrupts_enabled)
+/home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(native_cpu.o)
+                              /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(thread.o) (thread_stack_init)
+/home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(tramp.o)
+                              /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o) (_native_sig_leave_tramp)
+/home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/native-drivers.a(native-led.o)
+                              /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/board.a(board_init.o) (_native_LED_GREEN_ON)
+/home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(uart.o)
+                              /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o (tty_uart_setup)
+/home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(pm.o)
+                              /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(kernel_init.o) (pm_set_lowest)
+/home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph_common.a(init.o)
+                              /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o (periph_init)
+/home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/auto_init.a(auto_init.o)
+                              /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(kernel_init.o) (auto_init)
+/home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(async_read.o)
+                              /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(uart.o) (native_async_read_setup)
+//usr/lib32/libc_nonshared.a(elf-init.oS)
+                              /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o (__libc_csu_init)
+//usr/lib32/libc_nonshared.a(stack_chk_fail_local.oS)
+                              /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o (__stack_chk_fail_local)
+/home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(tramp.o): dynamic relocation against `_native_saved_eip' in read-only section `.text'
+
+Discarded input sections
+
+ .rodata        0x0000000000000000        0x4 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+ .data          0x0000000000000000        0x4 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/crti.o
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/crti.o
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/crti.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/crti.o
+ .group         0x0000000000000000        0x8 /usr/lib/gcc/x86_64-linux-gnu/8/32/crtbeginS.o
+ .group         0x0000000000000000        0x8 /usr/lib/gcc/x86_64-linux-gnu/8/32/crtbeginS.o
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/8/32/crtbeginS.o
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /usr/lib/gcc/x86_64-linux-gnu/8/32/crtbeginS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/8/32/crtbeginS.o
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o
+ .bss._native_unix_socket_path
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/application_hello-world.a(main.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/application_hello-world.a(main.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/application_hello-world.a(main.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/application_hello-world.a(main.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/application_hello-world.a(main.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/application_hello-world.a(main.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/board.a(board_init.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/board.a(board_init.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/board.a(board_init.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/board.a(board_init.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/board.a(board_init.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/board.a(board_init.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(kernel_init.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(kernel_init.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(kernel_init.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(kernel_init.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(kernel_init.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(kernel_init.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(thread.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(thread.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(thread.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(thread.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(thread.o)
+ .text.clist_lpoprpush
+                0x0000000000000000       0x4a /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(thread.o)
+ .text.pid_is_valid
+                0x0000000000000000       0x4f /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(thread.o)
+ .text.thread_get
+                0x0000000000000000       0x62 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(thread.o)
+ .text.thread_getstatus
+                0x0000000000000000       0x5f /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(thread.o)
+ .text.thread_getname
+                0x0000000000000000       0x5b /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(thread.o)
+ .text.thread_sleep
+                0x0000000000000000       0x70 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(thread.o)
+ .text.thread_wakeup
+                0x0000000000000000       0xb4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(thread.o)
+ .text.thread_yield
+                0x0000000000000000       0x8a /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(thread.o)
+ .text.thread_add_to_list
+                0x0000000000000000       0xbf /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(thread.o)
+ .text.thread_measure_stack_free
+                0x0000000000000000       0x5c /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(thread.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(thread.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(thread.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(assert.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(assert.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(assert.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(assert.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(assert.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(assert.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(panic.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(panic.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(panic.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(panic.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(panic.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(panic.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(panic.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(panic.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(sched.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(sched.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(sched.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(sched.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(sched.o)
+ .openocd       0x0000000000000000        0x2 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(sched.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(sched.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(sched.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(sched.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+ .text._native_read
+                0x0000000000000000       0x6c /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+ .text._native_writev
+                0x0000000000000000       0x6c /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+ .text.thread_isr_stack_pointer
+                0x0000000000000000       0x35 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+ .text.thread_isr_stack_start
+                0x0000000000000000       0x35 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+ .text.print_thread_sigmask
+                0x0000000000000000      0x111 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+ .text.print_sigmasks
+                0x0000000000000000       0xab /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+ .text.native_print_signals
+                0x0000000000000000      0x1d4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+ .text.set_signal_handler
+                0x0000000000000000      0x15f /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+ .text.register_interrupt
+                0x0000000000000000       0x77 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+ .text.unregister_interrupt
+                0x0000000000000000       0x72 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(native_cpu.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(native_cpu.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(native_cpu.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(native_cpu.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(native_cpu.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(native_cpu.o)
+ .text.thread_print_stack
+                0x0000000000000000       0x2f /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(native_cpu.o)
+ .text.thread_isr_stack_usage
+                0x0000000000000000       0x33 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(native_cpu.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(native_cpu.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(native_cpu.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(native_cpu.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(tramp.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(tramp.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/native-drivers.a(native-led.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/native-drivers.a(native-led.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/native-drivers.a(native-led.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/native-drivers.a(native-led.o)
+ .text._native_LED_GREEN_OFF
+                0x0000000000000000       0x48 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/native-drivers.a(native-led.o)
+ .text._native_LED_GREEN_TOGGLE
+                0x0000000000000000       0x48 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/native-drivers.a(native-led.o)
+ .text._native_LED_RED_ON
+                0x0000000000000000       0x48 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/native-drivers.a(native-led.o)
+ .text._native_LED_RED_TOGGLE
+                0x0000000000000000       0x48 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/native-drivers.a(native-led.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/native-drivers.a(native-led.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/native-drivers.a(native-led.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(uart.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(uart.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(uart.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(uart.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(uart.o)
+ .bss.uart_config
+                0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(uart.o)
+ .bss.tty_fds   0x0000000000000000        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(uart.o)
+ .text.io_signal_handler
+                0x0000000000000000       0xf0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(uart.o)
+ .text.uart_init
+                0x0000000000000000      0x365 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(uart.o)
+ .text.uart_write
+                0x0000000000000000       0x64 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(uart.o)
+ .text.uart_poweron
+                0x0000000000000000       0x35 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(uart.o)
+ .text.uart_poweroff
+                0x0000000000000000       0x35 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(uart.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(uart.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(uart.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(uart.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(pm.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(pm.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(pm.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(pm.o)
+ .text.pm_reboot
+                0x0000000000000000       0x81 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(pm.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(pm.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(pm.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph_common.a(init.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph_common.a(init.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph_common.a(init.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph_common.a(init.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph_common.a(init.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph_common.a(init.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/auto_init.a(auto_init.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/auto_init.a(auto_init.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/auto_init.a(auto_init.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/auto_init.a(auto_init.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/auto_init.a(auto_init.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/auto_init.a(auto_init.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(async_read.o)
+ .group         0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(async_read.o)
+ .text          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(async_read.o)
+ .data          0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(async_read.o)
+ .bss           0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(async_read.o)
+ .bss._next_index
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(async_read.o)
+ .bss._fds      0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(async_read.o)
+ .bss._args     0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(async_read.o)
+ .bss._native_async_read_callbacks
+                0x0000000000000000        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(async_read.o)
+ .text._async_io_isr
+                0x0000000000000000      0x1f2 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(async_read.o)
+ .text.native_async_read_setup
+                0x0000000000000000       0x4a /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(async_read.o)
+ .text.native_async_read_cleanup
+                0x0000000000000000       0x74 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(async_read.o)
+ .text.native_async_read_continue
+                0x0000000000000000       0x35 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(async_read.o)
+ .rodata        0x0000000000000000       0x98 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(async_read.o)
+ .text.native_async_read_add_handler
+                0x0000000000000000      0x105 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(async_read.o)
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(async_read.o)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(async_read.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(async_read.o)
+ .group         0x0000000000000000        0x8 //usr/lib32/libc_nonshared.a(elf-init.oS)
+ .data          0x0000000000000000        0x0 //usr/lib32/libc_nonshared.a(elf-init.oS)
+ .bss           0x0000000000000000        0x0 //usr/lib32/libc_nonshared.a(elf-init.oS)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 //usr/lib32/libc_nonshared.a(elf-init.oS)
+ .note.GNU-stack
+                0x0000000000000000        0x0 //usr/lib32/libc_nonshared.a(elf-init.oS)
+ .group         0x0000000000000000        0x8 //usr/lib32/libc_nonshared.a(stack_chk_fail_local.oS)
+ .data          0x0000000000000000        0x0 //usr/lib32/libc_nonshared.a(stack_chk_fail_local.oS)
+ .bss           0x0000000000000000        0x0 //usr/lib32/libc_nonshared.a(stack_chk_fail_local.oS)
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 //usr/lib32/libc_nonshared.a(stack_chk_fail_local.oS)
+ .note.GNU-stack
+                0x0000000000000000        0x0 //usr/lib32/libc_nonshared.a(stack_chk_fail_local.oS)
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/8/32/crtendS.o
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/8/32/crtendS.o
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/8/32/crtendS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/8/32/crtendS.o
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/crtn.o
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/crtn.o
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/crtn.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+LOAD /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/crti.o
+LOAD /usr/lib/gcc/x86_64-linux-gnu/8/32/crtbeginS.o
+LOAD /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o
+START GROUP
+LOAD /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/application_hello-world.a
+LOAD /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/auto_init.a
+LOAD /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/board.a
+LOAD /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a
+LOAD /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a
+LOAD /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/native-drivers.a
+LOAD /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a
+LOAD /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/sys.a
+LOAD /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph_common.a
+LOAD /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/libm.so
+END GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/libdl.so
+LOAD /usr/lib/gcc/x86_64-linux-gnu/8/32/libgcc.a
+LOAD /usr/lib/gcc/x86_64-linux-gnu/8/32/libgcc_s.so
+START GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/8/32/libgcc_s.so.1
+LOAD /usr/lib/gcc/x86_64-linux-gnu/8/32/libgcc.a
+END GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/libc.so
+START GROUP
+LOAD //lib32/libc.so.6
+LOAD //usr/lib32/libc_nonshared.a
+LOAD //lib32/ld-linux.so.2
+END GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/8/32/libgcc.a
+LOAD /usr/lib/gcc/x86_64-linux-gnu/8/32/libgcc_s.so
+START GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/8/32/libgcc_s.so.1
+LOAD /usr/lib/gcc/x86_64-linux-gnu/8/32/libgcc.a
+END GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/8/32/crtendS.o
+LOAD /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/crtn.o
+                [!provide]                        PROVIDE (__executable_start = SEGMENT_START ("text-segment", 0x0))
+                0x0000000000000194                . = (SEGMENT_START ("text-segment", 0x0) + SIZEOF_HEADERS)
+
+.interp         0x0000000000000194       0x13
+ *(.interp)
+ .interp        0x0000000000000194       0x13 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+
+.note.ABI-tag   0x00000000000001a8       0x20
+ .note.ABI-tag  0x00000000000001a8       0x20 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+
+.note.gnu.build-id
+                0x00000000000001c8       0x24
+ *(.note.gnu.build-id)
+ .note.gnu.build-id
+                0x00000000000001c8       0x24 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+
+.hash
+ *(.hash)
+
+.gnu.hash       0x00000000000001ec       0xb4
+ *(.gnu.hash)
+ .gnu.hash      0x00000000000001ec       0xb4 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+
+.dynsym         0x00000000000002a0      0x330
+ *(.dynsym)
+ .dynsym        0x00000000000002a0      0x330 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+
+.dynstr         0x00000000000005d0      0x206
+ *(.dynstr)
+ .dynstr        0x00000000000005d0      0x206 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+
+.gnu.version    0x00000000000007d6       0x66
+ *(.gnu.version)
+ .gnu.version   0x00000000000007d6       0x66 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+
+.gnu.version_d  0x000000000000083c        0x0
+ *(.gnu.version_d)
+ .gnu.version_d
+                0x000000000000083c        0x0 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+
+.gnu.version_r  0x000000000000083c       0x70
+ *(.gnu.version_r)
+ .gnu.version_r
+                0x000000000000083c       0x70 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+
+.rel.dyn        0x00000000000008ac       0xe8
+ *(.rel.init)
+ *(.rel.text .rel.text.* .rel.gnu.linkonce.t.*)
+ .rel.text.core_panic
+                0x00000000000008ac        0x0 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+ .rel.text      0x00000000000008ac       0x38 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+ *(.rel.fini)
+ *(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.*)
+ *(.rel.data.rel.ro .rel.data.rel.ro.* .rel.gnu.linkonce.d.rel.ro.*)
+ .rel.data.rel.ro
+                0x00000000000008e4        0x0 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+ .rel.data.rel.ro.local.long_opts
+                0x00000000000008e4       0x40 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+ *(.rel.data .rel.data.* .rel.gnu.linkonce.d.*)
+ .rel.data.rel.local
+                0x0000000000000924        0x8 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+ .rel.data.rel.local.main_name
+                0x000000000000092c        0x8 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+ .rel.data.rel.local.idle_name
+                0x0000000000000934        0x8 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+ *(.rel.tdata .rel.tdata.* .rel.gnu.linkonce.td.*)
+ *(.rel.tbss .rel.tbss.* .rel.gnu.linkonce.tb.*)
+ *(.rel.ctors)
+ *(.rel.dtors)
+ *(.rel.got)
+ .rel.got       0x000000000000093c       0x40 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+ *(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.*)
+ .rel.bss       0x000000000000097c        0x0 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+ *(.rel.ifunc)
+ .rel.ifunc     0x000000000000097c        0x0 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+ .rel.fini_array
+                0x000000000000097c        0x8 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+ .rel.init_array
+                0x0000000000000984       0x10 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+
+.rel.plt        0x0000000000000994       0xb8
+ *(.rel.plt)
+ .rel.plt       0x0000000000000994       0xb8 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+                [!provide]                        PROVIDE (__rel_iplt_start = .)
+ *(.rel.iplt)
+                [!provide]                        PROVIDE (__rel_iplt_end = .)
+                0x0000000000001000                . = ALIGN (CONSTANT (MAXPAGESIZE))
+
+.init           0x0000000000001000       0x20
+ *(SORT_NONE(.init))
+ .init          0x0000000000001000       0x1b /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/crti.o
+                0x0000000000001000                _init
+ .init          0x000000000000101b        0x5 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/crtn.o
+
+.plt            0x0000000000001020      0x180
+ *(.plt)
+ .plt           0x0000000000001020      0x180 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+ *(.iplt)
+
+.plt.got        0x00000000000011a0        0x8
+ *(.plt.got)
+ .plt.got       0x00000000000011a0        0x8 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+
+.plt.sec
+ *(.plt.sec)
+
+.text           0x00000000000011b0     0x34a4
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ .text.startup  0x00000000000011b0      0x31f /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o
+ *(.text.hot .text.hot.*)
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ *fill*         0x00000000000014cf        0x1 
+ .text          0x00000000000014d0       0x36 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+                0x00000000000014d0                _start
+ *fill*         0x0000000000001506        0xa 
+ .gnu.linkonce.t.__x86.get_pc_thunk.bx
+                0x0000000000001510        0x4 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/crti.o
+                0x0000000000001510                __x86.get_pc_thunk.bx
+ *fill*         0x0000000000001514        0xc 
+ .text          0x0000000000001520       0xe5 /usr/lib/gcc/x86_64-linux-gnu/8/32/crtbeginS.o
+ .text.__x86.get_pc_thunk.dx
+                0x0000000000001605        0x4 /usr/lib/gcc/x86_64-linux-gnu/8/32/crtbeginS.o
+                0x0000000000001605                __x86.get_pc_thunk.dx
+ .text._native_input
+                0x0000000000001609       0x9c /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o
+                0x0000000000001609                _native_input
+ .text._native_log_output
+                0x00000000000016a5      0x162 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o
+                0x00000000000016a5                _native_log_output
+ .text.daemonize
+                0x0000000000001807      0x106 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o
+                0x0000000000001807                daemonize
+ .text.filter_daemonize_argv
+                0x000000000000190d       0xba /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o
+ .text.usage_exit
+                0x00000000000019c7       0x9d /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o
+                0x00000000000019c7                usage_exit
+ .text.main     0x0000000000001a64       0x8c /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/application_hello-world.a(main.o)
+                0x0000000000001a64                main
+ .text.board_init
+                0x0000000000001af0       0x50 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/board.a(board_init.o)
+                0x0000000000001af0                board_init
+ .text.main_trampoline
+                0x0000000000001b40       0x5a /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(kernel_init.o)
+ .text.idle_thread
+                0x0000000000001b9a       0x2a /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(kernel_init.o)
+ .text.kernel_init
+                0x0000000000001bc4       0x7d /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(kernel_init.o)
+                0x0000000000001bc4                kernel_init
+ .text.cib_init
+                0x0000000000001c41       0x8b /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(thread.o)
+ .text.thread_create
+                0x0000000000001ccc      0x274 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(thread.o)
+                0x0000000000001ccc                thread_create
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000001f40        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(thread.o)
+                0x0000000000001f40                __x86.get_pc_thunk.ax
+ .text._assert_failure
+                0x0000000000001f44       0x52 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(assert.o)
+                0x0000000000001f44                _assert_failure
+ .text.panic_arch
+                0x0000000000001f96       0x2f /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(panic.o)
+                0x0000000000001f96                panic_arch
+ .text.core_panic
+                0x0000000000001fc5       0x8f /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(panic.o)
+                0x0000000000001fc5                core_panic
+ .text.bitarithm_lsb
+                0x0000000000002054       0x51 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(sched.o)
+ .text.clist_rpush
+                0x00000000000020a5       0x6c /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(sched.o)
+ .text.clist_lpop
+                0x0000000000002111       0x72 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(sched.o)
+ .text.sched_run
+                0x0000000000002183       0xbd /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(sched.o)
+                0x0000000000002183                sched_run
+ .text.sched_set_status
+                0x0000000000002240      0x11f /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(sched.o)
+                0x0000000000002240                sched_set_status
+ .text.sched_switch
+                0x000000000000235f       0x90 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(sched.o)
+                0x000000000000235f                sched_switch
+ .text.sched_task_exit
+                0x00000000000023ef       0x67 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(sched.o)
+                0x00000000000023ef                sched_task_exit
+ .text._native_syscall_enter
+                0x0000000000002456       0x43 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x0000000000002456                _native_syscall_enter
+ .text._native_syscall_leave
+                0x0000000000002499      0x137 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x0000000000002499                _native_syscall_leave
+ .text.malloc   0x00000000000025d0       0xa8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x00000000000025d0                malloc
+ .text.free     0x0000000000002678       0x55 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x0000000000002678                free
+ .text.calloc   0x00000000000026cd       0xb1 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x00000000000026cd                calloc
+ .text.realloc  0x000000000000277e       0x63 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000277e                realloc
+ .text._native_write
+                0x00000000000027e1       0x6c /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x00000000000027e1                _native_write
+ .text.putchar  0x000000000000284d       0x4c /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000284d                putchar
+ .text.puts     0x0000000000002899       0x6d /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x0000000000002899                puts
+ .text.make_message
+                0x0000000000002906       0xd8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x0000000000002906                make_message
+ .text.printf   0x00000000000029de       0x5c /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x00000000000029de                printf
+ .text.vprintf  0x0000000000002a3a       0x55 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x0000000000002a3a                vprintf
+ .text.fprintf  0x0000000000002a8f       0x5b /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x0000000000002a8f                fprintf
+ .text.vfprintf
+                0x0000000000002aea       0xb5 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x0000000000002aea                vfprintf
+ .text.vwarn    0x0000000000002b9f      0x14e /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x0000000000002b9f                vwarn
+ .text.vwarnx   0x0000000000002ced      0x103 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x0000000000002ced                vwarnx
+ .text.verr     0x0000000000002df0       0x4e /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x0000000000002df0                verr
+ .text.verrx    0x0000000000002e3e       0x4e /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x0000000000002e3e                verrx
+ .text.warn     0x0000000000002e8c       0x4d /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x0000000000002e8c                warn
+ .text.warnx    0x0000000000002ed9       0x4d /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x0000000000002ed9                warnx
+ .text.err      0x0000000000002f26       0x3f /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x0000000000002f26                err
+ .text.errx     0x0000000000002f65       0x3f /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x0000000000002f65                errx
+ .text.getpid   0x0000000000002fa4       0x46 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x0000000000002fa4                getpid
+ .text._native_init_syscalls
+                0x0000000000002fea      0x5af /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x0000000000002fea                _native_init_syscalls
+ .text.irq_disable
+                0x0000000000003599       0x85 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+                0x0000000000003599                irq_disable
+ .text.irq_enable
+                0x000000000000361e       0xa5 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+                0x000000000000361e                irq_enable
+ .text.irq_restore
+                0x00000000000036c3       0x47 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+                0x00000000000036c3                irq_restore
+ .text.irq_is_in
+                0x000000000000370a       0x35 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+                0x000000000000370a                irq_is_in
+ .text._native_popsig
+                0x000000000000373f       0x9f /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+                0x000000000000373f                _native_popsig
+ .text.native_irq_handler
+                0x00000000000037de       0x8f /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+                0x00000000000037de                native_irq_handler
+ .text.isr_set_sigmask
+                0x000000000000386d       0x60 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+                0x000000000000386d                isr_set_sigmask
+ .text.native_isr_entry
+                0x00000000000038cd      0x18f /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+                0x00000000000038cd                native_isr_entry
+ .text.native_shutdown
+                0x0000000000003a5c       0x4e /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+ .text.native_interrupt_init
+                0x0000000000003aaa      0x3be /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+                0x0000000000003aaa                native_interrupt_init
+ .text._native_mod_ctx_leave_sigh
+                0x0000000000003e68       0x54 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(native_cpu.o)
+ .text.thread_stack_init
+                0x0000000000003ebc      0x113 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(native_cpu.o)
+                0x0000000000003ebc                thread_stack_init
+ .text.isr_cpu_switch_context_exit
+                0x0000000000003fcf       0x97 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(native_cpu.o)
+                0x0000000000003fcf                isr_cpu_switch_context_exit
+ .text.cpu_switch_context_exit
+                0x0000000000004066       0xd1 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(native_cpu.o)
+                0x0000000000004066                cpu_switch_context_exit
+ .text.isr_thread_yield
+                0x0000000000004137       0x95 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(native_cpu.o)
+                0x0000000000004137                isr_thread_yield
+ .text.thread_yield_higher
+                0x00000000000041cc      0x100 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(native_cpu.o)
+                0x00000000000041cc                thread_yield_higher
+ .text.native_cpu_init
+                0x00000000000042cc       0xa5 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(native_cpu.o)
+                0x00000000000042cc                native_cpu_init
+ .text.__x86.get_pc_thunk.cx
+                0x0000000000004371        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(native_cpu.o)
+                0x0000000000004371                __x86.get_pc_thunk.cx
+ .text          0x0000000000004375       0x3f /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(tramp.o)
+                0x0000000000004375                _native_sig_leave_tramp
+                0x00000000000043a3                _native_sig_leave_handler
+ .text._native_LED_GREEN_ON
+                0x00000000000043b4       0x48 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/native-drivers.a(native-led.o)
+                0x00000000000043b4                _native_LED_GREEN_ON
+ .text._native_LED_RED_OFF
+                0x00000000000043fc       0x48 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/native-drivers.a(native-led.o)
+                0x00000000000043fc                _native_LED_RED_OFF
+ .text.tty_uart_setup
+                0x0000000000004444       0x5f /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(uart.o)
+                0x0000000000004444                tty_uart_setup
+ .text.pm_set_lowest
+                0x00000000000044a3       0x89 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(pm.o)
+                0x00000000000044a3                pm_set_lowest
+ .text.pm_off   0x000000000000452c       0x3e /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(pm.o)
+                0x000000000000452c                pm_off
+ .text.periph_init
+                0x000000000000456a       0x2f /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph_common.a(init.o)
+                0x000000000000456a                periph_init
+ .text.auto_init
+                0x0000000000004599       0x2f /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/auto_init.a(auto_init.o)
+                0x0000000000004599                auto_init
+ *fill*         0x00000000000045c8        0x8 
+ .text          0x00000000000045d0       0x61 //usr/lib32/libc_nonshared.a(elf-init.oS)
+                0x00000000000045d0                __libc_csu_init
+                0x0000000000004630                __libc_csu_fini
+ *fill*         0x0000000000004631        0xf 
+ .text          0x0000000000004640       0x14 //usr/lib32/libc_nonshared.a(stack_chk_fail_local.oS)
+                0x0000000000004640                __stack_chk_fail_local
+ *(.gnu.warning)
+
+.fini           0x0000000000004654       0x14
+ *(SORT_NONE(.fini))
+ .fini          0x0000000000004654        0xf /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/crti.o
+                0x0000000000004654                _fini
+ .fini          0x0000000000004663        0x5 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/crtn.o
+                [!provide]                        PROVIDE (__etext = .)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (etext = .)
+                0x0000000000005000                . = ALIGN (CONSTANT (MAXPAGESIZE))
+                0x0000000000005000                . = SEGMENT_START ("rodata-segment", (ALIGN (CONSTANT (MAXPAGESIZE)) + (. & (CONSTANT (MAXPAGESIZE) - 0x1))))
+
+.rodata         0x0000000000005000      0xdb2
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.cst4   0x0000000000005000        0x4 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+                0x0000000000005000                _IO_stdin_used
+ .rodata.short_opts
+                0x0000000000005004        0xd /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o
+ *fill*         0x0000000000005011        0x3 
+ .rodata        0x0000000000005014      0x4cb /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o
+ *fill*         0x00000000000054df        0x1 
+ .rodata        0x00000000000054e0       0x5e /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/application_hello-world.a(main.o)
+ *fill*         0x000000000000553e        0x2 
+ .rodata        0x0000000000005540       0x1f /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/board.a(board_init.o)
+ *fill*         0x000000000000555f        0x1 
+ .rodata        0x0000000000005560       0x33 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(kernel_init.o)
+ .rodata        0x0000000000005593        0xe /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(thread.o)
+ .rodata        0x00000000000055a1        0xa /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(assert.o)
+ *fill*         0x00000000000055ab        0x1 
+ .rodata.assert_crash_message
+                0x00000000000055ac       0x12 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(panic.o)
+                0x00000000000055ac                assert_crash_message
+ .rodata        0x00000000000055be       0x2d /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(panic.o)
+ *fill*         0x00000000000055eb        0x1 
+ .rodata        0x00000000000055ec      0x1b2 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+ *fill*         0x000000000000579e        0x2 
+ .rodata        0x00000000000057a0      0x3bc /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+ .rodata        0x0000000000005b5c      0x1a5 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(native_cpu.o)
+ .rodata        0x0000000000005d01       0x52 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/native-drivers.a(native-led.o)
+ *fill*         0x0000000000005d53        0x1 
+ .rodata        0x0000000000005d54       0x5e /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(pm.o)
+
+.rodata1
+ *(.rodata1)
+
+.eh_frame_hdr   0x0000000000005db4      0x284
+ *(.eh_frame_hdr)
+ .eh_frame_hdr  0x0000000000005db4      0x284 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+                0x0000000000005db4                __GNU_EH_FRAME_HDR
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame       0x0000000000006038      0xaac
+ *(.eh_frame)
+ .eh_frame      0x0000000000006038       0x2c /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+ .eh_frame      0x0000000000006064       0x3c /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+                                         0x40 (size before relaxing)
+ .eh_frame      0x00000000000060a0       0x14 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+                                         0x2c (size before relaxing)
+ .eh_frame      0x00000000000060b4       0xd0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o
+                                         0xfc (size before relaxing)
+ .eh_frame      0x0000000000006184       0x34 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/application_hello-world.a(main.o)
+                                         0x60 (size before relaxing)
+ .eh_frame      0x00000000000061b8       0x24 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/board.a(board_init.o)
+                                         0x50 (size before relaxing)
+ .eh_frame      0x00000000000061dc       0x5c /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(kernel_init.o)
+                                         0x88 (size before relaxing)
+ .eh_frame      0x0000000000006238       0x5c /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(thread.o)
+                                        0x1dc (size before relaxing)
+ .eh_frame      0x0000000000006294       0x1c /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(assert.o)
+                                         0x48 (size before relaxing)
+ .eh_frame      0x00000000000062b0       0x3c /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(panic.o)
+                                         0x7c (size before relaxing)
+ .eh_frame      0x00000000000062ec       0xe8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(sched.o)
+                                        0x128 (size before relaxing)
+ .eh_frame      0x00000000000063d4      0x334 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                                        0x3bc (size before relaxing)
+ .eh_frame      0x0000000000006708      0x16c /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+                                        0x2e0 (size before relaxing)
+ .eh_frame      0x0000000000006874      0x104 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(native_cpu.o)
+                                        0x184 (size before relaxing)
+ .eh_frame      0x0000000000006978       0x48 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/native-drivers.a(native-led.o)
+                                        0x104 (size before relaxing)
+ .eh_frame      0x00000000000069c0       0x24 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(uart.o)
+                                        0x110 (size before relaxing)
+ .eh_frame      0x00000000000069e4       0x40 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(pm.o)
+                                         0x88 (size before relaxing)
+ .eh_frame      0x0000000000006a24       0x20 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph_common.a(init.o)
+                                         0x4c (size before relaxing)
+ .eh_frame      0x0000000000006a44       0x20 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/auto_init.a(auto_init.o)
+                                         0x4c (size before relaxing)
+ .eh_frame      0x0000000000006a64        0x0 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(async_read.o)
+                                         0xfc (size before relaxing)
+ .eh_frame      0x0000000000006a64       0x60 //usr/lib32/libc_nonshared.a(elf-init.oS)
+                                         0x8c (size before relaxing)
+ .eh_frame      0x0000000000006ac4       0x1c //usr/lib32/libc_nonshared.a(stack_chk_fail_local.oS)
+                                         0x48 (size before relaxing)
+ .eh_frame      0x0000000000006ae0        0x4 /usr/lib/gcc/x86_64-linux-gnu/8/32/crtendS.o
+ *(.eh_frame.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges .exception_ranges*)
+                0x0000000000007e34                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges .exception_ranges*)
+
+.tdata          0x0000000000007e34        0x0
+                [!provide]                        PROVIDE (__tdata_start = .)
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array  0x0000000000007e34        0x0
+                [!provide]                        PROVIDE (__preinit_array_start = .)
+ *(.preinit_array)
+                [!provide]                        PROVIDE (__preinit_array_end = .)
+
+.init_array     0x0000000000007e34        0x8
+                0x0000000000007e34                PROVIDE (__init_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+ .init_array    0x0000000000007e34        0x4 /usr/lib/gcc/x86_64-linux-gnu/8/32/crtbeginS.o
+ .init_array    0x0000000000007e38        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o
+                0x0000000000007e3c                PROVIDE (__init_array_end = .)
+
+.fini_array     0x0000000000007e3c        0x4
+                [!provide]                        PROVIDE (__fini_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+ .fini_array    0x0000000000007e3c        0x4 /usr/lib/gcc/x86_64-linux-gnu/8/32/crtbeginS.o
+                [!provide]                        PROVIDE (__fini_array_end = .)
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro    0x0000000000007e40       0x90
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ .data.rel.ro.local.long_opts
+                0x0000000000007e40       0x90 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+ .data.rel.ro   0x0000000000007ed0        0x0 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+
+.dynamic        0x0000000000007ed0      0x110
+ *(.dynamic)
+ .dynamic       0x0000000000007ed0      0x110 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+                0x0000000000007ed0                _DYNAMIC
+
+.got            0x0000000000007fe0       0x20
+ *(.got)
+ .got           0x0000000000007fe0       0x20 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+ *(.igot)
+                0x0000000000008ff4                . = DATA_SEGMENT_RELRO_END (., (SIZEOF (.got.plt) >= 0xc)?0xc:0x0)
+
+.got.plt        0x0000000000008000       0x68
+ *(.got.plt)
+ .got.plt       0x0000000000008000       0x68 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+                0x0000000000008000                _GLOBAL_OFFSET_TABLE_
+ *(.igot.plt)
+
+.data           0x0000000000008068        0xc
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data.rel.local
+                0x0000000000008068        0x4 /usr/lib/gcc/x86_64-linux-gnu/8/32/crtbeginS.o
+                0x0000000000008068                __dso_handle
+ .data.rel.local.main_name
+                0x000000000000806c        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(kernel_init.o)
+                0x000000000000806c                main_name
+ .data.rel.local.idle_name
+                0x0000000000008070        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(kernel_init.o)
+                0x0000000000008070                idle_name
+
+.tm_clone_table
+                0x0000000000008074        0x0
+ .tm_clone_table
+                0x0000000000008074        0x0 /usr/lib/gcc/x86_64-linux-gnu/8/32/crtbeginS.o
+ .tm_clone_table
+                0x0000000000008074        0x0 /usr/lib/gcc/x86_64-linux-gnu/8/32/crtendS.o
+
+.data1
+ *(.data1)
+                0x0000000000008074                _edata = .
+                [!provide]                        PROVIDE (edata = .)
+                0x0000000000008074                . = .
+                0x0000000000008074                __bss_start = .
+
+.bss            0x0000000000008080     0xba64
+ *(.dynbss)
+ .dynbss        0x0000000000008080        0x0 /usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib32/Scrt1.o
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x0000000000008080        0x1 /usr/lib/gcc/x86_64-linux-gnu/8/32/crtbeginS.o
+ *fill*         0x0000000000008081        0x3 
+ .bss._native_null_in_pipe
+                0x0000000000008084        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o
+                0x0000000000008084                _native_null_in_pipe
+ .bss._native_null_out_file
+                0x000000000000808c        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o
+                0x000000000000808c                _native_null_out_file
+ .bss._progname
+                0x0000000000008090        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o
+                0x0000000000008090                _progname
+ .bss._native_argv
+                0x0000000000008094        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o
+                0x0000000000008094                _native_argv
+ .bss._native_pid
+                0x0000000000008098        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o
+                0x0000000000008098                _native_pid
+ .bss._native_id
+                0x000000000000809c        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o
+                0x000000000000809c                _native_id
+ .bss._native_rng_seed
+                0x00000000000080a0        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o
+                0x00000000000080a0                _native_rng_seed
+ .bss._native_rng_mode
+                0x00000000000080a4        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o
+                0x00000000000080a4                _native_rng_mode
+ *fill*         0x00000000000080a8       0x18 
+ .bss.main_stack
+                0x00000000000080c0     0x3000 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(kernel_init.o)
+ .bss.idle_stack
+                0x000000000000b0c0     0x2000 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(kernel_init.o)
+ .bss.crashed   0x000000000000d0c0        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(panic.o)
+ .bss.sched_num_threads
+                0x000000000000d0c4        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(sched.o)
+                0x000000000000d0c4                sched_num_threads
+ .bss.sched_context_switch_request
+                0x000000000000d0c8        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(sched.o)
+                0x000000000000d0c8                sched_context_switch_request
+ *fill*         0x000000000000d0cc       0x14 
+ .bss.sched_threads
+                0x000000000000d0e0       0x84 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(sched.o)
+                0x000000000000d0e0                sched_threads
+ .bss.sched_active_thread
+                0x000000000000d164        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(sched.o)
+                0x000000000000d164                sched_active_thread
+ .bss.sched_active_pid
+                0x000000000000d168        0x2 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(sched.o)
+                0x000000000000d168                sched_active_pid
+ *fill*         0x000000000000d16a       0x16 
+ .bss.sched_runqueues
+                0x000000000000d180       0x40 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(sched.o)
+                0x000000000000d180                sched_runqueues
+ .bss.runqueue_bitcache
+                0x000000000000d1c0        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(sched.o)
+ .bss.real_read
+                0x000000000000d1c4        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d1c4                real_read
+ .bss.real_write
+                0x000000000000d1c8        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d1c8                real_write
+ .bss.real_fread
+                0x000000000000d1cc        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d1cc                real_fread
+ .bss.real_clearerr
+                0x000000000000d1d0        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d1d0                real_clearerr
+ .bss.real_exit
+                0x000000000000d1d4        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d1d4                real_exit
+ .bss.real_free
+                0x000000000000d1d8        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d1d8                real_free
+ .bss.real_malloc
+                0x000000000000d1dc        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d1dc                real_malloc
+ .bss.real_calloc
+                0x000000000000d1e0        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d1e0                real_calloc
+ .bss.real_realloc
+                0x000000000000d1e4        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d1e4                real_realloc
+ .bss.real_freeaddrinfo
+                0x000000000000d1e8        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d1e8                real_freeaddrinfo
+ .bss.real_freeifaddrs
+                0x000000000000d1ec        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d1ec                real_freeifaddrs
+ .bss.real_srandom
+                0x000000000000d1f0        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d1f0                real_srandom
+ .bss.real_accept
+                0x000000000000d1f4        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d1f4                real_accept
+ .bss.real_bind
+                0x000000000000d1f8        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d1f8                real_bind
+ .bss.real_connect
+                0x000000000000d1fc        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d1fc                real_connect
+ .bss.real_printf
+                0x000000000000d200        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d200                real_printf
+ .bss.real_getaddrinfo
+                0x000000000000d204        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d204                real_getaddrinfo
+ .bss.real_getifaddrs
+                0x000000000000d208        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d208                real_getifaddrs
+ .bss.real_gettimeofday
+                0x000000000000d20c        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d20c                real_gettimeofday
+ .bss.real_getpid
+                0x000000000000d210        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d210                real_getpid
+ .bss.real_chdir
+                0x000000000000d214        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d214                real_chdir
+ .bss.real_close
+                0x000000000000d218        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d218                real_close
+ .bss.real_fcntl
+                0x000000000000d21c        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d21c                real_fcntl
+ .bss.real_creat
+                0x000000000000d220        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d220                real_creat
+ .bss.real_dup2
+                0x000000000000d224        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d224                real_dup2
+ .bss.real_execve
+                0x000000000000d228        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d228                real_execve
+ .bss.real_fork
+                0x000000000000d22c        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d22c                real_fork
+ .bss.real_feof
+                0x000000000000d230        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d230                real_feof
+ .bss.real_ferror
+                0x000000000000d234        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d234                real_ferror
+ .bss.real_listen
+                0x000000000000d238        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d238                real_listen
+ .bss.real_ioctl
+                0x000000000000d23c        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d23c                real_ioctl
+ .bss.real_open
+                0x000000000000d240        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d240                real_open
+ .bss.real_pause
+                0x000000000000d244        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d244                real_pause
+ .bss.real_pipe
+                0x000000000000d248        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d248                real_pipe
+ .bss.real_select
+                0x000000000000d24c        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d24c                real_select
+ .bss.real_setitimer
+                0x000000000000d250        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d250                real_setitimer
+ .bss.real_setsid
+                0x000000000000d254        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d254                real_setsid
+ .bss.real_setsockopt
+                0x000000000000d258        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d258                real_setsockopt
+ .bss.real_socket
+                0x000000000000d25c        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d25c                real_socket
+ .bss.real_unlink
+                0x000000000000d260        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d260                real_unlink
+ .bss.real_random
+                0x000000000000d264        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d264                real_random
+ .bss.real_gai_strerror
+                0x000000000000d268        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d268                real_gai_strerror
+ .bss.real_fopen
+                0x000000000000d26c        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d26c                real_fopen
+ .bss.real_fclose
+                0x000000000000d270        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d270                real_fclose
+ .bss.real_fseek
+                0x000000000000d274        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d274                real_fseek
+ .bss.real_fputc
+                0x000000000000d278        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d278                real_fputc
+ .bss.real_fgetc
+                0x000000000000d27c        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d27c                real_fgetc
+ .bss.real_umask
+                0x000000000000d280        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d280                real_umask
+ .bss.real_writev
+                0x000000000000d284        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d284                real_writev
+ .bss.real_clock_gettime
+                0x000000000000d288        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d288                real_clock_gettime
+ .bss._native_in_malloc
+                0x000000000000d28c        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d28c                _native_in_malloc
+ .bss._native_in_calloc
+                0x000000000000d290        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+                0x000000000000d290                _native_in_calloc
+ .bss.native_interrupts_enabled
+                0x000000000000d294        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+                0x000000000000d294                native_interrupts_enabled
+ .bss._native_in_isr
+                0x000000000000d298        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+                0x000000000000d298                _native_in_isr
+ .bss._native_in_syscall
+                0x000000000000d29c        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+                0x000000000000d29c                _native_in_syscall
+ .bss._native_sig_set
+                0x000000000000d2a0       0x80 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+ .bss._native_sig_set_dint
+                0x000000000000d320       0x80 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+ .bss.__isr_stack
+                0x000000000000d3a0     0x2000 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+                0x000000000000d3a0                __isr_stack
+ .bss.native_isr_context
+                0x000000000000f3a0      0x16c /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+                0x000000000000f3a0                native_isr_context
+ .bss._native_cur_ctx
+                0x000000000000f50c        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+                0x000000000000f50c                _native_cur_ctx
+ .bss._native_isr_ctx
+                0x000000000000f510        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+                0x000000000000f510                _native_isr_ctx
+ .bss._native_saved_eip
+                0x000000000000f514        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+                0x000000000000f514                _native_saved_eip
+ .bss._native_sigpend
+                0x000000000000f518        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+                0x000000000000f518                _native_sigpend
+ .bss._sig_pipefd
+                0x000000000000f51c        0x8 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+                0x000000000000f51c                _sig_pipefd
+ *fill*         0x000000000000f524       0x1c 
+ .bss.native_irq_handlers
+                0x000000000000f540      0x3fc /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+ *fill*         0x000000000000f93c        0x4 
+ .bss.sigalt_stk
+                0x000000000000f940     0x2000 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+                0x000000000000f940                sigalt_stk
+ .bss.sigstk.5192
+                0x0000000000011940        0xc /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+ *fill*         0x000000000001194c       0x14 
+ .bss.end_context
+                0x0000000000011960      0x16c /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(native_cpu.o)
+                0x0000000000011960                end_context
+ *fill*         0x0000000000011acc       0x14 
+ .bss.__end_stack
+                0x0000000000011ae0     0x2000 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(native_cpu.o)
+                0x0000000000011ae0                __end_stack
+ .bss.tty_device_filenames
+                0x0000000000013ae0        0x4 /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(uart.o)
+ *(COMMON)
+                0x0000000000013ae4                . = ALIGN ((. != 0x0)?0x4:0x1)
+                0x0000000000013ae4                . = ALIGN (0x4)
+                0x0000000000013ae4                . = SEGMENT_START ("ldata-segment", .)
+                0x0000000000013ae4                . = ALIGN (0x4)
+                0x0000000000013ae4                _end = .
+                [!provide]                        PROVIDE (end = .)
+                0x0000000000013ae4                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x1c
+ *(.comment)
+ .comment       0x0000000000000000       0x1c /usr/lib/gcc/x86_64-linux-gnu/8/32/crtbeginS.o
+                                         0x1d (size before relaxing)
+ .comment       0x000000000000001c       0x1d /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu/startup.o
+ .comment       0x000000000000001c       0x1d /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/application_hello-world.a(main.o)
+ .comment       0x000000000000001c       0x1d /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/board.a(board_init.o)
+ .comment       0x000000000000001c       0x1d /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(kernel_init.o)
+ .comment       0x000000000000001c       0x1d /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(thread.o)
+ .comment       0x000000000000001c       0x1d /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(assert.o)
+ .comment       0x000000000000001c       0x1d /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(panic.o)
+ .comment       0x000000000000001c       0x1d /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/core.a(sched.o)
+ .comment       0x000000000000001c       0x1d /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(syscalls.o)
+ .comment       0x000000000000001c       0x1d /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(irq_cpu.o)
+ .comment       0x000000000000001c       0x1d /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(native_cpu.o)
+ .comment       0x000000000000001c       0x1d /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/native-drivers.a(native-led.o)
+ .comment       0x000000000000001c       0x1d /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(uart.o)
+ .comment       0x000000000000001c       0x1d /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph.a(pm.o)
+ .comment       0x000000000000001c       0x1d /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/periph_common.a(init.o)
+ .comment       0x000000000000001c       0x1d /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/auto_init.a(auto_init.o)
+ .comment       0x000000000000001c       0x1d /home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/cpu.a(async_read.o)
+ .comment       0x000000000000001c       0x1d /usr/lib/gcc/x86_64-linux-gnu/8/32/crtendS.o
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info .gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line .debug_line.* .debug_line_end)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_addr
+ *(.debug_addr)
+
+.gnu.attributes
+ *(.gnu.attributes)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(/home/aghiles/Aghiles/Job/cod/engineering/1-boards/riot/hello-world/bin/native/hello-world.elf elf32-i386)

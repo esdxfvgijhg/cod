@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.transcript.displayText"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Displaying text in the Transcript</title>
+<body><p><indexterm>transcript<indexterm>write to</indexterm></indexterm>To
+display some text in the Transcript, evaluate the following Smalltalk expressions:
+<codeblock otherprops="smalltalk expression">Transcript show: 'Hello World' printString; cr.</codeblock></p>
+<p>To perform these steps, open a Workspace window (select 
+<uicontrol>Tools&#xA0;&#x2192;&#xA0;Workspace</uicontrol> in
+the Launcher window), and type these expressions in it; next, select
+the entire text (using the &lt;Select&gt; button), and click and hold
+the &lt;Operate&gt; button with the cursor in the Workspace. Move the
+cursor to select <uicontrol>Do&#xA0;It</uicontrol>, and release
+the mouse button. The text will display in the Transcript.</p>
+<p><apiname>Transcript</apiname> is a global variable, and refers
+to an instance of the class <apiname>TextCollector</apiname>, where
+you will find other useful Transcript behavior.</p>
+</body>
+</topic></dita>

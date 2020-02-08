@@ -1,0 +1,626 @@
+\hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac}{}\section{ns3\+:\+:lorawan\+:\+:End\+Device\+Lora\+Mac Class Reference}
+\label{classns3_1_1lorawan_1_1EndDeviceLoraMac}\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+
+
+{\ttfamily \#include $<$end-\/device-\/lora-\/mac.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:End\+Device\+Lora\+Mac\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classns3_1_1lorawan_1_1EndDeviceLoraMac__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:End\+Device\+Lora\+Mac\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classns3_1_1lorawan_1_1EndDeviceLoraMac__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a6566cdcccf21b69267215758f36e7ee9}{Send} (Ptr$<$ Packet $>$ packet)
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a1e1e4b2c0250f5d37456817f936e5eda}{Do\+Send} (Ptr$<$ Packet $>$ packet)
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a4a763f71c529f8557264ea61b7d2b81e}{Send\+To\+Phy} (Ptr$<$ Packet $>$ packet)
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a52344bd799bd6c0bc4032b0137f1a1c4}{postpone\+Transmission} (Time next\+Tx\+Delay, Ptr$<$ Packet $>$)
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a7bb29a550534c631e2ee7cc3407a2bcd}{Receive} (Ptr$<$ Packet const $>$ packet)
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_ab1fe806e8a0f5aa3a17fd1c39e831d44}{Failed\+Reception} (Ptr$<$ Packet const $>$ packet)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a939732c613ae14a71c902ade45ee2e40}{Tx\+Finished} (Ptr$<$ const Packet $>$ packet)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a95863dd6763948f579b94ffa6acc6b0c}{Open\+First\+Receive\+Window} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_ac7d55666cfe7adc2f159b87543811ba2}{Open\+Second\+Receive\+Window} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_ae9ab8ccd648b94b6b9aa7d8c18272274}{Close\+First\+Receive\+Window} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a522179b116be5fe2edd2f4806e00a055}{Close\+Second\+Receive\+Window} (void)
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_aaa243098bbaf100c7880d2ff9d936ac3}{reset\+Retransmission\+Parameters} ()
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a32175f77b6b6386f5092a4800e6c41bb}{Set\+Data\+Rate\+Adaptation} (bool adapt)
+\item 
+bool \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_aa3b3b1eff843d141de27ad73e42d1d51}{Get\+Data\+Rate\+Adaptation} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_ad9ccf221f703b83cb1a0c0a7b07de03b}{Set\+Max\+Number\+Of\+Transmissions} (uint8\+\_\+t max\+Numb\+Tx)
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a693be5d8132d489a1aa099029ad133ab}{Get\+Max\+Number\+Of\+Transmissions} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a4c62f5aba7104a6935e74594d064028e}{Set\+Data\+Rate} (uint8\+\_\+t data\+Rate)
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a542adf7ed65bee26b4d43ed49f54a3f4}{Get\+Data\+Rate} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a304aa4040eefef152a13a8496a611404}{Set\+Device\+Address} (\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} address)
+\item 
+\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a27064ed2de9f1a8eebc0f57e042f24a1}{Get\+Device\+Address} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a1665b5bad99ef1ee5ca726e8efb6736d}{Set\+Second\+Receive\+Window\+Data\+Rate} (uint8\+\_\+t data\+Rate)
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a7156019e4178af699bd4cc328b598995}{Get\+First\+Receive\+Window\+Data\+Rate} (void)
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_aa4b004ed8d0a79905ad95687a93e4c4f}{Get\+Second\+Receive\+Window\+Data\+Rate} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a366ff7099a3ae9afb64c9ca6be521c55}{Set\+Second\+Receive\+Window\+Frequency} (double frequency\+M\+Hz)
+\item 
+double \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_af5ba5257abb97817dc4f5266d7611833}{Get\+Second\+Receive\+Window\+Frequency} (void)
+\item 
+double \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_ae974b8539199bbc493ba5436d1689860}{Get\+Aggregated\+Duty\+Cycle} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_ac6144c66067865ab2f10a10fb3373139}{Apply\+Necessary\+Options} (\hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader}{Lora\+Frame\+Header} \&frame\+Header)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a5bc2f6e706621d52e20da44af99ba8e6}{Apply\+Necessary\+Options} (\hyperlink{classns3_1_1lorawan_1_1LoraMacHeader}{Lora\+Mac\+Header} \&mac\+Header)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_ac1142dacc77786c0e83d364c30a61900}{Set\+M\+Type} (\hyperlink{classns3_1_1lorawan_1_1LoraMacHeader_afd050ac67eab24871452323799e07e94}{Lora\+Mac\+Header\+::\+M\+Type} m\+Type)
+\item 
+\hyperlink{classns3_1_1lorawan_1_1LoraMacHeader_afd050ac67eab24871452323799e07e94}{Lora\+Mac\+Header\+::\+M\+Type} \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a71370a25ca078710f64b80e5d6316263}{Get\+M\+Type} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a7ca5d196ac64e1dfdddd8738f8d1cfbb}{Parse\+Commands} (\hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader}{Lora\+Frame\+Header} frame\+Header)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_acab0de0c72baf1bd80108b82dd953874}{On\+Link\+Check\+Ans} (uint8\+\_\+t margin, uint8\+\_\+t gw\+Cnt)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a0564c4a7980faf203e20ef78d847b66f}{On\+Link\+Adr\+Req} (uint8\+\_\+t data\+Rate, uint8\+\_\+t tx\+Power, std\+::list$<$ int $>$ enabled\+Channels, int repetitions)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_ab00b3b62618312878a3e231d08e011d9}{On\+Duty\+Cycle\+Req} (double duty\+Cycle)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_abe423a1fb1a82c2264f362670197eb55}{On\+Rx\+Param\+Setup\+Req} (uint8\+\_\+t rx1\+Dr\+Offset, uint8\+\_\+t rx2\+Data\+Rate, double frequency)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a46ee940bbd3311012614b352761158df}{On\+Dev\+Status\+Req} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a394c957d5dd4c8e35e431dd26d276995}{On\+New\+Channel\+Req} (uint8\+\_\+t ch\+Index, double frequency, uint8\+\_\+t min\+Data\+Rate, uint8\+\_\+t max\+Data\+Rate)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a35d02edc0a4259d5a6a165579a08391b}{Add\+Logical\+Channel} (double frequency)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_aad7490b330e71e9d664dd278b2c294b6}{Set\+Logical\+Channel} (uint8\+\_\+t ch\+Index, double frequency, uint8\+\_\+t min\+Data\+Rate, uint8\+\_\+t max\+Data\+Rate)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a024d4b672a6b0fd3e8e6d3087dac7d6a}{Add\+Logical\+Channel} (Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LogicalLoraChannel}{Logical\+Lora\+Channel} $>$ logical\+Channel)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a0ec4f0dc1b5fe2feb17125f5d3fbb3b9}{Add\+Sub\+Band} (double start\+Frequency, double end\+Frequency, double duty\+Cycle, double max\+Tx\+Power\+Dbm)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac_a9c830a6ebb06b450727f7c226e0e2c01}{Add\+Mac\+Command} (Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1MacCommand}{Mac\+Command} $>$ mac\+Command)
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_aca59855646351574a5c8bf593615c375}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_aca59855646351574a5c8bf593615c375}} 
+uint8\+\_\+t {\bfseries Get\+Transmission\+Power} (void)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_af7ddbf9c251ea22cae05c6dd70da5a9f}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_af7ddbf9c251ea22cae05c6dd70da5a9f}} 
+static Type\+Id {\bfseries Get\+Type\+Id} (void)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Class representing the M\+AC layer of a Lo\+Ra\+W\+AN device. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_a35d02edc0a4259d5a6a165579a08391b}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_a35d02edc0a4259d5a6a165579a08391b}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Add\+Logical\+Channel@{Add\+Logical\+Channel}}
+\index{Add\+Logical\+Channel@{Add\+Logical\+Channel}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Add\+Logical\+Channel()}{AddLogicalChannel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Add\+Logical\+Channel (\begin{DoxyParamCaption}\item[{double}]{frequency }\end{DoxyParamCaption})}
+
+Add a logical channel to the helper.
+
+
+\begin{DoxyParams}{Parameters}
+{\em frequency} & The channel\textquotesingle{}s center frequency. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_a024d4b672a6b0fd3e8e6d3087dac7d6a}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_a024d4b672a6b0fd3e8e6d3087dac7d6a}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Add\+Logical\+Channel@{Add\+Logical\+Channel}}
+\index{Add\+Logical\+Channel@{Add\+Logical\+Channel}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Add\+Logical\+Channel()}{AddLogicalChannel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Add\+Logical\+Channel (\begin{DoxyParamCaption}\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LogicalLoraChannel}{Logical\+Lora\+Channel} $>$}]{logical\+Channel }\end{DoxyParamCaption})}
+
+Add a logical channel to the helper.
+
+
+\begin{DoxyParams}{Parameters}
+{\em frequency} & The channel\textquotesingle{}s center frequency. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_a9c830a6ebb06b450727f7c226e0e2c01}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_a9c830a6ebb06b450727f7c226e0e2c01}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Add\+Mac\+Command@{Add\+Mac\+Command}}
+\index{Add\+Mac\+Command@{Add\+Mac\+Command}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Add\+Mac\+Command()}{AddMacCommand()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Add\+Mac\+Command (\begin{DoxyParamCaption}\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1MacCommand}{Mac\+Command} $>$}]{mac\+Command }\end{DoxyParamCaption})}
+
+Add a M\+AC command to the list of those that will be sent out in the next packet. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_a0ec4f0dc1b5fe2feb17125f5d3fbb3b9}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_a0ec4f0dc1b5fe2feb17125f5d3fbb3b9}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Add\+Sub\+Band@{Add\+Sub\+Band}}
+\index{Add\+Sub\+Band@{Add\+Sub\+Band}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Add\+Sub\+Band()}{AddSubBand()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Add\+Sub\+Band (\begin{DoxyParamCaption}\item[{double}]{start\+Frequency,  }\item[{double}]{end\+Frequency,  }\item[{double}]{duty\+Cycle,  }\item[{double}]{max\+Tx\+Power\+Dbm }\end{DoxyParamCaption})}
+
+Add a subband to the logical channel helper.
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\+Frequency} & The \hyperlink{classns3_1_1lorawan_1_1SubBand}{Sub\+Band}\textquotesingle{}s lowest frequency. \\
+\hline
+{\em end\+Frequency} & The \hyperlink{classns3_1_1lorawan_1_1SubBand}{Sub\+Band}\textquotesingle{}s highest frequency. \\
+\hline
+{\em duty\+Cycle} & The \hyperlink{classns3_1_1lorawan_1_1SubBand}{Sub\+Band}\textquotesingle{}s duty cycle, in fraction form. \\
+\hline
+{\em max\+Tx\+Power\+Dbm} & The maximum transmission power allowed on the \hyperlink{classns3_1_1lorawan_1_1SubBand}{Sub\+Band}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_ac6144c66067865ab2f10a10fb3373139}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_ac6144c66067865ab2f10a10fb3373139}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Apply\+Necessary\+Options@{Apply\+Necessary\+Options}}
+\index{Apply\+Necessary\+Options@{Apply\+Necessary\+Options}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Apply\+Necessary\+Options()}{ApplyNecessaryOptions()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Apply\+Necessary\+Options (\begin{DoxyParamCaption}\item[{\hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader}{Lora\+Frame\+Header} \&}]{frame\+Header }\end{DoxyParamCaption})}
+
+Add the necessary options and M\+AC commands to the \hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader}{Lora\+Frame\+Header}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em frame\+Header} & The frame header on which to apply the options. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_a5bc2f6e706621d52e20da44af99ba8e6}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_a5bc2f6e706621d52e20da44af99ba8e6}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Apply\+Necessary\+Options@{Apply\+Necessary\+Options}}
+\index{Apply\+Necessary\+Options@{Apply\+Necessary\+Options}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Apply\+Necessary\+Options()}{ApplyNecessaryOptions()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Apply\+Necessary\+Options (\begin{DoxyParamCaption}\item[{\hyperlink{classns3_1_1lorawan_1_1LoraMacHeader}{Lora\+Mac\+Header} \&}]{mac\+Header }\end{DoxyParamCaption})}
+
+Add the necessary options and M\+AC commands to the \hyperlink{classns3_1_1lorawan_1_1LoraMacHeader}{Lora\+Mac\+Header}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mac\+Header} & The mac header on which to apply the options. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_ae9ab8ccd648b94b6b9aa7d8c18272274}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_ae9ab8ccd648b94b6b9aa7d8c18272274}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Close\+First\+Receive\+Window@{Close\+First\+Receive\+Window}}
+\index{Close\+First\+Receive\+Window@{Close\+First\+Receive\+Window}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Close\+First\+Receive\+Window()}{CloseFirstReceiveWindow()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Close\+First\+Receive\+Window (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Perform operations needed to close the first receive window. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_a522179b116be5fe2edd2f4806e00a055}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_a522179b116be5fe2edd2f4806e00a055}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Close\+Second\+Receive\+Window@{Close\+Second\+Receive\+Window}}
+\index{Close\+Second\+Receive\+Window@{Close\+Second\+Receive\+Window}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Close\+Second\+Receive\+Window()}{CloseSecondReceiveWindow()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Close\+Second\+Receive\+Window (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Perform operations needed to close the second receive window. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_a1e1e4b2c0250f5d37456817f936e5eda}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_a1e1e4b2c0250f5d37456817f936e5eda}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Do\+Send@{Do\+Send}}
+\index{Do\+Send@{Do\+Send}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Do\+Send()}{DoSend()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Do\+Send (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet $>$}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Checking if we are performing the transmission of a new packet or a retransmission, and call Send\+To\+Phy function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & the packet to send \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_ab1fe806e8a0f5aa3a17fd1c39e831d44}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_ab1fe806e8a0f5aa3a17fd1c39e831d44}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Failed\+Reception@{Failed\+Reception}}
+\index{Failed\+Reception@{Failed\+Reception}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Failed\+Reception()}{FailedReception()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Failed\+Reception (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet const $>$}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Function called by lower layers to inform this layer that reception of a packet we were locked on failed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & the packet we failed to receive \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1LoraMac_afcd55472bbfa299c4d0239d5fa9957e3}{ns3\+::lorawan\+::\+Lora\+Mac}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_ae974b8539199bbc493ba5436d1689860}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_ae974b8539199bbc493ba5436d1689860}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Get\+Aggregated\+Duty\+Cycle@{Get\+Aggregated\+Duty\+Cycle}}
+\index{Get\+Aggregated\+Duty\+Cycle@{Get\+Aggregated\+Duty\+Cycle}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Get\+Aggregated\+Duty\+Cycle()}{GetAggregatedDutyCycle()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Get\+Aggregated\+Duty\+Cycle (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Set a value for the R\+X1\+D\+R\+Offset parameter.
+
+This value decides the offset to use when deciding the Data\+Rate of the downlink transmission during the first receive window from the reply\+Data\+Rate\+Matrix.
+
+
+\begin{DoxyParams}{Parameters}
+{\em rx1\+Dr\+Offset} & The value to set for the offset. Get the value of the R\+X1\+D\+R\+Offset parameter.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value of the R\+X1\+D\+R\+Offset parameter. Get the aggregated duty cycle.
+
+A time instance containing the aggregated duty cycle in fractional form. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_a542adf7ed65bee26b4d43ed49f54a3f4}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_a542adf7ed65bee26b4d43ed49f54a3f4}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Get\+Data\+Rate@{Get\+Data\+Rate}}
+\index{Get\+Data\+Rate@{Get\+Data\+Rate}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Get\+Data\+Rate()}{GetDataRate()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Get\+Data\+Rate (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the data rate this end device is set to use.
+
+\begin{DoxyReturn}{Returns}
+The data rate this device uses when transmitting. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_aa3b3b1eff843d141de27ad73e42d1d51}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_aa3b3b1eff843d141de27ad73e42d1d51}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Get\+Data\+Rate\+Adaptation@{Get\+Data\+Rate\+Adaptation}}
+\index{Get\+Data\+Rate\+Adaptation@{Get\+Data\+Rate\+Adaptation}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Get\+Data\+Rate\+Adaptation()}{GetDataRateAdaptation()}}
+{\footnotesize\ttfamily bool ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Get\+Data\+Rate\+Adaptation (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get if data rate adaptation is enabled or not. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_a27064ed2de9f1a8eebc0f57e042f24a1}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_a27064ed2de9f1a8eebc0f57e042f24a1}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Get\+Device\+Address@{Get\+Device\+Address}}
+\index{Get\+Device\+Address@{Get\+Device\+Address}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Get\+Device\+Address()}{GetDeviceAddress()}}
+{\footnotesize\ttfamily \hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Get\+Device\+Address (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the network address of this device.
+
+\begin{DoxyReturn}{Returns}
+This device\textquotesingle{}s address. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_a7156019e4178af699bd4cc328b598995}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_a7156019e4178af699bd4cc328b598995}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Get\+First\+Receive\+Window\+Data\+Rate@{Get\+First\+Receive\+Window\+Data\+Rate}}
+\index{Get\+First\+Receive\+Window\+Data\+Rate@{Get\+First\+Receive\+Window\+Data\+Rate}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Get\+First\+Receive\+Window\+Data\+Rate()}{GetFirstReceiveWindowDataRate()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Get\+First\+Receive\+Window\+Data\+Rate (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the Data Rate that will be used in the first receive window.
+
+\begin{DoxyReturn}{Returns}
+The Data Rate 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_a693be5d8132d489a1aa099029ad133ab}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_a693be5d8132d489a1aa099029ad133ab}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Get\+Max\+Number\+Of\+Transmissions@{Get\+Max\+Number\+Of\+Transmissions}}
+\index{Get\+Max\+Number\+Of\+Transmissions@{Get\+Max\+Number\+Of\+Transmissions}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Get\+Max\+Number\+Of\+Transmissions()}{GetMaxNumberOfTransmissions()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Get\+Max\+Number\+Of\+Transmissions (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Set the maximum number of transmissions allowed. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_a71370a25ca078710f64b80e5d6316263}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_a71370a25ca078710f64b80e5d6316263}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Get\+M\+Type@{Get\+M\+Type}}
+\index{Get\+M\+Type@{Get\+M\+Type}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Get\+M\+Type()}{GetMType()}}
+{\footnotesize\ttfamily \hyperlink{classns3_1_1lorawan_1_1LoraMacHeader_afd050ac67eab24871452323799e07e94}{Lora\+Mac\+Header\+::\+M\+Type} ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Get\+M\+Type (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the message type to send when the Send method is called. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_aa4b004ed8d0a79905ad95687a93e4c4f}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_aa4b004ed8d0a79905ad95687a93e4c4f}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Get\+Second\+Receive\+Window\+Data\+Rate@{Get\+Second\+Receive\+Window\+Data\+Rate}}
+\index{Get\+Second\+Receive\+Window\+Data\+Rate@{Get\+Second\+Receive\+Window\+Data\+Rate}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Get\+Second\+Receive\+Window\+Data\+Rate()}{GetSecondReceiveWindowDataRate()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Get\+Second\+Receive\+Window\+Data\+Rate (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the Data Rate that will be used in the second receive window.
+
+\begin{DoxyReturn}{Returns}
+The Data Rate 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_af5ba5257abb97817dc4f5266d7611833}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_af5ba5257abb97817dc4f5266d7611833}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Get\+Second\+Receive\+Window\+Frequency@{Get\+Second\+Receive\+Window\+Frequency}}
+\index{Get\+Second\+Receive\+Window\+Frequency@{Get\+Second\+Receive\+Window\+Frequency}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Get\+Second\+Receive\+Window\+Frequency()}{GetSecondReceiveWindowFrequency()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Get\+Second\+Receive\+Window\+Frequency (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the frequency that is used for the second receive window.
+
+\begin{DoxyReturn}{Returns}
+The frequency, in M\+Hz 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_a46ee940bbd3311012614b352761158df}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_a46ee940bbd3311012614b352761158df}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!On\+Dev\+Status\+Req@{On\+Dev\+Status\+Req}}
+\index{On\+Dev\+Status\+Req@{On\+Dev\+Status\+Req}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{On\+Dev\+Status\+Req()}{OnDevStatusReq()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+On\+Dev\+Status\+Req (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Perform the actions that need to be taken when receiving a \hyperlink{classns3_1_1lorawan_1_1DevStatusReq}{Dev\+Status\+Req} command. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_ab00b3b62618312878a3e231d08e011d9}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_ab00b3b62618312878a3e231d08e011d9}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!On\+Duty\+Cycle\+Req@{On\+Duty\+Cycle\+Req}}
+\index{On\+Duty\+Cycle\+Req@{On\+Duty\+Cycle\+Req}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{On\+Duty\+Cycle\+Req()}{OnDutyCycleReq()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+On\+Duty\+Cycle\+Req (\begin{DoxyParamCaption}\item[{double}]{duty\+Cycle }\end{DoxyParamCaption})}
+
+Perform the actions that need to be taken when receiving a \hyperlink{classns3_1_1lorawan_1_1DutyCycleReq}{Duty\+Cycle\+Req} command.
+
+
+\begin{DoxyParams}{Parameters}
+{\em duty\+Cycle} & The aggregate duty cycle prescribed by the command, in fraction form. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_a0564c4a7980faf203e20ef78d847b66f}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_a0564c4a7980faf203e20ef78d847b66f}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!On\+Link\+Adr\+Req@{On\+Link\+Adr\+Req}}
+\index{On\+Link\+Adr\+Req@{On\+Link\+Adr\+Req}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{On\+Link\+Adr\+Req()}{OnLinkAdrReq()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+On\+Link\+Adr\+Req (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{data\+Rate,  }\item[{uint8\+\_\+t}]{tx\+Power,  }\item[{std\+::list$<$ int $>$}]{enabled\+Channels,  }\item[{int}]{repetitions }\end{DoxyParamCaption})}
+
+Perform the actions that need to be taken when receiving a \hyperlink{classns3_1_1lorawan_1_1LinkAdrReq}{Link\+Adr\+Req} command.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data\+Rate} & The data rate value of the command. \\
+\hline
+{\em tx\+Power} & The transmission power value of the command. \\
+\hline
+{\em enabled\+Channels} & A list of the enabled channels. \\
+\hline
+{\em repetitions} & The number of repetitions prescribed by the command. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_acab0de0c72baf1bd80108b82dd953874}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_acab0de0c72baf1bd80108b82dd953874}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!On\+Link\+Check\+Ans@{On\+Link\+Check\+Ans}}
+\index{On\+Link\+Check\+Ans@{On\+Link\+Check\+Ans}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{On\+Link\+Check\+Ans()}{OnLinkCheckAns()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+On\+Link\+Check\+Ans (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{margin,  }\item[{uint8\+\_\+t}]{gw\+Cnt }\end{DoxyParamCaption})}
+
+Perform the actions that need to be taken when receiving a \hyperlink{classns3_1_1lorawan_1_1LinkCheckAns}{Link\+Check\+Ans} command.
+
+
+\begin{DoxyParams}{Parameters}
+{\em margin} & The margin value of the command. \\
+\hline
+{\em gw\+Cnt} & The gateway count value of the command. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_a394c957d5dd4c8e35e431dd26d276995}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_a394c957d5dd4c8e35e431dd26d276995}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!On\+New\+Channel\+Req@{On\+New\+Channel\+Req}}
+\index{On\+New\+Channel\+Req@{On\+New\+Channel\+Req}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{On\+New\+Channel\+Req()}{OnNewChannelReq()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+On\+New\+Channel\+Req (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{ch\+Index,  }\item[{double}]{frequency,  }\item[{uint8\+\_\+t}]{min\+Data\+Rate,  }\item[{uint8\+\_\+t}]{max\+Data\+Rate }\end{DoxyParamCaption})}
+
+Perform the actions that need to be taken when receiving a \hyperlink{classns3_1_1lorawan_1_1NewChannelReq}{New\+Channel\+Req} command. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_abe423a1fb1a82c2264f362670197eb55}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_abe423a1fb1a82c2264f362670197eb55}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!On\+Rx\+Param\+Setup\+Req@{On\+Rx\+Param\+Setup\+Req}}
+\index{On\+Rx\+Param\+Setup\+Req@{On\+Rx\+Param\+Setup\+Req}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{On\+Rx\+Param\+Setup\+Req()}{OnRxParamSetupReq()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+On\+Rx\+Param\+Setup\+Req (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{rx1\+Dr\+Offset,  }\item[{uint8\+\_\+t}]{rx2\+Data\+Rate,  }\item[{double}]{frequency }\end{DoxyParamCaption})}
+
+Perform the actions that need to be taken when receiving a \hyperlink{classns3_1_1lorawan_1_1RxParamSetupReq}{Rx\+Param\+Setup\+Req} command.
+
+
+\begin{DoxyParams}{Parameters}
+{\em rx1\+Dr\+Offset} & The offset to set. \\
+\hline
+{\em rx2\+Data\+Rate} & The data rate to use for the second receive window. \\
+\hline
+{\em frequency} & The frequency to use for the second receive window. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_a95863dd6763948f579b94ffa6acc6b0c}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_a95863dd6763948f579b94ffa6acc6b0c}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Open\+First\+Receive\+Window@{Open\+First\+Receive\+Window}}
+\index{Open\+First\+Receive\+Window@{Open\+First\+Receive\+Window}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Open\+First\+Receive\+Window()}{OpenFirstReceiveWindow()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Open\+First\+Receive\+Window (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Perform operations needed to open the first receive window. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_ac7d55666cfe7adc2f159b87543811ba2}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_ac7d55666cfe7adc2f159b87543811ba2}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Open\+Second\+Receive\+Window@{Open\+Second\+Receive\+Window}}
+\index{Open\+Second\+Receive\+Window@{Open\+Second\+Receive\+Window}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Open\+Second\+Receive\+Window()}{OpenSecondReceiveWindow()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Open\+Second\+Receive\+Window (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Perform operations needed to open the second receive window. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_a7ca5d196ac64e1dfdddd8738f8d1cfbb}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_a7ca5d196ac64e1dfdddd8738f8d1cfbb}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Parse\+Commands@{Parse\+Commands}}
+\index{Parse\+Commands@{Parse\+Commands}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Parse\+Commands()}{ParseCommands()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Parse\+Commands (\begin{DoxyParamCaption}\item[{\hyperlink{classns3_1_1lorawan_1_1LoraFrameHeader}{Lora\+Frame\+Header}}]{frame\+Header }\end{DoxyParamCaption})}
+
+Parse and take action on the commands contained on this Frame\+Header. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_a52344bd799bd6c0bc4032b0137f1a1c4}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_a52344bd799bd6c0bc4032b0137f1a1c4}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!postpone\+Transmission@{postpone\+Transmission}}
+\index{postpone\+Transmission@{postpone\+Transmission}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{postpone\+Transmission()}{postponeTransmission()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::postpone\+Transmission (\begin{DoxyParamCaption}\item[{Time}]{next\+Tx\+Delay,  }\item[{Ptr$<$ Packet $>$}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Postpone transmission to the specified time and delete previously scheduled transmissions if present.
+
+
+\begin{DoxyParams}{Parameters}
+{\em next\+Tx\+Delay} & Delay at which the transmission will be performed. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_a7bb29a550534c631e2ee7cc3407a2bcd}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_a7bb29a550534c631e2ee7cc3407a2bcd}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Receive@{Receive}}
+\index{Receive@{Receive}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Receive()}{Receive()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Receive (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet const $>$}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Receive a packet.
+
+This method is typically registered as a callback in the underlying P\+HY layer so that it\textquotesingle{}s called when a packet is going up the stack.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & the received packet. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1LoraMac_a6eda46656789a277b8e103afcefdc21a}{ns3\+::lorawan\+::\+Lora\+Mac}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_aaa243098bbaf100c7880d2ff9d936ac3}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_aaa243098bbaf100c7880d2ff9d936ac3}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!reset\+Retransmission\+Parameters@{reset\+Retransmission\+Parameters}}
+\index{reset\+Retransmission\+Parameters@{reset\+Retransmission\+Parameters}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{reset\+Retransmission\+Parameters()}{resetRetransmissionParameters()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::reset\+Retransmission\+Parameters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Reset retransmission parameters contained in the structure Lora\+Retx\+Params \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_a6566cdcccf21b69267215758f36e7ee9}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_a6566cdcccf21b69267215758f36e7ee9}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Send@{Send}}
+\index{Send@{Send}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Send()}{Send()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Send (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet $>$}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Send a packet.
+
+The M\+AC layer of the ED will take care of using the right parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & the packet to send \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1LoraMac_ac2f3fd92536658192bfa3d1523fff716}{ns3\+::lorawan\+::\+Lora\+Mac}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_a4a763f71c529f8557264ea61b7d2b81e}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_a4a763f71c529f8557264ea61b7d2b81e}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Send\+To\+Phy@{Send\+To\+Phy}}
+\index{Send\+To\+Phy@{Send\+To\+Phy}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Send\+To\+Phy()}{SendToPhy()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Send\+To\+Phy (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet $>$}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Add headers and send a packet with the sending function of the physical layer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & the packet to send \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_a4c62f5aba7104a6935e74594d064028e}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_a4c62f5aba7104a6935e74594d064028e}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Set\+Data\+Rate@{Set\+Data\+Rate}}
+\index{Set\+Data\+Rate@{Set\+Data\+Rate}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Set\+Data\+Rate()}{SetDataRate()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Set\+Data\+Rate (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{data\+Rate }\end{DoxyParamCaption})}
+
+Set the data rate this end device will use when transmitting. For End Devices, this value is assumed to be fixed, and can be modified via M\+AC commands issued by the GW.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data\+Rate} & The data\+Rate to use when transmitting. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_a32175f77b6b6386f5092a4800e6c41bb}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_a32175f77b6b6386f5092a4800e6c41bb}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Set\+Data\+Rate\+Adaptation@{Set\+Data\+Rate\+Adaptation}}
+\index{Set\+Data\+Rate\+Adaptation@{Set\+Data\+Rate\+Adaptation}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Set\+Data\+Rate\+Adaptation()}{SetDataRateAdaptation()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Set\+Data\+Rate\+Adaptation (\begin{DoxyParamCaption}\item[{bool}]{adapt }\end{DoxyParamCaption})}
+
+Enable data rate adaptation in the retransmitting procedure.
+
+
+\begin{DoxyParams}{Parameters}
+{\em adapt} & If the data rate adaptation is enabled or not. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_a304aa4040eefef152a13a8496a611404}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_a304aa4040eefef152a13a8496a611404}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Set\+Device\+Address@{Set\+Device\+Address}}
+\index{Set\+Device\+Address@{Set\+Device\+Address}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Set\+Device\+Address()}{SetDeviceAddress()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Set\+Device\+Address (\begin{DoxyParamCaption}\item[{\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address}}]{address }\end{DoxyParamCaption})}
+
+Set the network address of this device.
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The address to set. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_aad7490b330e71e9d664dd278b2c294b6}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_aad7490b330e71e9d664dd278b2c294b6}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Set\+Logical\+Channel@{Set\+Logical\+Channel}}
+\index{Set\+Logical\+Channel@{Set\+Logical\+Channel}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Set\+Logical\+Channel()}{SetLogicalChannel()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Set\+Logical\+Channel (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{ch\+Index,  }\item[{double}]{frequency,  }\item[{uint8\+\_\+t}]{min\+Data\+Rate,  }\item[{uint8\+\_\+t}]{max\+Data\+Rate }\end{DoxyParamCaption})}
+
+Set a new logical channel in the helper.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ch\+Index} & The channel\textquotesingle{}s new index. \\
+\hline
+{\em frequency} & The channel\textquotesingle{}s center frequency. \\
+\hline
+{\em min\+Data\+Rate} & The minimum data rate allowed on the channel. \\
+\hline
+{\em max\+Data\+Rate} & The maximum data rate allowed on the channel. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_ad9ccf221f703b83cb1a0c0a7b07de03b}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_ad9ccf221f703b83cb1a0c0a7b07de03b}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Set\+Max\+Number\+Of\+Transmissions@{Set\+Max\+Number\+Of\+Transmissions}}
+\index{Set\+Max\+Number\+Of\+Transmissions@{Set\+Max\+Number\+Of\+Transmissions}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Set\+Max\+Number\+Of\+Transmissions()}{SetMaxNumberOfTransmissions()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Set\+Max\+Number\+Of\+Transmissions (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{max\+Numb\+Tx }\end{DoxyParamCaption})}
+
+Set the maximum number of transmissions allowed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+Numb\+Tx} & The maximum number of transmissions allowed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_ac1142dacc77786c0e83d364c30a61900}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_ac1142dacc77786c0e83d364c30a61900}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Set\+M\+Type@{Set\+M\+Type}}
+\index{Set\+M\+Type@{Set\+M\+Type}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Set\+M\+Type()}{SetMType()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Set\+M\+Type (\begin{DoxyParamCaption}\item[{\hyperlink{classns3_1_1lorawan_1_1LoraMacHeader_afd050ac67eab24871452323799e07e94}{Lora\+Mac\+Header\+::\+M\+Type}}]{m\+Type }\end{DoxyParamCaption})}
+
+Set the message type to send when the Send method is called. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_a1665b5bad99ef1ee5ca726e8efb6736d}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_a1665b5bad99ef1ee5ca726e8efb6736d}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Set\+Second\+Receive\+Window\+Data\+Rate@{Set\+Second\+Receive\+Window\+Data\+Rate}}
+\index{Set\+Second\+Receive\+Window\+Data\+Rate@{Set\+Second\+Receive\+Window\+Data\+Rate}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Set\+Second\+Receive\+Window\+Data\+Rate()}{SetSecondReceiveWindowDataRate()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Set\+Second\+Receive\+Window\+Data\+Rate (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{data\+Rate }\end{DoxyParamCaption})}
+
+Set the Data Rate to be used in the second receive window.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data\+Rate} & The Data Rate. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_a366ff7099a3ae9afb64c9ca6be521c55}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_a366ff7099a3ae9afb64c9ca6be521c55}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Set\+Second\+Receive\+Window\+Frequency@{Set\+Second\+Receive\+Window\+Frequency}}
+\index{Set\+Second\+Receive\+Window\+Frequency@{Set\+Second\+Receive\+Window\+Frequency}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Set\+Second\+Receive\+Window\+Frequency()}{SetSecondReceiveWindowFrequency()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Set\+Second\+Receive\+Window\+Frequency (\begin{DoxyParamCaption}\item[{double}]{frequency\+M\+Hz }\end{DoxyParamCaption})}
+
+Set the frequency that will be used for the second receive window.
+
+
+\begin{DoxyParams}{Parameters}
+{\em frequency\+M\+Hz} & the Frequency. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraMac_a939732c613ae14a71c902ade45ee2e40}\label{classns3_1_1lorawan_1_1EndDeviceLoraMac_a939732c613ae14a71c902ade45ee2e40}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}!Tx\+Finished@{Tx\+Finished}}
+\index{Tx\+Finished@{Tx\+Finished}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac}}
+\subsubsection{\texorpdfstring{Tx\+Finished()}{TxFinished()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Mac\+::\+Tx\+Finished (\begin{DoxyParamCaption}\item[{Ptr$<$ const Packet $>$}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Perform the actions that are required after a packet send.
+
+This function handles opening of the first receive window. 
+
+Implements \hyperlink{classns3_1_1lorawan_1_1LoraMac_aa64037192af83dc459487bccccd10bdf}{ns3\+::lorawan\+::\+Lora\+Mac}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+end-\/device-\/lora-\/mac.\+h\item 
+end-\/device-\/lora-\/mac.\+cc\end{DoxyCompactItemize}

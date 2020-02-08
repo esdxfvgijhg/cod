@@ -1,0 +1,5 @@
+<map id="ns3::lorawan::NetworkControllerComponent" name="ns3::lorawan::NetworkControllerComponent">
+<area shape="rect" id="node3" href="$classns3_1_1lorawan_1_1ConfirmedMessagesComponent.html" title="{ns3::lorawan::ConfirmedMessages\lComponent\n||+ ConfirmedMessagesComponent()\l+ ~ConfirmedMessagesComponent()\l+ OnReceivedPacket()\l+ BeforeSendingReply()\l+ OnFailedReply()\l+ GetTypeId()\l}" alt="" coords="5,344,243,509"/>
+<area shape="rect" id="node4" href="$classns3_1_1lorawan_1_1LinkCheckComponent.html" title="{ns3::lorawan::LinkCheckComponent\n||+ LinkCheckComponent()\l+ ~LinkCheckComponent()\l+ OnReceivedPacket()\l+ BeforeSendingReply()\l+ OnFailedReply()\l+ GetTypeId()\l}" alt="" coords="267,351,501,502"/>
+<area shape="rect" id="node2" href="$classObject.html" title="{Object\n||}" alt="" coords="223,5,283,83"/>
+</map>

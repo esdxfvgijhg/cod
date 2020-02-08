@@ -1,0 +1,59 @@
+\hypertarget{classns3_1_1lorawan_1_1NetworkScheduler}{}\section{ns3\+:\+:lorawan\+:\+:Network\+Scheduler Class Reference}
+\label{classns3_1_1lorawan_1_1NetworkScheduler}\index{ns3\+::lorawan\+::\+Network\+Scheduler@{ns3\+::lorawan\+::\+Network\+Scheduler}}
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Network\+Scheduler\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{classns3_1_1lorawan_1_1NetworkScheduler__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Network\+Scheduler\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{classns3_1_1lorawan_1_1NetworkScheduler__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkScheduler_a02db446a0b34906f22f1f1769a15ae09}\label{classns3_1_1lorawan_1_1NetworkScheduler_a02db446a0b34906f22f1f1769a15ae09}} 
+{\bfseries Network\+Scheduler} (Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1NetworkStatus}{Network\+Status} $>$ status, Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1NetworkController}{Network\+Controller} $>$ controller)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1NetworkScheduler_a221f76541ed8a879c784beb2235abc42}{On\+Received\+Packet} (Ptr$<$ const Packet $>$ packet)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1NetworkScheduler_a9394830ed7fc351aa846a4c0635ddadc}{On\+Receive\+Window\+Opportunity} (\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} device\+Address, int window)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkScheduler_ad04cad4151b5efbce6b6f54fb0e16af6}\label{classns3_1_1lorawan_1_1NetworkScheduler_ad04cad4151b5efbce6b6f54fb0e16af6}} 
+static Type\+Id {\bfseries Get\+Type\+Id} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkScheduler_a221f76541ed8a879c784beb2235abc42}\label{classns3_1_1lorawan_1_1NetworkScheduler_a221f76541ed8a879c784beb2235abc42}} 
+\index{ns3\+::lorawan\+::\+Network\+Scheduler@{ns3\+::lorawan\+::\+Network\+Scheduler}!On\+Received\+Packet@{On\+Received\+Packet}}
+\index{On\+Received\+Packet@{On\+Received\+Packet}!ns3\+::lorawan\+::\+Network\+Scheduler@{ns3\+::lorawan\+::\+Network\+Scheduler}}
+\subsubsection{\texorpdfstring{On\+Received\+Packet()}{OnReceivedPacket()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Network\+Scheduler\+::\+On\+Received\+Packet (\begin{DoxyParamCaption}\item[{Ptr$<$ const Packet $>$}]{packet }\end{DoxyParamCaption})}
+
+Method called by \hyperlink{classns3_1_1lorawan_1_1NetworkServer}{Network\+Server} to inform the Scheduler of a newly arrived uplink packet. This function schedules the On\+Receive\+Window\+Opportunity events 1 and 2 seconds later. \mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkScheduler_a9394830ed7fc351aa846a4c0635ddadc}\label{classns3_1_1lorawan_1_1NetworkScheduler_a9394830ed7fc351aa846a4c0635ddadc}} 
+\index{ns3\+::lorawan\+::\+Network\+Scheduler@{ns3\+::lorawan\+::\+Network\+Scheduler}!On\+Receive\+Window\+Opportunity@{On\+Receive\+Window\+Opportunity}}
+\index{On\+Receive\+Window\+Opportunity@{On\+Receive\+Window\+Opportunity}!ns3\+::lorawan\+::\+Network\+Scheduler@{ns3\+::lorawan\+::\+Network\+Scheduler}}
+\subsubsection{\texorpdfstring{On\+Receive\+Window\+Opportunity()}{OnReceiveWindowOpportunity()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Network\+Scheduler\+::\+On\+Receive\+Window\+Opportunity (\begin{DoxyParamCaption}\item[{\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address}}]{device\+Address,  }\item[{int}]{window }\end{DoxyParamCaption})}
+
+Method that is scheduled after packet arrivals in order to act on receive windows 1 and 2 seconds later receptions. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+network-\/scheduler.\+h\item 
+network-\/scheduler.\+cc\end{DoxyCompactItemize}

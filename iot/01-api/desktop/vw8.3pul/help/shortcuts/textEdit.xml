@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "shortcuts.textedit"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Text Editing</title>
+<body><p><table frame = "topbot" colsep = "0" rowsep = "0">
+<tgroup cols = "2" colsep = "0" rowsep = "0"
+    outputclass = "2Column NoTitle">
+<colspec colnum = "1" colname = "1" colwidth = "33*" colsep = "0"/>
+<colspec colnum = "2" colname = "2" colwidth = "67*" colsep = "0"/>
+<tbody>
+<row rowsep = "1">
+<entry colname = "1">Ctrl+A</entry>
+<entry colname = "2">Select all text</entry>
+</row>
+<row rowsep = "1">
+<entry colname = "1">Ctrl+C</entry>
+<entry colname = "2">Copy</entry>
+</row>
+<row rowsep = "1">
+<entry colname = "1">Ctrl+Shift+D</entry>
+<entry colname = "2">Insert date (all views)</entry>
+</row>
+<row rowsep = "1">
+<entry colname = "1">Ctrl+K</entry>
+<entry colname = "2">Compose characters</entry>
+</row>
+<row rowsep = "1">
+<entry colname = "1">Ctrl+S</entry>
+<entry colname = "2">Save/Accept</entry>
+</row>
+<row rowsep = "1">
+<entry colname = "1">Ctrl+W</entry>
+<entry colname = "2">delete word back</entry>
+</row>
+<row rowsep = "1">
+<entry colname = "1">Ctrl+V</entry>
+<entry colname = "2">Paste</entry>
+</row>
+<row rowsep = "1">
+<entry colname = "1">Ctrl+Shift+V</entry>
+<entry colname = "2">Paste from list</entry>
+</row>
+<row rowsep = "1">
+<entry colname = "1">Ctrl+X</entry>
+<entry colname = "2">Cut</entry>
+</row>
+<row rowsep = "0">
+<entry colname = "1">Ctrl+Z</entry>
+<entry colname = "2">Undo</entry>
+</row>
+</tbody>
+</tgroup></table></p></body></topic></dita>

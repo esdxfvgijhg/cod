@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA BookMap//EN" "bookmap.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<map title="Help" 
+	chunk="by-topic" xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+	<topicref navtitle = "Help" href = "overview.xml" type = "topic">
+		<topicref navtitle = "Introduction to Smalltalk" href = "introToSmalltalk/intro.ditamap" format = "ditamap"/>
+		<topicref navtitle = "Smalltalk Language" href = "language/stLanguage.ditamap" format = "ditamap"/>
+		<topicref navtitle = "Development Environment" href = "development/devTopics.ditamap" format = "ditamap"/>
+		<topicref navtitle = "Tools" href = "tools/tools.ditamap" format = "ditamap"/>
+		<topicref navtitle = "Basic Libraries" href = "basicLibs/basicLibs.ditamap" format = "ditamap"/>
+		<topicref navtitle = "GUI Development" href = "gui/guiDev.ditamap" format = "ditamap"/>
+		<topicref navtitle = "Web and Network Applications" href = "net/webAndNetApps.ditamap" format = "ditamap"/>
+		<topicref navtitle = "Database and Interconnect Services" href = "interconnect/interconnect.ditamap" format = "ditamap"/>
+		<topicref navtitle = "Glossary of Terms" href = "glossary/glossary.xml" type = "topic"/>
+		<topicref navtitle = "About Help" href = "about.xml" type = "topic"/>
+	</topicref>
+</map>

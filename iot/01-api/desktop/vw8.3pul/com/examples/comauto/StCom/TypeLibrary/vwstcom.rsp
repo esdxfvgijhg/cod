@@ -1,0 +1,7 @@
+/win32
+/tlb vwstcom.tlb
+/iid iid_vwstcom.cpp
+/h midl_vwstcom.h
+/o vwstcom.log
+/proxy vwstcom_p.c
+

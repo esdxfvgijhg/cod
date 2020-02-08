@@ -1,0 +1,94 @@
+\hypertarget{classns3_1_1lorawan_1_1NetworkControllerComponent}{}\section{ns3\+:\+:lorawan\+:\+:Network\+Controller\+Component Class Reference}
+\label{classns3_1_1lorawan_1_1NetworkControllerComponent}\index{ns3\+::lorawan\+::\+Network\+Controller\+Component@{ns3\+::lorawan\+::\+Network\+Controller\+Component}}
+
+
+{\ttfamily \#include $<$network-\/controller-\/components.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Network\+Controller\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classns3_1_1lorawan_1_1NetworkControllerComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Network\+Controller\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{classns3_1_1lorawan_1_1NetworkControllerComponent__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1NetworkControllerComponent_a965fb667c3e88703e8cdbcbcd057db6f}{On\+Received\+Packet} (Ptr$<$ const Packet $>$ packet, Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus}{End\+Device\+Status} $>$ status, Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1NetworkStatus}{Network\+Status} $>$ network\+Status)=0
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkControllerComponent_a7cb7697dee72c7e1479ef24ca56ff7d2}\label{classns3_1_1lorawan_1_1NetworkControllerComponent_a7cb7697dee72c7e1479ef24ca56ff7d2}} 
+virtual void {\bfseries Before\+Sending\+Reply} (Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus}{End\+Device\+Status} $>$ status, Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1NetworkStatus}{Network\+Status} $>$ network\+Status)=0
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1NetworkControllerComponent_aaff757f6ece10a8ef24564006c137d72}{On\+Failed\+Reply} (Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus}{End\+Device\+Status} $>$ status, Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1NetworkStatus}{Network\+Status} $>$ network\+Status)=0
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkControllerComponent_ae56092f06f837c68e92ccf6d068ee30e}\label{classns3_1_1lorawan_1_1NetworkControllerComponent_ae56092f06f837c68e92ccf6d068ee30e}} 
+static Type\+Id {\bfseries Get\+Type\+Id} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Generic class describing a component of the \hyperlink{classns3_1_1lorawan_1_1NetworkController}{Network\+Controller}.
+
+This is the class that is meant to be extended by all \hyperlink{classns3_1_1lorawan_1_1NetworkController}{Network\+Controller} components, and provides a common interface for the \hyperlink{classns3_1_1lorawan_1_1NetworkController}{Network\+Controller} to query available components and prompt them to act on new packet arrivals. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkControllerComponent_aaff757f6ece10a8ef24564006c137d72}\label{classns3_1_1lorawan_1_1NetworkControllerComponent_aaff757f6ece10a8ef24564006c137d72}} 
+\index{ns3\+::lorawan\+::\+Network\+Controller\+Component@{ns3\+::lorawan\+::\+Network\+Controller\+Component}!On\+Failed\+Reply@{On\+Failed\+Reply}}
+\index{On\+Failed\+Reply@{On\+Failed\+Reply}!ns3\+::lorawan\+::\+Network\+Controller\+Component@{ns3\+::lorawan\+::\+Network\+Controller\+Component}}
+\subsubsection{\texorpdfstring{On\+Failed\+Reply()}{OnFailedReply()}}
+{\footnotesize\ttfamily virtual void ns3\+::lorawan\+::\+Network\+Controller\+Component\+::\+On\+Failed\+Reply (\begin{DoxyParamCaption}\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus}{End\+Device\+Status} $>$}]{status,  }\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1NetworkStatus}{Network\+Status} $>$}]{network\+Status }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Method that is called when a packet cannot be sent in the downlink.
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & The \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus}{End\+Device\+Status} of the device to which it was impossible to send a reply. \\
+\hline
+{\em network\+Status} & A pointer to the \hyperlink{classns3_1_1lorawan_1_1NetworkStatus}{Network\+Status} object \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classns3_1_1lorawan_1_1LinkCheckComponent_a256519f7da4d9d512ac1c1ce6bde4c1a}{ns3\+::lorawan\+::\+Link\+Check\+Component}, and \hyperlink{classns3_1_1lorawan_1_1ConfirmedMessagesComponent_ae048f3d5aff4da319d113c213701ef73}{ns3\+::lorawan\+::\+Confirmed\+Messages\+Component}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkControllerComponent_a965fb667c3e88703e8cdbcbcd057db6f}\label{classns3_1_1lorawan_1_1NetworkControllerComponent_a965fb667c3e88703e8cdbcbcd057db6f}} 
+\index{ns3\+::lorawan\+::\+Network\+Controller\+Component@{ns3\+::lorawan\+::\+Network\+Controller\+Component}!On\+Received\+Packet@{On\+Received\+Packet}}
+\index{On\+Received\+Packet@{On\+Received\+Packet}!ns3\+::lorawan\+::\+Network\+Controller\+Component@{ns3\+::lorawan\+::\+Network\+Controller\+Component}}
+\subsubsection{\texorpdfstring{On\+Received\+Packet()}{OnReceivedPacket()}}
+{\footnotesize\ttfamily virtual void ns3\+::lorawan\+::\+Network\+Controller\+Component\+::\+On\+Received\+Packet (\begin{DoxyParamCaption}\item[{Ptr$<$ const Packet $>$}]{packet,  }\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus}{End\+Device\+Status} $>$}]{status,  }\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1NetworkStatus}{Network\+Status} $>$}]{network\+Status }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Method that is called when a new packet is received by the \hyperlink{classns3_1_1lorawan_1_1NetworkServer}{Network\+Server}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & The newly received packet \\
+\hline
+{\em network\+Status} & A pointer to the \hyperlink{classns3_1_1lorawan_1_1NetworkStatus}{Network\+Status} object \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classns3_1_1lorawan_1_1LinkCheckComponent_a3a17d37153329a0b52b58e8f79675611}{ns3\+::lorawan\+::\+Link\+Check\+Component}, and \hyperlink{classns3_1_1lorawan_1_1ConfirmedMessagesComponent_a0e58f518722ae87373d6a33e7523e8b1}{ns3\+::lorawan\+::\+Confirmed\+Messages\+Component}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+network-\/controller-\/components.\+h\item 
+network-\/controller-\/components.\+cc\end{DoxyCompactItemize}

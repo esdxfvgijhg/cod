@@ -1,0 +1,14 @@
+
+ dpkg -l '*goocanvas*'
+ dpkg -l '*gtk-x11-2.0*'
+ dpkg -l '*gdk-x11-2.0*'
+ dpkg -l '*atk-1.0*'
+ dpkg -l '*pangoft2-1.0*'
+ dpkg -l '*pangocairo-1.0*'
+ dpkg -l '*gdk_pixbuf-2.0*'
+ dpkg -l '*cairo*'
+ dpkg -l '*pango-1.0*'
+ dpkg -l '*freetype*'
+ dpkg -l '*fontconfig*'
+ dpkg -l '*curl*'
+

@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libjerry-port-default-minimal.a  CMakeFiles/jerry-port-default-minimal.dir/default-date.c.obj CMakeFiles/jerry-port-default-minimal.dir/default-debugger.c.obj CMakeFiles/jerry-port-default-minimal.dir/default-external-context.c.obj CMakeFiles/jerry-port-default-minimal.dir/default-fatal.c.obj CMakeFiles/jerry-port-default-minimal.dir/default-io.c.obj CMakeFiles/jerry-port-default-minimal.dir/defaultx-handler.c.obj
+/usr/bin/ranlib ../../lib/libjerry-port-default-minimal.a

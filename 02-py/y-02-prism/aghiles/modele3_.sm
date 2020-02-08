@@ -1,0 +1,29 @@
+ctmc
+const  double lambda=0.1;
+const  double  mu=1.5;
+
+module M
+C1:[0..1] init 1; // etat de la premiere composante
+C2:[0..1] init 1; // etat de la deuxieme composante
+C3:[0..1] init 1; // etat de la troisieme composante
+C4:[0..1] init 1; // etat de la quatrieme composante
+C5:[0..1] init 1; // etat de la cinquieme composante
+
+[] (C1=1) -> lambda: (C1'= 0); // avec taux lambda1 1-->0
+[] (C1=0) -> mu    : (C1'= 1); // avec taux mu1 0-->
+
+[] (C2=1) -> lambda: (C2'= 0); // avec taux lambda2 1-->0
+[] (C2=0) -> mu: (C2'= 1); // avec taux mu2 0-->1
+
+[] (C3=1) -> lambda: (C3'= 0); // avec taux lambda2 1-->0
+[] (C3=0) -> mu: (C3'= 1); // avec taux mu2 0-->1
+
+[] (C4=1) -> lambda: (C4'= 0); // avec taux lambda2 1-->0
+[] (C4=0) -> mu: (C4'= 1); // avec taux mu2 0-->1
+
+[] (C5=1) -> lambda: (C5'= 0); // avec taux lambda2 1-->0
+[] (C5=0) -> mu: (C5'= 1); // avec taux mu2 0-->1
+endmodule
+
+label  "up"= C1+C2+C3+C4+C5>=2;
+label  "down"= C1+C2+C3+C4+C5<2;

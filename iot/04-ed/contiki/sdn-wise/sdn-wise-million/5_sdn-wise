@@ -1,0 +1,3 @@
+#!/bin/bash
+
+gedit ~/Aghiles/Program/boards/contiki/src/sdn-wise/sdn-wise-million/node-conf.c

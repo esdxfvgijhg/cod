@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+	<topic id = "vw.help.stLang.variables"
+			xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+		<title>Using Variables</title>
+		<body><p>Smalltalk objects are typically composed of one or more 
+		private <term>variables</term> (the data) combined with a set of <term>methods</term> 
+		for manipulating that data. There are also different types of public,
+		shared variables, associated with classes and name spaces.</p></body>
+		<topic id = "vw.help.stLang.variables.types"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Variable types</title>
+			<body>
+				<p>&Product; has four types of variables, largely distinguished 
+					by their scope:<indexterm>variables<indexterm>types</indexterm></indexterm>
+					<indexterm>temporary variable</indexterm>
+					<indexterm>instance variable</indexterm>
+					<indexterm>class instance variable</indexterm>
+					<indexterm>shared variable</indexterm><dl>
+						<dlentry>
+							<dt>Temporary</dt>
+							<dd>Accessable only within a single method or workspace <uicontrol>Do It</uicontrol>.</dd>
+						</dlentry>
+						<dlentry>
+							<dt>Instance</dt>
+							<dd>Referenceable by that object (instance) only. Inherited by all subclasses.</dd>
+						</dlentry>
+						<dlentry>
+							<dt>Class instance</dt>
+							<dd>Created separately (not shared) for the defining class and each of
+								its subclasses.</dd>
+						</dlentry>
+						<dlentry>
+							<dt>Shared</dt>
+							<dd>Variables of a more general scope, which may be declared public or
+								private relative to a <term>name space</term>. Shared variables
+								may be shared within a single class (class variables), all of its subclasses,
+								and all of their instances; alternately, they may be shared by all
+								objects within a single name space (name space variables). It is
+								possible to import a shared variable in other name spaces.</dd>
+						</dlentry>
+					</dl>
+				</p>
+				<p>A <term>class instance variable</term> is declared once, in a
+					parent class. Each subclass then has its own copy of the variable
+					and can assign to it independently.</p>
+				<p>Unlike a <term>shared variable</term>, which may be used by several
+					classes, each class has its own class instance variables, and so
+					must initialize them individually. The advantage of the class instance
+					variable is that all subclasses can use the same name for the variable
+					and still be able to assign to it independently.</p>
+				<p>Shared variables replace what were formerly <term>class variables</term>
+					and <term>pools</term>. They have general scope within their name
+					space, which may be a name space or a class, depending on where
+					they're defined. Access to them from outside that scope is achieved
+					by importing them.</p>
+			</body>
+		</topic>
+		<topic id = "vw.help.stLang.variables.use.assignValue"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Assign a value to a variable</title>
+			<body>
+				<p>To assign a value (an <term>object</term>) to a variable, 
+				use the <codeph>:=</codeph> assignment operator, e.g.:
+				<indexterm>variables<indexterm>assign</indexterm></indexterm>
+				<indexterm>assign value to a variable</indexterm><codeblock otherprops = "smalltalk expression">| sine |
+sine := 1.0 sin.</codeblock></p>
+				<p>Classes may define special assignment methods for its variables
+					that provide special assignment features. Using the assignment operator directly
+					will not take advantage of such features.</p>
+			</body>
+		</topic>
+		<topic id = "vw.help.stLang.variables.use.accessValue"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Provide access to a variable’s value</title>
+			<body>
+				<p>While only an <term>object</term> can directly access its variables, it
+					is often useful to give access to the value of an object’s variables,
+					such as instance variables holding the object’s properties. This
+					is done using <term>accessor methods</term>.
+					<indexterm>variables<indexterm>access value</indexterm></indexterm>
+					<indexterm>varaibles<indexterm>setters</indexterm></indexterm>
+					<indexterm>variables<indexterm>getters</indexterm></indexterm></p>
+				<p>For example, a class <codeph>Ball</codeph> may define a instance
+					variable <codeph>color</codeph> to answer the object’s color, <codeph>Ball</codeph> may
+					implement the method:<codeblock otherprops="smalltalk method">color
+	^color</codeblock></p>
+				<p>To allow setting its color, <codeph>Ball</codeph> may implement
+					the method:<codeblock otherprops="smalltalk method">color: aColor
+	color := aColor</codeblock></p>
+				<p>This naming scheme is standard for accessors in Smalltalk.</p>
+			</body>
+		</topic>
+		<topic id = "vw.help.stLang.variables.declare"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Declaring variables</title>
+			<body>
+				<p>In a workspace, you can freely use new variable names in a workspace
+					and rely on the &Product; system to prompt you when it encounters
+					an undeclared variable name. Indicate the variable’s type is the
+					displayed dialog, and the system creates the declaration for you.
+					<indexterm>variables<indexterm>declaring</indexterm></indexterm></p>
+				<p>In methods, however, you should explicity declare varaibles according to
+					their type.</p>
+				<section>
+					<title>Declare a temporary variable</title>
+					<p>A temporary
+						variable must be declared at the beginning of the method or Workspace <uicontrol>Do It</uicontrol> in
+						which it is used. To do so, place its name between vertical bars.
+						<codeblock otherprops = "smalltalk expression">| variable |</codeblock></p>
+					<p>By convention, a temporary variable’s name begins
+						with a lowercase letter.
+						<codeblock otherprops = "smalltalk expression">| numberOfDays date |
+	numberOfDays := 7.
+	date := Date today addDays: numberOfDays.</codeblock>
+					</p>
+				</section>
+				<section>
+					<title>Declare an instance variable</title>
+					<p>Instance
+						variables are declared in the class definition. An instance variable’s
+						name should begin with a lowercase letter.
+						<ol>
+							<li>
+								<p>Open a browser and select the class.</p>
+							</li>
+							<li>
+								<p>If necessary, select the browser’s <uicontrol>Source</uicontrol> code
+									tool to display the class definition.</p>
+							</li>
+							<li>
+								<p>Add the desired instance variable name to the list of <codeph>instanceVariableNames:</codeph> and
+									then <uicontrol>Accept</uicontrol> the new definition.</p>
+							</li>
+						</ol>
+					</p>
+				</section>
+				<section>
+					<title>Declare a class instance variable</title><p>Class
+						instance variables are declared in the class definition. A class instance
+						variable’s name must begin with an uppercase letter.<ol>
+							<li>
+								<p>Open a browser and select the class.</p>
+							</li>
+							<li>
+								<p>If necessary, select the browser’s <uicontrol>Source</uicontrol> code
+									tool to display the class definition.</p>
+							</li>
+							<li>
+								<p>Add the desired instance variable name to the list of <codeph>classInstanceVariableNames:</codeph> and
+									then <uicontrol>Accept</uicontrol> the new definition.</p>
+							</li>
+						</ol>
+					</p>
+				</section>
+				<section>
+					<title>Declare a shared variable</title><p>Shared variables
+						are defined within the scope of either a name space or a class.
+						To create a shared variable:<ol>
+							<li>
+								<p>Select a name space or class
+									in the System Browser.</p>
+							</li>
+							<li>
+								<p>On the <uicontrol>Class</uicontrol> menu, select <uicontrol>New &#x2192; Shared Variable</uicontrol>.
+									A definition template appears in the browser’s code view.</p>
+							</li>
+							<li>
+								<p>Complete and <uicontrol>Accept</uicontrol> the following
+									template:<codeblock otherprops = "smalltalk expression">Smalltalk defineSharedVariable: #NameOfBinding
+	private: false
+	constant: false
+	category: 'As yet unclassified'
+	initializer: 'Array new: 5'</codeblock>
+								</p>
+							</li>
+						</ol>
+					</p><p>The template specifies a message
+						send to the name space or class in which the shared variable name
+						is to be resolved.</p>
+				</section>
+			</body>
+		</topic>
+		<topic id = "stLange.variables.declare.constantShared"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Declaring a constant</title>
+			<body>
+				<p>A shared variable is set to be either a constant or variable value
+					by the argument to the <codeph>constant:</codeph> keyword in its
+					definition. By default the argument is <codeph>false</codeph>. To
+					make it constant, set the argument to <codeph>true</codeph>.
+					<indexterm>variables<indexterm>make constant</indexterm></indexterm></p>
+				<p>The value of a shared variable can be set during runtime. If
+					the value is constant, it can only be reset in the variable's initialization.</p>
+			</body>
+		</topic>
+		<topic id = "stLange.variables.initializeShared"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Initialize a shared variable</title>
+			<body>
+				<p>The <codeph>initializer:</codeph> keyword
+					in a shared variable's definition accepts either a Smalltalk expression
+					written as a string, or <codeph>nil</codeph>.
+					<indexterm>variables<indexterm>initialize shared variable</indexterm></indexterm></p>
+				<p>If a Smalltalk expression string is provided, it is evaluated
+					and the result set as the initial value of the variable.</p>
+				<p>If the initializer is specified as <codeph>nil</codeph>, the
+					initial value can be set in a class initialization method, as for
+					class variables in earlier versions.</p>
+			</body>
+		</topic>
+		<topic id = "vw.help.stLang.variables.remove.temporary"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Remove a temporary variable and its references</title>
+			<body>
+				<p>Since a temporary variable can be referenced only in a single method or
+					Workspace <uicontrol>Do it</uicontrol>, you need to scan
+					only that method for references. For a long method, use the <uicontrol>Find...</uicontrol> command
+					to find each occurrence of that variable in the code. Rewrite the
+					code as needed to remove each reference.
+					<indexterm>variables<indexterm>remove temporary variable</indexterm></indexterm></p>
+				<p>After you have removed all references, delete the variable declaration.</p>
+			</body>
+		</topic>
+		<topic id = "vw.help.stLang.variables.remove.instance"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Remove an instance variable and its references</title>
+			<body>
+				<p><indexterm>variables<indexterm>removed instance variable</indexterm></indexterm>
+					<ol>
+						<li>
+							<p>In a browser, select the class in which the variable is declared.</p>
+						</li>
+						<li>
+							<p>On the <uicontrol>Class</uicontrol> menu, select <uicontrol>Instance Variables &#x2192; Remove...</uicontrol>.</p>
+						</li>
+						<li>
+							<p>In the resulting menu of instance variables, select the variable that
+								you intend to remove.</p>
+							<p>If any methods reference the variable,
+								a Method browser will open. The variable will not be removed as
+								long as there are methods that reference it.</p>
+						</li>
+						<li>
+							<p>The new Method browser displays all methods that reference
+								the variable. Edit the methods to remove the references.</p>
+						</li>
+						<li>
+							<p>When all references have been removed, close the Method browser.</p>
+						</li>
+						<li>
+							<p>On the <uicontrol>Class</uicontrol> menu, select <uicontrol>Instance Variables &#x2192; Remove...</uicontrol>.</p>
+						</li>
+					</ol>
+				</p>
+				<p>The instance variable should now be removed.</p>
+			</body>
+		</topic>
+		<topic id = "vw.help.stLang.variables.remove.classInstance"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Remove a class instance variable and its references</title>
+			<body>
+				<p><indexterm>variables<indexterm>removed class instance variable</indexterm></indexterm>
+					<ol>
+						<li>
+							<p>In a browser, select the class in which the variable is declared.</p>
+						</li>
+						<li>
+							<p>On the <uicontrol>Class</uicontrol> menu, select <uicontrol>Class Instance Variables &#x2192; Remove...</uicontrol>.</p>
+						</li>
+						<li>
+							<p>In the resulting menu of class instance variables, select
+								the variable that you intend to remove.</p>
+							<p>If any methods reference
+								the variable, a Method browser will open. The variable will not
+								be removed as long as there are methods that reference it.</p>
+						</li>
+						<li>
+							<p>The new Method browser displays all methods that reference
+								the variable. Edit the methods to remove the references.</p>
+						</li>
+						<li>
+							<p>When all references have been removed, close the Method browser.</p>
+						</li>
+						<li>
+							<p>On the <uicontrol>Class</uicontrol> menu, select <uicontrol>Class Instance Variables &#x2192; Remove...</uicontrol>.</p>
+						</li>
+					</ol>
+				</p>
+				<p>The class instance variable should now be removed.</p>
+			</body>
+		</topic>
+		<topic id = "vw.help.stLang.variables.remove.shared"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Remove a shared variable and its references</title>
+			<body>
+				<p><indexterm>variables<indexterm>removed shared variable</indexterm></indexterm>
+					<ol>
+						<li>
+							<p>In a browser, select the class in which the variable is declared and
+								select the <uicontrol>Shared Variables</uicontrol> tab.</p>
+						</li>
+						<li>
+							<p>On the <uicontrol>Method</uicontrol> menu, select <uicontrol>Safe Remove</uicontrol>.</p>
+							<p>If any methods reference the variable, a Method browser will open.
+								The variable will not be removed as long as there are methods that
+								reference it.</p>
+						</li>
+						<li>
+							<p>The new Method browser displays all methods that reference
+								the variable. Edit the methods to remove the references.</p>
+						</li>
+						<li>
+							<p>When all references have been removed, close the Method browser.</p>
+						</li>
+						<li>
+							<p>On the <uicontrol>Method</uicontrol> menu, select <uicontrol>Safe Remove</uicontrol>.</p>
+						</li>
+					</ol>
+				</p>
+				<p>The shared instance variable should now be removed.</p>
+			</body>
+		</topic>
+		<topic id = "vw.help.stLang.variables.remove.undeclared"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Remove undeclared variables </title>
+			<body>
+				<p>When a variable is referenced
+					without being declared, it is entered in a system dictionary named 
+					<apiname otherprops="binding">Undeclared</apiname>.
+					If it is later declared, the entry in <apiname otherprops="binding">Undeclared</apiname> remains
+					and should be removed before you deploy your application.
+					<indexterm>undeclared</indexterm>
+					<indexterm>variables<indexterm>remove undeclared variable</indexterm></indexterm></p>
+				<p>To remove undeclared variables, open an inspector on <codeph>Undeclared</codeph> 
+					(evaluate <codeph>Undeclared</codeph> using
+					the <uicontrol>Inspect</uicontrol> command). Use the dictionary inspector
+					to check for references to each entry and to remove each entry that
+					has no entries.</p>
+			</body>
+		</topic>
+	</topic>
+</dita>

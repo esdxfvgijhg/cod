@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.widgets.basics"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Widgets</title>
+<topic id = "vw.help.widgets.basics.addToCanvas"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Place a widget on a canvas</title>
+<body><p><indexterm>GUI development<indexterm>add widget</indexterm></indexterm><indexterm>widgets<indexterm>place in canvas</indexterm></indexterm>Use the Palette to choose the widget
+you would like to add to the canvas, and then click once on the
+canvas. A representation of the widget appears at the cursor point;
+click a second time to drop it into place on the canvas.</p>
+<p>To place multiple copies of the same widget, use the multi-place button
+(upper-right corner of the Palette Tool). With this button on, each
+subsequent click on the canvas will generate a new copy of the selected
+widget.</p></body></topic>
+<topic id = "vw.help.widgets.basics.setSize"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Change the size of a widget</title>
+<body><p><indexterm>widgets<indexterm>change size</indexterm></indexterm>To
+modify a resizable widget, drag its selection handles to resize
+it on the canvas.</p>
+<p>To make a multiply-selected group of widgets all equal in height, width,
+or both, use the <uicontrol>Arrange &#x2192; Equalize...</uicontrol> command
+in the GUI Painter Tool menu.</p>
+<p>To make a widget adjust its size relative to that of the window,
+use the <uicontrol>Layout &#x2192; Relative</uicontrol> command
+in the Canvas Tool menu. Both the horizontal and vertical dimensions
+of the widget are adjusted when the widget size is set to be <uicontrol>Relative</uicontrol>.</p>
+<p>To make a widget’s size to be fixed in relation to that of the
+window, use the <uicontrol>Layout &#x2192; Fixed</uicontrol> command
+in the Canvas Tool.</p>
+<p>To resize a widget at runtime:<ol><li><p>Set the widget’s <uicontrol>ID</uicontrol> property.</p></li>
+<li><p>Get the widget’s wrapper from the application model’s builder,
+by sending a <apiname>componentAt:</apiname> message to the builder,
+with the widget’s <uicontrol>ID</uicontrol> as argument.</p></li>
+<li><p>Send a <apiname>bounds</apiname> message to the wrapper to
+get the widget’s existing size.</p></li>
+<li><p>Create a rectangle having the desired origin and extent,
+using the widget’s bounding rectangle to derive the new values.</p></li>
+<li><p>Send a <apiname>newBounds:</apiname> message to the wrapper,
+with the rectangle as the argument.
+<codeblock otherprops="smalltalk method">expandBox
+		| wrapper oldSize newSize |
+		wrapper := <b>self builder componentAt: #box</b>.
+		oldSize := <b>wrapper bounds</b>.
+		"If the box is bigger than the window already, do nothing."
+		oldSize origin x &lt; 0
+			ifTrue: [^nil].
+		"Expand the bounding rectangle by 10 pixels on each side."
+		newSize := Rectangle
+			origin: oldSize origin - 10
+			<b>corner: oldSize corner + 10</b>.
+		"Assign the new bounding rectangle to the widget wrapper."
+		<b>wrapper newBounds: newSize</b>.
+</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.widgets.basics.boundaries"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set a widget’s boundaries</title>
+<body><p><indexterm>widgets<indexterm>set boundaries</indexterm></indexterm>To
+convert an unbounded widget into a bounded one, use the <uicontrol>Layout &#x2192; Be Bounded</uicontrol> command
+in the GUI Painter Tool menu.</p>
+<p>Alternately, select the <uicontrol>Bounded</uicontrol> button
+in the GUI Painter Tool, <uicontrol>Position</uicontrol> page: <image
+href = "..\..\graphics\widgets-01.gif" height="13" width="26" align="right"
+placement="break" /></p>
+<p>To reverse the operation, use the <uicontrol>Layout &#x2192; Be Unbounded</uicontrol> command
+in the Canvas Tool menu.</p></body></topic>
+<topic id = "vw.help.widgets.basics.position"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Position a widget</title>
+<body><p><indexterm>widgets<indexterm>set position</indexterm></indexterm>For
+basic positioning, click-and-drag the widget on the canvas.</p>
+<p>To toggle a fence around the edge of the canvas, preventing any element
+from being dragged outside its bounding box, use the <uicontrol>Grid &#x2192; Keep In Window</uicontrol> command
+in the GUI Painter Tool.</p>
+<p>To make a widget’s position adjust relative to that of the window
+size, use the <uicontrol>Layout &#x2192; Relative</uicontrol> command
+in the Canvas Tool menu.</p>
+<p>To allow the size of widgets to scale as the window changes size,
+use a relative origin. This causes the widget to move farther away
+from the left and/or top edges of the window when the window grows,
+and closer when the window shrinks. <ol><li><p>Select the widget
+and go to the <uicontrol>Position</uicontrol> page in the GUI Painter Tool.</p></li>
+<li><p>Set the (<uicontrol>L</uicontrol>)eft and (<uicontrol>T</uicontrol>)op <uicontrol>Proportions</uicontrol> to
+the scaling factor for the widget to the window. This sets vertical
+and horizontal baselines for the widget’s orgin.</p></li>
+<li><p>Set the (<uicontrol>L</uicontrol>)eft and (<uicontrol>T</uicontrol>)op <uicontrol>Offsets</uicontrol> to
+shift the widget from that vertical and horizontal baselines.</p></li>
+<li><p>Set the (<uicontrol>R</uicontrol>)ight and (<uicontrol>B</uicontrol>)ottom
+proportion and offset parameters to give the desired size and scaling
+behavior:</p><ul><li><p>For a fixed-size widget, set right and left,
+and top and bottom proportions equal, and the size specified by
+offsets.</p></li>
+<li><p>For a variable size widget, set the right and bottom proportions
+larger than the left and top, and make additional size adjustments
+with offsets.</p></li></ul></li>
+<li><p><uicontrol>Apply</uicontrol> the properties.</p></li></ol></p>
+<p>Making a widget fixed is useful when the window’s size is fixed.
+When the window’s size is variable, this approach works best for
+a button or other fixed-size widget that is located along the left
+or top edges of the window. <ol><li><p>Select the widget and go
+to the <uicontrol>Position</uicontrol> page in the GUI Painter Tool.</p></li>
+<li><p>Set the (<uicontrol>L</uicontrol>)eft and (<uicontrol>T</uicontrol>)op <uicontrol>Proportions</uicontrol> to
+0.</p></li>
+<li><p>Set the (<uicontrol>L</uicontrol>)eft and (<uicontrol>T</uicontrol>)op <uicontrol>Offsets</uicontrol> to
+the desired distance from the window’s left and top edges, specified
+in pixels.</p></li>
+<li><p>Set the (<uicontrol>R</uicontrol>)ight and (<uicontrol>B</uicontrol>)ottom
+proportion and offset parameters to give the desired size and scaling
+behavior:</p><ul><li><p>For a fixed-size widget, set right and left,
+and top and bottom proportions equal, and the size specified by
+offsets.</p></li>
+<li><p>For a variable size widget, set the right and bottom proportions
+larger than the left and top, and make additional size adjustments
+with offsets.</p></li></ul></li>
+<li><p><uicontrol>Apply</uicontrol> the properties.</p></li></ol></p>
+<p>You can fix a widget’s position relative to the right and/or
+bottom edge of its containing window. Typically, the widget itself
+is a fixed size.<ol><li><p>Select a widget and go to the <uicontrol>Position</uicontrol> page
+in the GUI Painter Tool.</p></li>
+<li><p>Set the <uicontrol>Bounded</uicontrol> positioning button,
+if necessary (for labels and buttons).</p><image href = "..\..\graphics\widgets-01.gif"
+height="13" width="26" align="right" placement="break" /><p>Set
+the proportions:<ul><li><p>To follow the right edge, set the right
+and left <uicontrol>Proportion</uicontrol> values to 1.0.</p></li>
+<li><p>To follow the bottom edge, set the top and bottom <uicontrol>Proportion</uicontrol> values
+to 1.0.</p></li></ul></p></li>
+<li><p>Set the offsets:</p><ul><li><p>To set a fixed space from
+the right edge, set the right offset to a negative number of pixels
+(e.g., -5), and the left offset to an appropriate value to set the
+width.</p></li>
+<li><p>To set a fixed space from the bottom edge, set the bottom offset
+to a negative number of pixels (e.g., -5), and the top offset to
+an appropriate value to set the height.</p></li></ul></li>
+<li><p><uicontrol>Apply</uicontrol> the changes.</p></li></ol></p>
+<p>For example, a reasonably sized action button that stays five
+pixels from the right bottom corner would have these settings:<ul><li><p>All
+proportions set to 1</p></li>
+<li><p>Left offset: -55</p></li>
+<li><p>Top offset: -30</p></li>
+<li><p>Right offset: -5</p></li>
+<li><p>Bottom offset: -5</p></li></ul></p></body></topic>
+<topic id = "vw.help.widgets.basics.align"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Align a group of widgets</title>
+<body><p><indexterm>widgets<indexterm>align</indexterm></indexterm>To
+adjust the alignment of widgets on the canvas, select a series of widgets,
+and use the <uicontrol>Arrange &#x2192; Align...</uicontrol> command in
+the &lt;Operate&gt; menu.</p>
+<p>In the Align dialog, use <uicontrol>on horizontal line</uicontrol> when
+aligning widgets side-by-side, and <uicontrol>on vertical line</uicontrol> when
+aligning widgets in a column. Select <uicontrol>first selection</uicontrol> to
+align the widgets using the first selected widget; select <uicontrol>merged box</uicontrol> to
+align the widgets using the merged bounding box of all the selected
+widgets. Widgets are aligned through edges or centers.</p></body></topic>
+<topic id = "vw.help.widgets.basics.spacing"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Adjust the space between widgets</title>
+<body><p><indexterm>widgets<indexterm>set spacing</indexterm></indexterm>To
+adjust the spacing of widgets on the canvas, select a series of widgets,
+and use the <uicontrol>Arrange &#x2192; Distribute...</uicontrol> command
+in the &lt;Operate&gt; menu.</p>
+<p>In the Distribute dialog, use <uicontrol>left to right</uicontrol> when
+spacing widgets side-by-side, and <uicontrol>top to bottom</uicontrol> when
+spacing widgets in a column. Specify whether widgets should be spaced
+between edges or centers. For <uicontrol>constant spacing between edges</uicontrol> you
+must specify the number of pixels to place between each pair of
+widgets.</p></body></topic>
+<topic id = "vw.help.widgets.basics.grouping"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Group a number of widgets</title>
+<body><p><indexterm>widgets<indexterm>make group</indexterm></indexterm>To
+group a number of widgets, use &lt;Shift&gt; click or click-and-drag
+to select them, and then select <uicontrol>Arrange &#x2192; Group</uicontrol> in
+the &lt;Operate&gt; menu.</p>
+<p>To ungroup the widgets, select <uicontrol>Arrange &#x2192; Ungroup</uicontrol>.</p></body></topic>
+<topic id = "vw.help.widgets.basics.positionUnbounded"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set an unbounded widget’s position</title>
+<body><p><indexterm>widgets<indexterm>position unbounded widget</indexterm></indexterm>Unbounded
+widgets (such as buttons and labels) do not have fixed left, right,
+top, and bottom edges, because they adjust their sizes to fit a
+changing label. Instead of positioning these widgets by edge position,
+you position them by a reference point, which is, by default, the
+widget’s origin (top-left corner).<ol><li><p>Select an unbounded
+widget and go to the <uicontrol>Position</uicontrol> page in the GUI
+Painter Tool.</p></li>
+<li><p>Set the <uicontrol>Unbounded</uicontrol> positioning button,
+if necessary:</p><image href = "..\..\graphics\widgets-02.gif" height="12"
+width="26" align="right" placement="break"  /></li>
+<li><p>Set the reference point for the widget by changing the <uicontrol>x</uicontrol> and <uicontrol>y</uicontrol> values.
+The most common reference points are:</p><p>0.0, 0.0 -- top-left
+corner (origin) 0.5, 0.5 -- center 1.0, 1.0 -- bottom right corner</p></li>
+<li><p>Set the <uicontrol>X</uicontrol> and <uicontrol>Y</uicontrol> <uicontrol>Proportions</uicontrol> to
+0 to give the widget a fixed position, or to a scaling factor to
+cause it to move in a dimension as the window scales.</p></li>
+<li><p>Set the <uicontrol>X</uicontrol> and <uicontrol>Y</uicontrol> <uicontrol>Offsets</uicontrol> to
+adjust the widget’s position relative to the scaling position.</p></li>
+<li><p><uicontrol>Apply</uicontrol> the properties.</p></li></ol></p></body></topic>
+<topic id = "vw.help.widgets.basics.positionProgrammatic"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set a widget’s position programmatically</title>
+<body><p><indexterm>widgets<indexterm>set position</indexterm></indexterm><ol>
+<li><p>Get the widget’s wrapper from the application model’s builder.</p></li>
+<li><p>For a relative shift in position, send a <apiname>moveBy:</apiname> message
+to the wrapper. The argument is a <apiname>Point</apiname> whose <codeph>x</codeph> and <codeph>y</codeph> values
+indicate the number of pixels by which the widget is to be shifted.
+<codeblock otherprops="smalltalk method">moveArrowUp
+		| wrapper |
+		wrapper := (self builder componentAt: #arrow).
+		"If the arrow is not too high, raise it another notch."
+		wrapper bounds origin y > 30
+			ifTrue: [wrapper moveBy: 0 @ -5]
+</codeblock></p></li>
+<li><p>To apply an absolute position, send a <apiname>moveTo:</apiname> message
+to the wrapper. The argument is a <apiname>Point</apiname> whose coordinates
+are the desired position of the widget.
+<codeblock otherprops="smalltalk method">resetArrow
+		| wrapper |
+		wrapper := (self builder componentAt: #arrow).
+		wrapper moveTo: self arrowOrigin
+</codeblock></p></li></ol></p>
+<p>In <apiname>MoveExample</apiname>, a graphic label is repositioned
+by three buttons, giving the effect of a pointer on a meter. The <uicontrol>Up</uicontrol> and <uicontrol>Down</uicontrol> buttons
+shift the position relative to the prior position, while the <uicontrol>Reset</uicontrol> button
+moves the widget to an absolute position.</p>
+<p><b>Online example:</b> 
+<xref href="prereq:Move-Example:Examples.MoveExample open" 
+format="st" scope="external">Move-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.basics.setLabel"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set a widget’s label</title>
+<body><p><indexterm>widgets<indexterm>assign label</indexterm></indexterm><ol>
+<li><p>Edit the <uicontrol>Label</uicontrol> properties on the <uicontrol>Basics</uicontrol> page.</p></li>
+<li><p>Set <uicontrol>String</uicontrol> to contain the label that
+appears on the widget, and <uicontrol>Message</uicontrol> to be
+the action method.</p></li>
+<li><p>To have the application provide the text of the label, enable
+the <uicontrol>Supplied By Application</uicontrol> property.</p></li>
+<li><p>Select <uicontrol>Apply &amp; Close</uicontrol>.</p></li></ol></p></body></topic>
+<topic id = "vw.help.widgets.basics.labelFont"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Change a widget’s font</title>
+<body><p><indexterm>widgets<indexterm>set label font</indexterm></indexterm>Select
+the widget, then choose the desired font on the <uicontrol>Details</uicontrol> page
+of the GUI Painter Tool.</p>
+<p>To set the font programmatically:<ol><li><p>In a method in the
+application model, get the widget from the application model’s builder.</p></li>
+<li><p>Create an instance of <apiname>TextAttributes</apiname> corresponding
+to the new font. If the font exists in the fonts menu, you can send
+a <apiname>styleNamed:</apiname> message to the <apiname>TextAttributes</apiname> class.
+The argument is the name of the font (for example, <codeph>#large</codeph> for
+the system’s <uicontrol>Large</uicontrol> font).</p></li>
+<li><p>Get the label from the widget by sending a <apiname>label</apiname> message;
+get the text of the label by sending a <apiname>text</apiname> message
+to it. Then install a blank text temporarily as a means of erasing
+the old label if the new font is smaller.</p></li>
+<li><p>Install the new font in the widget by sending a <apiname>textStyle:</apiname> message to
+the widget. The argument is the <apiname>TextAttributes</apiname> you
+created in step 2.</p></li>
+<li><p>Reinstate the original label by sending a <apiname>labelString:</apiname> message
+to the widget.
+<codeblock otherprops="smalltalk method">changedFont
+		| widget newStyle oldLabel |
+		widget := (self builder componentAt: #label) widget.
+		newStyle := TextAttributes styleNamed: (self labelFont value).
+		"Erase the existing label in case its font is larger than the new one."
+		oldLabel := widget label text.
+		widget labelString: ''.
+		"Install the new font."
+		widget textStyle: newStyle.
+		"Reinstate the original label."
+		widget labelString: oldLabel.
+</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Font1-Example:Examples.Font1Example open" 
+format="st" scope="external">Font1-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.basics.hideShow"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Hide/display a widget</title>
+<body><p><indexterm>widgets<indexterm>hide</indexterm><indexterm>show</indexterm></indexterm><ol>
+<li><p>Select the widget.</p></li>
+<li><p>On the <uicontrol>Details</uicontrol> page of the GUI Painter
+Tool, set the <uicontrol>Initially Invisible</uicontrol> property
+to set the widget’s visibility when the window opens.</p></li>
+<li><p>Get the widget’s wrapper by sending <apiname>componentAt:</apiname> to
+the builder.</p></li>
+<li><p>To hide the widget, send a <apiname>beInvisible</apiname> message
+to the wrapper.</p></li>
+<li><p>To make the widget visible again, send a <apiname>beVisible</apiname> message
+to the wrapper.
+<codeblock otherprops="smalltalk method">changedListVisibility
+		| wrapper desiredState |
+		wrapper := <b>self builder componentAt: #colorList</b>.
+		desiredState := self listVisibility value.
+		desiredState == #hidden
+			ifTrue: [<b>wrapper beInvisible</b>].
+		desiredState == #disabled
+			ifTrue: [<b>wrapper beVisible</b>.
+				wrapper disable].
+		desiredState == #normal
+			ifTrue: [wrapper enable.
+				wrapper beVisible].
+</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Hide-Example:Examples.HideExample open" 
+format="st" scope="external">Hide-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.basics.disableEnable"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Disable/enable a widget</title>
+<body><p><indexterm>widgets<indexterm>enable</indexterm><indexterm>disable</indexterm></indexterm>You
+can disable a widget, causing it to be displayed in gray.</p>
+<p>This deactivates the controller so the widget does not respond
+to user input.<ol><li><p>Select the widget.</p></li>
+<li><p>On the <uicontrol>Details</uicontrol> page of the GUI Painter
+Tool, set the <uicontrol>Initially Disabled</uicontrol> property
+to set the widget’s visibility when the window opens.</p></li>
+<li><p>Get the widget’s wrapper by sending <apiname>componentAt:</apiname> to
+the builder.</p></li>
+<li><p>To disable the widget, send a <apiname>disable</apiname> message
+to the wrapper.</p></li>
+<li><p>To make the widget active again, send an <apiname>enable</apiname> message
+to the wrapper.
+<codeblock otherprops="smalltalk method">changedListVisibility
+		| wrapper desiredState |
+		wrapper := <b>self builder componentAt: #colorList</b>.
+		desiredState := self listVisibility value.
+		desiredState == #hidden
+			ifTrue: [wrapper beInvisible].
+		desiredState == #disabled
+			ifTrue: [
+				wrapper beVisible.
+				<b>wrapper disable</b>].
+		desiredState == #normal
+			ifTrue: [
+				<b>wrapper enable</b>.
+				wrapper beVisible].
+</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Hide-Example:Examples.HideExample open" 
+format="st" scope="external">Hide-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.basics.setIcon"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set a widget’s icon</title>
+<body><p><indexterm>widgets<indexterm>add icon</indexterm></indexterm><ol>
+<li><p>Select the widget.</p></li>
+<li><p>On the Basics Page of the GUI Painter Tool, set the <uicontrol>Label</uicontrol> properties
+to be the name of a method that supplies a graphic, enable the <uicontrol>Label Is Image</uicontrol> property.</p></li>
+<li><p>Select <uicontrol>Apply &amp; Close</uicontrol>.</p></li></ol></p></body></topic>
+<topic id = "vw.help.widgets.basics.tabOrder"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set the widget tab order</title>
+<body><p><indexterm>widgets<indexterm>set tab order</indexterm></indexterm>By
+default, the tab order between widgets is the order in which they were
+added.</p>
+<p>You should disable tabbing for a text editor if the editor should interpret
+the Tab key as a character.<ol><li><p>To add a widget to the tab
+sequence, check its <uicontrol>Can Tab</uicontrol> property on
+the <uicontrol>Details</uicontrol> page of the GUI Painter Tool.</p></li>
+<li><p>To set the tab order, select the first widget in the sequence,
+then hold down the Shift key while you select each widget in the desired
+tabbinbg order.</p></li>
+<li><p>Select the <uicontrol>Arrange &#x2192; Bring To Front</uicontrol> command.</p></li>
+<li><p><uicontrol>Install</uicontrol> the canvas.</p></li></ol></p></body></topic>
+<topic id = "vw.help.widgets.basics.setColors"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Coloring Widgets</title>
+<body><p><indexterm>widgets<indexterm>set colors</indexterm></indexterm>To
+set widget colors in the UI Painter, select the <uicontrol>Color</uicontrol> page
+in the GUI Painter Tool.</p>
+<p>Widgets have four color zones: <uicontrol>Foreground</uicontrol>, <uicontrol>Background</uicontrol>, <uicontrol>Selection foreground</uicontrol>,
+and <uicontrol>Selection background</uicontrol>. By default,
+these are set to <uicontrol>none</uicontrol>, which means that the
+widget inherits its colors from its window).</p>
+<p>Select the desired color from the color chart and click on the
+zone you wish to define. To revert the zone to <uicontrol>none</uicontrol>,
+click on the zone a second time. Use the slider controls to fine-adjust
+the color. The vertical slider work with a color-cube model, while
+the horizontal sliders work with a hue-saturation-value model.</p>
+<p>To set widget colors programmatically:<ol><li><p>Get the widget’s
+wrapper by sending a <apiname>componentAt:</apiname> message.</p></li>
+<li><p>Get the widget’s <apiname>LookPreferences</apiname> from its
+wrapper.</p></li>
+<li><p>Create a copy of the preferences by setting a color zone
+value, by sending <apiname>foregroundColor:</apiname>, <apiname>backgroundColor:</apiname>, <apiname>selectionForegroundColor:</apiname>,
+or <apiname>selectionBackgroundColor:</apiname>, with a color as argument.</p></li>
+<li><p>Install the new <apiname>LookPreferences</apiname> by sending
+a <apiname>lookPreferences:</apiname> message to the wrapper.
+<codeblock otherprops="smalltalk method">foregroundColor: aColor
+		"For each sample widget, change the indicated color layer."
+		| wrapper lookPref |
+		self sampleWidgets do: [:widgetID |
+			wrapper := (<b>self builder componentAt: widgetID</b>).
+			lookPref := wrapper 
+				<b>lookPreferences foregroundColor: aColor</b>.
+			<b>wrapper lookPreferences: lookPref</b>].
+</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Color-Example:Examples.ColorExample open" 
+format="st" scope="external">Color-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.basics.accessWidget"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Access a widget programmatically</title>
+<body><p><indexterm>widgets<indexterm>access in program</indexterm></indexterm><ol>
+<li><p>Using the GUI Painter Tool, set the widget’s <uicontrol>ID</uicontrol> property
+to an identifying name for the widget (in the example, <codeph>#comment</codeph>). Apply
+the properties and install the canvas.</p></li>
+<li><p>In a method in the application model that needs to access
+the widget, send a <apiname>componentAt:</apiname> message to the
+application model’s builder with the widget’s <uicontrol>ID</uicontrol>.</p></li>
+<li><p>Send a <apiname>widget</apiname> message to the object returned
+by step 2.
+<codeblock otherprops="smalltalk method">alignCenter
+		| widget style |
+		widget := <b>(self builder componentAt: #comment) widget</b>.
+		style := widget textStyle copy.
+		style alignment: 2.
+		widget textStyle: style.
+		widget invalidate.
+</codeblock></p></li></ol></p>
+<p>In some cases, the application model must send messages to the wrapper
+instead of the widget.</p>
+<p><b>Online example:</b> 
+<xref href="prereq:Editor1-Example:Examples.Editor1Example open" 
+format="st" scope="external">Editor1-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.basics.refreshDisplay"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Refresh a widget programmatically</title>
+<body><p><indexterm>widgets<indexterm>refresh display</indexterm></indexterm>To
+force a widget to redraw itself, send the message <apiname>invalidate</apiname> to
+the widget. <ol><li><p>Using the GUI Painter Tool, set the widget’s <uicontrol>ID</uicontrol> property
+to an identifying name for the widget (in the example, <codeph>#comment</codeph>).
+Apply the properties and install the canvas.</p></li>
+<li><p>In a method in the application model that needs to access
+the widget, send a <apiname>componentAt:</apiname> message to the
+application model’s builder with the widget’s <uicontrol>ID</uicontrol>.</p></li>
+<li><p>Send a <apiname>widget</apiname> message to the object returned
+by step 2.
+<codeblock otherprops="smalltalk method">alignCenter
+		| widget style |
+		widget := (self builder componentAt: #comment) widget.
+		style := widget textStyle copy.
+		style alignment: 2.
+		widget textStyle: style.
+		widget invalidate.
+</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Editor1-Example:Examples.Editor1Example open" 
+format="st" scope="external">Editor1-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.basics.accessWrapper"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Access a widget’s wrapper programmatically</title>
+<body><p><indexterm>widgets<indexterm>access wrapper</indexterm></indexterm>Some
+widget properties are controlled by the widget’s wrapper rather than
+the widget itself.<ol><li><p>Using the GUI Painter Tool, set the
+widget’s <uicontrol>ID</uicontrol> property to an identifying name
+for the widget. Apply the properties and install the canvas.</p></li>
+<li><p>In a method in the application model, send a <apiname>componentAt:</apiname> message
+to the application model’s builder with the widget’s <uicontrol>ID</uicontrol>.</p></li>
+<li><p>Send appropriate messages to the wrapper object.
+<codeblock otherprops="smalltalk method">changedListVisibility
+		| wrapper desiredState |
+		wrapper := <b>self builder componentAt: #colorList</b>.
+		desiredState := self listVisibility value.
+		desiredState == #hidden
+			ifTrue: [wrapper beInvisible].
+		desiredState == #disabled
+			ifTrue: [
+				wrapper beVisible.
+				wrapper disable].
+		desiredState == #normal
+			ifTrue: [wrapper enable; beVisible].
+</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Hide-Example:Examples.HideExample open" 
+format="st" scope="external">Hide-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.basics.addDependency"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Add Dependencies</title>
+<body><p><indexterm>widgets<indexterm>add dependency</indexterm></indexterm>To
+declare a dependency, send an <apiname>onChangeSend:to:</apiname> message
+to the widget’s value holder. The first argument is a message selector
+to send to the second argument, which is typically the application
+model itself.</p>
+<p>A dependency is typically declared in the <codeph>initialize</codeph> method.
+<codeblock otherprops="smalltalk method">initialize
+		colorNames := SelectionInList with: ColorValue constantNames.
+		selectedColor := String new asValue.
+		fieldIsDependent := false asValue.
+		"Arrange for the application model to take action when the
+		check box is turned on or off."
+		fieldIsDependent 
+			onChangeSend: #changedDependency to: self.
+</codeblock></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Dependency-Example:Examples.DependencyExample open" 
+format="st" scope="external">Dependency-Example</xref></p>
+<p>To remove a dependency, send a <apiname>retractInterestsFor:</apiname> message
+to the widget’s value holder. The argument is the object that registered
+the interest, typically the application model itself.</p></body></topic></topic></dita>

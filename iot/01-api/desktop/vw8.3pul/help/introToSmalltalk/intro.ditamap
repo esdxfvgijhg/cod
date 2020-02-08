@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA BookMap//EN" "bookmap.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<map title = "Introduction to Smalltalk"
+	chunk="by-topic" xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+	<topicref navtitle = "Introduction to Smalltalk" href = "introduction.xml" type = "topic">
+		<topicref navtitle = "Why Smalltalk?" href = "whySmalltalk.xml" type = "topic"/>
+		<topicref navtitle = "Objects and Messages" href = "messages.xml" type = "topic"/>
+		<topicref navtitle = "Objects and Classes" href = "classes.xml" type = "topic"/>
+		<topicref navtitle = "Creating and Editing Methods and Classes" href = "coding.xml" type = "topic"/>
+		<topicref navtitle = "Essential Classes and Methods" href = "essentialClasses.xml" type = "topic"/>
+		<topicref navtitle = "Other Important Classes" href = "importantClasses.xml" type = "topic"/>
+		<topicref navtitle = "Creating Graphical User Interfaces" href = "creatingGUIs.xml" type = "topic"/>
+		<topicref navtitle = "Developing a Smalltalk Application" href = "developingApplications.xml" type = "topic"/>
+		<topicref navtitle = "What's Next?" href = "whatsNext.xml" type = "topic"/>
+		<topicref navtitle = "References" href = "references.xml" type = "topic"/>
+		<topicref navtitle = "About this Introduction" href = "about.xml" type = "topic"/>
+	</topicref>
+</map>

@@ -1,0 +1,1 @@
+encoding: #UTF_8catalog: messagesClientAlreadyRegistered = 'Client is already registered and can not be registered again'ClientNotRegistered = 'Client is not registered and can not be unregistered'

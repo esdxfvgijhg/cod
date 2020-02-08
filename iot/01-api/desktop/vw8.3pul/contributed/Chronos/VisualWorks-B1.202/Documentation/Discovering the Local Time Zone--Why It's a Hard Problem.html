@@ -1,0 +1,805 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<meta name="generator" content="HTML Tidy for Windows (vers 12 April 2005), see www.w3.org"><meta content="text/html; charset=us-ascii" http-equiv="content-type"><title>Why Discovering the Local Time Zone is a Hard Problem</title>
+<style type="text/css">
+a:link { color: rgb(192, 164, 132); text-decoration: none; font-weight: bold ! important; font-size: larger;}
+a:visited { color: rgb(192, 164, 132); text-decoration: none; font-weight: bold ! important; font-size: larger;}
+a:hover { color: rgb(0, 0, 255);}
+a:active { color: rgb(255, 0, 0);}
+</style></head>
+<body bgcolor="#ffffff">
+<br style="font-weight: bold;">
+<center>
+
+<table style="width: 92%; height: 92%; text-align: left; margin-left: auto; margin-right: auto;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td>
+<center>
+
+<table style="width: 100%;">
+<tbody>
+<tr>
+<td style="text-align: center;">
+<img src="http://www.chronos-st.org/images/Chronos-small.png"><br style="font-size: 30%;">
+<span style="font-size: 125%; font-weight: bold; color: rgb(192, 164, 132);">&chi;&rho;&#972;&nu;&omicron;&sigmaf;</span>
+</td>
+<td>
+  <table height="100%" width="100%">
+  <tbody><tr>
+  <td>
+  <h1><span style="font-family: Helvetica,Arial,sans-serif;">Discovering the Local Time Zone: Why It's a Hard Problem</span></h1>
+  </td>
+  </tr>
+  <tr>
+  <td style="font-family: Helvetica,Arial,sans-serif; font-size: 90%; color: rgb(128, 128, 128); background-color: rgb(248, 248, 248);">
+Article of General Interest to the Smalltalk Community by Alan Lovejoy, author of the <a href="http://www.chronos-st.org" target="_top">Chronos Date/Time Library</a>
+  </td>
+  </tr>
+  </tbody>
+  </table>
+</td>
+</tr>
+</tbody>
+</table>
+</center>
+
+<br>
+
+<div style="text-align: justify;"><span style="font-family: Helvetica,Arial,sans-serif;">
+Smalltalk-80 was released to the world in 1983. &nbsp;I no longer remember exactly when, 
+but well before 1990, ParcPlace systems (the company formed by Xerox to
+commercialize Smalltalk) introduced a Time Zone class (which had not
+been in the version given to Tektronix, HP,&nbsp;TI
+and&nbsp;Apple in
+1980--which is why Squeak Smalltalk, which descends from
+the&nbsp;version Xerox gave&nbsp;Apple, didn't have a Time Zone
+class
+until just recently.) &nbsp;It's been roughly 20 years since
+Smalltalk
+first had a Time Zone class--well before any other language that I know
+of had one. &nbsp;And yet both VisualWorks and Squeak, the two
+modern
+descendants of Smalltalk-80, still can't configure their Time Zone
+objects so that the offset transition rules match those of the host
+operating system (although Squeak dodges the issue by having the VM
+report clock ticks in local time, an approach that gives the strong but
+deceptive illusion of "working" as long as one only ever deals with one
+time zone, and doesn't care about correct time computations into the
+past or the future.)<br>
+<br>Why does this situation persist? Why doesn't Cincom (current
+ownwers of
+VisualWorks, which descends from the original ST-80 marketed by
+ParcPlace) just write a few lines of code so that when VisualWorks
+first starts up, it finds out what time zone it's in from the host
+operating environment? &nbsp;Why don't the Squeak folks do
+likewise?&nbsp; Is this a hard problem or something?<br>
+<br>Well, yes. It is. &nbsp;Here's the story, in all its
+sordid
+details:<br>
+<br>But first, there are some key facts you need to know about
+"real
+world"&nbsp; time zones:<br>
+<br></span><span style="font-family: Helvetica,Arial,sans-serif;">Not
+everyone observes DST.&nbsp;</span><span style="font-family: Helvetica,Arial,sans-serif;">The
+offset
+for DST is
+usually one hour, but not always.&nbsp;&nbsp;</span><span style="font-family: Helvetica,Arial,sans-serif;">In
+the
+Southern Hemisphere,
+DST is observed during the Summer--from October until April, for
+example.</span> <span style="font-family: Helvetica,Arial,sans-serif;">Although
+Sunday is usually
+the day of the week of the DST transition, such is not always the
+case.</span> <span style="font-family: Helvetica,Arial,sans-serif;">The
+time-of-day at which DST transitions occur can be specified by law in
+local "wall clock" time, in local "standard time," or in Universal
+Time.&nbsp; All countries in the EU modernly transition to and from
+DST
+on the same dates, and at the same time-of-day Universal Time (eg., 1am
+local time in London, 2am local time in Berlin, etc.)&nbsp;</span>
+<span style="font-family: Helvetica,Arial,sans-serif;">Not
+everyone
+uses a fixed day of the week to schedule transitions. Some use a fixed
+date.</span> <span style="font-family: Helvetica,Arial,sans-serif;">Not
+everyone uses the Gregorian calendar to schedule
+transitions--</span><span style="font-family: Helvetica,Arial,sans-serif;">which means
+that any time
+zone rule engine that only uses the Gregorian Calendar will require a
+new ruleset each year, even if the "native" rules never
+change</span><span style="font-family: Helvetica,Arial,sans-serif;">.&nbsp;</span><span style="font-family: Helvetica,Arial,sans-serif;">Not
+everyone has a set
+schedule of offset transitions. In some countries, the legislature (or
+other rulemaking authority) decides de novo every year when DST
+transitions will occur. &nbsp;There can be any number of offset
+transitions during the year: 0, 1, 2, 3, 4 etc. There can be offset
+transitions that aren't DST transitions.&nbsp; For example, in 1946
+Hawaii changed its standard time offset from -10.5 hours to -10
+hours--and this had nothing to do with DST.</span> <span style="font-family: Helvetica,Arial,sans-serif;">&nbsp;<br>
+<br></span><span style="font-family: Helvetica,Arial,sans-serif;">Also,
+changes to "the rules" sometimes take effect mid year.&nbsp;
+Initially,
+the US Congress was planning to have the new US DST rules go into
+effect in the Fall of 2005, with the result that the rules for 2005
+would have been different both from those of 2004 and from those of
+2006.&nbsp; Fortunately, someone persuaded them to wait until March
+2007 before having the rule change become effective (thank your
+preferred deity for small favors.)<br>
+<br></span> <span style="font-family: Helvetica,Arial,sans-serif;">Time
+zones are political, in every sense of the word--<a href="http://www.timegenie.com/country.time/il/ target="_top"">as recent
+events in Israel
+demonstrate</a>. &nbsp;Microsoft learned just how political time zones are <a href="http://blogs.msdn.com/oldnewthing/archive/2003/08/22/54679.aspx" target="_top">after they released Windows 95</a>
+with a world time zone map by means of which users could select their
+local time zone. &nbsp;You really should avoid making this type of
+mistake. Some people are very easily offended.<br>
+<br></span><span style="font-family: Helvetica,Arial,sans-serif;">Although
+the VW TimeZone
+class can handle the absence of DST,&nbsp; DST offset deltas that
+aren't whole hours,&nbsp; the Southern Hemisphere case, transition
+days
+other than Sunday, and DST transitions that don't always happen at 2am,
+it can't handle any of the other issues listed above (in fact, few
+date/time libraries can.) &nbsp;It can't deal with any number of
+offset
+transitions during the year other than 0 or 2. &nbsp;It can't deal
+with
+"fixed date" transition rules. &nbsp;It can't deal with transitions
+that happen on different days of the week in the same year. It can't
+deal with non-Gregorian rules. It can't obtain the latest rules from an
+external respository, nor from a remote time zone rule server (to be
+fair, I don't know of anyone who does that, although I'm working on
+it--<a href="http://ietfreport.isoc.org/idref/draft-royer-timezone-registry/" target="_top">as
+is
+IANA</a>.)<br>
+<br>The reality of "real world" time zones, and the limitations
+of the
+VisualWorks TimeZone class, both contribute to the problem of having
+VisualWorks aoutomagically adopt the host system's local time.
+&nbsp;Why that's so should become clear as you read the remainder
+of
+this essay.<br>
+<br>It's also important to realize that the issue isn't just
+getting the
+correct local time from the OS whenever you need it. &nbsp;That's a
+solved problem. &nbsp;The issue is correctly converting to and from
+local time and Universal Time for all points in time--or at least,
+getting the same (perhaps wrong) results as the operating system would.
+&nbsp;<br>
+<br>But that's just the minimum requirement. &nbsp;Some
+applications need
+to be able to get the same date/time results as some other system gets,
+for any time zone. If that's what you need, you don't have a lot of
+choices. No operating system provides such functionality as part of its
+standard date/time library. &nbsp; Chronos can do it--if you know
+the
+rulesets for all the time zones. &nbsp;If the other system whose
+time
+zone behavior you need to match uses Olson time zones, then it's easy.
+&nbsp;If the other system uses the Windows time zone rulesets, and
+your
+code is running on Windows, and both your code and the other system use
+the same Windows time zone for local time (and don't need to use the
+Windows rulesets for any other time zones,) no problem. &nbsp;If
+you
+can integrate with other systems by simply always using timestamps in
+Universal Time (and all the players can correctly handle that,) then
+there's no issue. Otherwise, you'll have some work to do, but it's
+doable.</span><span style="font-family: Helvetica,Arial,sans-serif;"><br>
+<br style="font-family: Helvetica,Arial,sans-serif;"></span><span style="font-family: Helvetica,Arial,sans-serif;">So, now
+to the problem: What's involved in having VisualWorks (and Squeak)
+discover and use the same zone offset transition rules used by the host
+operating system? There are essentially three cases that matter in the
+modern world, Windows, Unix and classic MacOS (since neither VW nor
+Squeak run on mainframes, and most of the other Smalltalk systems are
+either single-platform, or else just use the host operating system's
+date/time functions.)<br>
+<br>Let's consider each environment in order:</span><br style="font-family: Helvetica,Arial,sans-serif;">
+<h3><span style="font-family: Helvetica,Arial,sans-serif;">Microsoft
+Windows</span></h3>
+<span style="font-family: Helvetica,Arial,sans-serif;">Believe
+it or
+not, you're in a better situation on Microsoft Windows than you would
+be on most Unix systems, or on the MacOS Classic--at least from the
+point of view of an application (or code library) that a) needs to
+handle time zone rules itself, and/or b) needs to match the time zone
+behavior of Windows. &nbsp;But even on WIndows, there's good news
+and
+bad news.<br>
+<br>First, the good news: Windows stores time zone rulesets in
+the Windows
+Registry. &nbsp;The full list of time zone rulesets is stored under
+the
+registry key HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows
+NT\CurrentVersion\Time Zones. &nbsp;The ruleset of the current
+system
+time zone (the one that controls how Universal Time is converted to
+local time for display to the user) is stored under the registry key
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation.
+&nbsp;Windows provides the system function GetTimeZoneInformation()
+that fetches the ruleset of the system time zone from the Windows
+Registry, and returns it in an instance of the TIME_ZONE_INFORMATION
+struct (see the <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/sysinfo/base/time_zone_information_str.asp" target="_top">
+Windows documentation</a>.)</span><br style="font-family: Helvetica,Arial,sans-serif;">
+<br style="font-family: Helvetica,Arial,sans-serif;"><span style="font-family: Helvetica,Arial,sans-serif;">So on
+Windows,
+it's straighforward to discover the rules of the time zone that defines
+"local time" for a particular system (although the Windows rules will
+not be able to describe cases with more than two transitions
+in&nbsp;the same year.) &nbsp;Given access to those rules, an
+application or code library can either create its own time zone object
+having the same rules, or can use the information in the WIndows
+ruleset (e.g., the zone offset during standard time, the zone
+offset&nbsp;during DST, or the zone name) to map to a time zone
+ruleset
+as defined in a repository of time zone rules (such as the <a href="http://www.twinsun.com/tz/tz-link.htm" target="_top">Olson Time Zone
+Database</a>.)
+&nbsp;<br>
+<br>In fact, both Java and Chronos use a mapping function, based
+on the
+name of the Windows time zone, that results in the key of the Olson
+time zone most congruent to the named Windows time zone.
+&nbsp;Chronos
+can also simply construct an analogous time zone object based on the
+Windows rules that will perfectly emulate the behavior of the emulated
+Windows time zone. The&nbsp;rules from the <a href="http://www.twinsun.com/tz/tz-link.htm" target="_top">Olson Time Zone
+Database</a>
+would probably be more accurate, and are certainly easier to keep up to
+date--but in some cases, "perfect emulation" of operating system
+behavior may be preferrable to using the most accurate zone rules
+available.</span><br style="font-family: Helvetica,Arial,sans-serif;">
+<span style="font-family: Helvetica,Arial,sans-serif;"><br><a href="http://www.cincomsmalltalk.com/blog/blogView" target="_top">James
+Robertson</a>'s OSTimeZone parcel (a "contributed" component,
+a.k.a. a
+"goodie") uses the "emulation" strategy: It creates and initializes a
+Core.TimeZone based on the zone rule information obtained from the
+Windows Registry. Chronos uses the OSTimeZone parcel's functionality to
+retrieve the Windows zone rules, but uses its own logic to translate
+those rules into a Chronos.VariableOffsetTimezone (if that's the
+mapping strategy then in effect,) instead of translating them into an
+instance of Core.TimeZone.</span><br style="font-family: Helvetica,Arial,sans-serif;">
+<br style="font-family: Helvetica,Arial,sans-serif;"><span style="font-family: Helvetica,Arial,sans-serif;">For
+Windows, the
+bad news is that its time zone rulesets only represent the rules for
+the current year. &nbsp;Of course, in many cases the rules for the
+current year are the same as the rules for the previous year and/or the
+next year--and usually for some number of years since some year in the
+past until some (perhaps unkown) year in&nbsp;the future. But
+sometimes
+the current year's rules are not the same as either last year's and/or
+next year's, as discussed above. &nbsp;</span><br style="font-family: Helvetica,Arial,sans-serif;">
+<br style="font-family: Helvetica,Arial,sans-serif;"><span style="font-family: Helvetica,Arial,sans-serif;">Just this
+past
+Summer&nbsp;(2005,) also as mentioned above, the United States
+Congress
+changed the rules that determine the dates on which Daylight Saving
+Time (Summer Time to most of the rest of the world) starts and ends.
+&nbsp;The former rule (since 1987) was that DST would start on the
+first Sunday of April and end on the last Sunday of October. Effective
+in 2007, the new rules will be that DST starts on the second Sunday of
+March and ends on the first Sunday of November. &nbsp;(How well
+will
+your software deal with this change? Do you have the zone transition
+rules embedded in your code? Do you have customers/users who will
+likely still be using the old rules come March 2007? Will all the
+software systems, components and applications in your enterprise all be
+using the same zone rules during 2007?)</span><br style="font-family: Helvetica,Arial,sans-serif;">
+<br style="font-family: Helvetica,Arial,sans-serif;"><span style="font-family: Helvetica,Arial,sans-serif;">So, if you
+use
+the native Windows date/time functions (or a VisualWorks
+Core.Timestamp, for that matter) to add 414 days
+to&nbsp;2006-01-31T<span style="font-weight: bold;">19</span>:09:57-<span style="font-weight: bold;">08:00</span>&nbsp;
+(Pacific Standard Time,) you
+would get an answer such as 2007-03-21T<span style="font-weight: bold;">19</span>:09:57-<span style="font-weight: bold;">08:00</span>.
+&nbsp;Note the time zone offset is
+-<span style="font-weight: bold;">08:00</span>,
+indicating that Standard Time is in effect. &nbsp;But in
+actual
+fact (unless Congress changes the rules again,) Standard Time will not
+be in effect on that date. Under the assumption that there are 86400
+seconds in each day, even on days with DST transitions or&nbsp;leap
+seconds, the correct result is 2007-03-21T<span style="font-weight: bold;">20</span>:09:57-<span style="font-weight: bold;">07:00</span>. Note that the
+offset is -<span style="font-weight: bold;">7</span>
+hours,
+and that the time-of-day clock shows <span style="font-weight: bold;">8</span>pm--one hour later
+than at the
+starting point.<br>
+<br>Chronos will calculate the answer as either
+2007-03-21T<span style="font-weight: bold;">20</span>:09:57-<span style="font-weight: bold;">07:00</span>
+or as
+2007-03-21T<span style="font-weight: bold;">19</span>:09:57-<span style="font-weight: bold;">07:00</span>, depending on
+which method you use to
+do the calculation.&nbsp; <span style="font-style: italic;">You
+have to decide what "add N days to a
+DateAndTime" means</span>, and write your code accordingly.
+&nbsp;Does it
+mean
+"a date N days later, but at&nbsp; the same local time of day" (as
+most
+business/legal use cases would prefer) or "N * SecondsPerDay seconds
+later" (as most scientific/technical use cases would prefer)?<br>
+<br>If&nbsp;"add N days to a DateAndTime" means&nbsp;"N *
+SecondsPerDay
+seconds later," then code either "aDateAndTime + (ScientificDuration
+days: N)" or "aDateAndTime addingSeconds: N * SecondsPerDay."<br>
+<br>If&nbsp;"add N days to a DateAndTime" means&nbsp;"a
+date N days later,
+but at&nbsp;the same local time of day," then code any of
+"aDateAndTime
+addingDays: N", "aDateAndTime + N days" or "aDateAndTime +
+(CalendarDuration days: N)."<br>
+<br>Note that Chronos gives preference to the
+civil/business/legal
+interpretation. &nbsp;It's more likely to be what is intended. It's
+also very unlikely
+to be the
+behavior exhibited by&nbsp;typical time point implementations
+(e.g.,
+java.util.Calendar.)&nbsp; VisualWorks Timestamps (and&nbsp;
+Chronos.Timepoints that are invariant to nominal time) happen to
+exhibit correct "business" behavior in this case--but only because they
+don't keep track of time zone offset transitions.<br>
+<br style="font-family: Helvetica,Arial,sans-serif;"><span style="font-family: Helvetica,Arial,sans-serif;">The fact
+that
+most date/time libraries exhibit flawed behavior (especially those that
+come "for free" with operating systems) is one major reason that some
+applications and/or code libraries will prefer to handle dates and
+times themselves (especially including time-zone related matters,) and
+not rely on the Windows system library to do date/time computations.
+&nbsp;Another reason for such a preference would be the fact that
+any
+Unix machines that may be collaborating with code components hosted on
+WIndows, more often than not, will do date/time calculations using the
+correct offset for each point-in-time, even when the time
+zone
+rules were or will be different than those in effect for the current
+year. &nbsp;</span><br style="font-family: Helvetica,Arial,sans-serif;">
+<br style="font-family: Helvetica,Arial,sans-serif;"><span style="font-family: Helvetica,Arial,sans-serif;">Distributed,
+collaborating components that don't agree on the time can be bad news.
+If an application needs to have the same date/time behavior as most
+Unix systems exhibit, or needs to have the same date/time behavior on
+all platforms on which it may be hosted (a constraint which arguably
+applies to both VisualWorks and Squeak, by the way,) then the native
+Windows date/time library just won't do.</span><br style="font-family: Helvetica,Arial,sans-serif;">
+<br style="font-family: Helvetica,Arial,sans-serif;"><span style="font-family: Helvetica,Arial,sans-serif;">It should
+be
+noted that one of the motivations for the Chronos Date/Time Library is
+to enable all dialects of Smalltalk, regardless of host operating
+system, to perform&nbsp;date/time computations&nbsp;both
+identically
+and correctly (or, by conscious choice, to be&nbsp;wrong in the
+same
+way as the host operating system.)</span><br></span>
+<h3><span style="font-family: Helvetica,Arial,sans-serif;">UNIX
+Variants</span></h3>
+<span style="font-family: Helvetica,Arial,sans-serif;">Don't
+UNIX
+systems use <a href="http://www.twinsun.com/tz/tz-link.htm" target="_top">Olson
+time
+zones?</a> And doesn't that make it easy to use the same zone
+rules as
+the host Unix system is using?</span><br>
+<br><span style="font-family: Helvetica,Arial,sans-serif;">The
+short answer
+is no. &nbsp;The long answer is...a long anwer, but here it
+is:</span><br>
+<br><span style="font-family: Helvetica,Arial,sans-serif;">Firstly,
+not all
+Unix systems use Olson time zone rule files. &nbsp;Generally, only
+those derived from BSD do so. &nbsp;It should be noted, however,
+that
+it's not impossible to install the Olson Time Zone Database into a UNIX
+that doesn't normally use it. &nbsp;The only hard part is changing
+the
+standard libraries so that they will use the Olson time zones. Even so,
+<a href="http://cspry.co.uk/computing/Indy_admin/TIMEZONE.html" target="_top">it's
+been done</a>. But here's the question: If&nbsp;your code is
+running on
+a UNIX that by default doesn't use the Olson time zones, but has been
+modified to use them, how would you know? &nbsp;</span><br>
+<br><span style="font-family: Helvetica,Arial,sans-serif;">POSIX
+requires
+that a user must be able to set the TZ environment variable to a POSIX
+time zone rule literal, and that the system must then use the time zone
+ruleset defined by the rule literal to define the (bidirectional)
+mapping between Universal Time and the user's local time. Although
+POSIX allows Olson time zone keys to be used instead, it does not
+<span style="font-style: italic;">require</span>
+that Olson time zone
+keys be accepted as valid time zone specifications--thanks to the Unix
+vendors that didn't want to incorporate the Olson code into their Unix
+products.) But POSIX does require that, if a POSIX time zone rule
+literal isn't used, then whatever information or time zone key is
+accepted as a valid value of the TZ environment variable must be
+preceded by a colon character (:).</span><br style="font-family: Helvetica,Arial,sans-serif;">
+<br><span style="font-family: Helvetica,Arial,sans-serif;">Many
+Unix
+systems are not so strict, but some are. And then there's AIX, which
+perversely <span style="font-style: italic;">disallows</span>
+the
+leading colon!</span><br>
+<br><span style="font-family: Helvetica,Arial,sans-serif;">The
+TZ
+environment variable does not have to be defined. Even if it is
+defined, it can contain the empty string. If it's either not defined,
+or set to the emply string, Unix uses the global default system time
+zone for that user (which is where the hard part will meet up with us.)
+&nbsp;However, let's first consider the easy case, where the TZ
+environment variable&nbsp;for the current logged in user is set to
+a
+valid POSIX rule literal&nbsp;(in which case, that's definitely the
+time zone we'll want to use to define what "local time" means as far as
+the current user is concerned.)</span><br>
+<br><span style="font-family: Helvetica,Arial,sans-serif;">Here
+are some
+examples of POSIX zone rule literals, with their meaning in English
+below each example:</span><br>
+<br><span style="font-family: Helvetica,Arial,sans-serif;">&nbsp;&nbsp;&nbsp;
+&nbsp;MST7</span><br>
+<span style="font-family: Helvetica,Arial,sans-serif;">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;-- Always Standard Time, with
+abbreviation MST
+and offset -7 hours from UT.</span><br style="font-family: Helvetica,Arial,sans-serif;">
+<span style="font-family: Helvetica,Arial,sans-serif;">&nbsp;&nbsp;&nbsp;
+&nbsp;MST7MDT</span><br>
+<span style="font-family: Helvetica,Arial,sans-serif;">&nbsp;
+&nbsp;
+&nbsp; &nbsp; -- Standard Time offset = -7 hours, Std Time
+Abbeviation
+= MST;</span><br>
+<span style="font-family: Helvetica,Arial,sans-serif;">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; DST
+offset = -6 hours, &nbsp;DST
+abbreviation = MDT;</span><br>
+<span style="font-family: Helvetica,Arial,sans-serif;">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; DST
+transition dates/times set to
+system default values (usually the US rules are the defaults, but NOT
+NECESSARILY!)</span><br>
+<span style="font-family: Helvetica,Arial,sans-serif;">&nbsp;&nbsp;&nbsp;
+HOVT-7HOVST-8<span class="GramE">,M3.5.0,M10.1.0</span>/3:00</span><br>
+<span style="font-family: Helvetica,Arial,sans-serif;">&nbsp;
+&nbsp; &nbsp; --&nbsp;</span><span style="font-family: Helvetica,Arial,sans-serif;">Std Time</span>
+<span style="font-family: Helvetica,Arial,sans-serif;">offset
+= 7
+hours (from UT,)&nbsp;</span><span style="font-family: Helvetica,Arial,sans-serif;">Std Time
+Abbeviation</span>
+<span style="font-family: Helvetica,Arial,sans-serif;">=
+HOVT;</span><br>
+<span style="font-family: Helvetica,Arial,sans-serif;">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp; &nbsp;DST offset = 8 hours, DST
+abbreviation =
+HOVST;</span><br>
+<span style="font-family: Helvetica,Arial,sans-serif;">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp; transition to DST on the last Sunday in
+March at
+the default time-of-day (2 am);</span><br>
+<span style="font-family: Helvetica,Arial,sans-serif;">&nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp;transtion to StandardTime on
+the first
+Sunday of October at 3:00 am local time.</span><br>
+<span style="font-family: Helvetica,Arial,sans-serif;">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;</span><br>
+<span style="font-family: Helvetica,Arial,sans-serif;">Note
+the caveat
+that the default rule parameters that will be used when all optional
+parameters are not specified are subject to change at any time,
+independently on each system. &nbsp;<span style="font-style: italic;">And this is the easy case.</span>
+Reading the
+default rules, however, may not be so easy, because the default rules
+may be specified in a far less friendly way. &nbsp;The "rule
+model,"
+syntax and location of the default rule parameters vary considerably
+among the various Unix flavors.</span><br style="font-style: italic;">
+<br><span style="font-family: Helvetica,Arial,sans-serif;"><span style="text-decoration: underline;">AIX</span> may or
+may not use the Olson time
+zones, depending on version. &nbsp;All versions use POSIX rule
+literals in the TZ environment
+variable. Those that don't support the Olson zoneinfo database also
+support a small list of predefined zones, which can be
+identified by keys that are essentially POSIX rule literals without all
+the necessary parameters specfied (because the correct defaults have
+been defined for each zone key.) For more information on the versions
+that don't support Olson zoneinfo, go to <a href="http://publib.boulder.ibm.com/infocenter/pseries/v5r3/index.jsp?topic=/com.ib" target="_top">
+IBM's AIX Information Center site</a>,
+and search for
+/etc/environment. &nbsp;The AIX versions that do support Olson
+zoneinfo
+do so using the standard pathnames and operational characteristics, as
+explained below.</span><br>
+<br><span style="font-family: Helvetica,Arial,sans-serif;"><span style="text-decoration: underline;">IRIX</span> is
+very similar to
+AIX--it even has <a href="http://nekohako.xware.cx/tech/irix-tz.html" target="_top">poorly
+documented support
+for&nbsp;Olson time zones</a>.</span><br>
+<br><span style="font-family: Helvetica,Arial,sans-serif;">AIX
+and IRIX are easy, compared to HP-UX. &nbsp;</span><br>
+<br><span style="font-family: Helvetica,Arial,sans-serif;"><span style="text-decoration: underline;">HP UX</span> uses
+either POSIX time zone
+rule literals, or else uses its own proprietary time zone database,
+which is stored in a single file, /usr/lib/tztab. Each HP-UX time zone
+is identified by a key, and its ruleset can be looked up by its key
+from the tztab file.</span><br>
+<br><span style="font-family: Helvetica,Arial,sans-serif;">The
+default time
+zone for HP-UX, which is used whenever the user has not set the value
+of the TZ environment variable, is stored&nbsp;in the file
+/etc/default/tz (as the key of a time zone defined in the tztab file.)
+&nbsp;HP-UX time zone rule sets include past, present and possibly
+future transition rules, just like Olson rule sets. &nbsp; Although
+the
+rule syntax is different than that of the Olson source rule files, it
+uses the same "rule model" and so can represent all the same transition
+rules. But HP does not attempt to maintain a tztab database anywhere
+near as complete as Olson--and generally does not use the same key set
+or key scheme, in any case.</span><br>
+<br><span style="font-family: Helvetica,Arial,sans-serif;">So,&nbsp;
+an
+application or code library that a) wants to handle time zones the same
+way across all platforms, and b) wants to run on HP-UX, must be
+prepared to parse and interpret the HP-UX zone rules. &nbsp;And
+that's
+not as easy as you would think. &nbsp;I won't go into the details
+here,
+but those interested can check out the HP-UX rule model and rule syntax
+here: <a href="http://docs.hp.com/en/B2355-90696/tztab.4.html" target="_top">tztab(4).</a></span><br>
+<br><span style="font-family: Helvetica,Arial,sans-serif;">HP-UX
+is a
+harder case, since the multi-year rulesets in the tztab file have to be
+parsed--and they are much harder to deal with than the POSIX rule
+literals. &nbsp;But even so, the problem is well defined, the specs
+are
+publicly available, and both VW and Squeak have to distribute HP-UX
+specific VM's anyway, for other reasons.</span><br style="font-family: Helvetica,Arial,sans-serif;">
+<br><span style="font-family: Helvetica,Arial,sans-serif;">For
+most other
+flavors of Unix (there's too many to make definitive, all-encompassing
+statements,) the situation can be either very easy or very hard,
+depending on whether or not the TZ environment variable has been
+defined and set to a valid time zone. &nbsp;</span><br>
+<br><span style="font-family: Helvetica,Arial,sans-serif;"><span style="text-decoration: underline;">Solaris</span>
+uses Olson time zones.
+&nbsp;On Solaris systems (and some others, but not on most Linux
+distributions,) there is a file /etc/timezone (or /etc/TIMEZONE) that
+contains the Olson key (or POSIX rule literal) of the default system
+time zone. BSD-derived systems that use and have an /etc/timezone file
+present no problems other than the ones caused by POSIX rule literals
+with omitted parameters. &nbsp;The other key difference between
+Solars
+and other BSD-like Unix systems is the location of the default system
+binary tzfile--which is explained below.</span><br>
+<br><span style="font-family: Helvetica,Arial,sans-serif;">So
+what do
+<span style="text-decoration: underline;">BSD-derived Unix
+systems</span> do when the TZ environment variable has not been
+set to
+a valid value (either a POSIX zone rule literal, or an Olson time zone
+key)? &nbsp;That's an easy question to answer: They use the default
+binary tz file. So, what's a binary tzfile, where is it, what's its
+format, and what information does it contain, you ask?</span><br>
+<br><span style="font-family: Helvetica,Arial,sans-serif;">A
+binary tz file
+is a binary representation of the transition/offset/abbreviation rules
+for a time zone, as generated by the <a href="http://www.gsp.com/cgi-bin/man.cgi?section=8&amp;topic=zic" target="_top">zic</a>
+utility&nbsp;from the source zone rule definitions provided as part
+of
+the Olson Time Zone Database (a set of text files.) The binary
+representation of the time zone ruleset is substantially different from
+the "rule model" of the original data files--but more on that
+later.</span><br>
+<br><span style="font-family: Helvetica,Arial,sans-serif;">As
+for the the
+location of the system default binary tzfile, that depends on which
+flavor of Unix you're on: On Linux
+and most BSD-derived systems (e.g.,
+MacOS X,)
+the system default
+binary tz file is located at /etc/localtime. But on Solaris
+systems,&nbsp; the system default binary tz file is located at
+/usr/lib/zoneinfo/localtime.&nbsp;</span><br>
+<br><span style="font-family: Helvetica,Arial,sans-serif;">The
+acutal
+format of the binary Olson tz files is not easy to deal with (although
+it's actually easier than the original source rules would be, believe
+it or not,) but that's not the real issue, and so we won't go there.
+&nbsp;For those interested, the tzfile binary format is specified
+here:
+<a href="http://www.gsp.com/cgi-bin/man.cgi?section=5&amp;topic=tzfile" target="_top">Manual
+Reference Pages&nbsp; - TZFILE (5)</a>.</span><br>
+<br><span style="font-family: Helvetica,Arial,sans-serif;">What's
+relevant
+is the information that a binary tzfile contains. Or rather, doesn't
+contain. &nbsp;What it doesn't contain is a) the key of the Olson
+time
+zone whose ruleset it encodes, and b) the annual-date recurrence rules
+from which it was generated. &nbsp;Of course, if there's an
+/etc/timezone file (or if the TZ environment variable is set to a valid
+value,) that's not an issue. But if such is not the case, then the
+situation is as folows:</span><br>
+<br><span style="font-family: Helvetica,Arial,sans-serif;">The
+tzfile
+transition rules are stored as a sequence of offset/abbreviation
+transitions, each one scheduled at a particular time_t value from
+MIN(time_t) to MAX(time_t)--in other words, at timestamps each of which
+is a count of seconds since 1970-01-01T00:00:00Z. The information in
+the "source" from which the tzfile was compiled (where rules such as
+`transition from EST5 to EDT4 on the first Sunday of April' can be
+found) is totally lost. What remains in the binary tzfiles are very
+concrete rules of the form `transition from EST5 to EDT4 on
+2005-04-03T02:00:00 local time.' (the actual time is specified in
+Universal Time, not local time--but the zone offset for that point in
+time is also right there in the tzfile.)<br>
+<br style="font-family: Helvetica,Arial,sans-serif;"></span><span style="font-family: Helvetica,Arial,sans-serif;">This
+format makes it extremely difficult, to say the least, to recreate the
+original annual-date recurrence rules--which are what the VisualWorks
+TimeZone class needs.<br>
+<br style="font-family: Helvetica,Arial,sans-serif;"></span><span style="font-family: Helvetica,Arial,sans-serif;">Of course,
+if the time zone implementation you use also represents its transition
+rules as a unique timestamp for each transition, there's no problem.
+&nbsp;But few date/time libraries use that design.
+&nbsp;VisualWorks
+doesn't. Chronos doesn't. Java doesn't. And it's a rather bad design
+choice in any case. &nbsp;It requires that the moment of each
+transition be concretely specified for all years--including years in
+the future.
+There's a
+limit to how far in the future a binary tzfile can specify transitions.
+Currently, the ones generated by the zic utility can't go beyond the
+year 2038. And, since transitions are specified as a count of seconds
+since an epoch, leap
+seconds become an
+issue. In fact, there have to be two versions of the
+tzfile for
+each time zone: one whose seconds of offset include leap seconds, and
+one whose seconds of offset don't include leap seconds. The Chronos
+design avoids all such issues completely.<br>
+<br style="font-family: Helvetica,Arial,sans-serif;"></span><span style="font-family: Helvetica,Arial,sans-serif;">Fortunately,
+there are ways to deal with the unforgiving, overly-concrete "rule
+model" of the binary tzfiles:</span><br style="font-family: Helvetica,Arial,sans-serif;">
+<ul style="font-family: Helvetica,Arial,sans-serif;"><li>It
+may be the case that /etc/localtime is actually a symlink to one
+of the tzfiles in /usr/share/zoneinfo (the location on most Unix
+systems--but not on all--of the tzfiles for all the Olson time zones)
+&nbsp;If it is, then the Olson time zone key will be the pathname
+suffix of the file referenced by the symlink--and so the Olson zone key
+could be discovered using Unix library functions. But one cannot rely
+on this being the case.</li><li>It is
+possible to extract
+from the tzfile the transitions for the
+current year (if any.) &nbsp;There couuld be any number of these.</li><li>Or
+the the next two transitions could be extracted. But they may or
+may not be in the same year.</li><li>Or
+the previous and
+next transition could be extracted.&nbsp;But
+again, they may or may not be in the same year.</li><li>Or
+two transitions could be adaptively chosen based on the current
+date and time, according to a configurable policy. &nbsp;</li></ul>
+<span style="font-family: Helvetica,Arial,sans-serif;">Any
+attempt to
+extract transitions from a tzfile would have to deal with the possible
+presence of leap seconds in the data.</span><br>
+<br><span style="font-family: Helvetica,Arial,sans-serif;">Chronos
+could
+use use yet another strategy </span><span style="font-family: Helvetica,Arial,sans-serif;">(but
+doesn't, currently.)</span><span style="font-family: Helvetica,Arial,sans-serif;">
+Since Chronos can
+deal with any number of transitions during the year, over any number of
+years, and can deal with transition rules that specify a particular day
+of the year, in addition to the more usual "Last Sunday of October"
+rule form, Chronos could simply read all the transitions from the
+tzfile and construct a functionally-identical (but rather large,
+perhaps) VariableOffsetTimezone instance. &nbsp;But few are the
+date/time
+libraries that could do the same--(and I believe all the ones that
+could just use binary tzfiles as their persistent time zone format.)
+Neither the VisualWorks Core.TimeZone, nor the one that comes with
+Squeak's date/time library (which goes by the name
+Chronology) could do any such thing.</span><br>
+<br><span style="font-family: Helvetica,Arial,sans-serif;">It
+should be
+noted, however, that David T. Lewis has implemented a&nbsp;(GPL
+licensed) <a href="http://minnow.cc.gatech.edu/squeak/1076" target="_top">TimeZone
+module for Squeak</a>
+that uses the same time zone transition rule
+design as that of the Olson binary tzfiles, and in fact uses the same
+binary file format. If having time zone behavior identical to that of
+your host BSD-derived Unix system is priority number 1, then this may
+be a good approach. &nbsp;I may do something similar for Chronos at
+some point--but probably as an optional add-on/extension.&nbsp;</span><br style="font-family: Helvetica,Arial,sans-serif;">
+<br><span style="font-family: Helvetica,Arial,sans-serif;">As
+of now, however, Chronos uses a different strategy. &nbsp;Chronos'
+Time Zone Compiler,
+as part of its operation, constructs a mapping between country codes,
+time zone offsets, time zone abbreviations and Olson time zone keys.
+&nbsp;Often, within a given country, there is a unique mapping from
+either a time zone's standard-time offset to a particular Olson time
+zone, or form one or both of the time zone's abbreviations to a
+particular Olson time zone. &nbsp;And in almost all cases, when the
+mapping within a country is not unique, there is no modern difference
+between the rulesets of the several Olson time zones that might
+correspond to a zone offset and/or abbreviation within a particular
+country. So using this mapping, Chronos can make a very, very good
+guess as to which Olson
+time zone would serve as an accurate model of local time, based solely
+on the country code, time zone offset and abbreviation. &nbsp;It's
+virtually certain to provide correct time for the current
+year.</span><br>
+<br><span style="font-family: Helvetica,Arial,sans-serif;">Also
+very worth considering
+is the
+<a href="http://www.cincomsmalltalk.com/userblogs/travis/blogView?showComments=true&amp;entry=3280652181" target="_top">Travis
+Griggs strategy</a> (quote):</span><br>
+<br><div style="margin-left: 40px; font-family: Helvetica,Arial,sans-serif;">I
+added a
+Third strategy to the OSTimeZone package. A TimeZone subclass is
+created to be a bridge to the OS's conversion routines. By making it a
+subclass of TimeZone, it remains polymorphic with other TimeZone
+instances. The key conversion APIs to implement are convertGMT:do: and
+convertToGMT:do:. It forwards these onto the various OSSystemSupport
+classes. To use it, you just create an instance of this
+OSSystemSupportTimeZone and make it the reference/default TimeZone.
+There's a handy use method on the class side that does this. -- Travis
+Griggs, from his blog post "Got Time?"<br></div>
+<br><span style="font-family: Helvetica,Arial,sans-serif;">Of
+course,
+as Travis points out, his strategy only lets you "do what other
+applications on your desktop do, show the time relative to the timezone
+specified for your computer with the desktop tools, without having to
+do anything special," and does not provide "a rich time model,"
+enabling you to "do time computations across time zones, etc." Even so,
+nothing prohibits a date/time library from having both its own native
+time zone objects, and also having a (type compatible) "facade" time
+zone object that leverages the functionality provided by the operating
+system using its current local time zone. This strategy is similar in
+some ways to having the VM clock primitive provide clock ticks in local
+time, but has the advantage of providing the same zone offset behavior
+as the operating system for all points in time in the system's local
+time zone, not just for the current local time.</span><br style="font-family: Helvetica,Arial,sans-serif;"><br style="font-family: Helvetica,Arial,sans-serif;"><span style="font-family: Helvetica,Arial,sans-serif;">A standard
+API
+for such a System Time Zone Facade object, that could be implemented by
+all Smalltalk implementations, might be a good idea.</span><br><span style="font-family: Helvetica,Arial,sans-serif;"></span><h3><span style="font-family: Helvetica,Arial,sans-serif;">Classic
+MacOS</span></h3>
+<span style="font-family: Helvetica,Arial,sans-serif;"><span style="font-family: Helvetica,Arial,sans-serif;">Firstly,
+it should be noted
+that the classic Mac system clock keeps local time (as opposed to
+keeping Universal Time.) The MS-DOS and WIndows system clocks also keep
+local time. Originally, the system clocks on Unix systems always kept
+Universal Time, but now most of them can optionally also keep local
+time (so that dual-booting with operating systems that must have the
+system clock keep local time is not prohibited.) <br><br>The
+Classic MacOS clock epoch is
+1904-01-01T00:00:00 (nominal/local time.) &nbsp;The MacOS X clock
+epoch is
+the same as that of Unix in the kernel (1970-01-01T00:00:00Z,) but the
+Mac compatibility layer makes it appear to be 1904-01-01T00:00:00 local
+time.</span><br style="font-family: Helvetica,Arial,sans-serif;">
+<br style="font-family: Helvetica,Arial,sans-serif;"><span style="font-family: Helvetica,Arial,sans-serif;">The Classic
+MacOS Toolbox code keeps track of the user's time zone offset during
+standard time, but does not have or use any rules for determining when
+a DST transition occurs. Instead, the user is required to select a
+check box that controls whether DST is deemed to be in
+effect.&nbsp;
+When the user checks the box, one hour is added to the user's time zone
+offset.&nbsp; When the user unchecks the box, one hour is
+subtracted
+from the user's time zone offset.</span><br style="font-family: Helvetica,Arial,sans-serif;">
+<br style="font-family: Helvetica,Arial,sans-serif;"><span style="font-family: Helvetica,Arial,sans-serif;">The Toolbox
+does
+provide locale information, such as the user's
+country.</span><br style="font-family: Helvetica,Arial,sans-serif;">
+<br style="font-family: Helvetica,Arial,sans-serif;"><span style="font-family: Helvetica,Arial,sans-serif;">References:</span><br style="font-family: Helvetica,Arial,sans-serif;">
+<span style="font-family: Helvetica,Arial,sans-serif;">&nbsp;&nbsp;&nbsp;
+http://developer.apple.com/qa/ops/ops24.html</span><br style="font-family: Helvetica,Arial,sans-serif;">
+<span style="font-family: Helvetica,Arial,sans-serif;">&nbsp;&nbsp;&nbsp;
+http://developer.apple.com/documentation/mac/OSUtilities/OSUtilities-94.html</span><br style="font-family: Helvetica,Arial,sans-serif;">
+<span style="font-family: Helvetica,Arial,sans-serif;">&nbsp;&nbsp;&nbsp;
+http://developer.apple.com/documentation/mac/OSUtilities/OSUtilities-93.html#HEADING93-0</span><br>
+</span><h3><span style="font-family: Helvetica,Arial,sans-serif;">Conclusion</span></h3>
+<span style="font-family: Helvetica,Arial,sans-serif;">So
+there you
+have it: The reason that neither VisualWorks nor Squeak can (as yet)
+synchronize with the host system's local time zone on all platforms is
+because it really is a rather hard problem.<br>
+<br>But I happen to know that Cincom is working on a solution.
+&nbsp;I'll
+be interested to see what they come up with.</span><br>
+<br style="font-family: Helvetica,Arial,sans-serif;"></div></td></tr></tbody></table><h1><br></h1><h1><br></h1><h1><br></h1><h1><br></h1><br></center></body></html>

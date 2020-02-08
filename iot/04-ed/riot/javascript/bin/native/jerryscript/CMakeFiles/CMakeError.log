@@ -1,0 +1,45 @@
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /usr/bin/gcc 
+Build flags: -I/home/aghiles/Aghiles/Program/boards/riot/javascript/bin/native/js/;-Werror;-Wall;-Wextra;-pedantic;-std=gnu99;-m32;-fstack-protector-all;-ffunction-sections;-fdata-sections;-fno-delete-null-pointer-checks;-fdiagnostics-color;-Wstrict-prototypes;-Wold-style-definition;-fno-common;-Wall;-Wextra;-Wformat=2;-Wmissing-include-dirs;-include;'/home/aghiles/Aghiles/Program/boards/riot/javascript/bin/native/riotbuild/riotbuild.h';-Wno-implicit-fallthrough
+Id flags:  
+
+The output was:
+1
+[01m[Kcc1:[m[K [01;31m[Kfatal error: [m[K'/home/aghiles/Aghiles/Program/boards/riot/javascript/bin/native/riotbuild/riotbuild.h': No such file or directory
+compilation terminated.
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /usr/bin/gcc 
+Build flags: -I/home/aghiles/Aghiles/Program/boards/riot/javascript/bin/native/js/;-Werror;-Wall;-Wextra;-pedantic;-std=gnu99;-m32;-fstack-protector-all;-ffunction-sections;-fdata-sections;-fno-delete-null-pointer-checks;-fdiagnostics-color;-Wstrict-prototypes;-Wold-style-definition;-fno-common;-Wall;-Wextra;-Wformat=2;-Wmissing-include-dirs;-include;'/home/aghiles/Aghiles/Program/boards/riot/javascript/bin/native/riotbuild/riotbuild.h';-Wno-implicit-fallthrough
+Id flags: -c 
+
+The output was:
+1
+[01m[Kcc1:[m[K [01;31m[Kfatal error: [m[K'/home/aghiles/Aghiles/Program/boards/riot/javascript/bin/native/riotbuild/riotbuild.h': No such file or directory
+compilation terminated.
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /usr/bin/gcc 
+Build flags: -I/home/aghiles/Aghiles/Program/boards/riot/javascript/bin/native/js/;-Werror;-Wall;-Wextra;-pedantic;-std=gnu99;-m32;-fstack-protector-all;-ffunction-sections;-fdata-sections;-fno-delete-null-pointer-checks;-fdiagnostics-color;-Wstrict-prototypes;-Wold-style-definition;-fno-common;-Wall;-Wextra;-Wformat=2;-Wmissing-include-dirs;-include;'/home/aghiles/Aghiles/Program/boards/riot/javascript/bin/native/riotbuild/riotbuild.h';-Wno-implicit-fallthrough
+Id flags: -Aa 
+
+The output was:
+1
+[01m[K<command-line>:0:1:[m[K [01;31m[Kerror: [m[Kmissing '(' after predicate
+[01m[Kcc1:[m[K [01;31m[Kfatal error: [m[K'/home/aghiles/Aghiles/Program/boards/riot/javascript/bin/native/riotbuild/riotbuild.h': No such file or directory
+compilation terminated.
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /usr/bin/gcc 
+Build flags: -I/home/aghiles/Aghiles/Program/boards/riot/javascript/bin/native/js/;-Werror;-Wall;-Wextra;-pedantic;-std=gnu99;-m32;-fstack-protector-all;-ffunction-sections;-fdata-sections;-fno-delete-null-pointer-checks;-fdiagnostics-color;-Wstrict-prototypes;-Wold-style-definition;-fno-common;-Wall;-Wextra;-Wformat=2;-Wmissing-include-dirs;-include;'/home/aghiles/Aghiles/Program/boards/riot/javascript/bin/native/riotbuild/riotbuild.h';-Wno-implicit-fallthrough
+Id flags: -D__CLASSIC_C__ 
+
+The output was:
+1
+[01m[Kcc1:[m[K [01;31m[Kfatal error: [m[K'/home/aghiles/Aghiles/Program/boards/riot/javascript/bin/native/riotbuild/riotbuild.h': No such file or directory
+compilation terminated.
+
+

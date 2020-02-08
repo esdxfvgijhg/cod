@@ -1,0 +1,376 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<title>The Chronos Date/Time Library</title>
+<meta name="description" content="Code library for date and time computations in Smalltalk. Supports Olson time zones, multiple calendars, scientific and business use cases, and flexible date/time formatting.">
+<meta name="keywords" content="Chronos, date, time, time zone, timezone, calendar, Smalltalk, VisualWorks, Olson timezone database, ANSI-Smalltalk Standard, DateAndTime, Duration, holiday, ISO 8601, RFC 2822">
+
+<style type="text/css">
+a:link {color: rgb(192, 164, 132); font-weight: bold;}
+a:visited {color: rgb(192, 164, 132); font-weight: bold; text-decoration: none;} 
+a:hover {color: #0000FF}
+a:active {color: #FF0000}
+td { 
+font-family: Helvetica,Arial,sans-serif;
+font-size: 16;
+text-align: justify;
+color: rgb(0, 0, 0);
+}
+.maintitle {
+font-size: 180%;
+font-weight: bold;
+}
+.gold {
+color:rgb(192, 164, 132);
+}
+.boldgold {
+color:rgb(192, 164, 132);
+font-weight: bold;
+font-size: 125%;
+}
+</style>
+
+<script type="text/javascript">
+function toInteger(n){
+  return (n < 0 ? - 1 : + 1) * Math.floor(Math.abs(n) + 0.5);
+}
+function zeropad(n) { 
+return n>9 ? n : '0'+n; 
+}
+function formatTimeZoneOffset(time, elementSeparator) {
+var minutesWestOfUT=time.getTimezoneOffset()
+var absOffsetInMinutes=Math.abs(minutesWestOfUT)
+var offsetInHours=toInteger(absOffsetInMinutes / 60)
+var offsetMinutes = absOffsetInMinutes % 60
+var isWestOfUT = minutesWestOfUT > 0
+return (isWestOfUT ? '-' : '+')+zeropad(offsetInHours)+elementSeparator+zeropad(offsetMinutes)
+}
+function formatTimeOfDay(time) {
+var hour=time.getHours()
+var minute=time.getMinutes()
+var second=time.getSeconds()
+return zeropad(hour)+':'+zeropad(minute)+':'+zeropad(second)
+}
+function abbreviationOfMonth(time) {
+return ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][time.getMonth()]
+}
+function formatDateAsYMD(time, elementSeparator) {
+var dayOfMonth=time.getDate()
+var month=time.getMonth() + 1
+var year=time.getFullYear()
+return year+elementSeparator+zeropad(month)+elementSeparator+zeropad(dayOfMonth)
+}
+function formatDateAsMDY(time, mdSeparator, dySeparator) {
+var dayOfMonth=time.getDate()
+var year=time.getFullYear()
+return abbreviationOfMonth(time)+mdSeparator+zeropad(dayOfMonth)+dySeparator+year
+}
+function formatDateAsDMY(time, dmSeparator, mySeparator) {
+var dayOfMonth=time.getDate()
+var year=time.getFullYear()
+return zeropad(dayOfMonth)+dmSeparator+abbreviationOfMonth(time)+mySeparator+year
+}
+function abbreviationOfDayOfWeek(time) {
+return ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][time.getDay()]
+}
+function formatDateAsRFC2822(time) {
+return abbreviationOfDayOfWeek(time)+', '+formatDateAsDMY(time, ' ', ' ')
+}
+
+function formatDateAndTimeAsISO8601(time) {
+return formatDateAsYMD(time,'-')+'T'+formatTimeOfDay(time)+formatTimeZoneOffset(time, ':')
+}
+function formatDateAndTimeAsRFC2822(time) {
+return formatDateAsRFC2822(time)+' '+formatTimeOfDay(time)+' '+formatTimeZoneOffset(time, '')
+}
+function startClock()
+{
+document.getElementById('clock').innerHTML=formatDateAndTimeAsRFC2822(new Date())
+t=setTimeout('startClock()',500)
+}
+</script>
+
+</head>
+<body bgcolor="#ffffff" onload="startClock()">
+<br style="font-size: 50%">
+<center>
+<table border="0" valign="center" style="width: 96%; text-align: left; margin-left: auto; margin-right: auto;">
+<tbody><tr><td>
+<center>
+<table width=94%>
+<tbody>
+<tr>
+<td><center>
+<img src="http://www.chronos-st.org/images/Chronos-small.png">
+<br style="font-size: 30%" />
+<a style="text-decoration: none;" href="http://en.wikipedia.org/wiki/Chronos" target="_top"><span class="boldgold">&chi;&rho;&#972;&nu;&omicron;&sigmaf;</span></a>
+</center></td>
+<td><table width="100%" border="0" bgcolor="white" cellpadding="0">
+<tbody>
+<tr>
+<td  align="left" style="text-align: left;">
+<div class="maintitle"><span class="gold"><a style="text-decoration: none;" href="http://www.chronos-st.org/" target="_top">The Chronos Date/Time Library</a></span></div>
+<br> 
+<b><span style="font-family: Helvetica,Arial,sans-serif; color: rgb(110, 110, 110);" id="clock">
+<noscript><small><i>~ A code library for date/time computations ~</i></small></noscript></span></b>
+</td>
+<td align="right" style="text-align: right;">
+<img src="http://www.chronos-st.org/images/SunDial.jpg" width=100 height=100>
+</td>
+<td align="right" style="text-align: right;">
+<img src="http://www.chronos-st.org/images/st-balloon.jpg">
+</td>
+</tbody>
+</table>
+
+</td>
+</tr>
+</tbody>
+</table>
+
+<table width=94% cellpadding=10>
+<tbody><tr><td>
+<table border=0 width="100%">
+<tr style="background-color: rgb(248, 248, 248);"> 
+<td style="text-align: left; font-family: Helvetica,Arial,sans-serif; color: rgb(128, 128, 128);">
+<span style="font-size: 14;">
+<noscript></noscript>
+<script type="text/javascript">
+document.write('Page retrieved '+formatDateAndTimeAsRFC2822(new Date()))
+</script>
+</span> 
+</td>
+<td style="text-align: right; font-family: Helvetica,Arial,sans-serif; color: rgb(128, 128, 128);">
+<span style="font-size: 14;">
+<noscript>Page published Mon, 13 Mar 2006 03:45:04 +0000 (UT: Universal Time)</noscript>
+<script type="text/javascript">
+document.write('Page published '+formatDateAndTimeAsRFC2822(new Date(1142221504720)))
+</script>
+</span>
+</td>
+</tr>
+</table>
+</td></tr>
+<tr><td>
+
+<center>
+<table border="0" valign="center" style="width: 96%; text-align: left; margin-left: auto; margin-right: auto;">
+<tbody>
+<tr><td>
+
+<center>
+<h1>Calendar Epoch Dates</h1>
+<br>
+
+<table>
+<tbody>
+<tr>
+<td>
+<p></p><center><font size="-1"><big>Calendar
+Epoch Dates
+converted to <b>Gregorian</b></big></font></center>
+<center><table border="1"><tbody><tr bgcolor="black"><td style="color: rgb(255, 255, 255);" align="center">Native Calendar Epoch Date</td><td style="color: rgb(255, 255, 255);" align="center">Gregorian
+Calendar Date<super>*</super></td><td style="color: rgb(255, 255, 255);" align="center">Julian
+Date</td></tr>
+<tr><td> &nbsp; 0001-01-01 SY [Solarian]</td><td align="center"> &nbsp; -4236-12-23 BC</td><td align="right">&nbsp;174249.50</td></tr>
+<tr><td> &nbsp; 0001-07-01 AM [Hebrew]</td><td align="center"> &nbsp; -3760-09-07 BC</td><td align="right">&nbsp;347997.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 AUC [Julian (Imperial)]</td><td align="center"> &nbsp; -0753-12-24 BC</td><td align="right">&nbsp;1446389.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AD [Julian]</td><td align="center"> &nbsp; 0000-12-30 BC<super>*</super></td><td align="right">&nbsp;1721423.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AD [Gregorian]</td><td align="center"> &nbsp; 0001-01-01 AD</td><td align="right">&nbsp;1721425.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 ZH [Ethiopic]</td><td align="center"> &nbsp; 0008-08-27 AD</td><td align="right">&nbsp;1724220.75</td></tr>
+<tr><td> &nbsp; 0001-01-01 AS [Indian Civil]</td><td align="center"> &nbsp; 0079-03-22 AD</td><td align="right">&nbsp;1749994.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AM [Coptic]</td><td align="center"> &nbsp; 0284-08-29 AD</td><td align="right">&nbsp;1825029.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 AP [Persian]</td><td align="center"> &nbsp; 0622-03-22 AD</td><td align="right">&nbsp;1948320.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AH [Islamic (Fatimid)]</td><td align="center"> &nbsp; 0622-07-19 AD</td><td align="right">&nbsp;1948439.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 BE [Bahai]</td><td align="center"> &nbsp; 1844-03-21 AD</td><td align="right">&nbsp;2394646.25</td></tr>
+</tbody></table></center><font size="-1"><br><small><center><b><super>*</super>Note</b>:
+As required by the ANSI Smalltalk Standard, Gregorian dates are
+designated using astronomical year numbering, whereby the year prior to
+the year 1 is the year zero.</center></small>
+</font><p></p><center><font size="-1"><big>Calendar
+Epoch Dates
+converted to <b>Julian</b></big></font></center>
+<center><table border="1"><tbody><tr bgcolor="black"><td style="color: rgb(255, 255, 255);" align="center">Native Calendar Epoch Date</td><td style="color: rgb(255, 255, 255);" align="center">Julian
+Calendar Date</td><td style="color: rgb(255, 255, 255);" align="center">Julian Date</td></tr>
+<tr><td> &nbsp; 0001-01-01 SY [Solarian]</td><td align="center"> &nbsp; -4236-01-26 BC</td><td align="right">&nbsp;174249.50</td></tr>
+<tr><td> &nbsp; 0001-07-01 AM [Hebrew]</td><td align="center"> &nbsp; -3761-10-07 BC</td><td align="right">&nbsp;347997.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 AUC [Julian (Imperial)]</td><td align="center"> &nbsp; -0753-01-01 BC</td><td align="right">&nbsp;1446389.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AD [Julian]</td><td align="center"> &nbsp; 0001-01-01 AD</td><td align="right">&nbsp;1721423.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AD [Gregorian]</td><td align="center"> &nbsp; 0001-01-03 AD</td><td align="right">&nbsp;1721425.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 ZH [Ethiopic]</td><td align="center"> &nbsp; 0008-08-29 AD</td><td align="right">&nbsp;1724220.75</td></tr>
+<tr><td> &nbsp; 0001-01-01 AS [Indian Civil]</td><td align="center"> &nbsp; 0079-03-24 AD</td><td align="right">&nbsp;1749994.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AM [Coptic]</td><td align="center"> &nbsp; 0284-08-29 AD</td><td align="right">&nbsp;1825029.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 AP [Persian]</td><td align="center"> &nbsp; 0622-03-19 AD</td><td align="right">&nbsp;1948320.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AH [Islamic (Fatimid)]</td><td align="center"> &nbsp; 0622-07-16 AD</td><td align="right">&nbsp;1948439.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 BE [Bahai]</td><td align="center"> &nbsp; 1844-03-09 AD</td><td align="right">&nbsp;2394646.25</td></tr>
+</tbody></table></center><p></p><center><font size="-1"><big>Calendar
+Epoch Dates converted to <b>Julian (Imperial)</b></big></font></center>
+<center><table border="1"><tbody><tr bgcolor="black"><td style="color: rgb(255, 255, 255);" align="center">Native Calendar Epoch Date</td><td style="color: rgb(255, 255, 255);" align="center">Julian
+(Imperial) Calendar Date</td><td style="color: rgb(255, 255, 255);" align="center">Julian
+Date</td></tr>
+<tr><td> &nbsp; 0001-01-01 SY [Solarian]</td><td align="center"> &nbsp; -3482-01-26 AUC</td><td align="right">&nbsp;174249.50</td></tr>
+<tr><td> &nbsp; 0001-07-01 AM [Hebrew]</td><td align="center"> &nbsp; -3007-10-07 AUC</td><td align="right">&nbsp;347997.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 AUC [Julian (Imperial)]</td><td align="center"> &nbsp; 0001-01-01 AUC</td><td align="right">&nbsp;1446389.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AD [Julian]</td><td align="center"> &nbsp; 0754-01-01 AUC</td><td align="right">&nbsp;1721423.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AD [Gregorian]</td><td align="center"> &nbsp; 0754-01-03 AUC</td><td align="right">&nbsp;1721425.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 ZH [Ethiopic]</td><td align="center"> &nbsp; 0761-08-29 AUC</td><td align="right">&nbsp;1724220.75</td></tr>
+<tr><td> &nbsp; 0001-01-01 AS [Indian Civil]</td><td align="center"> &nbsp; 0832-03-24 AUC</td><td align="right">&nbsp;1749994.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AM [Coptic]</td><td align="center"> &nbsp; 1037-08-29 AUC</td><td align="right">&nbsp;1825029.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 AP [Persian]</td><td align="center"> &nbsp; 1375-03-19 AUC</td><td align="right">&nbsp;1948320.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AH [Islamic (Fatimid)]</td><td align="center"> &nbsp; 1375-07-16 AUC</td><td align="right">&nbsp;1948439.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 BE [Bahai]</td><td align="center"> &nbsp; 2597-03-09 AUC</td><td align="right">&nbsp;2394646.25</td></tr>
+</tbody></table></center><p></p><center><font size="-1"><big>Calendar
+Epoch Dates converted to <b>Solarian</b></big></font></center>
+<center><table border="1"><tbody><tr bgcolor="black"><td style="color: rgb(255, 255, 255);" align="center">Native Calendar Epoch Date</td><td style="color: rgb(255, 255, 255);" align="center">Solarian
+Calendar Date</td><td style="color: rgb(255, 255, 255);" align="center">Julian Date</td></tr>
+<tr><td> &nbsp; 0001-01-01 SY [Solarian]</td><td align="center"> &nbsp; 0001-01-01 SY</td><td align="right">&nbsp;174249.50</td></tr>
+<tr><td> &nbsp; 0001-07-01 AM [Hebrew]</td><td align="center"> &nbsp; 0476-09-15 SY</td><td align="right">&nbsp;347997.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 AUC [Julian (Imperial)]</td><td align="center"> &nbsp; 3484-01-03 SY</td><td align="right">&nbsp;1446389.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AD [Julian]</td><td align="center"> &nbsp; 4237-01-09 SY</td><td align="right">&nbsp;1721423.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AD [Gregorian]</td><td align="center"> &nbsp; 4237-01-11 SY</td><td align="right">&nbsp;1721425.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 ZH [Ethiopic]</td><td align="center"> &nbsp; 4244-09-05 SY</td><td align="right">&nbsp;1724220.75</td></tr>
+<tr><td> &nbsp; 0001-01-01 AS [Indian Civil]</td><td align="center"> &nbsp; 4315-04-02 SY</td><td align="right">&nbsp;1749994.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AM [Coptic]</td><td align="center"> &nbsp; 4520-09-08 SY</td><td align="right">&nbsp;1825029.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 AP [Persian]</td><td align="center"> &nbsp; 4858-04-02 SY</td><td align="right">&nbsp;1948320.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AH [Islamic (Fatimid)]</td><td align="center"> &nbsp; 4858-07-28 SY</td><td align="right">&nbsp;1948439.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 BE [Bahai]</td><td align="center"> &nbsp; 6080-04-02 SY</td><td align="right">&nbsp;2394646.25</td></tr>
+</tbody></table></center><p></p><center><font size="-1"><big>Calendar
+Epoch Dates converted to <b>Hebrew</b></big></font></center>
+<center><table border="1"><tbody><tr bgcolor="black"><td style="color: rgb(255, 255, 255);" align="center">Native Calendar Epoch Date</td><td style="color: rgb(255, 255, 255);" align="center">Hebrew
+Calendar Date</td><td style="color: rgb(255, 255, 255);" align="center">Julian Date</td></tr>
+<tr><td> &nbsp; 0001-01-01 SY [Solarian]</td><td align="center"> &nbsp; -0475-11-11 AM</td><td align="right">&nbsp;174249.50</td></tr>
+<tr><td> &nbsp; 0001-07-01 AM [Hebrew]</td><td align="center"> &nbsp; 0001-07-01 AM</td><td align="right">&nbsp;347997.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 AUC [Julian (Imperial)]</td><td align="center"> &nbsp; 3008-11-02 AM</td><td align="right">&nbsp;1446389.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AD [Julian]</td><td align="center"> &nbsp; 3761-10-16 AM</td><td align="right">&nbsp;1721423.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AD [Gregorian]</td><td align="center"> &nbsp; 3761-10-18 AM</td><td align="right">&nbsp;1721425.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 ZH [Ethiopic]</td><td align="center"> &nbsp; 3768-06-08 AM</td><td align="right">&nbsp;1724220.75</td></tr>
+<tr><td> &nbsp; 0001-01-01 AS [Indian Civil]</td><td align="center"> &nbsp; 3839-01-02 AM</td><td align="right">&nbsp;1749994.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AM [Coptic]</td><td align="center"> &nbsp; 4044-06-29 AM</td><td align="right">&nbsp;1825029.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 AP [Persian]</td><td align="center"> &nbsp; 4382-01-02 AM</td><td align="right">&nbsp;1948320.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AH [Islamic (Fatimid)]</td><td align="center"> &nbsp; 4382-05-03 AM</td><td align="right">&nbsp;1948439.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 BE [Bahai]</td><td align="center"> &nbsp; 5604-01-01 AM</td><td align="right">&nbsp;2394646.25</td></tr>
+</tbody></table></center><p></p><center><font size="-1"><big>Calendar
+Epoch Dates converted to <b>Ethiopic</b></big></font></center>
+<center><table border="1"><tbody><tr bgcolor="black"><td style="color: rgb(255, 255, 255);" align="center">Native Calendar Epoch Date</td><td style="color: rgb(255, 255, 255);" align="center">Ethiopic
+Calendar Date</td><td style="color: rgb(255, 255, 255);" align="center">Julian Date</td></tr>
+<tr><td> &nbsp; 0001-01-01 SY [Solarian]</td><td align="center"> &nbsp; -4244-06-01 ZB</td><td align="right">&nbsp;174249.50</td></tr>
+<tr><td> &nbsp; 0001-07-01 AM [Hebrew]</td><td align="center"> &nbsp; -3768-02-10 ZB</td><td align="right">&nbsp;347997.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 AUC [Julian (Imperial)]</td><td align="center"> &nbsp; -0761-05-05 ZB</td><td align="right">&nbsp;1446389.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AD [Julian]</td><td align="center"> &nbsp; -0008-05-06 ZB</td><td align="right">&nbsp;1721423.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AD [Gregorian]</td><td align="center"> &nbsp; -0008-05-08 ZB</td><td align="right">&nbsp;1721425.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 ZH [Ethiopic]</td><td align="center"> &nbsp; 0001-01-01 ZH</td><td align="right">&nbsp;1724220.75</td></tr>
+<tr><td> &nbsp; 0001-01-01 AS [Indian Civil]</td><td align="center"> &nbsp; 0071-07-28 ZH</td><td align="right">&nbsp;1749994.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AM [Coptic]</td><td align="center"> &nbsp; 0277-01-01 ZH</td><td align="right">&nbsp;1825029.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 AP [Persian]</td><td align="center"> &nbsp; 0614-07-23 ZH</td><td align="right">&nbsp;1948320.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AH [Islamic (Fatimid)]</td><td align="center"> &nbsp; 0614-11-22 ZH</td><td align="right">&nbsp;1948439.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 BE [Bahai]</td><td align="center"> &nbsp; 1836-07-13 ZH</td><td align="right">&nbsp;2394646.25</td></tr>
+</tbody></table></center><p></p><center><font size="-1"><big>Calendar
+Epoch Dates converted to <b>Indian Civil</b></big></font></center>
+<center><table border="1"><tbody><tr bgcolor="black"><td style="color: rgb(255, 255, 255);" align="center">Native Calendar Epoch Date</td><td style="color: rgb(255, 255, 255);" align="center">Indian
+Civil Calendar Date</td><td style="color: rgb(255, 255, 255);" align="center">Julian Date</td></tr>
+<tr><td> &nbsp; 0001-01-01 SY [Solarian]</td><td align="center"> &nbsp; -4314-10-02 AS</td><td align="right">&nbsp;174249.50</td></tr>
+<tr><td> &nbsp; 0001-07-01 AM [Hebrew]</td><td align="center"> &nbsp; -3838-06-16 AS</td><td align="right">&nbsp;347997.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 AUC [Julian (Imperial)]</td><td align="center"> &nbsp; -0831-10-03 AS</td><td align="right">&nbsp;1446389.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AD [Julian]</td><td align="center"> &nbsp; -0078-10-09 AS</td><td align="right">&nbsp;1721423.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AD [Gregorian]</td><td align="center"> &nbsp; -0078-10-11 AS</td><td align="right">&nbsp;1721425.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 ZH [Ethiopic]</td><td align="center"> &nbsp; -0070-06-05 AS</td><td align="right">&nbsp;1724220.75</td></tr>
+<tr><td> &nbsp; 0001-01-01 AS [Indian Civil]</td><td align="center"> &nbsp; 0001-01-01 AS</td><td align="right">&nbsp;1749994.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AM [Coptic]</td><td align="center"> &nbsp; 0206-06-07 AS</td><td align="right">&nbsp;1825029.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 AP [Persian]</td><td align="center"> &nbsp; 0544-01-01 AS</td><td align="right">&nbsp;1948320.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AH [Islamic (Fatimid)]</td><td align="center"> &nbsp; 0544-04-28 AS</td><td align="right">&nbsp;1948439.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 BE [Bahai]</td><td align="center"> &nbsp; 1766-01-01 AS</td><td align="right">&nbsp;2394646.25</td></tr>
+</tbody></table></center><p></p><center><font size="-1"><big>Calendar
+Epoch Dates converted to <b>Coptic</b></big></font></center>
+<center><table border="1"><tbody><tr bgcolor="black"><td style="color: rgb(255, 255, 255);" align="center">Native Calendar Epoch Date</td><td style="color: rgb(255, 255, 255);" align="center">Coptic
+Calendar Date</td><td style="color: rgb(255, 255, 255);" align="center">Julian Date</td></tr>
+<tr><td> &nbsp; 0001-01-01 SY [Solarian]</td><td align="center"> &nbsp; -4520-06-01 AM</td><td align="right">&nbsp;174249.50</td></tr>
+<tr><td> &nbsp; 0001-07-01 AM [Hebrew]</td><td align="center"> &nbsp; -4044-02-10 AM</td><td align="right">&nbsp;347997.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 AUC [Julian (Imperial)]</td><td align="center"> &nbsp; -1037-05-05 AM</td><td align="right">&nbsp;1446389.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AD [Julian]</td><td align="center"> &nbsp; -0284-05-06 AM</td><td align="right">&nbsp;1721423.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AD [Gregorian]</td><td align="center"> &nbsp; -0284-05-08 AM</td><td align="right">&nbsp;1721425.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 ZH [Ethiopic]</td><td align="center"> &nbsp; -0276-01-01 AM</td><td align="right">&nbsp;1724220.75</td></tr>
+<tr><td> &nbsp; 0001-01-01 AS [Indian Civil]</td><td align="center"> &nbsp; -0206-07-28 AM</td><td align="right">&nbsp;1749994.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AM [Coptic]</td><td align="center"> &nbsp; 0001-01-01 AM</td><td align="right">&nbsp;1825029.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 AP [Persian]</td><td align="center"> &nbsp; 0338-07-23 AM</td><td align="right">&nbsp;1948320.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AH [Islamic (Fatimid)]</td><td align="center"> &nbsp; 0338-11-22 AM</td><td align="right">&nbsp;1948439.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 BE [Bahai]</td><td align="center"> &nbsp; 1560-07-13 AM</td><td align="right">&nbsp;2394646.25</td></tr>
+</tbody></table></center><p></p><center><font size="-1"><big>Calendar
+Epoch Dates converted to <b>Persian</b></big></font></center>
+<center><table border="1"><tbody><tr bgcolor="black"><td style="color: rgb(255, 255, 255);" align="center">Native Calendar Epoch Date</td><td style="color: rgb(255, 255, 255);" align="center">Persian
+Calendar Date</td><td style="color: rgb(255, 255, 255);" align="center">Julian Date</td></tr>
+<tr><td> &nbsp; 0001-01-01 SY [Solarian]</td><td align="center"> &nbsp; -4858-10-01 AP</td><td align="right">&nbsp;174249.50</td></tr>
+<tr><td> &nbsp; 0001-07-01 AM [Hebrew]</td><td align="center"> &nbsp; -4382-06-15 AP</td><td align="right">&nbsp;347997.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 AUC [Julian (Imperial)]</td><td align="center"> &nbsp; -1375-10-02 AP</td><td align="right">&nbsp;1446389.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AD [Julian]</td><td align="center"> &nbsp; -0622-10-09 AP</td><td align="right">&nbsp;1721423.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AD [Gregorian]</td><td align="center"> &nbsp; -0622-10-11 AP</td><td align="right">&nbsp;1721425.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 ZH [Ethiopic]</td><td align="center"> &nbsp; -0614-06-05 AP</td><td align="right">&nbsp;1724220.75</td></tr>
+<tr><td> &nbsp; 0001-01-01 AS [Indian Civil]</td><td align="center"> &nbsp; -0543-01-02 AP</td><td align="right">&nbsp;1749994.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AM [Coptic]</td><td align="center"> &nbsp; -0338-06-07 AP</td><td align="right">&nbsp;1825029.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 AP [Persian]</td><td align="center"> &nbsp; 0001-01-01 AP</td><td align="right">&nbsp;1948320.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AH [Islamic (Fatimid)]</td><td align="center"> &nbsp; 0001-04-27 AP</td><td align="right">&nbsp;1948439.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 BE [Bahai]</td><td align="center"> &nbsp; 1223-01-01 AP</td><td align="right">&nbsp;2394646.25</td></tr>
+</tbody></table></center><p></p><center><font size="-1"><big>Calendar
+Epoch Dates converted to <b>Islamic (Fatimid)</b></big></font></center>
+<center><table border="1"><tbody><tr bgcolor="black"><td style="color: rgb(255, 255, 255);" align="center">Native Calendar Epoch Date</td><td style="color: rgb(255, 255, 255);" align="center">Islamic
+(Fatimid) Calendar Date</td><td style="color: rgb(255, 255, 255);" align="center">Julian
+Date</td></tr>
+<tr><td> &nbsp; 0001-01-01 SY [Solarian]</td><td align="center"> &nbsp; -5006-05-07 AH</td><td align="right">&nbsp;174249.50</td></tr>
+<tr><td> &nbsp; 0001-07-01 AM [Hebrew]</td><td align="center"> &nbsp; -4516-08-26 AH</td><td align="right">&nbsp;347997.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 AUC [Julian (Imperial)]</td><td align="center"> &nbsp; -1416-03-30 AH</td><td align="right">&nbsp;1446389.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AD [Julian]</td><td align="center"> &nbsp; -0640-05-16 AH</td><td align="right">&nbsp;1721423.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AD [Gregorian]</td><td align="center"> &nbsp; -0640-05-18 AH</td><td align="right">&nbsp;1721425.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 ZH [Ethiopic]</td><td align="center"> &nbsp; -0632-04-07 AH</td><td align="right">&nbsp;1724220.75</td></tr>
+<tr><td> &nbsp; 0001-01-01 AS [Indian Civil]</td><td align="center"> &nbsp; -0559-01-01 AH</td><td align="right">&nbsp;1749994.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AM [Coptic]</td><td align="center"> &nbsp; -0348-09-29 AH</td><td align="right">&nbsp;1825029.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 AP [Persian]</td><td align="center"> &nbsp; 0000-08-29 AH</td><td align="right">&nbsp;1948320.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AH [Islamic (Fatimid)]</td><td align="center"> &nbsp; 0001-01-01 AH</td><td align="right">&nbsp;1948439.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 BE [Bahai]</td><td align="center"> &nbsp; 1260-03-01 AH</td><td align="right">&nbsp;2394646.25</td></tr>
+</tbody></table></center><p></p><center><font size="-1"><big>Calendar
+Epoch Dates converted to <b>Bahai</b></big></font></center>
+<center><table border="1"><tbody><tr bgcolor="black"><td style="color: rgb(255, 255, 255);" align="center">Native Calendar Epoch Date</td><td style="color: rgb(255, 255, 255);" align="center">Bahai
+Calendar Date</td><td style="color: rgb(255, 255, 255);" align="center">Julian Date</td></tr>
+<tr><td> &nbsp; 0001-01-01 SY [Solarian]</td><td align="center"> &nbsp; -6079-15-13 BE</td><td align="right">&nbsp;174249.50</td></tr>
+<tr><td> &nbsp; 0001-07-01 AM [Hebrew]</td><td align="center"> &nbsp; -5603-09-19 BE</td><td align="right">&nbsp;347997.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 AUC [Julian (Imperial)]</td><td align="center"> &nbsp; -2596-15-14 BE</td><td align="right">&nbsp;1446389.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AD [Julian]</td><td align="center"> &nbsp; -1843-15-19 BE</td><td align="right">&nbsp;1721423.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AD [Gregorian]</td><td align="center"> &nbsp; -1843-16-02 BE</td><td align="right">&nbsp;1721425.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 ZH [Ethiopic]</td><td align="center"> &nbsp; -1835-09-08 BE</td><td align="right">&nbsp;1724220.75</td></tr>
+<tr><td> &nbsp; 0001-01-01 AS [Indian Civil]</td><td align="center"> &nbsp; -1764-01-03 BE</td><td align="right">&nbsp;1749994.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AM [Coptic]</td><td align="center"> &nbsp; -1559-09-10 BE</td><td align="right">&nbsp;1825029.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 AP [Persian]</td><td align="center"> &nbsp; -1221-01-02 BE</td><td align="right">&nbsp;1948320.50</td></tr>
+<tr><td> &nbsp; 0001-01-01 AH [Islamic (Fatimid)]</td><td align="center"> &nbsp; -1221-07-07 BE</td><td align="right">&nbsp;1948439.25</td></tr>
+<tr><td> &nbsp; 0001-01-01 BE [Bahai]</td><td align="center"> &nbsp; 0001-01-01 BE</td><td align="right">&nbsp;2394646.25</td></tr>
+</tbody></table></center>
+</td>
+</tr>
+</tbody>
+</table>
+<p><img src="http://www.chronos-st.org/images/SunDial.jpg"></p>
+</center>
+
+</td></tr></tbody></table>
+</center>
+
+
+</td></tr>
+<tr><td>
+<p style="font-size: 75%; color: rgb(128, 128, 128); background-color: rgb(248, 248, 248);">
+[Chronos] All code (classes and methods, and all associated documentation,) distributed as part of the 
+Chronos Date/Time library are &copy; Copyright 2005-2006 by Alan L. Lovejoy.&nbsp; All Rights Reserved. 
+Usage is controlled by the Chronos License (which is included in the distribution as the contents of 
+the file {chronos-license.txt}, and is also available from the <a href="http://www.chronos-st.org/">
+Chronos web site</a> {<a href="http://www.chronos-st.org/License.html" target="_top">http://www.chronos-st.org/License.html</a>})
+</p>
+<blockquote>"Do not go gentle into that good night,
+<br>Old age should burn and rave at the close of the day;
+<br>Rage, rage at the dying of the light!" -- Dylan Thomas
+</blockquote>
+</td></tr>
+
+</center>
+</td></tr></tbody></table>
+</center>
+
+</body>
+</html>

@@ -1,0 +1,540 @@
+<?xml version="1.0"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+<!ENTITY arrow		"&#x2192;">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+	<topic id="vw.help.intro.classes" 
+		xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+		<title>Objects and Classes</title>
+		<body>
+			<p>Everything in the Smalltalk environment is an object, and every object 
+			is an instance of a class. This means that classes are objects too.
+			The following topics elucidate these basic features of the Smalltalk 
+			language and development environment.</p>
+		</body>
+	<topic id="vw.help.intro.classes.properties" 
+		xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+		<title>Objects have Properties</title>
+		<body>
+			<p>Real objects have properties: A person has a height, weight, name, 
+			address, and age, and many of these properties change during a person's lifetime. 
+			A car has a license plate, manufacturer, color, and mileage. Different 
+			cars usually have different values of these properties, and some of them 
+			change during the car's lifetime. A major reason why object-oriented 
+			languages such as Smalltalk were invented was to model real-world objects 
+			and concepts. As a result, Smalltalk objects may also have properties 
+			and their values may also change during their lifetimes.</p>
+			<p>As an example, 
+			the <codeph>Transcript</codeph> object obviously needs to know the 
+			text that it displays and this property changes as the text does.</p>
+			<p>In a library service application, borrowers may be represented by 
+			<codeph>Borrower</codeph> objects and every <codeph>Borrower</codeph> 
+			object probably has a first and a last name, an ID, and a list of 
+			borrowed books, and different <codeph>Borrower</codeph> objects 
+			probably have different values of these properties. Every <codeph>Book</codeph> 
+			object may have an author, a title, a publisher, a library number, 
+			and a borrower, sometimes collectively referred to as the <term>state</term> 
+			of the object. Different <codeph>Book</codeph> objects probably 
+			have different states. In other words, different values of their 
+			defining properties.</p>
+			<p>Similarly every <apiname>Fraction</apiname> object 
+			is naturally characterized by its numerator and denominator and different 
+			fractions have different numerators and denominators.</p>
+			<p>To examine the properties of a Smalltalk object, use the 
+			<term>Inspector</term>. Evaluate each of the following lines 
+			separately with <uicontrol>Inspect it</uicontrol> from the 
+			<uicontrol>&lt;Operate&gt;</uicontrol> menu:
+			<codeblock otherprops="smalltalk expression">3 @ 5										"Returns a Point object as indicated in the label at the top of the Inspector window. Its components are shown below."
+			Rectangle origin: (3 @ 5) corner: (25@30)	"Returns a Rectangle object."
+			3 / 5										"Returns a Fraction."</codeblock></p>
+			<p>The <uicontrol>Inspect it</uicontrol> command first executes 
+			<uicontrol>Do it</uicontrol> and then opens an Inspector 
+			on the object returned by the last message. You can also inspect 
+			an object by sending it the <apiname>inspect</apiname> message as in:
+			<codeblock otherprops="smalltalk expression">(3 @ 5) inspect		"Evaluate with Do it"</codeblock></p>
+			<p>As you might guess, the <codeph>inspect</codeph> message is 
+			the essence of the <uicontrol>Inspect it</uicontrol> command.</p>
+			<p>If an object has properties they are, of course, again objects 
+			because everything in Smalltalk is an object. As an example, the 
+			Rectangle returned by the second line is a composite object with 
+			components called <codeph>origin</codeph> and <codeph>corner</codeph> 
+			and these components are objects (points) with their own properties. 
+			To see their structure, select the line with the name and execute 
+			<uicontrol>Dive</uicontrol> in the <uicontrol>&lt;Operate&gt;</uicontrol> 
+			menu of the list. To return to the previous level in the Inspector, 
+			execute <uicontrol>Back</uicontrol> in the <uicontrol>&lt;Operate&gt;</uicontrol>  
+			menu or use the arrow button at the top of the Inspector. Play with 
+			the Inspector to discover its basic functionality 
+			and read the documentation or Tools Help to learn more about it.</p>
+		</body>
+	</topic>
+			
+	<topic id="vw.help.intro.classes.instances" 
+		xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+		<title>Every Object is an Instance of a Class</title>
+		<body>
+			<p>All fractions are objects of the same kind and share the same definition, 
+			which says that a fraction has a numerator and a denominator and that it 
+			understands certain messages. The only difference between individual fractions 
+			is that they may have different numerators and denominators. Similarly all 
+			rectangle objects share the same definition and so do all text objects. The 
+			definition of all objects of the same kind is gathered in a special kind of 
+			object called a <term>class</term>. Fractions are defined in class <apiname>Fraction</apiname>, 
+			rectangles in class <apiname>Rectangle</apiname>, and text objects in class 
+			<apiname>Text</apiname>. You can think of a class as a "blueprint" kind of 
+			object that is used mainly to create <term>instances</term> of the objects 
+			that it defines. Class <codeph>Fraction</codeph> can create objects such as 
+			3 / 5 and 4 / 7 and these two fractions are two <term>instances</term> of 
+			class <codeph>Fraction</codeph>. (Note that Smalltalk class names always 
+			begin with a capital letter.)</p>
+			<p>A class thus defines the properties and the functionality ("behavior") 
+			of its instances. The properties of an object are stored in its internal 
+			storage called <term>instance variables</term> and a class defines which 
+			instance variables its instances have; each instance of a given class thus 
+			has the same instance variables but with its own private values. As an example, 
+			every instance of <codeph>Rectangle</codeph> has instance variables 
+			<codeph>origin</codeph> and <codeph>corner</codeph>, and every fraction 
+			has its own <codeph>numerator</codeph> and a <codeph>denominator</codeph> as 
+			prescribed by the definition of class <codeph>Fraction</codeph>. The value 
+			of an instance variable of a given object may or may not change during its 
+			lifetime. As an example, when a window object is moved on the screen or resized, 
+			the instance variable that defines its bounding rectangle changes its value. 
+			The questions related to the fact that classes are objects are related to the 
+			very interesting but more advanced topic of <term>metaprogramming</term> that 
+			is not covered in this introduction.</p>
+			<p>If you ever need to find the class of and object, send it the 
+			<codeph>class</codeph> message, e.g.:
+			<codeblock otherprops="smalltalk expression">3 class.			"Execute with <b>Print It</b> or <b>Inspect It</b>."
+			(3 @ 5) class.
+			(Rectangle origin: (3 @ 5) corner: (25@30)) class</codeblock></p>
+			
+			<section>
+			<title>Exercise</title>
+			<note type="note">When an exercise requires writing and evaluating code, I 
+			recommend using a separate <xref href="st:Workbook open" format="st" 
+			scope="external" title="Open a Workspace for me">Workspace</xref>.</note>
+			<ol>
+			<li>What is the class of <codeph>3/5</codeph>, and the class of <codeph>'abc'</codeph>? 
+			(Note: If you are not careful with your expression to determine the class of 
+			<codeph>3/5</codeph>, you may get an <term>exception</term> and Smalltalk opens a Debugger 
+			window. If this happens, close the Debugger, think about evaluation rules, correct 
+			your expression, and try again. We will deal with exceptions in more detail later.)</li>
+			</ol>
+			</section>
+		</body>
+	</topic>
+	
+	<topic id="vw.help.intro.classes.browsing" 
+		xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+		<title>Use the Browser to View Class Definitions</title>
+		<body>
+		<p>Smalltalk's tool for viewing, editing, creating, and destroying class definitions 
+			is called the <term>Browser</term>. &Product; provides a variety of 
+			different browsers, which you can open from the Launcher window: 
+			<uicontrol>Browse &arrow; System</uicontrol> or by clicking the button with a magnifying glass 
+			that is viewing several object. This opens the <term>System Browser</term>, which is 
+			the most common view on the &Product; class library. You can also open a browser by 
+			sending a message such as:
+			<codeblock otherprops="smalltalk expression">SmalltalkWorkbench browseClass: Fraction</codeblock></p>
+			<p>When you execute this expression with <uicontrol>Do it</uicontrol>, you will 
+			get a <term>Hierarchy Browser</term> on class <codeph>Fraction</codeph> and its 
+			superclasses (to be explained shortly). However, using the button in the Launcher 
+			window (as described above) to open the System Browser is by far the most common 
+			technique, because the browser is the most frequently used Smalltalk tool. The 
+			Browser is a very powerful tool that allows you to see and 
+			edit all code including, for example, the code that defines the Browser 
+			itself and this Workspace. The Browser is the tool that Smalltalk developers 
+			use to create new applications. We will see how later.</p>
+			
+			<section>
+			<title>Exercise</title>
+			<ol>
+			<li>Open the Browser window from the Launcher and look at the definition of class 
+			<codeph>Fraction</codeph>. To find it, enter "Fraction" in the <uicontrol>Find</uicontrol> 
+			field at the upper right corner of the Browser, and press the Enter key.</li>
+			<li>Find all classes containing the word <codeph>Integer</codeph>. (Hint: Use the 
+			<uicontrol>Find</uicontrol> input field with the pattern <codeph>*Integer*</codeph>.)</li>
+			</ol>
+			</section>
+		</body>
+	</topic>
+	
+	<topic id="vw.help.intro.classes.browserWindow" 
+		xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+		<title>Understanding the Browser Window</title>
+		<body>
+			<p>The System Browser is the most commonly-used browser but 
+			other types of browsers have a similar structure. A detailed description is given in the 
+			Tools topics of the on-line Help, and I will summarize its main features briefly here as well.</p>
+			<p>A Browser window has four list panes at the top and a text view at the bottom. The main 
+			roles and uses of these views are as follows:</p>
+			<p>The leftmost list pane at the top can display either <uicontrol>Package</uicontrol>s or 
+			<uicontrol>Class</uicontrol>es. Packages are <term>components</term> that group together 
+			code related to a particular application or project. As an example, numerous extensions 
+			of the basic &Product; product are stored in your &Product; directory as <term>parcels</term> 
+			(and the easiest way to explore, load, or unload them is via the <term>Parcel Manager</term>, 
+			which can be opened from the Launcher. I leave the concepts and uses of parcels and packages 
+			as an exercise. For our purpose, the most appropriate mode is to view <uicontrol>Class</uicontrol>es. 
+			To display them, select the <uicontrol>Class</uicontrol> tab control above the top-leftmost 
+			list view in the Browser.</p>
+			<p>The <uicontrol>Class</uicontrol> list displays all currently-loaded classes grouped into 
+			disjoing components. All classes are grouped into components (packages or bundles), and 
+			each component contains related classes, such as classes defining geometric objects or 
+			classes defining numbers. Components are a &Product; feature, and other dialects of 
+			Smalltalk may use class categories or a different component model.</p>
+			<p>In the rest of this topic, I will assume that you have selected the <uicontrol>Class</uicontrol> 
+			view in the Browser.</p>
+			<p>The second list from the left is the Class list. When you select a component, 
+			such as <uicontrol>Base &Product; &arrow; Collections</uicontrol>, this list displays all 
+			classes in this component. (It also displays <term>name space</term>s &#x2014; more about 
+			this later.) When you select a class, the contents of the rightmost two panes display a
+			list of <term>message protocols</term> and <term>methods</term> for the selected class.
+			The choice of tabs in the middle of the Browser window determine the contents of the pane
+			below. If you choose the <uicontrol>Definition</uicontrol> tab, you will see the definition 
+			of the class, while if you choose <uicontrol>Comment</uicontrol> you will see its textual comment 
+			(if one was written by the designers). The <uicontrol>Rewrite</uicontrol> tab provides access 
+			to powerful facilities for certain automatic transformations of code (I will not cover this 
+			advanced feature), and <uicontrol>Code Critic</uicontrol> lets you perform numerous automatic 
+			checks for possible bugs, violations of certain stylistic conventions, and so on. I will not 
+			cover this feature but recommend that you explore it on your own (documentation can be found 
+			in the <xref href="./doc/ToolGuide.pdf" format="pdf" scope="external"><i>Tool Guide</i></xref>).</p>
+			<p>The third list on the top of the Browser is the <term>Protocol</term> list. When 
+			you select a class, the contents of this list depends on the tabs above. Under <uicontrol>Instance</uicontrol> 
+			or <uicontrol>Class</uicontrol> it shows method protocols defined for the instances of the 
+			class or for the class itself, while under <uicontrol>Shared Variable</uicontrol>, it shows 
+			the class's shared variables (more on this later). <term>Protocols</term> are groups of 
+			related methods and a <term>method</term> is the definition of a message.</p>
+			<p>The purpose of method protocols is similar to that of class categories &#x2014; they 
+			organize the potentially numerous methods defined in a class. As an example, a protocol 
+			might gather all methods that define arithmetic operations or all methods used for comparison 
+			of instances of the class. Protocols have no other purpose besides classification. To make 
+			class organization more readable, Smalltalk programmers use several conventional protocol 
+			names for uniformity and so should you, but you are free to choose any protocol name you wish. 
+			I will talk about common protocols later when presenting the most commonly-used classes.</p>
+		
+			<p>The rightmost list is the <term>Method</term> list. When you select a protocol, 
+			this view shows the selectors (names) of all methods defined in the chosen protocol.</p>
+			<p>The text ("code") view at the bottom displays information that depends on the context. 
+			If you selected a method (in the upper-right list), the <uicontrol>Source</uicontrol> tab 
+			appears, and can be selected to show you the Smalltalk source code for the method. If no method is 
+			selected, the code view displays a template to help you write a new method. I will show how later.</p>
+			<p>If you select a class and the <uicontrol>Definition</uicontrol> tab, the code view shows 
+			the message that created the class. You can edit it to change the definition, for example, 
+			by adding new instance variables.</p>
+			<note type="note">If no source code appears in your Browser or you get an error that sources 
+			cannot be found, you probably don't have the correct setting for the &Product; home directory.</note>
+			<p>Finally, each of the views discussed above has its own <uicontrol>&lt;Operate&gt;</uicontrol> menu,
+			with its own specific commnds. I will explain some of them as we need them and you can explore 
+			the rest on your own (refer to the Tools Help for complete documentation of all menu picks).</p>
+
+			<section>
+			<title>Exercises</title>
+			<ol>
+			<li>Which classes are defined in package <codeph>Magnitude-Numbers</codeph>?</li>
+			<li>Which packages contain class <apiname>Rectangle</apiname>, <apiname>Date</apiname>, or 
+			<apiname>String</apiname>? (Hint: Use the <uicontrol>Find</uicontrol> input field to find the class.)</li>
+			<li>Which instance variables are defined in class <apiname>Rectangle</apiname> and what is the comment 
+			of the class?</li>
+			<li>Which protocols are defined on the instance side of class <apiname>Rectangle</apiname>? Which ones 
+			on the class side?</li>
+			<li>What is the definition of method <apiname>corner:</apiname> in class <apiname>Rectangle</apiname> 
+			and which protocol is it in? (Hint: Use the <uicontrol>Find method...</uicontrol> command from the 
+			<uicontrol>&lt;Operate&gt;</uicontrol> menu in the protocol view to find a method in the selected 
+			class, if you don't know its protocol.)</li>
+			<li>Smalltalk developers sometimes create <term>class-side</term> messages to give examples of the 
+			use of a class. These examples are often gathered in a class protocol named <codeph>examples</codeph>. 
+			Find and evaluate the example methods in class <apiname>Spline</apiname>. The complete expression 
+			to evaluate the example message is given in the comment at the beginning of the method. (As an example, 
+			you will see that the expression evaluating example method <codeph>demoFlatness</codeph> is 
+			<codeph>Spline demoFlatness</codeph>.) Select it and evaluate with <uicontrol>Do it</uicontrol></li>
+			<li>To see all classes that contain protocol <codeph>examples</codeph>, evaluate the following with 
+			<uicontrol>Print it</uicontrol> or <uicontrol>Inspect it</uicontrol>:
+			<codeblock otherprops="smalltalk expression">Object allSubclasses select: 
+				[:aClass| aClass class organization categories includes: #examples]</codeblock>
+			(This example code expression illustrates the use of reflection in Smalltalk. One of its most 
+			important uses is the implementation of tools such as the Browser, the Inspector, the 
+			Debugger, and will be discussed more later.)</li>
+			</ol>
+			</section>
+		</body>
+	</topic>
+	
+	<topic id="vw.help.intro.classes.classMessages" 
+		xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+		<title>Class Messages</title>
+		<body>
+			<p>As discussed, classes are templates that define instance variables and messages understood 
+			by their instances; these messages are called <term>instance messages</term>. Because classes 
+			are themselves objects, they too understand messages. These messages are listed on the "class side" 
+			of the class definition in the Browser and are called <term>class messages</term>. 
+			To view them in the Browser select the <uicontrol>Class</uicontrol> tab above the protocol list.</p>
+			<p>Because classes are used mainly to create instances, most class messages are instance-creation 
+			messages. Almost every class inherits (to be explained) and can execute message <codeph>new</codeph> 
+			to create an <term>uninitialized</term> instance of itself, where "uninitialized" means that the 
+			value of its instance variables is <codeph>nil</codeph>. (The object <codeph>nil</codeph> is the single 
+			instance of class <codeph>UndefinedObject</codeph> and represents an object that "does not have a value".) 
+			As an example, evaluate the following with <uicontrol>Inspect it</uicontrol> and examine the instance 
+			variables of the returned object:
+			<codeblock otherprops="smalltalk expression">Rectangle new	"Message <b>new</b> is a class message because its receiver is <b>class</b> Rectangle."</codeblock></p>
+			
+			<p>In addition to understanding <codeph>new</codeph>, many classes define their own specialized 
+			instance-creation messages that create <term>initialized</term> instances. As an example, inspect 
+			individually the following lines:
+			<codeblock otherprops="smalltalk expression">Circle center: 23 @ 12 radius: 15		"<b>center:radius:</b> is a class message -- its receiver is class Circle. It returns an instance of Circle."
+			Time now							"<b>now</b> is a class message -- its receiver is class Time. The result is an instance of Time in the current time zone."
+			Rectangle fromUser					"Lets you draw a Rectangle on the screen and returns the resulting Rectangle object."
+			Date today							"Read the comment of class Date to understand the meaning of its instance variables."</codeblock></p>
+		
+			<p>How can you recognize that <codeph>center:radius:</codeph>, <codeph>now</codeph>, 
+			<codeph>fromUser</codeph>, and <codeph>today</codeph> are class messages? If you are 
+			looking at an expression, the answer is that the type of a message can be determined 
+			from the nature of its receiver. Receivers of <i>class messages</i> are classes, class names 
+			start with a capital letter, and so this gives a strong hint. There are a few exceptions 
+			to this rule &#x2014; as an example, <codeph>Transcript</codeph> is not a class although 
+			it begins with a capital letter. This is because capitalized names denote "shared objects" 
+			and classes are only one of several kinds of shared objects &#x2014; more on this later. 
+			A sure way to determine whether a message is a class message or an instance message is to 
+			look it up in the Browser. You can also browse the definition from the Launcher, by selecting 
+			<uicontrol>Implementors of Selector ...</uicontrol> from the <uicontrol>Browse</uicontrol> 
+			menu, and enterting a method name (selector) at the prompt. If the list indicates a 
+			<uicontrol>class</uicontrol>, then it is a class message; otherwise it is an instance message.</p>
+
+			<section>
+			<title>Exercise</title>
+			<ol>
+			<li>Find the definitions of the instance-creation messages mentioned above. What are the names of their protocols?</li>
+			</ol>
+			</section>
+			
+			<p>Next, here is an example that combines a class message with an instance message:
+		
+			<codeblock><b>Date today</b> previous: #Monday	"<b>today</b> is a class message (receiver is class Date) and returns an instance of Date; <b>previous:</b> is thus an instance message because its receiver is the object <b>Date today</b>, an instance of Date."</codeblock></p>
+			<p>It is not uncommon for a class message and an instance message to have the same name. 
+			As an example, the message <codeph>initialize</codeph> is defined on both class and instance sides 
+			of many classes. This does not create any problems because the nature of the receiver always 
+			determines which definition should be used &#x2014; when the receiver is a class, the class-side 
+			method is evaluated, and when the receiver is an instance, the instance-side definition is used.</p>
+			<p>Some class messages do not create instances but return information related to the class. 
+			As an example, use the Inspector to check the result of:
+			<codeblock otherprops="smalltalk expression">Time millisecondClockValue		"Does not return a Time object -- returns a SmallInteger."
+			Window platformName			"Does not return a Window object -- returns a String."
+			Filename volumes			"Does not return a Filename object -- returns a collection of strings."</codeblock></p>
+		
+			<p>Still other class messages initialize the class itself or perform various other functions 
+			such as execute examples.</p>
+		
+			<p>Note that although most objects are created by sending an instance creation message 
+			to a class, some of the most common objects can be created as "<term>literal</term>" objects 
+			without sending a creation message. Examples include:
+			<codeblock otherprops="smalltalk expression">32		"An integer number literal."
+			41.3	"A floating-point number literal."
+			'abc'	"A String literal."
+			$x		"A Character literal -- letter x."
+			true		"The single instance of class True."
+			false	"The single instance of class False."
+			nil		"The single instance of class UndefinedObject."</codeblock></p>
+
+			<section>
+			<title>Exercises</title>
+			<ol>
+			<li>Many useful class messages are defined in class <apiname>Dialog</apiname>. 
+			Browse the definitions and execute the example code enclosed in comment brackets 
+			at the beginning of each of them using <uicontrol>Print it</uicontrol>.</li>
+			<li>There are expressions that one might mistake for literals. As an example, 
+			<codeph>4/3</codeph> is not a literal but an expression that sends the message 
+			<codeph>/</codeph> to <codeph>4</codeph> and creates an instance of a 
+			<apiname>Fraction</apiname>. Similarly, <codeph>13@15</codeph> is an expression 
+			that creates a <apiname>Point</apiname>.</li>
+			</ol>
+			</section>
+		</body>
+	</topic>
+	
+	<topic id="vw.help.intro.classes.inheritance" 
+		xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+		<title>Inheritance through the Class Hierarchy</title>
+		<body>
+			<p>Smalltalk classes are related to one another in many ways and one of the most 
+			important ones is <term>inheritance</term> &#x2014; every class (except one, as 
+			you will see) has exactly one <term>superclass</term> and inherits its class and 
+			instance methods and variables from it. In other words, a class has all the instance 
+			variables of its superclass (plus its own) and understands all its messages (plus its own).</p>
+			<p>As an example, the definition of class <apiname>Fraction</apiname> extends the 
+			definition of its superclass &#x2014; class <apiname>Number</apiname>. <codeph>Fraction</codeph> 
+			thus understands all methods defined in <codeph>Number</codeph> (plus its own) and its 
+			instances have all its instance variables (plus its own). (In fact, class <codeph>Number</codeph> 
+			does not have any instance variables so <codeph>Fraction</codeph> does not inherit any.) 
+			When you draw a diagram of classes and their superclasses in the form of a family tree, 
+			you will get the Smalltalk class hierarchy. The class on the top is class <codeph>Object</codeph> 
+			and this class is the only one that does not have a superclass. (When you examine its 
+			definition in the Browser, you will see that its superclass is <codeph>nil</codeph>).</p>
+			<p>If <codeph>A</codeph> is the superclass of <codeph>B</codeph>, and <codeph>B</codeph> 
+			is the superclass of <codeph>C</codeph>, <codeph>C</codeph> inherits from <codeph>B</codeph> 
+			and this includes everything that <codeph>B</codeph> inherited from <codeph>A</codeph>. 
+			<codeph>C</codeph> thus inherits everything from <codeph>B</codeph> and <codeph>A</codeph>. 
+			Inheritance is thus transitive and all classes ultimately inherit all behavior defined 
+			in the whole inheritance path ending in class <codeph>Object</codeph>. As a consequence, 
+			if you want to define a message that every object should understand, define it in class 
+			<apiname>Object</apiname>. Modifying "base clases" such as <apiname>Object</apiname> is not 
+			very common but it is possible.</p>
+			<p>To find the superclass of a class and its complete class hierarchy with all superclasses 
+			and subclasses, select the class in the Browser and click the <uicontrol>Class</uicontrol> tab 
+			above the package list. You can also ask a class for its superclass, e.g.:
+			<codeblock otherprops="smalltalk expression">Fraction superclass</codeblock></p>
+			<p>The message <codeph>superclass</codeph> is another example of reflectivity in Smalltalk, 
+			and the reason why the Browser can display the class hierarchy.</p>
+
+			<section>
+			<title>Exercises</title>
+			<ol>
+			<li>List all superclasses of <apiname>SmallInteger</apiname>, <apiname>Date</apiname>, 
+			<apiname>Rectangle</apiname>, and <apiname>Object</apiname>.</li>
+			<li>The message <apiname>subclasses</apiname> returns a collection of all immediate 
+			subclasses of the receiver, while the message <apiname>allSubclasses</apiname> returns a 
+			collection of all subclasses of the receiver down the class tree. Test these messages 
+			on class <apiname>Number</apiname>. (Note: these and related methods are defined in 
+			class <apiname>Behavior</apiname>.)</li>
+			<li>Evaluate <codeph>Object allSubclasses size</codeph> to find how many subclasses 
+			class <codeph>Object</codeph> has. The result depends on how many parcels you have loaded 
+			and how many classes you added or deleted.</li>
+			</ol>
+			</section>
+		</body>
+	</topic>
+	
+	<topic id="vw.help.intro.classes.overridingBehavior" 
+		xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+		<title>Classes can Override Inherited Methods</title>
+		<body>
+			<p>An ostrich is a bird but it does not fly. In other words, ostrich "redefines" one of 
+			the behaviors that it inherits from its "bird superclass'. A similar feat can be achieved 
+			in Smalltalk by <i>overriding</i> an inherited method definition by simply writing a new 
+			definition of the method in the class that should execute the message differently. Any 
+			class may redefine any of its inherited methods but cannot <i>remove</i> any inherited 
+			method or any of its inherited instance variables.</p>
+			<p>As an example of overriding a class' behavior, class <apiname>Fraction</apiname> inherits 
+			the definition of <codeph>=</codeph> but redefines it because equality has a special meaning 
+			for fractions. (Two fractions are equal if they satisfy a certain arithmetic formula relating 
+			their numerators and denominators.) This definition overrides the inherited definition and 
+			when you ask a fraction whether it is equal to another fraction, it executes its own definition 
+			of equality rather than the inherited one. This is because when you send a message to an object, 
+			its evaluation starts with a search for its definition in its class. If the class contains 
+			the definition, the definition is evaluated, otherwise the search for the definition continues 
+			in the superclass, and so on, until a definition is found and executed, or the top of the 
+			hierarchy is reached and the definition is not found. If the definition of the method is 
+			not found, Smalltalk sends message <codeph>doesNotUnderstand</codeph> to the original receiver, 
+			and this creates an "exception" object an, by default, opens a Debugger to report an Exception. 
+			(The default behavior can be overridden.)</p>
+			<p>To see an example of an exception created when a message sent to 
+			an object is not found in the path from the class of the receiver to the top of the hierarchy 
+			in class <codeph>Object</codeph>, evaluate:
+			<codeblock otherprops="smalltalk expression">13 asUppercase</codeblock></p>
+		
+			<p>with <uicontrol>Do it</uicontrol>. You will get a Debugger window because neither the class 
+			of the receiver (<apiname>SmallInteger</apiname>) nor any of its superclasses understand 
+			<codeph>asUppercase</codeph>, which is defined in class <apiname>Character</apiname> on a branch 
+			from <codeph>Object</codeph> that does not lead to integers. Simply close the Debugger to 
+			terminate evaluation. We will see later how you can handle exceptions programmatically.</p>
+			<p>Finally, the Browser puts an up- or down-pointing triangle in front of methods with other 
+			definitions above or below the current class. The method view's <uicontrol>&lt;Operate&gt;</uicontrol> 
+			menu allows you to open a special browser on their definitions.</p>
+
+			<section>
+			<title>Exercises</title>
+			<ol>
+			<li>Which class defines the = method that <codeph>Fraction</codeph> inherits?</li>
+			<li>Find all implementers of methods <codeph>asUppercase</codeph>, <codeph>fromUser</codeph>, 
+			<codeph>&lt;</codeph>, and <codeph>printOn:</codeph> using the <uicontrol>Browse &arrow; Implementors of ..</uicontrol> 
+			command in the Launcher. Which of these definitions override inherited methods?</li>
+			<li>When Smalltalk developers want to make it impossible for an object to execute an inherited 
+			message, they define its body as <codeph>shouldNotImplement</codeph>. Use the Launcher 
+			to find all references to this message to see how this is done. Try what happens when 
+			you send a "forbidden" message as in:
+			<codeblock otherprops="smalltalk expression">Fraction new	"Class Fraction 'forbids' message new"</codeblock></li>
+			</ol>
+			</section>
+		</body>
+	</topic>
+	
+	<topic id="vw.help.intro.classes.abstract" 
+		xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+		<title>Abstract Classes</title>
+		<body>
+			<p>Inheritance is great for avoiding duplication of code. (Duplication is bad not only because 
+			it means extra work and wasted space, but because it is dangerous &#x2014; if you change something 
+			and forget to change even one of the copies, your application may fail to work.) As an example, 
+			if you need classes such as <codeph>SavingsAccount</codeph>, <codeph>CheckingAccount</codeph>, 
+			and <codeph>SpecialSavingsAccount</codeph>, many of the methods (such as <codeph>deposit</codeph> 
+			and <codeph>withdraw</codeph>) and many of the instance variables (such as <codeph>accountNumber</codeph>, 
+			<codeph>owner</codeph>, <codeph>balance</codeph>) are probably needed in all three classes. 
+			To avoid duplication, define <codeph>Account</codeph> as a superclass of these three classes, 
+			and include all the shared instance variables and methods in it. In this way, the three subclasses 
+			won't have to redefine them, unless they require different behavior.</p>
+			<p>Our banking application will never instantiate <codeph>Account</codeph> because <codeph>Account</codeph> 
+			is just a general concept with no real counterpart &#x2014; only instances of the three subclasses 
+			are meaningful. Because <codeph>Account</codeph> is never instantiated, it is called <term>abstract</term> 
+			whereas <codeph>SavingsAccount</codeph>, <codeph>CheckingAccount</codeph>, and 
+			<codeph>SpecialSavingsAccount</codeph> are <term>concerete</term> because they are designed to be 
+			instantiated. The &Product; class hierarchy contains many abstract classes and class <codeph>Object</codeph> 
+			at the top of the hierarchy is itself abstract.</p>
+			<p>Note that there is nothing in Smalltalk that marks a class as abstract &#x2014; the distinction 
+			is only a design feature in the mind of the designer and there is nothing to prevent the user from 
+			treating an "abstract" class as concrete. As an example, although <codeph>Object</codeph> is abstract 
+			you can instantiate it &#x2014; inspect:
+			<codeblock otherprops="smalltalk expression">Object new</codeblock></p>
+		
+			<p>This code expression does create an instance even though you would probably never want to do that.</p>
+			<p>Some abstract classes take precautions against creating instances as a protection from misuse. 
+			As an example, class <apiname>ArithmeticValue</apiname> redefines <codeph>new</codeph> as:
+			<codeblock otherprops="smalltalk method">new
+			"Numbers should be created only through arithmetic operations."
+				^self <b>shouldNotImplement</b>	"The special word <b>self</b> refers to the receiver of the message, in this case class ArithmeticValue or one of its subclasses."</codeblock></p>
+			<p>(Don't attempt to evaluate this code, it's not a code fragment but a method definition.) 
+			As a consequence of this definition, executing:
+			<codeblock otherprops="smalltalk expression">ArithmeticValue new</codeblock></p>
+			<p>produces an exception. Because <codeph>ArithmeticValue</codeph> is the superclass 
+			of all number classes, they all inherit this definition and refuse to execute the 
+			<codeph>new</codeph> message. As an example:
+			<codeblock otherprops="smalltalk expression">Fraction new</codeblock></p>
+			<p>also opens a Debugger.</p>
+			<p>One of the typical features of abstract classes is that they contain methods that 
+			are redefined in <term>all</term> their subclasses. The abstract class defines these 
+			methods essentially as markers that serve as reminders that the concrete subclass must 
+			define them. As an example, all numbers are supposed to understand multiplication, but 
+			most number classes implement it in a special way. Class <codeph>ArithmeticValue</codeph> 
+			thus "implements" multiplication as</p>
+			<codeblock otherprops="smalltalk method">* aNumber
+				^self <b>subclassResponsibility</b></codeblock>
+			<p>If you defined a new subclass of <codeph>ArithmeticValue</codeph>,  forgot to define 
+			message <codeph>*</codeph>, and tried to multiply your new number, you would get a 
+			Debugger on an exception that the class was supposed to implement this message but didn't. 
+			This is the result of message <codeph>subclassResponsibility</codeph>.</p>
+			<p>Besides serving as a marker, "abstract" methods also make it possible to define additional 
+			methods that can be inherited without redefinition. As an example, the abstract class 
+			<codeph>Magnitude</codeph> is the superclass of all classes whose instances require comparison. 
+			It defines <codeph>&lt;</codeph> as an abstract method (subclass responsibility) and then 
+			defines all other comparisons (such as <codeph>&lt;=</codeph>)  in terms of <codeph>&lt;</codeph> 
+			and other methods. As a consequence, subclasses need not redefine <codeph>&lt;</codeph> 
+			and <codeph>&lt;=</codeph> still works, as long as the class defines its own version 
+			of <codeph>&lt;</codeph> (or inherits it).</p>
+
+			<section>
+			<title>Exercises</title>
+			<ol>
+			<li>Find all references to <codeph>subclassResponsibility</codeph> and explain why they 
+			are needed.</li>
+			<li>Explain in detail when you execute <codeph>3 &lt;= 4</codeph></li>
+			</ol>
+			</section>
+		</body>
+	</topic>
+	</topic>
+</dita>

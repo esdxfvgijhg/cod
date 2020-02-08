@@ -1,0 +1,171 @@
+\hypertarget{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath}{}\section{ns3\+:\+:lorawan\+:\+:Gateway\+Lora\+Phy\+:\+:Reception\+Path Class Reference}
+\label{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath}\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path}}
+
+
+{\ttfamily \#include $<$gateway-\/lora-\/phy.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Gateway\+Lora\+Phy\+:\+:Reception\+Path\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=235pt]{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Gateway\+Lora\+Phy\+:\+:Reception\+Path\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=235pt]{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_a756ae63851063c8209e6eef149a6088c}{Reception\+Path} (double frequency\+M\+Hz)
+\item 
+double \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_ae069eaa0189fa51ee4cb7aa3941e426e}{Get\+Frequency} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_af9d0ef70517c2089f393c89a9270b490}{Set\+Frequency} (double frequency\+M\+Hz)
+\item 
+bool \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_ad2422662f1100b92a4267de0976f9b0b}{Is\+Available} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_aa9a5dc2f88ebbef2843cb855c6ec2551}{Free} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_af914d04203919ae4ad11ee49f06fb98d}{Lock\+On\+Event} (Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event}{Lora\+Interference\+Helper\+::\+Event} $>$ event)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_a9191f5d01e50e1f26a8d98686db00c43}{Set\+Event} (Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event}{Lora\+Interference\+Helper\+::\+Event} $>$ event)
+\item 
+Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event}{Lora\+Interference\+Helper\+::\+Event} $>$ \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_a5ba2eb1b0705b0d91e2702fdc3d56231}{Get\+Event} (void)
+\item 
+Event\+Id \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_a253268855de9a388a960e910d3a20fbc}{Get\+End\+Receive} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_aed06f1f101a3f12d539c04aad94bc381}{Set\+End\+Receive} (Event\+Id end\+Receive\+Event\+Id)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class represents a configurable reception path.
+
+Reception\+Paths are configured to listen on a certain frequency. Differently from End\+Device\+Lora\+Phys, these do not need to be configured to listen for a certain SF. Reception\+Paths be either locked on an event or free. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_a756ae63851063c8209e6eef149a6088c}\label{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_a756ae63851063c8209e6eef149a6088c}} 
+\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path}!Reception\+Path@{Reception\+Path}}
+\index{Reception\+Path@{Reception\+Path}!ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path}}
+\subsubsection{\texorpdfstring{Reception\+Path()}{ReceptionPath()}}
+{\footnotesize\ttfamily ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path\+::\+Reception\+Path (\begin{DoxyParamCaption}\item[{double}]{frequency\+M\+Hz }\end{DoxyParamCaption})}
+
+Constructor.
+
+
+\begin{DoxyParams}{Parameters}
+{\em frequency\+M\+Hz} & The frequency this path is set to listen on. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_aa9a5dc2f88ebbef2843cb855c6ec2551}\label{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_aa9a5dc2f88ebbef2843cb855c6ec2551}} 
+\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path}!Free@{Free}}
+\index{Free@{Free}!ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path}}
+\subsubsection{\texorpdfstring{Free()}{Free()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path\+::\+Free (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Set this reception path as available.
+
+This function sets the m\+\_\+available variable as true, and deletes the \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper}{Lora\+Interference\+Helper} Event this Receive\+Path was previously locked on. \mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_a253268855de9a388a960e910d3a20fbc}\label{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_a253268855de9a388a960e910d3a20fbc}} 
+\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path}!Get\+End\+Receive@{Get\+End\+Receive}}
+\index{Get\+End\+Receive@{Get\+End\+Receive}!ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path}}
+\subsubsection{\texorpdfstring{Get\+End\+Receive()}{GetEndReceive()}}
+{\footnotesize\ttfamily Event\+Id ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path\+::\+Get\+End\+Receive (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the Event\+Id of the End\+Receive call associated to this \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath}{Reception\+Path}\textquotesingle{}s packet. \mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_a5ba2eb1b0705b0d91e2702fdc3d56231}\label{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_a5ba2eb1b0705b0d91e2702fdc3d56231}} 
+\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path}!Get\+Event@{Get\+Event}}
+\index{Get\+Event@{Get\+Event}!ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path}}
+\subsubsection{\texorpdfstring{Get\+Event()}{GetEvent()}}
+{\footnotesize\ttfamily Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event}{Lora\+Interference\+Helper\+::\+Event} $>$ ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path\+::\+Get\+Event (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the event this reception path is currently on.
+
+\begin{DoxyReturn}{Returns}
+0 if no event is currently being received, a pointer to the event otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_ae069eaa0189fa51ee4cb7aa3941e426e}\label{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_ae069eaa0189fa51ee4cb7aa3941e426e}} 
+\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path}!Get\+Frequency@{Get\+Frequency}}
+\index{Get\+Frequency@{Get\+Frequency}!ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path}}
+\subsubsection{\texorpdfstring{Get\+Frequency()}{GetFrequency()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path\+::\+Get\+Frequency (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Getter for the operating frequency.
+
+\begin{DoxyReturn}{Returns}
+The frequency this Receive\+Path is configured to listen on. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_ad2422662f1100b92a4267de0976f9b0b}\label{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_ad2422662f1100b92a4267de0976f9b0b}} 
+\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path}!Is\+Available@{Is\+Available}}
+\index{Is\+Available@{Is\+Available}!ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path}}
+\subsubsection{\texorpdfstring{Is\+Available()}{IsAvailable()}}
+{\footnotesize\ttfamily bool ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path\+::\+Is\+Available (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Query whether this reception path is available to lock on a signal.
+
+\begin{DoxyReturn}{Returns}
+True if its current state is free, false if it\textquotesingle{}s currently locked. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_af914d04203919ae4ad11ee49f06fb98d}\label{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_af914d04203919ae4ad11ee49f06fb98d}} 
+\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path}!Lock\+On\+Event@{Lock\+On\+Event}}
+\index{Lock\+On\+Event@{Lock\+On\+Event}!ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path}}
+\subsubsection{\texorpdfstring{Lock\+On\+Event()}{LockOnEvent()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path\+::\+Lock\+On\+Event (\begin{DoxyParamCaption}\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event}{Lora\+Interference\+Helper\+::\+Event} $>$}]{event }\end{DoxyParamCaption})}
+
+Set this reception path as not available and lock it on the provided event.
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & The \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper}{Lora\+Interference\+Helper} Event to lock on. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_aed06f1f101a3f12d539c04aad94bc381}\label{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_aed06f1f101a3f12d539c04aad94bc381}} 
+\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path}!Set\+End\+Receive@{Set\+End\+Receive}}
+\index{Set\+End\+Receive@{Set\+End\+Receive}!ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path}}
+\subsubsection{\texorpdfstring{Set\+End\+Receive()}{SetEndReceive()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path\+::\+Set\+End\+Receive (\begin{DoxyParamCaption}\item[{Event\+Id}]{end\+Receive\+Event\+Id }\end{DoxyParamCaption})}
+
+Set the Event\+Id of the End\+Receive call associated to this \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath}{Reception\+Path}\textquotesingle{}s packet. \mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_a9191f5d01e50e1f26a8d98686db00c43}\label{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_a9191f5d01e50e1f26a8d98686db00c43}} 
+\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path}!Set\+Event@{Set\+Event}}
+\index{Set\+Event@{Set\+Event}!ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path}}
+\subsubsection{\texorpdfstring{Set\+Event()}{SetEvent()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path\+::\+Set\+Event (\begin{DoxyParamCaption}\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event}{Lora\+Interference\+Helper\+::\+Event} $>$}]{event }\end{DoxyParamCaption})}
+
+Set the event this reception path is currently on.
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & the event to lock this \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath}{Reception\+Path} on. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_af9d0ef70517c2089f393c89a9270b490}\label{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath_af9d0ef70517c2089f393c89a9270b490}} 
+\index{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path}!Set\+Frequency@{Set\+Frequency}}
+\index{Set\+Frequency@{Set\+Frequency}!ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path@{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path}}
+\subsubsection{\texorpdfstring{Set\+Frequency()}{SetFrequency()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Gateway\+Lora\+Phy\+::\+Reception\+Path\+::\+Set\+Frequency (\begin{DoxyParamCaption}\item[{double}]{frequency\+M\+Hz }\end{DoxyParamCaption})}
+
+Setter for the frequency.
+
+
+\begin{DoxyParams}{Parameters}
+{\em frequency\+M\+Hz} & The frequency \mbox{[}M\+Hz\mbox{]} this \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath}{Reception\+Path} will listen on. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+gateway-\/lora-\/phy.\+h\item 
+gateway-\/lora-\/phy.\+cc\end{DoxyCompactItemize}

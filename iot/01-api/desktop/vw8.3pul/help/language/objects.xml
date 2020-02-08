@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.stLang.initializeObject"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Initializing Objects</title>
+<body><p>By convention, Smalltalk code employs a number of basic patterns. 
+The initialization of objects is a good example, as there are 
+a few common patterns that are employed by literally hundreds of classes 
+to initialize their instances.</p></body>
+<topic id = "vw.help.stLang.createInstance"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Creating Instances</title>
+<body><p><indexterm>object factory</indexterm><indexterm>object<indexterm>create
+instance</indexterm></indexterm>All classes inherit a basic <codeph>new</codeph> method
+from the <apiname>Object</apiname> class. This method creates a raw
+instance whose instance variables each have the value <codeph>nil</codeph>.
+<p>However, classes frequently override <codeph>new</codeph> in order to
+initialize their instance variables, e.g.:</p>
+<codeblock otherprops="smalltalk expression">SourceFileManager new.</codeblock></p>
+<p>Abstract classes, such as <apiname>Boolean</apiname>, typically
+override <codeph>new</codeph> to announce an error such
+as <uicontrol>"This class is not intended to be instantiated."</uicontrol> 
+This, because abstract classes define behavior but are not meant 
+to be themselves instantiated.</p>
+<p>Classes also frequently define specific creation messages. These typically
+take arguments that are used to initialize the instance variables
+of the new instance. E.g.,:
+<codeblock otherprops="smalltalk expression">Date newDay: 10 month: #June year: 1995</codeblock></p>
+<p>Such parameterized creation messages are often convenience methods.
+The same effect usually can be achieved by first creating a <codeph>new</codeph> instance
+and then sending the parameters via accessing messages.</p></body></topic>
+<topic id = "vw.help.stLang.initializeObject.instance"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Initializing an instance</title>
+<body><p><indexterm>object<indexterm>initialize instance</indexterm></indexterm><indexterm>instance
+initialization</indexterm>As an example, let's write an <codeph>initialize</codeph> 
+method to set initial instance variable values for a new object instance.
+This is often necessary to prevent errors that result when client
+methods send messages to the uninitialized instance variables.</p>
+<p><apiname>ApplicationModel</apiname> and its subclasses invoke <codeph>initialize</codeph> by
+default. Other classes must invoke <codeph>initialize</codeph> method
+explicitly in their instance-creation methods.
+<ol><li><p>Create
+an instance method named <codeph>initialize</codeph> in an <codeph>initialize-release</codeph> protocol.
+<codeblock otherprops="smalltalk method">initialize
+	accountID := 0.
+	name := String new.
+	address := String new.
+	phoneNumber := String new.</codeblock></p></li>
+<li><p>Create a class method named <codeph>new</codeph> in an <codeph>instance
+creation</codeph> protocol which invokes <codeph>initialize</codeph>.
+<codeblock otherprops="smalltalk method">new
+	^super new initialize
+</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Cust1-Example:Examples.Customer1Example browse" 
+format="st" scope="external">Customer1-Example</xref></p>
+<p>When implementing an <codeph>initialize</codeph> method, be aware
+that a parent class may also have an <codeph>initialize</codeph> method.
+If so, invoke the parent class’s <codeph>initialize</codeph> as
+a first step in the subclass’s <codeph>initialize</codeph>.
+<codeblock otherprops="smalltalk method">initialize
+	super initialize.
+	yearsOfPatronage := 3.</codeblock></p>
+<p><b>Online example:</b> 
+<xref href="prereq:PreferredCustomer-Example:Examples.PreferredCustomerExample browse" 
+format="st" scope="external">PreferredCustomer-Example</xref></p>
+</body></topic></topic></dita>

@@ -1,0 +1,163 @@
+\hypertarget{classns3_1_1lorawan_1_1RxParamSetupReq}{}\section{ns3\+:\+:lorawan\+:\+:Rx\+Param\+Setup\+Req Class Reference}
+\label{classns3_1_1lorawan_1_1RxParamSetupReq}\index{ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req@{ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req}}
+
+
+{\ttfamily \#include $<$mac-\/command.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Rx\+Param\+Setup\+Req\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{classns3_1_1lorawan_1_1RxParamSetupReq__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Rx\+Param\+Setup\+Req\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=343pt]{classns3_1_1lorawan_1_1RxParamSetupReq__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classns3_1_1lorawan_1_1RxParamSetupReq_aa1c14643797c56793f466be04b92b536}{Rx\+Param\+Setup\+Req} (uint8\+\_\+t rx1\+Dr\+Offset, uint8\+\_\+t rx2\+Data\+Rate, double frequency)
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1RxParamSetupReq_a61e2907f1dc9f06dd1e9cbd45a5583a1}{Serialize} (Buffer\+::\+Iterator \&start) const
+\item 
+virtual uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1RxParamSetupReq_a9f320ecc2f1bf898465bcc6032fc2076}{Deserialize} (Buffer\+::\+Iterator \&start)
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1RxParamSetupReq_a92e0695decb4f9d8ba29bcb83168c386}{Print} (std\+::ostream \&os) const
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1RxParamSetupReq_a3b1dead7733bc5b47cecbd1b5a673f82}{Get\+Rx1\+Dr\+Offset} (void)
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1RxParamSetupReq_a89462a466ee10c28f4ded25b6b3b9dda}{Get\+Rx2\+Data\+Rate} (void)
+\item 
+double \hyperlink{classns3_1_1lorawan_1_1RxParamSetupReq_aeb4c2b794d0afa15797ce99c1543609a}{Get\+Frequency} (void)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Implementation of the \hyperlink{classns3_1_1lorawan_1_1RxParamSetupReq}{Rx\+Param\+Setup\+Req} Lo\+Ra\+W\+AN M\+AC command. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1RxParamSetupReq_aa1c14643797c56793f466be04b92b536}\label{classns3_1_1lorawan_1_1RxParamSetupReq_aa1c14643797c56793f466be04b92b536}} 
+\index{ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req@{ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req}!Rx\+Param\+Setup\+Req@{Rx\+Param\+Setup\+Req}}
+\index{Rx\+Param\+Setup\+Req@{Rx\+Param\+Setup\+Req}!ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req@{ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req}}
+\subsubsection{\texorpdfstring{Rx\+Param\+Setup\+Req()}{RxParamSetupReq()}}
+{\footnotesize\ttfamily ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req\+::\+Rx\+Param\+Setup\+Req (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{rx1\+Dr\+Offset,  }\item[{uint8\+\_\+t}]{rx2\+Data\+Rate,  }\item[{double}]{frequency }\end{DoxyParamCaption})}
+
+Constructor providing initialization of all fields.
+
+
+\begin{DoxyParams}{Parameters}
+{\em rx1\+Dr\+Offset} & The Data Rate offset to use for the first receive window. \\
+\hline
+{\em rx2\+Data\+Rate} & The Data Rate to use for the second receive window. \\
+\hline
+{\em frequency} & The frequency in Hz to use for the second receive window. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1RxParamSetupReq_a9f320ecc2f1bf898465bcc6032fc2076}\label{classns3_1_1lorawan_1_1RxParamSetupReq_a9f320ecc2f1bf898465bcc6032fc2076}} 
+\index{ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req@{ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req}!Deserialize@{Deserialize}}
+\index{Deserialize@{Deserialize}!ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req@{ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req}}
+\subsubsection{\texorpdfstring{Deserialize()}{Deserialize()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req\+::\+Deserialize (\begin{DoxyParamCaption}\item[{Buffer\+::\+Iterator \&}]{start }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Deserialize the buffer into a M\+AC command.
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & A pointer to the buffer that contains the serialized command. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of bytes that were consumed. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1MacCommand_af12d223a71a67196bce498f1240eda75}{ns3\+::lorawan\+::\+Mac\+Command}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1RxParamSetupReq_aeb4c2b794d0afa15797ce99c1543609a}\label{classns3_1_1lorawan_1_1RxParamSetupReq_aeb4c2b794d0afa15797ce99c1543609a}} 
+\index{ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req@{ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req}!Get\+Frequency@{Get\+Frequency}}
+\index{Get\+Frequency@{Get\+Frequency}!ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req@{ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req}}
+\subsubsection{\texorpdfstring{Get\+Frequency()}{GetFrequency()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req\+::\+Get\+Frequency (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get this command\textquotesingle{}s frequency.
+
+\begin{DoxyReturn}{Returns}
+The frequency parameter, in Hz. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1RxParamSetupReq_a3b1dead7733bc5b47cecbd1b5a673f82}\label{classns3_1_1lorawan_1_1RxParamSetupReq_a3b1dead7733bc5b47cecbd1b5a673f82}} 
+\index{ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req@{ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req}!Get\+Rx1\+Dr\+Offset@{Get\+Rx1\+Dr\+Offset}}
+\index{Get\+Rx1\+Dr\+Offset@{Get\+Rx1\+Dr\+Offset}!ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req@{ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req}}
+\subsubsection{\texorpdfstring{Get\+Rx1\+Dr\+Offset()}{GetRx1DrOffset()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req\+::\+Get\+Rx1\+Dr\+Offset (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get this command\textquotesingle{}s Rx1\+Dr\+Offset parameter.
+
+\begin{DoxyReturn}{Returns}
+The Rx1\+Dr\+Offset parameter. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1RxParamSetupReq_a89462a466ee10c28f4ded25b6b3b9dda}\label{classns3_1_1lorawan_1_1RxParamSetupReq_a89462a466ee10c28f4ded25b6b3b9dda}} 
+\index{ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req@{ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req}!Get\+Rx2\+Data\+Rate@{Get\+Rx2\+Data\+Rate}}
+\index{Get\+Rx2\+Data\+Rate@{Get\+Rx2\+Data\+Rate}!ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req@{ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req}}
+\subsubsection{\texorpdfstring{Get\+Rx2\+Data\+Rate()}{GetRx2DataRate()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req\+::\+Get\+Rx2\+Data\+Rate (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get this command\textquotesingle{}s Rx2\+Data\+Rate parameter.
+
+\begin{DoxyReturn}{Returns}
+The Rx2\+Data\+Rate parameter. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1RxParamSetupReq_a92e0695decb4f9d8ba29bcb83168c386}\label{classns3_1_1lorawan_1_1RxParamSetupReq_a92e0695decb4f9d8ba29bcb83168c386}} 
+\index{ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req@{ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req}!Print@{Print}}
+\index{Print@{Print}!ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req@{ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req}}
+\subsubsection{\texorpdfstring{Print()}{Print()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req\+::\+Print (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Print the contents of this M\+AC command in human-\/readable format.
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The std\+::ostream instance on which to print the M\+AC command. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1MacCommand_a6bf88db38dab7dcd817811a9fb59f920}{ns3\+::lorawan\+::\+Mac\+Command}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1RxParamSetupReq_a61e2907f1dc9f06dd1e9cbd45a5583a1}\label{classns3_1_1lorawan_1_1RxParamSetupReq_a61e2907f1dc9f06dd1e9cbd45a5583a1}} 
+\index{ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req@{ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req@{ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req}}
+\subsubsection{\texorpdfstring{Serialize()}{Serialize()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Rx\+Param\+Setup\+Req\+::\+Serialize (\begin{DoxyParamCaption}\item[{Buffer\+::\+Iterator \&}]{start }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Serialize the contents of this M\+AC command into a buffer, according to the Lo\+Ra\+W\+AN standard.
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & A pointer to the buffer into which to serialize the command. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1MacCommand_a0ed44b33942ddc3dc9694dc06ab0b87f}{ns3\+::lorawan\+::\+Mac\+Command}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+mac-\/command.\+h\item 
+mac-\/command.\+cc\end{DoxyCompactItemize}

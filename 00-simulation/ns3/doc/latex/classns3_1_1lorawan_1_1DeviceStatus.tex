@@ -1,0 +1,214 @@
+\hypertarget{classns3_1_1lorawan_1_1DeviceStatus}{}\section{ns3\+:\+:lorawan\+:\+:Device\+Status Class Reference}
+\label{classns3_1_1lorawan_1_1DeviceStatus}\index{ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}}
+
+
+{\ttfamily \#include $<$device-\/status.\+h$>$}
+
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Device\+Status\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=277pt]{classns3_1_1lorawan_1_1DeviceStatus__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structns3_1_1lorawan_1_1DeviceStatus_1_1Reply}{Reply}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1DeviceStatus_ac00447539b1da7b1c4aeb7479b5d48ff}\label{classns3_1_1lorawan_1_1DeviceStatus_ac00447539b1da7b1c4aeb7479b5d48ff}} 
+{\bfseries Device\+Status} (Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraMac}{End\+Device\+Lora\+Mac} $>$ end\+Device\+Mac)
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1DeviceStatus_af0d05320ecdc282c13597c101076c605}{Get\+Data\+Rate} ()
+\item 
+\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} \hyperlink{classns3_1_1lorawan_1_1DeviceStatus_ad1ff55d93bc1347ac860a921d590053e}{Get\+Address} ()
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1DeviceStatus_a690f9059f8cc8b6ce516da4d670f4b94}{Set\+Address} (\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} address)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1DeviceStatus_a76581259b5b053500387dc3e9b73094b}{Update\+Gateway\+Data} (Address gw\+Address, double rcv\+Power)
+\item 
+Address \hyperlink{classns3_1_1lorawan_1_1DeviceStatus_a339650bdf62a9c13d458f4276222e740}{Get\+Best\+Gateway\+Address} (void)
+\item 
+std\+::list$<$ Address $>$ \hyperlink{classns3_1_1lorawan_1_1DeviceStatus_a6174dfca1f330b02f833683117acecdb}{Get\+Sorted\+Gateway\+Addresses} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1DeviceStatus_a10001b2464375197ac57462323ef2766}{Set\+Reply} (struct \hyperlink{structns3_1_1lorawan_1_1DeviceStatus_1_1Reply}{Reply} reply)
+\item 
+bool \hyperlink{classns3_1_1lorawan_1_1DeviceStatus_a1a713e0523cef431cd3194aa27bd6f57}{Has\+Reply} (void)
+\item 
+Ptr$<$ Packet $>$ \hyperlink{classns3_1_1lorawan_1_1DeviceStatus_ad83a579eab32d419aeb0409d959a8ff0}{Get\+Reply\+Packet} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1DeviceStatus_a27f4dfe68d8361e4835c50865aaf7325}{Set\+First\+Receive\+Window\+Frequency} (double frequency)
+\item 
+double \hyperlink{classns3_1_1lorawan_1_1DeviceStatus_ab83d8a40859427f84e56f6536d1337de}{Get\+First\+Receive\+Window\+Frequency} (void)
+\item 
+double \hyperlink{classns3_1_1lorawan_1_1DeviceStatus_a3b908979aaebd791d3c54196fcf938f1}{Get\+Second\+Receive\+Window\+Frequency} (void)
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1DeviceStatus_a4645606cdd1fd2f4c94d1f8ec919f49f}{Get\+First\+Receive\+Window\+Data\+Rate} (void)
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1DeviceStatus_a65e9a5079d08a3e85db3c9ecc5c2177c}{Get\+Second\+Receive\+Window\+Data\+Rate} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class represents the Network Server\textquotesingle{}s knowledge about an End Device in the Lo\+Ra\+W\+AN network it is administering.
+
+The Network Server contains a list of instances of this class, once for each device in the network. This class holds the reply packet that the network server will send to this device at the first available receive window. Furthermore, this class is used to keep track of all gateways that are able to receive the device\textquotesingle{}s packets. On new packet arrivals at the Network Server, the Update\+Gateway\+Data method is called to update the m\+\_\+gateways map, that associates a Gateway\textquotesingle{}s Point\+To\+Point\+Net\+Device address to the power it received this ED\textquotesingle{}s last packet. This information is then used in the Get\+Sorted\+Gateway\+Addresses method to return a list of the preferred gateways through which to reply to this device. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1DeviceStatus_ad1ff55d93bc1347ac860a921d590053e}\label{classns3_1_1lorawan_1_1DeviceStatus_ad1ff55d93bc1347ac860a921d590053e}} 
+\index{ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}!Get\+Address@{Get\+Address}}
+\index{Get\+Address@{Get\+Address}!ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}}
+\subsubsection{\texorpdfstring{Get\+Address()}{GetAddress()}}
+{\footnotesize\ttfamily \hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} ns3\+::lorawan\+::\+Device\+Status\+::\+Get\+Address (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the \hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} that the device represented by this \hyperlink{classns3_1_1lorawan_1_1DeviceStatus}{Device\+Status} is using.
+
+\begin{DoxyReturn}{Returns}
+The address. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1DeviceStatus_a339650bdf62a9c13d458f4276222e740}\label{classns3_1_1lorawan_1_1DeviceStatus_a339650bdf62a9c13d458f4276222e740}} 
+\index{ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}!Get\+Best\+Gateway\+Address@{Get\+Best\+Gateway\+Address}}
+\index{Get\+Best\+Gateway\+Address@{Get\+Best\+Gateway\+Address}!ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}}
+\subsubsection{\texorpdfstring{Get\+Best\+Gateway\+Address()}{GetBestGatewayAddress()}}
+{\footnotesize\ttfamily Address ns3\+::lorawan\+::\+Device\+Status\+::\+Get\+Best\+Gateway\+Address (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Return the address of the gateway that received this device\textquotesingle{}s last packet with the highest power.
+
+\begin{DoxyReturn}{Returns}
+The best gateway\textquotesingle{}s P2P link address. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1DeviceStatus_af0d05320ecdc282c13597c101076c605}\label{classns3_1_1lorawan_1_1DeviceStatus_af0d05320ecdc282c13597c101076c605}} 
+\index{ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}!Get\+Data\+Rate@{Get\+Data\+Rate}}
+\index{Get\+Data\+Rate@{Get\+Data\+Rate}!ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}}
+\subsubsection{\texorpdfstring{Get\+Data\+Rate()}{GetDataRate()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+Device\+Status\+::\+Get\+Data\+Rate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the data rate this device is using
+
+\begin{DoxyReturn}{Returns}
+An unsigned 8-\/bit integer containing the data rate. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1DeviceStatus_a4645606cdd1fd2f4c94d1f8ec919f49f}\label{classns3_1_1lorawan_1_1DeviceStatus_a4645606cdd1fd2f4c94d1f8ec919f49f}} 
+\index{ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}!Get\+First\+Receive\+Window\+Data\+Rate@{Get\+First\+Receive\+Window\+Data\+Rate}}
+\index{Get\+First\+Receive\+Window\+Data\+Rate@{Get\+First\+Receive\+Window\+Data\+Rate}!ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}}
+\subsubsection{\texorpdfstring{Get\+First\+Receive\+Window\+Data\+Rate()}{GetFirstReceiveWindowDataRate()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+Device\+Status\+::\+Get\+First\+Receive\+Window\+Data\+Rate (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Return the data rate this device expects on the first receive window.
+
+This value is memorized in this object, based on the data\+Rate used by the uplink packet. \mbox{\Hypertarget{classns3_1_1lorawan_1_1DeviceStatus_ab83d8a40859427f84e56f6536d1337de}\label{classns3_1_1lorawan_1_1DeviceStatus_ab83d8a40859427f84e56f6536d1337de}} 
+\index{ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}!Get\+First\+Receive\+Window\+Frequency@{Get\+First\+Receive\+Window\+Frequency}}
+\index{Get\+First\+Receive\+Window\+Frequency@{Get\+First\+Receive\+Window\+Frequency}!ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}}
+\subsubsection{\texorpdfstring{Get\+First\+Receive\+Window\+Frequency()}{GetFirstReceiveWindowFrequency()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+Device\+Status\+::\+Get\+First\+Receive\+Window\+Frequency (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the first window frequency of this device. \mbox{\Hypertarget{classns3_1_1lorawan_1_1DeviceStatus_ad83a579eab32d419aeb0409d959a8ff0}\label{classns3_1_1lorawan_1_1DeviceStatus_ad83a579eab32d419aeb0409d959a8ff0}} 
+\index{ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}!Get\+Reply\+Packet@{Get\+Reply\+Packet}}
+\index{Get\+Reply\+Packet@{Get\+Reply\+Packet}!ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}}
+\subsubsection{\texorpdfstring{Get\+Reply\+Packet()}{GetReplyPacket()}}
+{\footnotesize\ttfamily Ptr$<$ Packet $>$ ns3\+::lorawan\+::\+Device\+Status\+::\+Get\+Reply\+Packet (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Return this device\textquotesingle{}s next downlink packet.
+
+This method returns a full packet, to which headers are already added.
+
+\begin{DoxyReturn}{Returns}
+The full packet for reply. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1DeviceStatus_a65e9a5079d08a3e85db3c9ecc5c2177c}\label{classns3_1_1lorawan_1_1DeviceStatus_a65e9a5079d08a3e85db3c9ecc5c2177c}} 
+\index{ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}!Get\+Second\+Receive\+Window\+Data\+Rate@{Get\+Second\+Receive\+Window\+Data\+Rate}}
+\index{Get\+Second\+Receive\+Window\+Data\+Rate@{Get\+Second\+Receive\+Window\+Data\+Rate}!ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}}
+\subsubsection{\texorpdfstring{Get\+Second\+Receive\+Window\+Data\+Rate()}{GetSecondReceiveWindowDataRate()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+Device\+Status\+::\+Get\+Second\+Receive\+Window\+Data\+Rate (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Return the data rate this device expects on the second receive window.
+
+This value is {\itshape not} memorized in this object, and instead it\textquotesingle{}s queried using the pointer to the device\textquotesingle{}s M\+AC layer. \mbox{\Hypertarget{classns3_1_1lorawan_1_1DeviceStatus_a3b908979aaebd791d3c54196fcf938f1}\label{classns3_1_1lorawan_1_1DeviceStatus_a3b908979aaebd791d3c54196fcf938f1}} 
+\index{ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}!Get\+Second\+Receive\+Window\+Frequency@{Get\+Second\+Receive\+Window\+Frequency}}
+\index{Get\+Second\+Receive\+Window\+Frequency@{Get\+Second\+Receive\+Window\+Frequency}!ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}}
+\subsubsection{\texorpdfstring{Get\+Second\+Receive\+Window\+Frequency()}{GetSecondReceiveWindowFrequency()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+Device\+Status\+::\+Get\+Second\+Receive\+Window\+Frequency (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Return the second window frequency of this device.
+
+This value is {\itshape not} memorized in this object, and instead it\textquotesingle{}s queried using the pointer to the device\textquotesingle{}s M\+AC layer. \mbox{\Hypertarget{classns3_1_1lorawan_1_1DeviceStatus_a6174dfca1f330b02f833683117acecdb}\label{classns3_1_1lorawan_1_1DeviceStatus_a6174dfca1f330b02f833683117acecdb}} 
+\index{ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}!Get\+Sorted\+Gateway\+Addresses@{Get\+Sorted\+Gateway\+Addresses}}
+\index{Get\+Sorted\+Gateway\+Addresses@{Get\+Sorted\+Gateway\+Addresses}!ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}}
+\subsubsection{\texorpdfstring{Get\+Sorted\+Gateway\+Addresses()}{GetSortedGatewayAddresses()}}
+{\footnotesize\ttfamily std\+::list$<$ Address $>$ ns3\+::lorawan\+::\+Device\+Status\+::\+Get\+Sorted\+Gateway\+Addresses (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Return an iterator to the gateway addresses that received a packet by this device, in order from best to worst (i.\+e., from highest receive power to lowest receive power).
+
+\begin{DoxyReturn}{Returns}
+A list of addresses. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1DeviceStatus_a1a713e0523cef431cd3194aa27bd6f57}\label{classns3_1_1lorawan_1_1DeviceStatus_a1a713e0523cef431cd3194aa27bd6f57}} 
+\index{ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}!Has\+Reply@{Has\+Reply}}
+\index{Has\+Reply@{Has\+Reply}!ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}}
+\subsubsection{\texorpdfstring{Has\+Reply()}{HasReply()}}
+{\footnotesize\ttfamily bool ns3\+::lorawan\+::\+Device\+Status\+::\+Has\+Reply (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Check whether this device already has a reply packet.
+
+\begin{DoxyReturn}{Returns}
+True if there\textquotesingle{}s already a reply for this device, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1DeviceStatus_a690f9059f8cc8b6ce516da4d670f4b94}\label{classns3_1_1lorawan_1_1DeviceStatus_a690f9059f8cc8b6ce516da4d670f4b94}} 
+\index{ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}!Set\+Address@{Set\+Address}}
+\index{Set\+Address@{Set\+Address}!ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}}
+\subsubsection{\texorpdfstring{Set\+Address()}{SetAddress()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Device\+Status\+::\+Set\+Address (\begin{DoxyParamCaption}\item[{\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address}}]{address }\end{DoxyParamCaption})}
+
+Set the \hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} that the device represented by this \hyperlink{classns3_1_1lorawan_1_1DeviceStatus}{Device\+Status} is using.
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The device\textquotesingle{}s address to set. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1DeviceStatus_a27f4dfe68d8361e4835c50865aaf7325}\label{classns3_1_1lorawan_1_1DeviceStatus_a27f4dfe68d8361e4835c50865aaf7325}} 
+\index{ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}!Set\+First\+Receive\+Window\+Frequency@{Set\+First\+Receive\+Window\+Frequency}}
+\index{Set\+First\+Receive\+Window\+Frequency@{Set\+First\+Receive\+Window\+Frequency}!ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}}
+\subsubsection{\texorpdfstring{Set\+First\+Receive\+Window\+Frequency()}{SetFirstReceiveWindowFrequency()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Device\+Status\+::\+Set\+First\+Receive\+Window\+Frequency (\begin{DoxyParamCaption}\item[{double}]{frequency }\end{DoxyParamCaption})}
+
+Set the first window frequency of this device. \mbox{\Hypertarget{classns3_1_1lorawan_1_1DeviceStatus_a10001b2464375197ac57462323ef2766}\label{classns3_1_1lorawan_1_1DeviceStatus_a10001b2464375197ac57462323ef2766}} 
+\index{ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}!Set\+Reply@{Set\+Reply}}
+\index{Set\+Reply@{Set\+Reply}!ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}}
+\subsubsection{\texorpdfstring{Set\+Reply()}{SetReply()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Device\+Status\+::\+Set\+Reply (\begin{DoxyParamCaption}\item[{struct \hyperlink{structns3_1_1lorawan_1_1DeviceStatus_1_1Reply}{Reply}}]{reply }\end{DoxyParamCaption})}
+
+Set the reply to send to this device.
+
+
+\begin{DoxyParams}{Parameters}
+{\em reply} & The reply structure to use for the next downlink transmission. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1DeviceStatus_a76581259b5b053500387dc3e9b73094b}\label{classns3_1_1lorawan_1_1DeviceStatus_a76581259b5b053500387dc3e9b73094b}} 
+\index{ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}!Update\+Gateway\+Data@{Update\+Gateway\+Data}}
+\index{Update\+Gateway\+Data@{Update\+Gateway\+Data}!ns3\+::lorawan\+::\+Device\+Status@{ns3\+::lorawan\+::\+Device\+Status}}
+\subsubsection{\texorpdfstring{Update\+Gateway\+Data()}{UpdateGatewayData()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Device\+Status\+::\+Update\+Gateway\+Data (\begin{DoxyParamCaption}\item[{Address}]{gw\+Address,  }\item[{double}]{rcv\+Power }\end{DoxyParamCaption})}
+
+Update the \hyperlink{classns3_1_1lorawan_1_1DeviceStatus}{Device\+Status} to take into account the power with which a packet was received by the gateway with this P2P address.
+
+
+\begin{DoxyParams}{Parameters}
+{\em gw\+Address} & The gateway\textquotesingle{}s P2P interface address. \\
+\hline
+{\em rcv\+Power} & The receive power, in d\+Bm, with which the gateway received the device\textquotesingle{}s last packet. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+device-\/status.\+h\item 
+device-\/status.\+cc\end{DoxyCompactItemize}

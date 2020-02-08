@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.widgets.subcanvas"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Subcanvases</title>
+<topic id = "vw.help.widgets.subcanvas.inheritApplication"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Inherit an application’s interface</title>
+<body><p><indexterm>GUI development<indexterm>add subcanvas</indexterm></indexterm><indexterm>GUI
+development<indexterm>inherit interface</indexterm></indexterm>You
+can include an entire application within a new application by making
+the new application a subclass of the original.</p>
+<p>To include its user interface, the new application inserts the
+old user interface into a subcanvas. The new application can override
+an inherited action, though it need not.<ol><li><p>Create a new
+application model (<apiname>Subcanvas1Example</apiname>) as a subclass
+of the application model from which it is to inherit (<apiname>List2Example</apiname>).</p></li>
+<li><p>Use a Palette to place a subcanvas widget on the inheriting canvas
+(the canvas for <apiname>Subcanvas1Example</apiname>). Leave the subcanvas widget
+selected.</p></li>
+<li><p>In the subcanvas’s <codeph>Canvas</codeph> property, enter
+the name of the inherited interface specification to be used by
+the subcanvas (<codeph>listSpec</codeph>). This name must be unique
+within the inheritance chain &#x2014; for example, you could not embed an
+inherited canvas named <codeph>windowSpec</codeph> in a local canvas
+named <codeph>windowSpec</codeph>.</p></li>
+<li><p>Apply the property and <uicontrol>Install</uicontrol> the
+inheriting canvas in its application model (<apiname>Subcanvas1Example</apiname>).</p></li></ol></p>
+<p><b>Online examples:</b> 
+<xref href="prereq:List2-Example:Examples.List2Example open" 
+format="st" scope="external">List2-Example</xref> (parent) and 
+<xref href="prereq:Subcanvas1-Example:Examples.Subcanvas1Example open" 
+format="st" scope="external">Subcanvas1-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.subcanvas.setInheritedValue"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Installing a different value in an inherited widget</title>
+<body><p><indexterm>subcanvas<indexterm>change inherited values</indexterm></indexterm>You
+can reuse widgets by providing a local value in a subclass.<ol><li><p>Create
+an <codeph>initialize</codeph> method in the application model,
+and first invoke the inherited <codeph>initialize</codeph> method
+with a message to super.</p></li>
+<li><p>In the <codeph>initialize</codeph> method, use the inherited
+aspect message to access the desired value model. Then send an accessing message
+to the value model to install the desired value.
+<codeblock otherprops="smalltalk method">initialize
+		"Install a different list (cursor names) than 
+		the inherited default (color names)."
+		| cursorNames |
+		super initialize.
+		cursorNames := Cursor class organization 
+			listAtCategoryNamed: #constants.
+		self selectionInList list: cursorNames.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.widgets.subcanvas.nestApps"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Nest one application in another</title>
+<body><p><indexterm>nest applications</indexterm><indexterm>application
+development<indexterm>next applications</indexterm></indexterm>Using
+a subcanvas, you can embed one application in another even though
+they are not related by inheritance. This is a convenient way to
+create a set of application modules to plug into a larger.</p>
+<p>The embedded application supplies its own value models and action methods.
+Since there is no inheritance, you cannot override these actions
+and values. <ol><li><p>Use a Palette to place a subcanvas in the
+reusing canvas, leaving it selected.</p></li>
+<li><p>In the subcanvas’s <uicontrol>Name</uicontrol> property,
+enter the name of the method that will supply an instance of the
+embedded application.</p></li>
+<li><p>In the subcanvas’s <uicontrol>Class</uicontrol> property,
+enter the name of the application that you are embedding.</p></li>
+<li><p>In the subcanvas’s <uicontrol>Canvas</uicontrol> property,
+enter the name of the interface specification that you are using
+from the embedded application.</p></li>
+<li><p><uicontrol>Apply</uicontrol> the properties and <uicontrol>Install</uicontrol> the
+reusing canvas in its application model.</p></li>
+<li><p>Create an instance variable in the reusing application model,
+for holding onto the embedded application.</p></li>
+<li><p>Create an <codeph>initialize</codeph> method in the reusing
+application model, in which the embedded application is created
+and assigned to the variable that you created in step 6.
+<codeblock otherprops="smalltalk method">initialize
+		"Reusing List2Example's interface only -- initialize the list holder."
+		selectionInList := SelectionInList with: Smalltalk classNames.		"Reusing List2Example application -- initialize the application instance."
+		classNames := List2Example new.
+		classNames list: Smalltalk classNames.</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Subcanvas2-Example:Examples.Subcanvas2Example open" 
+format="st" scope="external">Subcanvas2-Example</xref> (<apiname>List2Example</apiname> is embedded)</p>
+</body></topic>
+<topic id = "vw.help.widgets.subcanvas.changeWidgetValue"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Install a value in an embedded widget</title>
+<body><p><indexterm>embedded widget</indexterm><indexterm>GUI development<indexterm>embedded
+widget value</indexterm></indexterm>An embedded widget uses the
+value with which its host application initializes it. <ol><li><p>In
+the <codeph>initialize</codeph> method, send a message to the embedded application
+installing the desired value. 
+<codeblock otherprops="smalltalk method">initialize
+		"Reusing List2Example's interface only -- initialize the 
+		list holder."
+		selectionInList := SelectionInList with: Smalltalk classNames.
+		"Reusing List2Example application -- initialize the application
+		instance."
+		classNames := List2Example new.
+		classNames list: Smalltalk classNames.</codeblock></p></li>
+<li><p>In some situations, as in the example, you will have to create
+a method (<codeph>list:</codeph>) in the embedded application model
+that enables an outside application to supply a new value.
+<codeblock otherprops="smalltalk method">list: aCollection
+		"Install aCollection in the list. This message is
+		provided so reusers can install a list that is different
+		than the default list (color names)."
+		self selectionInList list: aCollection.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.widgets.subcanvas.reuseInterfaceOnly"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Reuse an application’s interface only </title>
+<body><p><indexterm>GUI development<indexterm>reuse interface</indexterm></indexterm>You
+can use another application’s interface in your application without inheriting
+from that application. Your application must supply all value models
+and methods supporting the interface.</p>
+<p>Because your application is supplying value models, you can reuse an
+interface only once on a canvas.<ol><li><p>Use a Palette to place
+a subcanvas in the reusing canvas (the canvas for <apiname>Subcanvas2Example</apiname>).</p></li>
+<li><p>In the subcanvas’s <uicontrol>Class</uicontrol> property,
+enter the name of the application (<apiname>List2Example</apiname>)
+that defines the interface to be embedded.</p></li>
+<li><p>In the subcanvas’s <uicontrol>Canvas</uicontrol> property,
+enter the name of the interface specification (<codeph>listSpec</codeph>)
+to be embedded.</p></li>
+<li><p>Apply the properties and install the reusing canvas in its application
+model (<apiname>Subcanvas2Example</apiname>).</p></li>
+<li><p>Use a System Browser to edit the reusing application model (<apiname>Subcanvas2Example</apiname>),
+creating instance variables (<codeph>selectionInList</codeph>) and
+methods (<codeph>selectionInList</codeph>, <codeph>initialize</codeph>, <codeph>add</codeph>,
+and <codeph>delete</codeph>) to support the embedded interface.
+These instance variables and methods must have the same names as
+the corresponding ones in the reused class (<apiname>List2Example</apiname>).
+Modify values and action methods as desired.</p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Subcanvas2-Example:Examples.Subcanvas2Example open" 
+format="st" scope="external">Subcanvas2-Example</xref> 
+(which reuses <apiname>List2Example</apiname>’s <codeph>listSpec</codeph>)</p>
+</body></topic>
+<topic id = "vw.help.widgets.subcanvas.changeRuntime"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Change interfaces during run-time</title>
+<body><p><indexterm>GUI development<indexterm>change interfaces
+at runtime</indexterm></indexterm>You can use a subcanvas to change
+the widgets or collections of widgets that appear in a larger canvas.<ol>
+<li><p>Use a Palette to place a subcanvas in the reusing canvas
+(the canvas for <apiname>Subcanvas3Example</apiname>).</p></li>
+<li><p>In the subcanvas’s <uicontrol>Name</uicontrol> property,
+enter the name of the method (<codeph>embeddedApplication</codeph>)
+that supplies the embedded application at startup time.</p></li>
+<li><p>Apply the properties and install the reusing canvas in its application
+model (<apiname>Subcanvas3Example</apiname>).</p></li>
+<li><p>Use a System Browser to create the method (<codeph>embeddedApplication</codeph>)
+that you named in step 2. You create this method in the reusing
+application model (<apiname>Subcanvas3Example</apiname>). This method
+can supply either a <codeph>nil</codeph> value (for a blank subcanvas) or
+one of the subapplications.
+<codeblock otherprops="smalltalk method">embeddedApplication
+		^nil asValue</codeblock></p></li>
+<li><p>In a change message (presumably triggered by a change in some
+other widget such as a button), create an instance of the desired
+application model (<apiname>Editor2Example</apiname>) and initialize
+it. (Or you can create and initialize the application model once
+at startup and store it in an instance variable.)</p></li>
+<li><p>Continuing in the change message, get the spec object for
+the interface you want to use by sending an <apiname>interfaceSpecFor:</apiname> message
+to the embedded application model’s class (<apiname>Editor2Example</apiname>).
+The argument is the name of the interface specification (<codeph>#windowSpec</codeph>).</p></li>
+<li><p>Continuing in the change message, get the subcanvas from
+the builder and send a <apiname>client:spec:</apiname> message to
+it. The first argument is the application you created in step 5.
+The second argument is the spec object you obtained in step 6.
+<codeblock otherprops="smalltalk method">showComment
+		| selectedClass subcanvas spec application |
+		selectedClass := Smalltalk at: self classNames selection.
+		"Create the subapplication and initialize it."
+		application := Editor2Example new.
+		application text value: selectedClass comment.
+		"Get the spec object for the embedded canvas."
+		spec := Editor2Example interfaceSpecFor: #windowSpec.
+		"Get the subcanvas and install the editing application."
+		subcanvas := (self builder componentAt: #subcanvas widget.
+		subcanvas client: application spec: spec.</codeblock></p></li></ol></p>
+<p><b>Online examples:</b> 
+<xref href="prereq:Subcanvas3-Example:Examples.Subcanvas3Example open" 
+format="st" scope="external">Subcanvas3-Example</xref> (which swaps 
+<xref href="prereq:Editor2-Example:Examples.Editor2Example open" 
+format="st" scope="external">Editor2-Example</xref> and 
+<xref href="prereq:List2-Example:Examples.List2Example open" 
+format="st" scope="external">List2-Example</xref>)</p>
+</body></topic>
+<topic id = "vw.help.widgets.subcanvas.accessEmbeddedWidget"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Accessing an embedded widget</title>
+<body><p><indexterm>GUI development<indexterm>access embedded widget</indexterm></indexterm>Frequently
+an embedded or inherited interface contains more than you need.
+For example, when an embedded action button is not appropriate in
+the local application, you could make it invisible or disable it.
+Before you can manipulate embedded widgets, however, you need to
+access them.<ol><li><p>Before installing the new subapplication
+using <apiname>client:spec:</apiname>, initialize the subapplication’s
+builder to <codeph>nil</codeph>. (Otherwise, the subapplication
+will continue to hold the old builder even after a new builder is
+created to assemble the new interface.)</p></li>
+<li><p>Ask the subapplication for its builder and then send <apiname>componentAt:</apiname> to
+that builder. The argument is the <uicontrol>ID</uicontrol> of the
+desired widget.
+<codeblock otherprops="smalltalk method">showMethods
+		| selectedClass subcanvas spec |
+		selectedClass := Smalltalk at: self classNames selection.
+		spec := List2Example interfaceSpecFor: #listSpec.
+		"Install the method names as the collection in the list application."
+		self listApplication list: selectedClass selectors asSortedCollection.
+		"Set the subbuilder to nil to discard the old builder. This is only 
+		necessary when the application uses the builder later to access widgets."
+		listApplication builder: nil.
+		"Get the subcanvas and install the list application."
+		subcanvas := (self builder componentAt: #subcanvas) widget.
+		subcanvas client: listApplication spec: spec.
+		"Disable the embedded buttons (just to show that we can)."
+		(listApplication builder componentAt: #addButton) disable.
+		(listApplication builder componentAt: #deleteButton) disable.</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Subcanvas3-Example:Examples.Subcanvas3Example open" 
+format="st" scope="external">Subcanvas3-Example</xref></p>
+</body></topic></topic></dita>

@@ -1,0 +1,39 @@
+ctmc
+const  double lambda1=1;
+const  double lambda2=1.5;
+const  double mu1=2;
+const  double mu2=2.5;
+
+module M1
+C1:[0..1] init 1; // etat de la premiere composante
+[finrep1C2UP]   (C1=0) & (agent=1) -> mu1:     (C1'= 1); 
+[finrep1C2DOWN] (C1=0) & (agent=1) -> mu1:     (C1'= 1); 
+[panneC1rep0]   (C1=1)             -> lambda1: (C1'=0);
+[panneC1rep2]   (C1=1)             -> lambda1: (C1'=0);
+endmodule
+
+module M2
+C2:[0..1] init 1; // etat de la deuxieme composante
+[finrep2C1UP]   (C2=0) & (agent=2) -> mu2:     (C2'= 1);
+[finrep2C1DOWN] (C2=0) & (agent=2) -> mu2:     (C2'= 1); 
+[panneC2rep0]   (C2=1)             -> lambda2: (C2'=0);
+[panneC2rep1]   (C2=1)             -> lambda2: (C2'=0);
+endmodule
+
+module reparateur
+agent:[0..2] init 0;
+
+[finrep1C2UP]   (C2=1)    -> 1: (agent'= 0);
+[finrep1C2DOWN] (C2=0)    -> 1: (agent'= 2);
+[panneC1rep0]   (agent=0) -> 1: (agent'= 1);
+[panneC1rep2]   (agent=2) -> 1: (agent'= 2);
+
+[finrep2C1UP]   (C1=1)    -> 1: (agent'= 0);
+[finrep2C1DOWN] (C1=0)    -> 1: (agent'= 1);
+[panneC2rep0]   (agent=0) -> 1: (agent'= 2);
+[panneC2rep1]   (agent=1) -> 1: (agent'= 1);
+
+endmodule
+
+label  "up"= C1+C2+agent>=1;
+label  "down"= C1+C2+agent=0;

@@ -1,0 +1,160 @@
+\hypertarget{classns3_1_1lorawan_1_1LoraChannel}{}\section{ns3\+:\+:lorawan\+:\+:Lora\+Channel Class Reference}
+\label{classns3_1_1lorawan_1_1LoraChannel}\index{ns3\+::lorawan\+::\+Lora\+Channel@{ns3\+::lorawan\+::\+Lora\+Channel}}
+
+
+{\ttfamily \#include $<$lora-\/channel.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Lora\+Channel\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{classns3_1_1lorawan_1_1LoraChannel__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Lora\+Channel\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{classns3_1_1lorawan_1_1LoraChannel__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraChannel_a3d20a873e0ba5c5949c51234e8182e1e}\label{classns3_1_1lorawan_1_1LoraChannel_a3d20a873e0ba5c5949c51234e8182e1e}} 
+virtual std\+::size\+\_\+t {\bfseries Get\+N\+Devices} (void) const
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraChannel_a13b1a66f3031a7c9f9cbccfa3ad9aa2a}\label{classns3_1_1lorawan_1_1LoraChannel_a13b1a66f3031a7c9f9cbccfa3ad9aa2a}} 
+virtual Ptr$<$ \hyperlink{classNetDevice}{Net\+Device} $>$ {\bfseries Get\+Device} (std\+::size\+\_\+t i) const
+\item 
+\hyperlink{classns3_1_1lorawan_1_1LoraChannel_aba4c1b5203d4d8010e9e7485cc9e7721}{Lora\+Channel} (Ptr$<$ \hyperlink{classPropagationLossModel}{Propagation\+Loss\+Model} $>$ loss, Ptr$<$ Propagation\+Delay\+Model $>$ delay)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraChannel_ac44d882080c3be8fb0f785c6ba29cae3}{Add} (Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy}{Lora\+Phy} $>$ phy)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraChannel_a6af92e0f9bdd6db2032983c052fd352a}{Remove} (Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy}{Lora\+Phy} $>$ phy)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraChannel_a87043ac31a597467def66e421a887954}{Send} (Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy}{Lora\+Phy} $>$ sender, Ptr$<$ Packet $>$ packet, double tx\+Power\+Dbm, \hyperlink{structns3_1_1lorawan_1_1LoraTxParameters}{Lora\+Tx\+Parameters} tx\+Params, Time duration, double frequency\+M\+Hz) const
+\item 
+double \hyperlink{classns3_1_1lorawan_1_1LoraChannel_a8c975d8f8eecae5f75b35a1a409a58eb}{Get\+Rx\+Power} (double tx\+Power\+Dbm, Ptr$<$ Mobility\+Model $>$ sender\+Mobility, Ptr$<$ Mobility\+Model $>$ receiver\+Mobility) const
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraChannel_a270b7417e8c98610a68639bb4ad7980c}\label{classns3_1_1lorawan_1_1LoraChannel_a270b7417e8c98610a68639bb4ad7980c}} 
+static Type\+Id {\bfseries Get\+Type\+Id} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The class that delivers packets among P\+HY layers.
+
+This class is tasked with taking packets that P\+HY layers want to send and, based on some factors like the transmission power and the node positions, computing the power at every receiver using a \hyperlink{classPropagationLossModel}{Propagation\+Loss\+Model} and notifying them of the reception event after a delay based on some Propagation\+Delay\+Model. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraChannel_aba4c1b5203d4d8010e9e7485cc9e7721}\label{classns3_1_1lorawan_1_1LoraChannel_aba4c1b5203d4d8010e9e7485cc9e7721}} 
+\index{ns3\+::lorawan\+::\+Lora\+Channel@{ns3\+::lorawan\+::\+Lora\+Channel}!Lora\+Channel@{Lora\+Channel}}
+\index{Lora\+Channel@{Lora\+Channel}!ns3\+::lorawan\+::\+Lora\+Channel@{ns3\+::lorawan\+::\+Lora\+Channel}}
+\subsubsection{\texorpdfstring{Lora\+Channel()}{LoraChannel()}}
+{\footnotesize\ttfamily ns3\+::lorawan\+::\+Lora\+Channel\+::\+Lora\+Channel (\begin{DoxyParamCaption}\item[{Ptr$<$ \hyperlink{classPropagationLossModel}{Propagation\+Loss\+Model} $>$}]{loss,  }\item[{Ptr$<$ Propagation\+Delay\+Model $>$}]{delay }\end{DoxyParamCaption})}
+
+Construct a \hyperlink{classns3_1_1lorawan_1_1LoraChannel}{Lora\+Channel} with a loss and delay model.
+
+
+\begin{DoxyParams}{Parameters}
+{\em loss} & The loss model to associate to this channel. \\
+\hline
+{\em delay} & The delay model to associate to this channel. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraChannel_ac44d882080c3be8fb0f785c6ba29cae3}\label{classns3_1_1lorawan_1_1LoraChannel_ac44d882080c3be8fb0f785c6ba29cae3}} 
+\index{ns3\+::lorawan\+::\+Lora\+Channel@{ns3\+::lorawan\+::\+Lora\+Channel}!Add@{Add}}
+\index{Add@{Add}!ns3\+::lorawan\+::\+Lora\+Channel@{ns3\+::lorawan\+::\+Lora\+Channel}}
+\subsubsection{\texorpdfstring{Add()}{Add()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Channel\+::\+Add (\begin{DoxyParamCaption}\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy}{Lora\+Phy} $>$}]{phy }\end{DoxyParamCaption})}
+
+Connect a \hyperlink{classns3_1_1lorawan_1_1LoraPhy}{Lora\+Phy} object to the \hyperlink{classns3_1_1lorawan_1_1LoraChannel}{Lora\+Channel}.
+
+This method is needed so that the channel knows it has to notify this P\+HY of incoming transmissions.
+
+
+\begin{DoxyParams}{Parameters}
+{\em phy} & The physical layer to add. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraChannel_a8c975d8f8eecae5f75b35a1a409a58eb}\label{classns3_1_1lorawan_1_1LoraChannel_a8c975d8f8eecae5f75b35a1a409a58eb}} 
+\index{ns3\+::lorawan\+::\+Lora\+Channel@{ns3\+::lorawan\+::\+Lora\+Channel}!Get\+Rx\+Power@{Get\+Rx\+Power}}
+\index{Get\+Rx\+Power@{Get\+Rx\+Power}!ns3\+::lorawan\+::\+Lora\+Channel@{ns3\+::lorawan\+::\+Lora\+Channel}}
+\subsubsection{\texorpdfstring{Get\+Rx\+Power()}{GetRxPower()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+Lora\+Channel\+::\+Get\+Rx\+Power (\begin{DoxyParamCaption}\item[{double}]{tx\+Power\+Dbm,  }\item[{Ptr$<$ Mobility\+Model $>$}]{sender\+Mobility,  }\item[{Ptr$<$ Mobility\+Model $>$}]{receiver\+Mobility }\end{DoxyParamCaption}) const}
+
+Compute the received power when transmitting from a point to another one.
+
+This method can be used by external object to see the receive power of a transmission from one point to another using this \hyperlink{classChannel}{Channel}\textquotesingle{}s \hyperlink{classPropagationLossModel}{Propagation\+Loss\+Model}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em tx\+Power\+Dbm} & The power the transmitter is using, in d\+Bm. \\
+\hline
+{\em sender\+Mobility} & The mobility model of the sender. \\
+\hline
+{\em receiver\+Mobility} & The mobility model of the receiver. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The received power in d\+Bm. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraChannel_a6af92e0f9bdd6db2032983c052fd352a}\label{classns3_1_1lorawan_1_1LoraChannel_a6af92e0f9bdd6db2032983c052fd352a}} 
+\index{ns3\+::lorawan\+::\+Lora\+Channel@{ns3\+::lorawan\+::\+Lora\+Channel}!Remove@{Remove}}
+\index{Remove@{Remove}!ns3\+::lorawan\+::\+Lora\+Channel@{ns3\+::lorawan\+::\+Lora\+Channel}}
+\subsubsection{\texorpdfstring{Remove()}{Remove()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Channel\+::\+Remove (\begin{DoxyParamCaption}\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy}{Lora\+Phy} $>$}]{phy }\end{DoxyParamCaption})}
+
+Remove a physical layer from the \hyperlink{classns3_1_1lorawan_1_1LoraChannel}{Lora\+Channel}.
+
+This method removes a phy from the list of devices we have to notify. Removing unused P\+HY layers from the channel can improve performance, since it is not necessary to notify them about each transmission.
+
+
+\begin{DoxyParams}{Parameters}
+{\em phy} & The physical layer to remove. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraChannel_a87043ac31a597467def66e421a887954}\label{classns3_1_1lorawan_1_1LoraChannel_a87043ac31a597467def66e421a887954}} 
+\index{ns3\+::lorawan\+::\+Lora\+Channel@{ns3\+::lorawan\+::\+Lora\+Channel}!Send@{Send}}
+\index{Send@{Send}!ns3\+::lorawan\+::\+Lora\+Channel@{ns3\+::lorawan\+::\+Lora\+Channel}}
+\subsubsection{\texorpdfstring{Send()}{Send()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Channel\+::\+Send (\begin{DoxyParamCaption}\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy}{Lora\+Phy} $>$}]{sender,  }\item[{Ptr$<$ Packet $>$}]{packet,  }\item[{double}]{tx\+Power\+Dbm,  }\item[{\hyperlink{structns3_1_1lorawan_1_1LoraTxParameters}{Lora\+Tx\+Parameters}}]{tx\+Params,  }\item[{Time}]{duration,  }\item[{double}]{frequency\+M\+Hz }\end{DoxyParamCaption}) const}
+
+Send a packet in the channel.
+
+This method is typically invoked by a P\+HY that needs to send a packet. Every connected Phy will be notified of this packet send through a call to their Start\+Receive methods after a delay based on the channel\textquotesingle{}s Propagation\+Delay\+Model.
+
+
+\begin{DoxyParams}{Parameters}
+{\em sender} & The phy that is sending this packet. \\
+\hline
+{\em packet} & The P\+HY layer packet that is being sent over the channel. \\
+\hline
+{\em tx\+Power\+Dbm} & The power of the transmission. \\
+\hline
+{\em tx\+Params} & The set of parameters that are used by the transmitter. \\
+\hline
+{\em duration} & The on-\/air duration of this packet. \\
+\hline
+{\em frequency\+M\+Hz} & The frequency this transmission will happen at. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lora-\/channel.\+h\item 
+lora-\/channel.\+cc\end{DoxyCompactItemize}

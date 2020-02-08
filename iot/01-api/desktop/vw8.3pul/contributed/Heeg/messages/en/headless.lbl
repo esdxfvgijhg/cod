@@ -1,0 +1,1 @@
+encoding: #UTF_8catalog: headlessheadlessWarning = 'WARNING: This image has been switched out of headless mode. It may be unstable. We recommend not saving this image and using it only for debugging. See HeadlessImage>>becomeHeadfull'WARNING = 'WARNING'

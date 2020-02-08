@@ -1,0 +1,421 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<title>The Chronos Date/Time Library</title>
+<meta name="description" content="Code library for date and time computations in Smalltalk. Supports Olson time zones, multiple calendars, scientific and business use cases, and flexible date/time formatting.">
+<meta name="keywords" content="Chronos, date, time, time zone, timezone, calendar, Smalltalk, VisualWorks, Olson timezone database, ANSI-Smalltalk Standard, DateAndTime, Duration, holiday, ISO 8601, RFC 2822">
+
+<link rel="alternate" type="application/atom+xml"
+    title="Chronos Time Zone Repository Publication Advisory" href="http://date-time-zone.com/feeds/timeZoneRepository.atom.xml">
+
+<style type="text/css">
+a:link {color: rgb(192, 164, 132); font-weight: bold;}
+a:visited {color: rgb(192, 164, 132); font-weight: bold; text-decoration: none;} 
+a:hover {color: #0000FF}
+a:active {color: #FF0000}
+td { 
+font-family: Helvetica,Arial,sans-serif;
+font-size: 16;
+text-align: justify;
+color: rgb(0, 0, 0);
+}
+.maintitle {
+font-size: 180%;
+font-weight: bold;
+}
+.gold {
+color:rgb(192, 164, 132);
+}
+.boldgold {
+color:rgb(192, 164, 132);
+font-weight: bold;
+font-size: 125%;
+}
+</style>
+
+<script type="text/javascript">
+function toInteger(n){
+  return (n < 0 ? - 1 : + 1) * Math.floor(Math.abs(n) + 0.5);
+}
+function zeropad(n) { 
+return n>9 ? n : '0'+n; 
+}
+function formatTimeZoneOffset(time, elementSeparator) {
+var minutesWestOfUT=time.getTimezoneOffset()
+var absOffsetInMinutes=Math.abs(minutesWestOfUT)
+var offsetInHours=toInteger(absOffsetInMinutes / 60)
+var offsetMinutes = absOffsetInMinutes % 60
+var isWestOfUT = minutesWestOfUT > 0
+return (isWestOfUT ? '-' : '+')+zeropad(offsetInHours)+elementSeparator+zeropad(offsetMinutes)
+}
+function formatTimeOfDay(time) {
+var hour=time.getHours()
+var minute=time.getMinutes()
+var second=time.getSeconds()
+return zeropad(hour)+':'+zeropad(minute)+':'+zeropad(second)
+}
+function abbreviationOfMonth(time) {
+return ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][time.getMonth()]
+}
+function formatDateAsYMD(time, elementSeparator) {
+var dayOfMonth=time.getDate()
+var month=time.getMonth() + 1
+var year=time.getFullYear()
+return year+elementSeparator+zeropad(month)+elementSeparator+zeropad(dayOfMonth)
+}
+function formatDateAsMDY(time, mdSeparator, dySeparator) {
+var dayOfMonth=time.getDate()
+var year=time.getFullYear()
+return abbreviationOfMonth(time)+mdSeparator+zeropad(dayOfMonth)+dySeparator+year
+}
+function formatDateAsDMY(time, dmSeparator, mySeparator) {
+var dayOfMonth=time.getDate()
+var year=time.getFullYear()
+return zeropad(dayOfMonth)+dmSeparator+abbreviationOfMonth(time)+mySeparator+year
+}
+function abbreviationOfDayOfWeek(time) {
+return ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][time.getDay()]
+}
+function formatDateAsRFC2822(time) {
+return abbreviationOfDayOfWeek(time)+', '+formatDateAsDMY(time, ' ', ' ')
+}
+
+function formatDateAndTimeAsISO8601(time) {
+return formatDateAsYMD(time,'-')+'T'+formatTimeOfDay(time)+formatTimeZoneOffset(time, ':')
+}
+function formatDateAndTimeAsRFC2822(time) {
+return formatDateAsRFC2822(time)+' '+formatTimeOfDay(time)+' '+formatTimeZoneOffset(time, '')
+}
+function startClock()
+{
+document.getElementById('clock').innerHTML=formatDateAndTimeAsRFC2822(new Date())
+t=setTimeout('startClock()',500)
+}
+</script>
+
+</head>
+<body bgcolor="#ffffff" onload="startClock()">
+<br style="font-size: 50%">
+<center>
+<table border="0" valign="center" style="width: 96%; text-align: left; margin-left: auto; margin-right: auto;">
+<tbody><tr><td>
+<center>
+<table width=94%>
+<tbody>
+<tr>
+<td><center>
+<img src="http://www.chronos-st.org/images/Chronos-small.png">
+<br style="font-size: 30%" />
+<a style="text-decoration: none;" href="http://en.wikipedia.org/wiki/Chronos" target="_top"><span class="boldgold">&chi;&rho;&#972;&nu;&omicron;&sigmaf;</span></a>
+</center></td>
+<td><table width="100%" border="0" bgcolor="white" cellpadding="0">
+<tbody>
+<tr>
+<td  align="left" style="text-align: left;">
+<div class="maintitle"><span class="gold"><a style="text-decoration: none;" href="http://www.chronos-st.org/" target="_top">The Chronos Date/Time Library</a></span></div>
+<br> 
+<b><span style="font-family: Helvetica,Arial,sans-serif; color: rgb(110, 110, 110);" id="clock">
+<noscript><small><i>~ A code library for date/time computations ~</i></small></noscript></span></b>
+</td>
+<td align="right" style="text-align: right;">
+<img src="http://www.chronos-st.org/images/SunDial.jpg" width=100 height=100>
+</td>
+<td align="right" style="text-align: right;">
+<img src="http://www.chronos-st.org/images/st-balloon.jpg">
+</td>
+</tbody>
+</table>
+
+</td>
+</tr>
+</tbody>
+</table>
+
+<table width=94% cellpadding=10>
+<tbody><tr><td>
+<table border=0 width="100%">
+<tr style="background-color: rgb(248, 248, 248);"> 
+<td style="text-align: left; font-family: Helvetica,Arial,sans-serif; color: rgb(128, 128, 128);">
+<span style="font-size: 14;">
+<noscript></noscript>
+<script type="text/javascript">
+document.write('Page retrieved '+formatDateAndTimeAsRFC2822(new Date()))
+</script>
+</span> 
+</td>
+<td style="text-align: right; font-family: Helvetica,Arial,sans-serif; color: rgb(128, 128, 128);">
+<span style="font-size: 14;">
+<noscript>Page published Fri, 19 Jan 2007 05:11:02 +0000 (UT: Universal Time)</noscript>
+<script type="text/javascript">
+document.write('Page published '+formatDateAndTimeAsRFC2822(new Date(1169183462960)))
+</script>
+</span>
+</td>
+</tr>
+</table>
+</td></tr>
+<tr><td>
+<table>
+<tbody>
+<tr>
+<td>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head></head><body><h1>What
+is Chronos?</h1>
+Chronos is a reusable code library, written in <a href="http://en.wikipedia.org/wiki/Smalltalk" target="_top">Smalltalk</a>, for the creation of and computations with date and time values. It provides classes to represent and perform computations with point-in-time values, temporal extents (<b>durations of time</b>) and <b>temporal intervals</b> (specific periods of time, such as the quarter from 15 July 2005 through 14 October 2005.) Chronos implements the <a target="_top" href="http://www.smalltalk.org/versions/ANSIStandardSmalltalk.html"><b>ANSI-Smalltalk
+Standard</b></a> <b>DateAndTime</b>,
+DateAndTimeFactory, <b>Duration</b> and DurationFactory
+protocols. <p>Currently, there are versions
+available for VisualWorks, Squeak and Dolphin--although the Squeak and Dolphin versions lack some of the functionality herein described.</p>
+<p>Chronos has been designed and architected for inter-Smalltalk
+portability. It is intended as a reference/standard
+implementation of advanced, rich date/time functionality for all
+Smalltalk flavors.</p>
+<p>The current distribution is a beta version--mostly
+because there will probably be significant API changes in order to more
+fully support leap seconds. </p>
+<h2>Chronos Functionality Summary</h2> <ul> <li><b>Supports
+business, legal,
+historical and scientific
+use cases</b>:<br><br><ul> <li>Provides
+time-of-day-preserving date arithmetic, so
+that adding days or months doesn't change the time-of-day when crossing
+a DST transition.</li><br><li>Provides full support
+for both
+scientific (scale-invariant)
+and civil (calendar/business/legal) durations.</li><br><li>Supports
+point-in-time values that are either invariant
+to Universal Time (as required by the ANSI Standard) or invariant to
+nominal time. UT-invariant point-in-time values compare as equal to all
+others whose designation in Universal Time is the same--regardless of
+their time zone or designation in local time. Nominal-time-invariant
+point-in-time values compare as equal to all others with the same local
+("nominal") time, regardless of time zone or designation in Universal
+Time--so a single instance can correctly specify the first moment of
+New Year's Day (of a particular year) in any time zone. (Example of a <a target="_top" href="http://blogs.msdn.com/brada/archive/2004/04/13/112784.aspx">problem
+solvable by means of nominal-time invariance</a>.) </li><br><li>Provides
+for the <b>definition/detection of
+annually-recurring events</b> (e.g., holidays, anniversaries,
+legal deadlines, number of trading days on the NYSE between two
+dates...)</li><br><li>Provides resolution down to the
+nanosecond.</li> </ul> </li><br><li><b>Provides
+comprehensive time
+zone functionality</b>: <ul> <br><li>Fully supports the
+world-wide time zone rulesets
+defined by the <a target="_top" href="http://www.twinsun.com/tz/tz-link.htm">Olson
+Timezone Database</a> (the native time zone database of
+UNIX/MacOS X.)</li><br><li><b>Supports
+diachronic time zone rules that can change
+from one year to the next</b> (For example, although you <i>might</i>
+know that Hawaii's current time zone offset is -10 hours, what you <i>might
+not</i> know is that on Dec 7, 1941 Hawaii's time zone offset was
+-10:30 hours. Chronos, however, knows this.)</li><br> <li><b>Can
+automatically discover the local time zone</b>
+from the Windows Registry or from the TZ "Environment Variable"
+(UNIX/MacOS X <i>or</i> Windows.)</li><br> <li>Enables
+updating time zone rules without changing your
+application code (<b>NOTE: <a target="_top" href="http://aa.usno.navy.mil/faq/docs/daylight_time.html">
+US Daylight Saving Time extended by 4 weeks</a></b>)</li>
+</ul> </li><br> <li><b>Supports various
+calendrical
+systems</b> in addition to the international standard Gregorian
+calendar (e.g., Julian, Hebrew, Islamic, Persian...).</li><br><li>Provides
+very flexible formatting of date/time values,
+including extensible support for multiple locales, and "built in"
+support for ISO 8601 and RFC 2822 formats.</li><br><li>Provides
+very flexible parsing of dates, times and
+date-and-time values from character data--including full support for
+ISO 8601, RFC 2822, time zone names, time zone abbreviations and time
+zone offsets.</li><br><li><b>Provides high performance--usually significantly faster than the competition</b>.</li>
+</ul></body></html>
+</td></tr>
+<tr>
+<td>
+<br>
+<h2>Getting Started Using Chronos</h2>
+
+
+            <h3>External Documentation</h3>
+            <table style="background-color: rgb(239, 255, 255); width: 95%; text-align: left; margin-left: auto; margin-right: auto;" border="0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <th style="width: 247px;">Document Name</th>
+                  <th style="width: 768px;">Description/Subject/Purpose</th>
+                </tr>
+                <tr>
+                  <td style="width: 247px;" align="undefined" valign="undefined"><a href="http://minnow.cc.gatech.edu/squeak/uploads/172/standard_v1_9-indexed.pdf" target="_top">ANSI
+
+Smalltalk Standard</a></td>
+                  <td style="width: 768px;" align="undefined" valign="undefined">The ANSI
+
+Standard is an excellent reference for the core Chronos API.&nbsp;
+
+Chronos fully and completely conforms to the ANSI Smalltalk Standard
+
+regarding Date/Time behavior [Chronos is intended to serve as a
+
+reference implementation of&nbsp; ANSI-Standard Smalltalk Date/Time
+
+behavior.]</td>
+                </tr>
+                <tr>
+                  <td style="width: 247px;" align="undefined" valign="undefined"><a href="http://www.chronos-st.org/" target="_top">Chronos Website </a></td>
+                  <td style="width: 768px;" align="undefined" valign="undefined">Web site where the latest
+
+published/released versions of all code and documentation can be
+
+obtained.&nbsp; Site also includes additional usage examples, and
+
+extensive references to educational material about the date/time domain.</td>
+                </tr>
+                <tr>
+                  <td style="width: 247px;" align="undefined" valign="undefined"><a href="http://chronos-st.blogspot.com/" target="_top">Chronos Blog</a>
+
+                  </td>
+                  <td style="width: 768px;" align="undefined" valign="undefined">The author's blog.&nbsp;
+
+Announcements, discussion of any an all subjects related to Chronos and
+
+the date/time domain.</td>
+                </tr>
+                <tr>
+                  <td align="undefined" valign="undefined"><a href="http://www.chronos-st.org/Overview.html" target="_top">Overview.html</a></td>
+                  <td align="undefined" valign="undefined">This document.</td>
+                </tr>
+                <tr>
+                  <td style="width: 247px;" align="undefined" valign="undefined"><a href="http://www.chronos-st.org/Installation.html" target="_top">Installation.html
+
+                  </a></td>
+                  <td style="width: 768px;" align="undefined" valign="undefined">Detailed
+
+instructions for installing the Chronos Date/Time Library and the
+
+Chronos Time Zone Repository. <span style="font-weight: bold;">Required
+
+reading for full functionality.</span></td>
+                </tr>
+                <tr>
+                  <td style="width: 247px;" align="undefined" valign="undefined"><a href="http://www.chronos-st.org/Examples.html" target="_top">Examples.html
+
+                  </a></td>
+                  <td style="width: 768px;" align="undefined" valign="undefined">Executable
+
+examples (&ldquo;do its&rdquo;) illustrating usage and
+
+functionality.</td>
+                </tr>
+                <tr>
+                  <td style="width: 247px;" align="undefined" valign="undefined"><a href="http://www.chronos-st.org/Porting.html" target="_top">Porting.html&nbsp;
+
+                  </a></td>
+                  <td style="width: 768px;" align="undefined" valign="undefined">Advice on
+
+porting Chronos to other platforms/environments.</td>
+                </tr>
+                <tr>
+                  <td style="width: 247px;" align="undefined" valign="undefined">Motivation.html</td>
+                  <td style="width: 768px;" align="undefined" valign="undefined">Why use Chronos? [Under construction]</td>
+                </tr>
+              </tbody>
+            </table>
+
+
+            <h3>Documentation in the code itself</h3>
+
+
+            <p>Most of the documentation for Chronos is in the code itself.
+
+The following "core API" classes have comments that should prove
+
+especially helpful in learning to use and obtain value from Chronos:</p>
+            <table style="background-color: rgb(239, 255, 255); width: 95%; text-align: left; margin-left: auto; margin-right: auto;" border="0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <th style="width: 247px;">Class Name</th>
+                  <th style="width: 768px;">Remarks</th>
+                </tr>
+                <tr>
+                  <td style="width: 247px;" align="undefined" valign="undefined">ChronosTimezone</td>
+                  <td style="width: 768px;" align="undefined" valign="undefined">Abstract class for all Chronos timezones,
+
+aliased by the global Timezone.</td>
+                </tr>
+                <tr>
+                  <td style="width: 247px;" align="undefined" valign="undefined">Calendar </td>
+                  <td style="width: 768px;" align="undefined" valign="undefined">Abstract class for all Chronos calendars.</td>
+                </tr>
+                <tr>
+                  <td style="width: 247px;" align="undefined" valign="undefined">ScientificDuration</td>
+                  <td style="width: 768px;" align="undefined" valign="undefined">Duration (temporal extent)
+
+implementation, aliased by the global Duration.</td>
+                </tr>
+                <tr>
+                  <td style="width: 247px;" align="undefined" valign="undefined">Timeperiod </td>
+                  <td style="width: 768px;" align="undefined" valign="undefined">Implements intervals of time.</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>Although
+
+they are "core API" classes, the following have not yet been fully
+
+commented (although the ANSI Smalltalk Standard serves as an excellent
+
+reference for some of them):</p>
+
+
+            <table style="background-color: rgb(239, 255, 255); width: 95%; text-align: left; margin-left: auto; margin-right: auto;" border="0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <th>Class Name</th>
+                  <th>Remarks</th>
+                </tr>
+                <tr>
+                  <td align="undefined" valign="undefined">Timepoint</td>
+                  <td align="undefined" valign="undefined">Point-in-time implementation, aliased by the global DateAndTime.</td>
+                </tr>
+                <tr>
+                  <td align="undefined" valign="undefined">AnnualDate</td>
+                  <td align="undefined" valign="undefined">Abstract class for partial dates that recur from year to year. </td>
+                </tr>
+                <tr>
+                  <td align="undefined" valign="undefined">SemanticDatePolicy</td>
+                  <td align="undefined" valign="undefined">Handles definition and detection of &ldquo;holidays.&rdquo;</td>
+                </tr>
+                <tr>
+                  <td align="undefined" valign="undefined">ChronosPrintPolicy</td>
+                  <td align="undefined" valign="undefined">Provides formatted printing of date, time and durational values.</td>
+                </tr>
+              </tbody>
+            </table>
+
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+ </center>
+
+</td></tr>
+<tr><td>
+<p style="font-size: 75%; color: rgb(128, 128, 128); background-color: rgb(248, 248, 248);">
+[Chronos] All code (classes and methods, and all associated documentation,) distributed as part of the 
+Chronos Date/Time library are &copy; Copyright 2005-2006 by Alan L. Lovejoy.&nbsp; All Rights Reserved. 
+Usage is controlled by the Chronos License (which is included in the distribution as the contents of 
+the file {chronos-license.txt}, and is also available from the <a href="http://www.chronos-st.org/">
+Chronos web site</a> {<a href="http://www.chronos-st.org/License.html" target="_top">http://www.chronos-st.org/License.html</a>})
+</p>
+<blockquote>"Do not go gentle into that good night,
+<br>Old age should burn and rave at the close of the day;
+<br>Rage, rage at the dying of the light!" -- Dylan Thomas
+</blockquote>
+</td></tr>
+
+</center>
+</td></tr></tbody></table>
+</center>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA BookMap//EN" "bookmap.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<map title="Basic Libraries" 
+	xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+	<topicref navtitle = "Class Libraries" href = "basicLibs.xml" type = "topic">
+		<topicref navtitle = "Collections" href = "collections.xml" type = "topic"/>
+		<topicref navtitle = "Colors, Patterns, and Palettes" href = "colors.xml" type = "topic"/>
+		<topicref navtitle = "Dates" href = "dates.xml" type = "topic"/>
+		<topicref navtitle = "Times" href = "times.xml" type = "topic"/>
+		<topicref navtitle = "Text and Fonts" href = "fonts.xml" type = "topic"/>
+		<topicref navtitle = "Geometrics" href = "geometrics.xml" type = "topic"/>
+		<topicref navtitle = "Images, Cursors, and Icons" href = "graphicImages.xml" type = "topic"/>
+		<topicref navtitle = "Numbers" href = "numbers.xml" type = "topic"/>
+		<topicref navtitle = "Characters and Strings" href = "strings.xml" type = "topic"/>
+		<topicref navtitle = "Text Files" href = "textfiles.xml" type = "topic"/>
+	</topicref>
+	</map>
+	

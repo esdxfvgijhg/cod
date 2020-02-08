@@ -1,0 +1,16 @@
+ctmc
+const  double lm1=0.5; 
+const  double lm2=0.5;
+const  double  gm=0.1;
+const  double  pf1=1;
+const  double pf2=0.8;
+
+module M
+P1:[0..1] init 1; // etat de la premiere composante
+P2:[0..1] init 1; // etat de la deuxieme composante
+[] (P1=1) -> lm1: (P1'= 0); // avec taux lambda1 1-->0
+[] (P2=1) -> lm2: (P2'= 0); // avec taux lambda2 1-->0
+endmodule
+
+label  "up"= P1*(lm1+gm)+P2*(lm2+gm)>=1;
+label  "down"= P1*(lm1+gm)+P2*(lm2+gm)=0;

@@ -1,0 +1,298 @@
+<?xml version="1.0"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+<!ENTITY arrow		"&#x2192;">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+	<topic id="vw.help.intro.creatingGUIs"
+			xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" >
+		<title>Creating Graphical User Interfaces</title>
+		<body>
+			<p>Typically, object-oriented application development starts with 
+				<term>domain classes</term> followed by the development of a graphical 
+				user interface (GUI). 
+				As an example, in a library information system, you would first create 
+				the classes representing books, patrons, catalogs, and other library objects, 
+				and when you are sure that they work as expected, you would then create the 
+				windows for interacting with them.</p>
+			<p>To create a GUI in &Product;, you use the <term>UI Painter</term> 
+				tool to "paint" widgets on a blank window (a "canvas") and write the "glue" 
+				code to connect the GUI to your domain objects. You could also create windows 
+				programmatically, even at runtime.</p>
+			<p>This topic gives an outline of the basic steps to create a GUI for your 
+				application. Refer to the <i>&Product; GUI Developer's Guide</i> for more 
+				details and the <i>&Product; Walk-Through</i> for a complete example.</p>
+		</body>
+
+		<topic id="vw.help.intro.creatingGUIs.uiPainter"
+				xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" >
+			<title>Working with the User Interface Painter</title>
+			<body>
+				<p>The UI Painter tool is accessible via the brush-and-canvas button 
+					on the Launcher or through the <uicontrol>Painter &arrow; New Canvas</uicontrol> 
+					command.</p>
+				<p><xref href="prereq:UIPainter:UIPainter new openNewWindowCanvas" 
+					format="st" scope="external">Open the Painter Tool for me</xref></p>
+				<p>Its interface consists 
+					of three windows: the canvas (future window) itself, a Palette with widgets, 
+					and a GUI Painter Tool. To create a window, you generally proceed as follows:</p>
+				<section>
+					<title>Define the Basic Canvas Properties</title>
+						<p>Use the Painter Tool to define the properties of the canvas (the future window). 
+							These are available on different tabs in the Painter Tool, when <uicontrol>Main Window</uicontrol> 
+							is selected in the list view on the left-hand side of the Tool.</p>
+						<p>Basic properties include
+							the window label, the name of the method that will supply its menu and tool bars (menus 
+							themselves can be created using the Menu Editor tool accessible from the Painter tool, 
+							its size (minimum, fixed, etc.), its background color, and its scroll bars.</p>
+				</section>
+				<section>
+					<title>Install the Canvas</title>
+						<p>When you 
+							are done, use the <uicontrol>Install</uicontrol> command (on the <uicontrol>Edit</uicontrol> 
+							menu of the Painter tool and the <uicontrol>&lt;Operate&gt;</uicontrol> menu of the canvas) 
+							to "install" the canvas on a class (e.g., <codeph>LibrarySystemUI</codeph>), usually a 
+							subclass of <apiname>ApplicationModel</apiname>. For the less common "modal dialogs", 
+							the window will be a subclass of <apiname>SimpleDialog</apiname>.</p>
+						<p>When prompted to 
+							<uicontrol>Install Resource</uicontrol>, specify the class and 
+							class-side method that will hold the window's description 
+							(normally <codeph>windowSpec</codeph>), and click <uicontrol>OK</uicontrol>. 
+							If the class does not yet exist, the UI Painter will define it for you. Once the canvas is 
+							installed, you can open it via the <uicontrol>Open</uicontrol> command in the Painter Tool,
+							or programmatically via: 
+							<codeblock otherprops="smalltalk expression">LibrarySystemUI open</codeblock></p>
+						<p>Besides storing a description of your window, the application model class has several 
+							other functions. As mentioned, <codeph>LibrarySystemUI open</codeph> opens the GUI and 
+							probably the whole application with it. In doing this, it creates an instance of 
+							<codeph>UIBuilder</codeph> which builds the window from the specification stored in 
+							the <codeph>windowSpec</codeph> method, sending several intermediate "hook" message 
+							to the application model, the new instance of your <codeph>LibrarySystemUI</codeph>. 
+							By default, these messages do nothing but you can redefine them to intervene into 
+							the building process, for example to initialize the contents of some window widgets.</p>
+						<p>The application model also provides an interface between the GUI and your domain 
+							objects so that, for example, when the user enters the name of a book into a text 
+							field, the application model propagates the value to your library classes. Finally, 
+							the builder provides a permanent interface to the window and allows you, for example, 
+							to enable or disable widgets, change their labels at runtime, etc.</p>
+				</section>
+				<section>
+					<title>Add Widgets to the Canvas</title>
+						<p>To populate the canvas with widgets, drag the desired components (buttons, text fields, 
+							lists, etc.) from the Palette to the window. (There are several dozen predefined widgets 
+							and you can define your own.) Their exact positions and size are not important because 
+							they can be easily accurately adjusted and aligned later.</p>
+				</section>
+				<section>
+					<title>Define Widget Properties</title>
+						<p>Select the widgets one-by-one, on the canvas or in the Painter tool, entering their 
+							properties using the Painter tool, and clicking <uicontrol>Accept</uicontrol> for 
+							each group of properties. Different kinds of widgets have different properties and 
+							you will have to learn about them from the &Product; documentation. The more common 
+							properties are as follows:
+							<dl>
+								<dlentry>
+									<dt>name</dt>
+									<dd>A <codeph>String</codeph> displayed inside or beside certain widgets</dd>
+								</dlentry>
+								<dlentry>
+									<dt>action</dt>
+									<dd>A <codeph>Symbol</codeph>, only for buttons, the name of the message sent when the 
+										user clicks the button</dd>
+								</dlentry>
+								<dlentry>
+									<dt>aspect</dt>
+									<dd>A <codeph>ValueHolder</codeph>, an object holding the widget's value, for example 
+										the text displayed by a text field or the names displayed inside a list</dd>
+								</dlentry>
+								<dlentry>
+									<dt>ID</dt>
+									<dd>A <codeph>Symbol</codeph>, used to access the widget, for example to hide or disable it.</dd>
+								</dlentry>
+							</dl>
+						</p>
+				</section>
+				<section>
+					<title>Adjust the Size and Position of the Widgets</title>
+						<p>Do this either by dragging individual widgets with the mouse, or by selecting a group of 
+							widgets and using alignment tools in the Palette. 
+							Widget corners can use absolute positioning (offset) in pixels, or relative positioning 
+							(proportion of window size), or a combination of the two. Relative positioning causes 
+							widgets to automatically adjust when the user changes the size of the window. The choice 
+							can be made via <uicontrol>Layout</uicontrol> in the Painter tool.</p>
+				</section>
+				<section>
+					<title>Define Widget Aspects and Accessors</title>
+						<p>Use <uicontrol>Define</uicontrol> under <uicontrol>Edit</uicontrol> in the Painter tool 
+							to create instance variables to hold your widget properties, and method "stubs" (do-nothing methods) 
+							for widgets that require methods, such as action methods for buttons and aspect accessors 
+							for aspects. You will fill in the bodies later.</p>
+				</section>
+				<section>
+					<title>Save Changes</title>
+						<p><uicontrol>Install</uicontrol> the window again (on the same application model class) to 
+							capture the changes in the <codeph>windowSpec</codeph> method. In general, if you modify the 
+							canvas and don't re-install it, the changes will not be recorded in the class and will not 
+							show when you open the window. This is a frequent cause of surprises.</p>
+				</section>
+				<section>
+					<title>Write the GUI Code</title>
+						<p>Use a Browser (easily opened from the Painter tool via <uicontrol>Edit &arrow; Browse</uicontrol>) 
+							to view your application model class, and write the code required by the GUI. This requires 
+							at least some of the following:
+							<ul>
+								<li>Add instance variables for access to your <i>domain</i> objects. As an example, if 
+										the GUI provides access to a <codeph>Book</codeph>, you probably need an instance variable 
+										in your application model to refer to it.</li>
+								<li>Redefine any "hook" messages sent to your application during the building of the 
+										window to intitialize your application and its GUI. These messages include 
+										<codeph>initialize</codeph> which is sent as a result of instantiating your application 
+										model class (<codeph>LibrarySystemUI</codeph>), and the following messages sent subsequently 
+										by the <codeph>UIBuilder</codeph> as it builds your window and opens it:
+										<ul>
+											<li>
+												<codeph>preBuildWith:</codeph> is sent before the builder constructs the 
+												window,</li>
+											<li>
+												<codeph>postBuildWith:</codeph> is sent when the builder is done building 
+												but before the window opens on the screen, and</li>
+											<li>
+												<codeph>postOpenWith:</codeph> is sent when the window displays but before the user 
+												starts interacting with it.</li>
+										</ul></li>
+								<li>Each of these hook messages has its proper uses, but I leave the details for the 
+										more detailed documentation. The following are the most common actions performed by 
+										hook messages:
+										<ul>
+											<li>Initialize instance variables providing access to your domain objects. Since 
+												the application model probably opens the whole application, you will want to create 
+												new instances of your domain objects and assign them to application model's instance 
+												variables. You may also want to intialize them from files now. This is usually done 
+												in an <codeph>initialize</codeph> method.</li>
+											<li>Initialize widgets' aspect variables so that the window opens with desired initial 
+												contents of lists, radio buttons, check boxes, and so on. Use <codeph>postBuildWith:</codeph> 
+												and expressions like <codeph>anAspect value: newValue</codeph> to assign a new value 
+												to an aspect variable, and <codeph>anAspect value</codeph> to retrieve the value; 
+												here <codeph>anAspect</codeph> is the widget's aspect variable. Using <codeph>value</codeph> 
+												and <codeph>value:</codeph> accessors to deal with widgets (here and everywhere else 
+												in your code) is <i>essential</i> because if you try to change the value of an aspect 
+												by assigning to its instance variable, you will ruin the bindings between the application 
+												model and the widgets and the widgets and their values will become disjoint. This is a 
+												very frequent mistake.</li>
+											<li>Specify the names of the messages that should be automatically sent to the application 
+												model at runtime when the aspect of a widget changes &#x2014; as when the user selects 
+												a different radio button causing perhaps the list labels to change, or when the state 
+												of a check box changes, or a new item is selected in a list. This is achieved by a message 
+												like <codeph>anAspect onChangeSend: aSymbol to: self</codeph> in <codeph>postBuildWith:</codeph> 
+												Here <codeph>aSymbol</codeph> is the name of the message sent to the application model 
+												when the change occurs.</li>
+										</ul>
+								</li>
+							</ul>
+						</p>
+				</section>
+				<section>
+					<title>Implement Button Actions</title>
+						<p>If you used <uicontrol>Define</uicontrol>, the stub methods that are evaluated 
+							for button actions already exist, and you only need to fill in the code.</p>
+				</section>
+				<section>
+					<title>Implement Methods that Handle Changes</title>
+						<p>If you used <codeph>onChangeSend:to:</codeph> in your GUI support code (as described 
+							in a previous step, above), you need to implement the methods named as 
+							<codeph>aSymbol</codeph> parameter to <codeph>onChangeSend:to:</codeph>.</p>
+						<p>If you need to interact with a widget (for example, to disable or enable it) access 
+							it using <codeph>(builder componentAt: idSymbol) widget</codeph> where 
+							<codeph>idSymbol</codeph> is the <codeph>ID</codeph> property of the widget.</p>
+				</section>
+				<p>That's it!</p>
+				<p>Note that you can test all of your code and your installed window <i>at any point</i> 
+					by opening your application. In fact, you can even change your methods while the application 
+					is open <i>without closing it</i> and develop the interface interactively. 
+					This is because application model messages are sent only when they are activated by the 
+					user and can thus be changed at any point. The only times when you must close and reopen 
+					the window is when you reinstall it (to add or remove widgets, reposition them or change 
+					other properties, etc.), or when you want to change the initialization process and therefore 
+					need to work with a window different from the one currently displayed.</p>
+				<p>There are, of course, lots of details that you must learn to build a more sophisticated 
+					GUI and you can find them in the &Product; documentation. The most important additional 
+					details concern the various widget APIs. The essential points about the basic widgets 
+					can be summarized as follows:
+					<dl>
+						<dlentry>
+							<dt>Action buttons</dt>
+							<dd>These have a name (label) and an action method which is evaluated when the user clicks the button.</dd>
+						</dlentry>
+						<dlentry>
+							<dt>Text editors and Input fields</dt>
+							<dd>These have an aspect holding the text that should only be accessed by <codeph>value</codeph> and 
+								<codeph>value:</codeph>; they have an <uicontrol>&lt;Operate&gt;</uicontrol> menu (the easiest way 
+								to define it is via the Menu Editor in the UI Painter.</dd>
+						</dlentry>
+						<dlentry>
+							<dt>Check boxes</dt>
+							<dd>Have an aspect holding <codeph>true</codeph> when checked (enabled), and <codeph>false</codeph> 
+								when off (disabled).</dd>
+						</dlentry>
+						<dlentry>
+							<dt>Radio boxes</dt>
+							<dd>These widgets come in groups; each radio button in a group has its individual name 
+								(a <codeph>Symbol</codeph> &#x2014; the button's <codeph>Selection</codeph> property) and all 
+								radio buttons in a group <i>share</i> an <codeph>Aspect</codeph> (another property) that 
+								holds the name of the currently-selected button; when the user selects a different button, 
+								its <codeph>Selection</codeph> name becomes the new value of the <codeph>Aspect</codeph>.
+							</dd>
+						</dlentry>
+						<dlentry>
+							<dt>List widgets</dt>
+							<dd>Hold a list and its current selection in an aspect variable; its list and current selection 
+								can be accessed by sending <codeph>list list: selection</codeph> and <codeph>selection:</codeph>; 
+								it may have an <uicontrol>&lt;Operate&gt;</uicontrol> menu; you can also define it as a multi-select 
+								list, allowing multiple selections at a time.</dd>
+						</dlentry>
+					</dl>
+				</p>
+				<section>
+					<title>Exercises</title>
+					<ol>
+						<li>Read the comments of classes <codeph>ApplicationModel</codeph>, <codeph>SimpleDialog</codeph>, 
+							and <codeph>UIBuilder</codeph>. Read class-side examples in <codeph>UIBuilder</codeph> to see 
+							how to build windows programmatically.</li>
+						<li>Examine a few existing applications (such as the Menu Editor, the Browser, or the Palette 
+							via the Resource Finder (the Painter command in the Launcher or the other canvas-like button). 
+							At this point, focus on their UI features. As an example, select <codeph>Tools.MenuEditor</codeph> 
+							and <uicontrol>windowSpec</uicontrol>, click <uicontrol>Edit</uicontrol>, and explore the 
+							widgets and their properties.</li>
+						<li>Create an application implementing a simple counter. The window should have two buttons 
+							labeled <uicontrol>Up</uicontrol> and <uicontrol>Down</uicontrol>, and a text input field 
+							showing the current count. When the window opens, the field is initialized to <codeph>0</codeph>, 
+							and clicking the buttons increments or decrements the displayed count. This problem is so simple 
+							that you can do without a domain class and implement the whole application in your application 
+							model class. (Note: When defining the input field, select its <uicontrol>Type</uicontrol> as 
+							<uicontrol>Number</uicontrol> so that you can assign a numerical value to it directly through 
+							<codeph>value:</codeph> without first converting it to a <codeph>String</codeph>.)</li>
+						<li>Add <uicontrol>Save</uicontrol> and <uicontrol>Load</uicontrol> buttons to the counter. When the user 
+							clicks <uicontrol>Save</uicontrol>, a dialog requests a file name and stores the current count in it. 
+							Clicking <uicontrol>Load</uicontrol> requests a filename and displays the stored value in the input 
+							field.</li>
+						<li>Create an application displaying the names of available colors. It will have a list displaying 
+							the names of all color constants (class <codeph>ColorValue</codeph>) and when the user clicks one, 
+							the background of the window changes to the selected color. (Hint: Your application model can obtain 
+							the window via its <codeph>builder</codeph>.)</li>
+						<li>Create an application displaying a list of all classes and showing the name of the superclass 
+							of the selected class in an input field.</li>
+						<li>Create an application that allows you to view, edit, save, and load information about your books 
+							(CD collection, etc.).</li>
+					</ol>
+				</section>
+			</body>
+		</topic>
+	</topic>
+</dita>

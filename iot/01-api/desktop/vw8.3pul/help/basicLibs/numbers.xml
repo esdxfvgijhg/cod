@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product      "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.numbers"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Numbers</title>
+<body><p>&Product; provides a large number of specialized number classes,
+including <i>standard numeric types</i> (integers, floating point, etc.), which are
+implemented as subclasses of <apiname>Magnitude</apiname>; and <i>complex numbers</i> 
+(a.k.a. imaginary), as well as <i>metanumbers</i> which allow for handling infinite 
+and infinitary numbers.</p>
+<p>Smalltalk supports very large integers whose precision is limited only by 
+the available memory.</p></body>
+<topic id = "vw.help.numbers.create"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a number</title>
+<body><p><indexterm>number<indexterm>create object</indexterm></indexterm><indexterm>string<indexterm>change
+to number</indexterm></indexterm>Numbers are typically created by
+literal numeric expressions, or by mathematical operations on numbers.
+Numbers in &Product; are real objects, instances of classes <apiname>Integer</apiname> (really
+its subclasses <apiname>SmallInteger</apiname>, <apiname>LargePositiveInteger</apiname>,
+and <apiname>LargeNegativeInteger</apiname>), <apiname>Float</apiname>, <apiname>Fraction</apiname>,
+and <apiname>FixedPoint</apiname>.</p>
+<p>The following expressions create these numeric types and assign them
+to variables:
+<codeblock otherprops="smalltalk expression">x := 100.								"Integer"
+x := 5.3.									"Float"
+x := 5.5d.						"Double"
+x := 1/2.							"Fraction"
+x := 99.95s.						"FixedPoint"
+x := 1.555e3.						"Float, in exponential notation"
+y := -3.955d2.						"Double in exponential notation"
+x := 2r101.						"101 base 2"
+y := 16r1A.						"1A base 16"</codeblock></p>
+<p>You can also create a number from a <apiname>String</apiname> or
+from a <apiname>ReadStream</apiname>:
+<codeblock otherprops="smalltalk expression">'12345' asNumber.
+Integer readFromString: '1234'.
+Integer readFrom: '300017.9' readStream</codeblock></p>
+<p>Numbers are also returned from arithmetic and mathematical functions.</p></body></topic>
+<topic id = "vw.help.numbers.arithmetic"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Arithmetic operations</title>
+<body><p><indexterm>arithmetic operators</indexterm><indexterm>number<indexterm>arithmetic</indexterm></indexterm>The
+following expressions perform standard arithmetic operations:
+<codeblock otherprops="smalltalk expression">x + y. 							"Addition"
+x - y.							"Subtraction"
+x * y.							"Multiplication"
+x / y.							"Division"
+x // y.							"Divide, return integer part"
+x \\ y.							"Divide, return remainder"</codeblock></p></body></topic>
+<topic id = "vw.help.numbers.rounding"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Round</title>
+<body><p><indexterm>number<indexterm>rounding</indexterm></indexterm>The
+following expressions perform rounding operations:
+<codeblock otherprops="smalltalk expression">x := -5.5 rounded.					"Round to nearest integer"
+x := 5.8 floor.						"Round down"
+x := 5.2 ceiling.					"Round up"
+x := -5.8 truncated.				"Round toward zero"
+x := 5555.55555 roundTo: 0.01.		"Round to nearest multiple of"
+x := 5555.55555 truncateTo: 0.01.	"Truncate to nearest multiple of"</codeblock></p></body></topic>
+<topic id = "vw.help.numbers.mathematics"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Mathematical operations</title>
+<body><p><indexterm>number<indexterm>mathematic functions</indexterm></indexterm>The
+following expressions perform standard arithmetic operations:
+<codeblock otherprops="smalltalk expression">3 squared.						"Square"
+9 sqrt.							"Square root"
+5 ** 3.							"Raise to power"
+125 ** (1/3).						"Root"</codeblock></p></body></topic>
+<topic id = "vw.help.numbers.testEquality"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Testing for equality</title>
+<body><p><indexterm>number<indexterm>equality</indexterm></indexterm>The
+following expressions perform various tests for equality:
+<codeblock otherprops="smalltalk expression">5.5 = 5.5.							"Equality"
+5 == 5.							"Identity"
+5 ~= 7.							"Not equal"
+5 ~~ 6.							"Not identical"
+5 &lt; 6.							"Less than"
+5 &lt;= 6.							"Less than or equal"
+6 &gt; 5.							"Greater than"
+6 &gt;= 5.							"Greater than or equal"
+5 between: 1 and: 10.				"Inclusion in range"</codeblock></p></body></topic>
+<topic id = "vw.help.numbers.maxMin"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get the minimum/maximum of two numbers</title>
+<body><p><indexterm>number<indexterm>get lesser of two numbers</indexterm></indexterm><indexterm>number
+get greater of two numbers</indexterm>The following expressions
+perform minimum/maximum operations:
+<codeblock otherprops="smalltalk expression">5.5 min: 6.5.						"Return the minimum"
+5.5 max: 6.5						"Return the maximum"</codeblock></p></body></topic>
+<topic id = "vw.help.numbers.trig"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Trigonometric functions</title>
+<body><p><indexterm>number<indexterm>trigonometric functions</indexterm></indexterm><indexterm>trigonometric
+functions</indexterm>The following expressions perform trigonometric
+operations:
+<codeblock otherprops="smalltalk expression">x sin.							"Sine"
+x cos.							"Cosine"
+x tan.							"Tangent"
+x arcSin.							"Arcsine"
+x arcCos.						"Arccosine"
+x arcTan.						"Arctangent"</codeblock></p></body></topic>
+<topic id = "vw.help.numbers.logFunctions"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Logarithmic functions</title>
+<body><p><indexterm>number<indexterm>logarithmic functions</indexterm></indexterm><indexterm>logarithmic
+functions</indexterm>The following expressions perform logarithmic
+operations:
+<codeblock otherprops="smalltalk expression">x log.							"Base 10 log"
+x log: 7.							"Base n log"
+x ln.								"Natural log"
+x exp.							"Exponential"</codeblock></p></body></topic>
+<topic id = "vw.help.numbers.testForNum"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Test for number</title>
+<body><p><indexterm>number<indexterm>test if a number</indexterm></indexterm>To
+test if an object is a number of some kind, send a <apiname>respondsToArithmetic</apiname> message
+to the object.</p>
+<p>If the object is a number, it responds <codeph>true</codeph>.
+<codeblock otherprops="smalltalk expression">| x |
+x := 55.
+^x respondsToArithmetic</codeblock></p></body></topic>
+<topic id = "vw.help.numbers.testForInteger"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Test for integer</title>
+<body><p><indexterm>number<indexterm>test if an integer</indexterm></indexterm>To
+test if a number is an integer, send an <apiname>isInteger</apiname> message
+to the number.
+<codeblock otherprops="smalltalk expression">| x |
+x := 55.
+^x isInteger</codeblock></p></body></topic>
+<topic id = "vw.help.numbers.testEvenOdd"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Test for even or odd number</title>
+<body><p><indexterm>number<indexterm>test for odd or even</indexterm></indexterm>To
+test if a number is even, send an <apiname>even</apiname> message
+to the number.
+<codeblock otherprops="smalltalk expression">| x |
+x := 56.
+^x even</codeblock></p>
+<p>To test if a number is odd, send an <apiname>odd</apiname> message
+to the number.
+<codeblock otherprops="smalltalk expression">| x |
+x := 55.
+^x odd</codeblock></p></body></topic>
+<topic id = "vw.help.numbers.positiveNegative"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Test relative to zero</title>
+<body><p><indexterm>number<indexterm>test for zero</indexterm></indexterm>To
+test if a number is zero, send an <apiname>isZero</apiname> message
+to the number.
+<codeblock otherprops="smalltalk expression">| x |
+x := 0.
+^x isZero</codeblock></p>
+<p><indexterm>number<indexterm>test for positive or negative</indexterm></indexterm>To
+test if a number is positive or 0, send a <apiname>positive</apiname> message
+to the number.
+<codeblock otherprops="smalltalk expression">| x |
+x := 55.
+^x positive</codeblock></p>
+<p>Send a <apiname>strictlyPositive</apiname> message to the number
+to ensure it is greater than 0.
+<codeblock otherprops="smalltalk expression">| x |
+x := 55.
+^x strictlyPositive</codeblock></p>
+<p>To test if a number is negative (less than 0), send a <apiname>negative</apiname> message to
+the number.
+<codeblock otherprops="smalltalk expression">| x |
+x := -55.
+^x negative</codeblock></p></body></topic>
+<topic id = "vw.help.numbers.getSignMultiplier"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get a number’s sign as a multiplier</title>
+<body><p><indexterm>number<indexterm>get multiplier</indexterm></indexterm>Send
+a <apiname>sign</apiname> message to the number. The returned value
+is <codeph>1</codeph> when the number is greater than zero, <codeph>-1</codeph> when
+the number is less than zero, or 0.
+<codeblock otherprops="smalltalk expression">| x y |
+x := -55.
+y := x abs.
+^y * (x sign)</codeblock></p></body></topic>
+<topic id = "vw.help.numbers.changeSign"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Reverse a number’s sign</title>
+<body><p><indexterm>number<indexterm>change sign</indexterm></indexterm>Send
+a <apiname>negated</apiname> message to the number.
+<codeblock otherprops="smalltalk expression">| x |
+x := -55.
+^x negated</codeblock></p></body></topic>
+<topic id = "vw.help.numbers.changeNumType"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Change a number’s type</title>
+<body><p><indexterm>number<indexterm>change type</indexterm><indexterm>casting</indexterm></indexterm>To
+change between many types of numbers, you merely send the message <apiname>asType</apiname> to
+the number, where Type is the number type you wish to change to.
+<codeblock otherprops="smalltalk expression">99.95 asFixedPoint: 2.				"To fixed point with precision n"
+55 asFloat						"To single-precision floating point"
+55 asDouble						"To double-precision floating point"
+55.5 asRational					"To rational (integer or fraction)"</codeblock></p></body></topic>
+<topic id = "vw.help.numbers.absValue"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get absolute value</title>
+<body><p><indexterm>number<indexterm>absolute value</indexterm></indexterm>Send
+an <apiname>abs</apiname> message to the number.
+<codeblock otherprops="smalltalk expression">| x |
+x := -55.5.
+^x abs</codeblock></p></body></topic>
+<topic id = "vw.help.numbers.reciprocal"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get reciprocal</title>
+<body><p><indexterm>number<indexterm>reciprocal</indexterm></indexterm>Send
+a <apiname>reciprocal</apiname> message to the number.
+<codeblock otherprops="smalltalk expression">| x |
+x := 0.5.
+^x reciprocal</codeblock></p></body></topic>
+<topic id = "vw.help.numbers.degreeRadians"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Convert between degrees and radians</title>
+<body><p><indexterm>degrees</indexterm><indexterm>radians</indexterm><indexterm>number<indexterm>degrees
+to radians</indexterm></indexterm>To convert from degrees to radians,
+send a <apiname>degreesToRadians</apiname> message to the number:
+<codeblock otherprops="smalltalk expression">x degreesToRadians</codeblock></p>
+<p>To convert from radians to degree, send a <apiname>radiansToDegrees</apiname> message to
+the number:
+<codeblock otherprops="smalltalk expression">x radiansToDegrees</codeblock></p></body></topic>
+<topic id = "vw.help.numbers.createPoint"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a point</title>
+<body><p><indexterm>point<indexterm>create</indexterm></indexterm><indexterm>number<indexterm>create
+point</indexterm></indexterm>Send an <apiname>@</apiname> message
+to a number to be the <codeph>x</codeph> coordinate with another number
+as the argument to be the <codeph>y</codeph> coordinate.
+<codeblock otherprops="smalltalk expression">| x y |
+x := 55.
+y := 100.
+^x @ y</codeblock></p>
+<p>Send an <apiname>asPoint</apiname> message to the number. The returned
+point has the number as both its <codeph>x</codeph> and <codeph>y</codeph> coordinates.
+<codeblock otherprops="smalltalk expression">| x |
+x := 55.
+^x asPoint</codeblock></p></body></topic>
+<topic id = "vw.help.numbers.charFromNum"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a character from a numeric value</title>
+<body><p><indexterm>character<indexterm>from number</indexterm></indexterm><indexterm>number<indexterm>to
+character</indexterm></indexterm>Send an <apiname>asCharacter</apiname> message
+to an integer. If the receiver is the numeric representation of
+a valid character, the character is returned; otherwise, an error
+results.
+<codeblock otherprops="smalltalk expression">| x |
+x := 55.
+^x asCharacter</codeblock></p></body></topic>
+<topic id = "vw.help.numbers.stringFromNum"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Convert a number to a string</title>
+<body><p><indexterm>printString</indexterm><indexterm>number<indexterm>to
+String</indexterm></indexterm>Send a <apiname>printString</apiname> message
+to the number.
+<codeblock otherprops="smalltalk expression">| x |
+x := 55.
+^x printString</codeblock></p>
+<p>To convert to a string but with a base other than 10, send a <apiname>printStringRadix:</apiname> message
+to the number with the base as argument.
+<codeblock otherprops="smalltalk expression">| x |
+x := 55.
+^x printStringRadix: 16</codeblock></p></body></topic>
+<topic id = "vw.help.numbers.commonDiv"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Greatest common divisor</title>
+<body><p><indexterm>number<indexterm>greatest common divisor</indexterm></indexterm>Send
+a <apiname>gcd:</apiname> message to one of the two numbers. The argument
+is the second number.
+<codeblock otherprops="smalltalk expression">| x y |
+x := 5.
+y := 10.
+^x gcd: y</codeblock></p></body></topic>
+<topic id = "vw.help.numbers.commonMult"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Least common multiple</title>
+<body><p><indexterm>number<indexterm>least common multiple</indexterm></indexterm>Send
+an <apiname>lcm:</apiname> message to one of the two numbers. The
+argument is the second number.
+<codeblock otherprops="smalltalk expression">| x y |
+x := 5.
+y := 8.
+^x lcm: y</codeblock></p></body></topic>
+<topic id = "vw.help.numbers.factorial"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Factorial of a number</title>
+<body><p><indexterm>number<indexterm>factorial</indexterm></indexterm>Send
+a <apiname>factorial</apiname> message to the number.
+<codeblock otherprops="smalltalk expression">| x |
+x := 5.
+^x factorial</codeblock></p></body></topic></topic>
+<topic id = "vw.help.numbers.random"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Random Numbers</title>
+<topic id = "vw.help.numbers.random.createSeries"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Generate a random number between 0 and 1</title>
+<body><p><indexterm>random number</indexterm><indexterm>number<indexterm>generate
+random</indexterm></indexterm>To generate a stream of random numbers,
+create an instance of <apiname>Random</apiname>. The resulting object
+responds to <apiname>Stream</apiname> messages such as <apiname>next</apiname> message
+to get the next number in the sequence.</p>
+<p><ol><li><p>Create a random stream of numbers by sending <apiname>new</apiname> to
+the <apiname>Random</apiname> class.</p></li>
+<li><p>Get the next number in the stream by sending <apiname>new</apiname> to
+the random stream.
+<codeblock otherprops="smalltalk expression">| randomStream x |
+randomStream := Random new.
+x := randomStream next.
+^x</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.numbers.random.inRange"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Generate a random integer in a specified range</title>
+<body><p><indexterm>number<indexterm>random integer</indexterm></indexterm>A <apiname>Random</apiname> stream
+returns fractional values between 0 and 1. To get a random stream
+of integers, you must convert the stream values. The following example
+shows one such possible conversion.
+<codeblock otherprops="smalltalk expression">| randomStream rangeStart rangeEnd rangeExtent x |
+randomStream := Random new.
+rangeStart := 1.
+rangeEnd := 52.
+rangeExtent := rangeEnd - rangeStart.
+x := (randomStream next * rangeExtent + rangeStart) rounded.
+^x</codeblock></p></body></topic>
+<topic id = "vw.help.numbers.random.seeding"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Seeding a "random" sequence</title>
+<body><p><indexterm>number<indexterm>seed random</indexterm></indexterm>To
+reproduce a specific sequence, you can specify a <cite>seed</cite> value.
+the seed value can also be used to generate additional random features.</p>
+<p>Create the random stream by sending a <apiname>fromGenerator:seededWith:</apiname> message
+to the <apiname>Random</apiname> class. The first argument is an integer
+from 1 to 7, identifying one of the seven streams that &Product;
+provides. The second argument is a number that is used to select
+a position in the stream.
+<codeblock otherprops="smalltalk expression">| rangeStart rangeEnd rangeExtent randomStreamsequence |
+rangeStart := 1.
+rangeEnd := 52.
+rangeExtent := rangeEnd - rangeStart.
+randomStream := Random 
+			fromGenerator: 1
+			seededWith: 1.</codeblock></p></body></topic></topic>
+<topic id = "vw.help.numbers.constants"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Numeric Constants</title>
+<topic id = "vw.help.numbers.zero"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Zero</title>
+<body><p><indexterm>number<indexterm>zero</indexterm></indexterm><indexterm>zero</indexterm>Send
+a <apiname>zero</apiname> message to any numeric class. The zero value
+returned is an instance of the target class.</p>
+<p>To get a zero of the same class as an existing number, first
+get the class of that number by sending a class message to it and
+then send <apiname>zero</apiname> to the resulting object.
+<codeblock otherprops="smalltalk expression">| x y z |
+x := Float zero.
+y := Integer zero.
+z := x class zero.
+^Array with: x with: y with: z</codeblock></p></body></topic>
+<topic id = "vw.help.numbers.one"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>One</title>
+<body><p><indexterm>one</indexterm><indexterm>number<indexterm>one</indexterm></indexterm>Send
+a <apiname>unity</apiname> message to any numeric class. The value
+returned is an instance of the target class.</p>
+<p>To get a value of the same class as an existing number, first
+get the class of that number by sending a <apiname>class</apiname> message
+to it and then send <apiname>unity</apiname> to the resulting object.
+<codeblock otherprops="smalltalk expression">| x y z |
+x := Float unity.
+y := Integer unity.
+z := x class unity.
+^Array with: x with: y with: z</codeblock></p></body></topic>
+<topic id = "vw.help.numbers.pi"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Pi</title>
+<body><p><indexterm>pi</indexterm><indexterm>number<indexterm>pi</indexterm></indexterm>Send
+a <apiname>pi</apiname> message to the <apiname>Float</apiname> or <apiname>Double</apiname> class.
+Note that <apiname>Float</apiname> returns a single-precision version
+while <apiname>Double</apiname> returns a double-precision version.</p>
+<p>To get a pi of the same class as an existing number, first get
+the class of that number and then send <apiname>pi</apiname> to the
+resulting object.
+<codeblock otherprops="smalltalk expression">| x y z |
+x := Float pi.
+y := Double pi.
+z := x class pi.
+^Array with: x with: y with: z</codeblock></p></body></topic></topic></dita>

@@ -1,0 +1,1 @@
+encoding: #UTF_8catalog: ExifCouldNotFindTheEXIFHeaderEndianFlagIn1p_ = 'Konnte die EXIF-Header-Endian-Kennzeichnung in <1p> nicht finden'CouldNotFindTheEXIFHeaderTag0x002AIn1p_ = 'Konnte die EXIF-Header-Kennzeichnung 0x002A in <1p> nicht finden'NotAnEXIFPhotoIn1p_ = 'In <1p> steht kein EXIF-Foto'

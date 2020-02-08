@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.stLang.classes"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Classes</title>
+<body><p>Every object in the Smalltalk environment is an instance of a particular 
+<term>class</term>. Classes define the form and behavior of their instances 
+(i.e., the messages to which they respond). The behavior is embodied in a set 
+of <term>methods</term> associated with the class. That is, data in Smalltalk 
+generally belongs to instances, while behavior always belongs to classes. 
+Still, classes can also maintain their own variables, such as constants that 
+are available to all of their instances.</p>
+<p>Class names may contain numbers, but they must always begin with a capital 
+letter. By convention, camel case is used to name classes.</p></body>
+<topic id = "vw.help.stLang.classes.browse"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Browse a class</title>
+<body><p><indexterm>classes<indexterm>browse</indexterm></indexterm>To
+browse only the selected class (with a Class Browser), use &lt;Operate&gt;
+in the browser’s classes view and select<uicontrol> Spawn</uicontrol>.</p>
+<p>To browse only the classes in the same branch of the class hierarchy (with
+a Class Hierarchy Browser), use &lt;Operate&gt; in the classes view and
+select<uicontrol> Spawn Hierarchy</uicontrol>.</p></body></topic>
+<topic id = "vw.help.stLang.classes.browseHierarchy"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>View a class hierarchy</title>
+<body><p><indexterm>classes<indexterm>view hierarchy</indexterm></indexterm>When
+one class is selected in the System Browser, select the <uicontrol>Class</uicontrol> tab
+in the navigator to view its hierarchy (it may be necessary to deselect a protocol 
+in order to see this.)</p>
+<p>To open a separate Hierarchy Browser, select <uicontrol>Class &#x2192; Spawn Hierarchy</uicontrol>.</p></body></topic>
+<topic id = "vw.help.stLang.classes.viewReferences"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>View references to a class</title>
+<body><p><indexterm>classes<indexterm>browse references</indexterm></indexterm>Select
+a class, then select <uicontrol>References</uicontrol> on the <uicontrol>Class</uicontrol> menu.
+A new browser will open showing a list of all methods in the system
+that directly reference the selected class.</p></body></topic>
+<topic id = "vw.help.stLang.classes.findByName"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Find a class by name</title>
+<body><p><indexterm>classes<indexterm>find by name</indexterm></indexterm>Enter
+the class name into the input field in the upper-right corner of the
+Browser. You may enter the beginning of a class name, or use the wildcard
+character "<codeph>*</codeph>" to narrow your search. Enter 
+<uicontrol>&lt;Return&gt;</uicontrol> to perform the find.</p></body></topic>
+<topic id = "vw.help.stLang.classes.create"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Creating a Class</title>
+<topic id = "vw.help.stLang.classes.types"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Choose a class type</title>
+<body><p><indexterm>classes<indexterm>types</indexterm></indexterm>When
+creating a new class, you generally choose from one of three available
+types presented in the class creation dialog (<codeph>#ephemeron</codeph> and <codeph>#weak</codeph>
+are rarely used for special purposes only):<dl><dlentry><dt>#none</dt>
+<dd>(The most common type) A class with zero or more named instance
+variables (possibly inherited) and no indexed variables (e.g., <apiname>True</apiname>, <apiname>Point</apiname>).
+Can have any kind of subclass.</dd></dlentry>
+<dlentry><dt>#objects</dt>
+<dd>A class of indexable object with zero or more named instance variables
+and whose indexed variables hold arbitrary objects (e.g., <apiname>Array</apiname>, <apiname>OrderedCollection</apiname>).
+Subclasses can only be type <codeph>#objects</codeph>, because subclasses
+must also be object-indexable.</dd></dlentry>
+<dlentry><dt>#bytes</dt>
+<dd>A class of byte indexable object with <i>no</i> named instance variables
+and whose indexed variables hold only byte objects (e.g., <apiname>ByteString</apiname>).
+Indexed variable contents are accessed by the <apiname>at:</apiname> and <apiname>at:put:</apiname> methods
+defined in the class, providing one and two-byte character strings,
+byte and word arrays, etc. A <codeph>#bytes</codeph> class can only
+inherit from a chain of <codeph>#none</codeph> classes with no named
+instance variables. Subclasses must also be <codeph>#bytes</codeph> classes.</dd></dlentry></dl></p></body></topic>
+<topic id = "vw.help.stLang.classes.create.subclass"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a new subclass</title>
+<body><p><indexterm>classes<indexterm>create subclass</indexterm></indexterm>A
+class name can contain letters, numbers and underscores, but cannot
+begin with a number. Class names must begin with a capital letter.<ol>
+<li><p>In the System Browser, select the package in which to place
+the new class.</p></li>
+<li><p>On the <uicontrol>Class</uicontrol> menu, select <uicontrol>New &#x2192; Class</uicontrol>.</p></li>
+<li><p>Fill in options in the Class Creation dialog, specifying
+the class name and any instance variable names.</p></li>
+<li><p>To change class type, or to specify class instance variables
+or imports, complete fields on the Advanced tab.</p></li>
+<li><p>Click <uicontrol>OK</uicontrol> to create the class.</p></li></ol></p></body></topic>
+<topic id = "vw.help.stLang.classes.create.collectionClass"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a collection class</title>
+<body><p><indexterm>classes<indexterm>create a collection subclass</indexterm></indexterm>Collections
+can point to their elements in different ways. Select either of
+these options in the <uicontrol>Indexed type</uicontrol> filed on
+the Advanced tab of the class creation dialog:</p>
+<ul><li><p>#objects, for a class that holds a collection of indexable
+variables, each of which is a pointer to any kind of object.</p></li>
+<li><p>#bytes, for a class that holds a collection of indexable
+variables, each of which is a pointer to a byte object.</p></li></ul></body>
+</topic></topic></topic></dita>

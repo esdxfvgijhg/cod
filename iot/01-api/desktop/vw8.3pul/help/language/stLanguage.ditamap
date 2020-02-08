@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA BookMap//EN" "bookmap.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<map title = "Smalltalk Language"
+	chunk="by-topic" xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+	<topicref navtitle = "Smalltalk Language" href = "smalltalk.xml" type = "topic">
+		<topicref navtitle = "Messages" href = "messages.xml" type = "topic"/>
+		<topicref navtitle = "Using Variables" href = "variables.xml" type = "topic"/>
+		<topicref navtitle = "Classes" href = "classes.xml" type = "topic"/>
+		<topicref navtitle = "Methods" href = "methods.xml" type = "topic"/>
+		<topicref navtitle = "Name Spaces" href = "namespaces.xml" type = "topic"/>
+		<topicref navtitle = "Name Bindings" href = "bindings.xml" type = "topic"/>
+		<topicref navtitle = "Initializing Objects" href = "objects.xml" type = "topic"/>
+		<topicref navtitle = "Boolean Conditionals" href = "booleans.xml" type = "topic"/>
+		<topicref navtitle = "Control Structures" href = "branching.xml" type = "topic"/>
+		<topicref navtitle = "Enumerating a Collection" href = "enumerateCollections.xml" type = "topic"/>
+		<topicref navtitle = "Errors During Compilation" href = "errors.xml" type = "topic"/>
+	</topicref>
+</map>

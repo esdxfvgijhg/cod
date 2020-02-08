@@ -1,0 +1,13 @@
+#!/bin/bash
+
+mytitle="MQTT"
+echo -e '\033]2;'$mytitle'\007'
+
+
+OSPATH=`targetos`
+cd $OSPATH/contiki/examples/cc2538-common/mqtt-demo
+
+
+sudo make mqtt-demo.upload PORT=/dev/ttyUSB1 TARGET="zoul"
+sudo make TARGET=zoul BOARD=firefly PORT=/dev/ttyUSB1 login
+

@@ -1,0 +1,60 @@
+
+cpp_quote("//+-------------------------------------------------------------------------")
+cpp_quote("//")
+cpp_quote("//  VisualWorks: License Manager")
+cpp_quote("//  Copyright (C) Cincom Systems, 2014.")
+cpp_quote("//")
+cpp_quote("//--------------------------------------------------------------------------")
+
+import "oaidl.idl";
+
+//**
+//** Declare the dual interface ILicenseManager
+//**
+[ 
+	oleautomation,
+	object,
+	uuid(13467F22-554A-4C51-9ADB-1718AF5E9600), 
+	helpstring("VisualWorks License Manager Interface"),
+	pointer_default(unique),
+
+] 
+interface ILicenseManager: IUnknown
+{
+	[helpstring("")]
+	HRESULT IsDevelopment([in] CLSID* clsid, [out,retval] BOOL* result);
+	[helpstring("")]
+       	HRESULT CreateInstance([in] CLSID* class ,[in] IUnknown *pUnkOuter,[in] REFIID riid,[in] BSTR license,[out,retval,iid_is(riid)]  IUnknown **ppvObject);
+	[helpstring("")]
+	HRESULT QueryLicenseKey([in] CLSID* class,[out,retval] BSTR * result);
+}
+
+
+//
+// Component and type library descriptions
+//
+[
+  uuid(477A7230-5F13-449D-945C-7239BF3F7BE7), // LIBID_VWLICENSEMANAGER
+  lcid(0x0),
+  version(1.0),
+  helpstring("VisualWorks License Manager")
+]
+library VWLicenseManager
+{
+    importlib("stdole32.tlb");
+
+    //  Class information for VWLicenseManager
+    [
+    	uuid(377410CF-6550-43B7-9DA0-C079B0D67E15), // CLSID_VWLicenseManager
+      	helpstring("VisualWorks License Manager class"),
+    ]
+    coclass VWLicenseManager
+    {
+	//**
+	//** This next line surfaces the dual interface from the class.
+	//**
+	[default] interface ILicenseManager;
+	};
+};
+
+// eof

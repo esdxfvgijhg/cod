@@ -1,0 +1,19 @@
+Implement meaningful failure codes for the "semantic" failures (i.e. those in primitiveWarpBits:smoothing: when destDepth < 16) so that image code knows what to do when something fails (e.g. create a deep temporary dest and dither it down))
+
+Revisit color and optimize cases where
+	source palette == destPalette (fixed)
+	source palette == ideal RGBA
+	dest palette == ideal RGBA
+
+Surely the expanded CLUT should be in the format of the destination.  So if the dest is 16-bits the expandedCLUT contains 16-bit color entries.  See below idea on customizing merge functions.
+
+One idea is to use byte addressing for averaging the pixels in the canonical 32-bit RGB(A) representation.  It saves shifting and masking...
+Another idea is to remove the testing of the color flags on each word by creating multiple versions of those merge functions that deal with color.  So for example we could have versions of all functins dealing with color for the various high color/true color formats (5,5,5) (5,6,5), (8,8,8).  If mergeFn were a global variable then the selection of which specific merge function to use could be done by the general merge function when first called.  The general function would select the specific function, assign it through mergeFn and return the result of calling the specific function.
+
+Fix copyBitsPixMap.  It assumes that source and destination can't overlap.  If there is a color map involved copyBitsPixMap is used and it fails to account for overlap.
+
+Make the BitBlt code test (and fail) for an immutable destination
+
+Add an
+	if (sizeof(int) != sizeof(oop) bleat loudly
+to initializeModule

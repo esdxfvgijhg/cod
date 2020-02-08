@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.inetClient.http"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>HTTP</title>
+<topic id = "vw.help.inetClient.http.retrievePage"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Retrieve the contents of a web page</title>
+<body><p>The following code will retrieve the contents of Yahoo's
+home page and return it into a <apiname>ByteString</apiname>:
+<codeblock otherprops="smalltalk expression">| url str |
+	url := 'http://www.yahoo.com' asURI.
+	url readStreamDo: [:rs :meta | str := rs contents].
+	str inspect.</codeblock></p>
+<p>If, in your environment, all Internet (HTTP) traffic is routed
+through a proxy server, this code will not work. The following code
+provides the additional invormation needed to work with a proxy.
+<codeblock otherprops="smalltalk expression">| url str |
+HttpClient enableProxy.
+[ HttpClient proxyHost: 'PROXYSERVER' port: 80.
+	url := 'http://finance.yahoo.com' asURI.
+	url readStreamDo: [:rs :meta | str := rs contents].
+] ensure: [HttpClient disableProxy].
+str inspect.</codeblock></p></body></topic></topic></dita>

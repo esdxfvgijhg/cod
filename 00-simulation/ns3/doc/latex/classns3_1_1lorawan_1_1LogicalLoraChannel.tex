@@ -1,0 +1,152 @@
+\hypertarget{classns3_1_1lorawan_1_1LogicalLoraChannel}{}\section{ns3\+:\+:lorawan\+:\+:Logical\+Lora\+Channel Class Reference}
+\label{classns3_1_1lorawan_1_1LogicalLoraChannel}\index{ns3\+::lorawan\+::\+Logical\+Lora\+Channel@{ns3\+::lorawan\+::\+Logical\+Lora\+Channel}}
+
+
+{\ttfamily \#include $<$logical-\/lora-\/channel.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Logical\+Lora\+Channel\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{classns3_1_1lorawan_1_1LogicalLoraChannel__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Logical\+Lora\+Channel\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{classns3_1_1lorawan_1_1LogicalLoraChannel__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LogicalLoraChannel_af4804eb74b0d9e6b12a9321172d9296f}\label{classns3_1_1lorawan_1_1LogicalLoraChannel_af4804eb74b0d9e6b12a9321172d9296f}} 
+{\bfseries Logical\+Lora\+Channel} (double frequency)
+\item 
+\hyperlink{classns3_1_1lorawan_1_1LogicalLoraChannel_a686e1cf42931f1df4b1de55eadd3abbe}{Logical\+Lora\+Channel} (double frequency, uint8\+\_\+t min\+Data\+Rate, uint8\+\_\+t max\+Data\+Rate)
+\item 
+double \hyperlink{classns3_1_1lorawan_1_1LogicalLoraChannel_af77fc25d0cf3f6e951e2e9b34464fb28}{Get\+Frequency} (void) const
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LogicalLoraChannel_a6e1a26e63f6eea84231a22bf7e99702c}{Set\+Minimum\+Data\+Rate} (uint8\+\_\+t min\+Data\+Rate)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LogicalLoraChannel_ab8c110f44d5937fa0d3facd544551e60}{Set\+Maximum\+Data\+Rate} (uint8\+\_\+t max\+Data\+Rate)
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1LogicalLoraChannel_a1d8a54566ba09ca217a37cd29c568d13}{Get\+Minimum\+Data\+Rate} (void)
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1LogicalLoraChannel_a1dd2658114ee12032c5f8a28407349d1}{Get\+Maximum\+Data\+Rate} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LogicalLoraChannel_a94bbcfed3cd6f5b0df26229c284861be}{Set\+Enabled\+For\+Uplink} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LogicalLoraChannel_ac1dd87336f77086462816ceebd787b6c}{Disable\+For\+Uplink} (void)
+\item 
+bool \hyperlink{classns3_1_1lorawan_1_1LogicalLoraChannel_a05fd7f9703aad2b8657612fca09db0b9}{Is\+Enabled\+For\+Uplink} (void)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LogicalLoraChannel_affeafa2775461348be32c1670c65c005}\label{classns3_1_1lorawan_1_1LogicalLoraChannel_affeafa2775461348be32c1670c65c005}} 
+static Type\+Id {\bfseries Get\+Type\+Id} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class represents a logical Lo\+Ra\+W\+AN channel.
+
+A logical channel is characterized by a central frequency and a range of data rates that can be sent on it.
+
+Furthermore, a \hyperlink{classns3_1_1lorawan_1_1LogicalLoraChannel}{Logical\+Lora\+Channel} can be marked as enabled or disabled for uplink transmission. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LogicalLoraChannel_a686e1cf42931f1df4b1de55eadd3abbe}\label{classns3_1_1lorawan_1_1LogicalLoraChannel_a686e1cf42931f1df4b1de55eadd3abbe}} 
+\index{ns3\+::lorawan\+::\+Logical\+Lora\+Channel@{ns3\+::lorawan\+::\+Logical\+Lora\+Channel}!Logical\+Lora\+Channel@{Logical\+Lora\+Channel}}
+\index{Logical\+Lora\+Channel@{Logical\+Lora\+Channel}!ns3\+::lorawan\+::\+Logical\+Lora\+Channel@{ns3\+::lorawan\+::\+Logical\+Lora\+Channel}}
+\subsubsection{\texorpdfstring{Logical\+Lora\+Channel()}{LogicalLoraChannel()}}
+{\footnotesize\ttfamily ns3\+::lorawan\+::\+Logical\+Lora\+Channel\+::\+Logical\+Lora\+Channel (\begin{DoxyParamCaption}\item[{double}]{frequency,  }\item[{uint8\+\_\+t}]{min\+Data\+Rate,  }\item[{uint8\+\_\+t}]{max\+Data\+Rate }\end{DoxyParamCaption})}
+
+Constructor providing initialization of frequency and data rate limits.
+
+
+\begin{DoxyParams}{Parameters}
+{\em frequency} & This channel\textquotesingle{}s frequency. \\
+\hline
+{\em min\+Data\+Rate} & This channel\textquotesingle{}s minimum data rate. \\
+\hline
+{\em max\+Data\+Rate} & This channel\textquotesingle{}s maximum data rate. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LogicalLoraChannel_ac1dd87336f77086462816ceebd787b6c}\label{classns3_1_1lorawan_1_1LogicalLoraChannel_ac1dd87336f77086462816ceebd787b6c}} 
+\index{ns3\+::lorawan\+::\+Logical\+Lora\+Channel@{ns3\+::lorawan\+::\+Logical\+Lora\+Channel}!Disable\+For\+Uplink@{Disable\+For\+Uplink}}
+\index{Disable\+For\+Uplink@{Disable\+For\+Uplink}!ns3\+::lorawan\+::\+Logical\+Lora\+Channel@{ns3\+::lorawan\+::\+Logical\+Lora\+Channel}}
+\subsubsection{\texorpdfstring{Disable\+For\+Uplink()}{DisableForUplink()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Logical\+Lora\+Channel\+::\+Disable\+For\+Uplink (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Set this channel as disabled for uplink. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LogicalLoraChannel_af77fc25d0cf3f6e951e2e9b34464fb28}\label{classns3_1_1lorawan_1_1LogicalLoraChannel_af77fc25d0cf3f6e951e2e9b34464fb28}} 
+\index{ns3\+::lorawan\+::\+Logical\+Lora\+Channel@{ns3\+::lorawan\+::\+Logical\+Lora\+Channel}!Get\+Frequency@{Get\+Frequency}}
+\index{Get\+Frequency@{Get\+Frequency}!ns3\+::lorawan\+::\+Logical\+Lora\+Channel@{ns3\+::lorawan\+::\+Logical\+Lora\+Channel}}
+\subsubsection{\texorpdfstring{Get\+Frequency()}{GetFrequency()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+Logical\+Lora\+Channel\+::\+Get\+Frequency (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Get the frequency (M\+Hz).
+
+\begin{DoxyReturn}{Returns}
+The center frequency of this channel. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LogicalLoraChannel_a1dd2658114ee12032c5f8a28407349d1}\label{classns3_1_1lorawan_1_1LogicalLoraChannel_a1dd2658114ee12032c5f8a28407349d1}} 
+\index{ns3\+::lorawan\+::\+Logical\+Lora\+Channel@{ns3\+::lorawan\+::\+Logical\+Lora\+Channel}!Get\+Maximum\+Data\+Rate@{Get\+Maximum\+Data\+Rate}}
+\index{Get\+Maximum\+Data\+Rate@{Get\+Maximum\+Data\+Rate}!ns3\+::lorawan\+::\+Logical\+Lora\+Channel@{ns3\+::lorawan\+::\+Logical\+Lora\+Channel}}
+\subsubsection{\texorpdfstring{Get\+Maximum\+Data\+Rate()}{GetMaximumDataRate()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+Logical\+Lora\+Channel\+::\+Get\+Maximum\+Data\+Rate (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the maximum Data Rate that is allowed on this channel. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LogicalLoraChannel_a1d8a54566ba09ca217a37cd29c568d13}\label{classns3_1_1lorawan_1_1LogicalLoraChannel_a1d8a54566ba09ca217a37cd29c568d13}} 
+\index{ns3\+::lorawan\+::\+Logical\+Lora\+Channel@{ns3\+::lorawan\+::\+Logical\+Lora\+Channel}!Get\+Minimum\+Data\+Rate@{Get\+Minimum\+Data\+Rate}}
+\index{Get\+Minimum\+Data\+Rate@{Get\+Minimum\+Data\+Rate}!ns3\+::lorawan\+::\+Logical\+Lora\+Channel@{ns3\+::lorawan\+::\+Logical\+Lora\+Channel}}
+\subsubsection{\texorpdfstring{Get\+Minimum\+Data\+Rate()}{GetMinimumDataRate()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+Logical\+Lora\+Channel\+::\+Get\+Minimum\+Data\+Rate (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the minimum Data Rate that is allowed on this channel. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LogicalLoraChannel_a05fd7f9703aad2b8657612fca09db0b9}\label{classns3_1_1lorawan_1_1LogicalLoraChannel_a05fd7f9703aad2b8657612fca09db0b9}} 
+\index{ns3\+::lorawan\+::\+Logical\+Lora\+Channel@{ns3\+::lorawan\+::\+Logical\+Lora\+Channel}!Is\+Enabled\+For\+Uplink@{Is\+Enabled\+For\+Uplink}}
+\index{Is\+Enabled\+For\+Uplink@{Is\+Enabled\+For\+Uplink}!ns3\+::lorawan\+::\+Logical\+Lora\+Channel@{ns3\+::lorawan\+::\+Logical\+Lora\+Channel}}
+\subsubsection{\texorpdfstring{Is\+Enabled\+For\+Uplink()}{IsEnabledForUplink()}}
+{\footnotesize\ttfamily bool ns3\+::lorawan\+::\+Logical\+Lora\+Channel\+::\+Is\+Enabled\+For\+Uplink (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Test whether this channel is marked as enabled for uplink. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LogicalLoraChannel_a94bbcfed3cd6f5b0df26229c284861be}\label{classns3_1_1lorawan_1_1LogicalLoraChannel_a94bbcfed3cd6f5b0df26229c284861be}} 
+\index{ns3\+::lorawan\+::\+Logical\+Lora\+Channel@{ns3\+::lorawan\+::\+Logical\+Lora\+Channel}!Set\+Enabled\+For\+Uplink@{Set\+Enabled\+For\+Uplink}}
+\index{Set\+Enabled\+For\+Uplink@{Set\+Enabled\+For\+Uplink}!ns3\+::lorawan\+::\+Logical\+Lora\+Channel@{ns3\+::lorawan\+::\+Logical\+Lora\+Channel}}
+\subsubsection{\texorpdfstring{Set\+Enabled\+For\+Uplink()}{SetEnabledForUplink()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Logical\+Lora\+Channel\+::\+Set\+Enabled\+For\+Uplink (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Set this channel as enabled for uplink. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LogicalLoraChannel_ab8c110f44d5937fa0d3facd544551e60}\label{classns3_1_1lorawan_1_1LogicalLoraChannel_ab8c110f44d5937fa0d3facd544551e60}} 
+\index{ns3\+::lorawan\+::\+Logical\+Lora\+Channel@{ns3\+::lorawan\+::\+Logical\+Lora\+Channel}!Set\+Maximum\+Data\+Rate@{Set\+Maximum\+Data\+Rate}}
+\index{Set\+Maximum\+Data\+Rate@{Set\+Maximum\+Data\+Rate}!ns3\+::lorawan\+::\+Logical\+Lora\+Channel@{ns3\+::lorawan\+::\+Logical\+Lora\+Channel}}
+\subsubsection{\texorpdfstring{Set\+Maximum\+Data\+Rate()}{SetMaximumDataRate()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Logical\+Lora\+Channel\+::\+Set\+Maximum\+Data\+Rate (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{max\+Data\+Rate }\end{DoxyParamCaption})}
+
+Set the maximum Data Rate that is allowed on this channel. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LogicalLoraChannel_a6e1a26e63f6eea84231a22bf7e99702c}\label{classns3_1_1lorawan_1_1LogicalLoraChannel_a6e1a26e63f6eea84231a22bf7e99702c}} 
+\index{ns3\+::lorawan\+::\+Logical\+Lora\+Channel@{ns3\+::lorawan\+::\+Logical\+Lora\+Channel}!Set\+Minimum\+Data\+Rate@{Set\+Minimum\+Data\+Rate}}
+\index{Set\+Minimum\+Data\+Rate@{Set\+Minimum\+Data\+Rate}!ns3\+::lorawan\+::\+Logical\+Lora\+Channel@{ns3\+::lorawan\+::\+Logical\+Lora\+Channel}}
+\subsubsection{\texorpdfstring{Set\+Minimum\+Data\+Rate()}{SetMinimumDataRate()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Logical\+Lora\+Channel\+::\+Set\+Minimum\+Data\+Rate (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{min\+Data\+Rate }\end{DoxyParamCaption})}
+
+Set the frequency (M\+Hz).
+
+
+\begin{DoxyParams}{Parameters}
+{\em frequency\+M\+Hz} & The center frequency this channel should be at. Set the minimum Data Rate that is allowed on this channel. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+logical-\/lora-\/channel.\+h\item 
+logical-\/lora-\/channel.\+cc\end{DoxyCompactItemize}

@@ -1,0 +1,11 @@
+Installation instructions for each verson of the Chronos Date/Time Library, and the 
+code of each version, are all in the folder (directory) whose name specifies the 
+particular version. The name of the folder/directory will have the following form:
+
+	<Smalltalk-platform>-<Distribution-Status-Code><Release-Number>.<Build-Number>
+
+Some examples:
+
+	VisualWorks-B1.188 	(VisualWorks distribution, Beta release 1, build 188)
+	Squeak-R1.0		(Squeak distribution, Release 1, build 0)
+	Dolphin-G2.12		(Dolphin distribution, Gamma release 2, build 12)

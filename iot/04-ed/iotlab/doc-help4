@@ -1,0 +1,108 @@
+
+make \
+	setup-aggregation-tools \
+	setup-cli-tools \
+	setup-contiki \
+	setup-iot-lab-contiki-ng \
+	setup-iot-lab.wiki \
+	setup-oml-plot-tools \
+	setup-openlab \
+	setup-riot \
+	setup-wsn430 \
+	setup-zephyr
+
+
+
+
+
+
+1) réservation de resource software
+
+make
+
+2) réservation de profile
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+iotlab-profile addm3 \
+	-n NAME \
+	-p {dc,battery} \
+	-j \
+	-current \
+	-voltage \
+	-power \
+	-period {140,204,332,588,1100,2116,4156,8244} \
+	-avg {1,4,16,64,128,256,512,1024} \
+	-rssi \
+	-sniffer \
+	-channels {11..26} {11..26}.. \
+	-num {0..255} \
+	-rperiod {1..65535}
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+iotlab-profile addm3 \
+	-n test_consumption \
+	-p dc \
+	-current -voltage -power -period 140 -avg 4
+
+iotlab-profile get \
+	-n test_consumption > profile.json
+
+iotlab-profile load \
+	-f profile.json
+
+
+3) réservation de resource hardware (submit)
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+iotlab-experiment submit \
+	-n riot_ttn \
+	-d 10 \
+	-l saclay,m3                                 ,1,tutorial_a8_m3.elf
+	-l 1     ,archi=st-lrwan1:sx1276+site=saclay 
+	-l 8     ,archi=wsn430:cc1101+site=grenoble \
+	-l 50    ,archi=wsn430:cc2420+site=rennes    
+
+    * Physical experiment list:
+	-l <site_name  ,archi ,resourceid_list,firmware_path   ,profile_name>
+	-l grenoble    ,m3    ,1-20           ,bin/tutorial.elf
+	-l rocquencourt,a8    ,1-5            ,                ,battery
+	-l grenoble    ,wsn430,1-5+8+9-11     ,cc1101.hex      ,battery
+	-l grenoble    ,m3    ,1-20           
+
+    * Alias experiment list:
+	-l <resources_number,properties                        ,firmware_path,profile_name>
+	-l 9                ,archi=wsn430:cc1101+site=grenoble ,tp.hex       ,battery
+	-l 9                ,archi=m3:at86rf231+site=grenoble  ,gre.elf      
+	-l 5                ,archi=m3:at86rf231+site=strasbourg,stras.elf    
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+iotlab-experiment submit \
+	-n lorawan \
+	-d 10 \
+	-l saclay, st-lrwan1:sx1276,1-2
+	
+	
+	-l 1,archi=st-lrwan1:sx1276+site=saclay
+
+
+iotlab-experiment get \
+	-n experiment1 > experiment1.json
+
+iotlab-experiment load \
+	-f experiment1.json
+
+iotlab-experiment wait
+iotlab-ws
+
+iotlab-experiment reload --id 12345
+
+
+
+5) nc m3-101 20000
+
+6) plot
+
+plot_oml_consum -p -i ~/.iot-lab/last/radio/m3_100.oml
+plot_oml_radio -a -i ~/.iot-lab/last/radio/m3_100.oml

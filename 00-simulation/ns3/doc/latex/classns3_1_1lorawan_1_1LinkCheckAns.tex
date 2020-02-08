@@ -1,0 +1,171 @@
+\hypertarget{classns3_1_1lorawan_1_1LinkCheckAns}{}\section{ns3\+:\+:lorawan\+:\+:Link\+Check\+Ans Class Reference}
+\label{classns3_1_1lorawan_1_1LinkCheckAns}\index{ns3\+::lorawan\+::\+Link\+Check\+Ans@{ns3\+::lorawan\+::\+Link\+Check\+Ans}}
+
+
+{\ttfamily \#include $<$mac-\/command.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Link\+Check\+Ans\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{classns3_1_1lorawan_1_1LinkCheckAns__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Link\+Check\+Ans\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=343pt]{classns3_1_1lorawan_1_1LinkCheckAns__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LinkCheckAns_a90b6b5ce1302e96dc9bfdce1e166a97f}\label{classns3_1_1lorawan_1_1LinkCheckAns_a90b6b5ce1302e96dc9bfdce1e166a97f}} 
+{\bfseries Link\+Check\+Ans} (uint8\+\_\+t margin, uint8\+\_\+t gw\+Cnt)
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1LinkCheckAns_a54d7dcbbf322ece82652a5ac3603f83c}{Serialize} (Buffer\+::\+Iterator \&start) const
+\item 
+virtual uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1LinkCheckAns_a6e3087a8b109129cb3e53f29625f9fbf}{Deserialize} (Buffer\+::\+Iterator \&start)
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1LinkCheckAns_a35637426df92297b70b3a7a1beae3326}{Print} (std\+::ostream \&os) const
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LinkCheckAns_af217ee3fe5287862f914c04a752672c2}{Set\+Margin} (uint8\+\_\+t margin)
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1LinkCheckAns_a95dcc4481a030e82f6f3ac12d391d6d5}{Get\+Margin} (void) const
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LinkCheckAns_afb84d89f6fa26b9f26250c54120d8f44}{Set\+Gw\+Cnt} (uint8\+\_\+t gw\+Cnt)
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1LinkCheckAns_a031c9ac33bfac632ff32b1cf2f67232a}{Get\+Gw\+Cnt} (void) const
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LinkCheckAns_a0439b17acc2140e08fa274c8199128d7}{Increment\+Gw\+Cnt} (void)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Implementation of the \hyperlink{classns3_1_1lorawan_1_1LinkCheckAns}{Link\+Check\+Ans} Lo\+Ra\+W\+AN M\+AC command.
+
+This command contains the demodulation margin and the number of receiving gateways of the packet containing the \hyperlink{classns3_1_1lorawan_1_1LinkCheckReq}{Link\+Check\+Req} command. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LinkCheckAns_a6e3087a8b109129cb3e53f29625f9fbf}\label{classns3_1_1lorawan_1_1LinkCheckAns_a6e3087a8b109129cb3e53f29625f9fbf}} 
+\index{ns3\+::lorawan\+::\+Link\+Check\+Ans@{ns3\+::lorawan\+::\+Link\+Check\+Ans}!Deserialize@{Deserialize}}
+\index{Deserialize@{Deserialize}!ns3\+::lorawan\+::\+Link\+Check\+Ans@{ns3\+::lorawan\+::\+Link\+Check\+Ans}}
+\subsubsection{\texorpdfstring{Deserialize()}{Deserialize()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+Link\+Check\+Ans\+::\+Deserialize (\begin{DoxyParamCaption}\item[{Buffer\+::\+Iterator \&}]{start }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Deserialize the buffer into a M\+AC command.
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & A pointer to the buffer that contains the serialized command. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of bytes that were consumed. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1MacCommand_af12d223a71a67196bce498f1240eda75}{ns3\+::lorawan\+::\+Mac\+Command}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LinkCheckAns_a031c9ac33bfac632ff32b1cf2f67232a}\label{classns3_1_1lorawan_1_1LinkCheckAns_a031c9ac33bfac632ff32b1cf2f67232a}} 
+\index{ns3\+::lorawan\+::\+Link\+Check\+Ans@{ns3\+::lorawan\+::\+Link\+Check\+Ans}!Get\+Gw\+Cnt@{Get\+Gw\+Cnt}}
+\index{Get\+Gw\+Cnt@{Get\+Gw\+Cnt}!ns3\+::lorawan\+::\+Link\+Check\+Ans@{ns3\+::lorawan\+::\+Link\+Check\+Ans}}
+\subsubsection{\texorpdfstring{Get\+Gw\+Cnt()}{GetGwCnt()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+Link\+Check\+Ans\+::\+Get\+Gw\+Cnt (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Get the gateway count value.
+
+\begin{DoxyReturn}{Returns}
+The gateway count value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LinkCheckAns_a95dcc4481a030e82f6f3ac12d391d6d5}\label{classns3_1_1lorawan_1_1LinkCheckAns_a95dcc4481a030e82f6f3ac12d391d6d5}} 
+\index{ns3\+::lorawan\+::\+Link\+Check\+Ans@{ns3\+::lorawan\+::\+Link\+Check\+Ans}!Get\+Margin@{Get\+Margin}}
+\index{Get\+Margin@{Get\+Margin}!ns3\+::lorawan\+::\+Link\+Check\+Ans@{ns3\+::lorawan\+::\+Link\+Check\+Ans}}
+\subsubsection{\texorpdfstring{Get\+Margin()}{GetMargin()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+Link\+Check\+Ans\+::\+Get\+Margin (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Get the demodulation margin value.
+
+\begin{DoxyReturn}{Returns}
+The demodulation margin value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LinkCheckAns_a0439b17acc2140e08fa274c8199128d7}\label{classns3_1_1lorawan_1_1LinkCheckAns_a0439b17acc2140e08fa274c8199128d7}} 
+\index{ns3\+::lorawan\+::\+Link\+Check\+Ans@{ns3\+::lorawan\+::\+Link\+Check\+Ans}!Increment\+Gw\+Cnt@{Increment\+Gw\+Cnt}}
+\index{Increment\+Gw\+Cnt@{Increment\+Gw\+Cnt}!ns3\+::lorawan\+::\+Link\+Check\+Ans@{ns3\+::lorawan\+::\+Link\+Check\+Ans}}
+\subsubsection{\texorpdfstring{Increment\+Gw\+Cnt()}{IncrementGwCnt()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Link\+Check\+Ans\+::\+Increment\+Gw\+Cnt (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Increment this \hyperlink{classns3_1_1lorawan_1_1MacCommand}{Mac\+Command}\textquotesingle{}s gw\+Cnt value. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LinkCheckAns_a35637426df92297b70b3a7a1beae3326}\label{classns3_1_1lorawan_1_1LinkCheckAns_a35637426df92297b70b3a7a1beae3326}} 
+\index{ns3\+::lorawan\+::\+Link\+Check\+Ans@{ns3\+::lorawan\+::\+Link\+Check\+Ans}!Print@{Print}}
+\index{Print@{Print}!ns3\+::lorawan\+::\+Link\+Check\+Ans@{ns3\+::lorawan\+::\+Link\+Check\+Ans}}
+\subsubsection{\texorpdfstring{Print()}{Print()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Link\+Check\+Ans\+::\+Print (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Print the contents of this M\+AC command in human-\/readable format.
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The std\+::ostream instance on which to print the M\+AC command. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1MacCommand_a6bf88db38dab7dcd817811a9fb59f920}{ns3\+::lorawan\+::\+Mac\+Command}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LinkCheckAns_a54d7dcbbf322ece82652a5ac3603f83c}\label{classns3_1_1lorawan_1_1LinkCheckAns_a54d7dcbbf322ece82652a5ac3603f83c}} 
+\index{ns3\+::lorawan\+::\+Link\+Check\+Ans@{ns3\+::lorawan\+::\+Link\+Check\+Ans}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!ns3\+::lorawan\+::\+Link\+Check\+Ans@{ns3\+::lorawan\+::\+Link\+Check\+Ans}}
+\subsubsection{\texorpdfstring{Serialize()}{Serialize()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Link\+Check\+Ans\+::\+Serialize (\begin{DoxyParamCaption}\item[{Buffer\+::\+Iterator \&}]{start }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Serialize the contents of this M\+AC command into a buffer, according to the Lo\+Ra\+W\+AN standard.
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & A pointer to the buffer into which to serialize the command. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1MacCommand_a0ed44b33942ddc3dc9694dc06ab0b87f}{ns3\+::lorawan\+::\+Mac\+Command}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LinkCheckAns_afb84d89f6fa26b9f26250c54120d8f44}\label{classns3_1_1lorawan_1_1LinkCheckAns_afb84d89f6fa26b9f26250c54120d8f44}} 
+\index{ns3\+::lorawan\+::\+Link\+Check\+Ans@{ns3\+::lorawan\+::\+Link\+Check\+Ans}!Set\+Gw\+Cnt@{Set\+Gw\+Cnt}}
+\index{Set\+Gw\+Cnt@{Set\+Gw\+Cnt}!ns3\+::lorawan\+::\+Link\+Check\+Ans@{ns3\+::lorawan\+::\+Link\+Check\+Ans}}
+\subsubsection{\texorpdfstring{Set\+Gw\+Cnt()}{SetGwCnt()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Link\+Check\+Ans\+::\+Set\+Gw\+Cnt (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{gw\+Cnt }\end{DoxyParamCaption})}
+
+Set the gateway count value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em gw\+Cnt} & The count value to set. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LinkCheckAns_af217ee3fe5287862f914c04a752672c2}\label{classns3_1_1lorawan_1_1LinkCheckAns_af217ee3fe5287862f914c04a752672c2}} 
+\index{ns3\+::lorawan\+::\+Link\+Check\+Ans@{ns3\+::lorawan\+::\+Link\+Check\+Ans}!Set\+Margin@{Set\+Margin}}
+\index{Set\+Margin@{Set\+Margin}!ns3\+::lorawan\+::\+Link\+Check\+Ans@{ns3\+::lorawan\+::\+Link\+Check\+Ans}}
+\subsubsection{\texorpdfstring{Set\+Margin()}{SetMargin()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Link\+Check\+Ans\+::\+Set\+Margin (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{margin }\end{DoxyParamCaption})}
+
+Set the demodulation margin value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em margin} & The demodulation margin to set. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+mac-\/command.\+h\item 
+mac-\/command.\+cc\end{DoxyCompactItemize}

@@ -1,0 +1,1 @@
+encoding: #UTF_8catalog: odbcDBerrGetConnectionOptions = 'Unable to get the connection option'errGetStatementOptions = 'Unable to get the statement option'errSetConnectionOptions = 'Unable to set the connection option'errSetStatementOptions = 'Unable to set the statement option'errUnboundVariable = 'unbound variable'

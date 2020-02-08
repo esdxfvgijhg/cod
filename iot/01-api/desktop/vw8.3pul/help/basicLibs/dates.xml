@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.date"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Dates</title>
+<body><p>Instances of class <apiname>Date</apiname> represent 
+a specific day since the start of the Julian calendar. A 
+<apiname>Date</apiname> may be understood as a less-precise version of 
+a <apiname>Timestamp</apiname>. Thus, we can compare <apiname>Date</apiname> 
+objects with instances of <apiname>Timestamp</apiname>. A <apiname>Date</apiname> 
+is equivalent to a <apiname>Timestamp</apiname> of midnight on the same day.</p></body>
+<topic id = "vw.help.date.today"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create today’s date</title>
+<body><p><indexterm>date<indexterm>create today</indexterm></indexterm>Send
+a <apiname>today</apiname> message to the <apiname>Date</apiname> class.
+<codeblock otherprops="smalltalk expression">| date |
+date := Date today.
+^date</codeblock></p></body></topic>
+<topic id = "vw.help.date.fromString"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a date from a string</title>
+<body><p><indexterm>date<indexterm>create from string</indexterm></indexterm><indexterm>date<indexterm>create
+from stream</indexterm></indexterm>Send a <apiname>readFrom:</apiname> message
+to <apiname>Date</apiname> with a <apiname>ReadStream</apiname> on a <apiname>String</apiname> containing
+the month, day, and year in any of several formats as shown. When
+the string uses a two-digit abbreviation for the year a <apiname>Date</apiname> is
+created for the current century today.  To avoid any ambiguity create
+a <apiname>Date</apiname> using a four-digit year.
+<codeblock otherprops="smalltalk expression">| dates |
+dates := OrderedCollection new.
+dates
+		add: (Date readFrom: 'January 31, 1994' readStream);
+		add: (Date readFrom: '31 January 1994' readStream);
+		add: (Date readFrom: '1/31/1994' readStream);
+		add: (Date readFrom: '1.31.1994' readStream);
+		add: (Date readFrom: '1-31-1994' readStream).
+^dates</codeblock></p>
+<p>As an alternative, send a <apiname>readFromString:</apiname> message,
+as defined in <apiname>Object</apiname>.</p></body></topic>
+<topic id = "vw.help.date.dayMonthYear"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a date from a day, month, and year</title>
+<body><p><indexterm>date<indexterm>create from month day year</indexterm></indexterm>Send
+a <apiname>newDay:monthNumber:year:</apiname> message to the <apiname>Date</apiname> class.
+The newDay argument is the day number. The <apiname>monthNumber</apiname> argument
+is the month number. The <apiname>year</apiname> argument is the year,
+with or without the century part.  If a two-digit year is provided
+then it is applied to the current century today. Use a four-digit
+year to avoid ambiguity.
+<codeblock otherprops="smalltalk expression">| date1 |
+date1 := Date
+		newDay: 31
+		monthNumber: 1
+		year: 1994.</codeblock></p>
+<p>To specify the month by name, send a <apiname>newDay:month:year:</apiname> message
+to <apiname>Date</apiname>, with the month argument as the unique
+first letters of a month name expressed as a <apiname>Symbol</apiname>. 
+<codeblock otherprops="smalltalk expression">| date2 |
+date2 := Date
+		newDay: 31
+		month: #Jan
+		year: 1994.</codeblock></p></body></topic>
+<topic id = "vw.help.date.daysFromJan1"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a date by days since January 1</title>
+<body><p><indexterm>date<indexterm>create from day in year</indexterm></indexterm>During
+a series of date computations that span several months in the same
+year, it can be helpful to treat a date as the number of days that it
+represents since the beginning of the year. After the computation
+is completed, you can convert the day-count back into a date.</p>
+<p>Send a <apiname>newDay:year:</apiname> message to <apiname>Date</apiname>.
+The first argument is the number of days from the beginning of the
+year. The second argument is the year number.
+<codeblock otherprops="smalltalk expression">| date |
+date := Date
+		newDay: 32
+		year: 1994.
+^date</codeblock></p></body></topic>
+<topic id = "vw.help.date.daysFrom1901"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Date relative to 1901</title>
+<body><p><indexterm>date<indexterm>create from days since beginning
+of time</indexterm></indexterm>During a series of date computations
+that span multiple years, it can be helpful to treat a date as the
+number of days that it represents since January 1, 1901 (the beginning
+of time in &Product;). After the computation is completed, you
+can convert the day-count back into a date.</p>
+<p>Send a <apiname>fromDays:</apiname> message to <apiname>Date</apiname>.
+The argument is the number of days from the beginning of 1901. 
+<codeblock otherprops="smalltalk expression">| date |
+date := Date
+		fromDays: (94 * 366).
+^date</codeblock></p>
+<p>Send an <apiname>asDays</apiname> message to a date to get the
+number of days since  January 1, 1901:
+<codeblock otherprops="smalltalk expression">| date |
+date := Date today.
+^date asDays</codeblock></p>
+<p>Send an <apiname>asSeconds</apiname> message to a date for the
+number of seconds since January 1, 1901:
+<codeblock otherprops="smalltalk expression">| date |
+date := Date today.
+^date asSeconds</codeblock></p></body></topic>
+<topic id = "vw.help.date.dayOfWeek"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get the day of the week</title>
+<body><p><indexterm>date<indexterm>get day of week</indexterm></indexterm>Send
+a <apiname>weekday</apiname> message to a date. The name of the week
+day is expressed as a <apiname>Symbol</apiname>, such as <codeph>#Friday</codeph>.
+<codeblock otherprops="smalltalk expression">| date |
+date := Date today.
+^date weekday</codeblock></p></body></topic>
+<topic id = "vw.help.date.dayOfMonth"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get the day of the month</title>
+<body><p><indexterm>date<indexterm>get day of month</indexterm></indexterm>Send
+a <apiname>dayOfMonth</apiname> message to a date. The day number
+within the month is returned.
+<codeblock otherprops="smalltalk expression">| date |
+date := Date today.
+^date dayOfMonth</codeblock></p></body></topic>
+<topic id = "vw.help.date.dayOfYear"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get the day of the year</title>
+<body><p><indexterm>date<indexterm>get day of year</indexterm></indexterm>Send
+a <apiname>day</apiname> message to a date. The day number within
+the year is returned.
+<codeblock otherprops="smalltalk expression">| date |
+date := Date today.
+^date day</codeblock></p></body></topic>
+<topic id = "vw.help.date.monthName"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get the name of the month</title>
+<body><p><indexterm>date<indexterm>get month name</indexterm></indexterm>Send
+a <apiname>monthName</apiname> message to a date. The month name is expressed
+as a <apiname>Symbol</apiname>, as in <codeph>#January</codeph>.
+<codeblock otherprops="smalltalk expression">| date |
+date := Date today.
+^date monthName</codeblock></p></body></topic>
+<topic id = "vw.help.date.monthNum"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get the number of the month</title>
+<body><p><indexterm>date<indexterm>get month number</indexterm></indexterm>Send
+a <apiname>monthIndex</apiname> message to a date. 
+<codeblock otherprops="smalltalk expression">| date |
+date := Date today.
+^date monthIndex</codeblock></p></body></topic>
+<topic id = "vw.help.date.daysInMonth"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Count the days in the month</title>
+<body><p><indexterm>date<indexterm>get days in month</indexterm></indexterm>Send
+a <apiname>daysInMonth</apiname> message to a date.
+<codeblock otherprops="smalltalk expression">| date |
+date := Date today.
+^date daysInMonth</codeblock></p></body></topic>
+<topic id = "vw.help.date.yearNum"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get the year number from a date</title>
+<body><p><indexterm>date<indexterm>get year</indexterm></indexterm>Send
+a <apiname>year</apiname> message to a date.
+<codeblock otherprops="smalltalk expression">| date |
+date := Date today.
+^date year</codeblock></p></body></topic>
+<topic id = "vw.help.date.daysInYear"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Count the days in a year</title>
+<body><p><indexterm>date<indexterm>get days in year</indexterm></indexterm>Send
+a <apiname>daysInYear</apiname> message to a date. 
+<codeblock otherprops="smalltalk expression">| date |
+date := Date today.
+^date daysInYear</codeblock></p></body></topic>
+<topic id = "vw.help.date.daysRemaining"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Count the days remaining in the year</title>
+<body><p><indexterm>date<indexterm>get days remaining in year</indexterm></indexterm>Send
+a <apiname>daysLeftInYear</apiname> message to a date. 
+<codeblock otherprops="smalltalk expression">| date |
+date := Date today.
+^date daysLeftInYear</codeblock></p></body></topic>
+<topic id = "vw.help.date.leapYear"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Test for leap year</title>
+<body><p><indexterm>date<indexterm>test for leap year</indexterm></indexterm>Send
+a <apiname>leap</apiname> message to a date. The result is 1 in a
+leap year and zero otherwise.
+<codeblock otherprops="smalltalk expression">| date |
+date := Date today.
+^date leap</codeblock></p></body></topic>
+<topic id = "vw.help.date.addDays"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Add/subtract days to a date</title>
+<body><p><indexterm>date<indexterm>add days to date</indexterm></indexterm>Send
+an <apiname>addDays:</apiname> message to a date. The argument is
+the number of days to be added, and can be a negative number.
+<codeblock otherprops="smalltalk expression">| date daysToAdd |
+date := Date today.
+daysToAdd := 60.
+^date addDays: daysToAdd</codeblock></p>
+<p><indexterm>date<indexterm>subtract days from date</indexterm></indexterm>Send
+a <apiname>subtractDays:</apiname> message to a date. The argument
+is the number of days to be subtracted, and it can be a negative
+number.
+<codeblock otherprops="smalltalk expression">| date daysToSubtract |
+date := Date today.
+daysToSubtract := 60.
+^date subtractDays: daysToSubtract</codeblock></p></body></topic>
+<topic id = "vw.help.date.daysBetween"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get the number of days between two dates</title>
+<body><p><indexterm>date<indexterm>get difference between dates</indexterm></indexterm>Send
+a <apiname>subtractDate:</apiname> message to a date. The argument
+is the date to be subtracted, which can be either before or after
+the first date.
+<codeblock otherprops="smalltalk expression">| date1 date2 |
+date1 := Date today.
+date2 := Date readFrom: '31 December 1999'.
+^date2 subtractDate: date1</codeblock></p></body></topic>
+<topic id = "vw.help.date.previous"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get a previous day of the week</title>
+<body><p><indexterm>date<indexterm>get previous day</indexterm></indexterm>Send
+a <apiname>previous:</apiname> message to a date. The argument is
+the name of the preceding weekday whose date you desire, expressed
+as a <apiname>Symbol</apiname>.
+<codeblock otherprops="smalltalk expression">| date dayOfWeek |
+date := Date today.
+dayOfWeek := #Monday.
+^date previous: dayOfWeek</codeblock></p></body></topic>
+<topic id = "vw.help.date.compareDates"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Test/compare dates</title>
+<body><p><indexterm>date<indexterm>compare dates</indexterm></indexterm>Dates
+respond to many of the same test methods as numbers. Return values
+are booleans.
+<codeblock otherprops="smalltalk expression">date1 = date2.									"equality"
+date1 ~= date2.								"non-equality"
+date1 &lt; date2.									"earlier than"
+date1 &lt;= date2.								"earlier or equal"
+date1 > date2.									"later than"
+date1 >= date2.								"later or equal"</codeblock></p></body></topic>
+<topic id = "vw.help.date.printFormat"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Format a Date</title>
+<body><p>A date can be formatted by specifying an array of format
+arguments sent with the <apiname>printFormat:</apiname> message. The
+six elements are:<ul><li><p>Day’s position in the string (1, 2,
+or 3)</p></li>
+<li><p>Month’s position in the string (1, 2, or 3)</p></li>
+<li><p>Year’s position in the string (1, 2, or 3)</p></li>
+<li><p>The separator character</p></li>
+<li><p>Month’s format: 1 (numeric), 2 (abbreviation), or 3 (full
+name)</p></li>
+<li><p>Year’s format: 1 (with century) or 2 (without century)</p></li></ul></p>
+<p>Send a <apiname>printFormat:</apiname> message to the date. The
+argument is an array of six elements.
+<codeblock otherprops="smalltalk expression">| date |
+date := Date today.
+^date printFormat: #(2 1 3 $- 3 1)</codeblock></p></body></topic></topic></dita>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.widgets.resizer"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Resizing Splitter</title>
+<body><p><indexterm>GUI development:resize widgets</indexterm><indexterm>resizing
+widget</indexterm>The Resizing Splitter widget allows users to resize
+widgets in the GUI. For example, in the GUI Painter Tool, a Resizing
+Splitter is between the hierarchical list of widgets and the tabbed
+notebook.</p>
+<p>You can change the relative size of both by selecting and dragging the
+area between them. The cursor shape changes while it is passing over
+a Resizing Splitter, indicating that the border is movable.</p>
+<p>Because this widget is really only intended for direct user manipulation,
+no programmatic interface is described in this section.</p>
+<p>Typically, the Resizing Splitter will be one of the last widgets
+you add to the canvas, since you add it between other widgets whose
+size you want to allow the user to control.</p>
+<p>To add a resizer to a canvas:<ol><li><p>Select the Resizing Splitter
+and drop it on the canvas between the widgets you want to resize.</p></li>
+<li><p>Initially the widget is proportioned horizontally, and the
+the <uicontrol>Horizontal</uicontrol> check box is marked, for separating
+widgets top to bottom. To separate widgets left to right, uncheck
+the <uicontrol>Horizontal</uicontrol> check box and resize the widget
+accordingly.</p></li>
+<li><p>In the <uicontrol>Left/top widgets:</uicontrol> properties
+field, enter the IDs of the widgets to the left of or above the
+widget. Similarly, in the <uicontrol>Right/bottom widgets:</uicontrol> field,
+enter the IDs of the widgets to the right or below the Resizing
+Splitter.</p><p>Since there may be (frequently are) more than one
+widget on one side of a widget, these fields take space-separated
+widget ID names. Only widgets in the lists are resized as the Resizer Splitter
+is moved. IDs can be listed either simply as identifiers (TreeView1
+TextEditor2) or as symbols (<uicontrol>#TreeView1 #TextEditor2</uicontrol>).</p></li>
+<li><p><uicontrol>Accept</uicontrol> and install the canvas.</p></li></ol></p>
+<p>The Resizing Splitter can either have a border or be borderless.
+With a border it can double as a separator line, and so enhance
+the look of your GUI. Without a border it is invisible, and so simply
+serves as an area to grab for resizing. Even if you want it to be
+invisible in the final product, leaving it with a border can be
+useful while arranging your GUI.</p></body></topic></dita>

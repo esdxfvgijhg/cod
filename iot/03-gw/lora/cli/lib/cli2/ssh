@@ -1,0 +1,10 @@
+#!/bin/bash
+
+title1="Gateway"
+
+./push
+ssh -t pi@192.168.200.1 "cd ~/aghiles/cli; ./build; bash"
+
+
+#gnome-terminal --tab --title="$title1" --command="bash -c '$cmd; $SHELL'"
+

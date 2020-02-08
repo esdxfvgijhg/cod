@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vs.help.smalltalkLanguage"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Smalltalk Language</title>
+<body><p>Smalltalk has a simple syntax based on messages, literals, variables,
+and block expressions. This simplicity makes Smalltalk very easy to learn.</p>
+<p>The language includes higher-level abstractions &#x2014; classes and metaclasses &#x2014;,
+which define the behavior of all objects in the Smalltalk environment.</p>
+<p>&Product; complies with ANSI standards for Smalltalk syntax, but employs some 
+extensions, such as name spaces.</p></body>
+</topic></dita>

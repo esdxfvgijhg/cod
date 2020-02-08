@@ -1,0 +1,74 @@
+\hypertarget{classns3_1_1lorawan_1_1LoraTxCurrentModel}{}\section{ns3\+:\+:lorawan\+:\+:Lora\+Tx\+Current\+Model Class Reference}
+\label{classns3_1_1lorawan_1_1LoraTxCurrentModel}\index{ns3\+::lorawan\+::\+Lora\+Tx\+Current\+Model@{ns3\+::lorawan\+::\+Lora\+Tx\+Current\+Model}}
+
+
+Model the transmit current as a function of the transmit power and mode.  
+
+
+
+
+{\ttfamily \#include $<$lora-\/tx-\/current-\/model.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Lora\+Tx\+Current\+Model\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classns3_1_1lorawan_1_1LoraTxCurrentModel__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Lora\+Tx\+Current\+Model\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{classns3_1_1lorawan_1_1LoraTxCurrentModel__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual double \hyperlink{classns3_1_1lorawan_1_1LoraTxCurrentModel_ad4143a40cb10d4cbd4bf838e006780c7}{Calc\+Tx\+Current} (double tx\+Power\+Dbm) const =0
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraTxCurrentModel_a3f01639f27e81d82c57c41ded59a5c87}\label{classns3_1_1lorawan_1_1LoraTxCurrentModel_a3f01639f27e81d82c57c41ded59a5c87}} 
+static Type\+Id {\bfseries Get\+Type\+Id} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Model the transmit current as a function of the transmit power and mode. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraTxCurrentModel_ad4143a40cb10d4cbd4bf838e006780c7}\label{classns3_1_1lorawan_1_1LoraTxCurrentModel_ad4143a40cb10d4cbd4bf838e006780c7}} 
+\index{ns3\+::lorawan\+::\+Lora\+Tx\+Current\+Model@{ns3\+::lorawan\+::\+Lora\+Tx\+Current\+Model}!Calc\+Tx\+Current@{Calc\+Tx\+Current}}
+\index{Calc\+Tx\+Current@{Calc\+Tx\+Current}!ns3\+::lorawan\+::\+Lora\+Tx\+Current\+Model@{ns3\+::lorawan\+::\+Lora\+Tx\+Current\+Model}}
+\subsubsection{\texorpdfstring{Calc\+Tx\+Current()}{CalcTxCurrent()}}
+{\footnotesize\ttfamily virtual double ns3\+::lorawan\+::\+Lora\+Tx\+Current\+Model\+::\+Calc\+Tx\+Current (\begin{DoxyParamCaption}\item[{double}]{tx\+Power\+Dbm }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Get the current for transmission at this power.
+
+
+\begin{DoxyParams}{Parameters}
+{\em tx\+Power\+Dbm} & The nominal tx power in d\+Bm \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The transmit current (in Ampere) 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classns3_1_1lorawan_1_1ConstantLoraTxCurrentModel_afd0b31a415eae9f95dd4464612925dad}{ns3\+::lorawan\+::\+Constant\+Lora\+Tx\+Current\+Model}, and \hyperlink{classns3_1_1lorawan_1_1LinearLoraTxCurrentModel_a665f1751a87d6ff09b30c4ca30484b92}{ns3\+::lorawan\+::\+Linear\+Lora\+Tx\+Current\+Model}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lora-\/tx-\/current-\/model.\+h\item 
+lora-\/tx-\/current-\/model.\+cc\end{DoxyCompactItemize}

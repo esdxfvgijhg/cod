@@ -1,0 +1,15 @@
+#!/bin/sh
+
+#make arduPi_pi2.o
+#make  SX1272.o
+#make lora_gateway_pi2.o
+#make lora_gateway_pi2
+#sudo ./lora_gateway_pi2 --mode 1
+
+CFLAGS=-DPABOOST -DMAX_DBM=14 -DRASPBERRY -DRASPBERRY2 -DIS_RCV_GATEWAY
+g++ -c arduPi2.cpp -o arduPi2.o
+g++ -c SX1272.cpp -o SX1272.o
+g++ $CFLAGS -c lora_gateway.cpp -o lora_gateway.o
+g++ -lrt -lpthread lora_gateway.o arduPi_pi2.o SX1272.o -o lora_gateway
+sudo ./lora_gateway --mode 1
+

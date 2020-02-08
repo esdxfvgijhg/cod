@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.debug"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Debugging</title>
+<body><p>&Product; provide a sophisticated Debugger for diagnosing and 
+correcting problems in your application. In addition to breakpoints, 
+probes allow you to trigger the Debugger under precise conditions.</p>
+<p>The dynamic nature of the Smalltalk language makes it possible to 
+debug and fix many issues "in-flight", without interrupting the operation 
+of your application.</p></body>
+<topic id = "vw.help.debug.debugger"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Debugger</title>
+<body><p><indexterm>debugger</indexterm>A Debugger
+window opens on error conditions or when <codeph>self halt</codeph> is encountered
+in the code.</p>
+<p>The Debugger enables you to look at the methods that
+are waiting for a return value when an error or interrupt occurs,
+examine the values of variables in each context, dynamically change
+a value or a method, insert breakpoints, and restart execution at a
+chosen location with the new values and logic experimentally in
+place.</p></body></topic>
+<topic id = "vw.help.debug.stack"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Reading the execution stack</title>
+<body><p><indexterm>debugger<indexterm>execution stack</indexterm></indexterm>The
+Debugger displays the execution stack with the most recent message
+send at the top. The first line of the execution stack is often only
+of marginal interest, because it usually represents the method that
+handles the error &#x2014; you must read around it to identify the cause of
+the error.</p>
+<p>To double the amount of execution stack displayed, select <uicontrol>More stack</uicontrol> on
+the &lt;Operate&gt; menu in the stack (uppermost) view. This will allow you
+to trace the problem backward (down the list of contexts.) You may
+change variables, edit the method, restart, or else single-step execution.</p>
+<p><b>Examples:</b><ol><li><p>In the following line from the execution
+stack:
+<pre>theNameSpace.theClass&gt;&gt;theMethodName</pre>
+<ul><li><p><codeph>theNameSpace</codeph> is the namespace
+in which <codeph>theClass</codeph> belongs</p></li>
+<li><p><codeph>theMethodName</codeph> is the name of the instance
+side method of  <codeph>theClass</codeph></p></li></ul></p></li>
+<li><p>In the following line from the execution stack:
+<pre>theNameSpace.theClass(theParentClass)>>theMethodName</pre><ul><li><p>the method <codeph>theMethodName</codeph> is
+the name of the method defined in the parent class (<codeph>theParentClass</codeph>)
+of <codeph>theClass</codeph>.</p></li></ul></p></li>
+<li><p>In the following line from the execution stack:
+<pre>theNameSpace.theClass class>>theMethodName</pre><ul><li><p><codeph>theMethodName</codeph> is the name
+of the class side method of  <codeph>theClass</codeph>.</p></li></ul></p></li></ol></p></body></topic>
+<topic id = "vw.help.debug.variableValue"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Inspect and change a variable</title>
+<body><p><indexterm>debugger<indexterm>inspect variable</indexterm></indexterm>The
+bottom of the Debugger window is devoted to two inspectors that allow
+you to see the values of variables as they exist at the chosen point
+in the execution stack.</p>
+<p>To inspect instance variables, use the inspector on the bottom
+left. To inspect temporary variables in the selected context, use
+the bottom right inspector.</p>
+<p>To change the value of a variable and then restart the program,
+select the variable from the appropriate list, and edit its value
+in the right-hand part of the inspector. Then select <uicontrol>Accept</uicontrol> in
+the &lt;Operate&gt; menu. To begin execution from the beginning of
+the method, select <uicontrol>Restart</uicontrol> in the stack view
+menu.</p></body></topic>
+<topic id = "vw.help.debug.insertStatus"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Insert a status message</title>
+<body><p><indexterm>debugger<indexterm>report to transcript</indexterm></indexterm>To
+have your program display status messages during the debugging phase,
+edit your code to use the System Transcript as a status log.</p>
+<p>To send output to the System Transcript, insert expressions such
+as the following in your code, substituting a pertinent object name
+for the italicized word:
+<codeblock otherprops="smalltalk expression">Transcript show: <i>anObject</i> printString.
+Transcript cr.
+Transcript tab.
+Transcript show: 'Checkpoint 1'; cr.</codeblock></p>
+<p>To avoid an update of the display with each part of a larger
+message, use <apiname>nextPutAll:</apiname> or <apiname>print:</apiname>,
+then use <apiname>endEntry</apiname> to output the message, as in:
+<codeblock otherprops="smalltalk expression">Transcript nextPutAll: 'The account is: '; print: account; endEntry.</codeblock></p>
+<p>To clear the Transcript for a new batch of messages, select <uicontrol>Cancel</uicontrol> in the
+Transcript &lt;Operate&gt; menu. Alternatively, execute the expression <codeph>Transcript
+clear</codeph>.</p>
+<p>The System Transcript is a distinguished instance of the <apiname>TextCollector</apiname> class.
+For more transcript output messages, browse the instance methods
+of that class.</p></body></topic>
+<topic id = "vw.help.debug.copyStack"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Capture the stack for a bug report</title>
+<body><p><indexterm>stack dump</indexterm><indexterm>debugger<indexterm>capture
+stack</indexterm></indexterm>Use the <uicontrol>Copy stack</uicontrol> command
+on the &lt;Operate&gt; menu in the stack view. The contents of the
+stack view will be copied into the paste buffer as a block of text.
+You can then paste the stack text into a file.</p></body></topic>
+<topic id = "vw.help.debug.userStop"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Interrupt a program from the keyboard</title>
+<body><p><indexterm>debugger<indexterm>open from keyboard</indexterm></indexterm><indexterm>interrupt
+execution</indexterm>Type the user interrupt key sequence: &lt;Control>-y.
+Enter this key sequence when you want to freeze a program that is
+looping endlessly, or to capture its state at a specific observable
+stage.</p>
+<p>User interrupts generate the usual error notifier, which can
+be used to open a Debugger.</p></body></topic>
+<topic id = "vw.help.debug.halt"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Halt execution programmatically</title>
+<body><p><indexterm>halt execution</indexterm>Insert the Smalltalk
+expression <codeph>self halt</codeph> in a method at the location where
+you want execution to be interrupted, then <uicontrol>Accept</uicontrol> the
+revised method. This can be done inside the Debugger while execution
+is suspended, but the stack will be rolled back to the method you change.
+The next time that method is called, an error notifier will be displayed
+at the specified juncture.</p>
+<p>A <apiname>halt</apiname> message will generate the usual error
+notifier, which can be used to open a Debugger.</p></body></topic>
+<topic id = "vw.help.debug.stopPoint"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set the stopping point</title>
+<body><p><indexterm>debugger<indexterm>stopping point</indexterm></indexterm>To
+continue to a specific place in a method, click on that location
+to put the insertion point (caret) there, then select <uicontrol>Skip to Caret</uicontrol> in
+the &lt;Operate&gt; menu.</p></body></topic>
+<topic id = "vw.help.debug.step"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Single-step execution</title>
+<body><p><indexterm>debugger<indexterm>step</indexterm></indexterm>Single-stepping
+is performed with the Debugger window open so you can inspect the
+conditions at the new position in the stack.</p>
+<p>To execute the next message-send, select the <uicontrol>Step</uicontrol> button
+in the Debugger or select <uicontrol>Step</uicontrol> in the &lt;Operate&gt;
+menu. Execution stops after the value is returned from the called
+method.</p>
+<p>To send the next message, and "follow" it by displaying the called method,
+select the <uicontrol>Send</uicontrol> button or select <uicontrol>Send</uicontrol> in
+the &lt;Operate&gt; menu. This command provides the finest granularity
+of message-flow inspection.</p></body></topic></topic></dita>

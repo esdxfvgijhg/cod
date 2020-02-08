@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.colors"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Colors, Patterns, and Palettes</title>
+<body><p>Colors, Patterns, and Palettes are used to draw lines, 
+rectanges, and complex shapes.</p>
+<p>Colors are represented as instances of 
+<apiname title="Open a browser on this class">ColorValue</apiname>. 
+&Product; stores colors as red, green, and blue
+(RGB) components, but allows colors to be specified by
+constant names, by RGB values, or by hue, saturation,
+and brightness (HSB) values.</p>
+<p>A <apiname>Pattern</apiname> is an arrangement of 
+pixels (e.g., a gray background) created by painting 
+a tile throughout a region. The tile can be an <apiname>Image</apiname>, 
+a <apiname>Pixmap</apiname>, or a <apiname>Mask</apiname>. A <apiname>Palette</apiname> represents 
+the collection of colors available for coloring pixels. 
+Palettes are used to map <apiname>ColorValue</apiname> 
+objects, for masking, and to specify transparency.</p>
+</body>
+<topic id = "vw.help.colors.createByName"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a color by name</title>
+<body><p><indexterm>color<indexterm>create by name</indexterm></indexterm>A
+set of predefined colors is provided by the <apiname>ColorValue</apiname> class.
+To create an instance of a predefined color value, send its name
+to the class:
+<codeblock otherprops="smalltalk expression">| gc color |
+gc := (ScratchPad prepareWindow) graphicsContext.
+color := ColorValue cyan.
+gc paint: color.
+gc displayDotOfDiameter: 400 at: 200 @ 200.</codeblock></p></body></topic>
+<topic id = "vw.help.colors.createRGB"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create an RGB color</title>
+<body><p><indexterm>color<indexterm>create RGB</indexterm></indexterm>Send
+a <apiname>red:green:blue:</apiname> message to the <apiname>ColorValue</apiname> class.
+All arguments are numbers between zero and one, representing the intensity
+of their respective colors. (In the example, the intensity of green
+is varied while the red and blue intensities remain at zero.)
+<codeblock otherprops="smalltalk expression">| gc origin |
+gc := (ScratchPad prepareWindow) graphicsContext.
+origin := 0 @ 0.
+1 to: 0 by: -0.01 do: [:grn |
+		gc paint: (ColorValue red: 0.0 green: grn blue: 0.0).
+		origin := origin + 4.
+		gc displayRectangle: (origin extent: 400 - origin)]</codeblock></p></body></topic>
+<topic id = "vw.help.colors.createHSB"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create an HSB color</title>
+<body><p><indexterm>color<indexterm>create HSB</indexterm></indexterm>Send
+a <apiname>hue:saturation:brightness:</apiname> message to the <apiname>ColorValue</apiname> class. 
+The <codeph>hue</codeph> argument
+is a number from 0 to 1, where 0 is red, 0.333 is green, 0.667 is
+blue, and 1 is red again. The <codeph>saturation</codeph> argument
+is a number from 0 to 1, representing minimum vividness (white)
+to full color; a more saturated color makes an object appear closer
+to the viewer. The <codeph>brightness</codeph> argument is a number
+from 0 to 1, representing minimum brightness (black) to full color;
+varying the brightness is useful for representing shadows.
+<codeblock otherprops="smalltalk expression">| gc r x y |
+gc := (ScratchPad prepareWindow) graphicsContext.
+r := 50.
+gc lineWidth: 2.
+gc translation: 150 @ 150.
+0 to: 1 by: 0.005 do: [:i |
+		x := (i * Float pi) cos * r.
+		y := (i * Float pi) sin * r / 2.
+		gc paint: (ColorValue hue: 0.0 saturation: 0.5 brightness: i).
+		gc displayLineFrom: x @ y to: 0 @ -100 ].
+gc translation: 200 @ 200.
+0 to: 1 by: 0.005 do: [:i |
+		x := (i * Float pi) cos * r.
+		y := (i * Float pi) sin * r / 2.
+		gc paint: (ColorValue hue: 0.0 saturation: 0.75 brightness: i).
+		gc displayLineFrom: x @ y to: 0 @ -100 ].
+gc translation: 250 @ 250.
+0 to: 1 by: 0.005 do: [:i |
+		x := (i * Float pi) cos * r.
+		y := (i * Float pi) sin * r / 2.
+		gc paint: (ColorValue hue: 0.0 saturation: 1.0 brightness: i).
+		gc displayLineFrom: x @ y to: 0 @ -100 ]</codeblock></p></body></topic>
+<topic id = "vw.help.colors.coverageValue"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a coverage</title>
+<body><p><indexterm>color<indexterm>coverage</indexterm></indexterm>In
+a window or <apiname>Pixmap</apiname>, each pixel can be assigned
+a different color. In a <apiname>Mask</apiname>, each pixel is assigned
+a level of opaqueness, either 0 (transparent) or 1 (opaque). Each
+opaque pixel in the mask causes the corresponding pixel in the image
+to be displayed. A <apiname>CoverageValue</apiname> is used to represent
+the level of opaqueness associated with a pixel.</p>
+<p>Send a <apiname>coverage:</apiname> message to the <apiname>CoverageValue</apiname> class.
+The argument is 0 (transparent) or 1 (opaque). As an alternative,
+you can also send a <apiname>transparent</apiname> or <apiname>opaque</apiname> message
+to the <apiname>CoverageValue</apiname> class.
+<codeblock otherprops="smalltalk expression">| gc mask |
+gc := (ScratchPad prepareWindow) graphicsContext.
+mask := Mask extent: 400 @ 400.
+mask graphicsContext 
+		displayDotOfDiameter: 400 at: 200 @ 200.
+mask graphicsContext 
+		paint: (CoverageValue coverage: 0);
+		displayRectangle: (59 @ 59 extent: 283 @ 283).
+mask displayOn: gc at: 0 @ 0.</codeblock></p></body></topic>
+<topic id = "vw.help.colors.tilePattern"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a tiled pattern</title>
+<body><p><indexterm>color<indexterm>tile pattern</indexterm></indexterm>A <apiname>Pattern</apiname> is
+created by filling a space with a single graphic image that is repeated
+over and over, like tiles covering a floor. <ol><li><p>Create the
+graphic image that will serve as the repeating tile in the pattern.
+You can also use a window, <apiname>Pixmap</apiname>, or <apiname>Mask</apiname> as
+the tile.</p></li>
+<li><p>Send an <apiname>asPattern</apiname> message to the tile.
+<codeblock otherprops="smalltalk expression">| gc tile |
+gc := (ScratchPad prepareWindow) graphicsContext.
+tile := Image cincomSmalltalkLogo shrunkenBy: 4 @ 4.
+tile := tile asPattern.
+gc paint: tile.
+gc displayRectangle: (50 @ 50 extent: 300 @ 300).</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.colors.patternPhase"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Adjust a pattern’s phase</title>
+<body><p><indexterm>color<indexterm>pattern phase</indexterm></indexterm><indexterm>pattern
+phase</indexterm>By default, the first tile in the pattern is displayed
+at the origin of the display surface. You can shift that first tile,
+and with it the entire pattern. This shift, known as the tile phase,
+is sometimes helpful for aligning the edges of the tiles with the
+edges of the graphic object that is being painted, as in the variant.</p>
+<p>Send a <apiname>tilePhase:</apiname> message to the graphics context
+of the display surface on which the patterned object is to be displayed.
+The argument is a point that defines the origin of the first tile
+in the pattern. (As in the example, the tile phase is often the
+same as the origin of the painted object, which aligns the tiles
+with the top and left edges of the object.)
+<codeblock otherprops="smalltalk expression">| gc tile |
+gc := (ScratchPad prepareWindow) graphicsContext.
+tile := Image cincomSmalltalkLogo shrunkenBy: 4 @ 4.
+tile := tile asPattern.
+gc paint: tile.
+gc tilePhase: 50 @ 50.
+gc displayRectangle: (50 @ 50 extent: 300 @ 300).</codeblock></p></body></topic>
+<topic id = "vw.help.colors.applyColorOrPattern"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Apply a color or pattern</title>
+<body><p><indexterm>color<indexterm>apply color</indexterm><indexterm>apply
+pattern</indexterm></indexterm>Send a <apiname>paint:</apiname> message
+to the graphics context of the display surface on which the object
+is to be displayed. The argument is a color, a pattern, or in the
+case of a <apiname>Mask</apiname>, a coverage.
+<codeblock otherprops="smalltalk expression">| gc tile |
+tile := Pixmap extent: 10 @ 10.
+gc := tile graphicsContext.
+"Tile background"
+gc paint: ColorValue chartreuse.
+gc displayRectangle: (0 @ 0 extent: 10 @ 10).
+"Tile foreground"
+gc paint: ColorValue red.
+gc displayDotOfDiameter: 10 at: 4 @ 4.
+"Patterned circle"
+gc := (ScratchPad prepareWindow) graphicsContext.
+gc paint: tile asPattern.
+gc displayDotOfDiameter: 400 at: 200 @ 200.</codeblock></p></body></topic>
+<topic id = "vw.help.colors.colorPalette"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Change a color palette</title>
+<body><p><indexterm>color<indexterm>color palette</indexterm></indexterm>In
+a graphic image, each pixel is associated with a color in the image’s
+palette of colors. One way of changing the color scheme is to substitute
+a different palette. <ol><li><p>Create an array containing the new
+colors. To access the existing palette’s array of colors, send a <apiname>palette</apiname> message
+to the image, and then send a <apiname>colors</apiname> message to
+the resulting palette. You can then modify the color array as desired
+(in the example, we locate the white entry and substitute the color
+yellow).</p></li>
+<li><p>Create a new palette by sending a <apiname>withColors:</apiname> message
+to the <apiname>MappedPalette</apiname> class. The argument is the
+new or modified color array.</p></li>
+<li><p>Install the new palette by sending a <apiname>palette:</apiname> message
+to the image. The argument is the new palette.
+<codeblock otherprops="smalltalk expression">| gc palette image colors whiteIndex |
+gc := (ScratchPad prepareWindow) graphicsContext.
+image := InputFieldSpec paletteIcon asImage.
+colors := image palette colors.
+whiteIndex := colors indexOf: ColorValue white.
+colors at: whiteIndex put: ColorValue yellow.
+palette := MappedPalette withColors: colors.
+image := image palette: palette.
+image displayOn: gc at: 10 @ 10.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.colors.useDefaultPalette"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Convert an image to use the default palette</title>
+<body><p><indexterm>color<indexterm>palette from image</indexterm></indexterm>Send
+a <apiname>convertToPalette:</apiname> message to the image. The argument
+is the default color palette, which can be accessed by sending a <apiname>default</apiname> message
+to the <apiname>Screen</apiname> class and then sending a <apiname>colorPalette</apiname> message
+to the resulting screen object. (For a coverage-based image, send
+a <apiname>coveragePalette</apiname> message instead of <apiname>colorPalette</apiname>.)
+<codeblock otherprops="smalltalk expression">| gc image |
+gc := (ScratchPad prepareWindow) graphicsContext.
+image := Image cincomSmalltalkLogo magnifiedBy: 2 @ 2.
+image := image convertToPalette: Screen default colorPalette.
+image displayOn: gc at: 10 @ 10.</codeblock></p></body></topic>
+<topic id = "vw.help.colors.renderingPolicty"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Change color rendering policy</title>
+<body><p><indexterm>color<indexterm>rendering policy</indexterm></indexterm>When
+a graphic image contains a color that does not exist in the screen’s
+palette, a neighboring color is used instead. &Product; provides
+three different renderers for deciding which color to substitute
+for a missing color. Of the three, <apiname>NearestPaint</apiname> is
+the fastest and is the default on color screens. <apiname>OrderedDither</apiname> is
+the default on monochrome and gray-scale screens. <apiname>ErrorDiffusion</apiname> uses
+a more sophisticated color-blending algorithm than <apiname>OrderedDither</apiname> does,
+but it tends to be slower.</p>
+<p>Send a <apiname>convertForGraphicsDevice:renderedBy:</apiname> message
+to the image. The first argument is typically <codeph>Screen default</codeph>.
+The second argument is <apiname>NearestPaint</apiname> when you want
+to use the nearest available paint from the screen’s palette, <apiname>OrderedDither</apiname> when
+you want to synthesize the nonexistent color by blending neighboring
+colors, and <apiname>ErrorDiffusion</apiname> when you want to use
+a more sophisticated (but often slower) blending algorithm.
+<codeblock otherprops="smalltalk expression">| gc r g b im |
+"THIS EXAMPLE IS INTENDED TO BE USED ON
+A COLOR SCREEN. IT CAN TAKE SEVERAL MINUTES."
+gc := (ScratchPad prepareWindow) graphicsContext.
+im := Image
+		extent: 60 @ 60 
+		depth: 15 
+		palette: (FixedPalette 
+			redShift: 10 redMask: 31
+			greenShift: 5 greenMask: 31
+			blueShift: 0 blueMask: 31).
+0 to: 59 do: [:x |
+		0 to: 59 do: [:y |
+			r := 1 - ((x @ y - (10 @ 10)) r / 30) max: 0.
+			g := 1 - ((x @ y - (20 @ 50)) r / 30) max: 0.
+			b := 1 - ((x @ y - (50 @ 30)) r / 30) max: 0.
+			im atPoint: x @ y put: (im palette 
+				indexOfPaintNearest: (ColorValue red: r green: g blue: b))]].
+(im convertForGraphicsDevice: Screen default 
+		renderedBy: NearestPaint new)
+			displayOn: gc at: 10 @ 10.
+(im convertForGraphicsDevice: Screen default
+		renderedBy: OrderedDither new)
+			displayOn: gc at: 80 @ 10.
+(im convertForGraphicsDevice: Screen default 
+		renderedBy: ErrorDiffusion new)
+			displayOn: gc at: 150 @ 10.</codeblock></p></body></topic>
+<topic id = "vw.help.colors.convertImageToPalette"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Apply a palette and rendering policy</title>
+<body><p><indexterm>color<indexterm>apply a palette</indexterm></indexterm>Send
+a <apiname>convertToPalette:renderedBy:</apiname> message to the image.
+The first argument is the desired palette (in the example, a monochrome palette).
+The second argument is the desired renderer (a <apiname>NearestPaint</apiname>,
+an <apiname>OrderedDither</apiname>, or an <apiname>ErrorDiffusion</apiname>).
+<codeblock otherprops="smalltalk expression">| gc r g b im |
+gc := (ScratchPad prepareWindow) graphicsContext.
+im := Image
+		extent: 60 @ 60
+		depth: 15 palette: (FixedPalette 
+			redShift: 10 redMask: 31
+			greenShift: 5 greenMask: 31
+			blueShift: 0 blueMask: 31).
+0 to: 59 do: [:x |
+		0 to: 59 do: [:y |
+			r := 1 - ((x @ y - (10 @ 10)) r / 30) max: 0.
+			g := 1 - ((x @ y - (20 @ 50)) r / 30) max: 0.
+			b := 1 - ((x @ y - (50 @ 30)) r / 30) max: 0.
+			im atPoint: x @ y put: (im palette 
+				indexOfPaintNearest: (ColorValue brightness: 1 - ((1 - r) * (1 - g) * (1 - b))))]].
+(im convertToPalette: MappedPalette whiteBlack
+		renderedBy: NearestPaint new)
+			displayOn: gc at: 10 @ 10.
+(im convertToPalette: MappedPalette whiteBlack
+		renderedBy: OrderedDither new)
+			displayOn: gc at: 80 @ 10.
+(im convertToPalette: MappedPalette whiteBlack
+		renderedBy: ErrorDiffusion new)
+			displayOn: gc at: 150 @ 10.</codeblock></p></body></topic></topic></dita>

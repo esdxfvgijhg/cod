@@ -1,0 +1,253 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<title>The Chronos Date/Time Library</title>
+<meta name="description" content="Code library for date and time computations in Smalltalk. Supports Olson time zones, multiple calendars, scientific and business use cases, and flexible date/time formatting.">
+<meta name="keywords" content="Chronos, date, time, time zone, timezone, calendar, Smalltalk, VisualWorks, Olson timezone database, ANSI-Smalltalk Standard, DateAndTime, Duration, holiday, ISO 8601, RFC 2822">
+
+<link rel="alternate" type="application/atom+xml"
+    title="Chronos Time Zone Repository Publication Advisory" href="http://date-time-zone.com/feeds/timeZoneRepository.atom.xml">
+
+<style type="text/css">
+a:link {color: rgb(192, 164, 132); font-weight: bold;}
+a:visited {color: rgb(192, 164, 132); font-weight: bold; text-decoration: none;} 
+a:hover {color: #0000FF}
+a:active {color: #FF0000}
+td { 
+font-family: Helvetica,Arial,sans-serif;
+font-size: 16;
+text-align: justify;
+color: rgb(0, 0, 0);
+}
+.maintitle {
+font-size: 180%;
+font-weight: bold;
+}
+.gold {
+color:rgb(192, 164, 132);
+}
+.boldgold {
+color:rgb(192, 164, 132);
+font-weight: bold;
+font-size: 125%;
+}
+</style>
+
+<script type="text/javascript">
+function toInteger(n){
+  return (n < 0 ? - 1 : + 1) * Math.floor(Math.abs(n) + 0.5);
+}
+function zeropad(n) { 
+return n>9 ? n : '0'+n; 
+}
+function formatTimeZoneOffset(time, elementSeparator) {
+var minutesWestOfUT=time.getTimezoneOffset()
+var absOffsetInMinutes=Math.abs(minutesWestOfUT)
+var offsetInHours=toInteger(absOffsetInMinutes / 60)
+var offsetMinutes = absOffsetInMinutes % 60
+var isWestOfUT = minutesWestOfUT > 0
+return (isWestOfUT ? '-' : '+')+zeropad(offsetInHours)+elementSeparator+zeropad(offsetMinutes)
+}
+function formatTimeOfDay(time) {
+var hour=time.getHours()
+var minute=time.getMinutes()
+var second=time.getSeconds()
+return zeropad(hour)+':'+zeropad(minute)+':'+zeropad(second)
+}
+function abbreviationOfMonth(time) {
+return ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][time.getMonth()]
+}
+function formatDateAsYMD(time, elementSeparator) {
+var dayOfMonth=time.getDate()
+var month=time.getMonth() + 1
+var year=time.getFullYear()
+return year+elementSeparator+zeropad(month)+elementSeparator+zeropad(dayOfMonth)
+}
+function formatDateAsMDY(time, mdSeparator, dySeparator) {
+var dayOfMonth=time.getDate()
+var year=time.getFullYear()
+return abbreviationOfMonth(time)+mdSeparator+zeropad(dayOfMonth)+dySeparator+year
+}
+function formatDateAsDMY(time, dmSeparator, mySeparator) {
+var dayOfMonth=time.getDate()
+var year=time.getFullYear()
+return zeropad(dayOfMonth)+dmSeparator+abbreviationOfMonth(time)+mySeparator+year
+}
+function abbreviationOfDayOfWeek(time) {
+return ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][time.getDay()]
+}
+function formatDateAsRFC2822(time) {
+return abbreviationOfDayOfWeek(time)+', '+formatDateAsDMY(time, ' ', ' ')
+}
+
+function formatDateAndTimeAsISO8601(time) {
+return formatDateAsYMD(time,'-')+'T'+formatTimeOfDay(time)+formatTimeZoneOffset(time, ':')
+}
+function formatDateAndTimeAsRFC2822(time) {
+return formatDateAsRFC2822(time)+' '+formatTimeOfDay(time)+' '+formatTimeZoneOffset(time, '')
+}
+function startClock()
+{
+document.getElementById('clock').innerHTML=formatDateAndTimeAsRFC2822(new Date())
+t=setTimeout('startClock()',500)
+}
+</script>
+
+</head>
+<body bgcolor="#ffffff" onload="startClock()">
+<br style="font-size: 50%">
+<center>
+<table border="0" valign="center" style="width: 96%; text-align: left; margin-left: auto; margin-right: auto;">
+<tbody><tr><td>
+<center>
+<table width=94%>
+<tbody>
+<tr>
+<td><center>
+<img src="http://www.chronos-st.org/images/Chronos-small.png">
+<br style="font-size: 30%" />
+<a style="text-decoration: none;" href="http://en.wikipedia.org/wiki/Chronos" target="_top"><span class="boldgold">&chi;&rho;&#972;&nu;&omicron;&sigmaf;</span></a>
+</center></td>
+<td><table width="100%" border="0" bgcolor="white" cellpadding="0">
+<tbody>
+<tr>
+<td  align="left" style="text-align: left;">
+<div class="maintitle"><span class="gold"><a style="text-decoration: none;" href="http://www.chronos-st.org/" target="_top">The Chronos Date/Time Library</a></span></div>
+<br> 
+<b><span style="font-family: Helvetica,Arial,sans-serif; color: rgb(110, 110, 110);" id="clock">
+<noscript><small><i>~ A code library for date/time computations ~</i></small></noscript></span></b>
+</td>
+<td align="right" style="text-align: right;">
+<img src="http://www.chronos-st.org/images/SunDial.jpg" width=100 height=100>
+</td>
+<td align="right" style="text-align: right;">
+<img src="http://www.chronos-st.org/images/st-balloon.jpg">
+</td>
+</tbody>
+</table>
+
+</td>
+</tr>
+</tbody>
+</table>
+
+<table width=94% cellpadding=10>
+<tbody><tr><td>
+<table border=0 width="100%">
+<tr style="background-color: rgb(248, 248, 248);"> 
+<td style="text-align: left; font-family: Helvetica,Arial,sans-serif; color: rgb(128, 128, 128);">
+<span style="font-size: 14;">
+<noscript></noscript>
+<script type="text/javascript">
+document.write('Page retrieved '+formatDateAndTimeAsRFC2822(new Date()))
+</script>
+</span> 
+</td>
+<td style="text-align: right; font-family: Helvetica,Arial,sans-serif; color: rgb(128, 128, 128);">
+<span style="font-size: 14;">
+<noscript>Page published Wed, 31 Jan 2007 07:20:27 +0000 (UT: Universal Time)</noscript>
+<script type="text/javascript">
+document.write('Page published '+formatDateAndTimeAsRFC2822(new Date(1170228027175)))
+</script>
+</span>
+</td>
+</tr>
+</table>
+</td></tr>
+<tr><td>
+
+<center>
+<table>
+<tbody>
+<tr>
+<td>
+<center><h3>Apollo 11 Lands On The Moon (in selected time zones)</h3></center>
+</td>
+</tr>
+<tr>
+<td>
+<h4>The Chronos Code</h4>
+<p><pre>
+| printPolicy eventDateAndTime |
+printPolicy := 
+	ChronosPrintPolicy applying: 
+		#(showDayOfWeekAbbreviation 
+		useDayMonthYearOrder 
+		useMonthAbbreviation 
+		yearMonthSeparator:monthDayOfMonthSeparator:dayOfMonthYearSeparator: $ $  ', '
+		dateAndTimeSeparator: $ 
+		timeOfDayPrefix: nil
+		hideSubsecondFraction
+		showTimeZoneVerbosely
+		timeZoneSeparator: $ 
+		timeZoneElementSeparator: nil).
+eventDateAndTime 
+	:= Timepoint 
+		year: 1969 month: 7 day: 20 
+		hour: 10 minute: 17 second: 40 
+		timeZone: Timezone universal.
+Transcript cr.
+#('Pacific/Auckland' 'Australia/Sydney' 'Asia/Tokyo' 'Australia/Perth' 'Asia/Hong_Kong' 
+'Asia/Calcutta' 'Europe/Moscow' 'Asia/Jerusalem' 'Europe/Amsterdam' 'Europe/London' UT 
+'America/Sao_Paulo' 'America/Argentina/Buenos_Aires' 'America/New_York' 'America/Chicago' 
+'America/Denver' 'America/Los_Angeles' 'Pacific/Honolulu') 
+	do: [:tzKey | Transcript cr; show: eventDateAndTime >> tzKey % printPolicy].
+</pre</p>
+</td>
+</tr>
+<tr>
+<td>
+<h4>The Output</h4>
+<p><pre>
+Sun, 20 Jul 1969 22:17:40 +1200 (NZST: Pacific/Auckland | New Zealand Time)
+Sun, 20 Jul 1969 20:17:40 +1000 (EST: Australia/Sydney | AUS Eastern Time)
+Sun, 20 Jul 1969 19:17:40 +0900 (JST: Asia/Tokyo | Tokyo Time)
+Sun, 20 Jul 1969 18:17:40 +0800 (WST: Australia/Perth | W. Australia Time)
+Sun, 20 Jul 1969 19:17:40 +0900 (HKST: Asia/Hong_Kong)
+Sun, 20 Jul 1969 15:47:40 +0530 (IST: Asia/Calcutta | India Time)
+Sun, 20 Jul 1969 13:17:40 +0300 (MSK: Europe/Moscow | Russian Time)
+Sun, 20 Jul 1969 12:17:40 +0200 (IST: Asia/Jerusalem | Israel Time)
+Sun, 20 Jul 1969 11:17:40 +0100 (CET: Europe/Amsterdam)
+Sun, 20 Jul 1969 11:17:40 +0100 (BST: Europe/London | London Time)
+Sun, 20 Jul 1969 10:17:40 +0000 (UT: Universal Time)
+Sun, 20 Jul 1969 07:17:40 -0300 (BRT: America/Sao_Paulo | E. South America Time)
+Sun, 20 Jul 1969 06:17:40 -0400 (ART: America/Argentina/Buenos_Aires)
+Sun, 20 Jul 1969 06:17:40 -0400 (EDT: America/New_York | Eastern Time)
+Sun, 20 Jul 1969 05:17:40 -0500 (CDT: America/Chicago | Central Time)
+Sun, 20 Jul 1969 04:17:40 -0600 (MDT: America/Denver | Mountain Time)
+Sun, 20 Jul 1969 03:17:40 -0700 (PDT: America/Los_Angeles | Pacific Time)
+Sun, 20 Jul 1969 00:17:40 -1000 (HST: Pacific/Honolulu | Hawaiian Time)
+</pre</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p><img src="http://www.chronos-st.org/images/SunDial.jpg"></p>
+</center>
+
+</td></tr></tbody></table>
+</center>
+
+</td></tr>
+<tr><td>
+<p style="font-size: 75%; color: rgb(128, 128, 128); background-color: rgb(248, 248, 248);">
+[Chronos] All code (classes and methods, and all associated documentation,) distributed as part of the 
+Chronos Date/Time library are &copy; Copyright 2005-2006 by Alan L. Lovejoy.&nbsp; All Rights Reserved. 
+Usage is controlled by the Chronos License (which is included in the distribution as the contents of 
+the file {chronos-license.txt}, and is also available from the <a href="http://www.chronos-st.org/">
+Chronos web site</a> {<a href="http://www.chronos-st.org/License.html" target="_top">http://www.chronos-st.org/License.html</a>})
+</p>
+<blockquote>"Do not go gentle into that good night,
+<br>Old age should burn and rave at the close of the day;
+<br>Rage, rage at the dying of the light!" -- Dylan Thomas
+</blockquote>
+</td></tr>
+
+</center>
+</td></tr></tbody></table>
+</center>
+
+</body>
+</html>

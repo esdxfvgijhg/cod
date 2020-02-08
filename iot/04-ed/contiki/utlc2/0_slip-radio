@@ -1,0 +1,14 @@
+#!/bin/bash
+
+mytitle="Slip-radio"
+echo -e '\033]2;'$mytitle'\007'
+
+
+OSPATH=`targetos`
+cd $OSPATH/contiki/examples/ipv6/slip-radio/
+
+
+BOARD=remote 
+make slip-radio.upload PORT=/dev/ttyUSB0 TARGET="zoul"
+make login PORT=/dev/ttyUSB0
+

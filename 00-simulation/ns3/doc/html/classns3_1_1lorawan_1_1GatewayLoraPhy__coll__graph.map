@@ -1,0 +1,5 @@
+<map id="ns3::lorawan::GatewayLoraPhy" name="ns3::lorawan::GatewayLoraPhy">
+<area shape="rect" id="node2" href="$classns3_1_1lorawan_1_1LoraPhy.html" title="{ns3::lorawan::LoraPhy\n||+ LoraPhy()\l+ ~LoraPhy()\l+ StartReceive()\l+ EndReceive()\l+ Send()\l+ IsTransmitting()\l+ IsOnFrequency()\l+ SetReceiveOkCallback()\l+ SetReceiveFailedCallback()\l+ SetTxFinishedCallback()\l+ GetMobility()\l+ SetMobility()\l+ SetChannel()\l+ GetChannel()\l+ GetDevice()\l+ SetDevice()\l+ GetTypeId()\l+ GetOnAirTime()\l}" alt="" coords="447,336,643,663"/>
+<area shape="rect" id="node3" href="$classObject.html" title="{Object\n||}" alt="" coords="1111,79,1171,156"/>
+<area shape="rect" id="node7" href="$classns3_1_1lorawan_1_1LoraInterferenceHelper.html" title="{ns3::lorawan::LoraInterference\lHelper\n||+ LoraInterferenceHelper()\l+ ~LoraInterferenceHelper()\l+ Add()\l+ GetInterferers()\l+ PrintEvents()\l+ IsDestroyedByInterference()\l+ GetOverlapTime()\l+ ClearAllEvents()\l+ CleanOldEvents()\l+ GetTypeId()\l}" alt="" coords="535,5,734,229"/>
+</map>

@@ -1,0 +1,145 @@
+// Copyright © 2019 The Things Network Foundation, The Things Industries B.V.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+.container
+  display: flex
+
+.input-box
+  border-input()
+  box-sizing: border-box
+  width: 100%
+  background: white
+  border-radius: $br.s
+  padding: 0
+  position: relative
+  transition: border-color $ad.s
+  overflow: hidden
+  overflow-y: hidden
+  display: flex
+  align-items: center
+  &:not(.textarea)
+    max-height: 2.3rem
+
+  &.focus
+    border-color: $c-active-blue
+    color: black
+
+  &.error
+    border-color: $c-error
+    background-color: lighten($c-error, 49)
+
+  &.error.focus
+    box-shadow: 0 0 0 3px alpha($c-error, .2)
+
+  &.warn
+    border-color: $c-warning
+    background-color: lighten($c-warning, 42)
+
+  &.warn.focus
+    box-shadow: 0 0 0 3px alpha($c-warning, .3)
+
+  &.disabled
+    background-color: $c-backdrop
+    opacity: .6
+
+    .input
+      cursor: not-allowed
+
+  &.readOnly
+    background-color: $c-backdrop
+
+  &.actionable
+    border-radius: $br.s 0 0 $br.s
+
+::placeholder
+  font-family: $font-family
+  font-weight: normal
+  color: $tc-subtle-gray
+  letter-spacing: initial
+  font-variant: normal
+  font-size: 1rem
+
+.input
+  font: inherit
+  background: none
+  border: 0
+  color: inherit
+  outline: 0
+  width: 100%
+  padding: 0 $cs.xs
+  display: inline-block
+  flex-grow: 2
+  z-index: $zi.slight
+  height: 2.3rem
+  min-width: 0
+
+  &[type='password']
+    letter-spacing: 1px
+    font-variant: small-caption
+    font-size: 16px
+
+.spinner
+  padding: 0 $cs.xs
+  nudge('down', 3px)
+
+.valid
+  height: .8rem
+  display: inline-block
+  flex-grow: 0
+  flex-shrink: 0
+  padding-right: $cs.s
+
+  transition: opacity $ad.m
+  opacity: 0
+
+  &.show
+    opacity: 1
+
+  path
+    fill: $c-active-blue
+
+.byte, .code, .placeholder
+  font-family: 'IBM Plex Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
+
+.byte
+  font-weight: 600
+  letter-spacing: .05rem
+
+.code
+  font-size: $fs.s
+
+.placeholder
+  position: absolute
+  left: .7rem
+  white-space: pre
+  color: $tc-subtle-gray
+  z-index: 0
+  pointer-events: none
+
+.icon
+  nudge('down')
+  padding-left: $cs.xs
+
+textarea.input
+  padding: $cs.xs
+  min-height: 5rem
+  height: auto
+
+.actions
+  display: flex
+
+  .button
+    border-radius: 0 $br.s $br.s 0
+    height: 100%
+    margin-left: -1px

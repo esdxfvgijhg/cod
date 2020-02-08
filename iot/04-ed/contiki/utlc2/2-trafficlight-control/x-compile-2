@@ -1,0 +1,8 @@
+#!/bin/bash
+
+mytitle="Lights 2"
+echo -e '\033]2;'$mytitle'\007'
+
+sudo make trafficlight-control-2.upload PORT=/dev/ttyUSB2 TARGET="zoul"
+sudo make TARGET=zoul BOARD=firefly PORT=/dev/ttyUSB2 login
+

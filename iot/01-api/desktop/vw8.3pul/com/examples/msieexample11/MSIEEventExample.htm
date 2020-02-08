@@ -1,0 +1,687 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (WinNT; U) [Netscape]">
+   <title>The Microsoft &reg; Internet Explorer Event Example</title>
+<!-- 
+Document:	The Microsoft ® Internet Explorer Event Example
+Author:	Deb Lewis & Gary Gregory
+Date:		11/11/1998
+-->
+<style>
+<!--
+H1 { background-color: rgb(0,0,255); color: rgb(255,255,255); padding-left: 15px; padding-top: 2px; padding-bottom: 2px }
+H2 { background-color: rgb(128,0,128); color: rgb(255,255,255); padding-left: 15px; padding-top: 2px; padding-bottom: 2px }
+H3 { background-color: rgb(0,128,128); color: rgb(255,255,255); padding-left: 15px; padding-top: 2px; padding-bottom: 2px }
+.codeExample { background-color: rgb(192,192,192); font-family: Arial; padding-left: 30px; padding-top: 15px; padding-bottom: 15px }
+.Note { padding-left: 30px; padding-right: 30px }
+.ComH { background-color: rgb(0,255,255); padding-left: 15px; padding-top: 5px; padding-bottom: 5px }
+-->
+</style>
+</head>
+<body link="#0000FF" vlink="#800080">
+
+<center>
+<h1>
+<font size=+2>A VisualWorks</font><sup><font face="Times New Roman"><font size=+1>&reg;</font></font></sup><font size=+2>
+COM Connect Example:<br>
+Using Microsoft Internet Explorer Events</font></h1></center>
+
+<center>6/10/1999 MSIEEventExample.htm<br>
+Revised 12/7/2004 
+<br>
+  <font face="Times New Roman"><font size=+0>Copyright</font></font><sup><font face="Symbol">&atilde;</font></sup><font face="Times New Roman"><font size=+0> 
+  Cincom Systems, Inc. 1999-2004. All rights reserved.</font></font> 
+</center>
+
+<hr>
+<p>Microsoft’s Internet Explorer provides a convenient, widely available
+example of a COM-enabled application which supports automation and events.
+We will use Internet Explorer (subsequently referred to as MS IE) to develop
+a simple example of using a <b>COMEventSink</b> to receive event notifications
+from a COM event source object in a VisualWorks application.
+<p>The sample application is a simple automation client which launches
+MSIE through COM Automation and uses a COM event sink to receive notifications
+for some of the events triggered by the MSIE application.
+<h2> VisualWorks Installation</h2>
+This example is contained in a directory called <i>msieexample</i>. You
+need to have the standard COM and Automation parcels of COM Connect installed.
+<p>To install the example, copy the example parcel files <i>COM-MSIEExample.pc*</i>
+into a directory on your parcel path (or add the directory in which you’ve
+stored the example files to your existing parcel path) and simply load
+the parcel named <i>COM-MSIEExample.pcl</i>.
+<h2>
+Introduction</h2>
+To run the application, evaluate the expression:
+
+<p class="codeExample"><font face="Arial"><font size=-1>Examples.MSIEEventTraceViewer
+open</font></font>
+<p>The sample application supports some simple operations for controlling
+the MSIE web browser that it has launched and uses COM events triggered
+by the MSIE application to manage its own state and provide trace feedback
+in varying degrees of detail so that you can monitor the activity of the
+web browser.
+<p>We will work through the process by which this example was developed,
+to help you understand some of the techniques that you can use when developing
+your own COM applications using VisualWorks COM Connect and some of the
+considerations that went into its construction. Note that in addition to
+demonstrating how to configure and use a <b>COMEventSink</b> to receive
+COM event notifications, this example also demonstrates developing a simple
+automation controller for the IE application.
+
+<p class="Note">Note: This example was developed using MSIE version 4.0.
+If you are running a different version of IE, you may encounter difficulties
+running the example as-is. In particular, IE 3.0 does not support some
+of the capabilities used in the example application which were added in
+IE 4.0. The example application was not designed to support multiple versions
+of the IE application, so if you are running a different version of IE
+be aware that the MSIE application may not support the interface specifications
+expected by this version of the sample application. Designing an improved
+version of the sample application which works with multiple versions of
+the MSIE application is left as an exercise for the reader. (Hint: The
+Automation sample applications in COM Connect that demonstrate implementing
+MS Word and Excel controllers demonstrate an approach for implementing
+automation clients which work with both the Office 95 and Office 97 versions
+of those automation applications.)
+<h2>
+Initial Investigation</h2>
+The first step, a somewhat radical technique to be sure, is to read the
+documentation from the vendor. In this case, we need to know what COM interfaces
+are supported by the IE application. To find this out, we need information
+which is in the Microsoft Internet SDK.
+<h3>
+Microsoft Internet SDK Documentation</h3>
+The INetSDK is available on Microsoft’s developer network web site, from where 
+you can either <a href="http://support.microsoft.com/default.aspx?scid=kb;en-us;177877">download 
+the SDK to install on your own machine or browse the documentation</a> immediately 
+on the Web. 
+<p>There is quite a bit of material in the Internet SDK, it turns out, but we 
+  discover after looking through the information on the documentation page that 
+  the information we need is in the Internet Tools and Technologies (ITT) portion 
+  of the SDK, in the discussion of <a href="http://msdn.microsoft.com/library/default.asp?url=/workshop/browser/prog_browser_node_entry.asp">Reusing 
+  the WebBrowser and MSHTML</a>. 
+<p>The Overview section explains the architecture of IE 4.0. The IExplore.exe
+application is built using the WebBrowser control, an OCX whose object
+server is implemented by Shdocvw.dll. The WebBrowser control actually provides
+the web browsing capabilities of the IE application, so we will henceforth
+focus on the documentation of its capabilities to learn what we can make
+use of in our IE client application.
+<p>The critical information that we need is discussed under <a href="http://msdn.microsoft.com/library/default.asp?url=/workshop/browser/webbrowser/webbrowser.asp">Reusing 
+  the WebBrowser Control</a>. 
+<p>This page leads you to the reference documentation on the interfaces
+and events that we need to know about in order to develop an MSIE client
+application.
+<h3>
+Exploring the Windows Registry with Microsoft’s OLE/COM Object Viewer</h3>
+Another technique for exploring automation capabilities of the IE application,
+albeit a bit more rudimentary, is to use Microsoft’s OLE/COM Object Viewer
+application (OLEView.exe). (But, hey, you might be surprised how far you
+can get from the raw specifications and some educated guessing even in
+the absence of documentation!)
+<p>The OLE/COM Object viewer is available with the Microsoft Visual Studio C++ 
+  suite. 
+<p>If you do not already have a copy of this tool, it is quite useful to
+have when doing COM development.
+<p>After exploring the registry a bit to see what’s installed on our machine,
+we zero in on the Internet Explorer automation object which we confirm
+is registered to run the Windows IExplore.exe application as the automation
+object server application for this COM object class. We note that the version-independent
+ProgID for creating an IE automation object is <b>InternetExplorer.Application</b>
+and that there is a type library registered on our system which contains
+the specifications of the component object classes and interfaces of the
+MSIE application.
+
+<p class="Note">Note: If you need more information about ProgID’s and using
+the version-independent ProgID to reference a COM object class, please
+refer to the COM Connect User’s Guide sections on automation objects or
+the Microsoft Automation Programmer’s Reference documentation.
+<p>Using the <i>File\View ITypeLib…</i> command, we can open a viewer on
+the type library specifications for the web browser by locating the shdocvw.dll
+file in the Windows system directory, as specified in the registry entry
+for the IE application’s type library. (Recall that this is the type library
+for the WebBrowser control, as we learned from the IE architecture overview
+in the InetSDK documentation.) You may wish to use the File\Save As command
+to save a text copy of the IDL specifications for the type library.
+<h3>
+The MSIE Web Browser Interfaces</h3>
+From the Internet SDK documentation and/or the type library viewer, we
+learn that the Internet Explorer automation object supports the dispatch
+interface <b>IWebBrowser2</b> and the outgoing primary event interface
+<b>DwebBrowserEvents2</b>.
+Various constants are also defined in enumeration types definitions in
+the type library, which may be of use to us as we decide which methods,
+properties, and events are of interest in our application.
+
+<p class="Note">Note: Exploring the type library specifications in detail,
+we note that the <b>IWebBrowser2</b> interface actually is defined by the
+following interface inheritance hierarchy:
+
+<p class="ComH"><b>IDispatch</b> – standard dispatch interface
+<br>&nbsp;&nbsp;&nbsp; <b>IWebBrowser</b> – web browser methods and properties
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>IWebBrowserApp</b> –
+defines methods and properties of web browser Application object
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>IWebBrowser2</b>
+– additional methods and properties introduced by IE 4
+<p>The inheritence structure of the interface specifications reflects the
+historical evolution of the application capabilities. Note also that <b>IWebBrowser2</b>
+is a dual interface, should we at some point wish to define a static VTable
+interface binding to mirror the automation dispatching capabilities.
+<p>The primary event interface of the WebBrowser control is an outgoing
+dispinterface:
+
+<p class="ComH"><b>DWebBrowserEvents2</b> – dispinterface specification
+for the outgoing event interface
+<h2>
+Initial Steps in MSIE COM Application in VisualWorks</h2>
+Armed with some initial information about the COM object class and interfaces
+of interest, we are now ready to begin creating our COM application using
+VisualWorks COM Connect. Since we are going to be doing a little exploring
+and running some development utilities to collect the information needed
+for our real application classes, we’ll start by creating a class <b>MSIEDevExperiments</b>
+that we can use for recording our experimental scripts and utilities.
+<h3>
+Establish Basic Identity Services</h3>
+First create a class method in our <b>MSIEDevExperiments</b> class with
+the version-independent ProgID of the IE application:
+
+<p class="codeExample"><font size=-1>ieProgID</font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp; ^'InternetExplorer.Application'</font>
+<p>Confirm that we have the correct ProgID name by evaluating the expression:
+
+<p class="codeExample"><font size=-1>GUID clsidFromProgID: MSIEDevExperiments
+ieProgID</font>
+<p>The CLSID value that we see here will be the same value recorded in
+the registry that you can see in the OLE/COM Object Viewer entry for the
+IE automation object.
+<p>We are going to need to obtain information from the type library, so
+evaluate the following expression to get the registered ID of the type
+library:
+
+<p class="codeExample"><font size=-1>COMRegistryInterface typeLibraryIDForCLSID:
+MSIEDevExperiments ieCLSID</font>
+<p>Now create a class method in <b>MSIEDevExperiments</b> which records
+this registered type library ID:
+
+<p class="codeExample"><font size=-1>ieTypeLibID</font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp; ^'{EAB22AC0-30C1-11CF-A7EB-0000C05BAE0B}'
+asGUID</font>
+<p>and another which constructs a <b>COMTypeLibrary</b> which we need to
+have to run the development services which import type library specifications
+into a form that can be used by the COM Connect automation support mechanisms.
+
+<p class="codeExample"><font size=-1>getTypeLibrary</font>
+<br><font size=-1>&nbsp;&nbsp;&nbsp; " Answer the type library. The client
+must release when done. "</font>
+<p><font size=-1>&nbsp;&nbsp;&nbsp; ^COMTypeLibrary libraryID: self ieTypeLibID</font>
+<h3>
+Importing Interface Specifications and Constants</h3>
+We’re now ready to start exploring and extracting information from the
+type library. In particular, we need to import specifications from the
+type library for the interface methods and properties that we will use
+in our application to construct specification tables that can be used by
+the <b>COMDispatchDriver</b> and <b>COMEventSink</b> facilities in COM
+Connect. <font color="#000000">We will also want to create statics for
+enumeration constants that are used for argument values when invoking interface
+members.</font>
+<p>The key utility that we will use to explore and import information from
+the type library is the <b>COMAutomationTypeAnalyzer</b> class. This class
+uses the standard COM <b>ITypeLib</b> and <b>ITypeInfo</b> interfaces to
+access the type library specifications.<font color="#FF6666"> </font><font color="#000000">It
+provides a variety of services for creating description reports, specification
+table literals, and dictionaries for constants.</font> (See the COM Connect
+User’s Guide for additional information about the services provided by
+this class.)
+<p>To get a quick report on the <b>IWebBrowser2</b> and <b>DWebBrowserEvents2</b>
+interfaces and the constant values defined in the type library, we create
+some utility methods to execute <b>COMAutomationTypeAnalyzer</b> description
+services on our type library:
+
+<p class="codeExample"><font face="Arial"><font size=-1>Examples.MSIEDevExperiments
+describeIWebBrowser2.</font></font>
+<br><font face="Arial"><font size=-1>Examples.MSIEDevExperiments describeDWebBrowserEvents2.</font></font>
+<br><font face="Arial"><font size=-1>Examples.MSIEDevExperiments describeTypeLibraryConstants.</font></font>
+<p>These are indeed the facilities for navigating and browsing that are
+documented in the Internet SDK for these interfaces, so we’re heading in
+the right direction. We’re going to need to import the interface specifications
+for our two interfaces into tables which can be used to configure a <b>COMDispatchDriver</b>
+and a <b>COMEventSink</b>, so we create some other utility methods to execute
+<b>COMAutomationTypeAnalyzer</b>
+specification generation services on our type library:
+
+<p class="codeExample"><font face="Arial"><font size=-1>Examples.MSIEDevExperiments
+generateIWebBrowser2Specifications.</font></font>
+<br><font face="Arial"><font size=-1>Examples.MSIEDevExperiments generateDWebBrowserEvents2Specifications.</font></font>
+<p>These specification table literals will be used with our IE controller
+to configure the dispatcher and event sinks of our application.
+<p><font color="#000000">Finally, we want to import the constants that
+are used for argument values in various interface members into statics
+under our namespace that can be referenced directly in our IE client application.
+<b>COMAutomationTypeAnalyzer</b> provides some standard services which
+create dictionaries for the enumeration types in the type library. However,
+for our application we decide that we want to create a single static dictionary
+containing all the relevant MSIE constants, as well as other values that
+we might want to add. For this purpose, we write a simple utility in our
+<b>MSIEDevExperiments</b> class which uses a <b>COMAutomationTypeAnalyzer</b>
+service to create dictionary instances from the type library enumerations
+and then emits the source code as a&nbsp; file out definition for a single
+dictionary containing all the constant values from the type library.</font>
+<p><font face="Arial"><font size=-1>Examples.MSIEDevExperiments generateTypeLibraryConstantPoolSource.</font></font>
+<p><font color="#000000">Save this source to a file and review the contents.
+You may wish to prune the enumerations which are not specifically related
+to the web browser control (e.g., there are several enumerations related
+to the Windows shell in this type library which are not of immediate interest).&nbsp;
+When you have customized the variable specifications to the desired set,
+save the updated source file and then file it in to create the <b>MSIEAutomationConstants</b>
+dictionary.&nbsp; This dictionary will be declared as a static for the
+<b>MSIEApplicationController</b> class later.</font>
+
+<p class="Note">Note: We also like to have IID constants defined for convenience,
+so we hand-edit this source file to add definitions for the IID constants
+<b>IID_IWebBrowser2</b>
+and <b>IID_DWebBrowserEvents2</b>, whose GUID values can be obtained from
+the interface specification tables that our other utilites generate.
+<p>We now have all the basic information we need about the MS IE application
+and its interfaces. It’s time to start creating the real application classes.
+<p>Tip: It’s a good idea when doing this kind of exploring to periodically
+run the COM Resource Browser and release any interfaces that you’ve inadvertantly
+left lying while while experimenting. Open the resource browser by evaluating
+the expression:
+
+<p class="codeExample"><font face="Arial"><font size=-1>COMResourceBrowser
+open</font></font>
+<p>You can release leftover interfaces using either the pane popup menus
+or the cleanup menu. This will be even more important in a bit, when we
+make our first attempts to run our own application classes.
+<h2>
+Creating the MSIE Client Application</h2>
+So we’re now ready to start creating the real application classes. Our
+goal is to create a simple client application which launches MS IE and
+watches for COM events triggered by the IE application. To support our
+desired application, we’ll create a simple automation object controller
+class customized to support the operations we want to invoke in our application.
+Once we’ve verified that we can launch IE and manipulate the application
+through its automation interface, we’ll add event support to receive the
+COM event notifications that it triggers and use this to create our application.
+<h3>
+Creating the MSIE Automation Controller Class</h3>
+The first step is to create a simple automation controller class for the
+MSIE application and verify that we can launch the application and manipulate
+it through its <b>IWebBrowser2</b> dispatch interface. COM Connect includes
+a framework for implementing customized automation controller classes which
+provide more convenient protocol for invoking methods and accessing properties
+of a COM automation object. It isn’t strictly necessary to create a controller
+class using the <b>COMAutomationController </b>implementation framework,
+as <b>COMDispatchDriver</b> provides all the necessary basic services,
+but it is usually convenient to have a class which captures the basic identity
+and dispatch specifications of the automation object class, as well as
+implementing convenience protocol customized to our intended use of the
+automation object.
+<p>The COM Connect controller framework also facilitates working with automation
+objects which follow the automation architecture guidelines for standard
+object classes, such as a standard Application object which supports one
+or more Document objects, or the standard Collection object. Because the
+IE application follows the guidelines by supporting a top-level Application
+object, we will create our MSIE controller class as a subclass of the <b>COMAutomationApplicationController</b>
+framework class. From here, we will inherit convenience methods for the
+methods and properties of the standard automation Application object.
+<p>(In particular, we will end up making use of the inherited isVisible:
+property accessor and the quit message to shut down the application, as
+you will see later.)
+<p>Create the controller class <b>MSIEApplicationController</b> as a subclass
+of the standard <b>COMAutomationApplicationController</b> class. <font color="#000000">Add
+our dictionary <b>MSIEAutomationConstants</b> to it as a static so that
+we can access constants when writing convenience methods in the controller
+class.</font>
+
+<p class="Note">Note: Actually, IE only supports some of the standard Application
+object properties, but not all. Consequently, one approach is to subclass
+<b>COMAutomationApplicationController</b>
+and override the inherited methods for properties which not supported by
+the MSIE application. Alternatively, we could subclass the <b>COMAutomationController</b>
+class directly and add in copies of the accessing methods for the standard
+Application properties which are supported. For now, we will simply subclass
+<b>COMAutomationApplicationController</b>
+and ignore this issue. But it’s something you would need to resolve properly
+if creating this class for real use.
+<p>Reimplement the standard class methods <b>versionIndependentProgID</b>,
+<b>typeLibraryID</b>,
+and <b>getTypeLibrary</b> methods using the information we collected previously
+and recorded in the <b>MSIEDevExperiments</b> class. These methods provide
+the fundamental identity information used by the controller framework to
+create the automation object and dynamically access type library information
+if necessary.
+<p>Most importantly, we need to implement the class method <b>literalSpecification</b>
+to contain the dispatch specifications for the <b>IWebBrowser2</b> interface
+supported by the MSIE application object. The body of this method is supplied
+by generating the dispatch specifications, as described in the previous
+section, and pasting the result into the literalSpecification method that
+we are creating in our <b>MSIEApplicationController</b> class:
+
+<p class="codeExample"><font face="Arial"><font size=-1>Examples.MSIEDevExperiments
+generateIWebBrowser2Specifications.</font></font>
+<p>Defining these few class methods for the automation object class identity
+and dispatch specifications is all that we really have to do at this point.
+However, anticipating some of the facilities that we’ll want to use in
+our application, we also create instance methods to invoke some of the
+simple navigation services in the <b>IWebBrowser2</b> interface: <b>goForward</b>
+and <b>goBack</b> to navigate the history list, stop to cancel a navigation
+operation. (That’s good enough for now, we can always come back later and
+add more convenience methods as desired.)
+<p>We should now have everything that we need to support a simple client
+application of MSIE. To do a basic test of our controller class and its
+specifications, we will put together a test driver method in our <b>MSIEDevExperiments</b>
+class which instantiates an MSIE controller (which creates an IE automation
+object and thus launches the application) and hooks it up in a <b>COMAutomationEditor</b>
+where we can evaluate expressions to invoke methods and access properties.
+<p>To try out our basic controller mechanisms, evaluate:
+
+<p class="codeExample"><font face="Arial"><font size=-1>&nbsp;Examples.MSIEDevExperiments
+launchWebBrowser</font></font>
+<p>This launches IE and opens an automation editor on the web browser where
+we can interactively play with the live automation object. While fairly
+primitive, since only the most basic <b>COMDispatchDriver</b> facilities
+are available rather than the customized protocol provided by our <b>MSIEApplicationController</b>
+class, the automation editor can be kind of handy for simple poking about
+and experimentation with an automation object. The <b>COMDispatchDriver</b>
+is available as variable ‘dispatcher’. Use the description services in
+the Developer menu of the automation editor to get a summary report on
+the dispatch specifications of the MS IE automation object. This is a handy
+reminder as you invent new expressions to experiment with what you can
+do with this automation object in your client application.
+
+<p class="Note">Note: Be careful with the Quit command which shuts down
+the application. The automation editor still holds a dispatch interface
+reference and doesn’t understand the semantics of this operation, so if
+you invoke the Quit method or shut down the IE window while the automation
+editor is still open, the dispatcher is left with a dangling (broken) interface
+which fails with a COM dispatch error on any subsequent attempts to use
+it.
+
+<p class="Note">Note: The <b>launchWebBrowser</b> method you see in the
+completed example is fancier than the original version, which simply used
+the basic <b>COMAutomationEditor</b> message <b>openOnDispatcher:</b> to
+open the automation editor with standard description and text contents
+values. Once the basic test driver service was working, however, an iterative
+improvement to the test driver was made to "prime" the editor with some
+useful expressions specific to the IE automation interface. This is the
+kind of iterative development that you do in practice but is difficult
+to capture when presenting a static snapshot of a finished sample application.
+<h3>
+Adding Event Sink Support</h3>
+Now that we know we can create and manipulate MSIE through automation,
+we want to add support for receiving notifications of the COM events it
+triggers through the <b>DWebBrowserEvents2</b> interface. This is really
+quite simple to do.
+<p>The essential step is to import the dispatch interface specifications
+from the type library and record them in our <b>MSIEApplicationController</b>
+class so that we have the necessary specifications to configure a <b>COMEventSink</b>
+to receive the COM event notifications.
+<p>Similarly to how we imported the specifications for the <b>IWebBrowser2</b>
+dispatch interface for configuring a <b>COMDispatchDriver</b> to control
+an MSIE application object, we implement a class method literalSpecificationEvents
+in MSIEDevExperiments to contain the dispatch specifications for the <b>DWebBrowserEvents2</b>
+interface supported by the MSIE application object. The body of this method
+is supplied by generating the event interface dispatch specifications,
+as we did for the <b>IWebBrowser2</b> dispatch interface in the previous
+section, and pasting the result into the body of the <b>literalSpecificationEvents</b>
+method:
+
+<p class="codeExample"><font face="Arial"><font size=-1>Examples.MSIEDevExperiments
+generateDWebBrowserEvents2Specifications</font></font>
+<p>Because the controller framework does not (yet) provide a standard framework
+for defining event sink specifications, create a second class method to
+construct the actual specification table:
+
+<p class="codeExample"><b><font face="Arial"><font size=-1>eventSinkSpecificationTable</font></font></b>
+<br><font face="Arial"><font size=-1>&nbsp;&nbsp;&nbsp; " Answer the specification
+table for an event sink on the receiver's primary event interface."</font></font>
+<p><font face="Arial"><font size=-1>&nbsp;&nbsp;&nbsp; ^self literalSpecificationEvents
+decodeAsLiteralArray</font></font>
+<p>And that’s really all we need to do to be able to configure and use
+an event sink for the <b>DWebBrowser2</b> event interface from an MSIE
+application. All we need to do now is configure an event sink with these
+specifications and connect it to an MSIE event source object.
+<p>To test this out, we’ll create a second test driver method in <b>MSIEDevExperiments</b>
+which launches MSIE with an automation editor, as before, and also establishes
+a COMEventSink on the web browser application to receive COM event notifications
+that we can watch in a <b>COMEventTraceViewer</b> window. We create the
+method <b>launchWebBrowserWithEventTraceViewer</b> which starts by using
+our existing <b>launchWebBrowser</b> test driver to construct the controller
+and automation editor. Now we will establish an event sink on our controller
+and open an event trace viewer on in so we can verify that we are indeed
+receiving COM event notifications from MSIE.
+<p>The process of connecting an event sink to an automation object is fairly
+simple. First, create a <b>COMEventSink</b> object that is configured with
+the dispatch specifications of the event interface. We create a method
+<b>constructMSIEEventSink
+</b>in
+<b>MSIEDevExperiments</b>
+which does this, using the <b>eventSinkSpecificationTable</b> method that
+we just implemented in <b>MSIEApplicationController</b> to configure the
+sink with the necessary dispatch specifications. Next, the sink needs to
+be connected to the event source object, which is done in our new test
+driver method by sending the
+<b>establishConnectionTo:</b> message to the
+sink to tell it to establish a connection to our MSIE application object.
+(The connection can be established using any interface that you already
+hold on the event source object, which in this case is the dispatch interface
+of our MSIE application object that our controller obtained when it launched
+the MSIE application.)
+<p>Now you can receive any event notifications of interest in your own
+application by registering handlers on the event sink using the standard
+event system services (e.g., when:send:to:). Later, when your application
+is done, you disconnect the event sink from the COM event source object.
+We’ll revisit these two steps later, but for now we’ll simply pass our
+newly connected event sink on by opening a <b>COMEventTraceViewer</b> on
+it in which we can watch event notifications arrive. (The event trace viewer
+handles registering for event notifications from the sink and disconnecting
+the sink when the trace viewer is closed.)
+<p>Run the second test driver and use the event trace viewer to verify
+that COM event notifications are being received from the MSIE application:
+
+<p class="codeExample"><font face="Arial"><font size=-1>Examples.MSIEDevExperiments
+launchWebBrowserWithEventTraceViewer</font></font>
+<p>Turn on event trace feedback in the event trace viewer using the checkbox
+when you want to see a trace of incoming event notifications from MSIE.
+(This can be quite overwhelming, so the trace viewer allows you to turn
+off the tracing until there’s something that you specifically want to watch.)
+<p>If you close IE while the event trace viewer is still open, you will
+get an error report window open that indicates:
+
+<p class="codeExample"><font face="Arial"><font size=-1>An error has occurred
+during a callin to a COM interface function</font></font>
+<br><font face="Arial"><font size=-1>Error: The object invoked has disconnected
+from its clients. ( HRESULT RPC_E_DISCONNECTED )</font></font>
+<p>Further study of the callback stack in the error report indicates that
+problems occurred while the event sink was being released, apparently by
+an outside client since we didn’t do this ourselves.
+<p>This callin error exposes a slightly tricky area of event sinks. (Which
+you are free to explore in gory detail using the COM Trace Viewer if you
+want to see the whole story on all the COM calls coming in and out of our
+application at the point that IE shut down.) Basically, problems occur
+when the event source object releases interfaces involved with an open
+event sink connection because of the mutual references held between the
+event source and the event sink. The solution is to ensure that you disconnect
+your event sinks before releasing your last reference to an event source
+object. Or, in this case, that when you receive a notification of application
+shutdown that you disconnect any event sinks on the application object
+that is going away from underneath us.
+<p>It turns out that we can handle this shutdown ordering nicely for MSIE
+by ensuring that an event sink established on an MSIE application always
+has a handler for the <b>OnQuit</b> event which disconnects the event sink.
+We arrange for this in our <b>constructMSIEEventSink</b> method by registering
+an event handler for the <b>OnQuit</b> event which sends <b>releaseConnection</b>
+to the event sink itself. (Note that this demonstrates the remaining two
+steps for using a COM event sink: registering an event handler to receive
+a notification from the event sink when a COM event notification arrives
+and disconnecting the event sink.)
+<p>Now run the second test driver again. This time when we shut down IE
+the event trace viewer quietly gets disconnected. You should open a COM
+Resource browser at this point and verify that there are no COM interfaces
+still in use after you close the automation editor and event trace viewer
+windows.
+
+<p class="Note">Note: If the resource browser shows an event sink still
+hanging around and it won’t go away even when you release it, you can get
+rid of the broken sink left over from the original shutdown problem by
+opening an inspector on it, verifying that it has a reference count of
+0, and sending it the message ‘self releaseResources’ to get it to clean
+up.
+<p>What we’ve just learned from developing our test driver has produced
+some useful services that we should capture permanently with our MSIE controller.
+In particular, we now go back to <b>MSIEApplicationController</b> and add
+a class method <b>newEventSink</b> which creates a <b>COMEventSink</b>
+configured with the MSIE event specifications and an event handler which
+ensures that the event sink will be disconnected if IE is shut down before
+our client application has released the event sink. In addition, we create
+a convenience method on the instance side (also named <b>newEventSink</b>)
+which answers a new event sink connected to the controller’s MSIE application.
+So our client application will now be able to work with an event sink simply
+by creating an MSIE controller and asking it for an event sink on which
+it can register event handlers for the events of specific interest to the
+application.
+<h3>
+Creating the MSIE Event Watcher Application</h3>
+OK, we now have an MSIE controller class and event sink support, ready
+for use by an MSIE client application. (Actually, it’s taken longer to
+explain the controller and the event sink that it did to create them.)
+Let’s create a simple application which launches IE and watches for some
+interesting navigation and download event notifications.
+<p>Our MSIE client example is an application class named <b>MSIEEventTraceViewer</b>.
+Its primary responsibility is to watch for the <b>NavigateComplete2</b>
+event so it can report when the browser location has changed. It also watches
+for the <b>OnQuit</b> event so it can update the user interface appropriately
+when the IE application has shut down. The application also provides us
+with several push buttons for invoking some of the simple web browser navigation
+operations and some check box options to enable tracing some of the events
+triggered by the IE application. The optional event tracing allows you
+to observe the more detailed operation of the browser. The <b>CommandStateChange</b>
+event from the web browser is also monitored by our application so that
+it can properly enable and disable the forward/back operation buttons it
+provides for stepping through the browser’s history list.
+<p>First run the application and try it out, then we’ll discuss some of
+the key parts of its implementation. To run the MSIE event tracer evaluate
+the expression:
+
+<p class="codeExample"><font face="Arial"><font size=-1>Examples.MSIEEventTraceViewer
+open</font></font>
+<p>The application open methods in <b>MSIEEventTraceViewer</b> use the
+same mechanisms that our test drivers used to launch the MSIE application
+by creating a <b>MSIEApplicationController</b> to control the MSIE application
+object and connect a new event sink to receive COM event notifications.
+Recall that the event sink services that we created in <b>MSIEApplicationController</b>
+handle all the COM "plumbing" mechanics on configuring the event sink’s
+dispatch specifications, connecting the sink to the COM event source object,
+and disconnecting the sink when the IE application terminates. This allows
+our application to focus on what we’re interested in, which is performing
+simple operations to control the IE application and monitoring specific
+events that we are interested in processing.
+<p>Most of the interesting instance methods in this application are found
+in the ‘private-operation’ and ‘private-browser events’ categories, where
+you will find the methods which register and remove event handlers on the
+COM event sink and which implement the event processing of the MSIE events
+for our application. When the application window is opened, the <b>registerPermanentEventHandlers</b>
+method is called to register event handlers for the <b>CommandStateChange</b>
+, <b>NavigateComplete2</b>, and <b>OnQuit</b> events that we always want
+to monitor. When the application window is about to be closed, the <b>releaseBrowserConnections</b>
+method is called to ensure that we release the event sink and the browser
+controller now that our client application is done using them. Remember
+that releasing the event sink will have already been taken care of if the
+IE application has been closed while our application is still open, but
+if the web browser is still open when our window closes then we need to
+release the COM resources that our application still holds.
+<p>The <b>NavigateComplete2</b> event provides a good example of a basic
+COM event handler. Our application registers a event handler to monitor
+this event when its window is opened with an expression of the form:
+
+<p class="codeExample"><font face="Arial"><font size=-1>self eventSink</font></font>
+<br><font face="Arial"><font size=-1>&nbsp;&nbsp;&nbsp; when: #NavigateComplete2:_:
+" with: &lt;anIDispatch> with: &lt;url> "</font></font>
+<br><font face="Arial"><font size=-1>&nbsp;&nbsp;&nbsp; send: #navigateCompleted:to:</font></font>
+<br><font face="Arial"><font size=-1>&nbsp;&nbsp;&nbsp; to: self.</font></font>
+<p>The <b>navigateCompleted:to:</b> method is now invoked whenever a COM
+<b>NavigateComplete2</b>
+event notification is received from the IE application. Our event handler
+is quite straightforward: it simply logs an entry in the event trace log
+to record the new location of the browser. However, do take note of the
+URL argument for this event: it demonstrates a typical case where you must
+pay attention to the declared parameter types of an interface member to
+properly manipulate the argument value. Because the type library declaration
+of the URL parameter for this event declares it to be <b>VARIANT*</b>,
+the argument is received from the event sink as a reference to the (string)
+value. Consequently, we must dereference this argument by sending the <b>value</b>
+message to obtain the actual value of the URL.
+<p>Hint: You can spot reference arguments easily in the dispatch specification
+table by looking for arguments with the <b>VT_BYREF</b> type modifier.
+<p>The action button methods for the browser navigation operations in the
+‘private-user actions’ method category (go forward/back in the history
+list, stop a navigation that is currently in progress) are straightforward
+dispatch method invocations using the convenience protocol provided by
+our <b>COMAutomationApplicationController</b> wrapper class.
+<p>When one of the check boxes which control trace reporting of various
+kinds of events from the IE application that we might want to monitor is
+clicked by the user, the appropriate <b>toggleXXXTraceSetting</b> method
+registers or removes the relevant event handlers on the event sink. For
+example, when we want to monitor updates to the status text in the IE application
+we register an event handler for the <b>StatusTextChange</b> event:
+
+<p class="codeExample"><b><font face="Arial"><font size=-1>registerStatusEventHandlers</font></font></b>
+<br><font face="Arial"><font size=-1>&nbsp;&nbsp;&nbsp; " Private - register
+a handler for status events supported by the IE application that we want
+to trace."</font></font>
+<p><font face="Arial"><font size=-1>&nbsp;&nbsp;&nbsp; self eventSink</font></font>
+<br><font face="Arial"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+when: #StatusTextChange: " with: &lt;text> "</font></font>
+<br><font face="Arial"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+send: #browserStatusTextChanged:</font></font>
+<br><font face="Arial"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+to: self.</font></font>
+<p>When we no longer are interested in monitoring the status text updates,
+we remove the handler from the event sink:
+
+<p class="codeExample"><b><font face="Arial"><font size=-1>removeStatusEventHandlers</font></font></b>
+<br><font face="Arial"><font size=-1>&nbsp;&nbsp;&nbsp; " Private - disable
+tracing by removing the event handlers. "</font></font>
+<p><font face="Arial"><font size=-1>&nbsp;&nbsp;&nbsp; self eventSink</font></font>
+<br><font face="Arial"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+removeActionsWithReceiver: self</font></font>
+<br><font face="Arial"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+forEvent: #StatusTextChange: .</font></font>
+<p>Monitoring progress updates and the various navigation events are done
+similarly.
+<p>One other event handler implementation in our application is worth exploring
+a bit further, as it demonstrates how to veto a cancellable event. The
+<b>BeforeNavigate2</b>
+event has a number of arguments, the last of which is a reference to a
+boolean cancel flag that an event listener can use to veto the proposed
+operation. When navigation event tracing is turned on in our application,
+the method <b>proposeNavigate:to:flags:…cancelFlag:</b> [it’s a long keyword
+with a lot of selectors, you’ll find it easily] is registered as the handler
+for the <b>BeforeNavigate2</b> event. This event is triggered by the MSIE
+application when a navigation operation to follow a link is about to be
+initiated. The event arguments include all the arguments for the proposed
+navigation operation. Just as with the <b>NavigateComplete2</b> event,
+note that most of these arguments are declared in the interface member
+declaration as being passed by reference, so we have to dereference the
+arguments to obtain the actual value of interest, such as the destination
+URL.
+<p>Our handler for the <b>BeforeNavigate2</b> event asks you if you would
+like to allow the navigate operation to proceed. If not, we veto the proposed
+operation by setting the cancel flag of the event. When IE examines the
+cancel flag after triggering the event, it learns that the proposed operation
+has been vetoed and leaves the browser at the current location.
+<br>
+<hr>
+<center>
+  <p>Links to: <br>
+    <b><font face="Arial"><font size=-1><a href="http://smalltalk.cincom.com/Home.ssp">The 
+    Cincom Smalltalk web site</a></font></font></b> <br>
+    <b><font face="Arial"><font size=-1><a href="http://www.cincomsmalltalk.com">Cincom 
+    Smalltalk Developer Links</a></font></font></b> <br>
+    <b><font face="Arial"><font size=-1><a href="http://smalltalk.cincom.com/prodinformation/index.ssp?content=documentation">Cincom 
+    Smalltalk 's Online Documentation Site</a></font></font></b>
+</center>
+
+</body>
+</html>

@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination has only a single page with hiding option disabled should match snapshot 1`] = `
+<ul
+  className="pagination"
+>
+  <li
+    className="item itemNavigationPrev itemDisabled"
+  >
+    <a
+      className="link"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="button"
+      tabIndex="0"
+    >
+      <Icon
+        aria-label="Go to the previous page"
+        icon="navigate_before"
+        small={true}
+      />
+    </a>
+  </li>
+  <PageView
+    activeClassName="itemActive"
+    key="0"
+    onClick={[Function]}
+    page={1}
+    pageClassName="item"
+    pageLinkClassName="link"
+    selected={true}
+  />
+  <li
+    className="item itemNavigationNext itemDisabled"
+  >
+    <a
+      className="link"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="button"
+      tabIndex="0"
+    >
+      <Icon
+        aria-label="Go to the next page"
+        icon="navigate_next"
+        small={true}
+      />
+    </a>
+  </li>
+</ul>
+`;
+
+exports[`Pagination has several pages should match snapshot 1`] = `
+<ul
+  className="pagination"
+>
+  <li
+    className="item itemNavigationPrev itemDisabled"
+  >
+    <a
+      className="link"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="button"
+      tabIndex="0"
+    >
+      <Icon
+        aria-label="Go to the previous page"
+        icon="navigate_before"
+        small={true}
+      />
+    </a>
+  </li>
+  <PageView
+    activeClassName="itemActive"
+    key="0"
+    onClick={[Function]}
+    page={1}
+    pageClassName="item"
+    pageLinkClassName="link"
+    selected={true}
+  />
+  <PageView
+    activeClassName="itemActive"
+    key="1"
+    onClick={[Function]}
+    page={2}
+    pageClassName="item"
+    pageLinkClassName="link"
+    selected={false}
+  />
+  <PageView
+    activeClassName="itemActive"
+    key="2"
+    onClick={[Function]}
+    page={3}
+    pageClassName="item"
+    pageLinkClassName="link"
+    selected={false}
+  />
+  <li
+    className="item itemNavigationNext"
+  >
+    <a
+      className="link"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="button"
+      tabIndex="0"
+    >
+      <Icon
+        aria-label="Go to the next page"
+        icon="navigate_next"
+        small={true}
+      />
+    </a>
+  </li>
+</ul>
+`;

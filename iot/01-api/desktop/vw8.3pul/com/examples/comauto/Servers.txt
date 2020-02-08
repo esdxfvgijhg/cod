@@ -1,0 +1,50 @@
+" * How To Publish the COM Automation Server Example Image. * " 
+
+	1. Start with a clean image in which the COM Connect software is installed
+
+	2. Make sure the COM and Automation examples are installed.
+
+	3. Change the directory pathname in the following code to specify the name
+		of the directory containing your COM installation directory, if necessary,
+		and then evaluate to configure the image with runtime settings for
+		an object server application deployment image:
+
+	" Install the COM Automation dual interface servers "
+	"NOTE: Modify the following to specify the name of your COM installation directory."
+	COMSessionManager defaultCOMDirectoryName: 'C:\Visual\COM'.  
+	COMSessionManager installRuntime.
+	Examples.AutomationAllDataTypes installRuntime.
+	Examples.AllDataTypesCOMObject installRuntime.
+	Examples.AutomationOnlySmalltalkCommander unregister.
+	Examples.SmalltalkCommanderCOMObject installRuntime.
+
+	4. Make a deployment image for the object server application EXE. 
+		Remember to position your open windows or close your open windows.
+		You can also resize the Transcript window.
+
+	Deployment Image Options:
+
+	Option A
+
+		Unload development parcels and strip the system if desired with
+		RuntimePackager.  Use the RuntimePackager parameter file 
+		comserver.rtp located in the COM directory as a starting basis
+		to strip the image.  Be sure to select in RuntimePackager that
+		all relevant COM example classes are retained and not stripped. 
+
+	Option B
+
+		Make a headless image
+
+	Option C
+		Or, just save the image with a NEW name, for example VwComSrv.
+
+	5. If necessary, copy the new image to the location designated by your .reg file.
+	The example COM Connect image is copied to COM\Examples\COMAuto.
+
+	6. Restore your image configuration to the original development settings by evaluating the following:
+
+	" Unregister the COM Automation dual interface servers. "
+	ImageConfiguration isDevelopment: true.
+	Examples.AllDataTypesCOMObject unregister.
+	Examples.SmalltalkCommanderCOMObject unregister.

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.gui.imageEditor"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Bitmap Images</title>
+<topic id = "vw.help.gui.imageEditor.createImage"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a bitmap image</title>
+<body><p><indexterm>graphic image<indexterm>create bitmap</indexterm></indexterm><indexterm>bitmap<indexterm>create</indexterm></indexterm>The
+Image Editor allows you to draw a bitmap image and store it in a compilable
+resource method. The Image Editor is best suited for producing small
+images, such as for cursor shapes or icons.</p>
+<p>To use the Image Editor, you must have the <codeph>UIPainter</codeph> parcel
+loaded.<ol><li><p>Open an Image Editor, for example, by choosing <uicontrol>Painter&#xA0;&#x2192;&#xA0;Image Editor</uicontrol> from
+the Launcher window.</p></li>
+<li><p>Paint the desired image in the scrollable pixel grid. To
+do this, click on a color and then click on each pixel to be painted
+that color.</p></li>
+<li><p>Use the Image Editor's <uicontrol>Install</uicontrol> button
+to a create method that returns the image, typically a class method
+in a <codeph>resource</codeph> protocol of an application model
+class.</p></li></ol></p></body></topic>
+<topic id = "vw.help.gui.imageEditor.captureImage"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Capture an image from the screen</title>
+<body><p><indexterm>graphic image<indexterm>from screen capture</indexterm></indexterm><indexterm>screen
+capture</indexterm><ol><li><p>In an Image Editor, choose the <uicontrol>Image&#xA0;&#x2192;&#xA0;Capture</uicontrol> command.
+The cursor changes to a cross-hair.</p></li>
+<li><p>Press the &lt;Select&gt; mouse button at the upper-left corner
+of the desired rectangle, drag to the lower-right corner, and then release
+the mouse button.</p></li>
+<li><p>If desired, edit the captured image by changing the color
+of individual pixels.</p></li>
+<li><p>Use the Image Editor's <uicontrol>Install</uicontrol> button
+to create a method that returns the image, typically a class method
+in a <codeph>resource</codeph> protocol of an application model
+class.</p></li></ol></p></body></topic>
+<topic id = "vw.help.gui.imageEditor.createMask"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Produce a mask with the Image Editor</title>
+<body><p><indexterm>Image Editor<indexterm>create mask</indexterm></indexterm><indexterm>graphic
+image<indexterm>create mask</indexterm></indexterm>To convert a
+color image into a mask, use the <uicontrol>Draw&#xA0;&#x2192;&#xA0;Color&#xA0;to&#xA0;B&amp;W</uicontrol> command
+in the Image Editor. Any non-white colors will be converted to black.</p>
+<p>To convert a color image into a mask only when installing it
+in an application model, enable <uicontrol>Image&#xA0;&#x2192;&#xA0;Store&#xA0;B&amp;W&#xA0;Mask</uicontrol>,
+and then use the <uicontrol>Image&#xA0;&#x2192;&#xA0;Install...</uicontrol>.</p>
+<p>Enabling <uicontrol>Image&#xA0;&#x2192;&#xA0;Store&#xA0;B&amp;W&#xA0;Mask</uicontrol> will
+change the Image Editor palette to display only black and white
+buttons; use these buttons to select the mask and transparency colors.</p></body></topic></topic></dita>

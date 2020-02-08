@@ -1,0 +1,81 @@
+\hypertarget{classns3_1_1lorawan_1_1NetworkController}{}\section{ns3\+:\+:lorawan\+:\+:Network\+Controller Class Reference}
+\label{classns3_1_1lorawan_1_1NetworkController}\index{ns3\+::lorawan\+::\+Network\+Controller@{ns3\+::lorawan\+::\+Network\+Controller}}
+
+
+{\ttfamily \#include $<$network-\/controller.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Network\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{classns3_1_1lorawan_1_1NetworkController__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Network\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{classns3_1_1lorawan_1_1NetworkController__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkController_abc2ab549706744f8b13197eb69c17eb8}\label{classns3_1_1lorawan_1_1NetworkController_abc2ab549706744f8b13197eb69c17eb8}} 
+{\bfseries Network\+Controller} (Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1NetworkStatus}{Network\+Status} $>$ network\+Status)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1NetworkController_a39dd06a8108bd9eb19961c2b050d47db}{Install} (Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1NetworkControllerComponent}{Network\+Controller\+Component} $>$ component)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1NetworkController_af2192cd404ae5c1588c4375e4396e9ef}{On\+New\+Packet} (Ptr$<$ Packet const $>$ packet)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1NetworkController_a7d2aeeeb810d22ffb7206efd98986a79}{Before\+Sending\+Reply} (Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus}{End\+Device\+Status} $>$ end\+Device\+Status)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkController_aab1bd4972edc79a21291955ad289fd94}\label{classns3_1_1lorawan_1_1NetworkController_aab1bd4972edc79a21291955ad289fd94}} 
+static Type\+Id {\bfseries Get\+Type\+Id} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class collects a series of components that deal with various aspects of managing the network, and queries them for action when a new packet is received or other events occur in the network. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkController_a7d2aeeeb810d22ffb7206efd98986a79}\label{classns3_1_1lorawan_1_1NetworkController_a7d2aeeeb810d22ffb7206efd98986a79}} 
+\index{ns3\+::lorawan\+::\+Network\+Controller@{ns3\+::lorawan\+::\+Network\+Controller}!Before\+Sending\+Reply@{Before\+Sending\+Reply}}
+\index{Before\+Sending\+Reply@{Before\+Sending\+Reply}!ns3\+::lorawan\+::\+Network\+Controller@{ns3\+::lorawan\+::\+Network\+Controller}}
+\subsubsection{\texorpdfstring{Before\+Sending\+Reply()}{BeforeSendingReply()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Network\+Controller\+::\+Before\+Sending\+Reply (\begin{DoxyParamCaption}\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1EndDeviceStatus}{End\+Device\+Status} $>$}]{end\+Device\+Status }\end{DoxyParamCaption})}
+
+Method that is called by the \hyperlink{classns3_1_1lorawan_1_1NetworkScheduler}{Network\+Scheduler} just before sending a reply to a certain End Device. \mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkController_a39dd06a8108bd9eb19961c2b050d47db}\label{classns3_1_1lorawan_1_1NetworkController_a39dd06a8108bd9eb19961c2b050d47db}} 
+\index{ns3\+::lorawan\+::\+Network\+Controller@{ns3\+::lorawan\+::\+Network\+Controller}!Install@{Install}}
+\index{Install@{Install}!ns3\+::lorawan\+::\+Network\+Controller@{ns3\+::lorawan\+::\+Network\+Controller}}
+\subsubsection{\texorpdfstring{Install()}{Install()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Network\+Controller\+::\+Install (\begin{DoxyParamCaption}\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1NetworkControllerComponent}{Network\+Controller\+Component} $>$}]{component }\end{DoxyParamCaption})}
+
+Add a new \hyperlink{classns3_1_1lorawan_1_1NetworkControllerComponent}{Network\+Controller\+Component} \mbox{\Hypertarget{classns3_1_1lorawan_1_1NetworkController_af2192cd404ae5c1588c4375e4396e9ef}\label{classns3_1_1lorawan_1_1NetworkController_af2192cd404ae5c1588c4375e4396e9ef}} 
+\index{ns3\+::lorawan\+::\+Network\+Controller@{ns3\+::lorawan\+::\+Network\+Controller}!On\+New\+Packet@{On\+New\+Packet}}
+\index{On\+New\+Packet@{On\+New\+Packet}!ns3\+::lorawan\+::\+Network\+Controller@{ns3\+::lorawan\+::\+Network\+Controller}}
+\subsubsection{\texorpdfstring{On\+New\+Packet()}{OnNewPacket()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Network\+Controller\+::\+On\+New\+Packet (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet const $>$}]{packet }\end{DoxyParamCaption})}
+
+Method that is called by the \hyperlink{classns3_1_1lorawan_1_1NetworkServer}{Network\+Server} when a new packet is received.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & The newly received packet. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+network-\/controller.\+h\item 
+network-\/controller.\+cc\end{DoxyCompactItemize}

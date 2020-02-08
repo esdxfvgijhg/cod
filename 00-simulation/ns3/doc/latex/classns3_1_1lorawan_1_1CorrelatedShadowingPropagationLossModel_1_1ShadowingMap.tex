@@ -1,0 +1,53 @@
+\hypertarget{classns3_1_1lorawan_1_1CorrelatedShadowingPropagationLossModel_1_1ShadowingMap}{}\section{ns3\+:\+:lorawan\+:\+:Correlated\+Shadowing\+Propagation\+Loss\+Model\+:\+:Shadowing\+Map Class Reference}
+\label{classns3_1_1lorawan_1_1CorrelatedShadowingPropagationLossModel_1_1ShadowingMap}\index{ns3\+::lorawan\+::\+Correlated\+Shadowing\+Propagation\+Loss\+Model\+::\+Shadowing\+Map@{ns3\+::lorawan\+::\+Correlated\+Shadowing\+Propagation\+Loss\+Model\+::\+Shadowing\+Map}}
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Correlated\+Shadowing\+Propagation\+Loss\+Model\+:\+:Shadowing\+Map\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{classns3_1_1lorawan_1_1CorrelatedShadowingPropagationLossModel_1_1ShadowingMap__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Correlated\+Shadowing\+Propagation\+Loss\+Model\+:\+:Shadowing\+Map\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{classns3_1_1lorawan_1_1CorrelatedShadowingPropagationLossModel_1_1ShadowingMap__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classns3_1_1lorawan_1_1CorrelatedShadowingPropagationLossModel_1_1ShadowingMap_a0b41986aceed196271b44b2d087e58e1}{Shadowing\+Map} ()
+\item 
+double \hyperlink{classns3_1_1lorawan_1_1CorrelatedShadowingPropagationLossModel_1_1ShadowingMap_a683e51a85e85fc9638a915e5de90679d}{Get\+Loss} (\hyperlink{classns3_1_1lorawan_1_1CorrelatedShadowingPropagationLossModel_1_1Position}{Correlated\+Shadowing\+Propagation\+Loss\+Model\+::\+Position} position)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1CorrelatedShadowingPropagationLossModel_1_1ShadowingMap_a0b41986aceed196271b44b2d087e58e1}\label{classns3_1_1lorawan_1_1CorrelatedShadowingPropagationLossModel_1_1ShadowingMap_a0b41986aceed196271b44b2d087e58e1}} 
+\index{ns3\+::lorawan\+::\+Correlated\+Shadowing\+Propagation\+Loss\+Model\+::\+Shadowing\+Map@{ns3\+::lorawan\+::\+Correlated\+Shadowing\+Propagation\+Loss\+Model\+::\+Shadowing\+Map}!Shadowing\+Map@{Shadowing\+Map}}
+\index{Shadowing\+Map@{Shadowing\+Map}!ns3\+::lorawan\+::\+Correlated\+Shadowing\+Propagation\+Loss\+Model\+::\+Shadowing\+Map@{ns3\+::lorawan\+::\+Correlated\+Shadowing\+Propagation\+Loss\+Model\+::\+Shadowing\+Map}}
+\subsubsection{\texorpdfstring{Shadowing\+Map()}{ShadowingMap()}}
+{\footnotesize\ttfamily ns3\+::lorawan\+::\+Correlated\+Shadowing\+Propagation\+Loss\+Model\+::\+Shadowing\+Map\+::\+Shadowing\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructor. This initializes the shadowing map with a grid of independent shadowing values, one m\+\_\+correlation\+Distance meters apart from the next one. The result is something like\+: o---o---o---o---o $\vert$ $\vert$ $\vert$ $\vert$ $\vert$ o---o---o---o---o $\vert$ $\vert$ $\vert$ $\vert$ $\vert$ o---o---o---o---o $\vert$ $\vert$ $\vert$ $\vert$ $\vert$ o---o---o---o---o where at each o we have an independently generated shadowing value. We can then interpolate the 4 values surrounding any point in space in order to get a correlated shadowing value. After generating this value, we will add it to the map so that we don\textquotesingle{}t have to compute it twice. Also, since interpolation is a deterministic operation, we are guaranteed that, as long as the grid doesn\textquotesingle{}t change, also two values generated in the same square will be correlated. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1CorrelatedShadowingPropagationLossModel_1_1ShadowingMap_a683e51a85e85fc9638a915e5de90679d}\label{classns3_1_1lorawan_1_1CorrelatedShadowingPropagationLossModel_1_1ShadowingMap_a683e51a85e85fc9638a915e5de90679d}} 
+\index{ns3\+::lorawan\+::\+Correlated\+Shadowing\+Propagation\+Loss\+Model\+::\+Shadowing\+Map@{ns3\+::lorawan\+::\+Correlated\+Shadowing\+Propagation\+Loss\+Model\+::\+Shadowing\+Map}!Get\+Loss@{Get\+Loss}}
+\index{Get\+Loss@{Get\+Loss}!ns3\+::lorawan\+::\+Correlated\+Shadowing\+Propagation\+Loss\+Model\+::\+Shadowing\+Map@{ns3\+::lorawan\+::\+Correlated\+Shadowing\+Propagation\+Loss\+Model\+::\+Shadowing\+Map}}
+\subsubsection{\texorpdfstring{Get\+Loss()}{GetLoss()}}
+{\footnotesize\ttfamily double ns3\+::lorawan\+::\+Correlated\+Shadowing\+Propagation\+Loss\+Model\+::\+Shadowing\+Map\+::\+Get\+Loss (\begin{DoxyParamCaption}\item[{\hyperlink{classns3_1_1lorawan_1_1CorrelatedShadowingPropagationLossModel_1_1Position}{Correlated\+Shadowing\+Propagation\+Loss\+Model\+::\+Position}}]{position }\end{DoxyParamCaption})}
+
+Get the loss for a certain position. If this position is not already in the map, add it by computing the interpolation of neighboring shadowing values belonging to the grid. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+correlated-\/shadowing-\/propagation-\/loss-\/model.\+h\item 
+correlated-\/shadowing-\/propagation-\/loss-\/model.\+cc\end{DoxyCompactItemize}

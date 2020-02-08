@@ -1,0 +1,40 @@
+########################################################################
+#
+# Generic makefile for dynamic load user primitive Plugins
+# on linux x86 using gcc.
+#
+# Copyright (C) 2003-2016 Cincom Systems, Inc.  All rights reserved.
+#
+########################################################################
+
+# edit to the Plugin you want to build
+Plugin			= BitBltPlugin
+PluginSource	= src/plugins/$(Plugin)/$(Plugin).c
+PluginDir		= plugins/linux86
+PluginObj		= $(PluginDir)/$(Plugin).o
+PluginDest		= $(PluginDir)/$(Plugin).so
+ImportLib		=
+# edit to the location of the engine sources
+# and add a symbolic link ./src/makefiles to $(HPSSRC)/makefiles
+HPSSRC			=../hps7/src
+PluginIncludes	=	$(HPSSRC)/include/hps.h \
+					$(HPSSRC)/include/oop.h \
+					$(HPSSRC)/include/mm.h \
+					$(HPSSRC)/include/mmAllocate.h \
+					$(HPSSRC)/include/sysOop.h \
+					$(HPSSRC)/include/class.h \
+					$(HPSSRC)/include/pr.h \
+					$(HPSSRC)/include/exMessage.h
+
+default: $(PluginDest)			# to override all in makefiles/makefile.generic
+
+include  $(HPSSRC)/makeplat/linux86/fast.nb.lg.makefile.vw7	# to get correct compilation flags
+
+clean:
+	rm -f $(PluginObj) $(PluginDest)
+
+$(PluginObj): $(PluginSource) $(PluginIncludes)
+	$(CC) -c $(PluginSource) -o $@ $(COPTS) $(CDEFS) -Dplatform=$(PLATFORM) -I$(HPSSRC)/include -Os
+
+$(PluginDest): $(PluginObj)
+	ld -o $@ -shared -O1 $(PluginObj) $(ImportLib)

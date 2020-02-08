@@ -1,0 +1,8 @@
+
+test: test.o 
+	gcc -o test test.o
+
+test.o: lib.c lib.h
+	gcc -o test.o -c lib.c -W -Wall -ansi -pedantic
+
+

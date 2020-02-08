@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>Chronos code to generate list of NYSE Trading Holidays -- 1885 to Present</title>
+<style type="text/css">
+a:link {color: rgb(192, 164, 132); text-decoration: none}
+a:visited {color: rgb(192, 164, 132); text-decoration: none}
+a:hover {color: #0000FF}
+a:active {color: #FF0000}
+td {font-size: 14pt}
+</style></head>
+<body style="background-color: rgb(255, 255, 255);"><br><center><table style="width: 92%; height: 92%; text-align: left; margin-left: auto; margin-right: auto;" border="0" cellpadding="2" cellspacing="2">
+<tbody><tr><td><center>
+<table style="width: 100%;"><tbody><tr><td style="text-align: center;">
+<img src="http://www.chronos-st.org/images/Chronos-small.png"><br style="font-size: 30%;"><span style="font-size: 125%; font-weight: bold; color: rgb(192, 164, 132);">&chi;&rho;&#972;&nu;&omicron;&sigmaf;</span>
+</td><td> <table height="100%" width="100%"><tbody><tr>
+<td> <h1><span style="font-family: Helvetica,Arial,sans-serif;">Chronos
+Code: NYSE
+Trading Holidays</span></h1> </td> </tr> <tr>
+<td style="font-family: Helvetica,Arial,sans-serif; font-weight: bold; color: rgb(128, 128, 128); background-color: rgb(248, 248, 248);">For more information:
+<a href="http://www.chronos-st.org" target="_top">The Chronos Date/Time Library&nbsp;</a></td> </tr> </tbody>
+</table>
+</td></tr></tbody></table>
+</center><br><br><table style="width: 100%;"><tbody>
+<tr><td><span style="font-family: Helvetica,Arial,sans-serif;"></span><span style="font-family: Helvetica,Arial,sans-serif;">Here we
+present the Chronos
+code that generates the list </span><span style="font-family: Helvetica,Arial,sans-serif;">of each
+day the New York Stock Exchange was closed the entire day from 1885
+through the current year. The list does not show any Sundays, nor any
+Saturdays
+from 1953 onwards. The NYSE had a two hour trading session (10am to
+Noon) on Saturdays from 1873 through 1952. &nbsp;To see the list: <a href="http://www.chronos-st.org/NYSE_Observed_Holidays-1885-Present.html">NYSE
+Full-Day Closures, 1885-Present</a>.<br><br></span><span style="font-family: Helvetica,Arial,sans-serif;">The code
+depends upon the fact that the '</span><span style="font-family: Courier New,Courier,monospace;">SemanticDatePolicy
+nyse'<span style="font-family: Helvetica,Arial,sans-serif;">
+object knows both all the dates when the NYSE was closed for
+exceptional reasons (e.g., in observance of the First Lunar Landing by
+Apollo 11,) and also knows the current and former NYSE observance rules
+for 'regularly-scheduled' market holidays, such as&nbsp;Columbus
+day
+(until 1954) and New Year's Day (which is not observed when it falls on
+a Saturday.) </span></span><span style="font-family: Helvetica,Arial,sans-serif;">Note that
+the&nbsp; '</span><span style="font-family: Courier New,Courier,monospace;">SemanticDatePolicy
+nyse' <span style="font-family: Helvetica,Arial,sans-serif;">object
+is just an instance of SemanticDatePolicy itself--it is not a
+specialized subclass coded to handle the NYSE rules and
+exceptions--nor is there any other such NYSE-specific class in the
+Chronos codebase.</span></span><span style="font-family: Helvetica,Arial,sans-serif;"></span><br style="font-family: Helvetica,Arial,sans-serif;"><br><span style="font-family: Courier New,Courier,monospace;">|
+byYears intraYearList stream |</span><br style="font-family: Courier New,Courier,monospace;"><span style="font-family: Courier New,Courier,monospace;">byYears
+:= SortedCollection sortBlock: [:a :b | a key &gt; b key].</span><br style="font-family: Courier New,Courier,monospace;"><span style="font-family: Courier New,Courier,monospace;">1885 to:
+2006 do: [:year | </span><br style="font-family: Courier New,Courier,monospace;"><span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+intraYearList := SortedCollection sortBlock: [:a :b | a key &lt; b
+key].</span><br style="font-family: Courier New,Courier,monospace;"><span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+byYears add: year-&gt;intraYearList.</span><br style="font-family: Courier New,Courier,monospace;"><span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+SemanticDatePolicy nyse observedEventOccurenceDatesInYear: year do: </span><br style="font-family: Courier New,Courier,monospace;"><span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; [:semanticKey :date :observanceType | </span><br style="font-family: Courier New,Courier,monospace;"><span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; semanticKey == #weekend <br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; ifFalse: <br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; [intraYearList add: <br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+date-&gt;(Array <br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; with:
+semanticKey </span><span style="font-family: Courier New,Courier,monospace;">"The
+semantic significance of the date."</span><br><span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;with: observanceType)]]]. </span><br style="font-family: Courier New,Courier,monospace;"><span style="font-family: Courier New,Courier,monospace;">stream
+:= 'NYSE_Observed_Holidays-1885-2006.txt' asFilename writeStream.</span><br style="font-family: Courier New,Courier,monospace;"><span style="font-family: Courier New,Courier,monospace;">[byYears
+do: [:yearAssocToClosureList | </span><br style="font-family: Courier New,Courier,monospace;"><span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+| observanceType |</span><br style="font-family: Courier New,Courier,monospace;"><span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+yearAssocToClosureList value <br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; do: [:assoc | <br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; stream <br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; cr; <br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; nextPutAll:
+(assoc key printStringUsing: #rfc2822); "The date"<br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; nextPut: $:;<br></span><span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; tab; <br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; nextPutAll:
+assoc value first. "The semantic&nbsp;</span><span style="font-family: Courier New,Courier,monospace;">significance</span><span style="font-family: Courier New,Courier,monospace;"> of the
+date."</span><br style="font-family: Courier New,Courier,monospace;"><span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+observanceType := assoc value last.</span><br style="font-family: Courier New,Courier,monospace;"><span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+observanceType == #nominal <br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; ifFalse: <br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; ["The date was observed on some day
+other than the
+'nominal' day."<br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; stream <br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; space; <br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; nextPut: $(; <br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+nextPutAll: observanceType; <br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; nextPut: $)]].</span><br style="font-family: Courier New,Courier,monospace;"><span style="font-family: Courier New,Courier,monospace;">stream
+cr]]</span><span style="font-family: Courier New,Courier,monospace;"> ensure:
+[stream close].<br><br><span style="font-family: Helvetica,Arial,sans-serif;">One can
+also use the</span> '</span><span style="font-family: Courier New,Courier,monospace;">SemanticDatePolicy
+nyse</span><span style="font-family: Courier New,Courier,monospace;">' <span style="font-family: Helvetica,Arial,sans-serif;">object to
+count the number of trading days between two dates, thusly:</span><br><br><span style="font-family: Courier New,Courier,monospace;">[:minDate
+:maxDate | <br>| closureCount |<br>minDate &gt;
+maxDate ifTrue: [^0].<br>closureCount := 0.<br>SemanticDatePolicy
+nyse <br>&nbsp;&nbsp;&nbsp;
+observedEventOccurenceDatesFrom: minDate<br>&nbsp;&nbsp;&nbsp;
+through: maxDate<br>&nbsp;&nbsp;&nbsp; do:
+[:semanticKey :date :observanceType | <br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; semanticKey == #weekend <br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; ifTrue: <br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; [(date year between: 1873 and: 1952) <br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; ifTrue: [date dayOfWeek = Sunday ifTrue:
+[closureCount := closureCount + 1]]<br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; ifFalse: [closureCount := closureCount +
+1]]<br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; ifFalse:
+[closureCount := closureCount + 1]].<br></span></span><span style="font-family: Courier New,Courier,monospace;">"Must
+add 1 because it's a closed interval."</span><br style="font-family: Courier New,Courier,monospace;"><span style="font-family: Courier New,Courier,monospace;">(minDate
+daysUntil: maxDate) + 1 - closureCount]<br>&nbsp;&nbsp;&nbsp;
+value: </span><font style="font-family: Courier New,Courier,monospace;">(YearMonthDay
+year: 2003 month: March day: 12) &nbsp;</font><br style="font-family: Courier New,Courier,monospace;"><font style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+value: </font><font style="font-family: Courier New,Courier,monospace;">(YearMonthDay
+year: 2006 month: January day: 12)</font><span style="font-family: Courier New,Courier,monospace;"><span style="font-family: Courier New,Courier,monospace;"></span></span><br><span style="font-family: Courier New,Courier,monospace;"><span style="font-family: Courier New,Courier,monospace;"></span><br><span style="font-family: Helvetica,Arial,sans-serif;"></span></span><br style="font-family: Courier New,Courier,monospace;"></td>
+</tr></tbody></table></td></tr></tbody></table></center></body></html>

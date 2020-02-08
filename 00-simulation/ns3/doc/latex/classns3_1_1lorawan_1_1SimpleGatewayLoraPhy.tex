@@ -1,0 +1,125 @@
+\hypertarget{classns3_1_1lorawan_1_1SimpleGatewayLoraPhy}{}\section{ns3\+:\+:lorawan\+:\+:Simple\+Gateway\+Lora\+Phy Class Reference}
+\label{classns3_1_1lorawan_1_1SimpleGatewayLoraPhy}\index{ns3\+::lorawan\+::\+Simple\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Simple\+Gateway\+Lora\+Phy}}
+
+
+{\ttfamily \#include $<$simple-\/gateway-\/lora-\/phy.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Simple\+Gateway\+Lora\+Phy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classns3_1_1lorawan_1_1SimpleGatewayLoraPhy__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Simple\+Gateway\+Lora\+Phy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classns3_1_1lorawan_1_1SimpleGatewayLoraPhy__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1SimpleGatewayLoraPhy_a8ed607e9a11e4c0b759d456a35b68c40}{Start\+Receive} (Ptr$<$ Packet $>$ packet, double rx\+Power\+Dbm, uint8\+\_\+t sf, Time duration, double frequency\+M\+Hz)
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1SimpleGatewayLoraPhy_aefb2464599926253bfb1003fa14f8fae}{End\+Receive} (Ptr$<$ Packet $>$ packet, Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event}{Lora\+Interference\+Helper\+::\+Event} $>$ event)
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1SimpleGatewayLoraPhy_ab65ad475c7a03520d6e03bdd008b8d93}{Send} (Ptr$<$ Packet $>$ packet, \hyperlink{structns3_1_1lorawan_1_1LoraTxParameters}{Lora\+Tx\+Parameters} tx\+Params, double frequency\+M\+Hz, double tx\+Power\+Dbm)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1SimpleGatewayLoraPhy_a98c8d0f68e7c59bbabee2e3282eb4562}\label{classns3_1_1lorawan_1_1SimpleGatewayLoraPhy_a98c8d0f68e7c59bbabee2e3282eb4562}} 
+static Type\+Id {\bfseries Get\+Type\+Id} (void)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Class modeling a Lora S\+X1301 chip. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1SimpleGatewayLoraPhy_aefb2464599926253bfb1003fa14f8fae}\label{classns3_1_1lorawan_1_1SimpleGatewayLoraPhy_aefb2464599926253bfb1003fa14f8fae}} 
+\index{ns3\+::lorawan\+::\+Simple\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Simple\+Gateway\+Lora\+Phy}!End\+Receive@{End\+Receive}}
+\index{End\+Receive@{End\+Receive}!ns3\+::lorawan\+::\+Simple\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Simple\+Gateway\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{End\+Receive()}{EndReceive()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Simple\+Gateway\+Lora\+Phy\+::\+End\+Receive (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet $>$}]{packet,  }\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event}{Lora\+Interference\+Helper\+::\+Event} $>$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Finish reception of a packet.
+
+This method is scheduled by Start\+Receive, based on the packet duration. By passing a \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper}{Lora\+Interference\+Helper} Event to this method, the class will be able to identify the packet that is being received among all those that were registered as interference by Start\+Receive.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & The received packet. \\
+\hline
+{\em event} & The event that is tied to this packet in the \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper}{Lora\+Interference\+Helper}. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_a030500acf630f508b12923627cdc4068}{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1SimpleGatewayLoraPhy_ab65ad475c7a03520d6e03bdd008b8d93}\label{classns3_1_1lorawan_1_1SimpleGatewayLoraPhy_ab65ad475c7a03520d6e03bdd008b8d93}} 
+\index{ns3\+::lorawan\+::\+Simple\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Simple\+Gateway\+Lora\+Phy}!Send@{Send}}
+\index{Send@{Send}!ns3\+::lorawan\+::\+Simple\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Simple\+Gateway\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Send()}{Send()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Simple\+Gateway\+Lora\+Phy\+::\+Send (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet $>$}]{packet,  }\item[{\hyperlink{structns3_1_1lorawan_1_1LoraTxParameters}{Lora\+Tx\+Parameters}}]{tx\+Params,  }\item[{double}]{frequency\+M\+Hz,  }\item[{double}]{tx\+Power\+Dbm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Instruct the P\+HY to send a packet according to some parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & The packet to send. \\
+\hline
+{\em tx\+Params} & The desired transmission parameters. \\
+\hline
+{\em frequency\+M\+Hz} & The frequency on which to transmit. \\
+\hline
+{\em tx\+Power\+Dbm} & The power in d\+Bm with which to transmit the packet. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_a2f1375c96d37fd05f1e33e1423826299}{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1SimpleGatewayLoraPhy_a8ed607e9a11e4c0b759d456a35b68c40}\label{classns3_1_1lorawan_1_1SimpleGatewayLoraPhy_a8ed607e9a11e4c0b759d456a35b68c40}} 
+\index{ns3\+::lorawan\+::\+Simple\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Simple\+Gateway\+Lora\+Phy}!Start\+Receive@{Start\+Receive}}
+\index{Start\+Receive@{Start\+Receive}!ns3\+::lorawan\+::\+Simple\+Gateway\+Lora\+Phy@{ns3\+::lorawan\+::\+Simple\+Gateway\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Start\+Receive()}{StartReceive()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Simple\+Gateway\+Lora\+Phy\+::\+Start\+Receive (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet $>$}]{packet,  }\item[{double}]{rx\+Power\+Dbm,  }\item[{uint8\+\_\+t}]{sf,  }\item[{Time}]{duration,  }\item[{double}]{frequency\+M\+Hz }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Start receiving a packet.
+
+This method is typically called by \hyperlink{classns3_1_1lorawan_1_1LoraChannel}{Lora\+Channel}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & The packet that is arriving at this P\+HY layer. \\
+\hline
+{\em rx\+Power\+Dbm} & The power of the arriving packet (assumed to be constant for the whole reception). \\
+\hline
+{\em sf} & The Spreading Factor of the arriving packet. \\
+\hline
+{\em duration} & The on air time of this packet. \\
+\hline
+{\em frequency\+M\+Hz} & The frequency this packet is being transmitted on. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1GatewayLoraPhy_a08744b321b5f1b1cf84cff8d7ca8bf49}{ns3\+::lorawan\+::\+Gateway\+Lora\+Phy}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+simple-\/gateway-\/lora-\/phy.\+h\item 
+simple-\/gateway-\/lora-\/phy.\+cc\end{DoxyCompactItemize}

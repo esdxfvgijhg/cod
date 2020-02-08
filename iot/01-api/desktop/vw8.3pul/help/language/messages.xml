@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+	<topic id = "vw.help.stLang.message"
+			xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+		<title>Messages</title>
+		<body><p>Messages are the fundamental unit of programming in Smalltalk.
+		When a message is sent to an object (its <term>receiver</term>), some 
+		activity is performed and another object is returned to the message sender.</p>
+		<p>Message syntax is quite simple, as there are only a few different forms.</p>
+		</body>
+		<topic id = "vw.help.stLang.message.construct"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Construct a message</title>
+			<body>
+				<p>A <term>message expression</term> is made up of a <term>message receiver</term> and
+					a <term>message selector</term>. The receiver is the object from
+					which a service is being requested. The message selector is the
+					name of the receiver's method that provides the service, along with
+					any necessary arguments.<indexterm>message<indexterm>expression</indexterm></indexterm>
+					<indexterm>message<indexterm>types</indexterm></indexterm></p>
+				<p>There are three message forms:<dl>
+						<dlentry>
+							<dt>unary message</dt>
+							<dd><indexterm>message<indexterm>unary</indexterm></indexterm><indexterm>unary message</indexterm>A message sent to a receiver with no arguments:
+							<codeblock otherprops="smalltalk expression">1.0 <b>sin</b></codeblock>
+							</dd>
+						</dlentry>
+						<dlentry>
+							<dt>keyword message</dt>
+							<dd><indexterm>message<indexterm>keyword</indexterm></indexterm><indexterm>keyword message</indexterm>A one or more argument message selector, each
+								argument following a keyword:
+								<codeblock otherprops="smalltalk expression">'9942-Steering wheel' <b>copyFrom:</b> 1 <b>to:</b> 4</codeblock>
+							</dd>
+						</dlentry>
+						<dlentry>
+							<dt>binary message</dt>
+							<dd><indexterm>message<indexterm>binary</indexterm></indexterm><indexterm>binary message</indexterm>A single argument message using one or two special
+								symbols as the message selector instead of a keyword:
+								<codeblock otherprops="smalltalk expression">2 <b>+</b> 3</codeblock>
+							</dd>
+						</dlentry>
+					</dl>
+				</p>
+			</body>
+		</topic>
+		<topic id = "vw.help.stLang.message.sendToClass"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Send a message to a class</title>
+			<body>
+				<p><indexterm>message<indexterm>send to class</indexterm></indexterm><indexterm>class message</indexterm>Since a <term>class</term> is an <term>object</term>,
+					you can name a class as the <term>receiver</term> of a message.
+					Messages appropriate for sending to a class (<term>class message</term>s)
+					are separate from those sent to an instance.</p>
+				<p>Class messages are most often used for creating an instance of
+					the class, as in the following example.</p>
+				<codeblock otherprops="smalltalk expression">Date today</codeblock>
+			</body>
+		</topic>
+		<topic id = "vw.help.stLang.message.sendToResult"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Send a message to the result of another message</title>
+			<body>
+				<p><indexterm>message<indexterm>chained</indexterm></indexterm>Since
+					the result of a message is an <term>object</term>, it can be the <term>receiver</term> of another
+					message. Parsing, as usual, is from left to right.
+					<codeblock otherprops="smalltalk expression">1.0 sin squared</codeblock></p>
+				<p>which returns the square of the sine of 1.0.</p>
+				<p>For complex expressions, you may need to use parentheses to control
+					the parsing order.</p>
+				<p>Similarly you can use a result directly as an argument in a message. Unary
+					messages are parsed first.
+					<codeblock otherprops="smalltalk expression">52 * Random new next.</codeblock></p>
+				<p>For complex expressions, you may need to use parentheses to control
+					the parsing order.</p>
+			</body>
+		</topic>
+		<topic id = "vw.help.stLang.message.parentheses"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Control parsing order</title>
+			<body>
+				<p><indexterm>message<indexterm>parse order</indexterm><indexterm>parentheses</indexterm></indexterm><indexterm>parentheses in messages</indexterm>In a complex expression, messages are executed
+					from left to right, starting with unary messages, then binary messages,
+					then keyword messages. Use parenthesis to specify the parsing sequence.</p>
+				<p>Compare:
+					<codeblock otherprops="smalltalk expression">2 * 3 + 2</codeblock>
+					with:
+					<codeblock otherprops="smalltalk expression">2 * (3 + 2)</codeblock></p>
+				<p>Expressions inside parentheses are evaluated before those outside. Parentheses
+					can be nested.</p>
+			</body>
+		</topic>
+		<topic id = "vw.help.stLang.message.cascade"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Cascading messages to a receiver</title>
+			<body>
+				<p><indexterm>message<indexterm>cascade</indexterm></indexterm><indexterm>cascading messages</indexterm><indexterm>chaining messages</indexterm>When
+					sending a series of messages to the same <term>receiver</term>,
+					use a semicolon to separate the messages. You only name the receiver once,
+					at the beginning of the series. End the series with a period.
+					<codeblock otherprops="smalltalk expression">| flavors |
+	flavors := OrderedCollection new.
+	flavors
+	add: 'Vanilla';
+	add: 'Chocolate';
+	add: 'Cookie Crumble';
+	add: 'Rocky Road';
+	add: 'Raspberry Swirl'.
+	^flavors</codeblock>
+				</p>
+			</body>
+		</topic>
+		<topic id = "vw.help.stLang.message.makeShort"
+				xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+			<title>Make short messages</title>
+			<body>
+				<p><indexterm>message<indexterm>length</indexterm></indexterm><indexterm>periods in messages</indexterm>Smalltalk style favors short, simple messages.
+					Rather than construct a complex expression, which can be difficult
+					to understand, write a sequence of simpler expressions, each on
+					a separate line, terminated by a period. Use temporary variables
+					as necessary.</p>
+				<p>For example, instead of the complex expression:
+				<codeblock otherprops="smalltalk expression">52 * Random new next.</codeblock></p>
+				<p>consider using a sequence of messages:
+				<codeblock otherprops="smalltalk expression">| generator random |
+	generator := Random new.
+	random := generator next.
+	52 * random.</codeblock></p>
+			</body>
+		</topic>
+	</topic>
+</dita>

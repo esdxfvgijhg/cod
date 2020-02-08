@@ -1,0 +1,254 @@
+///////////////////////////
+//        Gateway
+///////////////////////////
+
+// ATTENTION: you must connect the RX port to PA_2
+
+// the GTW node can receive through the serial port the commands to send to all the remote nodes or to a specific one
+// for the GTW sends to the GTW mote @+A+remote node ID or 255 for broadcast+command+value
+// the command can be sent any time, therefore the remote node should be always awake
+
+#include <stdio.h>
+#include <iostream>
+#include "mbed.h"
+#include "../SX1276Lib/registers/sx1276Regs-LoRa.h"
+#include "../SX1276Lib/sx1276/sx1276-inAir.h"
+
+#define DEBOG                           1
+#define MyID 							0		// because I am the Gateway
+#define BUFFER_SIZE                     32          // Define the payload size here
+
+#define RF_FREQUENCY                    868700000           // 868MHz
+#define TX_OUTPUT_POWER                 14                  // 14 dBm for inAir9
+#define LORA_BANDWIDTH                  8                   // 0: 7.8 kHz,  1: 10.4 kHz, 2: 15.6kHz, 3: 20.8kHz,
+                                                            // 4: 31.25kHz, 5: 41.7 kHz, 6: 62.5 kHz,
+                                                            // 7: 125 kHz,  8: 250 kHz,  9: 500 kHz
+#define LORA_SPREADING_FACTOR           12                  // SF7..SF12
+#define LORA_CODINGRATE                 1                   // 1=4/5, 2=4/6, 3=4/7, 4=4/8
+#define LORA_PREAMBLE_LENGTH            8                   // Same for Tx and Rx
+#define LORA_SYMBOL_TIMEOUT             5                   // Symbols
+#define LORA_FIX_LENGTH_PAYLOAD_ON      false
+#define LORA_FHSS_ENABLED               false
+#define LORA_NB_SYMB_HOP                4
+#define LORA_IQ_INVERSION_ON            false
+#define LORA_CRC_ENABLED                true
+
+#define TX_TIMEOUT_VALUE                11000000 // in us
+#define RX_TIMEOUT_VALUE                0     // for continuous mode
+
+
+
+
+void OnTxDone(void);
+void OnTxTimeout(void);
+void OnRxDone(uint8_t *payload, uint16_t size, int16_t rssi, int8_t snr);
+void OnRxTimeout(void);
+void OnRxError(void);
+
+Serial      pc(USBTX, USBRX);   //Use default TX and RX. Available via USB Com port when using PGM-NUCLEO programmer
+SX1276inAir radio(OnTxDone, OnTxTimeout, OnRxDone, OnRxTimeout, OnRxError, NULL, NULL);
+DigitalOut led(LED1);
+
+uint8_t Buffer[BUFFER_SIZE];
+int8_t LoRaSNR;
+uint16_t BufferSize = BUFFER_SIZE;
+int16_t LoRaRssi;
+int16_t gatway_RSSI;
+uint8_t mess_num = 0;
+uint8_t dest_node_id;
+int8_t power_set;
+
+uint8_t msg_rec_counter=0;
+int value ;
+int test;
+uint8_t rNodeId;
+char command;
+DigitalIn isSerial(PA_2);
+
+
+volatile RadioState State = LOWPOWER;
+
+uint8_t commandes[10][5] = {0}; // Num capt ; valide ? ; Power ; SF ; BW
+
+
+void OnTxDone(void)
+{
+    radio.Sleep();
+    State = TX_DONE;
+    radio.Rx(RX_TIMEOUT_VALUE);
+
+#if DEBOG == 1
+    pc.printf("OnTxDone\r\n");
+#endif
+}
+
+void OnTxTimeout(void)
+{
+    radio.Sleep();
+    State = TX_TIMEOUT;
+
+#if DEBOG == 1
+    pc.printf("OnTxTimeout\r\n");
+#endif
+}
+
+void OnRxDone(uint8_t *payload, uint16_t size, int16_t rssi, int8_t snr)
+{
+    radio.Sleep();
+    BufferSize = size;
+    memcpy(Buffer, payload, BufferSize);
+    LoRaRssi = rssi;
+    LoRaSNR = snr;
+    State = RX_DONE;
+    radio.Rx(RX_TIMEOUT_VALUE);
+
+#if DEBOG == 1
+    pc.printf("OnRxDone\r\n");
+#endif
+}
+
+void OnRxTimeout(void)
+{
+    radio.Sleep();
+    radio.Rx(RX_TIMEOUT_VALUE);
+    State = RX_TIMEOUT;
+
+#if DEBOG == 1
+    pc.printf("OnRxTimeout\r\n");
+#endif
+}
+
+void OnRxError(void)
+{
+    radio.Sleep();
+    //radio.Standby();
+    State = RX_ERROR;
+
+#if DEBOG == 1
+    pc.printf("OnRxError\r\n");
+#endif
+}
+
+int main() {
+
+    wait_ms(500); // start delay
+
+    // configure uart port
+    pc.baud(57600);
+    pc.format(8, SerialBase::None, 1);
+
+    // configure radio
+    radio.SetBoardType(BOARD_INAIR9); // the correct hardware for our own board
+
+    led = 0;
+    while (radio.Read(REG_VERSION) == 0x00)
+    {
+        pc.printf("Trying to connect to radio device\r\n");
+        wait_ms(200);
+    }
+    led = 1;
+
+    pc.printf("Radio is initialized\r\n");
+
+    // set radio frequency
+    radio.SetChannel(RF_FREQUENCY);
+
+    // setup the modern
+
+    radio.SetTxConfig(
+             MODEM_LORA,
+             TX_OUTPUT_POWER,
+             0,
+             LORA_BANDWIDTH,
+             LORA_SPREADING_FACTOR,
+             LORA_CODINGRATE,
+             LORA_PREAMBLE_LENGTH,
+             LORA_FIX_LENGTH_PAYLOAD_ON,
+             LORA_CRC_ENABLED,
+             LORA_FHSS_ENABLED,
+             LORA_NB_SYMB_HOP,
+             LORA_IQ_INVERSION_ON,
+             TX_TIMEOUT_VALUE
+     );
+     radio.SetRxConfig(
+             MODEM_LORA,
+             LORA_BANDWIDTH,
+             LORA_SPREADING_FACTOR,
+             LORA_CODINGRATE,
+             0,
+             LORA_PREAMBLE_LENGTH,
+             LORA_SYMBOL_TIMEOUT,
+             LORA_FIX_LENGTH_PAYLOAD_ON,
+             0,
+             LORA_CRC_ENABLED,
+             LORA_FHSS_ENABLED,
+             LORA_NB_SYMB_HOP,
+             LORA_IQ_INVERSION_ON,
+             true  // Rx continuous mode
+     );
+
+    // Check for connection to radio module
+    while (radio.Read(REG_VERSION) == 0x00)
+    {
+        // led = !led;
+        pc.printf("Reconnecting...\r\n");
+        wait_ms(200);
+    }
+    // led = 1;
+
+    radio.Rx(RX_TIMEOUT_VALUE);
+
+    while (1){
+
+        switch(State)
+        {
+			case TX_DONE:
+				led = !led;
+				State = LOWPOWER;
+				break;
+
+        	case RX_DONE:
+        		msg_rec_counter++;
+				wait_ms(10);		// synchronization with the slave
+#if DEBOG == 1
+				pc.printf("from %d  mesNo=%d T=%d H=%d RSSI=%d\r\n",
+						Buffer[0],Buffer[1],Buffer[3],Buffer[5],LoRaRssi);
+# endif
+				pc.printf("%c%c%c%c%c",Buffer[0],Buffer[1],Buffer[3],Buffer[5],LoRaRssi);
+        		State = LOWPOWER;
+        		break;
+
+        	case LOWPOWER:
+        		test = isSerial.read();
+        		if 	(test == 0){
+        			value = getchar();
+        			if (value == '@'){
+        				command = (char) getchar(); // it is normally the address
+        				rNodeId = (uint8_t) getchar(); // if it is 255, it's a broadcast'
+        				command = (char) getchar(); // available commands : S for SF; P for Power, I for information
+        				value = getchar();
+        				Buffer[0]=0;
+        				Buffer[1]=rNodeId;
+        				Buffer[2]=command;
+        				Buffer[3]=value;
+        				pc.printf("I'm sending to %d the %c value %d",rNodeId, command, value);
+        				radio.Send(Buffer, 4);
+        			}
+        		}
+        		break;
+
+        	case RX_ERROR:
+        		State = LOWPOWER;
+        		pc.printf ("RX Error happened !! \r\n");
+        		radio.Send(Buffer,2); // without this, the program blocks, it seems that the radio is off and nothing happens.
+
+       		break;
+
+        	default:
+        		State = LOWPOWER;
+        		break;
+
+		} // end switch
+    } // end while
+} // end main()
+

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Sensor Map</title>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtVBblCnQOnyuCVBtX6DEACx0eKRV5PCA&libraries=visualization"></script>
+<script src="jquery-3.1.0.min.js"></script>
+<script src="script.js"></script>
+</head>
+
+<body class="nopull">
+<div id="panel">
+	<div id="control">
+		<div class="section">
+			<span class="nowrap"> Date: 
+				<input type="date" id="date" required>
+			</span>
+			<span class="nowrap"> Hour: 
+				<select id="hour">
+					<option id="hx" value="" selected>All-day</option>
+				</select>
+			</span>
+			<span class="nowrap"> UTC 
+				<select id="zone"></select>
+			</span>
+			<label class="nowrap">
+				<input type="checkbox" id="autodate">Last 60 min.
+			</label>
+		</div>
+		<div class="section">
+			<span class="nowrap"> Value:
+				<select id="value"></select>
+			</span>
+		</div><br>
+		<div class="section">
+			<span class="nowrap left"> Sensors:<br>
+				<fieldset id="sensorlist" class="compact">
+				</fieldset>
+			</span>
+		</div><br>
+		<div class="section">
+			<span class="nowrap"> Pan to:
+				<button id="btnToGps">GPS</button>
+				<button id="btnToData">Data</button>
+				<input id="txtAddress" type="text" placeholder="Place name, address...">
+			</span>
+		</div>
+		<div class="section">
+			<a id="lnkChart" target="_blank" class="nowrap"> Chart
+				<img class="inline" src="newtab.png">
+			</a>
+		</div>
+	</div>
+	<a href="#" id="toggleui">Show/Hide</a>
+	<div id="loading"><iframe class="noframe" src="loading.html" scrolling="no" width="50" height="50">Loading...</iframe></div>
+	<div id="errors"></div>
+</div>
+<div id="map"></div>
+</body>
+
+</html>

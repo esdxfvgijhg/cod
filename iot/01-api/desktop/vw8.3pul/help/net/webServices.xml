@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+	<topic id = "vw.help.net.webServices"
+			xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+		<title>Web Services</title>
+		<body><p>The Web Services framework and toolset enables you to easily 
+			build both client and server applications using WSDL documents; 
+			server applications can send/receive SOAP messages.</p>
+			<p>Support for Web Services is provided in a set of parcels. 
+				Use the <xref href="st:ParcelManager open" 
+				format="st" scope="external">Parcel Manager</xref>
+				to browse the <uicontrol>Web Services</uicontrol> folder, and
+				to load the desired components.</p> 
+			<p>For complete documentation, refer to the 
+				<xref href="./doc/WebServices.pdf" format="pdf" 
+						scope="external"><i>Web Services Developer's Guide</i></xref>.</p>
+		</body>
+	</topic>
+</dita>

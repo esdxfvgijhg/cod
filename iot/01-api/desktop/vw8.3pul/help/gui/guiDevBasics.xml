@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+	<topic id = "vw.help.guiDevBasics"
+			xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+		<title>GUI Development Basics</title>
+		<body>
+			<p>&Product; provides a complete framework and
+				tools to rapidly build a graphical user interface for 
+				your application. Using tools like the GUI Painter, 
+				building a graphical interface is accomplished by 
+				placing widgets on a <term>canvas</term>, and generating 
+				code for their behavior.</p>
+			<p>Help topics address the basics of how to create 
+				window specifications, connecting widgets to your
+				domain model, customizing view classes, and working 
+				with resources such as images, icons, and menus.</p>
+			<p>For more complete documentation, refer to the 
+				<xref href="./doc/GUIDevGuide.pdf" format="pdf" 
+				scope="external"><i>GUI Developer's Guide</i></xref>.</p>
+		</body>
+	</topic>
+</dita>

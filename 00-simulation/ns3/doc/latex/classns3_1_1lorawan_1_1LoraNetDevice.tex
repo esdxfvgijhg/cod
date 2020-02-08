@@ -1,0 +1,234 @@
+\hypertarget{classns3_1_1lorawan_1_1LoraNetDevice}{}\section{ns3\+:\+:lorawan\+:\+:Lora\+Net\+Device Class Reference}
+\label{classns3_1_1lorawan_1_1LoraNetDevice}\index{ns3\+::lorawan\+::\+Lora\+Net\+Device@{ns3\+::lorawan\+::\+Lora\+Net\+Device}}
+
+
+{\ttfamily \#include $<$lora-\/net-\/device.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Lora\+Net\+Device\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classns3_1_1lorawan_1_1LoraNetDevice__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Lora\+Net\+Device\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classns3_1_1lorawan_1_1LoraNetDevice__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraNetDevice_a6d0981324a56eaf1fe6f23b0f5b1b8b9}{Set\+Mac} (Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraMac}{Lora\+Mac} $>$ mac)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraNetDevice_afa8040f91496fb57a2b09cdc56f45dab}{Set\+Phy} (Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy}{Lora\+Phy} $>$ phy)
+\item 
+Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraMac}{Lora\+Mac} $>$ \hyperlink{classns3_1_1lorawan_1_1LoraNetDevice_a9aace1627f1c3b424c6c1ce5c2b27828}{Get\+Mac} (void) const
+\item 
+Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy}{Lora\+Phy} $>$ \hyperlink{classns3_1_1lorawan_1_1LoraNetDevice_a1aa5ac843a3145c269f900612524a6f9}{Get\+Phy} (void) const
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraNetDevice_aff1ea5fcd7a14b070db6308aa0860880}{Send} (Ptr$<$ Packet $>$ packet)
+\item 
+bool \hyperlink{classns3_1_1lorawan_1_1LoraNetDevice_a4536a51a4f690c41f015675c827e70d3}{Send} (Ptr$<$ Packet $>$ packet, const Address \&dest, uint16\+\_\+t protocol\+Number)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraNetDevice_add443b53ca745bff1001c1f3d08aeeef}{Receive} (Ptr$<$ Packet $>$ packet)
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_a67a93127527b075bddd803da3e3fc5a8}\label{classns3_1_1lorawan_1_1LoraNetDevice_a67a93127527b075bddd803da3e3fc5a8}} 
+virtual void {\bfseries Set\+Receive\+Callback} (Net\+Device\+::\+Receive\+Callback cb)
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_a00ad384f61ac72086e738068eec58226}\label{classns3_1_1lorawan_1_1LoraNetDevice_a00ad384f61ac72086e738068eec58226}} 
+virtual Ptr$<$ \hyperlink{classChannel}{Channel} $>$ {\bfseries Get\+Channel} (void) const
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_a35d3af5fce2ec7a43bc59b3c20daae80}\label{classns3_1_1lorawan_1_1LoraNetDevice_a35d3af5fce2ec7a43bc59b3c20daae80}} 
+virtual void {\bfseries Set\+Node} (Ptr$<$ Node $>$ node)
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_a0810326c5ad182df272d4e4596f12ee2}\label{classns3_1_1lorawan_1_1LoraNetDevice_a0810326c5ad182df272d4e4596f12ee2}} 
+virtual Ptr$<$ Node $>$ {\bfseries Get\+Node} (void) const
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_ac7cf071cf291cb72644edd696736ed9e}\label{classns3_1_1lorawan_1_1LoraNetDevice_ac7cf071cf291cb72644edd696736ed9e}} 
+virtual void {\bfseries Set\+If\+Index} (const uint32\+\_\+t index)
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_ac1cfb5c5c9707c0b58500646c50ff7c9}\label{classns3_1_1lorawan_1_1LoraNetDevice_ac1cfb5c5c9707c0b58500646c50ff7c9}} 
+virtual uint32\+\_\+t {\bfseries Get\+If\+Index} (void) const
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_afc689764dfeed1fb61d2e713fcd2e6ef}\label{classns3_1_1lorawan_1_1LoraNetDevice_afc689764dfeed1fb61d2e713fcd2e6ef}} 
+virtual void {\bfseries Set\+Address} (Address address)
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_a25647664694525186d130e6b18764d6a}\label{classns3_1_1lorawan_1_1LoraNetDevice_a25647664694525186d130e6b18764d6a}} 
+virtual Address {\bfseries Get\+Address} (void) const
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_a33547f2948f62a765350cb3afd5652ad}\label{classns3_1_1lorawan_1_1LoraNetDevice_a33547f2948f62a765350cb3afd5652ad}} 
+virtual bool {\bfseries Set\+Mtu} (const uint16\+\_\+t mtu)
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_a6f940fc840e345dc47adb8c240b1eef1}\label{classns3_1_1lorawan_1_1LoraNetDevice_a6f940fc840e345dc47adb8c240b1eef1}} 
+virtual uint16\+\_\+t {\bfseries Get\+Mtu} (void) const
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_abd4f25cf91580a899f3446293dbe96d0}\label{classns3_1_1lorawan_1_1LoraNetDevice_abd4f25cf91580a899f3446293dbe96d0}} 
+virtual bool {\bfseries Is\+Link\+Up} (void) const
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_a7004260f1d2817cda0cea20f0abec3ae}\label{classns3_1_1lorawan_1_1LoraNetDevice_a7004260f1d2817cda0cea20f0abec3ae}} 
+virtual void {\bfseries Add\+Link\+Change\+Callback} (Callback$<$ void $>$ callback)
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_a04011b7a1bcfae80bcfc55c65ad3a835}\label{classns3_1_1lorawan_1_1LoraNetDevice_a04011b7a1bcfae80bcfc55c65ad3a835}} 
+virtual bool {\bfseries Is\+Broadcast} (void) const
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_ae1a300c93225ad2c6883a9a94fdaec7d}\label{classns3_1_1lorawan_1_1LoraNetDevice_ae1a300c93225ad2c6883a9a94fdaec7d}} 
+virtual Address {\bfseries Get\+Broadcast} (void) const
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_a6a18359bc6d5810de4429724d9739f4b}\label{classns3_1_1lorawan_1_1LoraNetDevice_a6a18359bc6d5810de4429724d9739f4b}} 
+virtual bool {\bfseries Is\+Multicast} (void) const
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_ae7c31bab486f11391f45adadb68bea28}\label{classns3_1_1lorawan_1_1LoraNetDevice_ae7c31bab486f11391f45adadb68bea28}} 
+virtual Address {\bfseries Get\+Multicast} (Ipv4\+Address multicast\+Group) const
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_a78323bf432c46c08f85778b2302c2d9d}\label{classns3_1_1lorawan_1_1LoraNetDevice_a78323bf432c46c08f85778b2302c2d9d}} 
+virtual Address {\bfseries Get\+Multicast} (Ipv6\+Address addr) const
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_a627f1c69aae3e26cf636ce552e2935df}\label{classns3_1_1lorawan_1_1LoraNetDevice_a627f1c69aae3e26cf636ce552e2935df}} 
+virtual bool {\bfseries Is\+Bridge} (void) const
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_aaba6ad5f7ae5116faaa3cf187b3ff2b4}\label{classns3_1_1lorawan_1_1LoraNetDevice_aaba6ad5f7ae5116faaa3cf187b3ff2b4}} 
+virtual bool {\bfseries Is\+Point\+To\+Point} (void) const
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_a1599faad5fed49743df75e92fd85a5f6}\label{classns3_1_1lorawan_1_1LoraNetDevice_a1599faad5fed49743df75e92fd85a5f6}} 
+virtual bool {\bfseries Send\+From} (Ptr$<$ Packet $>$ packet, const Address \&source, const Address \&dest, uint16\+\_\+t protocol\+Number)
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_a51420025e2f9a1c625ea25a9c8928d35}\label{classns3_1_1lorawan_1_1LoraNetDevice_a51420025e2f9a1c625ea25a9c8928d35}} 
+virtual bool {\bfseries Needs\+Arp} (void) const
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_ae984d46514ee678426669b7dd40bf97e}\label{classns3_1_1lorawan_1_1LoraNetDevice_ae984d46514ee678426669b7dd40bf97e}} 
+virtual void {\bfseries Set\+Promisc\+Receive\+Callback} (Promisc\+Receive\+Callback cb)
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_a10ed1ae7d2d3f0e48a150052b952190a}\label{classns3_1_1lorawan_1_1LoraNetDevice_a10ed1ae7d2d3f0e48a150052b952190a}} 
+virtual bool {\bfseries Supports\+Send\+From} (void) const
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_aaa3016921735eb008b738748dad2d378}\label{classns3_1_1lorawan_1_1LoraNetDevice_aaa3016921735eb008b738748dad2d378}} 
+static Type\+Id {\bfseries Get\+Type\+Id} (void)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraNetDevice_ab5a2f6dff4fa069c6ccee439f228909d}{Forward\+Up} (Ptr$<$ Packet $>$ packet, Mac48\+Address from, Mac48\+Address to)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Hold together all Lo\+Ra related objects.
+
+This class holds together pointers to \hyperlink{classns3_1_1lorawan_1_1LoraChannel}{Lora\+Channel}, \hyperlink{classns3_1_1lorawan_1_1LoraPhy}{Lora\+Phy} and \hyperlink{classns3_1_1lorawan_1_1LoraMac}{Lora\+Mac}, exposing methods through which \hyperlink{classApplication}{Application} instances can send packets. The \hyperlink{classApplication}{Application} only needs to craft its packets, the \hyperlink{classNetDevice}{Net\+Device} will take care of calling the \hyperlink{classns3_1_1lorawan_1_1LoraMac}{Lora\+Mac}\textquotesingle{}s Send method with the appropriate parameters. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_ab5a2f6dff4fa069c6ccee439f228909d}\label{classns3_1_1lorawan_1_1LoraNetDevice_ab5a2f6dff4fa069c6ccee439f228909d}} 
+\index{ns3\+::lorawan\+::\+Lora\+Net\+Device@{ns3\+::lorawan\+::\+Lora\+Net\+Device}!Forward\+Up@{Forward\+Up}}
+\index{Forward\+Up@{Forward\+Up}!ns3\+::lorawan\+::\+Lora\+Net\+Device@{ns3\+::lorawan\+::\+Lora\+Net\+Device}}
+\subsubsection{\texorpdfstring{Forward\+Up()}{ForwardUp()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Net\+Device\+::\+Forward\+Up (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet $>$}]{packet,  }\item[{Mac48\+Address}]{from,  }\item[{Mac48\+Address}]{to }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Receive a packet from the lower layer and pass the packet up the stack.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & The packet we need to forward. \\
+\hline
+{\em from} & The from address. \\
+\hline
+{\em to} & The to address. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_a9aace1627f1c3b424c6c1ce5c2b27828}\label{classns3_1_1lorawan_1_1LoraNetDevice_a9aace1627f1c3b424c6c1ce5c2b27828}} 
+\index{ns3\+::lorawan\+::\+Lora\+Net\+Device@{ns3\+::lorawan\+::\+Lora\+Net\+Device}!Get\+Mac@{Get\+Mac}}
+\index{Get\+Mac@{Get\+Mac}!ns3\+::lorawan\+::\+Lora\+Net\+Device@{ns3\+::lorawan\+::\+Lora\+Net\+Device}}
+\subsubsection{\texorpdfstring{Get\+Mac()}{GetMac()}}
+{\footnotesize\ttfamily Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraMac}{Lora\+Mac} $>$ ns3\+::lorawan\+::\+Lora\+Net\+Device\+::\+Get\+Mac (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Get the \hyperlink{classns3_1_1lorawan_1_1LoraMac}{Lora\+Mac} instance that is linked to this \hyperlink{classNetDevice}{Net\+Device}.
+
+\begin{DoxyReturn}{Returns}
+the mac we are currently using. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_a1aa5ac843a3145c269f900612524a6f9}\label{classns3_1_1lorawan_1_1LoraNetDevice_a1aa5ac843a3145c269f900612524a6f9}} 
+\index{ns3\+::lorawan\+::\+Lora\+Net\+Device@{ns3\+::lorawan\+::\+Lora\+Net\+Device}!Get\+Phy@{Get\+Phy}}
+\index{Get\+Phy@{Get\+Phy}!ns3\+::lorawan\+::\+Lora\+Net\+Device@{ns3\+::lorawan\+::\+Lora\+Net\+Device}}
+\subsubsection{\texorpdfstring{Get\+Phy()}{GetPhy()}}
+{\footnotesize\ttfamily Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy}{Lora\+Phy} $>$ ns3\+::lorawan\+::\+Lora\+Net\+Device\+::\+Get\+Phy (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Get the \hyperlink{classns3_1_1lorawan_1_1LoraPhy}{Lora\+Phy} instance that is linked to this \hyperlink{classNetDevice}{Net\+Device}.
+
+\begin{DoxyReturn}{Returns}
+the phy we are currently using. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_add443b53ca745bff1001c1f3d08aeeef}\label{classns3_1_1lorawan_1_1LoraNetDevice_add443b53ca745bff1001c1f3d08aeeef}} 
+\index{ns3\+::lorawan\+::\+Lora\+Net\+Device@{ns3\+::lorawan\+::\+Lora\+Net\+Device}!Receive@{Receive}}
+\index{Receive@{Receive}!ns3\+::lorawan\+::\+Lora\+Net\+Device@{ns3\+::lorawan\+::\+Lora\+Net\+Device}}
+\subsubsection{\texorpdfstring{Receive()}{Receive()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Net\+Device\+::\+Receive (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet $>$}]{packet }\end{DoxyParamCaption})}
+
+Callback the Mac layer calls whenever a packet arrives and needs to be forwarded up the stack.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & The packet that was received. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_aff1ea5fcd7a14b070db6308aa0860880}\label{classns3_1_1lorawan_1_1LoraNetDevice_aff1ea5fcd7a14b070db6308aa0860880}} 
+\index{ns3\+::lorawan\+::\+Lora\+Net\+Device@{ns3\+::lorawan\+::\+Lora\+Net\+Device}!Send@{Send}}
+\index{Send@{Send}!ns3\+::lorawan\+::\+Lora\+Net\+Device@{ns3\+::lorawan\+::\+Lora\+Net\+Device}}
+\subsubsection{\texorpdfstring{Send()}{Send()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Net\+Device\+::\+Send (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet $>$}]{packet }\end{DoxyParamCaption})}
+
+Send a packet through the Lo\+Ra\+W\+AN stack.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & The packet to send. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_a4536a51a4f690c41f015675c827e70d3}\label{classns3_1_1lorawan_1_1LoraNetDevice_a4536a51a4f690c41f015675c827e70d3}} 
+\index{ns3\+::lorawan\+::\+Lora\+Net\+Device@{ns3\+::lorawan\+::\+Lora\+Net\+Device}!Send@{Send}}
+\index{Send@{Send}!ns3\+::lorawan\+::\+Lora\+Net\+Device@{ns3\+::lorawan\+::\+Lora\+Net\+Device}}
+\subsubsection{\texorpdfstring{Send()}{Send()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool ns3\+::lorawan\+::\+Lora\+Net\+Device\+::\+Send (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet $>$}]{packet,  }\item[{const Address \&}]{dest,  }\item[{uint16\+\_\+t}]{protocol\+Number }\end{DoxyParamCaption})}
+
+This function is implemented to achieve compliance with the \hyperlink{classNetDevice}{Net\+Device} interface. Note that the dest and protocol\+Number args are ignored. \mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_a6d0981324a56eaf1fe6f23b0f5b1b8b9}\label{classns3_1_1lorawan_1_1LoraNetDevice_a6d0981324a56eaf1fe6f23b0f5b1b8b9}} 
+\index{ns3\+::lorawan\+::\+Lora\+Net\+Device@{ns3\+::lorawan\+::\+Lora\+Net\+Device}!Set\+Mac@{Set\+Mac}}
+\index{Set\+Mac@{Set\+Mac}!ns3\+::lorawan\+::\+Lora\+Net\+Device@{ns3\+::lorawan\+::\+Lora\+Net\+Device}}
+\subsubsection{\texorpdfstring{Set\+Mac()}{SetMac()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Net\+Device\+::\+Set\+Mac (\begin{DoxyParamCaption}\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraMac}{Lora\+Mac} $>$}]{mac }\end{DoxyParamCaption})}
+
+Set which \hyperlink{classns3_1_1lorawan_1_1LoraMac}{Lora\+Mac} instance is linked to this device.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mac} & the mac layer to use. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraNetDevice_afa8040f91496fb57a2b09cdc56f45dab}\label{classns3_1_1lorawan_1_1LoraNetDevice_afa8040f91496fb57a2b09cdc56f45dab}} 
+\index{ns3\+::lorawan\+::\+Lora\+Net\+Device@{ns3\+::lorawan\+::\+Lora\+Net\+Device}!Set\+Phy@{Set\+Phy}}
+\index{Set\+Phy@{Set\+Phy}!ns3\+::lorawan\+::\+Lora\+Net\+Device@{ns3\+::lorawan\+::\+Lora\+Net\+Device}}
+\subsubsection{\texorpdfstring{Set\+Phy()}{SetPhy()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Net\+Device\+::\+Set\+Phy (\begin{DoxyParamCaption}\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraPhy}{Lora\+Phy} $>$}]{phy }\end{DoxyParamCaption})}
+
+Set which \hyperlink{classns3_1_1lorawan_1_1LoraPhy}{Lora\+Phy} instance is linked to this device.
+
+
+\begin{DoxyParams}{Parameters}
+{\em phy} & the phy layer to use. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lora-\/net-\/device.\+h\item 
+lora-\/net-\/device.\+cc\end{DoxyCompactItemize}

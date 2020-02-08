@@ -1,0 +1,110 @@
+\hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener}{}\section{ns3\+:\+:lorawan\+:\+:End\+Device\+Lora\+Phy\+Listener Class Reference}
+\label{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener}\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+Listener@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+Listener}}
+
+
+{\ttfamily \#include $<$end-\/device-\/lora-\/phy.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:End\+Device\+Lora\+Phy\+Listener\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=265pt]{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:End\+Device\+Lora\+Phy\+Listener\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener_acb82563f9dc6082e442c0ec6b1d32d94}{Notify\+Rx\+Start} ()=0
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener_abf3943484dc182ade9f180cd806d43f4}{Notify\+Tx\+Start} (double tx\+Power\+Dbm)=0
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener_a0e9d774b67cbddee98c5f7d76c844c65}{Notify\+Sleep} (void)=0
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener_ab7e6540205cc6a0cefbe226bda967187}{Notify\+Standby} (void)=0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Receive notifications about P\+HY events. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener_acb82563f9dc6082e442c0ec6b1d32d94}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener_acb82563f9dc6082e442c0ec6b1d32d94}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+Listener@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+Listener}!Notify\+Rx\+Start@{Notify\+Rx\+Start}}
+\index{Notify\+Rx\+Start@{Notify\+Rx\+Start}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+Listener@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+Listener}}
+\subsubsection{\texorpdfstring{Notify\+Rx\+Start()}{NotifyRxStart()}}
+{\footnotesize\ttfamily virtual void ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+Listener\+::\+Notify\+Rx\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+We have received the first bit of a packet. We decided that we could synchronize on this packet. It does not mean we will be able to successfully receive completely the whole packet. It means that we will report a B\+U\+SY status until one of the following happens\+:
+\begin{DoxyItemize}
+\item Notify\+Rx\+End\+Ok
+\item Notify\+Rx\+End\+Error
+\item Notify\+Tx\+Start
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em duration} & the expected duration of the packet reception. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener_a34bb7b2aae72cd8634672bd460247edb}{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener_a0e9d774b67cbddee98c5f7d76c844c65}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener_a0e9d774b67cbddee98c5f7d76c844c65}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+Listener@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+Listener}!Notify\+Sleep@{Notify\+Sleep}}
+\index{Notify\+Sleep@{Notify\+Sleep}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+Listener@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+Listener}}
+\subsubsection{\texorpdfstring{Notify\+Sleep()}{NotifySleep()}}
+{\footnotesize\ttfamily virtual void ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+Listener\+::\+Notify\+Sleep (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Notify listeners that we went to sleep 
+
+Implemented in \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener_ac4e0739b8ae8f0ed5a94eb8c5e830641}{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener_ab7e6540205cc6a0cefbe226bda967187}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener_ab7e6540205cc6a0cefbe226bda967187}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+Listener@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+Listener}!Notify\+Standby@{Notify\+Standby}}
+\index{Notify\+Standby@{Notify\+Standby}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+Listener@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+Listener}}
+\subsubsection{\texorpdfstring{Notify\+Standby()}{NotifyStandby()}}
+{\footnotesize\ttfamily virtual void ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+Listener\+::\+Notify\+Standby (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Notify listeners that we woke up 
+
+Implemented in \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener_ad5ce1283ba5c34384307338c24446876}{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener_abf3943484dc182ade9f180cd806d43f4}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener_abf3943484dc182ade9f180cd806d43f4}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+Listener@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+Listener}!Notify\+Tx\+Start@{Notify\+Tx\+Start}}
+\index{Notify\+Tx\+Start@{Notify\+Tx\+Start}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+Listener@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+Listener}}
+\subsubsection{\texorpdfstring{Notify\+Tx\+Start()}{NotifyTxStart()}}
+{\footnotesize\ttfamily virtual void ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+Listener\+::\+Notify\+Tx\+Start (\begin{DoxyParamCaption}\item[{double}]{tx\+Power\+Dbm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+We are about to send the first bit of the packet. We do not send any event to notify the end of transmission. Listeners should assume that the channel implicitely reverts to the idle state unless they have received a cca busy report.
+
+
+\begin{DoxyParams}{Parameters}
+{\em duration} & the expected transmission duration. \\
+\hline
+{\em tx\+Power\+Dbm} & the nominal tx power in d\+Bm \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classns3_1_1lorawan_1_1LoraRadioEnergyModelPhyListener_a42d031fca675ad2a5b76977a7d79e900}{ns3\+::lorawan\+::\+Lora\+Radio\+Energy\+Model\+Phy\+Listener}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+end-\/device-\/lora-\/phy.\+h\item 
+end-\/device-\/lora-\/phy.\+cc\end{DoxyCompactItemize}

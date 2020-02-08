@@ -1,0 +1,20 @@
+ctmc
+const  double lambda1=0.1;
+const double  lambda2=0.15;
+const  double  mu1=0.1;
+const  double mu2=0.11;
+
+module M1
+C1:[0..1] init 1; // etat de la premiere composante
+[ ] (C1=1) -> lambda1: (C1'= 0); // avec taux lambda1 1-->0
+[ ] (C1=0) -> mu1    : (C1'= 1); // avec taux mu1 0-->1
+endmodule
+
+module M2
+C2:[0..1] init 1; // etat de la deuxieme composante
+[ ] (C2=1) -> lambda2: (C2'= 0); // avec taux lambda2 1-->0
+[ ] (C2=0) -> mu2: (C2'= 1); // avec taux mu2 0-->1
+endmodule
+
+label  "up"= C1+C2>=1;
+label  "down"= C1+C2=0;

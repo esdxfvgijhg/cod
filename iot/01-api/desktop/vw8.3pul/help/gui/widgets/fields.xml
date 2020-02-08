@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.widgets.fields"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Input Fields</title>
+<topic id = "vw.help.widgets.fields.addToCanvas"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Add an input field to a canvas</title>
+<body><p><indexterm>input field widget</indexterm><indexterm>widget<indexterm>input
+field</indexterm></indexterm>Use an input field for both entering
+and displaying data. A value model manages the field’s data.<ol><li><p>Select
+the <uicontrol>Input Field</uicontrol> widget in the palette and
+place it on a canvas. Use the widget handles to size and position
+the field.</p></li>
+<li><p>On the Basics page of the GUI Painter Tool,  enter the field’s <uicontrol>Aspect</uicontrol> property
+with the name of the method that will return the field’s value model.</p></li>
+<li><p><uicontrol>Apply</uicontrol> the properties and <uicontrol>Install</uicontrol> the
+canvas.</p></li>
+<li><p>Use the canvas’s <uicontrol>define</uicontrol> command to
+add an instance variable and accessor method for the field’s aspect
+property. Check the <uicontrol>Add Initialization</uicontrol> box
+if lazy initialization is acceptable.</p></li>
+<li><p>To set an appropriate initial value, add an <codeph>initialize</codeph> method.
+<codeblock otherprops="smalltalk method">initialize
+		month := (Date nameOfMonth: 1) asValue.
+		year := 1900 asValue.
+		dateRange := (0@1) asValue.
+		dateRange onChangeSend: #changedDate to: self.</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Slider2-Example:Examples.Slider2Example open" 
+format="st" scope="external">Slider2-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.fields.inputAlign"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Align an input field’s contents</title>
+<body><p><indexterm>input field widget<indexterm>align input</indexterm></indexterm>Set
+the field’s <uicontrol>Align</uicontrol> property to <uicontrol>Left</uicontrol> (to
+start the data at the left side of the field), <uicontrol>Center</uicontrol> (to
+center the data), or <uicontrol>Right</uicontrol> (to place the
+data against the right margin).</p></body></topic>
+<topic id = "vw.help.widgets.fields.limitSize"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Restrict a field’s input size</title>
+<body><p><indexterm>input field widget<indexterm>restrict input
+size</indexterm></indexterm>In the field’s <uicontrol>Size</uicontrol> property,
+enter the number of characters that you want to allow. (When the
+user tries to enter characters beyond that limit, they are ignored.)</p></body></topic>
+<topic id = "vw.help.widgets.fields.limitType"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Restrict a field’s input type</title>
+<body><p><indexterm>input field widget<indexterm>input type</indexterm></indexterm>You
+can set the specific data type to be entered in an input field,
+and the display format that will be used.<ol><li><p>Select the input
+field widget.</p></li>
+<li><p>On the Basics page of the GUI Painter Tool, select the acceptable
+input data type in the <uicontrol>Type</uicontrol> property combo
+box. This property converts the user’s input string to the selected
+object type.</p></li>
+<li><p>Optionally, select a <uicontrol>Format</uicontrol> property
+provides, which formats the displayed data as selected.</p></li>
+<li><p><uicontrol>Apply</uicontrol> the properties and <uicontrol>Install</uicontrol> the
+canvas.</p></li></ol></p></body></topic>
+<topic id = "vw.help.widgets.fields.formatting"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Format displayed data in an input field</title>
+<body><p><indexterm>input field widget<indexterm>input format</indexterm></indexterm>You
+can format the string represention of a field’s value model for specific
+purposes (e.g., phone numbers, monetary units, and percentages).<ol>
+<li><p>Select the input field widget.</p></li>
+<li><p>On the Basics property page, set the field’s <uicontrol>Format</uicontrol> property
+as desired. Note that the field’s <uicontrol>Type</uicontrol> property
+setting determines the kinds of available formats, if any.</p></li>
+<li><p><uicontrol>Apply</uicontrol> the properties and <uicontrol>Install</uicontrol> the
+canvas.</p></li></ol></p>
+<p>To customize the format, use a <apiname>TypeConverter</apiname> to
+display a number in a specified format. Specify the format as a
+string that uses the same conventions as the predefined formats.
+<codeblock otherprops="smalltalk method">price
+		^price isNil 
+			ifTrue: [price := (TypeConverter 
+				onNumberValue: 0 asValue 
+				format: '$###,###,###.##')] 
+			ifFalse: [price]</codeblock></p></body></topic>
+<topic id = "vw.help.widgets.fields.validate"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Validate an input field</title>
+<body><p><indexterm>input field widget<indexterm>validate input</indexterm></indexterm>To
+restrict and validate an input field, you can arrange for a typed entry
+to be validated either when the user accepts it, or immediately after
+an invalid character is typed.</p>
+<p>Use a change validation callback to prevent input from being
+passed to a value model, and an exit validation callback to keep
+focus in the field until the input is corrected.</p></body></topic>
+<topic id = "vw.help.widgets.fields.changeMenu"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Change an input field’s pop-up menu</title>
+<body><p><indexterm>input field widget<indexterm>popup menu</indexterm></indexterm>You
+can substitute a custom menu for the default menu.<ol><li><p>Select
+the input field.</p></li>
+<li><p>Enter the name of the method that will supply a custom menu
+in the field’s <uicontrol>Menu</uicontrol> property.</p></li>
+<li><p>Create the menu-creating method named in step 2, adding it
+to the application model in a <codeph>menu messages</codeph> protocol.</p><p>You
+can create the menu using the Menu Editor, or by using any <apiname>MenuBuilder</apiname> messages.</p></li>
+<li><p>Create any new methods named in the custom menu, adding them
+in the <codeph>menu messages</codeph> protocol.</p></li></ol></p>
+<p>To disable the popup menu:<ol><li><p>Select the input field.</p></li>
+<li><p>Enter the name of the method that will return an empty menu (such
+as <codeph>noMenu</codeph>) in the field’s <uicontrol>Menu</uicontrol> property.</p></li>
+<li><p>Create the method to return a block containing <codeph>nil</codeph>.
+<codeblock otherprops="smalltalk method">noMenu
+		^[nil]</codeblock></p></li></ol></p>
+<p>When asked for its menu, the field will evaluate this block,
+and no menu will be displayed.</p>
+<p><b>Online example:</b> 
+<xref href="prereq:FieldMenu-Example:Examples.FieldMenuExample open" 
+format="st" scope="external">FieldMenu-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.fields.highlight"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Highlight part or all of the input field</title>
+<body><p><indexterm>input field widget<indexterm>highlight input</indexterm></indexterm><ol>
+<li><p>In a method in the application model, ask the field’s wrapper
+to <apiname>takeKeyboardFocus</apiname>. This highlights the entire
+field contents.</p></li>
+<li><p>Tell the field’s controller the indices (character positions)
+of the substring that is to be highlighted.
+<codeblock otherprops="smalltalk method">addPart
+		"Put a template in the partID field,
+		then highlight the suffix."
+		| wrapper |
+		self partID value: 'MW-0000'.
+		wrapper := self builder componentAt: #part1.
+		wrapper takeKeyboardFocus.
+		wrapper widget controller selectFrom: 4 to: 7.</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:FieldSelection-Example:Examples.FieldSelectionExample open" 
+format="st" scope="external">FieldSelection-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.fields.insertionPoint"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Position the insertion point</title>
+<body><p><indexterm>input field widget<indexterm>position insertion
+point</indexterm></indexterm><ol><li><p>In a method in the application
+model, ask the field’s wrapper to <apiname>takeKeyboardFocus</apiname>.</p></li>
+<li><p>Tell the field’s controller the character position at which
+to place the insertion point.
+<codeblock otherprops="smalltalk method">addPart2
+	"Put a template in the partID2 field, then position
+	the insertion point."
+	| wrapper |
+		self partID2 value: 'MW-'.
+		wrapper := self builder componentAt: #part2.
+		wrapper takeKeyboardFocus.
+		wrapper widget controller selectAt: 4.</codeblock></p></li></ol></p></body></topic></topic>
+<topic id = "vw.help.widgets.comboBox"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Combination Box</title>
+<topic id = "vw.help.widgets.comboBox.addToCanvas"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Add a combo box to a canvas</title>
+<body><p><indexterm>combo box widget</indexterm><indexterm>GUI development<indexterm>add
+combo box widget</indexterm></indexterm>Use a combo Box widget when
+you need an input field restricted to a set of standard entries. <ol>
+<li><p>Add a combo box widget to the canvas, leaving it selected.</p></li>
+<li><p>On the Basics page of the GUI Painter Tool,  fill in the
+combo box’s <uicontrol>Aspect</uicontrol> property with the name
+of the method (in the example, <codeph>shipper</codeph>) that returns
+a value model for the combo box.</p></li>
+<li><p>In the combo box’s <uicontrol>Choices</uicontrol> property,
+enter the name of the method (<codeph>shipperChoices</codeph>) that
+returns a collection of entry choices.</p></li>
+<li><p>In the combo box’s <uicontrol>Type</uicontrol> property,
+choose the type of input the widget is to accept. Set the <uicontrol>Format</uicontrol> property,
+as appropriate.</p></li>
+<li><p><uicontrol>Apply</uicontrol> the properties and <uicontrol>Install</uicontrol> the
+canvas.</p></li>
+<li><p>Use the <uicontrol>Define</uicontrol> button to create the
+instance variable (<codeph>shipper</codeph>) and accessing method
+(<codeph>shipper</codeph>) for the aspect.
+<codeblock otherprops="smalltalk method">shipper
+		^shipper</codeblock></p></li>
+<li><p>Create the method that you named in step 3 (<codeph>shipperChoices</codeph>).
+The method returns a value holder containing the list of valid entries. The
+value holder can be held in an instance variable (as in the example).
+<codeblock otherprops="smalltalk method">shipperChoices
+		^shipperChoices</codeblock></p></li>
+<li><p>Create an <codeph>initialize</codeph> method to set the field’s
+aspect and choices variables. Initialize these variables with a
+value model and a value holder containing data of the type specified
+in step 3.  The value holder contains a list of valid entries.
+<codeblock otherprops="smalltalk method">initialize
+		| list |
+		shipper := 'Courier' asValue. 
+		list := List new.
+		list add: 'Courier';
+		add: 'FedEx';
+		add: 'UPS';
+		add: 'USPS'.
+		shipperChoices := list asValue.</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:ComboBox-Example:Examples.ComboBoxExample open" 
+format="st" scope="external">ComboBox-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.comboBox.setList"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set a combo box to display a list of objects</title>
+<body><p>You can arrange for a combo box to display a list of choices
+that are arbitrary objects. You do this by supplying a print method
+and a read method that translate the relevant objects into displayable
+elements and back.<ol><li><p>On the Basics page of the GUI Painter
+Tool, set the <uicontrol>Type</uicontrol> property of the combo
+box to <apiname>Object</apiname>.</p></li>
+<li><p>Fill in the <uicontrol>Print</uicontrol> property with the
+name of a method that converts the relevant objects to strings (in
+this example, <codeph>employeeToString:</codeph>). The name must
+end with a colon.</p></li>
+<li><p>Fill in the <uicontrol>Read</uicontrol> property with the
+name of a method for converting strings to objects of the desired
+type (in this example, <codeph>stringToEmployee:</codeph>). The
+name must end with a colon.</p></li>
+<li><p>In the application model, create a print method with the
+name you specified in step 2 (<codeph>employeeToString:</codeph>).
+This method accepts an object from the choices list as an argument
+(in this case, an instance of <codeph>Employee</codeph>).</p></li>
+<li><p>In the print method, return a <codeph>String</codeph> that
+represents the object from the choices list. In this example, display
+the name of the <codeph>Employee</codeph>. The string is displayed
+in the combo box’s pull-down list and also in the combo box’s field
+when the choice is selected.
+<codeblock otherprops="smalltalk method">employeeToString: anEmployee
+		"Return a String for representing the Employee in
+		the combo box’s list and field."
+		^anEmployee name.</codeblock></p></li>
+<li><p>Create a read method with the name you specified in step
+3 (<codeph>stringToEmployee:</codeph>). This method accepts a <apiname>String</apiname> argument.</p></li>
+<li><p>In the read method, return an object for the given <codeph>String</codeph>.
+In this example, determine whether the <codeph>String</codeph> is
+the name of an <codeph>Employee</codeph> in the choices list; if
+so return that <codeph>Employee</codeph>. Otherwise, create a new <codeph>Employee</codeph> and
+add it to the choices list. 
+<codeblock otherprops="smalltalk method">stringToEmployee: aString
+		"Return an Employee corresponding to the given String.
+		If the String corresponds to the name of an Employee
+		on the choices list, return that Employee.
+		Otherwise, create a new Employee and add it to the list."
+	| theEmp |
+		theEmp := self employeeChoices value
+					detect: [:each | each name = aString]
+					ifNone: [nil].
+		theEmp isNil
+			ifTrue:
+				[theEmp := Employee new name: aString.
+				self employeeChoices value addLast: theEmp].
+		^theEmp</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:ComboConversion-Example:Examples.ComboConversionExample open" 
+format="st" scope="external">ComboConversion-Example</xref></p>
+</body></topic></topic></dita>

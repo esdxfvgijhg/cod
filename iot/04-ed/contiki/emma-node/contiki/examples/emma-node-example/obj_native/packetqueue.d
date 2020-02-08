@@ -1,0 +1,37 @@
+obj_native/packetqueue.o: \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/net/packetqueue.c \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/ctimer.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/etimer.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/timer.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/clock.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/platform/native/./contiki-conf.h \
+ project-conf.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/process.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/pt.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/lc.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/lc-switch.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/cc.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/packetqueue.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./lib/list.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./lib/memb.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/packetbuf.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/rime/rimeaddr.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/queuebuf.h
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/net/packetqueue.c :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/ctimer.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/etimer.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/timer.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/clock.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/platform/native/./contiki-conf.h :
+ project-conf.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/process.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/pt.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/lc.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/lc-switch.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./sys/cc.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/packetqueue.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./lib/list.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./lib/memb.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/packetbuf.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/rime/rimeaddr.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/queuebuf.h :

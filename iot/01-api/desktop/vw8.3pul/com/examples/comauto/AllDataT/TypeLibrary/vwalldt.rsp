@@ -1,0 +1,7 @@
+/win32
+/tlb vwalldt.tlb
+/iid "iid_vwalldt.cpp"
+/h "midl_vwalldt.h"
+/o vwalldt.log
+/proxy "vwalldt_p.c"
+

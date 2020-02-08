@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<topic id = "vw.help.about"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>About &Product; Help</title>
+<body><p>Copyright &#x00A9; 1997&#x2013;2017 by Cincom Systems, Inc. All rights reserved.</p>
+<p>Software Release: 8.3</p>
+<p>This content is subject to change without notice.</p>
+<p/>
+<note type="note">When reporting issues with the Help content, you can obtain the 
+specific topic name by positioning the cursor over the breadcrumb links 
+shown in the upper part of the Help Browser, and selecting <uicontrol>Copy Path</uicontrol> 
+from the <uicontrol>&lt;Operate&gt;</uicontrol> menu.</note>
+<p/>
+<p>RESTRICTED RIGHTS LEGEND</p>
+<p>Use, duplication, or disclosure by the Government is subject to restrictions as
+set forth in subparagraph (c)(1)(ii) of the Rights in Technical Data and Computer
+Software clause at DFARS 252.227-7013.</p>
+</body>
+</topic>

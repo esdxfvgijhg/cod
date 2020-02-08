@@ -1,0 +1,419 @@
+\hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy}{}\section{ns3\+:\+:lorawan\+:\+:End\+Device\+Lora\+Phy Class Reference}
+\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy}\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}}
+
+
+{\ttfamily \#include $<$end-\/device-\/lora-\/phy.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:End\+Device\+Lora\+Phy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classns3_1_1lorawan_1_1EndDeviceLoraPhy__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:End\+Device\+Lora\+Phy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classns3_1_1lorawan_1_1EndDeviceLoraPhy__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_adc84e4ce7796e19f19f077df9592af15}{State} \{ \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_adc84e4ce7796e19f19f077df9592af15a91cae5560efbfdfd6fa3e67de3a36aba}{S\+L\+E\+EP}, 
+\hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_adc84e4ce7796e19f19f077df9592af15ab546b76625ba0fd4ef3ea6cba6094786}{S\+T\+A\+N\+D\+BY}, 
+\hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_adc84e4ce7796e19f19f077df9592af15a35909838f2f9bf50690fefcd45628415}{TX}, 
+\hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_adc84e4ce7796e19f19f077df9592af15a25a7f183ed9b12f183b7fc6eb553cb5c}{RX}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a93fbde8325d792a8fc287201482f89cb}{Start\+Receive} (Ptr$<$ Packet $>$ packet, double rx\+Power\+Dbm, uint8\+\_\+t sf, Time duration, double frequency\+M\+Hz)=0
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_af5618e5c03f0010244fcde7922d9899f}{End\+Receive} (Ptr$<$ Packet $>$ packet, Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event}{Lora\+Interference\+Helper\+::\+Event} $>$ event)=0
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a47136bcb9a933e69dbf0872fbd667610}{Send} (Ptr$<$ Packet $>$ packet, \hyperlink{structns3_1_1lorawan_1_1LoraTxParameters}{Lora\+Tx\+Parameters} tx\+Params, double frequency\+M\+Hz, double tx\+Power\+Dbm)=0
+\item 
+virtual bool \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a70a83e7dde5b2ae33f6f47dbbf4ad0cd}{Is\+On\+Frequency} (double frequency\+M\+Hz)
+\item 
+virtual bool \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a3925d5a27b7e1352c04a78f008071d23}{Is\+Transmitting} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a269afea65f27650636abe200ac4c97b8}{Set\+Frequency} (double frequency\+M\+Hz)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_abc5dd987f66030a3fee58bf03de45d99}{Set\+Spreading\+Factor} (uint8\+\_\+t sf)
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_ac950e8d56611b64152d206a273957f6c}{Get\+Spreading\+Factor} (void)
+\item 
+\hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_adc84e4ce7796e19f19f077df9592af15}{End\+Device\+Lora\+Phy\+::\+State} \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_ad7cb24138a7e9769aacb97aa2472feea}{Get\+State} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a698d99b5ff4a82be7ecafbd6514db156}{Switch\+To\+Standby} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_aa439a56b019133278eb99751fd2287f6}{Switch\+To\+Sleep} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a7e7c08dc5d7926c5210e121c3dd2bfe9}{Register\+Listener} (\hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener}{End\+Device\+Lora\+Phy\+Listener} $\ast$listener)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_ad1291d05e67b2a00e792f171e7621f75}{Unregister\+Listener} (\hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener}{End\+Device\+Lora\+Phy\+Listener} $\ast$listener)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_ac6c88d25b7e1e8bdd93afecd15224acb}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_ac6c88d25b7e1e8bdd93afecd15224acb}} 
+static Type\+Id {\bfseries Get\+Type\+Id} (void)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const double \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a5fdf969286bc2cd6b357daf10122c759}{sensitivity} \mbox{[}6\mbox{]}
+\begin{DoxyCompactList}\small\item\em The sensitivity vector of this device to different S\+Fs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::vector$<$ \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener}{End\+Device\+Lora\+Phy\+Listener} $\ast$ $>$ \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a2d6703f5ff4138f1a45afd26ec6223d9}{Listeners}
+\item 
+typedef std\+::vector$<$ \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener}{End\+Device\+Lora\+Phy\+Listener} $\ast$ $>$\+::iterator \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_add44ac8b9f5035a0171aee9bfa271a9c}{ListenersI}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a8de5dd4978c9ab0525e25991069471cf}{Switch\+To\+Rx} ()
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_ac73f67fb873aa6d8f1ee6c2610e6c4a8}{Switch\+To\+Tx} (double tx\+Power\+Dbm)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Traced\+Callback$<$ Ptr$<$ const Packet $>$, uint32\+\_\+t $>$ \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_ac3e0c1c101ab697a724622598ae208fa}{m\+\_\+wrong\+Sf}
+\item 
+Traced\+Callback$<$ Ptr$<$ const Packet $>$, uint32\+\_\+t $>$ \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_af8a4589c87ef5198d5a940d081959d62}{m\+\_\+wrong\+Frequency}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_ac16db644f498ae360fe7f50b5344a33c}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_ac16db644f498ae360fe7f50b5344a33c}} 
+Traced\+Value$<$ \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_adc84e4ce7796e19f19f077df9592af15}{State} $>$ \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_ac16db644f498ae360fe7f50b5344a33c}{m\+\_\+state}
+\begin{DoxyCompactList}\small\item\em The state this P\+HY is currently in. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_aeec9a9ac928a32278a8006d7e7dc2a0f}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_aeec9a9ac928a32278a8006d7e7dc2a0f}} 
+double \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_aeec9a9ac928a32278a8006d7e7dc2a0f}{m\+\_\+frequency}
+\begin{DoxyCompactList}\small\item\em The frequency this device is listening on. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a83f682dc75f0c356d2cc7b57dd0fd991}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a83f682dc75f0c356d2cc7b57dd0fd991}} 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a83f682dc75f0c356d2cc7b57dd0fd991}{m\+\_\+sf}
+\begin{DoxyCompactList}\small\item\em The Spreading Factor this device is listening for. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a7953385bd2f8b872aeddf9d7dd8d47d4}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a7953385bd2f8b872aeddf9d7dd8d47d4}} 
+\hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a2d6703f5ff4138f1a45afd26ec6223d9}{Listeners} \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a7953385bd2f8b872aeddf9d7dd8d47d4}{m\+\_\+listeners}
+\begin{DoxyCompactList}\small\item\em P\+HY listeners. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class representing a Lo\+Ra transceiver.
+
+This class inherits some functionality by \hyperlink{classns3_1_1lorawan_1_1LoraPhy}{Lora\+Phy}, like the Get\+On\+Air\+Time function, and extends it to represent the behavior of a Lo\+Ra chip, like the S\+X1272.
+
+Additional behaviors featured in this class include a State member variable that expresses the current state of the device (S\+L\+E\+EP, TX, RX or S\+T\+A\+N\+D\+BY), and a frequency and Spreading Factor this device is listening to when in S\+T\+A\+N\+D\+BY mode. After transmission and reception, the device returns automatically to S\+T\+A\+N\+D\+BY mode. The decision of when to go into S\+L\+E\+EP mode is delegateed to an upper layer, which can modify the state of the device through the public Switch\+To\+Sleep and Switch\+To\+Standby methods. In S\+L\+E\+EP mode, the device cannot lock on a packet and start reception.
+
+Peculiarities about the error model and about how errors are handled are supposed to be handled by classes extending this one, like \hyperlink{classns3_1_1lorawan_1_1SimpleEndDeviceLoraPhy}{Simple\+End\+Device\+Lora\+Phy} or Spectrum\+End\+Device\+Lora\+Phy. These classes need to 
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a2d6703f5ff4138f1a45afd26ec6223d9}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a2d6703f5ff4138f1a45afd26ec6223d9}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}!Listeners@{Listeners}}
+\index{Listeners@{Listeners}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Listeners}{Listeners}}
+{\footnotesize\ttfamily typedef std\+::vector$<$\hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener}{End\+Device\+Lora\+Phy\+Listener} $\ast$$>$ \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a2d6703f5ff4138f1a45afd26ec6223d9}{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+::\+Listeners}\hspace{0.3cm}{\ttfamily [protected]}}
+
+typedef for a list of \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener}{End\+Device\+Lora\+Phy\+Listener} \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_add44ac8b9f5035a0171aee9bfa271a9c}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_add44ac8b9f5035a0171aee9bfa271a9c}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}!ListenersI@{ListenersI}}
+\index{ListenersI@{ListenersI}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{ListenersI}{ListenersI}}
+{\footnotesize\ttfamily typedef std\+::vector$<$\hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener}{End\+Device\+Lora\+Phy\+Listener} $\ast$$>$\+::iterator \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_add44ac8b9f5035a0171aee9bfa271a9c}{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+::\+ListenersI}\hspace{0.3cm}{\ttfamily [protected]}}
+
+typedef for a list of \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener}{End\+Device\+Lora\+Phy\+Listener} iterator 
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_adc84e4ce7796e19f19f077df9592af15}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_adc84e4ce7796e19f19f077df9592af15}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}!State@{State}}
+\index{State@{State}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{State}{State}}
+{\footnotesize\ttfamily enum \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_adc84e4ce7796e19f19f077df9592af15}{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+::\+State}}
+
+An enumeration of the possible states of an \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy}{End\+Device\+Lora\+Phy}. It makes sense to define a state for End Devices since there\textquotesingle{}s only one demodulator which can either send, receive, stay idle or go in a deep sleep state. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+L\+E\+EP@{S\+L\+E\+EP}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}}\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}!S\+L\+E\+EP@{S\+L\+E\+EP}}}\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_adc84e4ce7796e19f19f077df9592af15a91cae5560efbfdfd6fa3e67de3a36aba}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_adc84e4ce7796e19f19f077df9592af15a91cae5560efbfdfd6fa3e67de3a36aba}} 
+S\+L\+E\+EP&The P\+HY layer is sleeping. During sleep, the device is not listening for incoming messages. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+T\+A\+N\+D\+BY@{S\+T\+A\+N\+D\+BY}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}}\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}!S\+T\+A\+N\+D\+BY@{S\+T\+A\+N\+D\+BY}}}\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_adc84e4ce7796e19f19f077df9592af15ab546b76625ba0fd4ef3ea6cba6094786}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_adc84e4ce7796e19f19f077df9592af15ab546b76625ba0fd4ef3ea6cba6094786}} 
+S\+T\+A\+N\+D\+BY&The P\+HY layer is in S\+T\+A\+N\+D\+BY. When the P\+HY is in this state, it\textquotesingle{}s listening to the channel, and it\textquotesingle{}s also ready to transmit data passed to it by the M\+AC layer. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TX@{TX}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}}\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}!TX@{TX}}}\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_adc84e4ce7796e19f19f077df9592af15a35909838f2f9bf50690fefcd45628415}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_adc84e4ce7796e19f19f077df9592af15a35909838f2f9bf50690fefcd45628415}} 
+TX&The P\+HY layer is sending a packet. During transmission, the device cannot receive any packet or send any additional packet. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RX@{RX}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}}\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}!RX@{RX}}}\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_adc84e4ce7796e19f19f077df9592af15a25a7f183ed9b12f183b7fc6eb553cb5c}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_adc84e4ce7796e19f19f077df9592af15a25a7f183ed9b12f183b7fc6eb553cb5c}} 
+RX&The P\+HY layer is receiving a packet. While the device is locked on an incoming packet, transmission is not possible. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_af5618e5c03f0010244fcde7922d9899f}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_af5618e5c03f0010244fcde7922d9899f}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}!End\+Receive@{End\+Receive}}
+\index{End\+Receive@{End\+Receive}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{End\+Receive()}{EndReceive()}}
+{\footnotesize\ttfamily virtual void ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+::\+End\+Receive (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet $>$}]{packet,  }\item[{Ptr$<$ \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event}{Lora\+Interference\+Helper\+::\+Event} $>$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Finish reception of a packet.
+
+This method is scheduled by Start\+Receive, based on the packet duration. By passing a \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper}{Lora\+Interference\+Helper} Event to this method, the class will be able to identify the packet that is being received among all those that were registered as interference by Start\+Receive.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & The received packet. \\
+\hline
+{\em event} & The event that is tied to this packet in the \hyperlink{classns3_1_1lorawan_1_1LoraInterferenceHelper}{Lora\+Interference\+Helper}. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a719f749890c247abc3fda290d384c37f}{ns3\+::lorawan\+::\+Lora\+Phy}.
+
+
+
+Implemented in \hyperlink{classns3_1_1lorawan_1_1SimpleEndDeviceLoraPhy_a03a9d0ffdd5f89991a61aa54e5a1e7ba}{ns3\+::lorawan\+::\+Simple\+End\+Device\+Lora\+Phy}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_ac950e8d56611b64152d206a273957f6c}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_ac950e8d56611b64152d206a273957f6c}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}!Get\+Spreading\+Factor@{Get\+Spreading\+Factor}}
+\index{Get\+Spreading\+Factor@{Get\+Spreading\+Factor}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Get\+Spreading\+Factor()}{GetSpreadingFactor()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+::\+Get\+Spreading\+Factor (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get the Spreading Factor this End\+Device is listening for.
+
+\begin{DoxyReturn}{Returns}
+The Spreading Factor we are listening for. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_ad7cb24138a7e9769aacb97aa2472feea}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_ad7cb24138a7e9769aacb97aa2472feea}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}!Get\+State@{Get\+State}}
+\index{Get\+State@{Get\+State}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Get\+State()}{GetState()}}
+{\footnotesize\ttfamily \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy_adc84e4ce7796e19f19f077df9592af15}{End\+Device\+Lora\+Phy\+::\+State} ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+::\+Get\+State (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Return the state this End Device is currently in.
+
+\begin{DoxyReturn}{Returns}
+The state this \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy}{End\+Device\+Lora\+Phy} is currently in. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a70a83e7dde5b2ae33f6f47dbbf4ad0cd}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a70a83e7dde5b2ae33f6f47dbbf4ad0cd}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}!Is\+On\+Frequency@{Is\+On\+Frequency}}
+\index{Is\+On\+Frequency@{Is\+On\+Frequency}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Is\+On\+Frequency()}{IsOnFrequency()}}
+{\footnotesize\ttfamily bool ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+::\+Is\+On\+Frequency (\begin{DoxyParamCaption}\item[{double}]{frequency }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Whether this device is listening on the specified frequency or not.
+
+
+\begin{DoxyParams}{Parameters}
+{\em frequency} & The frequency to query. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the device is listening on that frequency, false otherwise. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a554597e30a17b099e8a7f68242cb16a7}{ns3\+::lorawan\+::\+Lora\+Phy}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a3925d5a27b7e1352c04a78f008071d23}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a3925d5a27b7e1352c04a78f008071d23}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}!Is\+Transmitting@{Is\+Transmitting}}
+\index{Is\+Transmitting@{Is\+Transmitting}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Is\+Transmitting()}{IsTransmitting()}}
+{\footnotesize\ttfamily bool ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+::\+Is\+Transmitting (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Whether this device is transmitting or not.
+
+\begin{DoxyReturn}{Returns}
+true if the device is currently transmitting a packet, false otherwise. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a5280764d934ba5ff8d305b0bc6b600ce}{ns3\+::lorawan\+::\+Lora\+Phy}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a7e7c08dc5d7926c5210e121c3dd2bfe9}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a7e7c08dc5d7926c5210e121c3dd2bfe9}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}!Register\+Listener@{Register\+Listener}}
+\index{Register\+Listener@{Register\+Listener}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Register\+Listener()}{RegisterListener()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+::\+Register\+Listener (\begin{DoxyParamCaption}\item[{\hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener}{End\+Device\+Lora\+Phy\+Listener} $\ast$}]{listener }\end{DoxyParamCaption})}
+
+Add the input listener to the list of objects to be notified of P\+H\+Y-\/level events.
+
+
+\begin{DoxyParams}{Parameters}
+{\em listener} & the new listener \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a47136bcb9a933e69dbf0872fbd667610}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a47136bcb9a933e69dbf0872fbd667610}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}!Send@{Send}}
+\index{Send@{Send}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Send()}{Send()}}
+{\footnotesize\ttfamily virtual void ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+::\+Send (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet $>$}]{packet,  }\item[{\hyperlink{structns3_1_1lorawan_1_1LoraTxParameters}{Lora\+Tx\+Parameters}}]{tx\+Params,  }\item[{double}]{frequency\+M\+Hz,  }\item[{double}]{tx\+Power\+Dbm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Instruct the P\+HY to send a packet according to some parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & The packet to send. \\
+\hline
+{\em tx\+Params} & The desired transmission parameters. \\
+\hline
+{\em frequency\+M\+Hz} & The frequency on which to transmit. \\
+\hline
+{\em tx\+Power\+Dbm} & The power in d\+Bm with which to transmit the packet. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1LoraPhy_a2b940beff4a2fbfb2e603d5d9e65d863}{ns3\+::lorawan\+::\+Lora\+Phy}.
+
+
+
+Implemented in \hyperlink{classns3_1_1lorawan_1_1SimpleEndDeviceLoraPhy_a5698d15e92de30b7f9178af3997b89e9}{ns3\+::lorawan\+::\+Simple\+End\+Device\+Lora\+Phy}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a269afea65f27650636abe200ac4c97b8}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a269afea65f27650636abe200ac4c97b8}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}!Set\+Frequency@{Set\+Frequency}}
+\index{Set\+Frequency@{Set\+Frequency}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Set\+Frequency()}{SetFrequency()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+::\+Set\+Frequency (\begin{DoxyParamCaption}\item[{double}]{frequency\+M\+Hz }\end{DoxyParamCaption})}
+
+Set the frequency this End\+Device will listen on.
+
+Should a packet be transmitted on a frequency different than that the \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy}{End\+Device\+Lora\+Phy} is listening on, the packet will be discarded.
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & frequency \mbox{[}M\+Hz\mbox{]} to listen to. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_abc5dd987f66030a3fee58bf03de45d99}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_abc5dd987f66030a3fee58bf03de45d99}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}!Set\+Spreading\+Factor@{Set\+Spreading\+Factor}}
+\index{Set\+Spreading\+Factor@{Set\+Spreading\+Factor}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Set\+Spreading\+Factor()}{SetSpreadingFactor()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+::\+Set\+Spreading\+Factor (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{sf }\end{DoxyParamCaption})}
+
+Set the Spreading Factor this End\+Device will listen for.
+
+The \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy}{End\+Device\+Lora\+Phy} object will not be able to lock on transmissions that use a different SF than the one it\textquotesingle{}s listening for.
+
+
+\begin{DoxyParams}{Parameters}
+{\em sf} & The spreading factor to listen for. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a93fbde8325d792a8fc287201482f89cb}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a93fbde8325d792a8fc287201482f89cb}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}!Start\+Receive@{Start\+Receive}}
+\index{Start\+Receive@{Start\+Receive}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Start\+Receive()}{StartReceive()}}
+{\footnotesize\ttfamily virtual void ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+::\+Start\+Receive (\begin{DoxyParamCaption}\item[{Ptr$<$ Packet $>$}]{packet,  }\item[{double}]{rx\+Power\+Dbm,  }\item[{uint8\+\_\+t}]{sf,  }\item[{Time}]{duration,  }\item[{double}]{frequency\+M\+Hz }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Start receiving a packet.
+
+This method is typically called by \hyperlink{classns3_1_1lorawan_1_1LoraChannel}{Lora\+Channel}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & The packet that is arriving at this P\+HY layer. \\
+\hline
+{\em rx\+Power\+Dbm} & The power of the arriving packet (assumed to be constant for the whole reception). \\
+\hline
+{\em sf} & The Spreading Factor of the arriving packet. \\
+\hline
+{\em duration} & The on air time of this packet. \\
+\hline
+{\em frequency\+M\+Hz} & The frequency this packet is being transmitted on. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classns3_1_1lorawan_1_1LoraPhy_aeeccb517d12084e12e36b533db22386b}{ns3\+::lorawan\+::\+Lora\+Phy}.
+
+
+
+Implemented in \hyperlink{classns3_1_1lorawan_1_1SimpleEndDeviceLoraPhy_ad7a421670937fa0c4ece217ae02598ad}{ns3\+::lorawan\+::\+Simple\+End\+Device\+Lora\+Phy}.
+
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a8de5dd4978c9ab0525e25991069471cf}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a8de5dd4978c9ab0525e25991069471cf}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}!Switch\+To\+Rx@{Switch\+To\+Rx}}
+\index{Switch\+To\+Rx@{Switch\+To\+Rx}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Switch\+To\+Rx()}{SwitchToRx()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+::\+Switch\+To\+Rx (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Switch to the RX state \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_aa439a56b019133278eb99751fd2287f6}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_aa439a56b019133278eb99751fd2287f6}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}!Switch\+To\+Sleep@{Switch\+To\+Sleep}}
+\index{Switch\+To\+Sleep@{Switch\+To\+Sleep}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Switch\+To\+Sleep()}{SwitchToSleep()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+::\+Switch\+To\+Sleep (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Switch to the S\+L\+E\+EP state. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a698d99b5ff4a82be7ecafbd6514db156}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a698d99b5ff4a82be7ecafbd6514db156}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}!Switch\+To\+Standby@{Switch\+To\+Standby}}
+\index{Switch\+To\+Standby@{Switch\+To\+Standby}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Switch\+To\+Standby()}{SwitchToStandby()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+::\+Switch\+To\+Standby (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Switch to the S\+T\+A\+N\+D\+BY state. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_ac73f67fb873aa6d8f1ee6c2610e6c4a8}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_ac73f67fb873aa6d8f1ee6c2610e6c4a8}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}!Switch\+To\+Tx@{Switch\+To\+Tx}}
+\index{Switch\+To\+Tx@{Switch\+To\+Tx}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Switch\+To\+Tx()}{SwitchToTx()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+::\+Switch\+To\+Tx (\begin{DoxyParamCaption}\item[{double}]{tx\+Power\+Dbm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Switch to the TX state \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_ad1291d05e67b2a00e792f171e7621f75}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_ad1291d05e67b2a00e792f171e7621f75}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}!Unregister\+Listener@{Unregister\+Listener}}
+\index{Unregister\+Listener@{Unregister\+Listener}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{Unregister\+Listener()}{UnregisterListener()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+::\+Unregister\+Listener (\begin{DoxyParamCaption}\item[{\hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhyListener}{End\+Device\+Lora\+Phy\+Listener} $\ast$}]{listener }\end{DoxyParamCaption})}
+
+Remove the input listener from the list of objects to be notified of P\+H\+Y-\/level events.
+
+
+\begin{DoxyParams}{Parameters}
+{\em listener} & the listener to be unregistered \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_af8a4589c87ef5198d5a940d081959d62}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_af8a4589c87ef5198d5a940d081959d62}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}!m\+\_\+wrong\+Frequency@{m\+\_\+wrong\+Frequency}}
+\index{m\+\_\+wrong\+Frequency@{m\+\_\+wrong\+Frequency}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{m\+\_\+wrong\+Frequency}{m\_wrongFrequency}}
+{\footnotesize\ttfamily Traced\+Callback$<$Ptr$<$const Packet$>$, uint32\+\_\+t$>$ ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+::m\+\_\+wrong\+Frequency\hspace{0.3cm}{\ttfamily [protected]}}
+
+Trace source for when a packet is lost because it was transmitted on a frequency different from the one this \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy}{End\+Device\+Lora\+Phy} was configured to listen on. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_ac3e0c1c101ab697a724622598ae208fa}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_ac3e0c1c101ab697a724622598ae208fa}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}!m\+\_\+wrong\+Sf@{m\+\_\+wrong\+Sf}}
+\index{m\+\_\+wrong\+Sf@{m\+\_\+wrong\+Sf}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{m\+\_\+wrong\+Sf}{m\_wrongSf}}
+{\footnotesize\ttfamily Traced\+Callback$<$Ptr$<$const Packet$>$, uint32\+\_\+t$>$ ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+::m\+\_\+wrong\+Sf\hspace{0.3cm}{\ttfamily [protected]}}
+
+Trace source for when a packet is lost because it was using a SF different from the one this \hyperlink{classns3_1_1lorawan_1_1EndDeviceLoraPhy}{End\+Device\+Lora\+Phy} was configured to listen for. \mbox{\Hypertarget{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a5fdf969286bc2cd6b357daf10122c759}\label{classns3_1_1lorawan_1_1EndDeviceLoraPhy_a5fdf969286bc2cd6b357daf10122c759}} 
+\index{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}!sensitivity@{sensitivity}}
+\index{sensitivity@{sensitivity}!ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy@{ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy}}
+\subsubsection{\texorpdfstring{sensitivity}{sensitivity}}
+{\footnotesize\ttfamily const double ns3\+::lorawan\+::\+End\+Device\+Lora\+Phy\+::sensitivity\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{-124, -127, -130,
+                                                                                                 -133, -135
+      , -137\}
+\end{DoxyCode}
+
+
+The sensitivity vector of this device to different S\+Fs. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+end-\/device-\/lora-\/phy.\+h\item 
+end-\/device-\/lora-\/phy.\+cc\end{DoxyCompactItemize}

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+mytitle="Sensor"
+echo -e '\033]2;'$mytitle'\007'
+
+#border-router.upload PORT=/dev/ttyUSB0
+sudo make  TARGET="zoul"
+#sudo make TARGET=zoul BOARD=firefly PORT=/dev/ttyUSB0 login
+

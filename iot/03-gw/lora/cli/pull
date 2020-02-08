@@ -1,0 +1,4 @@
+#!/bin/bash
+
+BACKUP_SERVER="pi@192.168.200.1:aghiles/cli"
+rsync -rtavu --delete $BACKUP_SERVER/ $PWD/

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.widgets.labels"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Labels</title>
+<topic id = "vw.help.widgets.labels.addToCanvas"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Add a label to a canvas</title>
+<body><p><indexterm>GUI development<indexterm>add label</indexterm></indexterm><indexterm>label
+widget<indexterm>add to canvas</indexterm></indexterm>Use a label
+widget to place a single line label on a canvas. <ol><li><p>Place
+a label widget on the canvas, and select it.</p></li>
+<li><p>On the Basics page of the GUI Painter Tool, enter the label
+text in its <uicontrol>Label</uicontrol> property field.</p></li>
+<li><p>Click <uicontrol>Apply</uicontrol>, and <uicontrol>Install</uicontrol> the
+canvas.</p></li></ol></p>
+<p>For formatted text, use a <apiname>ComposedText</apiname> or <apiname>Text</apiname> object
+in a graphic label.</p>
+<p><b>Online example:</b> 
+<xref href="prereq:Logo-Example:Examples.LogoExample open" 
+format="st" scope="external">Logo-Example</xref></p>
+<p>To add a multi-line label to a canvas, either use a separate
+label widget for each line, or use a read-only text widget.</p></body></topic>
+<topic id = "vw.help.widgets.labels.graphicLabel"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Add a graphic label to a canvas</title>
+<body><p><indexterm>GUI development<indexterm>add graphic label</indexterm></indexterm><indexterm>label
+widget<indexterm>add graphic</indexterm></indexterm>Use a graphic
+label to add a graphical element to an interface. The graphic can
+be static, or can change while the application is running.<ol><li><p>Place
+a label widget on the canvas, and select it.</p></li>
+<li><p>On the Basics page of the GUI Painter Tool, enter the name
+of the resource method for the graphic in in the <uicontrol>Label</uicontrol> field.</p></li>
+<li><p>Check the <uicontrol>Label&#xA0;is&#xA0;Image</uicontrol> property.</p></li>
+<li><p>Click <uicontrol>Apply</uicontrol>, and <uicontrol>Install</uicontrol> the
+canvas.</p></li>
+<li><p>Create the graphic image resource method using the Image Editor
+or other means, and install it in the application model. Name the
+resource method with the name in the <uicontrol>Label</uicontrol> property.</p></li></ol></p>
+<p>For a large graphic, insert the graphic in a view holder.</p>
+<p><b>Online example:</b> 
+<xref href="prereq:Logo-Example:Examples.LogoExample open" 
+format="st" scope="external">Logo-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.labels.changeRuntime"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Change a text label at runtime</title>
+<body><p>You can change the content of a text label while the application
+is running. <ol><li><p>Get the widget from the application model’s
+builder with a <apiname>componentAt:</apiname> message.</p></li>
+<li><p>Send a <apiname>labelString:</apiname> message to the widget,
+with the new label string as argument.</p></li></ol></p>
+<p>For formatted text, use a <apiname>ComposedText</apiname> or <apiname>Text</apiname> object
+in a graphic label.</p>
+<p>To change a graphic label, send a <apiname>label:</apiname> message
+to it, with the new graphic as argument.
+<codeblock otherprops="smalltalk method">animateLogo
+		"Display the logo in successively larger sizes
+		(as a way of demonstrating dynamic updating
+		of a graphic label)."
+		| logo widget view animationRegion |
+		logo := self class logo.
+		widget := self builder componentAt: #logo.
+		animationRegion := widget bounds.
+		view := self builder composite.
+		10 to: 1 by: -1 do: [ :factor |
+			(Delay forMilliseconds: 100) wait.
+			widget label: (logo shrunkenBy: factor @ factor).
+			view invalidateRectangle: animationRegion repairNow: true]</codeblock></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Logo-Example:Examples.LogoExample open" 
+format="st" scope="external">Logo-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.labels.reuse"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Reuse a label</title>
+<body><p>If you plan to use the same label repeatedly, such as a
+company name or logo, you can store it in a registry.</p>
+<p>To use a label in a registry, enter the label’s lookup key in
+place of the resource method name in the widget’s <uicontrol>Label</uicontrol> property.</p>
+<p>The system checks a registry if it does not find a resource method.</p>
+<p>There are two label registries, one for strings, and another
+for graphics, including <apiname>Text</apiname> and <apiname>ComposeText</apiname> objects.
+Labels are usually registered in a class-initialization method,
+so the registration occurs whenever the class is loaded into an
+image.<ul><li><p>To register a graphic image, send a <apiname>visualAt:put:</apiname> message
+to <apiname>ApplicationModel</apiname>. The first argument is the
+lookup key for the label, and the second is the graphic resource
+method.</p></li>
+<li><p>To register a string label, send a <apiname>labelAt:put:</apiname> message
+to <apiname>ApplicationModel</apiname>. The first argument is the
+lookup key for the label, and the second argument is the label string.</p></li></ul></p>
+<p>
+<codeblock otherprops="smalltalk method">initialize
+		"LogoExample initialize"
+		"Register the graphic image for the trademark symbol."
+		ApplicationModel 
+			visualAt: #trademark 
+			put: self trademark.
+		"Register the textual version of the trademark symbol."
+		ApplicationModel 
+			labelAt: #tm 
+			put: '(TM)'.</codeblock></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Logo-Example:Examples.LogoExample open" 
+format="st" scope="external">Logo-Example</xref></p>
+</body></topic></topic></dita>

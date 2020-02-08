@@ -1,0 +1,95 @@
+
+-- processus : 7
+-- min fanout : 2
+-- max fanout : 5
+-- channels   : 24
+
+
+--generated  at 23 juin 2019 20:50:51
+--generic synchronous network model
+--Bernard Pottier. UBO
+
+VAL [7][2]BYTE NetProcess IS [   "P1", -- id: 1
+  "P2", -- id: 2
+  "P3", -- id: 3
+  "P4", -- id: 4
+  "P5", -- id: 5
+  "P6", -- id: 6
+  "P7"]:
+
+VAL [7][4]BYTE NetProcedure IS [   "Node", -- id: 1
+  "Node", -- id: 2
+  "Node", -- id: 3
+  "Node", -- id: 4
+  "Node", -- id: 5
+  "Node", -- id: 6
+  "Node"]:
+
+DATA TYPE Location
+  RECORD
+    INT xLoc:
+    INT yLoc:
+    INT elevation:
+    INT range:
+:
+VAL [7] Location  NetLocation IS [   [246 , 487 , 0 , 187 ] , -- id: 1
+  [298 , 477 , 0 , 187 ] , -- id: 2
+  [334 , 465 , 0 , 187 ] , -- id: 3
+  [420 , 462 , 0 , 187 ] , -- id: 4
+  [464 , 479 , 0 , 187 ] , -- id: 5
+  [585 , 582 , 0 , 187 ] , -- id: 6
+  [547 , 608 , 0 , 187 ] ]:
+
+
+#USE "course.lib"
+
+
+VAL INT MaxFanOut IS 5:
+
+VAL INT MaxNodes IS 7:
+
+#INCLUDE "nodes-test-include.occ"
+
+PROC aCellSystem(CHAN OF BYTE stdin, stdout, stderr)
+
+
+   -- Channel declarations 
+  CHAN OF diam.proto P1.P2,P1.P3,P1.P4:
+  CHAN OF diam.proto P2.P1,P2.P3,P2.P4,P2.P5:
+  CHAN OF diam.proto P3.P1,P3.P2,P3.P4,P3.P5:
+  CHAN OF diam.proto P4.P1,P4.P2,P4.P3,P4.P5:
+  CHAN OF diam.proto P5.P2,P5.P3,P5.P4,P5.P6,P5.P7:
+  CHAN OF diam.proto P6.P5,P6.P7:
+  CHAN OF diam.proto P7.P5,P7.P6:
+
+  -- Channel table declaration for nodes 
+  P1.out IS [ P1.P2,P1.P3,P1.P4 ]:
+  P1.in IS [ P2.P1,P3.P1,P4.P1 ]:
+  P2.out IS [ P2.P1,P2.P3,P2.P4,P2.P5 ]:
+  P2.in IS [ P1.P2,P3.P2,P4.P2,P5.P2 ]:
+  P3.out IS [ P3.P1,P3.P2,P3.P4,P3.P5 ]:
+  P3.in IS [ P1.P3,P2.P3,P4.P3,P5.P3 ]:
+  P4.out IS [ P4.P1,P4.P2,P4.P3,P4.P5 ]:
+  P4.in IS [ P1.P4,P2.P4,P3.P4,P5.P4 ]:
+  P5.out IS [ P5.P2,P5.P3,P5.P4,P5.P6,P5.P7 ]:
+  P5.in IS [ P2.P5,P3.P5,P4.P5,P6.P5,P7.P5 ]:
+  P6.out IS [ P6.P5,P6.P7 ]:
+  P6.in IS [ P5.P6,P7.P6 ]:
+  P7.out IS [ P7.P5,P7.P6 ]:
+  P7.in IS [ P5.P7,P6.P7 ]:
+
+
+  -- Program Body 
+
+  [MaxNodes]CHAN OF BYTE toMux:
+  PAR
+    Node(P1.in, P1.out,0, toMux [0])
+    Node(P2.in, P2.out,1, toMux [1])
+    Node(P3.in, P3.out,2, toMux [2])
+    Node(P4.in, P4.out,3, toMux [3])
+    Node(P5.in, P5.out,4, toMux [4])
+    Node(P6.in, P6.out,5, toMux [5])
+    Node(P7.in, P7.out,6, toMux [6])
+    Mux(toMux,stdout)
+     -- End of program body 
+:

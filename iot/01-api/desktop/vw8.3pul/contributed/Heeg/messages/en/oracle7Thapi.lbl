@@ -1,0 +1,1 @@
+encoding: #UTF_8catalog: oracle7ThapiGenKeyOracleConnectNoInstalled = 'The Database Connect for Oracle7 is not correctly installed.Use the install.st script to reinstall.Make sure that you are not attempting to use a threadedconnection on a platform which does not support thapi.'

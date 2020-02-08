@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+	<topic id="vw.help.intro.references" 
+			xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+		<title>References</title>
+
+		<body>
+			<p>Whether you are just beginning with Smalltalk, or want to tackle some 
+				advanced development strategies, the following resources can be extremely useful.</p>
+			<section>		
+				<title>Smalltalk Books</title>
+				<p>There are many Smalltalk books available, and the following are a few of them:
+				<ul>
+				<li>Brauer, Johannes. <i>Programming Smalltalk - Object-Orientation from the Beginning: 
+					An Introduction to the Principles of Programming</i>. Springer Vieweg, 2015.</li>
+				<li>Valloud, Andr&#xe9;s. <i>Fundamentals of Smalltalk Programming Technique</i>. Spotlight, 2009.</li>
+				<li>Beck, Kent. <i>Smalltalk Best Practice Patterns</i>. Prentice-Hall, 1997.
+					<p>Having learned how to write Smalltalk, reading this slim book is one of the best 
+					ways to learn how to write <i>good</i> Smalltalk.</p></li>
+				<li>Alpert, Sherman R, Kyle Brown, and Bobby Woolf. <i>The Design Patterns Smalltalk Companion</i>. 
+					Addison-Wesley, 1998.
+					<p>Parallels the classical "Gang of Four" book on design patterns but focuses on Smalltalk.</p></li>
+				</ul>
+				</p>
+
+				<p>There are also several recent books about:
+				<ul>
+				<li><xref href="http://pharobyexample.org/" scope="external" format="html">Pharo</xref> (Squeak), a very popular dialect of Smalltalk.</li>
+				<li>The <xref href="http://www.swa.hpi.uni-potsdam.de/seaside/tutorial" scope="external" format="html">Seaside</xref> web framework.</li>
+				</ul></p>
+
+				<p>and there are books about Dolphin Smalltalk and IBM's VisualAge Smalltalk.</p>
+
+				<p>Beyond this <i>Introduction to Smalltalk</i>, and the other introductory and tutorial materials 
+					supplied in the &Product; release, there are many standard works explaining the Smalltalk language, 
+					including:
+				<ul>
+				<li>Lewis, Simon. <i>The Art and Science of Smalltalk</i>. Prentice Hall, 1995.
+				<p>A popular slim book written around &Product;.</p></li>
+				<li>Goldberg, A, and D Robson. <i>Smalltalk-80 : The Language and Its Implementation</i>. 
+					Addison-Wesley, 1989.
+					<p>The famous "blue book" containing, among other things, a detailed specification of 
+					the original Smalltalk run-time system written in Smalltalk.</p></li>
+				<li>Winston, Patrick H. <i>On to Smalltalk</i>. Addison-Wesley, 1999.
+					<p>Slim and readable.</p></li>
+				<li>Klimas, Edward J, David A. Thomas, and Suzanne Skublics. <i>Smalltalk with Style</i>. 
+					Prentice Hall, 1996.
+					<p>A list of commented style guidelines written by leading Smalltalk experts.</p></li>
+				<li>Tomek, Ivan. <i>The Joy of Smalltalk</i>. Acadia University, 1996. <xref 
+					href="http://plato.acadiau.ca/courses/comp/tomek/jos.htm" scope="external" 
+					format="html">plato.acadiau.ca/courses/comp/tomek/jos.htm</xref>. Accessed 22 May 2017.
+					<p>My own approximately 700-page unpublished text dedicated to &Product; 3.</p></li>
+				</ul></p>
+			</section>
+
+			<section>
+				<title>Smalltalk Organisations</title>
+				<p>Several professional organisations exist to promote Smalltalk, and hold annual conferences:
+				<ul>
+				<li>The <xref href="http://www.esug.org/" scope="external" format="html">European Smalltalk User Group</xref> 
+					manages the ESUG conference.</li>
+				<li>The <xref href="http://www.stic.st/" scope="external" format="html">Smalltalk Industry Council</xref> 
+					manages the Smalltalk Industry conference.</li>
+				<li>The <xref href="http://www.fast.org.ar/" scope="external" format="html">Fundacion Argentina de Smalltalk</xref> 
+					manages the Smalltalks conference.</li>
+				</ul></p>
+			</section>
+
+			<section>
+				<title>Smalltalk Web Sites</title>
+				<p>There are many web sites and blogs devoted to Smalltalk; the following is a small selection:</p>
+				<p><xref href="http://www.cincomsmalltalk.com/" scope="external" format="html">Cincom Smalltalk</xref>: 
+					the official vendor site for &Product;.</p>
+				<p><xref href="http://planet.smalltalk.org/" scope="external" format="html">Planet Smalltalk</xref> 
+					aggregates Smalltalk information appearing on the web.</p>
+			</section>
+
+			<section>
+				<title>Smalltalk Newsgroups</title>
+				<p>The newsgroup <xref href="https://groups.google.com/forum/#!forum/comp.lang.smalltalk" 
+					scope="external" format="html">comp.lang.smalltalk</xref> is devoted to Smalltalk in general. 
+					There are also many more specific fora, including the <b>vwnc@cs.uiuc.edu</b> newsgroup 
+					specifically for users of &Product;.</p>
+			</section>
+
+			<section>
+				<title>Extreme Programming (XP)</title>
+				<p>The following are some books about XP, a development process favored by many Smalltalk programmers:
+				<ul>
+				<li>Beck, Kent, and Cynthia Andres. <i>Extreme Programming Explained: Second Edition, Embrace Change</i>. 
+					Addison-Wesley, 2015.
+				<p>Kent Beck is co-inventor of design patterns, the testing framework, and Extreme Programming.</p></li>
+				<li>Jeffries, Ronald E, Ann Anderson, and Chet Hendrickson. <i>Extreme Programming Installed</i>. 
+					Addison-Wesley, 2009.</li>
+				<li>Wake, William C. <i>Extreme Programming Explored</i>. Boston: Addison Wesley, 2002.</li>
+				</ul>
+				</p>
+			</section>
+
+			<section>
+				<title>Refactoring</title>
+				<p>
+				<ul>
+				<li>Fowler, Martin, and Kent Beck. <i>Refactoring: Improving the Design of Existing Code</i>. 
+					Addison-Wesley, 2002.</li>
+				</ul>
+				</p>
+			</section>
+		</body>
+	</topic>
+</dita>

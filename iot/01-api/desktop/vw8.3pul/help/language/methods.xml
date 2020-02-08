@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.stLang.method"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Methods</title>
+<body><p>A <term>method</term> is a block of Smalltalk code that 
+defines behavior for all instances of its class. Every method, 
+like every object, belongs to a class. A method defines the code 
+associated with a message (its <term>selector</term>) that gets 
+evaluated when the message is sent to an object. A method is 
+similar to a function or procedure in a conventional programming 
+language.</p></body>
+<topic id = "vw.help.stLang.method.createInstance"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create an instance method</title>
+<body><p><indexterm>methods<indexterm>create</indexterm></indexterm>New
+methods are created by editing the method definition template that
+appears in the code view of any browser.<ol><li><p>In a System Browser,
+click on the <uicontrol>Instance</uicontrol> tab.</p></li>
+<li><p>Select the class.</p></li>
+<li><p>Select the desired protocol or add one using <uicontrol>New...</uicontrol>.</p></li>
+<li><p>Fill in the method template and then select <uicontrol>Accept</uicontrol> on
+the &lt;Operate> menu in the code tool. The new method is compiled and
+added to the currently selected protocol.</p></li></ol></p></body></topic>
+<topic id = "vw.help.stLang.method.createPrivate"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a private method</title>
+<body><p><indexterm>private methods</indexterm>Smalltalk has no
+private methods.  If you want to let others know that a message
+should only be sent by instances of a class and not by other classes,
+you typically would put the method in a protocol with <codeph>private</codeph>
+in the name. This merely acts as a suggestion though.</p></body></topic>
+<topic id = "vw.help.stLang.method.createClass"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a class method</title>
+<body><p><indexterm>methods<indexterm>create class method</indexterm></indexterm>New
+methods are created by editing the method definition template that
+appears in the code view of any browser.<ol><li><p>In a System Browser,
+click on the <uicontrol>Class</uicontrol> tab.</p></li>
+<li><p>Select the class.</p></li>
+<li><p>Select the desired protocol or add one using <uicontrol>New...</uicontrol>.</p></li>
+<li><p>Fill in the method template and then select <uicontrol>Accept</uicontrol> on
+the &lt;Operate> menu in the code view. The new method is compiled and
+added to the currently selected protocol.</p></li></ol></p></body></topic>
+<topic id = "vw.help.stLang.method.findRefs"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Find references to a method</title>
+<body><p><indexterm>methods<indexterm>find references</indexterm></indexterm><indexterm>methods<indexterm>find
+senders</indexterm></indexterm>To browse all other methods that
+call the method you are viewing, use the <uicontrol>Senders</uicontrol> commands
+on the &lt;Operate> menu in the methods view.</p>
+<p>To search for all methods that contain explicit references to
+the method you are browsing, choose <uicontrol>Senders</uicontrol>,
+ignoring the fold-out menu options. Note that all methods containing
+either explicit message sends or symbols that match the selector
+you are searching for will be added to the list of senders (this
+helps to identify code that uses <apiname>perform:</apiname>).</p>
+<p>Use the fold-out menu to browse <uicontrol>Senders</uicontrol> of
+messages sent in the current method. To search for all methods sending
+those messages, pick one of the items lower on the list, or pick <uicontrol>more items...</uicontrol> to
+see a complete list.</p>
+<p>To search more narrowly for senders within the same branch of
+the class hierarchy you are browsing, use <uicontrol>Local senders</uicontrol> instead
+of <uicontrol>Senders</uicontrol>.</p></body></topic>
+<topic id = "vw.help.stLang.method.findImplementor"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Find implementors of a method</title>
+<body><p><indexterm>methods<indexterm>find implementors</indexterm></indexterm>To
+browse all other methods with the same name as the one you are viewing,
+use the <uicontrol>Implementors</uicontrol> commands on the &lt;Operate>
+menu in the methods view. To search for all methods with the same
+name as the one you are browsing, use <uicontrol>Implementors</uicontrol>,
+ignoring the fold-out menu options.</p>
+<p>Use the fold-out menu to browse <uicontrol>Implementors</uicontrol> of
+messages sent in the current method. To search for all other implementors
+of the messages sent, pick one of the items lower on the list, or
+pick <uicontrol>More implementors...</uicontrol> to see
+a complete list.</p>
+<p>To search more narrowly for implementors within the same branch
+of the class hierarchy you are browsing, use <uicontrol>Local implementors</uicontrol> instead
+of <uicontrol>Implementors</uicontrol>.</p></body></topic>
+<topic id = "vw.help.stLang.returnValue.fromMethod"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Return a value from a method</title>
+<body><p><indexterm>methods<indexterm>return value</indexterm></indexterm>Every
+method returns a single object, by default the object that received
+the message.</p>
+<p>When another object should be returned, such as a more interesting value,
+you specify that object by preceding it with a caret symbol ( <codeph>^</codeph> ). For
+example, to return the value of a variable:
+<codeblock otherprops="smalltalk method">accountID
+	^accountID
+</codeblock></p>
+<p>A return character that is followed by a message returns the
+result of that message.
+<codeblock otherprops="smalltalk method">displayString
+	^accountID printString, '--', name
+</codeblock></p>
+<p>This approach often circumvents the need to create a temporary variable
+for the message result.</p>
+<p>Frequently, a method performs a test and returns one value if
+the test result is true and a second value if the test result is
+false. Relying on the fact that a return character that is followed
+by a message returns the result of the message, you can use a single
+return caret to serve both forks of the branch, rather than placing
+a caret inside each block.
+<codeblock otherprops="smalltalk method">accountPrefix
+	"Answer the first four characters of the accountID, 
+	or an empty string if the accountID is empty."
+	| id |
+	id := self accountID.
+	^id isEmpty 
+		ifTrue: [String new]
+		ifFalse: [id copyFrom: 1 to: 4].
+</codeblock></p>
+<p>When a return character is enclosed within a block, it forces
+a return from the entire method, not from the block back to the
+containing method.</p></body></topic>
+<topic id = "vw.help.stLang.protocol.moveMethod"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Move a method to a different protocol</title>
+<body><p><indexterm>methods<indexterm>move to another protocol</indexterm></indexterm><ol>
+<li><p>In a System Browser, select the method.</p></li>
+<li><p>Select the <uicontrol>Move &#x2192; to Protocol...</uicontrol> command
+in the methods view.</p></li>
+<li><p>In the resulting dialog, supply the name of the destination protocol.
+If the protocol does not exist, it will be created. Type a blank
+space to cancel the operation.</p></li></ol></p></body></topic>
+<topic id = "vw.help.stLang.protocol.copyMethod"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Copy a method to a different class</title>
+<body><p><indexterm>methods<indexterm>copy to another class</indexterm></indexterm><ol>
+<li><p>In a System Browser, select the method.</p></li>
+<li><p>Select the <uicontrol>Move &#x2192; to Protocol...</uicontrol> command
+in the methods view.</p></li>
+<li><p>In the resulting dialog, enter the name of the destination
+class, a greater-than symbol (&gt;), and the name of the destination
+protocol (i.e., <codeph>MyClass&gt;initialization</codeph>). To copy
+the method to the class side rather than the instance side, insert
+"class" after the class name.</p></li></ol></p></body></topic>
+<topic id = "vw.help.stLang.protocol"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Protocols</title>
+<topic id = "vw.help.stLang.protocol.create"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a protocol</title>
+<body><p><indexterm>protocol<indexterm>create new</indexterm></indexterm><indexterm>method
+category<indexterm>create new</indexterm></indexterm>Placing related
+methods in a message category, also known as a <term>protocol</term>,
+helps to document your code and makes it easier to find with a System
+Browser. Your choice of protocol name has no effect on your code’s
+operation.<ol><li><p>In a System Browser, select the class.</p></li>
+<li><p>Select the <uicontrol>New...</uicontrol> command in the protocols
+view.</p></li>
+<li><p>In the resulting dialog, supply the name of the protocol
+(no harm is done if it already exists). Type a blank space to cancel
+the operation.</p></li></ol></p>
+<p>The new protocol is inserted in the list above the protocol that
+was previously selected. To insert it at the bottom of the list,
+make sure no protocol is selected when you begin step 1.</p></body></topic>
+<topic id = "vw.help.stLang.protocol.delete"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Remove a protocol</title>
+<body><p><indexterm>protocol<indexterm>remove</indexterm></indexterm><indexterm>method
+category<indexterm>remove</indexterm></indexterm>Removing a protocol
+that has methods in it removes the methods also.<ol><li><p>In a
+System Browser, select the protocol.</p></li>
+<li><p>Select the <uicontrol>Remove...</uicontrol> command in the
+protocols view.</p></li>
+<li><p>If the protocol contains methods, you will be asked to confirm
+the removal.</p></li></ol></p></body></topic>
+<topic id = "vw.help.stLang.protocol.rename"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Rename a protocol</title>
+<body><p><indexterm>protocol<indexterm>rename</indexterm></indexterm><ol>
+<li><p>In a System Browser, select the protocol.</p></li>
+<li><p>Select the <uicontrol>Rename...</uicontrol> command in the
+protocols view.</p></li>
+<li><p>In the resulting dialog, supply the new name. Type a blank
+space to cancel the operation.</p></li></ol></p></body></topic></topic></topic></dita>

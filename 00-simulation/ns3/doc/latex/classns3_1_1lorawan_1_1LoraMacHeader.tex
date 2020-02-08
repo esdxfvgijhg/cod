@@ -1,0 +1,200 @@
+\hypertarget{classns3_1_1lorawan_1_1LoraMacHeader}{}\section{ns3\+:\+:lorawan\+:\+:Lora\+Mac\+Header Class Reference}
+\label{classns3_1_1lorawan_1_1LoraMacHeader}\index{ns3\+::lorawan\+::\+Lora\+Mac\+Header@{ns3\+::lorawan\+::\+Lora\+Mac\+Header}}
+
+
+{\ttfamily \#include $<$lora-\/mac-\/header.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Lora\+Mac\+Header\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{classns3_1_1lorawan_1_1LoraMacHeader__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Lora\+Mac\+Header\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{classns3_1_1lorawan_1_1LoraMacHeader__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classns3_1_1lorawan_1_1LoraMacHeader_afd050ac67eab24871452323799e07e94}{M\+Type} \{ \newline
+{\bfseries J\+O\+I\+N\+\_\+\+R\+E\+Q\+U\+E\+ST} = 0, 
+{\bfseries J\+O\+I\+N\+\_\+\+A\+C\+C\+E\+PT} = 1, 
+{\bfseries U\+N\+C\+O\+N\+F\+I\+R\+M\+E\+D\+\_\+\+D\+A\+T\+A\+\_\+\+UP} = 2, 
+{\bfseries U\+N\+C\+O\+N\+F\+I\+R\+M\+E\+D\+\_\+\+D\+A\+T\+A\+\_\+\+D\+O\+WN} = 3, 
+\newline
+{\bfseries C\+O\+N\+F\+I\+R\+M\+E\+D\+\_\+\+D\+A\+T\+A\+\_\+\+UP} = 4, 
+{\bfseries C\+O\+N\+F\+I\+R\+M\+E\+D\+\_\+\+D\+A\+T\+A\+\_\+\+D\+O\+WN} = 5, 
+{\bfseries P\+R\+O\+P\+R\+I\+E\+T\+A\+RY} = 7
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMacHeader_af640e50767cb91d3f4b721fadab55c7d}\label{classns3_1_1lorawan_1_1LoraMacHeader_af640e50767cb91d3f4b721fadab55c7d}} 
+virtual Type\+Id {\bfseries Get\+Instance\+Type\+Id} (void) const
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMacHeader_ab76638affe606b6ef6dc1096eefcafd6}\label{classns3_1_1lorawan_1_1LoraMacHeader_ab76638affe606b6ef6dc1096eefcafd6}} 
+virtual uint32\+\_\+t {\bfseries Get\+Serialized\+Size} (void) const
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1LoraMacHeader_ab0e2728e723f7ef538b9c8166a58aeae}{Serialize} (Buffer\+::\+Iterator start) const
+\item 
+virtual uint32\+\_\+t \hyperlink{classns3_1_1lorawan_1_1LoraMacHeader_a76306a0ee9aec0f81f1655a16af3c273}{Deserialize} (Buffer\+::\+Iterator start)
+\item 
+virtual void \hyperlink{classns3_1_1lorawan_1_1LoraMacHeader_a848844d4bdf4c6978b3ee71f4189d917}{Print} (std\+::ostream \&os) const
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraMacHeader_a5940848a7eee76b4a55fa19b380a5862}{Set\+M\+Type} (enum \hyperlink{classns3_1_1lorawan_1_1LoraMacHeader_afd050ac67eab24871452323799e07e94}{M\+Type} mtype)
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1LoraMacHeader_abe8c53eac32c0361756df3d798f70617}{Get\+M\+Type} (void) const
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1LoraMacHeader_a4ea1b076a246aa8cc789aed92886b653}{Set\+Major} (uint8\+\_\+t major)
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1LoraMacHeader_a1084c40b7386db84e8c184732cd3f780}{Get\+Major} (void) const
+\item 
+bool \hyperlink{classns3_1_1lorawan_1_1LoraMacHeader_ac17b48b875ac5ed15ee7a863660cfa85}{Is\+Uplink} (void) const
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMacHeader_a4d53065a1cd1a9b622f0f7e58d39d1c7}\label{classns3_1_1lorawan_1_1LoraMacHeader_a4d53065a1cd1a9b622f0f7e58d39d1c7}} 
+bool {\bfseries Is\+Confirmed} (void) const
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMacHeader_afc0059a5892ab5aa8165be8ba657f88b}\label{classns3_1_1lorawan_1_1LoraMacHeader_afc0059a5892ab5aa8165be8ba657f88b}} 
+static Type\+Id {\bfseries Get\+Type\+Id} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class represents the Mac header of a Lo\+Ra\+W\+AN packet. 
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMacHeader_afd050ac67eab24871452323799e07e94}\label{classns3_1_1lorawan_1_1LoraMacHeader_afd050ac67eab24871452323799e07e94}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac\+Header@{ns3\+::lorawan\+::\+Lora\+Mac\+Header}!M\+Type@{M\+Type}}
+\index{M\+Type@{M\+Type}!ns3\+::lorawan\+::\+Lora\+Mac\+Header@{ns3\+::lorawan\+::\+Lora\+Mac\+Header}}
+\subsubsection{\texorpdfstring{M\+Type}{MType}}
+{\footnotesize\ttfamily enum \hyperlink{classns3_1_1lorawan_1_1LoraMacHeader_afd050ac67eab24871452323799e07e94}{ns3\+::lorawan\+::\+Lora\+Mac\+Header\+::\+M\+Type}}
+
+The message type.
+
+The enum value corresponds to the value that will be written in the header by the Serialize method. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMacHeader_a76306a0ee9aec0f81f1655a16af3c273}\label{classns3_1_1lorawan_1_1LoraMacHeader_a76306a0ee9aec0f81f1655a16af3c273}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac\+Header@{ns3\+::lorawan\+::\+Lora\+Mac\+Header}!Deserialize@{Deserialize}}
+\index{Deserialize@{Deserialize}!ns3\+::lorawan\+::\+Lora\+Mac\+Header@{ns3\+::lorawan\+::\+Lora\+Mac\+Header}}
+\subsubsection{\texorpdfstring{Deserialize()}{Deserialize()}}
+{\footnotesize\ttfamily uint32\+\_\+t ns3\+::lorawan\+::\+Lora\+Mac\+Header\+::\+Deserialize (\begin{DoxyParamCaption}\item[{Buffer\+::\+Iterator}]{start }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Deserialize the header.
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & A pointer to the buffer we need to deserialize. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of consumed bytes. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMacHeader_a1084c40b7386db84e8c184732cd3f780}\label{classns3_1_1lorawan_1_1LoraMacHeader_a1084c40b7386db84e8c184732cd3f780}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac\+Header@{ns3\+::lorawan\+::\+Lora\+Mac\+Header}!Get\+Major@{Get\+Major}}
+\index{Get\+Major@{Get\+Major}!ns3\+::lorawan\+::\+Lora\+Mac\+Header@{ns3\+::lorawan\+::\+Lora\+Mac\+Header}}
+\subsubsection{\texorpdfstring{Get\+Major()}{GetMajor()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+Lora\+Mac\+Header\+::\+Get\+Major (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Get the major version from the header.
+
+\begin{DoxyReturn}{Returns}
+The uint8\+\_\+t corresponding to this header\textquotesingle{}s major version. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMacHeader_abe8c53eac32c0361756df3d798f70617}\label{classns3_1_1lorawan_1_1LoraMacHeader_abe8c53eac32c0361756df3d798f70617}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac\+Header@{ns3\+::lorawan\+::\+Lora\+Mac\+Header}!Get\+M\+Type@{Get\+M\+Type}}
+\index{Get\+M\+Type@{Get\+M\+Type}!ns3\+::lorawan\+::\+Lora\+Mac\+Header@{ns3\+::lorawan\+::\+Lora\+Mac\+Header}}
+\subsubsection{\texorpdfstring{Get\+M\+Type()}{GetMType()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+Lora\+Mac\+Header\+::\+Get\+M\+Type (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Get the message type from the header.
+
+\begin{DoxyReturn}{Returns}
+The uint8\+\_\+t corresponding to this header\textquotesingle{}s message type. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMacHeader_ac17b48b875ac5ed15ee7a863660cfa85}\label{classns3_1_1lorawan_1_1LoraMacHeader_ac17b48b875ac5ed15ee7a863660cfa85}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac\+Header@{ns3\+::lorawan\+::\+Lora\+Mac\+Header}!Is\+Uplink@{Is\+Uplink}}
+\index{Is\+Uplink@{Is\+Uplink}!ns3\+::lorawan\+::\+Lora\+Mac\+Header@{ns3\+::lorawan\+::\+Lora\+Mac\+Header}}
+\subsubsection{\texorpdfstring{Is\+Uplink()}{IsUplink()}}
+{\footnotesize\ttfamily bool ns3\+::lorawan\+::\+Lora\+Mac\+Header\+::\+Is\+Uplink (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Check whether this header is for an uplink message
+
+\begin{DoxyReturn}{Returns}
+True if the message is meant to be sent from an ED to a GW, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMacHeader_a848844d4bdf4c6978b3ee71f4189d917}\label{classns3_1_1lorawan_1_1LoraMacHeader_a848844d4bdf4c6978b3ee71f4189d917}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac\+Header@{ns3\+::lorawan\+::\+Lora\+Mac\+Header}!Print@{Print}}
+\index{Print@{Print}!ns3\+::lorawan\+::\+Lora\+Mac\+Header@{ns3\+::lorawan\+::\+Lora\+Mac\+Header}}
+\subsubsection{\texorpdfstring{Print()}{Print()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Mac\+Header\+::\+Print (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Print the header in a human readable format.
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The std\+::ostream on which to print the header. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMacHeader_ab0e2728e723f7ef538b9c8166a58aeae}\label{classns3_1_1lorawan_1_1LoraMacHeader_ab0e2728e723f7ef538b9c8166a58aeae}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac\+Header@{ns3\+::lorawan\+::\+Lora\+Mac\+Header}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!ns3\+::lorawan\+::\+Lora\+Mac\+Header@{ns3\+::lorawan\+::\+Lora\+Mac\+Header}}
+\subsubsection{\texorpdfstring{Serialize()}{Serialize()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Mac\+Header\+::\+Serialize (\begin{DoxyParamCaption}\item[{Buffer\+::\+Iterator}]{start }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Serialize the header.
+
+See Page 15 of Lo\+Ra\+W\+AN specification for a representation of fields.
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & A pointer to the buffer that will be filled with the serialization. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMacHeader_a4ea1b076a246aa8cc789aed92886b653}\label{classns3_1_1lorawan_1_1LoraMacHeader_a4ea1b076a246aa8cc789aed92886b653}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac\+Header@{ns3\+::lorawan\+::\+Lora\+Mac\+Header}!Set\+Major@{Set\+Major}}
+\index{Set\+Major@{Set\+Major}!ns3\+::lorawan\+::\+Lora\+Mac\+Header@{ns3\+::lorawan\+::\+Lora\+Mac\+Header}}
+\subsubsection{\texorpdfstring{Set\+Major()}{SetMajor()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Mac\+Header\+::\+Set\+Major (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{major }\end{DoxyParamCaption})}
+
+Set the major version of this header.
+
+
+\begin{DoxyParams}{Parameters}
+{\em major} & The uint8\+\_\+t corresponding to this header\textquotesingle{}s major version. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1LoraMacHeader_a5940848a7eee76b4a55fa19b380a5862}\label{classns3_1_1lorawan_1_1LoraMacHeader_a5940848a7eee76b4a55fa19b380a5862}} 
+\index{ns3\+::lorawan\+::\+Lora\+Mac\+Header@{ns3\+::lorawan\+::\+Lora\+Mac\+Header}!Set\+M\+Type@{Set\+M\+Type}}
+\index{Set\+M\+Type@{Set\+M\+Type}!ns3\+::lorawan\+::\+Lora\+Mac\+Header@{ns3\+::lorawan\+::\+Lora\+Mac\+Header}}
+\subsubsection{\texorpdfstring{Set\+M\+Type()}{SetMType()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Lora\+Mac\+Header\+::\+Set\+M\+Type (\begin{DoxyParamCaption}\item[{enum \hyperlink{classns3_1_1lorawan_1_1LoraMacHeader_afd050ac67eab24871452323799e07e94}{M\+Type}}]{mtype }\end{DoxyParamCaption})}
+
+Set the message type.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mtype} & The message type of this header. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lora-\/mac-\/header.\+h\item 
+lora-\/mac-\/header.\+cc\end{DoxyCompactItemize}

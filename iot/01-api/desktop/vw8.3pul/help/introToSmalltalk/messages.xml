@@ -1,0 +1,317 @@
+<?xml version="1.0"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+<!ENTITY arrow		"&#x2192;">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+	<topic id="vw.help.intro.messages" 
+			xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+		<title>Objects and Messages</title>
+		<body>
+			<p>Everything in Smalltalk, including numbers, strings of letters, 
+				windows, the compiler, and the whole interactive development environment 
+				is an object. Objects communicate by sending messages to one another and 
+				everything in Smalltalk happens by sending a message to an object. 
+				Writing Smalltalk programs consists of defining new kinds of objects and 
+				extending and reusing objects already available.</p>
+		</body>
+		<topic id="vw.help.intro.messages.expressions" 
+				xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+			<title>Expressions</title>
+			<body>
+				<p>The most basic part of a Smalltalk application is an <term>expression</term>, such as:
+					<codeblock otherprops="smalltalk expression">'abc' asUppercase</codeblock></p>
+				<p>An expression consists of a <term>receiver</term> object that executes 
+					the message (here the string <codeph>'abc'</codeph>) and a <term>message</term> 
+					(here <codeph>asUppercase</codeph>). The receiver always comes first, the 
+					message follows. Think of a Smalltalk expression as an order to the receiver 
+					to execute a message. Just as you might say in English:</p>
+				<p>dog bark!</p>
+				<p>or:</p>
+				<p>car go!</p>
+				<p>the expression <codeph>'abc' asUppercase</codeph> is an order to the 
+					string <codeph>'abc'</codeph> to convert itself to uppercase letters. 
+					I will explain in a moment how to execute an expression, but first let's
+					consider a few commented examples of Smalltalk expressions 
+					(the text surrounded by double quotes <codeph>"</codeph> is an explanatory 
+					<term>comment</term>):
+					<codeblock otherprops="smalltalk expression">3 squared.			"Receiver is an integer object 3, message is <b>squared</b>. It is an order to object 3 to calculate and return the integer object representing its square."
+						'abc' reverse.			"Receiver is a string object 'abc', message is <b>reverse</b>. It is an order to object 'abc' to calculate and return its reverse."
+						200 factorial			"Receiver is an integer object 200, message is <b>factorial</b>. Read it as an order to 200 to calculate and return its factorial: 200*199*198*..*1."</codeblock></p>
+				<p>To execute these examples <i>one-line-at-a-time</i> and see the results, 
+					proceed as follows:
+					<ul>
+						<li>Select (highlight) the text using the <i>left</i> mouse button as in 
+							a word processor, or double-click at the beginning of the line.</li>
+						<li>Evaluate the selection with the <uicontrol>Print it</uicontrol> command 
+							in the <i>right</i> mouse-button menu (the <uicontrol>&lt;Operate&gt;</uicontrol> 
+							menu).</li>
+					</ul></p>
+				<p>Do not try to execute the three lines together &#x2014; Smalltalk would 
+					treat them as one big but inconsistent expression. More on this later.</p>
+				<p>By the way, you can type and evaluate Smalltalk expressions in any 
+					&Product; text space, not just the Workspace. However, I recommend that 
+					you open a new Workspace for your additional experiments by executing 
+					the command sequence <uicontrol>Tools &arrow; Workspace</uicontrol> in 
+					the main Launcher window (select the command <uicontrol>Tools</uicontrol> 
+					in the menu and then click the <uicontrol>Workspace</uicontrol> command). 
+					Or click the notebook button on the Launcher for the same result.</p>
+			</body>
+		</topic>
+
+		<topic id="vw.help.intro.messages.messageTypes" 
+				xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+			<title>Message Types</title>
+			<body>
+				<p>Smalltalk allows three kinds of messages: unary, binary, and keyword 
+					messages. The difference between them is:
+					<ul>
+						<li>in the structure of the name of the message (its <term>selector</term>) and </li>
+						<li>the number of arguments that the message expects.</li>
+					</ul></p>
+
+				<p><term>Unary messages</term> consist of a single "word" (properly called 
+					an <term>identifier</term>); they don't have any arguments. Evaluate the 
+					following three examples line-by-line with <uicontrol>Print it</uicontrol>:
+					<codeblock otherprops="smalltalk expression">3 negated.				"The receiver is 3, and the message selector is <b>negated</b>."
+						27 squared.						"Receiver is 27, selector is <b>squared</b>."
+						'black fox' dropFinalVowels.	"Receiver is 'black fox', selector is <b>dropFinalVowels</b>."</codeblock></p>
+				<p>By the way, don't puzzle about these and the following example messages 
+					&#x2014; we will soon explain where they come from and how you can browse them.</p>
+				<p><term>Binary messages</term> use one or two special characters such 
+					as + - / \ , &amp; | and @ for the selector, and the selector is followed 
+					by one argument. Note that all arithmetic operations are implemented by messages. Examples are:
+					<codeblock otherprops="smalltalk expression">3 + 5.		"Receiver is 3, selector is +, argument is a SmallInteger object 5."
+						'abc' , 'xyz'.	"Receiver is 'abc', selector is , and argument is string object 'xyz'."
+						17 // 5.		"Receiver is 17, selector is //, argument is small integer 5."</codeblock></p>
+				<p><term>Keyword messages</term> may have any number of arguments and 
+					each of them is preceded by an identifying <term>keyword</term>. 
+					The selector consists of one or more keywords (a keyword is an identifier 
+					followed by a colon), and each keyword is followed by argument. 
+					Read and evaluate the following examples:
+					<codeblock otherprops="smalltalk expression">3 between: 5 and: 10.	"Receiver is 3, message selector is <b>between:and:</b>, keywords are <b>between:</b> and <b>and:</b>, and arguments are 5 and 10."
+						$d between: $a and:$r.	"Receiver is character <b>d</b>, message selector is <b>between:and:</b> and arguments are characters <b>a</b> and <b>r</b>."
+						3 raisedTo: 17.			"Receiver 3, message selector is <b>raisedTo:</b> and argument is 17."
+						Dialog request: 'Your name, please' initialAnswer: 'John'.	"Receiver is 'class' object Dialog (more later), selector is <b>request:initialAnswer:</b>."
+						'aLongWord' chopTo: 5.	"Receiver is string 'aLongWord', selector is <b>chopTo:</b>."</codeblock></p>
+				<p>The message in the following expression is unusually long &#x2014; it 
+					has six keywords. Its selector is <codeph>choose:fromList:values:lines:cancel:for:</codeph>.
+					I show it here in the multi-line formatting commonly used for keyword 
+					messages with multiple arguments, but you can type it all on one line 
+					or in any other style because Smalltalk does not pay attention to white space. 
+					Evaluate the expression by selecting <i>all seven lines</i> together 
+					and executing <uicontrol>Print it</uicontrol>:
+					<codeblock otherprops="smalltalk expression">Dialog 
+						choose: 'Which line do you want?' 
+						fromList: #('first' 'second' 'third' 'fourth') 
+						values: #(1 2 3 4) 
+						lines: 8 
+						cancel: [#noChoice] 
+						for: Dialog defaultParentWindow</codeblock></p>
+				<p>Note that identifiers (names of unary messages and keywords) 
+					start with a lowercase letter and contain only letters and digits. 
+					They have unlimited length and are case sensitive, so that <codeph>asUppercase</codeph> 
+					and <codeph>asUpperCase</codeph> are different. To verify this, 
+					try evaluating the following message. It will fail and Smalltalk will 
+					open a selection dialog because there is no message called 
+					<codeph>asUpperCase</codeph>. You can respond by clicking 
+					<uicontrol>cancel</uicontrol> to terminate execution and 
+					correct the code, or with <uicontrol>correct it</uicontrol>. 
+					In this case, &Product; will offer one or more similarly-spelled 
+					selectors and if you select one, it will correct the mistake 
+					and continue evaluation. The correction mechanism usually 
+					succeeds when you make a small typing mistake but larger 
+					mistakes must be corrected by hand:
+					<codeblock otherprops="smalltalk expression">'abc' asUpperCase</codeblock></p>
+				<p>In closing, the definitions of all of the messages listed 
+					above are available as a part of the environment and I will 
+					explain shortly how you can access them, modify them, and 
+					define your own messages.</p>
+			</body>
+		</topic>
+
+		<topic id="vw.help.intro.messages.returning" 
+				xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+			<title>Messages Return Objects and Can Thus be Combined</title>
+			<body>
+				<p>Every expression returns an object to its sender and you 
+					can thus use an expression as the receiver of another message. 
+					To see this, you can evaluate the following lines one by one with <uicontrol>Print it</uicontrol>:
+					<codeblock otherprops="smalltalk expression"><b>5 factorial</b> squared.				"Integer 120 -- the result of <b>5 factorial</b> -- is the receiver of message <b>squared</b>."
+						<b>'abc' asUppercase</b> reverse.		"The result of <b>'abc' asUppercase</b> is the receiver of message <b>reverse</b>."
+						13 factorial sqrt truncated even.	"Calculate 13 factorial, then its square root, truncate the result an integer, and tell me whether it is even."</codeblock></p>
+				<p>Note that you can even select and evaluate parts of the above 
+					"chained" expressions. As an example, you can execute only the 
+					<codeph>5 factorial</codeph> or the <codeph>13 factorial sqrt</codeph> 
+					parts of the lines above if you wish. This is sometimes very useful.</p>
+				<p>Because messages return objects, expressions can also be used as arguments as in:
+					<codeblock otherprops="smalltalk expression">3 raisedTo: <b>5 squared</b>.			"The result of <b>5 squared</b> is the argument of the keyword message <b>raisedTo:</b> so this is equivalent to 3 raisedTo: 25."
+						'the number is: ', <b>5 printString</b>.	"The result of <b>5 printString</b> is the argument of the binary concatenation message , and equivalent to 'the number is: ', '5'."
+						ComposedTextView open: <b>'abc' asText allBold</b> asValue.	"The argument of <b>open:</b> is the result of sending three consecutive messages to 'abc'."</codeblock></p>
+				<p>The expression:
+					<codeblock otherprops="smalltalk expression"><b>5 factorial</b> between: <b>3 squared</b> and: <b>3 * 5 * 9</b></codeblock></p>
+				<p>is also valid but the following formulation in which parentheses 
+					group parts that belong together is more readable and thus preferable:
+					<codeblock otherprops="smalltalk expression">(5 factorial) between: (3 squared) and: (3 * 5 * 9)</codeblock></p>
+				<p>Smalltalk developers routinely chain messages, but the facility should 
+					not be overused at the expense of readability. In fact, one of the essential 
+					guidelines of object-oriented programming &#x2014; Demeter's rule (search the Web 
+					for details) &#x2014; strongly advises against it.</p>
+				<p>Evaluation of combined messages obeys the following simple rule:
+					<i>messages are executed from left to right; parenthesized expressions first, 
+						unary messages next, binary next, keyword last</i>.</p>
+			</body>
+		</topic>
+
+		<topic id="vw.help.intro.messages.evaluationOrder" 
+				xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+			<title>Evaluation Order for Messages</title>
+			<body>
+				<p>In Smalltalk, message expressions are evaluated from left to right; parenthesized 
+					expressions first, unary messages next, binary next, and keywords last.
+					This is the only rule you need to learn to read and write Smalltalk code. 
+					As an example:
+					<codeblock otherprops="smalltalk expression"><b>3 + 2</b> raisedTo: <b>2 squared + 7</b>		"<b>squared</b> first (unary), + next (binary), <b>raisedTo:</b> last (keyword)"</codeblock></p>
+				<p>is equivalent to:
+					<codeblock otherprops="smalltalk expression">(3+2) raisedTo: ((2 squared) + 7)		"Parentheses first, unary messages next, binary then, keyword last."</codeblock></p>
+				<p>as you can check by evaluating both expressions.</p>
+				<p>These simple rules apply to everything and there are no other precedences 
+					as are found in most other programming languages &#x2014; even where you might 
+					expect them. So, for example:
+					<codeblock otherprops="smalltalk expression">5 + 3 * 4</codeblock></p>
+				<p>is a sequence of binary messages and is evaluated left-to-right. 
+					It is thus equivalent to:
+					<codeblock otherprops="smalltalk expression">(5 + 3) * 4</codeblock></p>
+				<p>which is not what you might have expected. To avoid unpleasant surprises, 
+					use parentheses for more complicated expressions, even when they are not 
+					necessary. Adding them does not affect evaluation speed but improves 
+					readability. I would thus write:
+					<codeblock otherprops="smalltalk expression">(5 * 3) + 4</codeblock></p>
+				<p>instead of:
+					<codeblock otherprops="smalltalk expression">5 * 3 + 4</codeblock></p>
+				<p>even though both expressions produce the same result.</p>
+			</body>
+		</topic>
+
+		<topic id="vw.help.intro.messages.statements" 
+				xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+			<title>Statements</title>
+			<body>
+				<p>Smalltalk code usually consists of more than a single expression. 
+					I will call a sequence of expressions a <term>code fragment</term> 
+					(some people call it a script) and its components are called <term>statements</term>. 
+					Consecutive Smalltalk statements are separated by periods, just like 
+					English sentences.</p>
+				<p>As an example:
+					<codeblock otherprops="smalltalk expression">3 squared.
+						5 factorial</codeblock></p>
+				<p>is a small (and meaningless) code fragment consisting of two statements, 
+					each evaluated separately. If you execute it by selecting <i>both</i> lines 
+					and using <uicontrol>Print it</uicontrol>, you will get the result returned 
+					by the last expression. As another example, the following two lines clear 
+					the "Transcript" &#x2014; i.e., the bottom part of the main Launcher 
+					window &#x2014; and display 'Hello world':
+					<codeblock otherprops="smalltalk expression">Transcript clear.					"Note the period separating this statement from the next."
+						Transcript show: 'Hello world!'	"Transcript is a word known to the environment and represents essentially the text-display object in the Launcher."</codeblock></p>
+				<p>Execute this code fragment with <uicontrol>Do it</uicontrol> and then 
+					examine the <uicontrol>Launcher</uicontrol> window. (<uicontrol>Do it</uicontrol> 
+					is like <uicontrol>Print it</uicontrol> but it does not print the result. 
+					You can execute the fragment with <uicontrol>Print it</uicontrol> as well, 
+					but here we are interested in the effect of the two lines rather than the 
+					object returned by the last expression. To see the difference, try both.)</p>
+			</body>
+		</topic>
+
+		<topic id="vw.help.intro.messages.cascading" 
+				xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+			<title>Cascading</title>
+			<body>
+				<p>Smalltalk provides an important shortcut: a sequence of messages to the 
+					same receiver can be <i>cascaded</i>. That is, if a sequence of consecutive statements 
+					has the same receiver, you can use a <term>cascade</term> instead of retyping 
+					the receiver for each message send. To illustrate:
+					<codeblock otherprops="smalltalk expression">Transcript clear.					"Note that this and the following statements all have the same receiver Transcript."
+						Transcript show: 'Hello world!'
+						Transcript cr.
+						Transcript show: 'How are you?'</codeblock></p>
+				<p>has the same effect as the 'cascaded' form:
+					<codeblock otherprops="smalltalk expression">Transcript clear;				"Note the <b>semicolon</b> separating the 'cascaded' <b>messages</b> instead of a period separating <b>statements</b>."
+						show: 'Hello world!';		"Receiver is not repeated."
+						cr;
+						show: 'How are you?'</codeblock></p>
+				<p>The <term>semicolon</term> that ends each cascaded expression indicates 
+					that the next message is sent to the same receiver as the current message. 
+					In this case, all the messages are sent to <codeph>Transcript</codeph>. 
+					Note that although each consecutive message in a cascade goes to the same 
+					object, the <term>state</term> of that object may be changing as the 
+					messages are evaluated. In this example, the receiver of all messages is 
+					<codeph>Transcript</codeph>. The original <codeph>Transcript</codeph> 
+					may have contained text, but after the <codeph>clear</codeph> message, 
+					it is empty &#x2014; its state has changed.</p>
+				<p>You can always write code without using cascading &#x2014; cascading 
+					is just a shorthand to save typing and possibly make code easier to read. 
+					Some people think that code is easier to read without cascading and avoid it. 
+					I think that cascading with proper indenting improves readability.</p>
+			</body>
+		</topic>
+
+		<topic id="vw.help.intro.messages.variables" 
+				xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/">
+			<title>Variables</title>
+			<body>
+				<p>After evaluating a message, Smalltalk automatically discards the 
+					returned object unless you <term>assign</term> it to a <term>variable</term>, 
+					or unless the object is referenced by another object that still exists. 
+					(This automatic removal of unneeded objects is called <term>garbage collection</term>.)</p>
+				<p>If you need to use the result of an expression later, assign it 
+					to a variable. All variables in Smalltalk must be declared before 
+					the first statement that uses them. A declaration indicates the name of 
+					a variable, but does not specify its type. Here is an example
+					that declares three local variables (<codeph>price</codeph>, <codeph>tax</codeph>, 
+					and <codeph>total</codeph>) separated by spaces inside vertical bars:
+					<codeblock otherprops="smalltalk expression">| price tax total |
+						price := (Dialog request: 'Please enter price' initialAnswer: '100') asNumber.
+						tax := (Dialog request: 'Please enter price %'  initialAnswer: '10') asNumber.
+						total := price + (price * tax / 100).
+						Transcript clear;
+						show: 'price: ', price printString; cr;
+						show: 'tax: ', tax printString; cr;
+						show: 'total: ', total printString</codeblock></p>
+				<p>Evaluate this code fragment with <uicontrol>Do it</uicontrol> 
+					and examine the Transcript to see the result.</p>
+				<note type="note">If you are evaluating code in a Workspace, you don't 
+					need to declare variables like this &#x2014; the Workspace 
+					does it automatically. You can examine all your variables under the 
+					<uicontrol>Variables</uicontrol> tab. In every other place, such 
+					as the <codeph>Transcript</codeph>, variables must be declared.)</note>
+				<p>The reason why Smalltalk variables (unlike variables in most 
+					other languages) don't require a type declaration is that they are 
+					just pointers to objects, essentially addresses in memory holding 
+					the representation of the object to which they are "bound". As a 
+					consequence, a variable could point to one object in one section of
+					code, and to another object in another part of the same code fragment. 
+					However, this is considered poor programming style.</p>
+				<p>The variables introduced in this code fragment are called 
+					<term>temporary variables</term> and their scope (range in which 
+					they can be used by the code) and lifetime are limited to the 
+					code fragment: once the code fragment is fully evaluated, they 
+					cease to exist and the objects that they point to are discarded &#x2014; 
+					unless they are referenced by other objects. Generally, temporary 
+					variables are used in methods, and their scope is limited to the 
+					one method that defines them. I will introduce other types of variables 
+					later.</p>
+				<p>The <codeph>:=</codeph> symbol is the assignment operator. It 
+					binds the result of the right hand side of the <term>assignment statement</term> 
+					to the variable on the left hand side. By the way, the assignment operator 
+					is not a message but belongs to the definition of the Smalltalk language.</p>
+			</body>
+		</topic>
+	</topic>
+</dita>

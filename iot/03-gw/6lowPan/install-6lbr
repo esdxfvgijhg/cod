@@ -1,0 +1,122 @@
+#!/bin/sh
+
+apt-get install libncurses5-dev bridge-utils libssl-dev ares.dev libwebsockets.dev uuid.dev      
+sudo apt install cmake g++ libssl-dev libc-ares-dev uuid-dev xsltproc docbook-xsl
+
+
+cd /home/aghiles/Aghiles/Program/C/bin/contiki/examples/ipv6/slip-radio/
+make TARGET=zoul savetarget
+BOARD=remote make slip-radio.upload PORT=/dev/ttyUSB0
+BOARD=remote make login PORT=/dev/ttyUSB0
+cd /home/aghiles/Aghiles/Program/C/bin/contiki/examples/cc2538-common/mqtt-demo
+BOARD=remote make mqtt-demo.upload PORT=/dev/ttyUSB1
+BOARD=remote make login PORT=/dev/ttyUSB1
+
+
+cd /home/aghiles/Downloads
+# 6lbr installation
+git clone https://github.com/cetic/6lbr
+cd 6lbr
+git submodule update --init --recursive
+cd examples/6lbr
+make all
+make plugins
+make tools
+sudo make install
+sudo make plugins-install
+sudo update-rc.d 6lbr defaults
+
+# 6lbr configuration
+cd /etc/6lbr/
+sudo -s
+echo "
+MODE=ROUTER
+RAW_ETH=0
+BRIDGE=1
+DEV_BRIDGE=br0
+DEV_TAP=tap0
+DEV_ETH=ens33
+RAW_ETH_FCS=0
+DEV_RADIO=/dev/ttyUSB0
+BAUDRATE=115200
+LOG_LEVEL=3
+" > /etc/6lbr/6lbr.conf
+exit 
+
+sudo service 6lbr restart
+sudo service 6lbr status
+
+sudo gedit /etc/network/interfaces
+auto lo
+iface lo inet loopback
+auto br0
+iface br0 inet dhcp
+bridge_ports ens33
+
+sudo /etc/init.d/networking restart
+sudo ifconfig
+
+
+
+
+
+
+#firefox http://[bbbb::100]
+#Edit Configuration Global Settings
+#Channel: 26
+#IP Configuration Prefix: fd00::
+#IP Configuration 6LoPWAN context 0: fd00::
+#IP Configuration Address autoconfiguration: on
+#Eth Network prefix: bbbb::
+#Eth Network Address autoconfiguration: off
+#IP64 IP64: on
+#IP64 DHCP: on
+#RA Daemon RA Daemon: active
+#Click Submit and it will reboot the 6lbr daemon
+#ping google.com, open http://[bbbb::100]
+#Connect slip Mote to Linux host
+#Turn on Mqtt Client mote
+#Click Sensor Tab to see the IPv6 Motes
+
+
+
+
+# Mosquitto installation
+wget -c https://github.com/eclipse/mosquitto/archive/v1.4.11.tar.gz
+tar zxvf v1.4.11.tar.gz
+cd mosquitto-1.4.11
+# wget http://mosquitto.org/files/source/mosquitto-1.4.2.tar.gz
+# cd mosquitto-1.4.2
+sudo gedit config.mk
+WITH_WEBSOCKETS:=yes
+
+make
+make install
+sudo make install
+sudo cp mosquitto.conf /etc/mosquitto/
+
+sudo gedit /etc/mosquitto/mosquitto.conf
+port 1883
+protocol mqtt
+listener 9001
+protocol websockets
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

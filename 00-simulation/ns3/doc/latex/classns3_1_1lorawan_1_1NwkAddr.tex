@@ -1,0 +1,64 @@
+\hypertarget{classns3_1_1lorawan_1_1NwkAddr}{}\section{ns3\+:\+:lorawan\+:\+:Nwk\+Addr Class Reference}
+\label{classns3_1_1lorawan_1_1NwkAddr}\index{ns3\+::lorawan\+::\+Nwk\+Addr@{ns3\+::lorawan\+::\+Nwk\+Addr}}
+
+
+{\ttfamily \#include $<$lora-\/device-\/address.\+h$>$}
+
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Nwk\+Addr\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{classns3_1_1lorawan_1_1NwkAddr__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NwkAddr_a9a04daf4c67d4f5f972cbe35c50974bf}\label{classns3_1_1lorawan_1_1NwkAddr_a9a04daf4c67d4f5f972cbe35c50974bf}} 
+{\bfseries Nwk\+Addr} (uint32\+\_\+t nwk\+Id=0)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1NwkAddr_a1ab0b879c6c8124e21c700e2be3b83b4}{Set} (uint32\+\_\+t nwk\+Addr)
+\item 
+uint32\+\_\+t \hyperlink{classns3_1_1lorawan_1_1NwkAddr_add27888617e928ccf58342bc15aa9d15}{Get} (void) const
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class representing the Network Address component of a \hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} (25 bits) 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NwkAddr_add27888617e928ccf58342bc15aa9d15}\label{classns3_1_1lorawan_1_1NwkAddr_add27888617e928ccf58342bc15aa9d15}} 
+\index{ns3\+::lorawan\+::\+Nwk\+Addr@{ns3\+::lorawan\+::\+Nwk\+Addr}!Get@{Get}}
+\index{Get@{Get}!ns3\+::lorawan\+::\+Nwk\+Addr@{ns3\+::lorawan\+::\+Nwk\+Addr}}
+\subsubsection{\texorpdfstring{Get()}{Get()}}
+{\footnotesize\ttfamily uint32\+\_\+t ns3\+::lorawan\+::\+Nwk\+Addr\+::\+Get (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Get an uint32\+\_\+t representation of the 25-\/bit network address.
+
+\begin{DoxyReturn}{Returns}
+The Network Address. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NwkAddr_a1ab0b879c6c8124e21c700e2be3b83b4}\label{classns3_1_1lorawan_1_1NwkAddr_a1ab0b879c6c8124e21c700e2be3b83b4}} 
+\index{ns3\+::lorawan\+::\+Nwk\+Addr@{ns3\+::lorawan\+::\+Nwk\+Addr}!Set@{Set}}
+\index{Set@{Set}!ns3\+::lorawan\+::\+Nwk\+Addr@{ns3\+::lorawan\+::\+Nwk\+Addr}}
+\subsubsection{\texorpdfstring{Set()}{Set()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Nwk\+Addr\+::\+Set (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{nwk\+Addr }\end{DoxyParamCaption})}
+
+Set the \hyperlink{classns3_1_1lorawan_1_1NwkAddr}{Nwk\+Addr}, starting from a 32-\/bit representation of a 25-\/bit integer.
+
+This method will ignore the most significant bits of the argument. This means that all arguments such that nwk\+Addr $>$ 2$^\wedge$25 will actually be considered as nwk\+Addr mod 2$^\wedge$25.
+
+
+\begin{DoxyParams}{Parameters}
+{\em nwk\+Addr} & The Network Address to set. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lora-\/device-\/address.\+h\item 
+lora-\/device-\/address.\+cc\end{DoxyCompactItemize}

@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.gui"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Composing Windows</title>
+<topic id = "vw.help.gui.painter.newCanvas"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Create a new canvas</title>
+<body><p><indexterm>GUI development<indexterm>create window</indexterm></indexterm><indexterm>window<indexterm>new
+canvas</indexterm></indexterm>Use a Canvas to "paint" the design
+for a window.</p>
+<p>To open a new Canvas, click on the Canvas button in the Launcher window
+toolbar, or select <uicontrol>Painter&#xA0;&#x2192;&#xA0;New&#xA0;Canvas</uicontrol>.
+(If the button and menu are not available, you need to load the
+UIPainter parcel.)</p>
+<p>You "paint" on the blank canvas by placing and arranging widgets
+on it.</p></body></topic>
+<topic id = "vw.help.gui.editCanvas"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Modify an existing canvas</title>
+<body><p><indexterm>GUI development<indexterm>edit canvas</indexterm></indexterm><indexterm>canvas<indexterm>edit</indexterm></indexterm>To
+modify an existing window specification, locate it using the Resource
+Finder (select <uicontrol>Browse&#xA0;&#x2192;&#xA0;Resources</uicontrol> in the
+Launcher window).<ol><li><p>In the Resource Finder, select the class
+name containing the canvas, select the appropriate specification
+in the <uicontrol>Resources</uicontrol> view (<apiname>windowSpec</apiname> is
+the default), and click <uicontrol>Edit</uicontrol> button.</p></li>
+<li><p>To save any changes you make to a canvas, you must Install
+it.</p></li></ol></p></body></topic>
+<topic id = "vw.help.gui.painter.setUILook"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Specify a user interface look</title>
+<body><p><indexterm>GUI development<indexterm>set look</indexterm></indexterm><indexterm>look
+policy<indexterm>set</indexterm></indexterm>By default, the canvas
+will auto-select its look on the target platform. To change the
+current look of the canvas, select one of the options on the <uicontrol>Look</uicontrol> menu.
+Note that the global settings for &Product; will override this
+setting when you <uicontrol>open</uicontrol> the application.</p></body></topic>
+<topic id = "vw.help.gui.painter.installCanvas"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Install a canvas</title>
+<body><p><indexterm>GUI development<indexterm>install canvas</indexterm></indexterm><indexterm>canvas<indexterm>install</indexterm></indexterm>Use
+the <uicontrol>Install...</uicontrol> button in the GUI Painter
+Tool to create an interface specification for the canvas.<ol><li><p>Specify
+the name of the application model class in the <uicontrol>Install&#xA0;on&#xA0;Class</uicontrol> dialog;
+specify either a new or existing class for the application model.</p></li>
+<li><p>Specify the selector to contain the interface specification
+for the canvas (the default selector is <codeph>#windowSpec</codeph>.)</p></li>
+<li><p>Select <uicontrol>OK</uicontrol> to build and install the
+interface specification. If you enter a new class name, you will
+be prompted for the name of the superclass in a subsequent dialog
+(<apiname>ApplicationModel</apiname> and <apiname>SimpleDialog</apiname> are
+provided as defaults).</p></li></ol></p></body></topic>
+<topic id = "vw.help.gui.painter.setWindowProperties"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set window properties</title>
+<body><p><indexterm>GUI development<indexterm>window properties</indexterm></indexterm>Use
+the property pages on the GUI Painter Tool to edit the properties of
+the current canvas.</p>
+<p>Select on the background to deselect all widgets, to set the properties
+of the window itself.</p></body></topic>
+<topic id = "vw.help.gui.painter.openWindow"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Open an application window</title>
+<body><p><indexterm>GUI development<indexterm>open application</indexterm></indexterm><indexterm>application<indexterm>open
+main window</indexterm></indexterm>To launch the application under
+construction in a Canvas, click on the <uicontrol>Open</uicontrol> button
+in the GUI Painter Tool. This command is unavailable until you have
+created an application model for the canvas by installing the canvas.</p></body></topic></topic>
+<topic id = "vw.help.gui.programmatic"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Creating Windows Programmatically</title>
+<topic id = "vw.help.gui.programmatic.openAppWindow"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Opening a main window </title>
+<body><p><indexterm>GUI development<indexterm>create window</indexterm></indexterm><indexterm>window<indexterm>create
+new</indexterm></indexterm>When the spec name is <codeph>#windowSpec</codeph>,
+you can just send <codeph>open</codeph> to the application class: 
+<codeblock otherprops="smalltalk expression">Editor1Example open</codeblock></p>
+<p>To open any other spec, use <apiname>openWithSpec:</apiname> and
+provide the specification name:
+<codeblock otherprops="smalltalk expression">Editor1Example openWithSpec: #windowSpec</codeblock></p></body></topic>
+<topic id = "vw.help.gui.programmatic.openSecondaryWindow"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Open a secondary window</title>
+<body><p><indexterm>window<indexterm>open secondary window</indexterm></indexterm>When
+the same application model serves one or more secondary windows
+in addition to the main window, you can open a secondary canvas
+with this variant. A "secondary" window usually requires that the
+application has reached the proper state, that its instance variables
+have been initialized. This usually requires opening the main window
+before any secondary window.</p>
+<p>This example creates a new UIBuilder the first time it is invoked,
+and stores that builder in an instance variable. When your application needs
+to access widgets on the secondary canvas later, storing this second
+builder assures you will have a means of accessing the widgets.</p>
+<p>In a method in the application model, create a new <apiname>UIBuilder</apiname>.<ol>
+<li><p>Tell the builder which object will supply its menus, aspects,
+and other resources by sending it a <apiname>source:</apiname> message.
+The argument is typically the application model itself. (Alternatively,
+you can send a series of <apiname>aspectAt:put:</apiname> messages
+to install the resources directly.)</p></li>
+<li><p>Create the spec object and add the spec to the builder.</p></li>
+<li><p>Open the window.
+<codeblock otherprops="smalltalk method">openFinder
+		"Open the Search window. If already open, raise to top."
+		| bldr |
+		(self finderBuilder notNil and: [self finderBuilder window isOpen])
+			ifTrue: [self finderBuilder window raise]
+			ifFalse: [
+				self finderBuilder: (bldr := UIBuilder new).
+				bldr source: self.
+				bldr add: (self class 
+					interfaceSpecFor: #finderSpec).
+				bldr window 
+					application: self;
+					beSlave.
+				self adjustSearchScope.
+				self searchStatus value: 0.
+				(bldr componentAt: #searchStatus) widget
+					setMarkerLength: 5.
+				bldr openAt: (self 
+					originFor: bldr window 
+					nextTo: #findButton)].
+		(self builder componentAt: #listView) takeKeyboardFocus.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.gui.programmatic.accessWindow"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get a window from a builder</title>
+<body><p><indexterm>application<indexterm>get window</indexterm></indexterm><indexterm>window<indexterm>get
+from builder</indexterm></indexterm>When you ask an application
+model to open an interface specification, the application model
+creates an interface builder, which in turn creates the specified
+window and its contents. Your application can manipulate the window
+by obtaining the window from the builder and then sending it messages.<ol>
+<li><p>Get the application builder, which is returned when the application
+is opened.</p></li>
+<li><p>Get the window from the builder.
+<codeblock otherprops="smalltalk expression">| bldr win |
+bldr := Editor2Example open.
+win := bldr <b>window</b>.
+win label: 'Editor'.</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Editor2-Example:Examples.Editor2Example open" 
+format="st" scope="external">Editor2-Example</xref></p>
+</body></topic></topic>
+<topic id = "vw.help.gui.scrollbar"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Window Scrollbars</title>
+<topic id = "vw.help.gui.scrollbar.addInCanvas"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Add scrollbars to a window with the Canvas Tool</title>
+<body><p><indexterm>GUI development<indexterm>add scrollbar</indexterm></indexterm><ol>
+<li><p>In the window’s canvas, make sure no widget is selected.</p></li>
+<li><p>Open a Properties Tool using the <uicontrol>Properties</uicontrol> button,
+or <uicontrol>properties</uicontrol> on the &lt;Operate> menu in
+the canvas.</p></li>
+<li><p>In the new Properties tool, choose the <uicontrol>Details</uicontrol> page,
+and enable the desired scrollbars.</p></li>
+<li><p><uicontrol>Apply</uicontrol> the properties, close the Properties
+Tool, and <uicontrol>Install</uicontrol> the canvas.</p></li></ol></p></body></topic>
+<topic id = "vw.help.gui.scrollbar.addInCode"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Add/remove scrollbars programmatically</title>
+<body><p><indexterm>GUI development<indexterm>add scrollbar</indexterm></indexterm>You
+can add and remove scrollbars programmatically, but only if the window
+had the scroll bars initially, as created in the canvas. To hide scroll
+bars initially, hide them before opening the window.<ol><li><p>After
+opening the window, remove the scroll bars that are meant to be
+displayed later.</p></li>
+<li><p>Ask the window’s component to add scroll bars.
+<codeblock otherprops="smalltalk expression">| win |
+win := ApplicationWindow new.
+win component: (BorderDecorator 
+		on: Object comment asComposedText).
+win open.
+win component
+		<b>noVerticalScrollBar</b>;
+		<b>noHorizontalScrollBar</b>.
+win display.
+Cursor wait showWhile: [(Delay forSeconds: 5) wait].
+win component
+		<b>useVerticalScrollBar</b>;
+		<b>useHorizontalScrollBar</b>.</codeblock></p></li></ol></p></body></topic></topic>
+<topic id = "vw.help.gui.menubar"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Window Menu Bar</title>
+<topic id = "vw.help.gui.menubar.addInCanvas"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Add a menu bar to a window with the Canvas Tool</title>
+<body><p><indexterm>GUI development<indexterm>add menu bar</indexterm></indexterm>Adding
+a menu bar has two parts: turning on a menu bar property for the
+window and creating the menu.<ol><li><p>In the canvas for the window,
+make sure no widget is selected by clicking on the background of
+the canvas.</p></li>
+<li><p> Select the <uicontrol>Basic</uicontrol> page in the GUI
+Painter Tool, and turn on the <uicontrol>Enable</uicontrol> switch
+for  the <uicontrol>Menu&#xA0;Bar</uicontrol> property.</p></li>
+<li><p>In the <uicontrol>Menu</uicontrol> field, enter the name
+of the menu-creation method defined for the menu using the Menu
+Editor.</p></li>
+<li><p><uicontrol>Apply</uicontrol> the properties, close the Properties
+Tool, and <uicontrol>Install</uicontrol> the canvas.</p></li>
+<li><p>Use the Menu Editor either before or after enabling the canvas.</p></li></ol></p>
+<p>Each first-level entry in the menu appears in the menu bar, but
+only when it has a submenu.</p></body></topic></topic>
+<topic id = "vw.help.gui.window"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Window Appearance</title>
+<topic id = "vw.help.gui.window.setLabel"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set a window’s label</title>
+<body><p><indexterm>window<indexterm>set label</indexterm></indexterm>You
+can modify a window’s label using the canvas or, for dynamic control,
+by sending a message to the window.</p>
+<p>To set the label in the Painter:<ol><li><p>In the canvas for
+the window, make sure no widget is selected.</p></li>
+<li><p>In the GUI Painter Tool, fill in the window’s <uicontrol>Label</uicontrol> property
+with the desired label.</p></li>
+<li><p><uicontrol>Apply</uicontrol> the properties and <uicontrol>Install</uicontrol> the
+canvas.</p></li></ol></p>
+<p>To set the label programmatically:<ol><li><p>Get the window from
+its builder.</p></li>
+<li><p>Send a <apiname>label:</apiname> message to the window, with
+the new label as argument.
+<codeblock otherprops="smalltalk expression">| win |
+win := (Editor2Example open) window.
+win <b>label:</b> 'Editor'.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.gui.window.setIcon"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set a window’s icon</title>
+<body><p><indexterm>window<indexterm>set icon</indexterm></indexterm>Under
+window managers that support iconified windows, you can assign an
+icon to replace the standard &Product; icon.<ol><li><p>Get the
+window from its builder.</p></li>
+<li><p>Send an <apiname>icon:</apiname> message to the window, with
+an icon as argument.
+<codeblock otherprops="smalltalk expression">| helpIcon win |
+helpIcon := Icon 
+	figure: ToolbarIconLibrary thought20x20 image 
+	shape: ToolbarIconLibrary thought20x20mask image.
+helpIcon cleanFigure.
+win := (Editor2Example open) window.
+win icon: helpIcon.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.gui.window.setColors"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set the color of a canvas</title>
+<body><p><indexterm>window<indexterm>set colors</indexterm></indexterm><b>Note:</b> For
+the OSF Motif look, widgets inherit the background color of the
+window until you make them opaque and apply a different color to their
+backgrounds.</p>
+<p>To set colors using the Painter:<ol><li><p>In the canvas for
+the window, make sure no widget is selected.</p></li>
+<li><p>Open the Color page in the GUI Painter Tool.</p></li>
+<li><p>Windows have four color zones: <uicontrol>Foreground</uicontrol>, <uicontrol>Background</uicontrol>, <uicontrol>Selection&#xA0;foreground</uicontrol>,
+and <uicontrol>Selection&#xA0;background</uicontrol>. By default,
+these are set to <uicontrol>none</uicontrol>, which means that the
+window inherits its colors (the window from the window manager).
+To change a color, select the desired color from the color chart
+and click on the zone you wish to define. To revert to <uicontrol>none</uicontrol>,
+click on the zone a second time. Use the slider controls to fine-adjust
+the color. Use the vertical slider to work with a color-cube model.
+Use the horizontal sliders to work with a hue-saturation-value model.</p></li>
+<li><p>To display the policy for the most recently active canvas
+or currently selected widget, toggle the <uicontrol>Read</uicontrol> button.
+The policy is displayed in the color zones at the bottom of the
+tool.</p></li>
+<li><p><uicontrol>Apply</uicontrol> the color properties, and <uicontrol>Install</uicontrol> the
+canvas.</p></li></ol></p>
+<p>You can change window background color programmatically for run-time
+control. Foreground and selected foreground and background colors
+are set by widgets.<ol><li><p>Get the window from its builder.</p></li>
+<li><p>Send a <apiname>background:</apiname> message to the window,
+with the color as argument.
+<codeblock otherprops="smalltalk expression">| win color |
+win := (Editor2Example open) window.
+ColorValue constantNames do: [ :colorName |
+		(Delay forMilliseconds: 200) wait.
+		color := ColorValue perform: colorName.
+		win <b>background:</b> color.
+		win display]</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Editor2-Example:Examples.Editor2Example open" 
+format="st" scope="external">Editor2-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.gui.window.initialSize"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set initial window size</title>
+<body><p><indexterm>window<indexterm>set initial size</indexterm></indexterm>To
+set the initial window size in the Painter:<ol><li><p>While editing
+the canvas, use the window manager to adjust the canvas to the preferred
+size.</p></li>
+<li><p>Make sure no widget is selected in the canvas. This selects
+the canvas itself.</p></li>
+<li><p>Select the <uicontrol>Layout&#xA0;&#x2192;&#xA0;Window&#xA0;&#x2192;&#xA0;Preferred&#xA0;Size</uicontrol> in
+the Canvas Tool menu bar to set the initial size of the window.</p></li>
+<li><p><uicontrol>Install</uicontrol> the canvas.</p></li></ol></p>
+<p>To set the initial window size programmatically:<ol><li><p>Build
+an interface up to the point of opening the window.</p></li>
+<li><p>Get the window from the interface builder.</p></li>
+<li><p>Ask the window to open with a specified size (extent).
+<codeblock otherprops="smalltalk expression">| bldr win |
+bldr := Editor2Example new allButOpenInterface: #windowSpec.
+win := bldr window.
+win <b>openWithExtent:</b> 500@220.</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Editor2-Example:Examples.Editor2Example open" 
+format="st" scope="external">Editor2-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.gui.window.constrainSize"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Constrain the window size</title>
+<body><p><indexterm>window<indexterm>constrain size</indexterm></indexterm>When
+the interface becomes unusable below a certain minimum size, or
+when larger than a certain maximum size, you can impose limits on
+the size.</p>
+<p>To set size constraints in the Painter:<ol><li><p>While editing
+the canvas, use the window manager to resize the canvas to its intended
+minimum size.</p></li>
+<li><p>Make sure no widget is selected in the canvas.</p></li>
+<li><p>To set the minimum size, select the <uicontrol>Layout&#xA0;&#x2192;&#xA0;Window&#xA0;&#x2192;&#xA0;Min&#xA0;Size</uicontrol>.</p></li>
+<li><p>To set the maximum size, select the <uicontrol>Layout&#xA0;&#x2192;&#xA0;Window&#xA0;&#x2192;&#xA0;Max&#xA0;Size</uicontrol>.</p></li>
+<li><p><uicontrol>Install</uicontrol> the canvas.</p></li></ol></p>
+<p>To clear contraints, select the <uicontrol>Layout&#xA0;&#x2192;&#xA0;Window&#xA0;&#x2192;&#xA0;Clear&#xA0;All</uicontrol> command
+in the canvas’s menu.</p>
+<p>To set size contraints programmatically:<ol><li><p>Get the window
+from its builder.</p></li>
+<li><p>To set the minimum size, send a <apiname>minimumSize:</apiname> message
+with an extent to the window.</p></li>
+<li><p>To set the minimum size, send a <apiname>minimumSize:</apiname> message
+with an extent to the window.
+<codeblock otherprops="smalltalk expression">| bldr win |
+bldr := Editor2Example new allButOpenInterface: #windowSpec.
+win := bldr window.
+win minimumSize: 100@100;
+		maximumSize: 500@300;
+		open.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.gui.window.fixedSize"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Make a window’s size fixed</title>
+<body><p><indexterm>window<indexterm>make size fixed</indexterm></indexterm>Some
+windows work best at a constant size. To make the size fixed:<ol><li><p>While
+editing the canvas, use the window manager to resize the canvas
+to its intended minimum size.</p></li>
+<li><p>Make sure no widget is selected in the canvas.</p></li>
+<li><p>To make this size fixed, select the <uicontrol>Layout&#xA0;&#x2192;&#xA0;Window&#xA0;&#x2192;&#xA0;Fixed&#xA0;Size</uicontrol>.</p></li>
+<li><p><uicontrol>Install</uicontrol> the canvas.</p></li></ol></p></body></topic>
+<topic id = "vw.help.gui.window.getDimensions"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get a window’s dimensions</title>
+<body><p><indexterm>window<indexterm>get dimensions</indexterm></indexterm><ol>
+<li><p>Get the window from its builder.</p></li>
+<li><p>Send messages to the window asking for any desired dimension, using
+the messages shown in the example:
+<codeblock otherprops="smalltalk expression">| win min max box width height |
+win := (Editor2Example open) window.
+min := win minimumSize.
+max := win maximumSize.
+box := win displayBox.
+width := box width.
+height := box height.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.gui.window.openPosition"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Set a window’s opening position</title>
+<body><p><indexterm>window<indexterm>set opening position</indexterm></indexterm><ol>
+<li><p>Build the window interface without opening it, by sending
+an <apiname>allButOpenInterface:</apiname> message to an instance
+of the application.</p></li>
+<li><p>Get the window from the interface builder.</p></li>
+<li><p>Send an <apiname>openIn:</apiname> message to the window with
+a rectangle specifying its origin and extent.
+<codeblock otherprops="smalltalk expression">| bldr win |
+bldr := Editor2Example new 
+		allButOpenInterface: #windowSpec.
+win := bldr window.
+win <b>openIn:</b> (50@50 extent: win minimumSize).</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.gui.window.changeSize"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Change window size</title>
+<body><p><indexterm>window<indexterm>change size</indexterm></indexterm><ol>
+<li><p>Get the window from its builder.</p></li>
+<li><p>Send a <apiname>displayBox:</apiname> message to the window
+with a rectangle specifying its size and location.
+<codeblock otherprops="smalltalk expression">| bldr win |
+bldr := Editor2Example open.
+win := bldr window.
+win displayBox: (100@100 extent: 400@220).</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.gui.window.moveWindow"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Move an open window</title>
+<body><p><indexterm>window<indexterm>move</indexterm></indexterm><ol>
+<li><p>Get the window from its builder.</p></li>
+<li><p>Send a <apiname>moveTo:</apiname> message to the window to
+reset its origin to a specified point, using screen coordinates.
+<codeblock otherprops="smalltalk expression">| win |
+win := (Editor2Example open) window.
+(Delay forSeconds: 1) wait.
+win <b>moveTo:</b> 300@50.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.gui.window.forceRefresh"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Refresh a window’s display</title>
+<body><p><indexterm>window<indexterm>refresh</indexterm></indexterm>Under
+normal conditions, a window redisplays its contents whenever those
+contents change or whenever an overlapping window is moved. Sometimes
+you need to redisplay a window programmatically, as when you want
+to display an intermediate state of the window before a drawing
+operation has been completed.<ol><li><p>Get the window from its
+builder.</p></li>
+<li><p>Send a <apiname>display</apiname> message to the window.
+<codeblock otherprops="smalltalk expression">| win |
+win := (Editor2Example open) window.
+5 timesRepeat: [
+		(Delay forMilliseconds: 400) wait.
+		win <b>display</b>].</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Editor2-Example:Examples.Editor2Example open" 
+format="st" scope="external">Editor2-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.gui.window.getActiveWindow"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get the active window</title>
+<body><p><indexterm>window<indexterm>get active</indexterm></indexterm>The <apiname>ScheduledControllers</apiname> object
+keeps track of all controllers, including the active controller.
+You can ask the active controller for its associated window.</p>
+<p>The active window is the top component of the active controller’s view.
+<codeblock otherprops="smalltalk expression">| win |
+win := ScheduledControllers 
+		activeController view topComponent.
+win moveTo: 20@20.</codeblock></p></body></topic>
+<topic id = "vw.help.gui.window.getAtLocation"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Get the window at a location</title>
+<body><p><indexterm>window<indexterm>get at location</indexterm></indexterm>When
+your application performs an operation on a window that is pointed
+to by the user (using the mouse), you can access the window.</p>
+<p>Get the window at a point by sending a <apiname>windowAt:</apiname> message
+to the default <apiname>Screen</apiname> with the point as argument.)
+<codeblock otherprops="smalltalk expression">| sensor pt window |
+sensor := ScheduledControllers activeController sensor.
+Cursor bull showWhile: [sensor waitButton].
+pt := sensor globalCursorPoint.
+window := <b>Screen default windowAt: pt</b>.
+window component flash.</codeblock></p></body></topic>
+<topic id = "vw.help.gui.window.close"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Close a window</title>
+<body><p><indexterm>window<indexterm>close</indexterm></indexterm>When
+an application model is running one or more windows, you can close
+it (or all of them at once, if there is more than one) by sending <apiname>closeRequest</apiname> to
+the application. 
+<codeblock otherprops="smalltalk expression">| editor |
+editor := Editor2Example new.
+editor openInterface: #windowSpec.
+(Delay forSeconds: 1) wait.
+editor <b>closeRequest</b>.</codeblock></p>
+<p>When an application window has been asked to close, it first
+sends a <apiname>changeRequest</apiname> message to its application
+model. If the model answers <codeph>false</codeph>, the window won’t
+close; if it answers <codeph>true</codeph>, the window proceeds to
+close itself. This gives the model a chance to take any cleanup actions
+before the window closes.</p>
+<p>To specify cleanup actions, implement a <apiname>changeRequest</apiname> method
+in your application model which answers <codeph>true</codeph> when
+the window can close and <codeph>false</codeph> otherwise.
+<codeblock otherprops="smalltalk method">changeRequest
+		^super changeRequest
+			ifFalse: [false]
+			ifTrue: [(self modified or: [self magnifiedBitView controller updateRequest not])
+				ifTrue:
+					[Dialog confirm: 'The image has been altered, but not installed.
+Do you wish to discard the changes?']
+				ifFalse: [true]]</codeblock></p></body></topic>
+<topic id = "vw.help.gui.window.expandCollapse"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Expand/collapse a window</title>
+<body><p><indexterm>window<indexterm>expand</indexterm></indexterm><indexterm>window<indexterm>collapse</indexterm></indexterm>Window
+managers typically provide a means of collapsing (iconifying) a
+window and expanding it back to its normal state. You can also control
+that behavior programmatically. <ol><li><p>Get the window from its
+builder.</p></li>
+<li><p>To minimize the window, send it a <apiname>collapse</apiname> message
+.</p></li>
+<li><p>To restore the window, send it an <apiname>expand</apiname> message.
+<codeblock otherprops="smalltalk expression">| win |
+		win := (Editor2Example open) window.
+		win display.
+		(Delay forSeconds: 1) wait.
+		win <b>collapse</b>.
+		(Delay forSeconds: 1) wait.
+		win <b>expand</b>.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.gui.window.hideShow"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Hide/show a window</title>
+<body><p><indexterm>window<indexterm>hide</indexterm></indexterm><indexterm>window<indexterm>show</indexterm></indexterm>Because
+a window requires extensive resources, it can be slow to open. When
+your application needs to open and close a window repeatedly, it
+may be better to hide, or <apiname>unmap</apiname> it, and then simply <apiname>map</apiname> it
+again to redisplay it.<ol><li><p>Get the window from its builder.</p></li>
+<li><p>To hide the window, send it an <apiname>unmap</apiname> message.</p></li>
+<li><p>To show the window again, send it a <apiname>map</apiname> message.
+<codeblock otherprops="smalltalk expression">| win |
+win := (Editor2Example open) window.
+win display.
+(Delay forSeconds: 1) wait.
+win <b>unmap</b>.
+(Delay forSeconds: 1) wait.
+win <b>map</b>.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.gui.window.makeSlave"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Make a window a slave</title>
+<body><p><indexterm>window<indexterm>make slave</indexterm></indexterm>In
+a multiwindow application, it is often useful to close all secondary windows
+when the main window closes. In this situation, the main window
+is called the master window and the secondary windows are called
+slave windows.<ol><li><p>Get the master window from its builder.</p></li>
+<li><p>Send the master window an <apiname>application:</apiname> message
+with an application as argument (usually itself), to tell the window
+which application model to inform of its events.</p></li>
+<li><p>Send the master window a <apiname>beMaster</apiname> to make
+it master.</p></li>
+<li><p>Get each slave window from its builder.</p></li>
+<li><p>Send each slave window an <apiname>application:</apiname> message
+with an application as argument, to tell the window which application model
+will relay events from the master window.</p></li>
+<li><p>Send each slave window a <apiname>beSlave</apiname> message
+to make it a slave.
+<codeblock otherprops="smalltalk expression">| app masterWin slaveWin |
+app := Editor1Example new.
+masterWin := (app openInterface) window.
+masterWin 
+		label: 'Master';
+		application: app;
+		<b>beMaster</b>.
+slaveWin := (Editor2Example open) window.
+slaveWin 
+		label: 'Slave';
+		application: app;
+		<b>beSlave</b>.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.gui.window.makeEqualPartners"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Make windows equal partners</title>
+<body><p><indexterm>window<indexterm>make equal partner</indexterm></indexterm>Equal
+partner windows all close when any one of them closes.<ol><li><p>Get
+each window from its builder.</p></li>
+<li><p>Send an <apiname>application:</apiname> message, with an application
+as argument, to each window telling it which application will relay
+messages.</p></li>
+<li><p>Send a <apiname>bePartner</apiname> message to each window.
+<codeblock otherprops="smalltalk expression">| app win1 win2|
+app:= Editor1Example new.
+win1 := (app openInterface) window.
+win1 
+		label: 'Partner 1';
+		application: app;
+		<b>bePartner</b>.
+win2 := (Editor2Example open) window.
+win2 
+		label: 'Partner 2';
+		application: app;
+		<b>bePartner</b>.</codeblock></p></li></ol></p></body></topic>
+<topic id = "vw.help.gui.window.specifyEvents.toSend"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Specify events to sent by windows</title>
+<body><p><indexterm>window<indexterm>set events sent</indexterm></indexterm><indexterm>events<indexterm>sent
+by window</indexterm></indexterm>By default, master and partner
+windows broadcast <codeph>#close</codeph>, <codeph>#collapse</codeph>, and <codeph>#expand</codeph> events.
+You can remove any of those events and/or add <codeph>#bounds</codeph>, <codeph>#enter</codeph>, <codeph>#exit</codeph>, 
+<codeph>#hibernate</codeph>, <codeph>#reopen</codeph>,
+and <codeph>#release</codeph> events.</p>
+<p>Send a <apiname>sendWindowEvents:</apiname> message to a master
+or partner window, with an array of event symbols to send.
+<codeblock otherprops="smalltalk expression">| app masterWin slaveWin |
+app := Editor1Example new.
+masterWin := (app openInterface) window.
+masterWin 
+		label: 'Master';
+		application: app;
+		beMaster;
+		<b>sendWindowEvents:</b> #( #close #collapse 
+			#expand #hibernate #reopen).
+slaveWin := (Editor2Example open) window.
+slaveWin 
+		label: 'Slave';
+		application: app;
+		beSlave.</codeblock></p></body></topic>
+<topic id = "vw.help.gui.window.specifyEvents.toReceive"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Specify events to be received by windows</title>
+<body><p><indexterm>window<indexterm>set events received</indexterm></indexterm><indexterm>events<indexterm>received
+by window</indexterm></indexterm>By default, slave and partner windows
+respond to <codeph>#close</codeph>, <codeph>#collapse</codeph>, and <codeph>#expand</codeph> events.
+You can remove any of those events and/or add <codeph>#bounds</codeph>, <codeph>#enter</codeph>, 
+<codeph>#exit</codeph>, <codeph>#hibernate</codeph>, <codeph>#reopen</codeph>,
+and <codeph>#release</codeph> events.</p>
+<p>Send a <apiname>receiveWindowEvents:</apiname> message to a slave
+or partner window, with an array of event symbols to receive.</p>
+
+<codeblock otherprops="smalltalk expression">| app masterWin slaveWin |
+app := Editor1Example new.
+masterWin := (app openInterface) window.
+masterWin 
+		label: 'Master';
+		application: app;
+		beMaster.
+slaveWin := (Editor2Example open) window.
+slaveWin 
+		label: 'Slave';
+		application: app;
+		beSlave;
+		<b>receiveWindowEvents:</b> #( #close).</codeblock></body></topic></topic></dita>

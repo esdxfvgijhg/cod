@@ -1,0 +1,6 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classSimpleRefCount.html" title="SimpleRefCount" alt="" coords="5,93,124,120"/>
+<area shape="rect" id="node2" href="$classns3_1_1lorawan_1_1CorrelatedShadowingPropagationLossModel_1_1ShadowingMap.html" title="ns3::lorawan::Correlated\lShadowingPropagationLossModel\l::ShadowingMap" alt="" coords="172,5,391,61"/>
+<area shape="rect" id="node3" href="$classns3_1_1lorawan_1_1GatewayLoraPhy_1_1ReceptionPath.html" title="ns3::lorawan::GatewayLora\lPhy::ReceptionPath" alt="" coords="191,86,372,127"/>
+<area shape="rect" id="node4" href="$classns3_1_1lorawan_1_1LoraInterferenceHelper_1_1Event.html" title="ns3::lorawan::LoraInterference\lHelper::Event" alt="" coords="182,151,381,193"/>
+</map>

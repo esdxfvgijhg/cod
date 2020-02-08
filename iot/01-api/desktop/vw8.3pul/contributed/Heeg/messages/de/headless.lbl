@@ -1,0 +1,1 @@
+encoding: #UTF_8catalog: headlessheadlessWarning = 'ACHTUNG: Für diesen Objektspeicher wurde der Modus mit Oberfläche aktiviert. der Objektspeicher könnte instabil sein. Es wird empfohlen, den Objektspeicher nicht zu speichern und ihn nur zum Debuggen zu verwenden. Siehe HeadlessImage>>becomeHeadfull'WARNING = 'ACHTUNG'

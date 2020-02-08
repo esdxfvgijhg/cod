@@ -1,0 +1,5 @@
+<map id="ns3::lorawan::LoraTxCurrentModel" name="ns3::lorawan::LoraTxCurrentModel">
+<area shape="rect" id="node3" href="$classns3_1_1lorawan_1_1ConstantLoraTxCurrentModel.html" title="{ns3::lorawan::ConstantLora\lTxCurrentModel\n||+ ConstantLoraTxCurrentModel()\l+ ~ConstantLoraTxCurrentModel()\l+ SetTxCurrent()\l+ GetTxCurrent()\l+ CalcTxCurrent()\l+ GetTypeId()\l}" alt="" coords="5,344,227,509"/>
+<area shape="rect" id="node4" href="$classns3_1_1lorawan_1_1LinearLoraTxCurrentModel.html" title="{ns3::lorawan::LinearLora\lTxCurrentModel\n||+ LinearLoraTxCurrentModel()\l+ ~LinearLoraTxCurrentModel()\l+ SetEta()\l+ SetVoltage()\l+ SetStandbyCurrent()\l+ GetEta()\l+ GetVoltage()\l+ GetStandbyCurrent()\l+ CalcTxCurrent()\l+ GetTypeId()\l}" alt="" coords="251,315,453,539"/>
+<area shape="rect" id="node2" href="$classObject.html" title="{Object\n||}" alt="" coords="203,5,263,83"/>
+</map>

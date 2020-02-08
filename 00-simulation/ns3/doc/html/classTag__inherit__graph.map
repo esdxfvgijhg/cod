@@ -1,0 +1,3 @@
+<map id="Tag" name="Tag">
+<area shape="rect" id="node2" href="$classns3_1_1lorawan_1_1LoraTag.html" title="{ns3::lorawan::LoraTag\n||+ GetInstanceTypeId()\l+ LoraTag()\l+ ~LoraTag()\l+ Serialize()\l+ Deserialize()\l+ GetSerializedSize()\l+ Print()\l+ GetSpreadingFactor()\l+ GetDestroyedBy()\l+ GetReceivePower()\l+ SetSpreadingFactor()\l+ SetDestroyedBy()\l+ SetReceivePower()\l+ SetFrequency()\l+ GetFrequency()\l+ GetDataRate()\l+ SetDataRate()\l+ GetTypeId()\l}" alt="" coords="5,131,164,457"/>
+</map>

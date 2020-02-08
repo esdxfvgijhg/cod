@@ -1,0 +1,187 @@
+ctmc
+const  double LAMBDA_LM1=0.2; 
+const  double LAMBDA_LM2=0.2;
+const  double LAMBDA_GM=0.05;
+const  double LAMBDA_P1=0.1;
+const  double LAMBDA_P2=0.125;
+const  double MU = 1;
+
+module P1
+P1:[0..1] init 1;
+
+[finrep1P2UP]    (P1=0) & (agent=2) -> MU:     (P1'= 1); 
+[finrep1P2DOWN]  (P1=0) & (agent=2) -> MU:     (P1'= 1); 
+[finrep1LM1UP]   (P1=0) & (agent=2) -> MU:     (P1'= 1); 
+[finrep1LM1DOWN] (P1=0) & (agent=2) -> MU:     (P1'= 1);
+[finrep1LM2UP]   (P1=0) & (agent=2) -> MU:     (P1'= 1); 
+[finrep1LM2DOWN] (P1=0) & (agent=2) -> MU:     (P1'= 1);
+[finrep1GMUP]    (P1=0) & (agent=2) -> MU:     (P1'= 1); 
+[finrep1GMDOWN]  (P1=0) & (agent=2) -> MU:     (P1'= 1);
+
+[panneP1rep0]   (P1=1)              -> LAMBDA_P1: (P1'= 0);
+[panneP1rep1]   (P1=1)              -> LAMBDA_P1: (P1'= 0);
+[panneP1rep3]   (P1=1)              -> LAMBDA_P1: (P1'= 0);
+[panneP1rep4]   (P1=1)              -> LAMBDA_P1: (P1'= 0);
+[panneP1rep5]   (P1=1)              -> LAMBDA_P1: (P1'= 0);
+endmodule
+
+module P2
+P2:[0..1] init 1;
+
+[finrep2P1UP]    (P2=0) & (agent=3) -> MU:     (P2'= 1); 
+[finrep2P1DOWN]  (P2=0) & (agent=3) -> MU:     (P2'= 1); 
+[finrep2LM1UP]   (P2=0) & (agent=3) -> MU:     (P2'= 1); 
+[finrep2LM1DOWN] (P2=0) & (agent=3) -> MU:     (P2'= 1);
+[finrep2LM2UP]   (P2=0) & (agent=3) -> MU:     (P2'= 1); 
+[finrep2LM2DOWN] (P2=0) & (agent=3) -> MU:     (P2'= 1);
+[finrep2GMUP]    (P2=0) & (agent=3) -> MU:     (P2'= 1); 
+[finrep2GMDOWN]  (P2=0) & (agent=3) -> MU:     (P2'= 1);
+
+[panneP2rep0]   (P2=1)              -> LAMBDA_P2: (P2'= 0);
+[panneP2rep1]   (P2=1)              -> LAMBDA_P2: (P2'= 0);
+[panneP2rep2]   (P2=1)              -> LAMBDA_P2: (P2'= 0);
+[panneP2rep4]   (P2=1)              -> LAMBDA_P2: (P2'= 0);
+[panneP2rep5]   (P2=1)              -> LAMBDA_P2: (P2'= 0);
+endmodule
+
+module LM1
+LM1:[0..1] init 1;
+
+[finrepLM1P2UP]    (LM1=0) & (agent=4) -> MU:     (LM1'= 1); 
+[finrepLM1P2DOWN]  (LM1=0) & (agent=4) -> MU:     (LM1'= 1); 
+[finrepLM1P1UP]    (LM1=0) & (agent=4) -> MU:     (LM1'= 1); 
+[finrepLM1P1DOWN]  (LM1=0) & (agent=4) -> MU:     (LM1'= 1);
+[finrepLM1LM2UP]   (LM1=0) & (agent=4) -> MU:     (LM1'= 1); 
+[finrepLM1LM2DOWN] (LM1=0) & (agent=4) -> MU:     (LM1'= 1);
+[finrepLM1GMUP]    (LM1=0) & (agent=4) -> MU:     (LM1'= 1); 
+[finrepLM1GMDOWN]  (LM1=0) & (agent=4) -> MU:     (LM1'= 1);
+
+[panneLM1rep0]   (LM1=1)              -> LAMBDA_LM1: (LM1'= 0);
+[panneLM1rep1]   (LM1=1)              -> LAMBDA_LM1: (LM1'= 0);
+[panneLM1rep2]   (LM1=1)              -> LAMBDA_LM1: (LM1'= 0);
+[panneLM1rep3]   (LM1=1)              -> LAMBDA_LM1: (LM1'= 0);
+[panneLM1rep5]   (LM1=1)              -> LAMBDA_LM1: (LM1'= 0);
+endmodule
+
+module LM2
+LM2:[0..1] init 1;
+
+[finrepLM2P2UP]    (LM2=0) & (agent=5) -> MU:     (LM2'= 1); 
+[finrepLM2P2DOWN]  (LM2=0) & (agent=5) -> MU:     (LM2'= 1); 
+[finrepLM2P1UP]    (LM2=0) & (agent=5) -> MU:     (LM2'= 1); 
+[finrepLM2P1DOWN]  (LM2=0) & (agent=5) -> MU:     (LM2'= 1);
+[finrepLM2LM1UP]   (LM2=0) & (agent=5) -> MU:     (LM2'= 1); 
+[finrepLM2LM1DOWN] (LM2=0) & (agent=5) -> MU:     (LM2'= 1);
+[finrepLM2GMUP]    (LM2=0) & (agent=5) -> MU:     (LM2'= 1); 
+[finrepLM2GMDOWN]  (LM2=0) & (agent=5) -> MU:     (LM2'= 1);
+
+[panneLM2rep0]   (LM2=1)              -> LAMBDA_LM2: (LM2'= 0);
+[panneLM2rep1]   (LM2=1)              -> LAMBDA_LM2: (LM2'= 0);
+[panneLM2rep2]   (LM2=1)              -> LAMBDA_LM2: (LM2'= 0);
+[panneLM2rep3]   (LM2=1)              -> LAMBDA_LM2: (LM2'= 0);
+[panneLM2rep4]   (LM2=1)              -> LAMBDA_LM2: (LM2'= 0);
+endmodule
+
+module GM
+GM:[0..1] init 1;
+
+[finrepGMP2UP]    (GM=0) & (agent=1) -> MU:     (GM'= 1); 
+[finrepGMP2DOWN]  (GM=0) & (agent=1) -> MU:     (GM'= 1); 
+[finrepGMLM1UP]   (GM=0) & (agent=1) -> MU:     (GM'= 1); 
+[finrepGMLM1DOWN] (GM=0) & (agent=1) -> MU:     (GM'= 1);
+[finrepGMLM2UP]   (GM=0) & (agent=1) -> MU:     (GM'= 1); 
+[finrepGMLM2DOWN] (GM=0) & (agent=1) -> MU:     (GM'= 1);
+[finrepGMP1UP]    (GM=0) & (agent=1) -> MU:     (GM'= 1); 
+[finrepGMP1DOWN]  (GM=0) & (agent=1) -> MU:     (GM'= 1);
+
+[panneGMrep0]   (GM=1)              -> LAMBDA_GM: (GM'= 0);
+[panneGMrep2]   (GM=1)              -> LAMBDA_GM: (GM'= 0);
+[panneGMrep3]   (GM=1)              -> LAMBDA_GM: (GM'= 0);
+[panneGMrep4]   (GM=1)              -> LAMBDA_GM: (GM'= 0);
+[panneGMrep5]   (GM=1)              -> LAMBDA_GM: (GM'= 0);
+endmodule
+
+module reparateur
+agent:[0..5] init 0;
+//P1 ///////////////////////////////////////
+[finrep1P2UP]    (P2=1)    -> 1: (agent'= 0);
+[finrep1P2DOWN]  (P2=0)    -> 1: (agent'= 3);
+[finrep1LM1UP]   (LM1=1)   -> 1: (agent'= 0);
+[finrep1LM1DOWN] (LM1=0)   -> 1: (agent'= 4);
+[finrep1LM2UP]   (LM2=1)   -> 1: (agent'= 0);
+[finrep1LM2DOWN] (LM2=0)   -> 1: (agent'= 5);
+[finrep1GMUP]    (GM=1)    -> 1: (agent'= 0);
+[finrep1GMDOWN]  (GM=0)    -> 1: (agent'= 1);
+
+[panneP1rep0]   (agent=0) -> 1: (agent'= 2);
+[panneP1rep1]   (agent=1) -> 1: (agent'= 1);
+[panneP1rep3]   (agent=3) -> 1: (agent'= 2);
+[panneP1rep4]   (agent=4) -> 1: (agent'= 2);
+[panneP1rep5]   (agent=5) -> 1: (agent'= 2);
+//P2 ////////////////////////////////////////
+[finrep2P1UP]    (P1=1)    -> 1: (agent'= 0);
+[finrep2P1DOWN]  (P1=0)    -> 1: (agent'= 2);
+[finrep2LM1UP]   (LM1=1)   -> 1: (agent'= 0);
+[finrep2LM1DOWN] (LM1=0)   -> 1: (agent'= 4);
+[finrep2LM2UP]   (LM2=1)   -> 1: (agent'= 0);
+[finrep2LM2DOWN] (LM2=0)   -> 1: (agent'= 5);
+[finrep2GMUP]    (GM=1)    -> 1: (agent'= 0);
+[finrep2GMDOWN]  (GM=0)    -> 1: (agent'= 1);
+
+[panneP2rep0]   (agent=0) -> 1: (agent'= 3);
+[panneP2rep1]   (agent=1) -> 1: (agent'= 1);
+[panneP2rep2]   (agent=2) -> 1: (agent'= 2);
+[panneP2rep4]   (agent=4) -> 1: (agent'= 3);
+[panneP2rep5]   (agent=5) -> 1: (agent'= 3);
+//LM1 ///////////////////////////////////////
+[finrepLM1P2UP]    (P2=1)    -> 1: (agent'= 0);
+[finrepLM1P2DOWN]  (P2=0)    -> 1: (agent'= 3);
+[finrepLM1P1UP]    (P1=1)   -> 1: (agent'= 0);
+[finrepLM1P1DOWN]  (P1=0)   -> 1: (agent'= 2);
+[finrepLM1LM2UP]   (LM2=1)   -> 1: (agent'= 0);
+[finrepLM1LM2DOWN] (LM2=0)   -> 1: (agent'= 5);
+[finrepLM1GMUP]    (GM=1)    -> 1: (agent'= 0);
+[finrepLM1GMDOWN]  (GM=0)    -> 1: (agent'= 1);
+
+[panneLM1rep0]   (agent=0) -> 1: (agent'= 4);
+[panneLM1rep1]   (agent=1) -> 1: (agent'= 1);
+[panneLM1rep2]   (agent=2) -> 1: (agent'= 2);
+[panneLM1rep3]   (agent=3) -> 1: (agent'= 3);
+[panneLM1rep5]   (agent=5) -> 1: (agent'= 4);
+//LM2 ////////////////////////////////////////
+[finrepLM2P1UP]    (P1=1)   -> 1: (agent'= 0);
+[finrepLM2P1DOWN]  (P1=0)   -> 1: (agent'= 2);
+[finrepLM2P2UP]    (P2=1)    -> 1: (agent'= 0);
+[finrepLM2P2DOWN]  (P2=0)    -> 1: (agent'= 3);
+[finrepLM2LM1UP]   (LM1=1)   -> 1: (agent'= 0);
+[finrepLM2LM1DOWN] (LM1=0)   -> 1: (agent'= 4);
+[finrepLM2GMUP]    (GM=1)    -> 1: (agent'= 0);
+[finrepLM2GMDOWN]  (GM=0)    -> 1: (agent'= 1);
+
+[panneLM2rep0]   (agent=0) -> 1: (agent'= 5);
+[panneLM2rep1]   (agent=1) -> 1: (agent'= 1);
+[panneLM2rep2]   (agent=2) -> 1: (agent'= 2);
+[panneLM2rep3]   (agent=3) -> 1: (agent'= 3);
+[panneLM2rep4]   (agent=4) -> 1: (agent'= 4);
+//GM ////////////////////////////////////////
+[finrepGMP1UP]    (P1=1)    -> 1: (agent'= 0);
+[finrepGMP1DOWN]  (P1=0)    -> 1: (agent'= 1);
+[finrepGMP2UP]    (P2=1)    -> 1: (agent'= 0);
+[finrepGMP2DOWN]  (P2=0)    -> 1: (agent'= 3);
+[finrepGMLM1UP]   (LM1=1)   -> 1: (agent'= 0);
+[finrepGMLM1DOWN] (LM1=0)   -> 1: (agent'= 4);
+[finrepGMLM2UP]   (LM2=1)   -> 1: (agent'= 0);
+[finrepGMLM2DOWN] (LM2=0)   -> 1: (agent'= 5);
+
+[panneGMrep0]   (agent=0) -> 1: (agent'= 1);
+[panneGMrep2]   (agent=2) -> 1: (agent'= 1);
+[panneGMrep3]   (agent=3) -> 1: (agent'= 1);
+[panneGMrep4]   (agent=4) -> 1: (agent'= 1);
+[panneGMrep5]   (agent=5) -> 1: (agent'= 1);
+
+endmodule
+
+label  "UP"= P1*(LM1+GM)+P2*(LM2+GM)>=1;
+label  "DOWN"= P1*(LM1+GM)+P2*(LM2+GM)=0;
+
+

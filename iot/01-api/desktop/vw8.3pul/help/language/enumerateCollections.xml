@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.stLang.enumerate"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Enumerating a Collection</title>
+<body><p>All subclasses of <apiname>Collection</apiname> inherit 
+behavior to enumerate their elements (e.g., <apiname>do:</apiname>), 
+and some add more specialized iterative behavior as well (e.g., 
+<apiname>keysDo:</apiname> in class <apiname>Dictionary</apiname>).</p></body>
+<topic id = "vw.help.stLang.enumerate.eachDo"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Enumerate each element of a collection (do:)</title>
+<body><p><indexterm>collections<indexterm>operate on elements</indexterm></indexterm><indexterm>collections<indexterm>enumerate</indexterm></indexterm><indexterm>enumerate
+a collection</indexterm>Send a <apiname>do:</apiname> message to a
+collection, with a block describing the action to perform on each
+element.
+<codeblock otherprops="smalltalk expression">| colors |
+colors := ColorValue constantNames.
+colors <b>do:</b> [:colorName |
+			Transcript show: colorName printString; cr]</codeblock></p></body></topic>
+<topic id = "vw.help.stLang.enumerate.detect"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Detect the first element that meets a test (detect:)</title>
+<body><p><indexterm>collectons<indexterm>detect elements</indexterm></indexterm>Send
+a <apiname>detect:</apiname> message to a collection with a block
+describing the detection criterion.
+<codeblock otherprops="smalltalk expression">| colors mColor |
+colors := ColorValue constantNames.
+mColor := colors <b>detect:</b> [:colorName |
+			colorName first = $m].
+Transcript show: mColor printString; cr.</codeblock></p></body></topic>
+<topic id = "vw.help.stLang.enumerate.select"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Select all elements that meet a test (select:)</title>
+<body><p><indexterm>collections<indexterm>test elements</indexterm></indexterm>Send
+a <apiname>select:</apiname> message to a collection with a block
+describing the selection criterion.
+<codeblock otherprops="smalltalk expression">| colors dColors |
+colors := ColorValue constantNames.
+dColors := colors <b>select:</b> [:colorName |
+			colorName first = $d].
+dColors do: [:dColor |
+		Transcript show: dColor printString; cr].</codeblock></p>
+<p><indexterm>collections<indexterm>select</indexterm><indexterm>reject</indexterm></indexterm>Send
+a <apiname>reject:</apiname> message to a collection with a block
+describing the rejection criterion.
+<codeblock otherprops="smalltalk expression">| colors nonDColors |
+colors := ColorValue constantNames.
+nonDColors := colors <b>reject:</b> [:colorName |
+			colorName first = $d].
+nonDColors do: [:nonDColor |
+			Transcript show: nonDColor printString; cr].</codeblock></p></body></topic>
+<topic id = "vw.help.stLang.enumerate.collect"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Operate on a collection and collect the results (collect:)</title>
+<body><p><indexterm>collections<indexterm>collect elements</indexterm></indexterm>Send
+a <apiname>collect:</apiname> message to a collection with a block
+describing the operation to perform on each element. The result
+is a collection, which generally should be assigned to a variable
+for future use.
+<codeblock otherprops="smalltalk expression">| colors colorsAsStrings string |
+colors := ColorValue constantNames.
+colorsAsStrings := colors <b>collect:</b> [:colorName |
+			string := colorName asString.
+			string at: 1 put: (string first asUppercase).
+			string].
+colorsAsStrings do: [:color |
+			Transcript show: color; cr].</codeblock></p></body>
+</topic></topic></dita>

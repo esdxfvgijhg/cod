@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.widgets.sliders"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Sliders</title>
+<topic id = "vw.help.widgets.sliders.addToCanvas"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Add a slider to a canvas</title>
+<body><p><indexterm>GUI development:add slider</indexterm><indexterm>slider
+widget:add to canvas</indexterm><ol><li><p>Add a slider widget to
+the canvas, leaving it selected.</p></li>
+<li><p>In the GUI Painter Tool, fill in the slider’s <uicontrol>Aspect</uicontrol> property
+with the name of the method (<apiname>destination</apiname>) that
+will supply a value model for the slider.</p></li>
+<li><p>Set the slider’s orientation, to either <uicontrol>Vertical</uicontrol> or <uicontrol>Horizontal</uicontrol>,
+on the <uicontrol>Details</uicontrol> page.</p></li>
+<li><p>Optionally change the <uicontrol>Start</uicontrol> (0), <uicontrol>Stop</uicontrol> (4000),
+and <uicontrol>Step</uicontrol> (10) properties, which control the
+endpoints of the range and the increment by which the marker will
+move. The default <uicontrol>Start</uicontrol> is <codeph>0</codeph> and
+the default <uicontrol>Stop</uicontrol> is <codeph>1</codeph>. The
+default <uicontrol>Step</uicontrol> is <codeph>nil</codeph>, giving
+the effect of continuous marker motion.</p></li>
+<li><p><uicontrol>Apply</uicontrol> the properties and <uicontrol>Install</uicontrol> the
+canvas.</p></li>
+<li><p>Use the canvas’s <uicontrol>define</uicontrol> command to
+create an instance variable to hold the slider’s value model (<codeph>destination</codeph>),
+and to create a corresponding access method.</p></li>
+<li><p>Create an <codeph>initialize</codeph> method which assigns
+the variable with a value holder whose initial value is the current
+year.
+<codeblock otherprops="smalltalk method">initialize
+		"Destination"
+		destination := Date today year asValue.
+		"Current year"
+		currentYear := Date today year asValue.
+		"Trip meter"
+		tripRange := RangeAdaptor
+			on: currentYear
+			stop: 4000
+			grid: 1.</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Slider1-Example:Examples.Slider1Example open" 
+format="st" scope="external">Slider1-Example</xref> (the <uicontrol>Destination</uicontrol> slider)</p></body></topic>
+<topic id = "vw.help.widgets.sliders.connectToInput"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Connect a slider to an input field</title>
+<body><p><indexterm>resizer widget:connect to input</indexterm>A
+slider provides only approximate values. Frequently, an input field
+is used to display or accept an exact value. <ol><li><p>Add a field
+to the canvas, leaving it selected.</p></li>
+<li><p>In the GUI Painter Tool, fill in the field’s <uicontrol>Aspect</uicontrol> property
+with the same name that the slider uses for its <uicontrol>Aspect</uicontrol> (<codeph>destination</codeph>).</p></li>
+<li><p>In the field’s <uicontrol>Type</uicontrol> property, select <uicontrol>Number</uicontrol>.</p></li>
+<li><p><uicontrol>Apply</uicontrol> the properties and <uicontrol>Install</uicontrol> the
+canvas.</p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Slider1-Example:Examples.Slider1Example open" 
+format="st" scope="external">Slider1-Example</xref> (the <codeph>Destination</codeph> slider
+and field)</p></body></topic>
+<topic id = "vw.help.widgets.sliders.nonNumValue"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Display a transformed value in the field</title>
+<body><p><indexterm>slider widget<indexterm>transform data</indexterm></indexterm>A
+slider always manipulates a numeric value, but you can make it simulate
+a nonnumeric value (such as months in the year) by using a field
+to display a transformed value. <ol><li><p>In the field’s <uicontrol>Aspect</uicontrol> property,
+enter a different method name than the slider’s <uicontrol>Aspect</uicontrol> (in
+the example, the slider’s <uicontrol>Aspect</uicontrol> is <codeph>dateRange</codeph> while
+the field’s <uicontrol>Aspect</uicontrol> is <codeph>month</codeph>).</p></li>
+<li><p>In the field’s <uicontrol>Type</uicontrol> property, select
+the type that corresponds to the transformed value (in the example,
+a month name will be displayed, so we use a <apiname>String</apiname> type
+field).</p></li>
+<li><p>Use the canvas’ <uicontrol>define</uicontrol> command to
+create the field’s instance variable (<codeph>month</codeph>) and
+accessing method (<codeph>month</codeph>).</p></li>
+<li><p>In a method in the application model (typically <codeph>initialize</codeph>),
+initialize the field’s variable.</p></li>
+<li><p>In the <codeph>initialize</codeph> method, arrange for a
+change message (<codeph>changedDate</codeph>) to be sent to the
+application model when the slider’s value changes.
+<codeblock otherprops="smalltalk method">initialize
+		month :=(Date nameOfMonth: 1) asValue.
+		year := 1900 asValue.
+		dateRange := (0@1) asValue.
+		dateRange onChangeSend: #changedDate to: self.</codeblock></p></li>
+<li><p>Create the change method (<codeph>changedDate</codeph>) in
+the application model. This method is responsible for changing the
+field’s value based on the slider’s new value.
+<codeblock otherprops="smalltalk method">changedDate
+		"Convert the y-axis value to a month."
+		| y x |
+		y := self dateRange value y.
+		y := (12 - (y * 12) asInteger) max: 1.
+		self month value: (Date nameOfMonth: y).
+		"Convert the x-axis value to a year."
+		x := self dateRange value x.
+		x := 1900 + (x * 100) asInteger.									"(100 years)"
+		self year value: x.</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Slider2-Example:Examples.Slider2Example open" 
+format="st" scope="external">Slider2-Example</xref> (the <uicontrol>Month</uicontrol> field)</p></body></topic>
+<topic id = "vw.help.widgets.sliders.changeRange"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Change a slider’s range dynamically</title>
+<body><p><indexterm>slider widget<indexterm>change range</indexterm></indexterm>When
+the slider’s range is unchanging, you can use the slider’s <uicontrol>Start</uicontrol>, <uicontrol>Stop</uicontrol>,
+and <uicontrol>Step</uicontrol> properties to set the range and
+the step value.<ol><li><p>In a method in the application model (typically
+in an <codeph>initialize</codeph> method), initialize the slider’s
+aspect variable with a <apiname>RangeAdaptor</apiname> by sending
+the instance creation message (<apiname>on:start:stop:grid:</apiname>). The
+first argument (<codeph>currentYear</codeph>) is a value holder
+containing the number that the slider manipulates. The <codeph>grid</codeph> argument
+is the step value.
+<codeblock otherprops="smalltalk method">initialize
+		"Destination"
+		destination := Date today year asValue.
+		"Current year"
+		currentYear := Date today year asValue.
+		"Trip meter"
+		tripRange := RangeAdaptor
+			on: currentYear
+			start: 0
+			stop: 4000
+			grid: 1.</codeblock></p></li>
+<li><p>Whenever the range or step must change, send a <apiname>rangeStart:</apiname>, <apiname>rangeStop:</apiname>,
+or <apiname>grid:</apiname> message to the adaptor. (In the example,
+this is done in the <codeph>engage</codeph> method.)
+<codeblock otherprops="smalltalk method">engage
+		"Start the time trip."
+		| startingYear destinationYear direction |
+		startingYear := self currentYear value.
+		destinationYear := self destination value.
+		destinationYear == startingYear
+			ifTrue: [^Dialog warn: 'Please select a new destination.'].
+		"Set the endpoints on the trip meter."
+		self tripRange
+			rangeStart: startingYear;
+			rangeStop: destinationYear;
+			grid: 1.
+		"Reset the meter to the starting position."
+		currentYear value: startingYear.
+		"Set up a step value for the loop that follows (-1 = backward in time)."
+		destinationYear > startingYear
+			ifTrue: [direction := 1]
+			ifFalse: [direction := -1].
+		"For each year of time travel, update the current year."
+		startingYear to: destinationYear by: direction do: [ :yr |
+			currentYear value: yr].</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Slider1-Example:Examples.Slider1Example open" 
+format="st" scope="external">Slider1-Example</xref> (the <uicontrol>Trip Meter</uicontrol> slider)</p></body></topic>
+<topic id = "vw.help.widgets.sliders.markerLength"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Change the slider marker length</title>
+<body><p><indexterm>slider widget<indexterm>change length</indexterm></indexterm>In
+a message in the application model (typically <apiname>postBuildWith:</apiname>),
+get the slider widget from the builder and send a <apiname>setMarkerLength:</apiname> message
+to it, with the length in pixels as argument. 
+<codeblock otherprops="smalltalk method">postBuildWith: aBuilder
+		(aBuilder componentAt: #dateRange) widget 
+			beTwoDimensional;
+			setMarkerLength: 10.</codeblock></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Slider2-Example:Examples.Slider2Example open" 
+format="st" scope="external">Slider2-Example</xref></p>
+</body></topic>
+<topic id = "vw.help.widgets.sliders.2d"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Make a two-dimensional slider</title>
+<body><p><indexterm>slider widget<indexterm>2 dimensional</indexterm></indexterm>By
+default, a slider operates in one dimension. You can arrange for
+a slider to manipulate a point in two dimensions and then use the
+x-axis and y-axis components of that point to control two separate parameters. <ol>
+<li><p>In a method in the application model (typically <codeph>initialize</codeph>),
+initialize the slider’s variable to an instance of <apiname>Point</apiname> that
+is held by a value holder.
+<codeblock otherprops="smalltalk method">initialize
+		month := (Date nameOfMonth: 1) asValue.
+		year := 1900 asValue.
+		dateRange := (0@1) asValue.
+		dateRange onChangeSend: #changedDate to: self.</codeblock></p></li>
+<li><p>In a <apiname>postBuildWith:</apiname> method, get the slider
+from the builder and ask it to <apiname>beTwoDimensional</apiname>.
+<codeblock otherprops="smalltalk method">postBuildWith: aBuilder
+		(aBuilder componentAt: #dateRange) widget 
+			beTwoDimensional;"
+			setMarkerLength: 10.</codeblock></p></li></ol></p>
+<p>To connect the sliders to fields:<ol><li><p>In a method in the
+application model (typically <codeph>initialize</codeph>), arrange for
+a change message (<codeph>changedDate</codeph>) to be sent to the
+application model when the slider’s value changes.
+<codeblock otherprops="smalltalk method">initialize
+		month :=(Date nameOfMonth: 1) asValue.
+		year := 1900 asValue.
+		dateRange := (0@1) asValue.
+		dateRange onChangeSend: #changedDate to: self.</codeblock></p></li>
+<li><p>Use a System Browser to create the change method (<codeph>changedDate</codeph>)
+in the application model. This method splits the slider’s value
+into its x-axis and y-axis components. Each component is a value
+between <codeph>0</codeph> and <codeph>1</codeph> and is transformed
+as needed to produce a suitable value for the related field. 
+<codeblock otherprops="smalltalk method">changedDate
+		"Convert the y-axis value to a month."
+		| y x |
+		y := self dateRange value y.
+		y := (12 - (y * 12) asInteger) max: 1.									"12 months"
+		self month value: (Date nameOfMonth: y).
+		"Convert the x-axis value to a year."
+		x := self dateRange value x.
+		x := 1900 + (x * 100) asInteger.
+		self year value: x.</codeblock></p></li></ol></p>
+<p><b>Online example:</b> 
+<xref href="prereq:Slider2-Example:Examples.Slider2Example open" 
+format="st" scope="external">Slider2-Example</xref></p>
+</body></topic></topic></dita>

@@ -1,0 +1,662 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<title>The Chronos Date/Time Library</title>
+<meta name="description" content="Code library for date and time computations in Smalltalk. Supports Olson time zones, multiple calendars, scientific and business use cases, and flexible date/time formatting.">
+<meta name="keywords" content="Chronos, date, time, time zone, timezone, calendar, Smalltalk, VisualWorks, Olson timezone database, ANSI-Smalltalk Standard, DateAndTime, Duration, holiday, ISO 8601, RFC 2822">
+
+<style type="text/css">
+a:link {color: rgb(192, 164, 132); font-weight: bold;}
+a:visited {color: rgb(192, 164, 132); font-weight: bold; text-decoration: none;} 
+a:hover {color: #0000FF}
+a:active {color: #FF0000}
+td { 
+font-family: Helvetica,Arial,sans-serif;
+font-size: 16;
+text-align: justify;
+color: rgb(0, 0, 0);
+}
+.maintitle {
+font-size: 180%;
+font-weight: bold;
+}
+.gold {
+color:rgb(192, 164, 132);
+}
+.boldgold {
+color:rgb(192, 164, 132);
+font-weight: bold;
+font-size: 125%;
+}
+</style>
+
+<script type="text/javascript">
+function toInteger(n){
+  return (n < 0 ? - 1 : + 1) * Math.floor(Math.abs(n) + 0.5);
+}
+function zeropad(n) { 
+return n>9 ? n : '0'+n; 
+}
+function formatTimeZoneOffset(time, elementSeparator) {
+var minutesWestOfUT=time.getTimezoneOffset()
+var absOffsetInMinutes=Math.abs(minutesWestOfUT)
+var offsetInHours=toInteger(absOffsetInMinutes / 60)
+var offsetMinutes = absOffsetInMinutes % 60
+var isWestOfUT = minutesWestOfUT > 0
+return (isWestOfUT ? '-' : '+')+zeropad(offsetInHours)+elementSeparator+zeropad(offsetMinutes)
+}
+function formatTimeOfDay(time) {
+var hour=time.getHours()
+var minute=time.getMinutes()
+var second=time.getSeconds()
+return zeropad(hour)+':'+zeropad(minute)+':'+zeropad(second)
+}
+function abbreviationOfMonth(time) {
+return ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][time.getMonth()]
+}
+function formatDateAsYMD(time, elementSeparator) {
+var dayOfMonth=time.getDate()
+var month=time.getMonth() + 1
+var year=time.getFullYear()
+return year+elementSeparator+zeropad(month)+elementSeparator+zeropad(dayOfMonth)
+}
+function formatDateAsMDY(time, mdSeparator, dySeparator) {
+var dayOfMonth=time.getDate()
+var year=time.getFullYear()
+return abbreviationOfMonth(time)+mdSeparator+zeropad(dayOfMonth)+dySeparator+year
+}
+function formatDateAsDMY(time, dmSeparator, mySeparator) {
+var dayOfMonth=time.getDate()
+var year=time.getFullYear()
+return zeropad(dayOfMonth)+dmSeparator+abbreviationOfMonth(time)+mySeparator+year
+}
+function abbreviationOfDayOfWeek(time) {
+return ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][time.getDay()]
+}
+function formatDateAsRFC2822(time) {
+return abbreviationOfDayOfWeek(time)+', '+formatDateAsDMY(time, ' ', ' ')
+}
+
+function formatDateAndTimeAsISO8601(time) {
+return formatDateAsYMD(time,'-')+'T'+formatTimeOfDay(time)+formatTimeZoneOffset(time, ':')
+}
+function formatDateAndTimeAsRFC2822(time) {
+return formatDateAsRFC2822(time)+' '+formatTimeOfDay(time)+' '+formatTimeZoneOffset(time, '')
+}
+function startClock()
+{
+document.getElementById('clock').innerHTML=formatDateAndTimeAsRFC2822(new Date())
+t=setTimeout('startClock()',500)
+}
+</script>
+
+</head>
+<body bgcolor="#ffffff" onload="startClock()">
+<br style="font-size: 50%">
+<center>
+<table border="0" valign="center" style="width: 96%; text-align: left; margin-left: auto; margin-right: auto;">
+<tbody><tr><td>
+<center>
+<table width=94%>
+<tbody>
+<tr>
+<td><center>
+<img src="http://www.chronos-st.org/images/Chronos-small.png">
+<br style="font-size: 30%" />
+<a style="text-decoration: none;" href="http://en.wiktionary.org/wiki/synchrony" target="_top"><span class="boldgold">&chi;&rho;&#972;&nu;&omicron;&sigmaf;</span></a>
+</center></td>
+<td><table width="100%" border="0" bgcolor="white" cellpadding="0">
+<tbody>
+<tr>
+<td  align="left" style="text-align: left;">
+<div class="maintitle"><span class="gold"><a style="text-decoration: none;" href="http://www.chronos-st.org/" target="_top">The Chronos Date/Time Library</a></span></div>
+<br> 
+<b><span style="font-family: Helvetica,Arial,sans-serif; color: rgb(110, 110, 110);" id="clock">
+<noscript><small><i>~ A code library for date/time computations ~</i></small></noscript></span></b>
+</td>
+<td align="right" style="text-align: right;">
+<img src="http://www.chronos-st.org/images/SunDial.jpg" width=100 height=100>
+</td>
+<td align="right" style="text-align: right;">
+<img src="http://www.chronos-st.org/images/st-balloon.jpg">
+</td>
+</tbody>
+</table>
+
+</td>
+</tr>
+</tbody>
+</table>
+
+<table width=94% cellpadding=10>
+<tbody><tr><td>
+<table border=0 width="100%">
+<tr style="background-color: rgb(248, 248, 248);"> 
+<td style="text-align: left; font-family: Helvetica,Arial,sans-serif; color: rgb(128, 128, 128);">
+<span style="font-size: 14;">
+<noscript></noscript>
+<script type="text/javascript">
+document.write('Page retrieved '+formatDateAndTimeAsRFC2822(new Date()))
+</script>
+</span> 
+</td>
+<td style="text-align: right; font-family: Helvetica,Arial,sans-serif; color: rgb(128, 128, 128);">
+<span style="font-size: 14;">
+<noscript>Page published Tue, 28 Feb 2006 05:13:50 +0000 (UT: Universal Time)</noscript>
+<script type="text/javascript">
+document.write('Page published '+formatDateAndTimeAsRFC2822(new Date(1141103630649)))
+</script>
+</span>
+</td>
+</tr>
+</table>
+</td></tr>
+<tr><td>
+<table border=0 width="100%">
+<tbody>
+<tr>
+<td>
+<span style="font-size: 150%; font-weight: bold">Short Executable Examples ("Do Its") of Chronos Usage</span>
+<br><span style="font-family: Helvetica,Arial,sans-serif; font-size: 90%; color: rgb(128, 128, 128); background-color: #f8f8f8;"">
+Examples based on version B1.29 of the <a href="http://www.chronos-st.org/" target="_top">Chronos Date/Time Library</a></span>
+
+<p>The following “do its” provide examples of the functionality and usage of the Chronos Date/Time library.  
+Example “do its” (executable code snippets) are separated from each other by horizontal lines.  Some of the 
+examples are meant to be “inspected,” some are meant to be “printed,” and some are meant to be evaluated without 
+being printed or inspected—the latter display their effect on the Transcript.</p>
+
+<p>Examples that display their effect on the Transcript (and which should be executed using the “do it” menu 
+option) are tagged with the comment “Do it:”</p>
+
+<p>Examples that should be printed in line (and should be executed using the “print it” menu option) are 
+tagged with the comment “Print it:”</p>
+
+<p>Examples that should be inspected (due to the size and/or complexity of their output) are tagged with 
+the comment “Inspect it:”</p>
+
+<pre>
+<hr>
+"Print it:"
+DateAndTime now. 
+<small>"Note: DateAndTime is a global alias for Timepoint"</small>
+
+<hr>
+"Print it:"
+DateAndTime today. 
+
+<hr>
+"Print it:"
+YearMonthDay today.
+
+<hr>
+"Print it:"
+YearMonthDay today - (DateAndTime year: 1969 month: 7 day: 20) 
+
+<hr>
+"Print it:"
+DateAndTime now 
+    - (DateAndTime 
+        year: 1969 
+        month: 7 
+        day: 20 
+        hour: 5 
+        minute: 17 
+        second: 40 
+        offset: (Duration hours: -5))
+
+<hr>
+"Print it:"
+(DateAndTime now 
+    civilDurationSince: 
+        (DateAndTime 
+            utYear: 1969 
+            month: 7 
+            day: 20 
+            hour: 10 
+            minute: 17
+            second: 40)) localePrintString 
+
+<hr>
+"Inspect it:"
+| birthday |
+birthday := DayOfMonth month: 6 day: 1.   
+(1988 to: 2006) collect:
+            [:year |
+            | date |
+            date := birthday inYear:  year. 
+            year->date dayOfWeekName]
+
+<hr>
+"Print it:"
+Timezone default name
+<small>"Note: Timezone is a global alias for ChronosTimezone"</small>
+
+<hr>
+"Print it:"
+((Timezone at: 'America/Los_Angeles')
+    bindingForUTYear: 1968 "Sunday, April 28"
+    dayOfYear: 
+	((WeekOfMonthDayOfWeek month: 4 week: 0 dayOfWeek: 1) 
+		dayOfYearOrdinalInYear: 1968) 
+    secondsSinceStartOfDayFunction: [:offsetSecondsFromUT | 
+	7199 - offsetSecondsFromUT "1:59:59 am local time"]) offsetFromUT
+
+<hr>
+"Print it:"
+<small>"Note: In 1968, DST started at 2am local time on the last Sunday of April 
+in most of the United States."</small>
+((Timezone at: 'America/Los_Angeles')
+    bindingForUTYear: 1968 "Sunday, April 28
+    dayOfYear: 
+	((WeekOfMonthDayOfWeek month: 4 week: 0 dayOfWeek: 1) 
+		dayOfYearOrdinalInYear: 1968) 
+    secondsSinceStartOfDayFunction: [:offsetSecondsFromUT | 
+	7200 - offsetSecondsFromUT "2:00:00 am local time"]) offsetFromUT
+
+
+<hr>
+"Print it:"
+(DateAndTime nowIn: 'Pacific/Auckland') printStringUsing: #verbose.
+
+<hr>
+"Print it:"
+(DateAndTime nowIn: 'America/Detroit') printStringUsing: #usShort.
+
+<hr>
+"Print it:"
+| pointInTime | <small>"Parameters specified in Universal Time"</small>
+pointInTime := DateAndTime utYear: 2005 month: 1 day: 1. 
+Array 
+    with: (pointInTime in: Timezone universal) "Same as `pointInTime asUTC`"
+    with: (pointInTime in: 'America/Adak') 
+    with: pointInTime 
+"Note: The local time of &lt;pointInTime> is the current default time zone."
+
+<hr>
+"Print it:"
+| pointInTime | <small>"Parameters specified in Universal Time"</small>
+pointInTime := DateAndTime utYear: 2005 month: 1 day: 1 hour: 8 minute: 0 second: 0. 
+Array 
+    with: pointInTime asUTC
+    with: (pointInTime in: 'America/Los_Angeles') 
+    with: (pointInTime in: 'Asia/Hong_Kong') 
+
+<hr>
+"Do it:"
+Timepoint showInCommonWorldTimezones: Timepoint now
+
+<hr>
+"Do it:"
+Timepoint showInCommonWorldTimezones: Timepoint nominalNow
+
+<hr>
+"Print it:"
+DateAndTime isoYear: 2004 week: 1 dayOfWeek: 1
+
+<hr>
+"Print it:"
+(DateAndTime year: 2003 month: 12 day: 29) 
+	isoYearWeekDayOfWeekDo: 
+		[:isoYear :isoWeek :isoDayOfWeek | 
+			Array 
+				with: isoYear 
+				with: isoWeek 
+				with: isoDayOfWeek]
+
+<hr>
+"Print it:"
+YearMonthDay today daysSinceEpoch
+
+<hr>
+"Print it:"
+(YearMonthDay daysSinceEpoch: 0) localePrintString
+
+<hr>
+"Print it:"
+Timepoint now fractionalDaysSinceEpoch
+
+<hr>
+"Print it:"
+(Timepoint daysSinceEpoch: 0.75) localePrintString 
+<small>"`LMT' stands for `Local Mean Time'--time zones didn't exist prior to the 1800's"</small>
+
+<hr>
+"Print it:"
+(Timepoint utDaysSinceEpoch: Timepoint now utFractionalDaysSinceEpoch)
+    printStringUsing: 
+	(ChronosPrintPolicy newConfigurable 
+		subSecondTimePrecision: 3; 
+		hideTimeZone)
+
+<hr>
+"Print it:" "Integer day number."
+Timepoint now julianDay 
+
+<hr>
+"Print it:" "Day and day fraction."
+Timepoint now julianDate
+
+<hr>
+"Print it:" 
+Timepoint utJulianDay: 2440422.928935185s timeZone: 'America/Chicago'.
+<small>"Note: Julian Day and Day Fraction in Universal Time; 
+Timepoint bound to Chicago local time."</small>
+
+<hr>
+"Print it:" 
+Timepoint julianDay:  2440422.720601852s timeZone: 'America/Chicago'.
+<small>"Note: Julian Day and Day Fraction in Chicago local time; 
+Timepoint bound to Chicago local time."</small>
+
+<hr>
+"Print it:" "Date today according to the Hebrew Calendar"
+(YearMonthDay todayAs: #Hebrew) printStringUsing: #rfc2822.
+
+<hr>
+"Print it:" <small>"DateAndTime now in Jerusalem according to the Hebrew Calendar"</small>
+(HebrewCalendar clock nowIn: 'Asia/Jerusalem') printStringUsing: #universal.
+
+<hr>
+"Print it:" 
+| today |
+today := IslamicFatimidCalendar clock today.
+Array with: today with: (today as: #Persian) with: today asGregorian
+
+<hr>
+"Do it:"
+Timepoint showInAllCalendars: Timepoint now
+
+<hr>
+"Do it:"
+YearMonthDay showAllCalendarEpochDates.
+
+<hr>
+"Do it:"
+Transcript cr.
+YearMonthDay todayInAllCalendars do: 
+    [:each | Transcript cr; show: (each printStringUsing: #universal)].
+
+<hr>
+"Do it:"
+Transcript cr.
+Timepoint todayInAllCalendars do: 
+    [:each | Transcript cr; show: (each printStringUsing: #universal)].
+
+<hr>
+"Inspect it:"
+Calendar allRegisteredKeys asArray collect: 
+	[:calendarKey | DateAndTime todayIn: 'Europe/Moscow' as: calendarKey]
+"Note that not all Calendars start their day at midnight,
+although most use time-of-day clocks that start then."
+
+<hr>
+"Do it:"
+| yourBirthday |
+yourBirthday := 
+	DateAndTime 
+		year: 1981 
+		month: 7 
+		day: 15 
+		hour: 16 
+		minute: 33 
+		second: 0.
+Transcript cr.
+(DateAndTime inAllCalendars: yourBirthday) do: [:each | 
+	Transcript cr; show: (each printStringUsing: #universal)].
+
+<hr>
+"Do it:"
+| appollo11 |
+appollo11 := 
+    DateAndTime 
+        utYear: 1969 month: 7 day: 20 hour: 10 minute: 17 second: 40 
+        timeZone: 'America/Chicago'.
+Transcript cr.
+(DateAndTime inAllCalendars: appollo11) do: [:each | 
+	Transcript cr; show: (each printStringUsing: #universal)].
+
+<hr>
+"Inspect it:"
+DateAndTime nowInAllTimeZonesAndCalendars
+
+<hr>
+"Inspect it:"
+DateAndTime 
+    inAllTimeZonesAndCalendars: 
+        (DateAndTime 
+            year: 1969 
+            month: 7
+            day: 20
+            hour: 10
+            minute: 17
+            second: 40
+            timeZone: Timezone universal)
+
+<hr>
+"Do it:" 
+"Nominal Dates for all holidays meaningful in the United States during 2006."
+| list |
+list := SortedCollection sortBlock: [:a :b | a value < b value].
+SemanticDatePolicy unitedStates 
+	nominalAnnualEventOccurenceDatesInYear: 2006 
+	do: [:semanticKey :date | list add: semanticKey->date].
+Transcript cr.
+list do: [:assoc | 
+	Transcript 
+		cr; show: (assoc value % #rfc2822); 
+		show: ':'; 
+		tab; show: assoc key]
+
+<hr>
+"Do it:"
+"All US Federal Holidays for the next year as observed
+by the US Government--starting from today."
+| list |
+list := SortedCollection sortBlock: [:a :b | a key < b key].
+SemanticDatePolicy unitedStates 
+    observedAnnualEventOccurenceDatesFrom: YearMonthDay today 
+    through: YearMonthDay yesterday + 1 years
+    do: [:semanticKey :date :observanceType | 
+        (SemanticDatePolicy usFederalHolidaySemanticKeys includes: semanticKey) 
+            ifTrue: [list add: date->(Array with: semanticKey with: observanceType)]].
+Transcript cr.
+list do: [:assoc | 
+    Transcript cr; show: (assoc key % #rfc2822); show: ':'; tab. 
+    assoc value do: [:key | 
+        key == #nominal 
+            ifFalse: 
+                [key == #observed 
+                    ifTrue: 
+                        [Transcript show: ' ('; show: key; show: ')'] 
+                    ifFalse: [Transcript show: key]]]]
+
+<hr>
+"Do it."
+"All Full-Day Closures of the New York Stock Exchange 
+from 1 April 1969 to 30 September 1973:"
+| list |
+list := SortedCollection sortBlock: [:a :b | a key < b key].
+SemanticDatePolicy nyse 
+    observedEventOccurenceDatesFrom: (YearMonthDay year: 1969 month: 4 day: 1) 
+    through: (YearMonthDay year: 1973 month: 9 day: 30) 
+    do: [:semanticKey :date :observanceType | 
+		semanticKey == #weekend 
+			ifFalse: 
+				[list add: date->(Array 
+							with: semanticKey 
+							with: observanceType)].
+Transcript cr.
+list do: [:assoc | 
+    Transcript cr; show: (assoc key % #rfc2822); show: ':'; tab. 
+    assoc value do: [:key | 
+        key == #nominal 
+            ifFalse: 
+                [key == #observed 
+                    ifTrue: 
+                        [Transcript show: ' ('; show: key; show: ')'] 
+                    ifFalse: [Transcript show: key]]]]]
+
+<hr>
+"Do it:" "Selected Jewish Holidays this year and next year."
+| year roshHoshannah yomKippur khanukkah purim pesach list printSpec |
+year := HebrewCalendar clock thisYear.
+roshHoshannah := 	DayOfMonth monthKey: #Tishri 	day: 1 	calendar: #Hebrew.
+yomKippur := 		DayOfMonth monthKey: #Tishri 	day: 10 calendar: #Hebrew.
+khanukkah :=		DayOfMonth monthKey: #Kislev 	day: 25 calendar: #Hebrew.
+purim := 		DayOfMonth monthKey: #Adar 	day: 14 calendar: #Hebrew.
+pesach :=		DayOfMonth monthKey: #Nisan 	day: 15 calendar: #Hebrew.
+list := OrderedCollection new.
+printSpec := 
+	#(showDayOfWeekAbbreviation 
+	useMonthName 
+	dateSeparator: $ 
+	datePadChar: nil).
+2 timesRepeat: [
+	| hDate |
+	hDate := roshHoshannah inYear: year. 
+	list add: (Array 
+			with: #'Rosh Hoshannah' 
+			with: hDate % printSpec 
+			with: hDate asGregorian % printSpec).
+	hDate := yomKippur inYear: year. 
+	list add: (Array
+			with: #'Yom Kippur' 
+			with: hDate % printSpec 
+			with: hDate asGregorian % printSpec).
+	hDate := khanukkah inYear: year. 
+	list add: (Array 
+			with: #'Khanukkah' 
+			with: hDate % printSpec 
+			with: hDate asGregorian % printSpec).
+	hDate := purim inYear: year. 
+	list add: (Array 
+			with: #'Purim' 
+			with: hDate % printSpec 
+			with: hDate asGregorian % printSpec).
+	hDate := pesach inYear: year. 
+	list add: (Array 
+			with: #'Pesach' 
+			with: hDate % printSpec 
+			with: hDate asGregorian % printSpec).
+	year := year + 1].
+Transcript cr.
+list do: 
+	[:array | 
+		Transcript 
+			cr; show: (array at: 1); show: ':';  
+			cr; tab; show: (array at: 2); 
+			cr; tab; show: (array at: 3)]
+
+
+<hr>
+"Do it:" "Date of Easter for the next 10 years (including this year.)"
+| year |
+year := GregorianCalendar clock thisYear.
+Transcript cr.
+10 timesRepeat:
+    [Transcript 
+	cr; show: (GregorianEaster canonical inYear: year) localePrintString.
+    year := year + 1].
+
+<hr>
+"Print it:"
+YearMonthDay today asTimeperiod 
+
+<hr>
+"Print it:"
+DateAndTime now asTimeperiod
+
+<hr>
+"Print it:"
+Timeperiod today includes: GregorianCalendar clock now.
+
+<hr>
+"Print it:"
+(Timeperiod dayStartingAt: YearMonthDay today) = DateAndTime now
+
+<hr>
+"Inspect it:"
+(Timeperiod yearStartingAt: YearMonthDay today) monthPeriods
+
+<hr>
+"Print it:"
+Timeperiod today isAdjacentTo: YearMonthDay today tomorrow asTimeperiod.
+
+<hr>
+"Print it:"
+Timeperiod currentYear * (Timeperiod yearStartingAt: YearMonthDay today).            
+
+<hr>
+"Print it:"
+(Timeperiod dayStartingAt: Gregorian clock now) + (CalendarDuration months: 6).
+
+<hr>
+"Print it:"
+| firstAndLastDays |
+firstAndLastDays := OrderedCollection new.
+(Timeperiod yearStartingAt: YearMonthDay today) 
+    quartersDo: [:eachQuarter | 
+	firstAndLastDays add: (Array with: eachQuarter first with: eachQuarter last)].
+firstAndLastDays
+
+<hr>
+"Print it:"
+Timeperiod currentYear every: (CalendarDuration months: 1) 
+	collect: [:aTimeperiod | aTimeperiod last]
+
+<hr>
+"Print it:"
+Timeperiod currentYear next every: (CalendarDuration months: 1) 
+	collect: [:aTimeperiod | aTimeperiod last]
+
+<hr>
+"Inspect it:"
+(Timeperiod from: TimeOfDay now duration: (Duration hours: 1)) next: 24
+
+<hr>
+"Inspect it:"
+| yearStartingToday |
+yearStartingToday:= 
+    Timeperiod
+        from: DateAndTime nominalToday
+        duration: (CalendarDuration years: 1).
+yearStartingToday 
+    every: (CivilDuration years: 0 months: 0 days: 29 hours: 12 minutes: 0 seconds: 0)
+    collect: [:tp | tp localePrintString]
+
+<hr>
+"Print it:"
+(DateAndTime nominalToday yesterday to: DateAndTime nominalToday) 
+    every: (Duration days: 1/9) 
+    collect: [:each | each start timeOfDay]
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+</td></tr>
+<tr><td>
+<p style="font-size: 75%; color: rgb(128, 128, 128); background-color: rgb(248, 248, 248);">
+[Chronos] All code (classes and methods, and all associated documentation,) distributed as part of the 
+Chronos Date/Time library are &copy; Copyright 2005-2006 by Alan L. Lovejoy.&nbsp; All Rights Reserved. 
+Usage is controlled by the Chronos License (which is included in the distribution as the contents of 
+the file {chronos-license.txt}, and is also available from the <a href="http://www.chronos-st.org/">
+Chronos web site</a> {<a href="http://www.chronos-st.org/License.html" target="_top">http://www.chronos-st.org/License.html</a>})
+</p>
+<blockquote>"Do not go gentle into that good night,
+<br>Old age should burn and rave at the close of the day;
+<br>Rage, rage at the dying of the light!" -- Dylan Thomas
+</blockquote>
+</td></tr>
+
+</center>
+</td></tr></tbody></table>
+</center>
+
+</body>
+</html>

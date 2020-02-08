@@ -1,0 +1,171 @@
+html, body {
+	width:100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+}
+
+body.nopull {
+	overflow-y: hidden;
+}
+
+input, select, button {
+	border:1px black solid;
+	pointer-events: auto;
+}
+
+a, label {
+	pointer-events: auto;
+}
+
+a {
+	color: #4080c0;
+}
+
+label, .nowrap {
+	white-space: nowrap;
+}
+
+span.error {
+	background-color: rgba(255,0,0,0.8);
+	color: white;
+}
+
+div.section {
+	background-color: rgba(255,255,255,0.8);
+	padding: 0.2em;
+	margin: 0.1em;
+	display: inline-block;
+}
+
+div.clear {
+	clear: both;
+}
+
+div.mid {
+	display:inline-block;
+}
+
+div.left {
+	float: left;
+	display:inline-block;
+}
+
+div.right {
+	float: right;
+	display:inline-block;
+}
+
+iframe.noframe {
+	margin: 0;
+	padding: 0;
+	border: none;
+	overflow: hidden;
+}
+
+iframe.chart {
+	width:100%;
+	height:100%;
+}
+
+img.inline {
+	height: 1.2em;
+	vertical-align: middle;
+}
+
+.hide {
+	display: none;
+}
+
+.centerpage-outer {
+	width: 100%;
+	height: 100%;
+	display: table;
+	position: absolute;
+	padding: 0;
+	margin: 0;
+}
+
+.centerpage-inner {
+	vertical-align: middle;
+	text-align: center;
+	display: table-cell;
+}
+
+.center {
+	margin:auto;
+}
+
+.left {
+	text-align:left;
+	float:left;
+}
+
+#map {
+	height: 100%;
+}
+#panel {
+	z-index: 1;
+	top: 0;
+	right: 0;
+	position: absolute;
+	text-align: right;
+	min-width: 50%;
+	margin-left: 50%;
+	pointer-events: none;
+}
+#control {
+
+}
+#toggleui {
+	pointer-events: auto;
+	text-align: center;
+	min-width: 7em;
+	font-size: 0.8em;
+	color: black;
+	margin: 0.2em;
+	padding: 0.3em;
+	background-color: rgba(255,255,255,0.8);
+	display: inline-block;
+	border: 1px solid #555;
+	text-decoration: none;
+}
+#loading {
+	font-weight: bold;
+	margin: 0 0.2em;
+}
+#errors {
+	color: white;
+	margin: 0.2em;
+}
+
+#chart {
+	width: 100%;
+	height:100%;
+}
+
+#chartcontrol {
+	display: block;
+	margin:0;
+	padding:1em;
+}
+#chartpanel {
+	max-height:100%;
+	overflow:auto;
+	z-index: 1;
+	top: 0;
+	right: 0;
+	left: 0;
+	position: absolute;
+	background-color: rgba(255,255,255,0.8);
+}
+#sensorlist {
+	pointer-events: auto;
+	overflow:auto;
+	padding:0.2em;
+}
+#sensorlist.compact {
+	max-height:10em;
+	width:10em;
+}

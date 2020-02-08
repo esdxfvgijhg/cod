@@ -1,0 +1,64 @@
+\hypertarget{classns3_1_1lorawan_1_1NwkID}{}\section{ns3\+:\+:lorawan\+:\+:Nwk\+ID Class Reference}
+\label{classns3_1_1lorawan_1_1NwkID}\index{ns3\+::lorawan\+::\+Nwk\+ID@{ns3\+::lorawan\+::\+Nwk\+ID}}
+
+
+{\ttfamily \#include $<$lora-\/device-\/address.\+h$>$}
+
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Nwk\+ID\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=189pt]{classns3_1_1lorawan_1_1NwkID__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NwkID_a6304d661bc80d590d700e930f39ecb8a}\label{classns3_1_1lorawan_1_1NwkID_a6304d661bc80d590d700e930f39ecb8a}} 
+{\bfseries Nwk\+ID} (uint8\+\_\+t nwk\+Id=0)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1NwkID_af1ec442f10512a4666e766bcd2e924eb}{Set} (uint8\+\_\+t nwk\+Id)
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1NwkID_a3a80ac6b751d3a3df4ff4b2548ad8933}{Get} (void) const
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class representing the Network\+Id component of a \hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} (7 bits). 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NwkID_a3a80ac6b751d3a3df4ff4b2548ad8933}\label{classns3_1_1lorawan_1_1NwkID_a3a80ac6b751d3a3df4ff4b2548ad8933}} 
+\index{ns3\+::lorawan\+::\+Nwk\+ID@{ns3\+::lorawan\+::\+Nwk\+ID}!Get@{Get}}
+\index{Get@{Get}!ns3\+::lorawan\+::\+Nwk\+ID@{ns3\+::lorawan\+::\+Nwk\+ID}}
+\subsubsection{\texorpdfstring{Get()}{Get()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+Nwk\+I\+D\+::\+Get (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Get an uint8\+\_\+t representation of the 7-\/bit network ID.
+
+\begin{DoxyReturn}{Returns}
+The Network Id. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1NwkID_af1ec442f10512a4666e766bcd2e924eb}\label{classns3_1_1lorawan_1_1NwkID_af1ec442f10512a4666e766bcd2e924eb}} 
+\index{ns3\+::lorawan\+::\+Nwk\+ID@{ns3\+::lorawan\+::\+Nwk\+ID}!Set@{Set}}
+\index{Set@{Set}!ns3\+::lorawan\+::\+Nwk\+ID@{ns3\+::lorawan\+::\+Nwk\+ID}}
+\subsubsection{\texorpdfstring{Set()}{Set()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Nwk\+I\+D\+::\+Set (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{nwk\+Id }\end{DoxyParamCaption})}
+
+Set the \hyperlink{classns3_1_1lorawan_1_1NwkID}{Nwk\+ID}, starting from a 8-\/bit representation of a 7-\/bit integer.
+
+This method will ignore the most significant bit of the argument. This means that all arguments such that nwk\+Id $>$ 127 will actually be considered as nwk\+Id mod 127.
+
+
+\begin{DoxyParams}{Parameters}
+{\em nwk\+Id} & The Network Id value to set. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lora-\/device-\/address.\+h\item 
+lora-\/device-\/address.\+cc\end{DoxyCompactItemize}

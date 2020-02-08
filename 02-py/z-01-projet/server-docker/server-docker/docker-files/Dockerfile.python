@@ -1,0 +1,5 @@
+FROM ubuntu:16.04
+
+RUN apt-get update && apt-get install -y python-mysqldb
+
+CMD /bin/bash -c 'python -u /root/server.py &> /root/server.log'

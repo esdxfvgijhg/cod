@@ -1,0 +1,7 @@
+/home/aghiles/Aghiles/Program/gateway/sdr/LoRa-SDR/build/CMakeFiles/install/strip.dir
+/home/aghiles/Aghiles/Program/gateway/sdr/LoRa-SDR/build/CMakeFiles/install/local.dir
+/home/aghiles/Aghiles/Program/gateway/sdr/LoRa-SDR/build/CMakeFiles/LoRa_Blocks.dir
+/home/aghiles/Aghiles/Program/gateway/sdr/LoRa-SDR/build/CMakeFiles/rebuild_cache.dir
+/home/aghiles/Aghiles/Program/gateway/sdr/LoRa-SDR/build/CMakeFiles/edit_cache.dir
+/home/aghiles/Aghiles/Program/gateway/sdr/LoRa-SDR/build/CMakeFiles/install.dir
+/home/aghiles/Aghiles/Program/gateway/sdr/LoRa-SDR/build/CMakeFiles/list_install_components.dir

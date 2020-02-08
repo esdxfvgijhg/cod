@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.inspect"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Inspecting Objects</title>
+<body><p>Every object in the Smalltalk environment can be examined 
+by sending it the message <apiname>inspect</apiname>; this opens a 
+specialized tool called an <i>Inspector</i>.</p>
+<p>An Inspector allows you to examine objects by exploring their
+constituent parts, the values of the object’s instance variables. 
+You can use it to modify instance variables as well.</p>
+<p>Classes such as <apiname>Dictionary</apiname> and subclasses of 
+<apiname>Collection</apiname> are automatically viewed by specialized 
+versions of the Inspector that provide extended functionality.</p></body>
+<topic id = "vw.help.inspect.inspectObject"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Inspect a composite object</title>
+<body><p><indexterm>objects<indexterm>inspect</indexterm></indexterm><indexterm>inspect<indexterm>object</indexterm></indexterm><indexterm>inspector<indexterm>inspect
+object</indexterm></indexterm>To inspect objects composed of many
+elements, select the element in the left-hand view and use either <uicontrol>inspect</uicontrol> or <uicontrol>dive</uicontrol> in
+the inspector’s &lt;Operate&gt; menu. <uicontrol>Inspect</uicontrol> opens
+a new inspector. <uicontrol>Dive</uicontrol> shows the selected
+object in the current inspector, reducing the number of windows
+cluttering your screen. <uicontrol>Dive</uicontrol> can also be
+invoked by double-clicking on an element in the left-hand view of
+the inspector. To back out of a diving inspector, select <uicontrol>pop</uicontrol> in
+its &lt;Operate&gt; menu; to back out to a specific layer in the object’s
+graph, select the item from the History menu.</p>
+<p>Use specialized inspectors for dictionaries, and other collections.
+To override this behavior and inspect objects with a simple inspector, use
+the message <apiname>basicInspect</apiname>.</p></body></topic>
+<topic id = "vw.help.inspect.modifyObject"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Modify an object using the inspector</title>
+<body><p><indexterm>inspector<indexterm>modify object</indexterm></indexterm>To
+change the value of a variable, enter a new value in the code view and
+select <uicontrol>accept</uicontrol> in the view’s &lt;Operate&gt;
+menu.</p></body></topic>
+<topic id = "vw.help.inspect.refPath"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Trace references to an object</title>
+<body><p><indexterm>trace object references</indexterm><indexterm>objects<indexterm>trace
+references</indexterm></indexterm><indexterm>inspector<indexterm>trace
+object references</indexterm></indexterm>To identify the path of
+references from any object to a global in the <apiname>Smalltalk</apiname> dictionary,
+select a field in the left-hand view and choose <uicontrol>Object&#xA0;&#x2192;&#xA0;Inspect
+reference&#xA0;path</uicontrol> in the inspector’s &lt;Operate&gt;
+menu. This will open a new inspector showing an ordered list of
+all the objects in the reference path to the object in the selected
+field, with the global object at the top of the list.</p>
+<note type="note">This command is available only when the Advanced
+Tools parcel (<filepath>AllAdvancedTools.pcl</filepath>) is loaded.</note>
+</body></topic></topic></dita>

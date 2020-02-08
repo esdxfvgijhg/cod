@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+	<topic id = "vw.help.net.dst"
+			xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+		<title>Distributed Smalltalk</title>
+		<body><p>Distributed Smalltalk (DST) is a CORBA 2.1-compliant framework 
+				for developing distributed applications, which supports several 
+				of the primary CORBA Object Services (COS).</p>
+			<p>Distributed Smalltalk is provided in a set of parcels. 
+				Use the <xref href="st:ParcelManager open" 
+				format="st" scope="external">Parcel Manager</xref>
+				to browse the <uicontrol>Distributed Computing</uicontrol> folder, and
+				to load the desired components.</p> 
+			<p>For complete documentation, refer to the 
+				<xref href="./doc/DSTAppDevGuide.pdf" format="pdf" 
+						scope="external"><i>Distributed Smalltalk Developer's Guide</i></xref>.</p>
+		</body>
+	</topic>
+</dita>

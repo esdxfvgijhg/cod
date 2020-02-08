@@ -1,0 +1,4625 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8054a"
+    charSet    	0)
+
+(object Class_Category "Links"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"334120520143"
+    documentation 	"Die Klassen dieser Kategorie stellen die Link-Semantik der UML zur Verfügung. Beispiele für die Verwendung der Klassen in den Domain-Objekten siehe Class-Diagramm-Beispiele"
+    exportControl 	"Public"
+    logical_models 	(list unit_reference_list
+	(object Class "LinkContainer"
+	    quid       	"33412072012B"
+	    documentation 	
+|Abstrakte Basisklasse für die Links und deren Cardinalität. 
+|Das Defaultverhalten ist:
+|Verwalte das(die) Domain-Objekt(e) del UMLLink's.
+	    
+	    operations 	(list Operations
+		(object Operation "new"
+		    quid       	"33452D64009F"
+		    documentation 	"Erzeuge und initialisiere eine neue Instance von mir."
+		    result     	"LinkContainer"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"initialize")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "postCopy"
+		    quid       	"335DF1E20084"
+		    documentation 	"Abschlußbehandlung des deep copy."
+		    result     	"SingleLinkContainer"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|super postCopy
+|self parent: nil
+			)
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "semiCopy"
+		    quid       	"334BDD7A033B"
+		    documentation 	"Erstelle eine copy von mir. DomainObjekte werden nicht in die Kopie übernommen."
+		    result     	"LinkContainer"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|myCopy := super shallowCopy
+|myCopy postSemiCopy
+			)
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "postSemiCopy"
+		    quid       	"335DF5030270"
+		    documentation 	"Abschlußbehandlung für semiCopy"
+		    result     	"LinkContainer"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"self parent: nil")
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "initialize"
+		    quid       	"33452E5902F0"
+		    documentation 	"Initialisiere mich. Hier gibt es nichts zu tun."
+		    concurrency 	"Sequential"
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "attachTo:"
+		    quid       	"334CE41003BA"
+		    documentation 	"Etabliere den Rückwärtslink zu meinem Parent (UMLLink)"
+		    parameters 	(list Parameters
+			(object Parameter "anUMLLink"
+			    type       	"UMLLink"
+			    initv      	"default"))
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"self parent: anUMLLink")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "parent:"
+		    quid       	"334CE28902B4"
+		    documentation 	"Setze meinen Parent (UMLLInk)"
+		    parameters 	(list Parameters
+			(object Parameter "anUMLLink"
+			    type       	"UMLLink"
+			    initv      	"default"))
+		    result     	"UMLLink"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "parent"
+		    quid       	"334CE2690037"
+		    documentation 	"Liefere meinen Parent (UMLLInk)"
+		    result     	"UMLLink"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "domain"
+		    quid       	"33453A6F01EB"
+		    documentation 	"abstract Liefere mein(e) Domain-Objekt(e)."
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "asCollection"
+		    quid       	"334A172D0323"
+		    documentation 	"abstract Liefere mein(e) gelinktes(n) Domain-Objekt(e) in einer Collection"
+		    result     	"Collection"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "size"
+		    quid       	"336DF1B002B3"
+		    documentation 	"abstract Liefere die Anzahl der eingetragenen Domain-Objekte"
+		    result     	"Integer"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "indexOf:"
+		    quid       	"3373078600F2"
+		    documentation 	"abstract Liefere den Index Domain-Objekte innerhalb meiner Collection."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"Integer"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "first"
+		    quid       	"33730F480224"
+		    documentation 	"abstract Liefere das erste Domain-Objekt"
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "last"
+		    quid       	"33730F710057"
+		    documentation 	"abstract Liefere das letzte Domain-Objekt"
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "isAddable:"
+		    quid       	"334295010303"
+		    documentation 	
+|Prüfe, ob das Domain-Objekt eingefügt werden kann.
+|Semantisch sollte hier die Klasse des übergebenen Domain-Objektes auf Zulässigkeit geprüft werden.
+		    
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"Boolean"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"retourniere true")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "isRemoveable:"
+		    quid       	"33453C8003B8"
+		    documentation 	"Prüfe, om das Domain-Objekt entfernt werden kann."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"Boolean"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"retourniere true")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "isEmpty"
+		    quid       	"33466EC302FA"
+		    documentation 	"Meldet, ob ich mindestens einen Domain enthalte."
+		    result     	"Boolean"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"^self size = 0")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "isValid"
+		    quid       	"33466F92035C"
+		    documentation 	"Melde, ob ich valid (meine Cardinalität) bin. Abgeleitete Klassen melden bei ungültiger Cardinalität #invalidCardinality."
+		    result     	"Symbol"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"retourniere true")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "exist:"
+		    quid       	"336753A10124"
+		    documentation 	"abstract Prüfe, ob ich das übergebene Domain-Objekt enthalte. Die Prüfung basiert auf einem Identity-Vergleich"
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"Boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "includes:"
+		    quid       	"33453880029D"
+		    documentation 	"abstract Prüfe, ob ich das übergebene Domain-Objekt enthalte. Die Prüfung basiert auf einem Vergleich von Domain-Objekt-Attributen"
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"Boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "find:"
+		    quid       	"3345402401E1"
+		    documentation 	"abstract Suche das Objekt, welches semantisch zum übergebenen Objekt passt.  I.d.R. ist dies ein Vergleich von ein oder mehreren Domain-Objekt Attributen."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "do:"
+		    quid       	"334A19ED00FF"
+		    documentation 	"Enummeriere alle meine gelinkten Domain-Objekte mit dem übergebenen Block. Der Block ist ein 1-Argument-Block (das Domain-Object)."
+		    parameters 	(list Parameters
+			(object Parameter "aBlock"
+			    type       	"BlockClosure"
+			    initv      	"default"))
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|- asCollection
+|- aCollection do: aBlock
+			)
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "add:"
+		    quid       	"3343C50400D8"
+		    documentation 	
+|Füge das übergebene Domain-Objekt bei mir ein. Der Service ist als Framework aufgebaut. Konkrete Klassen können die vom Framework benutzten Messages entsprechend der semantischen Bedürfnisse reimplementieren.
+|
+		    
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|- isAddable:  anObject (darf das Objekt eingefügt werden ?)
+|- performAdd: anObject
+			)
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "performAdd:"
+		    quid       	"33464B26021E"
+		    documentation 	"abstract Führt das eigentliche Adding aus."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "remove:"
+		    quid       	"33453E47007D"
+		    documentation 	
+|Entferne das übergebene Domain-Objekt aus mir. Der Service ist als Framework aufgebaut.
+|Konkrete Klassen können die vom Framework benutzten Messages entsprechend der semantischen Bedürfnisse reimplementieren.
+|
+		    
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|- isRemoveable: anObject (darf das Objekt entfernt werden ?)
+|- performRemove: anObject
+|
+			)
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "performRemove:"
+		    quid       	"33464D3C0095"
+		    documentation 	"abstract Führt das eigentliche Removing aus."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Protected"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "parent"
+		    quid       	"334CE12402F6"
+		    documentation 	"Die Referenz meines UMLLink's, in dem ich mich befinde."
+		    type       	"UMLLink"))
+	    language   	"VisualWorks"
+	    abstract   	TRUE)
+	(object Class "UMLAssociation"
+	    quid       	"334123240390"
+	    documentation 	"Die verbundenen Domain-Objekte sind eigenständige Einheiten. d.h.: Das Löschen des Domain-Objektes hat keine Auswirkung auf das(die) gelinkte(n) Domain-Objekt(e)."
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    quid       	"33413C0501B8"
+		    supplier   	"Logical View::Links::UMLLink"
+		    quidu      	"33413BDE00E9"))
+	    operations 	(list Operations
+		(object Operation "postCopy"
+		    quid       	"334CFFF2027E"
+		    documentation 	"Abschlußbehandlung des deep copy. Ich erstelle eine copy meines LinkContainer (ohne dessen Domain-Objekte) und meiner LinkDirektion.  Eine Kopie der Association bricht die Verbindung zu den associierten Domain-Objekten auf."
+		    parameters 	(list Parameters
+			(object Parameter "aParentDomainObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"UMLLink"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|- super postCopy
+|- container := self container semiCopy
+|- container attachTo: self
+|- direction := self direction copy
+			)
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "defaultContainerClass"
+		    quid       	"336E23CF021D"
+		    documentation 	"Klassenmethode Liefere die default Container-Klasse. Abgeleitete Klassen können eine abweichende default Container-Klasse lieferen."
+		    result     	"ZeroOrOneContainer"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"retourniere Klasse ZeroOrOneContainer")
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "defaultDirectionClass"
+		    quid       	"336E23F302A1"
+		    documentation 	"Klassenmethode Liefere die default LinkDirection-Klasse. Abgeleitete Klassen können eine abweichende default LinkDirection-Klasse lieferen."
+		    result     	"UnidirectionalLink"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"retourniere Klasse UnidirectionalLink")
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "store:"
+		    quid       	"334698F503B1"
+		    documentation 	"Ich trage das übergebene Domain-Objekt in meinem Link ein.  Associiierte Domain-Objekte sind eigenständige Entitäten, und somit selbst für ihr store verantwortlich."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"add: anObject an meine Superklasse")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "delete:"
+		    quid       	"33468CF6018E"
+		    documentation 	
+|Ich entferne das übergebene Domain-Objekt aus meinem Link.
+|Associiiertee Domain-Objekte sind eigenständige Entitäten, und somit selbst für ihr delete verantwortlich.
+		    
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"remove: anObject an meine Superklasse ")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "store"
+		    quid       	"3347BBE5034A"
+		    documentation 	"Ein store an mich erfordert keine Aktionen, da associiierte Domain-Objekte eigenständige Entitäten sind, und somit selbst für ihr store verantwortlich ist."
+		    result     	"UMLLink"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "delete"
+		    quid       	"3347BD140129"
+		    documentation 	"Ich entferne alle Domain-Objekt aus meinem Link. Associiierte Domain-Objekte sind eigenständige Entitäten, und somit selbst für ihr delete verantwortlich."
+		    result     	"UMLLink"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"remove: aDomainObject für jedes gelinkte Domain-Objekt an meine Superklasse")
+		    opExportControl 	"Public"
+		    uid        	0))
+	    language   	"VisualWorks")
+	(object Class "ZeroOrOneContainer"
+	    quid       	"334124270099"
+	    documentation 	
+|Enthält als Link ein oder kein gelinktes Domain-Objekt.
+|Für fachspezifische Anforderungen können von mir auch weitere Klassen abgeleitet werden (siehe Message defaultLinkCardinality in UMLLink).
+	    
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    quid       	"3343C2FF0215"
+		    supplier   	"Logical View::Links::SingleLinkContainer"
+		    quidu      	"3343C212003E"))
+	    language   	"VisualWorks")
+	(object Class "ZeroToManyContainer"
+	    quid       	"3341243400C0"
+	    documentation 	
+|Enthält als Link kein, ein oder mehrere gelinkte Domain-Objekte.
+|Für fachspezifische Anforderungen können von mir auch weitere Klassen abgeleitet werden (siehe Message newLinkContainer in UMLLink).
+	    
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    quid       	"334124530269"
+		    supplier   	"Logical View::Links::MultiLinkContainer"
+		    quidu      	"33423EA00107"))
+	    language   	"VisualWorks")
+	(object Class "OneContainer"
+	    quid       	"334124C2013D"
+	    documentation 	
+|Enthält als Link ein gelinktes Domain-Objekt. es muß ein gelinktes Domain-Objekt enthalten sein.
+|Für fachspezifische Anforderungen können von mir auch weitere Klassen abgeleitet werden (siehe Message defaultLinkCardinality in UMLLink).
+	    
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    quid       	"3341254E01F2"
+		    supplier   	"Logical View::Links::SingleLinkContainer"
+		    quidu      	"3343C212003E"))
+	    operations 	(list Operations
+		(object Operation "isValid"
+		    quid       	"334670120392"
+		    documentation 	"Melde, ob ich valid (ein Domain-Objekt enthalte) bin."
+		    result     	"Boolean"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"domain == nil ifTrue: [^false] ifFalse: [^true]")
+		    opExportControl 	"Public"
+		    uid        	0))
+	    language   	"VisualWorks")
+	(object Class "ManyContainer"
+	    quid       	"33412533001D"
+	    documentation 	
+|Enthält als Link ein oder mehrere gelinkte Domain-Objekte.
+|Für fachspezifische Anforderungen können von mir auch weitere Klassen abgeleitet werden (siehe Message newLinkContainer in UMLLink).
+	    
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    quid       	"33414C300105"
+		    supplier   	"Logical View::Links::MultiLinkContainer"
+		    quidu      	"33423EA00107"))
+	    operations 	(list Operations
+		(object Operation "isValid"
+		    quid       	"3346704D0007"
+		    documentation 	"Melde, ob ich valid (mindestens ein Domain-Objekt enthalte) bin."
+		    result     	"Boolean"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"container isEmpty ifTrue: [^false] ifFalse: [^true]")
+		    opExportControl 	"Public"
+		    uid        	0))
+	    language   	"VisualWorks")
+	(object Class "NumberedContainer"
+	    quid       	"334129A903CC"
+	    documentation 	
+|Enthält eine spezifizierte Anzahl von gelinkten Domain-Objekten.
+|Für fachspezifische Anforderungen können von mir auch weitere Klassen abgeleitet werden (siehe Message newLinkContainer in UMLLink).
+	    
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    quid       	"334129E30389"
+		    supplier   	"Logical View::Links::MultiLinkContainer"
+		    quidu      	"33423EA00107"))
+	    operations 	(list Operations
+		(object Operation "isValid"
+		    quid       	"334670B60315"
+		    documentation 	
+|Melde, ob ich valid (die spezifizierte Anzahl  Domain-Objekte enthalte) bin. Die erforderliche Anzahl der Domain-Objekte erhalte ich durch die Message "defaultContainerSize" an meinen Policy. 
+		    
+		    result     	"Boolean"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|containerPolicy size ==  containerPolicy defaultContainerSize 
+|   ifTrue: [^true]
+|   ifFalse [^falsel]
+			)
+		    opExportControl 	"Public"
+		    uid        	0))
+	    language   	"VisualWorks")
+	(object Class "DomainObject"
+	    quid       	"33412BD2004C"
+	    documentation 	"Steht hier repräsentativ für ein Domain-Objekt."
+	    operations 	(list Operations
+		(object Operation "addDomain:"
+		    quid       	"334A63E103C9"
+		    documentation 	"Der Service steht repräsentativ für jeden Service eines Domain-Objektes, mit dem ein Domain-Objekt eingefügt wird."
+		    parameters 	(list Parameters
+			(object Parameter "aDomainObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "copy"
+		    quid       	"335DE2620381"
+		    documentation 	"Der Service steht repräsentativ für jeden Service eines Domain-Objektes, mit dem es eine Kopie von sich erstellt. Siehe Service postCopy !"
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "postCopy"
+		    quid       	"335DE2DA03A2"
+		    documentation 	
+|Der Service steht repräsentativ für jeden Service eines Domain-Objektes, mit dem es eine Kopie von sich erstellt. 
+|
+|Ich muß meine Associationen (vorwärts und rückwärts)  verwerfen, und dafür neue Associationen anlegen.
+|
+|Die Message copy muß an die Aggregationen deligiert werden.
+|
+		    
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|myAssociation := Association new
+|myAssociation attachTo: self
+|
+|myAggregat := myAggregat copy
+|myAggregat attachTo: self
+			)
+		    opExportControl 	"Protected"
+		    uid        	0))
+	    language   	"VisualWorks")
+	(object Class "UMLLink"
+	    quid       	"33413BDE00E9"
+	    documentation 	
+|Ist die abstrakte Basisklasse für die UML spezifischen Objekt-Links. Das Basisverhalten ist:
+|Verbindet ein Domain-Objekte mit ein oder mehreren weiteren Domain-Objekten durch einem Link. Stelle Link-Constrains (welche Domain-Objekte dürfen gelinkt werden) zur Verfügung.
+|
+|Die verwendeten Hilfsklassen sind in dem Messages defaultxxxxClass enthalten. Abgeleitete Klassen können die Verwendung der Hilfsklassen durch eine Reimplementierung der Messages "defaultxxxxClass" steuern.
+|
+|Persistenz-Behandlung:
+|- Beim Schreiben in die DB  wird  meine LinkDirection nicht 
+|  persistent gemacht.
+|- Beim Lesen aus der DB wird die LinkDirection neu instanciiert.
+|  Dazu muß die Message defaultLinkDirectionClass die korrekte
+|  Klasse liefern !
+	    
+	    operations 	(list Operations
+		(object Operation "new"
+		    quid       	"33452A4F023F"
+		    documentation 	"Erzeuge einen neuen UMLLink mit der default Container- und Direction-Instance"
+		    result     	"UMLLink"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"initializeWithContainerClass: self defaultContainerClass withDirectionClass: self defaultDirectionClass ")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "newWithContainerClass: withDirectionClass:"
+		    quid       	"335E077701F1"
+		    documentation 	"Erzeuge einen neuen UMLLink mit den Instancen der angegebenen Klassen. Achtung: Der Service darf für persistente Links nicht verwendet werden, da sonst beim Lesen aus der DB nicht die korrekte LinkDirection-Klasse reinstanciiert werden kann !"
+		    parameters 	(list Parameters
+			(object Parameter "aContainerClass"
+			    type       	"LinkContainer"
+			    initv      	"default")
+			(object Parameter "aDirectionClass"
+			    type       	"LinkDirection"
+			    initv      	"default"))
+		    result     	"UMLLink"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"self initializeWithContainerClass: aContainerClass withDirectionClass: aDirectionClass ")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "newWithContainerClass:"
+		    quid       	"335E1C540151"
+		    documentation 	"Erzeuge einen neuen UMLLink mit den Instancen der angegebenen LinkContainer Klasse und der default LinkDirection Klasse."
+		    parameters 	(list Parameters
+			(object Parameter "aContainerClass"
+			    type       	"LinkContainer"
+			    initv      	"default"))
+		    result     	"UMLLink"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"self initializeWithContainerClass: aContainerClass withDirectionClass: self defaultDirectionClass ")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "initializeWithContainerClass: withDirectionClass:"
+		    quid       	"335E08A40294"
+		    documentation 	"Instanciiere mich mit den Instancen der angegebenen Klassen. Die angegebenen Klassen müssen von LinkContainer und von LinkDirection abgeleitete Klassen sein !"
+		    parameters 	(list Parameters
+			(object Parameter "aContainerClass"
+			    type       	"LinkContainer"
+			    initv      	"default")
+			(object Parameter "aDirectionClass"
+			    type       	"LinkDirection"
+			    initv      	"default"))
+		    result     	"UMLLink"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|container := aContainerClass new
+|container attachTo: self
+|direction := aDirectionClass new
+			)
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "defaultBidirectionalUnlinkSelector"
+		    quid       	"3345378600B3"
+		    documentation 	
+|Liefere den Unlink-Selector, mit dem ein bidirektionaler Link im entfernten Objekt etabliert wird.
+| Der Selector muß ein 1-Argument-Selector (das Argument ist das Domain-Objekt, aus dem der bidirektionale Link entfernt werden soll) oder ein BlockClosure sein (1. Argument ist das Domain-Objekt, aus dem der bidirektionale Link entfernt werden soll, 2. Argument ist das Domain-Objekt, welches entfernt werden soll) ! 
+		    
+		    result     	"Selector"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"retourniere Selector #unlink:")
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "defaultBidirectionalLinkSelector"
+		    quid       	"3343C6E103C3"
+		    documentation 	"Liefere den Link-Selector, mit dem ein bidirektionaler Link im hinzugefügren Objekt etabliert wird. Der Selector muß ein 1-Argument-Selector (das Argument ist das Domain-Objekt, in dem der bidirektionale Link etabliert werden soll) oder ein BlockClosure sein (1. Argument ist das Domain-Objekt, in dem der bidirektionale Link etabliert werden soll, 2. Argument ist das Domain-Objekt, welches hinzugefügt werden soll) ! ."
+		    result     	"Selector"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"retourniere Selector #link:")
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "postCopy"
+		    quid       	"335E01AC0022"
+		    documentation 	"Abschlußbehandlung des deep copy."
+		    parameters 	(list Parameters
+			(object Parameter "aParentDomainObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"UMLLink"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|- super postCopy
+|- self parent: ni
+			)
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "postRead"
+		    quid       	"335E166301FE"
+		    documentation 	"Der Service wird ausgeführt, wenn der Link aus der Datenbank gelesen wurde. Hier muß meine LinkDirection instanciiert werden."
+		    result     	"UMLLink"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"self direction: self class defaultDirectionClass new")
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "parent:"
+		    quid       	"334BD6C5009D"
+		    documentation 	"Setze meinen Parent (ein Domain-Objekt)"
+		    parameters 	(list Parameters
+			(object Parameter "aParentDomainObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "parent"
+		    quid       	"334A3C010230"
+		    documentation 	"Liefere meine Instancevariable 'parent' (mein Parent-Domain-Objekt)"
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "direction"
+		    quid       	"334547DE007D"
+		    documentation 	"Liefere meine Instancevariable 'direction' (meine LinkDirection)"
+		    result     	"LinkDirection"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "container"
+		    quid       	"3345477D0038"
+		    documentation 	"Liefere mein Instancevariable 'container' (mein LinkContainer)"
+		    result     	"LinkContainer"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "domain"
+		    quid       	"3371E88501B5"
+		    documentation 	"Liefere das/die Domain-Objekt(e) meines Containers."
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"^self container domain")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "attachTo:"
+		    quid       	"334CFD57012A"
+		    documentation 	"Verbinde mich mit meinem Parent (einem Domain-Objekt), in dem ich enthalten bin. Das Setzen der Domain-Objekte-Links wird an meine LinkDirection deligiert."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|- [anObject == self parent] 
+|   ifFalse: [self direction detachFrom: self]
+|- parent: anObject
+|- self direction attachTo:: self 
+			)
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "detach"
+		    quid       	"334D340F0303"
+		    documentation 	"Entferne die Rückwärtsverbindung zu meinen Parent (einem Doamin-Objekt), in dem ich enthalten bin."
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|- [self parent == nil]
+|   ifFalse: [self direction detachFrom: self]
+|parent: nil
+			)
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "first"
+		    quid       	"3371F775018C"
+		    documentation 	"Liefere das erste Domain-Objekt aus meinem LinkContainer"
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"^self container first")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "last"
+		    quid       	"3371F7E90161"
+		    documentation 	"Liefere das letzte Domain-Objekt aus meinem LinkContainer"
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"^self container last")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "size"
+		    quid       	"336DF7A70146"
+		    documentation 	"Liefere die Anzahl der bei mir eingetragenen Domain-Objekte."
+		    result     	"Integer"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"^self container size")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "indexOf:"
+		    quid       	"33730ED60267"
+		    documentation 	"Liefere den Index des Domain-Objektes innerhalb meines LinkContainers."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"Integer"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"^self container indexOf: anObject")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "isAddable:"
+		    quid       	"3345445B0034"
+		    documentation 	"Prüfe, ob das Domain-Objekt eingefügt werden kann."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"Boolean"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"self container isAddable: anObject")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "isValid"
+		    quid       	"334A3FF400CB"
+		    documentation 	"Melde, ob ich valid bin."
+		    result     	"Symbol"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"self container isValid")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "isEmpty"
+		    quid       	"336DF87E02AE"
+		    documentation 	"Melde ob ich keine Domain-Objekte eingetragen habe"
+		    result     	"Boolean"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"^self container isEmpty")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "exist:"
+		    quid       	"3345440A034F"
+		    documentation 	"Prüfe, ob ich das übergebene Domain-Objekt enthalte. Für en Vergleich wird die Objekt-Identität verwendet."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"Boolean"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"self container exist: anObject")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "includes:"
+		    quid       	"33D7467F016B"
+		    documentation 	"Prüfe, ob ich das übergebene Domain-Objekt enthalte. Der Vergleich wird mit dem Objektinhalt durchgeführt. Die Exakte Strategie dazu ist in der verwendeten ContainerPolicy festgelegt."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"Boolean"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"self container includes: anObject")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "find:IfNone:"
+		    quid       	"3373034202DD"
+		    documentation 	"Suche das Objekt, welches semantisch zum übergebenen Objekt passt. Liefere das Eval-Ergebnis  von aBlock aus, wenn das Domain-Objekt nicht gefunden wurde."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default")
+			(object Parameter "aBlock"
+			    type       	"BlockClosure"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|theObject := self container find: anObject.
+|^theObject ~~ nil ifTrue: [theObject] ifFalse: [aBlock value]
+			)
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "find:"
+		    quid       	"334541F00319"
+		    documentation 	"Suche das Objekt, welches semantisch zum übergebenen Objekt passt."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"self find: anObject ifNone: [nil]")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "add:"
+		    quid       	"33469802000E"
+		    documentation 	"Füge ein neues Domain-Objekt in meinem Link ein"
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"self direction add: anObjekt in: self")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "addAll:"
+		    quid       	"336DFE4B005A"
+		    documentation 	"Trage alle Domain-Objekte aus der übergebenen Collection bei mir ein"
+		    parameters 	(list Parameters
+			(object Parameter "aCollection"
+			    type       	"Collection"
+			    initv      	"default"))
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"aCollection do: [:each | self add: each]")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "remove:"
+		    quid       	"3346970601E2"
+		    documentation 	"Entferne das übergebene Objekt aus meinen Link."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"self direction remove: anObjekt in: self")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "removeAllSuchThat:"
+		    quid       	"334A225C01CC"
+		    documentation 	"Entferne alle Domain-Objekte aus meinen Link, für die der übergebene Block aBlock true evaluiert."
+		    parameters 	(list Parameters
+			(object Parameter "aBlock"
+			    type       	"BlockClosure"
+			    initv      	"default"))
+		    result     	"OrderedCollection"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|self do: [:anObject | aBlock value: anObject == true 
+|         ifTrue: [self remove: anObject]]
+| 
+			)
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "remove"
+		    quid       	"334A1163034A"
+		    documentation 	"Entferne alle Domain-Objekte meinen Link."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"OrderedCollection"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"self do: [:each | self remove: each]")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "deleteAllSuchThat:"
+		    quid       	"334A244D0357"
+		    documentation 	"Entferne und lösche alle Domain-Objekte aus meinen Link, für die der übergebene Block aBlock true evaluiert.."
+		    parameters 	(list Parameters
+			(object Parameter "aBlock"
+			    type       	"BlockClosure"
+			    initv      	"default"))
+		    result     	"OrderedCollection"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|self do: [:anObject | aBlock value: anObject == true 
+|         ifTrue: [self delete: anObject]]
+| 
+			)
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "do:"
+		    quid       	"334A1231036F"
+		    documentation 	"Enummeriere all meine gelinkten Domain-Objekte"
+		    parameters 	(list Parameters
+			(object Parameter "aBlock"
+			    type       	"BlockClosure"
+			    initv      	"default"))
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"self container do: aBlock")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "keysAndValuesDo:"
+		    quid       	"334A2105009C"
+		    documentation 	"Enummeriere all meine gelinkten Domain-Objekte mit einem laufenden Index."
+		    parameters 	(list Parameters
+			(object Parameter "aBlock"
+			    type       	"BlockClosure"
+			    initv      	"default"))
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"self container asCollection keysAndValuesDo: aBlock")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "collect:"
+		    quid       	"334A12F701C5"
+		    documentation 	"Sammle transformierte Domain-Objekte aus meinem Link"
+		    parameters 	(list Parameters
+			(object Parameter "aBlock"
+			    type       	"BlockClosure"
+			    initv      	"default"))
+		    result     	"Collection"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"self container asCollection collect: aBlock")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "select:"
+		    quid       	"334A1F01013A"
+		    documentation 	"Wähle bestimmte Domain-Objekte aus meinem Link aus"
+		    parameters 	(list Parameters
+			(object Parameter "aBlock"
+			    type       	"BlockClosure"
+			    initv      	"default"))
+		    result     	"Collection"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"self container asCollection select: aBlock")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "reject:"
+		    quid       	"334A1F4500D4"
+		    documentation 	"Sammle Domain-Objekte, die nicht zutreffen (aBlock)  aus meinem Link"
+		    parameters 	(list Parameters
+			(object Parameter "aBlock"
+			    type       	"BlockClosure"
+			    initv      	"default"))
+		    result     	"Collection"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"self container asCollection reject: aBlock")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "inject:into:"
+		    quid       	"3381DF7E03DB"
+		    documentation 	"Evaluiere meine Domain-Objekte mit dem übergebenen Block und führe dabei den übergebenen aValue ein."
+		    parameters 	(list Parameters
+			(object Parameter "aValue"
+			    type       	"Object"
+			    initv      	"default")
+			(object Parameter "aBlock"
+			    type       	"BlockClosure"
+			    initv      	"default"))
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"^self container asCollection inject: aValue into: aBlock")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "detect:"
+		    quid       	"334A187D025E"
+		    documentation 	"Suche das Domain-Objekt aus meinem Link, welchse auf die gegebene Bedingung zutrifft."
+		    parameters 	(list Parameters
+			(object Parameter "aBlock"
+			    type       	"BlockClosure"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"self detect: aBlock ifNone: [nil]")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "detect:ifNone:"
+		    quid       	"334A1DB701FE"
+		    documentation 	"Suche das Domain-Objekt aus meinem Link, welches auf die gegebene Bedingung zutrifft. Falls kein passendes Domain-Objekt gefunden wird, wird der anAbsentBlock ausgeführt."
+		    parameters 	(list Parameters
+			(object Parameter "aBlock"
+			    type       	"BlockClosure"
+			    initv      	"default")
+			(object Parameter "anAbsentBlock"
+			    type       	"BlockClosure"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"self container asCollection detect: aBlock ifNone: anAbsentBlock")
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "direction"
+		    quid       	"33453047001F"
+		    documentation 	
+|Die Referenz auf meine LinkDirection-Instance. Sie wird im Service "initialize" initialisiert.
+		    
+		    type       	"LinkDirection")
+		(object ClassAttribute "container"
+		    quid       	"334530CF0382"
+		    documentation 	
+|Die Referenz auf meine LinkContainer-Instance. Sie wird im Service "initialize" initialisiert.
+		    
+		    type       	"LinkContainer")
+		(object ClassAttribute "parent"
+		    quid       	"334A3BC500E9"
+		    documentation 	"Mein Parent, in dem ich mich befinde."
+		    type       	"DomainObject"))
+	    language   	"VisualWorks"
+	    abstract   	TRUE)
+	(object Class "UMLAggregat"
+	    quid       	"3341432300E5"
+	    documentation 	"Die verbundenen Domain-Objekte sind Containments. d.h.: Das Löschen des Domain-Objektes bewirkt auch das Löschen des(r) gelinkten Domain-Objekt(e)."
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    quid       	"3341433201B9"
+		    supplier   	"Logical View::Links::UMLLink"
+		    quidu      	"33413BDE00E9"))
+	    operations 	(list Operations
+		(object Operation "defaultDirectionClass"
+		    quid       	"336E244F0307"
+		    documentation 	"Klassenmethode Liefere die default LinkDirection-Klasse. Abgeleitete Klassen können eine abweichende default LinkDirection-Klasse lieferen."
+		    result     	"BidirectionalLink"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"retourniere Klasse BidirectionalLink")
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "defaultContainerClass"
+		    quid       	"336E2440019D"
+		    documentation 	"Klassenmethode Liefere die default Container-Klasse. Abgeleitete Klassen können eine abweichende default Container-Klasse lieferen."
+		    result     	"ZeroOrOneContainer"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"retourniere Klasse ZeroOrOneContainer")
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "postCopy"
+		    quid       	"335DE83501C2"
+		    documentation 	"Abschlußbehandlung des deep copy. Ich erstelle eine copy meines LinkContainer (mit dessen Domain-Objekten) und meiner LinkDirektion."
+		    parameters 	(list Parameters
+			(object Parameter "aParentDomainObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"UMLLink"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|- super postCopy
+|- container := self container copy
+|- container attachTo: self
+|- direction := self direction copy
+			)
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "isValid"
+		    quid       	"334A402403A5"
+		    documentation 	"Melde, ob ich valid bin."
+		    result     	"Symbol"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|- isValid an meine Superklasse
+|- Wenn das Ergebnis true ist, isValid an alle gelinkten
+|  Domain-Objekte. Diese lieferen true oder false.
+			)
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "store:"
+		    quid       	"3346924F03C7"
+		    documentation 	
+|Das übergebene Domain-Objekt wird in meinem Link eingetragen und gespeichert werden.
+|Das Domain-Objekte anObject ist dafür verantwortlich, daß die store-Message seinerseits an seine Aggregate und Associationen weiter deligiert wird.
+		    
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|- add: anObject an meine Superklasse
+|- store an anObject
+			)
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "delete:"
+		    quid       	"3346969D00BF"
+		    documentation 	
+|Entferne und lösche das übergebene Domain-Objekt aus meinen Link.
+|Das Domain-Objekte anObject ist dafür verantwortlich, daß die delete-Message seinerseits an seine Aggregate und Associationen weiter deligiert wird.
+		    
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|- "remove: anObjekt" an meine Superklasse
+|- "anObject delete"
+			)
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "store"
+		    quid       	"3347BE410317"
+		    documentation 	
+|Das Aggregat mit all seinen gelinkten Domain-Objekten wird gespeichert.
+|Die Domain-Objekte sind dafür verantwortlich, daß die store-Message ihrerseits an ihre Aggregate und Associationen weiter deligiert werden.
+		    
+		    result     	"OrderedCollection"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|Message "store" an alle gelinkten Domain-Objekte
+			)
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "delete"
+		    quid       	"3347BEEC02FF"
+		    documentation 	
+|Das Aggregat mit all seinen gelinkten Domain-Objekten wird gelöscht. 
+|Die Domain-Objekte sind dafür verantwortlich, daß die delete-Message ihrerseits an ihre Aggregate und Associationen weiter deligiert wird.
+		    
+		    result     	"OrderedCollection"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|delete: aDomainObject" für alle gelinkten Domain-Objekte an meine Superklasse.
+			)
+		    opExportControl 	"Public"
+		    uid        	0))
+	    language   	"VisualWorks")
+	(object Class "LinkDirection"
+	    quid       	"334146B40319"
+	    documentation 	"Beschreibt, wie ein Domain-Objekt - Domain-Objek-Link realisiert wird."
+	    operations 	(list Operations
+		(object Operation "attachTo:"
+		    quid       	"335DDE010004"
+		    documentation 	"abstract Eine LinkDirection wurde von einem UMLLink okkupiert (z.B. ein neues Parent-Domain-Objekt wurde für die gelinkten Domain-Objekte bestimmt). Konkrete Klassen müssen den Service entsprechend implementieren."
+		    parameters 	(list Parameters
+			(object Parameter "aLink"
+			    type       	"UMLLink"
+			    initv      	"default"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "detachFrom:"
+		    quid       	"335DDEF7030B"
+		    documentation 	"abstract Eine LinkDirection wurde von einem UMLLink freigegeben (z.B. das Parent-Domain-Objekt wurde aus dem UMLLink entfernt). Konkrete Klassen müssen den Service entsprechend implementieren."
+		    parameters 	(list Parameters
+			(object Parameter "aLink"
+			    type       	"UMLLink"
+			    initv      	"default"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "add:in:"
+		    quid       	"3342A8B50374"
+		    documentation 	"abstract Der Service erledigt die eigentliche Arbeit des Einfügens."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default")
+			(object Parameter "aLink"
+			    type       	"UMLLink"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "remove:in:"
+		    quid       	"334547040066"
+		    documentation 	"abstract Der Service erledigt die eigentliche Arbeit des Entfernens."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default")
+			(object Parameter "aLink"
+			    type       	"UMLLink"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    language   	"VisualWorks"
+	    abstract   	TRUE)
+	(object Class "UnidirectionalLink"
+	    quid       	"334146D2020E"
+	    documentation 	
+|Ein Domain-Objekt wird durch einen Link mit einem zweiten Domain-Objekt verbunden. 
+|
+|Domain-Objekt-1 ----> UMLLink ----> Domain-Objekt-2
+	    
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    quid       	"334147660008"
+		    supplier   	"Logical View::Links::LinkDirection"
+		    quidu      	"334146B40319"))
+	    operations 	(list Operations
+		(object Operation "attachTo:"
+		    quid       	"335DE06F01C1"
+		    documentation 	"Eine LinkDirection wurde von einem UMLLink okkupiert (z.B. ein neues Parent-Domain-Objekt wurde für die gelinkten Domain-Objekte bestimmt). Hier muß dafür nichts getan werden, da ein unidirektionaler Link davon nicht betroffen ist."
+		    parameters 	(list Parameters
+			(object Parameter "aLink"
+			    type       	"UMLLink"
+			    initv      	"default"))
+		    result     	"LinkDirection"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "detachFrom:"
+		    quid       	"335DE07303A7"
+		    documentation 	"Eine LinkDirection wurde von einem UMLLink freigegeben (z.B. das Parent-Domain-Objekt wurde aus dem UMLLink entfernt). Hier muß dafür nichts getan werden, da ein unidirektionaler Link davon nicht betroffen ist."
+		    parameters 	(list Parameters
+			(object Parameter "aLink"
+			    type       	"UMLLink"
+			    initv      	"default"))
+		    result     	"LinkDirection"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "add:in:"
+		    quid       	"3342A9B20287"
+		    documentation 	"Ich muß hier nur das Objekt im Container des übegebenen Links   einfügen."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default")
+			(object Parameter "aLink"
+			    type       	"UMLLink"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|aLink container exist: anObject 
+|   ifFalse: [aLink container add: anObject]
+|   ifTrue: [^nil]
+			)
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "remove:in:"
+		    quid       	"3345472A0381"
+		    documentation 	"Ich muß hier nur das Objekt im Container des übegebenen Links 'aLink' entfernen."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default")
+			(object Parameter "aLink"
+			    type       	"UMLLink"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|aLink container exist: anObject
+|   ifFalse: [aLink container remove: anObject]
+|   ifTrue: [^nil]
+			)
+		    opExportControl 	"Public"
+		    uid        	0))
+	    language   	"VisualWorks")
+	(object Class "BidirectionalLink"
+	    quid       	"3341472301F6"
+	    documentation 	
+|Ein Domain-Objekt wird durch einen Link mit einem zweiten Domain-Objekt verbunden. Das zweite Domain-Objekt ist durch einem Link mit dem ersten Domain-Objekt verbunden.
+|
+|Domain-Objekt-1 ----> UMLLink ----> Domain-Objekt-2
+|Domain-Objekt-2 ----> UMLLink ----> Domain-Objekt-1
+|
+|Die beiden UMLLink's können wahlweise uni- oder bidirektionale Links verwenden.
+	    
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    quid       	"3341476A023E"
+		    supplier   	"Logical View::Links::LinkDirection"
+		    quidu      	"334146B40319"))
+	    operations 	(list Operations
+		(object Operation "attachTo:"
+		    quid       	"334D363B00C8"
+		    documentation 	"Eine LinkDirection wurde von einem UMLLink okkupiert (z.B. ein neues Parent-Domain-Objekt wurde für die gelinkten Domain-Objekte bestimmt). Hier müssen die bidirektionalen Links der gelinkten Domain-Objekte etabliert werden."
+		    parameters 	(list Parameters
+			(object Parameter "aLink"
+			    type       	"UMLLink"
+			    initv      	"default"))
+		    concurrency 	"Sequential"
+		    pre_condition 	(object Semantic_Info
+			PDL        	"aLink do: [:each | self bidirectionalRemove: each in: aLink]")
+		    semantics  	(object Semantic_Info
+			PDL        	"aLink do: [:each | self bidirectionalAdd: each in: aLink]")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "detachFrom:"
+		    quid       	"334548CB01F0"
+		    documentation 	"Eine LinkDirection wurde von einem UMLLink freigegeben (z.B. das Parent-Domain-Objekt wurde aus dem UMLLink entfernt). Hier müssen die bidirektionalen Links in den gelinkten Domain-Objekten aufgelöst werden."
+		    parameters 	(list Parameters
+			(object Parameter "aLink"
+			    type       	"UMLLink"
+			    initv      	"default"))
+		    concurrency 	"Sequential"
+		    pre_condition 	(object Semantic_Info
+			PDL        	"aLink do: [:each | self bidirectionalRemove: each in: aLink]")
+		    semantics  	(object Semantic_Info
+			PDL        	"aLink do: [:each | self bidirectionalRemove: each in: aLink]")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "add:in:"
+		    quid       	"33453BC10010"
+		    documentation 	"Ich füge das Objekt im übergebenen Link 'aLink' ein."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default")
+			(object Parameter "aLink"
+			    type       	"UMLLink"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|aLink container exist: anObject
+|   ifFalse: [aLink container add: anObject.
+|                    self bidirectionalLink: anObject in: aLink]
+|   ifTrue: [^nil]
+|
+			)
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "remove:in:"
+		    quid       	"334548420059"
+		    documentation 	"Ich entferne das Objekt im übergebenen Link 'aLink'."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default")
+			(object Parameter "aLink"
+			    type       	"UMLLink"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|aLink container exist: anObject
+|   ifFalse: [aLink container remove: anObject.
+|                    self bidirectionalUnlink: anObject in: aLink]
+|   ifTrue: [^nil]
+|
+			)
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "bidirectionalLink:in:"
+		    quid       	"3342B03B021F"
+		    documentation 	"Im hinzugefügten Domain-Objekt wird der bidirektionale Link auf mein Domain-Objekt gesetzt. "
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default")
+			(object Parameter "aLink"
+			    type       	"UMLLink"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|aLink defaultBidirectionalLinkSelector isSymbol 
+|ifTrue: [anObject perform: aLink defaultBidirectionalLinkSelector
+|                with: aLink parent]
+|ifFalse: [aLink defaultBidirectionalLinkSelector value: anObject                  value: aLink parent]
+			)
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "bidirectionalUnlink:in:"
+		    quid       	"334D3293023F"
+		    documentation 	"Im entfernten Domain-Objekt wird der bidirektionale Link auf mein Domain-Objekt entfernt. "
+		    parameters 	(list Parameters
+			(object Parameter "aLink"
+			    type       	"UMLLink"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|aLink defaultBidirectionalUnlinkSelector isSymbol 
+|ifTrue: [anObject perform: aLink                                                    defaultBidirectionalUnlinkSelector
+|                with: aLink parent]
+|ifFalse: [aLink defaultBidirectionalUnlinkSelector 
+|                 value: anObject  value: aLink parent]
+			)
+		    opExportControl 	"Protected"
+		    uid        	0))
+	    language   	"VisualWorks"
+	    abstract   	TRUE)
+	(object Class "MultiLinkContainer"
+	    quid       	"33423EA00107"
+	    documentation 	
+|Verwaltet ein oder mehrere Domain-Objekte. Die konkreten abgeleiteten Klassen beschreiben die Cardinalität. Das semantische Handling der Domain-Objekt-Collection wird per Default durch die ContainerPolicy bestimmt. 
+|Abgeleitete Klassen können auch ohne die Policy-Klasse arbeiten. In diesem Fall muß die Message defaultContainerPolicyClass nil liefern, und alle Services, die normalerweise zur Policy propagiert werden, müssen entsprechend reimplementiert werden.
+|
+|Persistenz-Behandlung:
+|- Beim Schreiben in die DB  wird meine LinkPolicy nicht 
+|  persistent gemacht.
+|- Beim Lesen aus der DB wird die LinkPolicy neu instanciiert.
+|  Dazu muß die Message defaultLinkPolicyClass die korrekte
+|  Klasse liefern !
+	    
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    quid       	"33423F570273"
+		    supplier   	"Logical View::Links::LinkContainer"
+		    quidu      	"33412072012B"))
+	    operations 	(list Operations
+		(object Operation "postCopy"
+		    quid       	"335DF93D00C7"
+		    documentation 	"Abschlußbehandlung für den deep copy"
+		    result     	"LinkContainer"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|- super postCopy
+|- containerPolicy :=  containerPolicy copy
+|- myContainer := container
+|- containerPolicy initializeContainer: self
+|- myContainer do: [:each | containerPolicy performAdd: each copy in: self]
+			)
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "postSemiCopy"
+		    quid       	"334BEB670297"
+		    documentation 	"Abschlußbehandlung für den semiCopy"
+		    result     	"LinkContainer"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|- super postSemiCopy
+|- containerPolicy :=  containerPolicy copy 
+|- containerPolicy initializeContainer: self
+			)
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "postRead"
+		    quid       	"335E179B0293"
+		    documentation 	"Der Service wird ausgeführt, wenn der Container aus der Datenbank gelesen wurde. Hier muß meine LinkPolicy instanciiert werden."
+		    result     	"UMLLink"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"containerPolicy := self defaultContainerPolicyClass new")
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "initialize"
+		    quid       	"33452F4103C6"
+		    documentation 	"Initialisiere mich."
+		    result     	"LinkContainer"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|- initialize an meine Superklasse
+|- newContainerPolicy
+			)
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "defaultContainerPolicyClass"
+		    quid       	"3346455800D7"
+		    documentation 	"Klassenmethode Liefere die default Policy-Klasse. Abgeleitete Klassen können eine abweichende default Policy-Klasse lieferen."
+		    result     	"OrderedContainerPolicy"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"retourniere Klasse OrderedContainerPolicy")
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "newContainerPolicy"
+		    quid       	"3346457201C5"
+		    documentation 	"Erzeuge die für den LinkContainer notwendige Policy Instance."
+		    result     	"ContainerPolicy"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"containerPolicy := self defaultContainerPolicyClass                                             new initializeContainer: self")
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "container"
+		    quid       	"3343ADB2020A"
+		    documentation 	"Liefere den Container der Domain-Objekte."
+		    result     	"Collection"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "container:"
+		    quid       	"3343ADE20173"
+		    documentation 	"Setze das Container-Attribut mit der übergebenen Collection."
+		    parameters 	(list Parameters
+			(object Parameter "aCollection"
+			    type       	"Collection"
+			    initv      	"default"))
+		    result     	"Collection"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "domain"
+		    quid       	"33453AA30380"
+		    documentation 	"Liefere meine Collection der Domain-Objekte."
+		    result     	"Collection"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"asCollection")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "asCollection"
+		    quid       	"334A169303C2"
+		    documentation 	"Liefere meine gelinkten Domain-Objekte in einer neuen Collection. Die Anforderung wird an meine Policy deligiert."
+		    result     	"Collection"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"^self containerPolicy asCollection: self")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "size"
+		    quid       	"336DF2900391"
+		    documentation 	"Liefer die Anzahl der eingetragenen Domain-Objekte"
+		    result     	"Integer"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"^self containerPolicy sizeOf: self")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "indexOf:"
+		    quid       	"337307D90110"
+		    documentation 	"Liefere den Index Domain-Objekte innerhalb meiner Collection."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"Integer"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"^self contaierPolicy indexOf: anObject in: self")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "first"
+		    quid       	"3373100B0199"
+		    documentation 	"Liefere das erste Domain-Objekt aus meinem Container"
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"^self containerPolicy firstIn: self")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "last"
+		    quid       	"3373103A036D"
+		    documentation 	"Liefere das letzte Domain-Objekt aus meinem Container"
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"^self containerPolicy lastIn: self")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "exist:"
+		    quid       	"3345399F00BF"
+		    documentation 	"Prüfe, ob ich das Domain-Objekte enthalte"
+		    parameters 	(list Parameters
+			(object Parameter "aBlock"
+			    type       	"BlockClosure"
+			    initv      	"default"))
+		    result     	"Boolean"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"containerPolicy exist: anObject in: self")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "includes:"
+		    quid       	"33674CBC0270"
+		    documentation 	"Prüfe, ob ich das übergebene Domain-Objekt enthalte."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"Boolean"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"containerPolicy includes:anObject in: self")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "find:"
+		    quid       	"33454177010D"
+		    documentation 	"Suche das Objekt, welches semantisch zum übergebenen Objekt passt."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"containerPolicy find: anObjekt in: self")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "performAdd:"
+		    quid       	"3343C5FA0186"
+		    documentation 	"Füge das übergebene Domain-Objekt bei mir ein."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"containerPolicy performAdd: anObject in: self")
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "performRemove:"
+		    quid       	"33453F160338"
+		    documentation 	"Entferne das übergebene Domain-Objekt aus mir."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"containerPolicy performRemove: anObject in: self")
+		    opExportControl 	"Protected"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "container"
+		    quid       	"334531BA0308"
+		    documentation 	"Der Container, der die Domain-Objekte enthält. Die Instancevaribale wird durch die ContainerPolicy initialisiert."
+		    type       	"Collection")
+		(object ClassAttribute "containerPolicy"
+		    quid       	"33465D920310"
+		    documentation 	"Enthält die Policy-Instance, die für das eigentliche Handling den Domain-Objekt-Containers zuständig ist."
+		    type       	"ContainerPolicy"))
+	    language   	"VisualWorks"
+	    abstract   	TRUE)
+	(object Class "ContainerPolicy"
+	    quid       	"3342440700E8"
+	    documentation 	
+|Die Klasse (bzw. deren Ableitungen) hat folgende Verantwortlichkeiten:
+|
+|- Initialisiert die Container-Instancevariable des LinkContainer's 
+|  mit dem passenden Container.
+|- Bearbeitet die semantischen Services für den Containerinhalt. 
+|  Dies sind:
+|  - Suchen nach einem Objekte im Container
+|  - Objekt im Container eintragen
+|  - Objekt aus dem Container entfernen
+|  
+|Die abgeleiteten konkreten Policy-Klassen beschreiben diese Services konkret.
+	    
+	    operations 	(list Operations
+		(object Operation "initializeContainer:"
+		    quid       	"3343AD00036D"
+		    documentation 	"abstract Initialisiere den Container für die Domains in dem übergebenen LinkContainer."
+		    parameters 	(list Parameters
+			(object Parameter "aLinkContainer"
+			    type       	"LinkContainer"
+			    initv      	"default"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "defaultContainerSize"
+		    quid       	"334BE8780265"
+		    documentation 	"Liefere die Anzahl der Domain-Objekt im Containers damit der Link valid ist. Abgeleitete Klassen können hier eine entsprechende Anzahl liefern."
+		    result     	"Integer"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"retourniere 1")
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "asCollection:"
+		    quid       	"3371F8580297"
+		    documentation 	"Liefere eine Kopie des Domain-Objekt-Containers. Die neue Collection ist vom selben Typ wird meine orginäre Domain-Objekt-Collection"
+		    parameters 	(list Parameters
+			(object Parameter "aLinkContainer"
+			    type       	"LinkContainer"
+			    initv      	"default"))
+		    result     	"Collection"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"^aLinkContainer container copy")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "sizeOf:"
+		    quid       	"336DEF32012F"
+		    documentation 	"Liefere die Anzahl der im Container eingetragegenen Domain-Objekte. Das Defaultverhalten ermittelt hier die Größe des Containers im übergebenen LinkContainer."
+		    parameters 	(list Parameters
+			(object Parameter "aLinkContainer"
+			    type       	"LinkContainer"
+			    initv      	"default"))
+		    result     	"Integer"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"^aLinkContainer container size")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "indexOf:in:"
+		    quid       	"337304610362"
+		    documentation 	"Liefere den Index Domain-Objekte innerhalb der Collection von aLinkContainer."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default")
+			(object Parameter "aLinkContainer"
+			    type       	"LinkContainer"
+			    initv      	"default"))
+		    result     	"Integer"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"^aLinkContainer container indexOf: anObject")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "firstIn:"
+		    quid       	"3373107B010E"
+		    documentation 	"Liefere das erste Domain-Objekt des Containers aus aLinkContainer"
+		    parameters 	(list Parameters
+			(object Parameter "aLinkContainer"
+			    type       	"LinkContainer"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"^aLinkContainer container first")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "lastIn:"
+		    quid       	"337310B603C5"
+		    documentation 	"Liefere das letzte Domain-Objekt des Containers aus aLinkContainer"
+		    parameters 	(list Parameters
+			(object Parameter "aLinkContainer"
+			    type       	"LinkContainer"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"^aLinkContainer container last")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "includes:in:"
+		    quid       	"336744BF005D"
+		    documentation 	"Prüfe, ob das übergebene Domain-Objekt in der übergebenen LinkContainer enthalten ist. Die Attribute des übergebenen Domain-Objektes wird mit den Domain-Objekte im LinkContainer verglichen."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default")
+			(object Parameter "aLinkContainer"
+			    type       	"LinkContainer"
+			    initv      	"default"))
+		    result     	"Boolean"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"aLinkContainer container includes: anObject")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "exist:in:"
+		    quid       	"33466A2E03DA"
+		    documentation 	"Prüfe, ob das übergebene Domain-Object im Container des übergebenen LinkContainer enthalten ist. Der Vergleich basiert auf Objektidentität"
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default")
+			(object Parameter "aLinkContainer"
+			    type       	"LinkContainer"
+			    initv      	"default"))
+		    result     	"Boolean"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"aLinkContainer container detect: [:each | each == anObject]                                                         ifNone: [false]")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "find:in:"
+		    quid       	"33466A4B009C"
+		    documentation 	"Suche das Objekt, welches semantisch zum übergebenen Objekt im übergebenen LinkContainer passt. "
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default")
+			(object Parameter "aLinkContainer"
+			    type       	"LinkContainer"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"aLinkContainer container find: anObject")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "performAdd:in:"
+		    quid       	"33466A710119"
+		    documentation 	"Füge das übergebene Domain-Objekt im  übergebenen LinkContainer ein. Relevante Prüfungen wurden bereits durchgeführt."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default")
+			(object Parameter "aLinkContainer"
+			    type       	"LinkContainer"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"aLinkContainer container add: anObject")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "performRemove:in:"
+		    quid       	"33466A920365"
+		    documentation 	"Entferne das übergebene Domain-Objekt aus dem übergebenen LinkContainer. Relevante Prüfungen wurden bereits durchgeführt."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default")
+			(object Parameter "aLinkContainer"
+			    type       	"LinkContainer"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"aLinkContainer container remove: anObject")
+		    opExportControl 	"Public"
+		    uid        	0))
+	    language   	"VisualWorks"
+	    abstract   	TRUE)
+	(object Class "OrderedContainerPolicy"
+	    quid       	"3342449B0004"
+	    documentation 	
+|Die Domain-Objekte werden geordnet entsprechend ihrer Einfügereihenfolge.
+|Für fachspezifische Anforderungen können von mir auch weitere Klassen abgeleitet werden (siehe Message newContainerPolicy in MultiLinkContainer).
+	    
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    quid       	"334245430060"
+		    supplier   	"Logical View::Links::ContainerPolicy"
+		    quidu      	"3342440700E8"))
+	    operations 	(list Operations
+		(object Operation "initializeContainer:"
+		    quid       	"334BE98600F1"
+		    documentation 	"Initialisiere den Container für die Domains in dem übergebenen LinkContainer."
+		    parameters 	(list Parameters
+			(object Parameter "aLinkContainer"
+			    type       	"LinkContainer"
+			    initv      	"default"))
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"aLinkContainer container:OrderedCollection new")
+		    opExportControl 	"Public"
+		    uid        	0))
+	    language   	"VisualWorks")
+	(object Class "UnorderedContainerPolicy"
+	    quid       	"334244C201AF"
+	    documentation 	
+|Die Domain-Objekte werden nicht geordnet.
+|Für fachspezifische Anforderungen können von mir auch weitere Klassen abgeleitet werden (siehe Message newContainerPolicy in MultiLinkContainer).
+	    
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    quid       	"3342453F024F"
+		    supplier   	"Logical View::Links::ContainerPolicy"
+		    quidu      	"3342440700E8"))
+	    operations 	(list Operations
+		(object Operation "initializeContainer:"
+		    quid       	"334BEA82019D"
+		    documentation 	"Initialisiere den Container für die Domains in dem übergebenen LinkContainer."
+		    parameters 	(list Parameters
+			(object Parameter "aLinkContainer"
+			    type       	"LinkContainer"
+			    initv      	"default"))
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"aLinkContainer container: List new")
+		    opExportControl 	"Public"
+		    uid        	0))
+	    language   	"VisualWorks")
+	(object Class "IndexedContainerPolicy"
+	    quid       	"334244CE00E4"
+	    documentation 	
+|Die Domain-Objekte werden in einem linearen Container (Array) verwaltet. Die Ordering-Rules sind dadurch auf Nummern geschränkt.
+|Für fachspezifische Anforderungen können von mir auch weitere Klassen abgeleitet werden (siehe Message newContainerPolicy in MultiLinkContainer).
+	    
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    quid       	"33424546037B"
+		    supplier   	"Logical View::Links::ContainerPolicy"
+		    quidu      	"3342440700E8"))
+	    operations 	(list Operations
+		(object Operation "initializeContainer:"
+		    quid       	"334BE927036B"
+		    documentation 	
+|Initialisiere den Container für die Domains in dem übergebenen LinkContainer. Dazu werden die Services "container" und "container:" aus LinkContainer verwendet. Dieser wird in der Größe "defaultContainerSize" als Array angelegt.
+		    
+		    parameters 	(list Parameters
+			(object Parameter "aLinkContainer"
+			    type       	"LinkContainer"
+			    initv      	"default"))
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"aLinkContainer container: Array new: defaultContainerSize")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "sizeOf:"
+		    quid       	"336DF0120218"
+		    documentation 	"Liefere die Anzahl der im Container eingetragegenen Domain-Objekte."
+		    parameters 	(list Parameters
+			(object Parameter "aLinkContainer"
+			    type       	"LinkContainer"
+			    initv      	"default"))
+		    result     	"Integer"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"^aLinkContainer container inject: 0 into: [:count :each | each ~~ nil ifTrue:[count + 1] ifFalse: [count]]")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "indexOf:in:"
+		    quid       	"337304F603AC"
+		    documentation 	"Liefere den Index Domain-Objekte innerhalb der Array-Collection von aLinkContainer. Es werden nur die belegten Slots gezählt."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default")
+			(object Parameter "aLinkContainer"
+			    type       	"LinkContainer"
+			    initv      	"default"))
+		    result     	"Integer"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|count := 1.
+|aLinkContainer container do: 
+|                  [:each | each == anObject ifTrue: [^count].
+|                                 each ~~ nil ifTrue: [count := count + 1]].
+|^0
+|
+|   	    ]
+			)
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "asCollection:"
+		    quid       	"3371F94C0247"
+		    documentation 	"Liefere eine Kopie des Domain-Objekt-Containers. Die neue Collection ist vom selben Typ wird meine orginäre Domain-Objekt-Collection"
+		    parameters 	(list Parameters
+			(object Parameter "aLinkContainer"
+			    type       	"LinkContainer"
+			    initv      	"default"))
+		    result     	"Collection"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|theArray := theContainer class withSize: 
+|                                                          (self sizeOf: aLinkContainer).
+|theIndex := 0.
+|theContainer do: [:each | each ~~ nil 
+|               ifTrue: [theArray at: (theIndex := theIndex + 1) put: each]].
+|
+			)
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "firstIn:"
+		    quid       	"337310F50326"
+		    documentation 	"Liefere das erste Domain-Objekt des Containers aus aLinkContainer"
+		    parameters 	(list Parameters
+			(object Parameter "aLinkContainer"
+			    type       	"LinkContainer"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|aLinkContainer container do: [:each | each ~~ nil 
+|                                                                         ifTrue: [^each]].
+|^nil
+			)
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "lastIn:"
+		    quid       	"3373117E03D7"
+		    documentation 	"Liefere das letzte Domain-Objekt des Containers aus aLinkContainer"
+		    parameters 	(list Parameters
+			(object Parameter "aLinkContainer"
+			    type       	"LinkContainer"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|aLinkContainer container do: [:each | each ~~ nil 
+|                                                                         ifTrue: [theObject := each]].
+|^theObject
+			)
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "performAdd:in:"
+		    quid       	"334CF9EC01AE"
+		    documentation 	"Füge das übergebene Domain-Objekt im  übergebenen LinkContainer ein. Relevante Prüfungen wurden bereits durchgeführt."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default")
+			(object Parameter "aLinkContainer"
+			    type       	"LinkContainer"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|1 to aLinkContainer container size do: 
+|   [:index | aLinkContainer container  at: index == nil
+|                   ifTrue: [aLinkContainer container  at: index put:                    anObject. ^anObject]].
+|^nil
+			)
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "performRemove:in:"
+		    quid       	"334CFAB00278"
+		    documentation 	"Entferne das übergebene Domain-Objekt aus dem übergebenen LinkContainer. Relevante Prüfungen wurden bereits durchgeführt."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default")
+			(object Parameter "aLinkContainer"
+			    type       	"LinkContainer"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|1 to aLinkContainer container size do: 
+|   [:index | aLinkContainer container  at: index == anObject
+|                   ifTrue: [aLinkContainer container  at: index put: nil.                                  ^anObject]].
+|^nil
+			)
+		    opExportControl 	"Public"
+		    uid        	0))
+	    language   	"VisualWorks")
+	(object Class "SingleLinkContainer"
+	    quid       	"3343C212003E"
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    quid       	"3341244A0252"
+		    supplier   	"Logical View::Links::LinkContainer"
+		    quidu      	"33412072012B"))
+	    operations 	(list Operations
+		(object Operation "postSemiCopy"
+		    quid       	"334CCC81032C"
+		    documentation 	"Abschlußbehandlung für den semiCopy"
+		    result     	"LinkContainer"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|super postSemiCopy
+|domain: nil
+			)
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "postCopy"
+		    quid       	"335DF130002E"
+		    documentation 	"Abschlußbehandlung des deep copy. Ich erstelle auch eine deep copy meines Domain-Objektes."
+		    result     	"SingleLinkContainer"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|super postCopy
+|domain := domain copy
+			)
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "domain"
+		    quid       	"334539F1018F"
+		    documentation 	"Liefere meine Instancevariable domain (sie enthält das Domain-Objekt)"
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "asCollection"
+		    quid       	"334A165C0305"
+		    documentation 	"Liefere mein gelinktes Domain-Objekt in einer Collection"
+		    result     	"OrderedCollection"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|- OrderedCollection new 
+|- aCollection add: domain
+			)
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "size"
+		    quid       	"336DF24001F2"
+		    documentation 	"Liefer die Anzahl der eingetragenen Domain-Objekte (0 oder 1)"
+		    result     	"Integer"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"^self domain == nil ifTrue: [0] ifFalse: [1]")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "indexOf:"
+		    quid       	"337308110323"
+		    documentation 	"Liefere den Index des Domain-Objektes (hier 0 oder 1)"
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"Integer"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"^self domain == anObject ifTrue: [1] ifFalse: [0]")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "first"
+		    quid       	"33730FB902EF"
+		    documentation 	"Liefere das erste Domain-Objekt (ich kann nur eins enthalten)"
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"^self domain")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "last"
+		    quid       	"33730FE10008"
+		    documentation 	"Liefere das letzte Domain-Objekt (ich kann nur eins enthalten)"
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"^self domain")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "exist:"
+		    quid       	"3367543B0067"
+		    documentation 	"Prüfe, ob ich das übergebene Domain-Objekt enthalte."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"Boolean"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"domain == anObject")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "includes:"
+		    quid       	"334538ED03DA"
+		    documentation 	"Prüfe, ob ich das übergebene Domain-Objekt enthalte."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"Boolean"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"domain = anObject")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "find:"
+		    quid       	"334540C9006C"
+		    documentation 	"Suche das Objekt, welches semantisch zum übergebenen Objekt passt."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"domain = anObject")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "do:"
+		    quid       	"334A1A4E034D"
+		    documentation 	"Evaluiere dem übergebenen Block mit meinem Domain-Objekt. Der Block ist ein 1-Argument-Block (das Domain-Object)."
+		    parameters 	(list Parameters
+			(object Parameter "aBlock"
+			    type       	"BlockClosure"
+			    initv      	"default"))
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"aBlock value: domain ")
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "performAdd:"
+		    quid       	"3343C5820129"
+		    documentation 	
+|Füge das übergebene Domain-Objekt bei mir ein. Relevante Prüfungen wurden bereits durchgeführt. Wenn ich bereits ein anderes Objekt enthalte, muß diese zuerst entfernt werden !!
+|
+|Kann dies mit "aDomainObject remove" erfolgen ?
+		    
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	
+|domain ~~ nil ifTrue: [domain remove]
+|domain := anObject
+			)
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "performRemove:"
+		    quid       	"33453EB70178"
+		    documentation 	"Entferne das übergebene Domain-Objekt aus mir. Relevante Prüfungen wurden bereits durchgeführt."
+		    parameters 	(list Parameters
+			(object Parameter "anObject"
+			    type       	"DomainObject"
+			    initv      	"default"))
+		    result     	"DomainObject"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"domain := nil")
+		    opExportControl 	"Protected"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "domain"
+		    quid       	"33453A2200A9"
+		    documentation 	"Enthält mein einziges Domain-Objekt."
+		    type       	"DomainObject"))
+	    language   	"VisualWorks"
+	    abstract   	TRUE)
+	(object Class "SortedContainerPolicy"
+	    quid       	"33FDD14001DC"
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    quid       	"33FDD16100C1"
+		    supplier   	"Logical View::Links::ContainerPolicy"
+		    quidu      	"3342440700E8"))
+	    operations 	(list Operations
+		(object Operation "sortBlock"
+		    quid       	"341696C603D4"
+		    documentation 	"Klassenmethode Liefere den BlockClosure für die Sortierung der Elemente im Container"
+		    result     	"BlockClosure"
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"^[:domain1 :domain2 | domain 1 < domain 2]")
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "initializeContainer:"
+		    quid       	"33FDD17D02E8"
+		    documentation 	"Initialisiere den Container für die Domains in dem übergebenen LinkContainer."
+		    parameters 	(list Parameters
+			(object Parameter "aLinkContainer"
+			    type       	"LinkContainer"
+			    initv      	"default"))
+		    concurrency 	"Sequential"
+		    semantics  	(object Semantic_Info
+			PDL        	"aLinkContainer container: SortedCollection new")
+		    opExportControl 	"Public"
+		    uid        	0))
+	    language   	"VisualWorks")
+	(object Association "linkContainer"
+	    quid       	"33412B17022E"
+	    roles      	(list role_list
+		(object Role "container"
+		    quid       	"33412B1C0127"
+		    label      	"container"
+		    supplier   	"Logical View::Links::LinkContainer"
+		    quidu      	"33412072012B"
+		    client_cardinality 	(value cardinality "1")
+		    is_navigable 	TRUE)
+		(object Role "parent"
+		    quid       	"33412B1C0128"
+		    label      	"parent"
+		    supplier   	"Logical View::Links::UMLLink"
+		    quidu      	"33413BDE00E9"
+		    is_navigable 	TRUE
+		    is_aggregate 	TRUE)))
+	(object Association "linkedDomain"
+	    quid       	"33412C000337"
+	    roles      	(list role_list
+		(object Role "domain"
+		    quid       	"33412C04017A"
+		    label      	"domain"
+		    supplier   	"Logical View::Links::DomainObject"
+		    quidu      	"33412BD2004C"
+		    client_cardinality 	(value cardinality "0..1")
+		    Containment 	"By Reference"
+		    is_navigable 	TRUE)
+		(object Role "$UNNAMED$0"
+		    quid       	"33412C04017B"
+		    supplier   	"Logical View::Links::SingleLinkContainer"
+		    quidu      	"3343C212003E")))
+	(object Association "linkDirection"
+	    quid       	"334147740116"
+	    roles      	(list role_list
+		(object Role "direction"
+		    quid       	"33414775033E"
+		    label      	"direction"
+		    supplier   	"Logical View::Links::LinkDirection"
+		    quidu      	"334146B40319"
+		    client_cardinality 	(value cardinality "1")
+		    is_navigable 	TRUE)
+		(object Role "$UNNAMED$1"
+		    quid       	"334147750348"
+		    supplier   	"Logical View::Links::UMLLink"
+		    quidu      	"33413BDE00E9"
+		    is_aggregate 	TRUE)))
+	(object Association "$UNNAMED$2"
+	    quid       	"334242A80025"
+	    roles      	(list role_list
+		(object Role "parent"
+		    quid       	"334242AD02B7"
+		    label      	"parent"
+		    supplier   	"Logical View::Links::DomainObject"
+		    quidu      	"33412BD2004C"
+		    client_cardinality 	(value cardinality "1")
+		    is_navigable 	TRUE)
+		(object Role "$UNNAMED$3"
+		    quid       	"334242AD02C1"
+		    supplier   	"Logical View::Links::UMLLink"
+		    quidu      	"33413BDE00E9")))
+	(object Association "$UNNAMED$4"
+	    quid       	"3342457902A2"
+	    roles      	(list role_list
+		(object Role "containerPolicy"
+		    quid       	"3342457C02E3"
+		    label      	"containerPolicy"
+		    supplier   	"Logical View::Links::ContainerPolicy"
+		    quidu      	"3342440700E8"
+		    client_cardinality 	(value cardinality "0..1")
+		    is_navigable 	TRUE)
+		(object Role "$UNNAMED$5"
+		    quid       	"3342457C02ED"
+		    supplier   	"Logical View::Links::MultiLinkContainer"
+		    quidu      	"33423EA00107"
+		    is_aggregate 	TRUE)))
+	(object Association "linkedDomain"
+	    quid       	"33412CA600D3"
+	    roles      	(list role_list
+		(object Role "domain"
+		    quid       	"33412CA6034A"
+		    label      	"domain"
+		    supplier   	"Logical View::Links::DomainObject"
+		    quidu      	"33412BD2004C"
+		    client_cardinality 	(value cardinality "0..n")
+		    Containment 	"By Reference"
+		    is_navigable 	TRUE)
+		(object Role "$UNNAMED$6"
+		    quid       	"33412CA6034B"
+		    supplier   	"Logical View::Links::MultiLinkContainer"
+		    quidu      	"33423EA00107")))
+	(object Class_Category "Beispiele"
+	    quid       	"335E52360199"
+	    exportControl 	"Public"
+	    logical_models 	(list unit_reference_list
+		(object Mechanism @1
+		    logical_models 	(list unit_reference_list
+			(object Object "parent"
+			    quid       	"335E548200FE"
+			    collaborators 	(list link_list
+				(object Link
+				    quid       	"335E559E037D"
+				    supplier   	"childAggregat"
+				    quidu      	"335E54A8036F"))
+			    class      	"Logical View::Links::DomainObject"
+			    quidu      	"33412BD2004C"
+			    persistence 	"Transient"
+			    multi      	FALSE)
+			(object Object "childAggregat"
+			    quid       	"335E54A8036F"
+			    collaborators 	(list link_list
+				(object Link
+				    quid       	"335E55C100CB"
+				    supplier   	"forwardDirection"
+				    quidu      	"335E54C7000D")
+				(object Link
+				    quid       	"335E55D302E3"
+				    supplier   	"childContainer"
+				    quidu      	"335E54F10360"))
+			    class      	"Logical View::Links::UMLAggregat"
+			    quidu      	"3341432300E5"
+			    persistence 	"Transient"
+			    multi      	FALSE)
+			(object Object "forwardDirection"
+			    quid       	"335E54C7000D"
+			    class      	"Logical View::Links::BidirectionalLink"
+			    quidu      	"3341472301F6"
+			    persistence 	"Transient"
+			    multi      	FALSE)
+			(object Object "childContainer"
+			    quid       	"335E54F10360"
+			    collaborators 	(list link_list
+				(object Link
+				    quid       	"335E55E9021D"
+				    supplier   	"childrens"
+				    quidu      	"335E55670310"))
+			    class      	"Logical View::Links::ZeroToManyContainer"
+			    quidu      	"3341243400C0"
+			    persistence 	"Transient"
+			    multi      	FALSE)
+			(object Object "childrens"
+			    quid       	"335E55670310"
+			    collaborators 	(list link_list
+				(object Link
+				    quid       	"335E591F01E2"
+				    supplier   	"backwardLink"
+				    quidu      	"335E56B80039"))
+			    class      	"Logical View::Links::DomainObject"
+			    quidu      	"33412BD2004C"
+			    persistence 	"Transient"
+			    multi      	FALSE)
+			(object Object "backwardDirection"
+			    quid       	"335E5639000F"
+			    class      	"Logical View::Links::UnidirectionalLink"
+			    quidu      	"334146D2020E"
+			    persistence 	"Transient"
+			    multi      	FALSE)
+			(object Object "backwardLink"
+			    quid       	"335E56B80039"
+			    collaborators 	(list link_list
+				(object Link
+				    quid       	"335E58680211"
+				    supplier   	"backwardDirection"
+				    quidu      	"335E5639000F")
+				(object Link
+				    quid       	"335E586C03C6"
+				    supplier   	"parentReference"
+				    quidu      	"335E576A039D"))
+			    class      	"Logical View::Links::UMLAssociation"
+			    quidu      	"334123240390"
+			    persistence 	"Transient"
+			    multi      	FALSE)
+			(object Object "parentReference"
+			    quid       	"335E576A039D"
+			    collaborators 	(list link_list
+				(object Link
+				    quid       	"335E590B0139"
+				    supplier   	"parent"
+				    quidu      	"335E548200FE"))
+			    class      	"Logical View::Links::ZeroOrOneContainer"
+			    quidu      	"334124270099"
+			    persistence 	"Transient"
+			    multi      	FALSE)))
+		(object Mechanism @2
+		    logical_models 	(list unit_reference_list
+			(object Object "parent"
+			    quid       	"335E597402B7"
+			    collaborators 	(list link_list
+				(object Link
+				    quid       	"335E597402B8"
+				    supplier   	"childAggregat"
+				    quidu      	"335E597402CB"))
+			    class      	"Logical View::Links::DomainObject"
+			    quidu      	"33412BD2004C"
+			    persistence 	"Transient"
+			    multi      	FALSE)
+			(object Object "childAggregat"
+			    quid       	"335E597402CB"
+			    collaborators 	(list link_list
+				(object Link
+				    quid       	"335E597402CC"
+				    supplier   	"forwardDirection"
+				    quidu      	"335E597402D5")
+				(object Link
+				    quid       	"335E597402CD"
+				    supplier   	"childContainer"
+				    quidu      	"335E597402E9"))
+			    class      	"Logical View::Links::UMLAggregat"
+			    quidu      	"3341432300E5"
+			    persistence 	"Transient"
+			    multi      	FALSE)
+			(object Object "forwardDirection"
+			    quid       	"335E597402D5"
+			    class      	"Logical View::Links::UnidirectionalLink"
+			    quidu      	"334146D2020E"
+			    persistence 	"Transient"
+			    multi      	FALSE)
+			(object Object "childContainer"
+			    quid       	"335E597402E9"
+			    collaborators 	(list link_list
+				(object Link
+				    quid       	"335E597402EA"
+				    supplier   	"childrens"
+				    quidu      	"335E597402FD"))
+			    class      	"Logical View::Links::ZeroToManyContainer"
+			    quidu      	"3341243400C0"
+			    persistence 	"Transient"
+			    multi      	FALSE)
+			(object Object "childrens"
+			    quid       	"335E597402FD"
+			    class      	"Logical View::Links::DomainObject"
+			    quidu      	"33412BD2004C"
+			    persistence 	"Transient"
+			    multi      	FALSE)))
+		(object Mechanism @3
+		    logical_models 	(list unit_reference_list
+			(object Object "anAggregat"
+			    quid       	"334A445C00A5"
+			    collaborators 	(list link_list
+				(object Link
+				    quid       	"334A4508012E"
+				    supplier   	"aLinkDirection"
+				    quidu      	"334A449402CC"
+				    messages   	(list Messages
+					(object Message "add:in: (DomainObject, UMLLink)"
+					    quid       	"334A4508012F"
+					    frequency  	"Aperiodic"
+					    synchronization 	"Simple"
+					    dir        	"FromClientToSupplier"
+					    sequence   	""
+					    ordinal    	0
+					    Operation  	"add:in:(DomainObject, UMLLink)"
+					    quidu      	"33453BC10010")
+					(object Message "defaultBidirectionalAddSelector ( )"
+					    quid       	"334A495E0199"
+					    frequency  	"Aperiodic"
+					    synchronization 	"Simple"
+					    dir        	"ToClientFromSupplier"
+					    sequence   	""
+					    ordinal    	7
+					    Operation  	"defaultBidirectionalAddSelector"
+					    quidu      	"3343C6E103C3")))
+				(object Link
+				    quid       	"334A497B00F0"
+				    supplier   	"anAggregatDomain"
+				    quidu      	"334A44DB03B5"))
+			    class      	"Logical View::Links::UMLLink"
+			    quidu      	"33413BDE00E9"
+			    persistence 	"Transient"
+			    multi      	FALSE)
+			(object Object "aLinkDirection"
+			    quid       	"334A449402CC"
+			    collaborators 	(list link_list
+				(object Link
+				    quid       	"334A456A0356"
+				    supplier   	"aLinkContainer"
+				    quidu      	"334A44C00275"
+				    messages   	(list Messages
+					(object Message "exist: (BlockClosure)"
+					    quid       	"334A456A0357"
+					    frequency  	"Aperiodic"
+					    synchronization 	"Simple"
+					    dir        	"FromClientToSupplier"
+					    sequence   	""
+					    ordinal    	1
+					    Operation  	"exist:(DomainObject)"
+					    quidu      	"336753A10124")
+					(object Message "add: (DomainObject)"
+					    quid       	"334A45790394"
+					    frequency  	"Aperiodic"
+					    synchronization 	"Simple"
+					    dir        	"FromClientToSupplier"
+					    sequence   	""
+					    ordinal    	2
+					    Operation  	"add:(DomainObject)"
+					    quidu      	"3343C50400D8")))
+				(object Link
+				    quid       	"334A45D00353"
+				    supplier   	"aLinkDirection"
+				    quidu      	"334A449402CC")
+				(object Link
+				    quid       	"334A64B202D9"
+				    supplier   	"anAggregatDomain"
+				    quidu      	"334A44DB03B5"
+				    messages   	(list Messages
+					(object Message "addDomain: (DomainObject)"
+					    quid       	"334A64B202DA"
+					    frequency  	"Aperiodic"
+					    synchronization 	"Simple"
+					    dir        	"FromClientToSupplier"
+					    sequence   	""
+					    ordinal    	8
+					    Operation  	"addDomain:(DomainObject)"
+					    quidu      	"334A63E103C9"))))
+			    class      	"Logical View::Links::BidirectionalLink"
+			    quidu      	"3341472301F6"
+			    persistence 	"Transient"
+			    multi      	FALSE)
+			(object Object "aLinkContainer"
+			    quid       	"334A44C00275"
+			    collaborators 	(list link_list
+				(object Link
+				    quid       	"334A45E802D5"
+				    supplier   	"aLinkContainer"
+				    quidu      	"334A44C00275"
+				    messages   	(list Messages
+					(object Message "isAddable: (DomainObject)"
+					    quid       	"334A45E802D6"
+					    frequency  	"Aperiodic"
+					    synchronization 	"Simple"
+					    dir        	"FromClientToSupplier"
+					    sequence   	""
+					    ordinal    	3
+					    Operation  	"isAddable:(DomainObject)"
+					    quidu      	"334295010303")
+					(object Message "performAdd: (DomainObject)"
+					    quid       	"334A45F9004F"
+					    frequency  	"Aperiodic"
+					    synchronization 	"Simple"
+					    dir        	"FromClientToSupplier"
+					    sequence   	""
+					    ordinal    	4
+					    Operation  	"performAdd:(DomainObject)"
+					    quidu      	"3343C5FA0186")))
+				(object Link
+				    quid       	"334A473C0360"
+				    supplier   	"aContainerPolicy"
+				    quidu      	"334A46DF03C1"
+				    messages   	(list Messages
+					(object Message "performAdd:in: (DomainObject, LinkContainer)"
+					    quid       	"334A473C0361"
+					    frequency  	"Aperiodic"
+					    synchronization 	"Simple"
+					    dir        	"FromClientToSupplier"
+					    sequence   	""
+					    ordinal    	5
+					    Operation  	"performAdd:in:(DomainObject, LinkContainer)"
+					    quidu      	"33466A710119")
+					(object Message "container ( )"
+					    quid       	"334A48770223"
+					    frequency  	"Aperiodic"
+					    synchronization 	"Simple"
+					    dir        	"ToClientFromSupplier"
+					    sequence   	""
+					    ordinal    	6
+					    Operation  	"container( )"
+					    quidu      	"3343ADB2020A"))))
+			    class      	"Logical View::Links::MultiLinkContainer"
+			    quidu      	"33423EA00107"
+			    persistence 	"Transient"
+			    multi      	FALSE)
+			(object Object "anAggregatDomain"
+			    quid       	"334A44DB03B5"
+			    collaborators 	(list link_list
+				(object Link
+				    quid       	"334A663901AF"
+				    supplier   	"anAssociation"
+				    quidu      	"334A6604032F"
+				    messages   	(list Messages
+					(object Message "add: (DomainObject)"
+					    quid       	"334A663901B9"
+					    frequency  	"Aperiodic"
+					    synchronization 	"Simple"
+					    dir        	"FromClientToSupplier"
+					    sequence   	""
+					    ordinal    	9
+					    Operation  	"add:(DomainObject)"
+					    quidu      	"33469802000E"))))
+			    class      	"Logical View::Links::DomainObject"
+			    quidu      	"33412BD2004C"
+			    persistence 	"Transient"
+			    multi      	FALSE)
+			(object Object "aContainerPolicy"
+			    quid       	"334A46DF03C1"
+			    class      	"Logical View::Links::ContainerPolicy"
+			    quidu      	"3342440700E8"
+			    persistence 	"Transient"
+			    multi      	FALSE)
+			(object Object "anAssociation"
+			    quid       	"334A6604032F"
+			    collaborators 	(list link_list
+				(object Link
+				    quid       	"334A67E70243"
+				    supplier   	"aUnidirectionalLinkDirection"
+				    quidu      	"334A67A40084"
+				    messages   	(list Messages
+					(object Message "add:in: (DomainObject, UMLLink)"
+					    quid       	"334A67E70244"
+					    frequency  	"Aperiodic"
+					    synchronization 	"Simple"
+					    dir        	"FromClientToSupplier"
+					    sequence   	""
+					    ordinal    	10
+					    Operation  	"add:in:(DomainObject, UMLLink)"
+					    quidu      	"3342A9B20287"))))
+			    class      	"Logical View::Links::UMLAssociation"
+			    quidu      	"334123240390"
+			    persistence 	"Transient"
+			    multi      	FALSE)
+			(object Object "aSingleContainer"
+			    quid       	"334A671601A2"
+			    class      	"Logical View::Links::SingleLinkContainer"
+			    quidu      	"3343C212003E"
+			    persistence 	"Transient"
+			    multi      	FALSE)
+			(object Object "aUnidirectionalLinkDirection"
+			    quid       	"334A67A40084"
+			    collaborators 	(list link_list
+				(object Link
+				    quid       	"334A6807036C"
+				    supplier   	"aSingleContainer"
+				    quidu      	"334A671601A2"
+				    messages   	(list Messages
+					(object Message "add: (DomainObject)"
+					    quid       	"334A68070376"
+					    frequency  	"Aperiodic"
+					    synchronization 	"Simple"
+					    dir        	"FromClientToSupplier"
+					    sequence   	""
+					    ordinal    	11
+					    Operation  	"add:(DomainObject)"
+					    quidu      	"3343C50400D8"))))
+			    class      	"Logical View::Links::UnidirectionalLink"
+			    quidu      	"334146D2020E"
+			    persistence 	"Transient"
+			    multi      	FALSE))))
+	    logical_presentations 	(list unit_reference_list
+		(object ObjectDiagram "Bidirektionaler 1-n Link"
+		    mechanism_ref 	@1
+		    quid       	"335E542D028C"
+		    title      	"Bidirektionaler 1-n Link"
+		    zoom       	100
+		    max_height 	28350
+		    max_width  	21600
+		    origin_x   	0
+		    origin_y   	0
+		    items      	(list diagram_item_list
+			(object ObjectView "parent" @4
+			    location   	(465, 189)
+			    font       	(object Font
+				underline  	TRUE)
+			    label      	(object ItemLabel
+				Parent_View 	@4
+				location   	(318, 115)
+				nlines     	2
+				max_width  	294
+				justify    	0
+				label      	"parent")
+			    icon_style 	"Icon"
+			    quidu      	"335E548200FE"
+			    width      	312
+			    height     	172
+			    annotation 	4
+			    autoResize 	TRUE
+			    subobjects 	0
+			    x_offset   	0.000000
+			    y_offset   	0.000000)
+			(object ObjectView "childAggregat" @5
+			    location   	(477, 654)
+			    font       	(object Font
+				underline  	TRUE)
+			    label      	(object ItemLabel
+				Parent_View 	@5
+				location   	(325, 580)
+				nlines     	2
+				max_width  	304
+				justify    	0
+				label      	"childAggregat")
+			    icon_style 	"Icon"
+			    quidu      	"335E54A8036F"
+			    width      	322
+			    height     	172
+			    annotation 	4
+			    autoResize 	TRUE
+			    subobjects 	0
+			    x_offset   	0.000000
+			    y_offset   	0.000000)
+			(object ObjectView "forwardDirection" @6
+			    location   	(1491, 571)
+			    font       	(object Font
+				underline  	TRUE)
+			    label      	(object ItemLabel
+				Parent_View 	@6
+				location   	(1317, 497)
+				nlines     	2
+				max_width  	348
+				justify    	0
+				label      	"forwardDirection")
+			    icon_style 	"Icon"
+			    quidu      	"335E54C7000D"
+			    width      	366
+			    height     	172
+			    annotation 	4
+			    autoResize 	TRUE
+			    subobjects 	0
+			    x_offset   	0.000000
+			    y_offset   	0.000000)
+			(object ObjectView "childContainer" @7
+			    location   	(1535, 741)
+			    font       	(object Font
+				underline  	TRUE)
+			    label      	(object ItemLabel
+				Parent_View 	@7
+				location   	(1344, 667)
+				nlines     	2
+				max_width  	382
+				justify    	0
+				label      	"childContainer")
+			    icon_style 	"Icon"
+			    quidu      	"335E54F10360"
+			    width      	400
+			    height     	172
+			    annotation 	4
+			    autoResize 	TRUE
+			    subobjects 	0
+			    x_offset   	-0.080000
+			    y_offset   	0.110000)
+			(object ObjectView "childrens" @8
+			    location   	(475, 1032)
+			    font       	(object Font
+				underline  	TRUE)
+			    label      	(object ItemLabel
+				Parent_View 	@8
+				location   	(329, 958)
+				nlines     	2
+				max_width  	292
+				justify    	0
+				label      	"childrens")
+			    icon_style 	"Icon"
+			    quidu      	"335E55670310"
+			    width      	310
+			    height     	172
+			    annotation 	4
+			    autoResize 	TRUE
+			    subobjects 	0
+			    x_offset   	0.000000
+			    y_offset   	0.000000)
+			(object ObjectView "backwardDirection" @9
+			    location   	(1498, 1212)
+			    font       	(object Font
+				underline  	TRUE)
+			    label      	(object ItemLabel
+				Parent_View 	@9
+				location   	(1307, 1138)
+				nlines     	2
+				max_width  	382
+				justify    	0
+				label      	"backwardDirection")
+			    icon_style 	"Icon"
+			    quidu      	"335E5639000F"
+			    width      	400
+			    height     	172
+			    annotation 	4
+			    autoResize 	TRUE
+			    subobjects 	0
+			    x_offset   	0.000000
+			    y_offset   	0.000000)
+			(object ObjectView "backwardLink" @10
+			    location   	(504, 1332)
+			    font       	(object Font
+				underline  	TRUE)
+			    label      	(object ItemLabel
+				Parent_View 	@10
+				location   	(342, 1258)
+				nlines     	2
+				max_width  	324
+				justify    	0
+				label      	"backwardLink")
+			    icon_style 	"Icon"
+			    quidu      	"335E56B80039"
+			    width      	342
+			    height     	172
+			    annotation 	4
+			    autoResize 	TRUE
+			    subobjects 	0
+			    x_offset   	0.000000
+			    y_offset   	0.000000)
+			(object ObjectView "parentReference" @11
+			    location   	(1535, 1404)
+			    font       	(object Font
+				underline  	TRUE)
+			    label      	(object ItemLabel
+				Parent_View 	@11
+				location   	(1337, 1330)
+				nlines     	2
+				max_width  	396
+				justify    	0
+				label      	"parentReference")
+			    icon_style 	"Icon"
+			    quidu      	"335E576A039D"
+			    width      	414
+			    height     	172
+			    annotation 	4
+			    autoResize 	TRUE
+			    subobjects 	0
+			    x_offset   	0.000000
+			    y_offset   	0.000000)
+			(object NoteView @12
+			    location   	(1351, 222)
+			    label      	(object ItemLabel
+				Parent_View 	@12
+				location   	(1035, 134)
+				nlines     	3
+				max_width  	596
+				label      	"Anstelle von Aggregat kann auch Association verwendet werden, wenn es die Semantik erfordert")
+			    width      	656
+			    height     	188)
+			(object AttachView "" @13
+			    stereotype 	TRUE
+			    client     	@12
+			    supplier   	@5
+			    line_style 	0)
+			(object LinkView "" @14
+			    stereotype 	TRUE
+			    quidu      	"335E559E037D"
+			    client     	@4
+			    supplier   	@5
+			    line_style 	3
+			    origin_attachment 	(476, 275)
+			    terminal_attachment 	(476, 568))
+			(object LinkView "" @15
+			    stereotype 	TRUE
+			    quidu      	"335E55C100CB"
+			    client     	@5
+			    supplier   	@6
+			    vertices   	(list Points
+				(638, 640)
+				(920, 640)
+				(920, 578)
+				(1308, 578))
+			    line_style 	3
+			    origin_attachment 	(638, 640)
+			    terminal_attachment 	(1308, 578))
+			(object LinkView "" @16
+			    stereotype 	TRUE
+			    quidu      	"335E55D302E3"
+			    client     	@5
+			    supplier   	@7
+			    vertices   	(list Points
+				(638, 669)
+				(923, 669)
+				(923, 744)
+				(1335, 744))
+			    line_style 	3
+			    origin_attachment 	(638, 669)
+			    terminal_attachment 	(1335, 744))
+			(object LinkView "" @17
+			    stereotype 	TRUE
+			    quidu      	"335E55E9021D"
+			    client     	@7
+			    supplier   	@8
+			    vertices   	(list Points
+				(1735, 737)
+				(2110, 737)
+				(2110, 1034)
+				(630, 1034))
+			    line_style 	3
+			    origin_attachment 	(1735, 737)
+			    terminal_attachment 	(630, 1034))
+			(object LinkView "" @18
+			    stereotype 	TRUE
+			    quidu      	"335E591F01E2"
+			    client     	@8
+			    supplier   	@10
+			    line_style 	3
+			    origin_attachment 	(478, 1118)
+			    terminal_attachment 	(478, 1246))
+			(object LinkView "" @19
+			    stereotype 	TRUE
+			    quidu      	"335E58680211"
+			    client     	@10
+			    supplier   	@9
+			    vertices   	(list Points
+				(675, 1309)
+				(957, 1309)
+				(957, 1212)
+				(1298, 1212))
+			    line_style 	3
+			    origin_attachment 	(675, 1309)
+			    terminal_attachment 	(1298, 1212))
+			(object LinkView "" @20
+			    stereotype 	TRUE
+			    quidu      	"335E586C03C6"
+			    client     	@10
+			    supplier   	@11
+			    vertices   	(list Points
+				(675, 1353)
+				(957, 1353)
+				(957, 1403)
+				(1328, 1403))
+			    line_style 	3
+			    origin_attachment 	(675, 1353)
+			    terminal_attachment 	(1328, 1403))
+			(object LinkView "" @21
+			    stereotype 	TRUE
+			    quidu      	"335E590B0139"
+			    client     	@11
+			    supplier   	@4
+			    vertices   	(list Points
+				(1742, 1403)
+				(2109, 1403)
+				(2109, 1584)
+				(66, 1584)
+				(66, 187)
+				(309, 187))
+			    line_style 	3
+			    origin_attachment 	(1742, 1403)
+			    terminal_attachment 	(309, 187))))
+		(object ObjectDiagram "Unidirektinaler 1-n Link"
+		    mechanism_ref 	@2
+		    quid       	"335E594C020F"
+		    title      	"Unidirektinaler 1-n Link"
+		    zoom       	100
+		    max_height 	28350
+		    max_width  	21600
+		    origin_x   	154
+		    origin_y   	0
+		    items      	(list diagram_item_list
+			(object ObjectView "parent" @22
+			    location   	(357, 125)
+			    font       	(object Font
+				underline  	TRUE)
+			    label      	(object ItemLabel
+				Parent_View 	@22
+				location   	(210, 51)
+				nlines     	2
+				max_width  	294
+				justify    	0
+				label      	"parent")
+			    icon_style 	"Icon"
+			    quidu      	"335E597402B7"
+			    width      	312
+			    height     	172
+			    annotation 	4
+			    autoResize 	TRUE
+			    subobjects 	0
+			    x_offset   	0.000000
+			    y_offset   	0.000000)
+			(object ObjectView "childAggregat" @23
+			    location   	(369, 590)
+			    font       	(object Font
+				underline  	TRUE)
+			    label      	(object ItemLabel
+				Parent_View 	@23
+				location   	(217, 516)
+				nlines     	2
+				max_width  	304
+				justify    	0
+				label      	"childAggregat")
+			    icon_style 	"Icon"
+			    quidu      	"335E597402CB"
+			    width      	322
+			    height     	172
+			    annotation 	4
+			    autoResize 	TRUE
+			    subobjects 	0
+			    x_offset   	0.000000
+			    y_offset   	0.000000)
+			(object ObjectView "forwardDirection" @24
+			    location   	(1349, 466)
+			    font       	(object Font
+				underline  	TRUE)
+			    label      	(object ItemLabel
+				Parent_View 	@24
+				location   	(1173, 392)
+				nlines     	2
+				max_width  	352
+				justify    	0
+				label      	"forwardDirection")
+			    icon_style 	"Icon"
+			    quidu      	"335E597402D5"
+			    width      	370
+			    height     	172
+			    annotation 	4
+			    autoResize 	TRUE
+			    subobjects 	0
+			    x_offset   	0.000000
+			    y_offset   	0.000000)
+			(object ObjectView "childContainer" @25
+			    location   	(1387, 676)
+			    font       	(object Font
+				underline  	TRUE)
+			    label      	(object ItemLabel
+				Parent_View 	@25
+				location   	(1196, 602)
+				nlines     	2
+				max_width  	382
+				justify    	0
+				label      	"childContainer")
+			    icon_style 	"Icon"
+			    quidu      	"335E597402E9"
+			    width      	400
+			    height     	172
+			    annotation 	4
+			    autoResize 	TRUE
+			    subobjects 	0
+			    x_offset   	0.000000
+			    y_offset   	0.000000)
+			(object ObjectView "childrens" @26
+			    location   	(367, 968)
+			    font       	(object Font
+				underline  	TRUE)
+			    label      	(object ItemLabel
+				Parent_View 	@26
+				location   	(221, 894)
+				nlines     	2
+				max_width  	292
+				justify    	0
+				label      	"childrens")
+			    icon_style 	"Icon"
+			    quidu      	"335E597402FD"
+			    width      	310
+			    height     	172
+			    annotation 	4
+			    autoResize 	TRUE
+			    subobjects 	0
+			    x_offset   	0.000000
+			    y_offset   	0.000000)
+			(object NoteView @27
+			    location   	(1222, 165)
+			    label      	(object ItemLabel
+				Parent_View 	@27
+				location   	(924, 74)
+				nlines     	4
+				max_width  	560
+				label      	"Anstelle von Aggregat kann auch Association verwendet werden, wenn es die Semantik erfordert")
+			    width      	620
+			    height     	195)
+			(object AttachView "" @28
+			    stereotype 	TRUE
+			    client     	@23
+			    supplier   	@27
+			    line_style 	0)
+			(object LinkView "" @29
+			    stereotype 	TRUE
+			    quidu      	"335E597402B8"
+			    client     	@22
+			    supplier   	@23
+			    line_style 	3
+			    origin_attachment 	(368, 211)
+			    terminal_attachment 	(368, 504))
+			(object LinkView "" @30
+			    stereotype 	TRUE
+			    quidu      	"335E597402CC"
+			    client     	@23
+			    supplier   	@24
+			    vertices   	(list Points
+				(530, 575)
+				(812, 575)
+				(812, 473)
+				(1164, 473))
+			    line_style 	3
+			    origin_attachment 	(530, 575)
+			    terminal_attachment 	(1164, 473))
+			(object LinkView "" @31
+			    stereotype 	TRUE
+			    quidu      	"335E597402CD"
+			    client     	@23
+			    supplier   	@25
+			    vertices   	(list Points
+				(530, 605)
+				(815, 605)
+				(815, 680)
+				(1187, 680))
+			    line_style 	3
+			    origin_attachment 	(530, 605)
+			    terminal_attachment 	(1187, 680))
+			(object LinkView "" @32
+			    stereotype 	TRUE
+			    quidu      	"335E597402EA"
+			    client     	@25
+			    supplier   	@26
+			    vertices   	(list Points
+				(1587, 673)
+				(1909, 673)
+				(1909, 970)
+				(522, 970))
+			    line_style 	3
+			    origin_attachment 	(1587, 673)
+			    terminal_attachment 	(522, 970))))
+		(object InteractionDiagram "bidirektionalen 1-n Link etablieren"
+		    mechanism_ref 	@3
+		    quid       	"334A43960122"
+		    title      	"bidirektionalen 1-n Link etablieren"
+		    zoom       	100
+		    max_height 	28350
+		    max_width  	21600
+		    origin_x   	0
+		    origin_y   	0
+		    items      	(list diagram_item_list
+			(object InterObjView "anAggregat" @33
+			    location   	(200, 225)
+			    font       	(object Font
+				underline  	TRUE)
+			    label      	(object ItemLabel
+				Parent_View 	@33
+				location   	(200, 225)
+				anchor_loc 	1
+				nlines     	2
+				max_width  	282
+				justify    	0
+				label      	"anAggregat")
+			    icon_style 	"Icon"
+			    quidu      	"334A445C00A5"
+			    width      	300
+			    height     	1909
+			    icon_height 	0
+			    icon_width 	0
+			    annotation 	1
+			    Focus_Of_Control 	(object Focus_Of_Control "" @34
+				location   	(200, 408)
+				InterObjView 	@33
+				height     	120
+				y_coord    	60
+				Nested     	FALSE)
+			    Focus_Of_Control 	(object Focus_Of_Control "" @35
+				location   	(200, 1428)
+				InterObjView 	@33
+				height     	60
+				y_coord    	0
+				Nested     	FALSE))
+			(object InterObjView "aLinkDirection" @36
+			    location   	(638, 225)
+			    font       	(object Font
+				underline  	TRUE)
+			    label      	(object ItemLabel
+				Parent_View 	@36
+				location   	(638, 225)
+				anchor_loc 	1
+				nlines     	2
+				max_width  	394
+				justify    	0
+				label      	"aLinkDirection")
+			    icon_style 	"Icon"
+			    quidu      	"334A449402CC"
+			    width      	412
+			    height     	1909
+			    icon_height 	0
+			    icon_width 	0
+			    annotation 	1
+			    Focus_Of_Control 	(object Focus_Of_Control "" @37
+				location   	(638, 408)
+				InterObjView 	@36
+				height     	60
+				y_coord    	0
+				Nested     	FALSE)
+			    Focus_Of_Control 	(object Focus_Of_Control "" @38
+				location   	(638, 498)
+				InterObjView 	@36
+				height     	120
+				y_coord    	60
+				Nested     	FALSE)
+			    Focus_Of_Control 	(object Focus_Of_Control "" @39
+				location   	(638, 680)
+				InterObjView 	@36
+				height     	120
+				y_coord    	60
+				Nested     	FALSE)
+			    Focus_Of_Control 	(object Focus_Of_Control "" @40
+				location   	(638, 1428)
+				InterObjView 	@36
+				height     	120
+				y_coord    	60
+				Nested     	FALSE)
+			    Focus_Of_Control 	(object Focus_Of_Control "" @41
+				location   	(638, 1598)
+				InterObjView 	@36
+				height     	120
+				y_coord    	60
+				Nested     	FALSE))
+			(object InterObjView "aLinkContainer" @42
+			    location   	(1090, 225)
+			    font       	(object Font
+				underline  	TRUE)
+			    label      	(object ItemLabel
+				Parent_View 	@42
+				location   	(1090, 225)
+				anchor_loc 	1
+				nlines     	2
+				max_width  	408
+				justify    	0
+				label      	"aLinkContainer")
+			    icon_style 	"Icon"
+			    quidu      	"334A44C00275"
+			    width      	426
+			    height     	1909
+			    icon_height 	0
+			    icon_width 	0
+			    annotation 	1
+			    Focus_Of_Control 	(object Focus_Of_Control "" @43
+				location   	(1090, 498)
+				InterObjView 	@42
+				height     	60
+				y_coord    	0
+				Nested     	FALSE)
+			    Focus_Of_Control 	(object Focus_Of_Control "" @44
+				location   	(1090, 680)
+				InterObjView 	@42
+				height     	60
+				y_coord    	0
+				Nested     	FALSE)
+			    Focus_Of_Control 	(object Focus_Of_Control "" @45
+				location   	(1090, 763)
+				InterObjView 	@42
+				height     	154
+				y_coord    	94
+				Nested     	FALSE)
+			    Focus_Of_Control 	(object Focus_Of_Control "" @46
+				location   	(1090, 955)
+				InterObjView 	@42
+				height     	154
+				y_coord    	94
+				Nested     	FALSE)
+			    Focus_Of_Control 	(object Focus_Of_Control "" @47
+				location   	(1090, 1140)
+				InterObjView 	@42
+				height     	120
+				y_coord    	60
+				Nested     	FALSE)
+			    Focus_Of_Control 	(object Focus_Of_Control "" @48
+				location   	(1090, 1332)
+				InterObjView 	@42
+				height     	60
+				y_coord    	0
+				Nested     	FALSE))
+			(object InterObjView "anAggregatDomain" @49
+			    location   	(1973, 225)
+			    font       	(object Font
+				underline  	TRUE)
+			    label      	(object ItemLabel
+				Parent_View 	@49
+				location   	(1973, 225)
+				anchor_loc 	1
+				nlines     	2
+				max_width  	434
+				justify    	0
+				label      	"anAggregatDomain")
+			    icon_style 	"Icon"
+			    quidu      	"334A44DB03B5"
+			    width      	452
+			    height     	1909
+			    icon_height 	0
+			    icon_width 	0
+			    annotation 	1
+			    Focus_Of_Control 	(object Focus_Of_Control "" @50
+				location   	(1973, 1598)
+				InterObjView 	@49
+				height     	60
+				y_coord    	0
+				Nested     	FALSE)
+			    Focus_Of_Control 	(object Focus_Of_Control "" @51
+				location   	(1973, 1680)
+				InterObjView 	@49
+				height     	120
+				y_coord    	60
+				Nested     	FALSE))
+			(object InterObjView "anAssociation" @52
+			    location   	(2400, 225)
+			    font       	(object Font
+				underline  	TRUE)
+			    label      	(object ItemLabel
+				Parent_View 	@52
+				location   	(2400, 225)
+				anchor_loc 	1
+				nlines     	2
+				max_width  	316
+				justify    	0
+				label      	"anAssociation")
+			    icon_style 	"Icon"
+			    quidu      	"334A6604032F"
+			    width      	334
+			    height     	1909
+			    icon_height 	0
+			    icon_width 	0
+			    annotation 	1
+			    Focus_Of_Control 	(object Focus_Of_Control "" @53
+				location   	(2400, 1680)
+				InterObjView 	@52
+				height     	60
+				y_coord    	0
+				Nested     	FALSE)
+			    Focus_Of_Control 	(object Focus_Of_Control "" @54
+				location   	(2400, 1802)
+				InterObjView 	@52
+				height     	120
+				y_coord    	60
+				Nested     	FALSE))
+			(object InterObjView "aSingleContainer" @55
+			    location   	(3564, 225)
+			    font       	(object Font
+				underline  	TRUE)
+			    label      	(object ItemLabel
+				Parent_View 	@55
+				location   	(3564, 225)
+				anchor_loc 	1
+				nlines     	2
+				max_width  	442
+				justify    	0
+				label      	"aSingleContainer")
+			    icon_style 	"Icon"
+			    quidu      	"334A671601A2"
+			    width      	460
+			    height     	1909
+			    icon_height 	0
+			    icon_width 	0
+			    annotation 	1
+			    Focus_Of_Control 	(object Focus_Of_Control "" @56
+				location   	(3564, 1924)
+				InterObjView 	@55
+				height     	60
+				y_coord    	0
+				Nested     	FALSE))
+			(object InterObjView "aUnidirectionalLinkDirection" @57
+			    location   	(2937, 225)
+			    font       	(object Font
+				underline  	TRUE)
+			    label      	(object ItemLabel
+				Parent_View 	@57
+				location   	(2937, 225)
+				anchor_loc 	1
+				nlines     	2
+				max_width  	600
+				justify    	0
+				label      	"aUnidirectionalLinkDirection")
+			    icon_style 	"Icon"
+			    quidu      	"334A67A40084"
+			    width      	618
+			    height     	1909
+			    icon_height 	0
+			    icon_width 	0
+			    annotation 	1
+			    Focus_Of_Control 	(object Focus_Of_Control "" @58
+				location   	(2937, 1802)
+				InterObjView 	@57
+				height     	60
+				y_coord    	0
+				Nested     	FALSE)
+			    Focus_Of_Control 	(object Focus_Of_Control "" @59
+				location   	(2937, 1924)
+				InterObjView 	@57
+				height     	120
+				y_coord    	60
+				Nested     	FALSE))
+			(object InterObjView "aContainerPolicy" @60
+			    location   	(1528, 225)
+			    font       	(object Font
+				underline  	TRUE)
+			    label      	(object ItemLabel
+				Parent_View 	@60
+				location   	(1528, 225)
+				anchor_loc 	1
+				nlines     	2
+				max_width  	380
+				justify    	0
+				label      	"aContainerPolicy")
+			    icon_style 	"Icon"
+			    quidu      	"334A46DF03C1"
+			    width      	398
+			    height     	1909
+			    icon_height 	0
+			    icon_width 	0
+			    annotation 	1
+			    Focus_Of_Control 	(object Focus_Of_Control "" @61
+				location   	(1528, 1140)
+				InterObjView 	@60
+				height     	60
+				y_coord    	0
+				Nested     	FALSE)
+			    Focus_Of_Control 	(object Focus_Of_Control "" @62
+				location   	(1528, 1332)
+				InterObjView 	@60
+				height     	120
+				y_coord    	60
+				Nested     	FALSE))
+			(object InterMessView "" @63
+			    location   	(0, 408)
+			    label      	(object SegLabel @64
+				Parent_View 	@63
+				location   	(419, 364)
+				quidu      	"334A4508012F"
+				anchor_loc 	1
+				nlines     	1
+				max_width  	400
+				justify    	0
+				label      	"add:in: (DomainObject, UMLLink)"
+				pctDist    	0.500000
+				height     	45
+				orientation 	0)
+			    client     	@33
+			    supplier   	@36
+			    Focus_Src  	@34
+			    Focus_Entry 	@37
+			    origin     	(216, 408)
+			    terminus   	(622, 408)
+			    ordinal    	0)
+			(object InterMessView "" @65
+			    location   	(0, 498)
+			    label      	(object SegLabel @66
+				Parent_View 	@65
+				location   	(864, 454)
+				quidu      	"334A456A0357"
+				anchor_loc 	1
+				nlines     	1
+				max_width  	500
+				justify    	0
+				label      	"exist: (BlockClosure)"
+				pctDist    	0.500000
+				height     	45
+				orientation 	0)
+			    client     	@36
+			    supplier   	@42
+			    Focus_Src  	@38
+			    Focus_Entry 	@43
+			    origin     	(654, 498)
+			    terminus   	(1074, 498)
+			    ordinal    	1)
+			(object InterMessView "" @67
+			    location   	(0, 680)
+			    label      	(object SegLabel @68
+				Parent_View 	@67
+				location   	(864, 636)
+				quidu      	"334A45790394"
+				anchor_loc 	1
+				nlines     	1
+				max_width  	162
+				justify    	0
+				label      	"add: (DomainObject)"
+				pctDist    	0.500000
+				height     	45
+				orientation 	0)
+			    client     	@36
+			    supplier   	@42
+			    Focus_Src  	@39
+			    Focus_Entry 	@44
+			    origin     	(654, 680)
+			    terminus   	(1074, 680)
+			    ordinal    	2)
+			(object SelfMessView "" @69
+			    location   	(0, 797)
+			    label      	(object SegLabel @70
+				Parent_View 	@69
+				location   	(1181, 753)
+				quidu      	"334A45E802D6"
+				anchor_loc 	1
+				nlines     	1
+				max_width  	300
+				justify    	0
+				label      	"isAddable: (DomainObject)"
+				pctDist    	0.500000
+				height     	45
+				orientation 	0)
+			    client     	@42
+			    supplier   	@42
+			    Focus_Src  	@45
+			    origin     	(1106, 797)
+			    terminus   	(1256, 797)
+			    ordinal    	3)
+			(object SelfMessView "" @71
+			    location   	(0, 989)
+			    label      	(object SegLabel @72
+				Parent_View 	@71
+				location   	(1181, 945)
+				quidu      	"334A45F9004F"
+				anchor_loc 	1
+				nlines     	1
+				max_width  	337
+				justify    	0
+				label      	"performAdd: (DomainObject)"
+				pctDist    	0.500000
+				height     	45
+				orientation 	0)
+			    client     	@42
+			    supplier   	@42
+			    Focus_Src  	@46
+			    origin     	(1106, 989)
+			    terminus   	(1256, 989)
+			    ordinal    	4)
+			(object InterMessView "" @73
+			    location   	(0, 1140)
+			    label      	(object SegLabel @74
+				Parent_View 	@73
+				location   	(1309, 1096)
+				quidu      	"334A473C0361"
+				anchor_loc 	1
+				nlines     	1
+				max_width  	740
+				justify    	0
+				label      	"performAdd:in: (DomainObject, LinkContainer)"
+				pctDist    	0.500000
+				height     	45
+				orientation 	0)
+			    client     	@42
+			    supplier   	@60
+			    Focus_Src  	@47
+			    Focus_Entry 	@61
+			    origin     	(1106, 1140)
+			    terminus   	(1512, 1140)
+			    ordinal    	5)
+			(object InterMessView "" @75
+			    location   	(0, 1332)
+			    label      	(object SegLabel @76
+				Parent_View 	@75
+				location   	(1309, 1288)
+				quidu      	"334A48770223"
+				anchor_loc 	1
+				nlines     	1
+				max_width  	309
+				justify    	0
+				label      	"container ( )"
+				pctDist    	0.500000
+				height     	45
+				orientation 	1)
+			    client     	@60
+			    supplier   	@42
+			    Focus_Src  	@62
+			    Focus_Entry 	@48
+			    origin     	(1512, 1332)
+			    terminus   	(1106, 1332)
+			    ordinal    	6)
+			(object InterMessView "" @77
+			    location   	(0, 1428)
+			    label      	(object SegLabel @78
+				Parent_View 	@77
+				location   	(419, 1384)
+				quidu      	"334A495E0199"
+				anchor_loc 	1
+				nlines     	1
+				max_width  	469
+				justify    	0
+				label      	"defaultBidirectionalAddSelector ( )"
+				pctDist    	0.500000
+				height     	45
+				orientation 	1)
+			    client     	@36
+			    supplier   	@33
+			    Focus_Src  	@40
+			    Focus_Entry 	@35
+			    origin     	(622, 1428)
+			    terminus   	(216, 1428)
+			    ordinal    	7)
+			(object InterMessView "" @79
+			    location   	(0, 1598)
+			    label      	(object SegLabel @80
+				Parent_View 	@79
+				location   	(1304, 1555)
+				quidu      	"334A64B202DA"
+				anchor_loc 	1
+				nlines     	1
+				max_width  	334
+				justify    	0
+				label      	"addDomain: (DomainObject)"
+				pctDist    	0.499616
+				height     	44
+				orientation 	0)
+			    client     	@36
+			    supplier   	@49
+			    Focus_Src  	@41
+			    Focus_Entry 	@50
+			    origin     	(654, 1598)
+			    terminus   	(1957, 1598)
+			    ordinal    	8)
+			(object InterMessView "" @81
+			    location   	(0, 1680)
+			    label      	(object SegLabel @82
+				Parent_View 	@81
+				location   	(2186, 1636)
+				quidu      	"334A663901B9"
+				anchor_loc 	1
+				nlines     	1
+				max_width  	191
+				justify    	0
+				label      	"add: (DomainObject)"
+				pctDist    	0.500000
+				height     	45
+				orientation 	0)
+			    client     	@49
+			    supplier   	@52
+			    Focus_Src  	@51
+			    Focus_Entry 	@53
+			    origin     	(1989, 1680)
+			    terminus   	(2384, 1680)
+			    ordinal    	9)
+			(object InterMessView "" @83
+			    location   	(0, 1802)
+			    label      	(object SegLabel @84
+				Parent_View 	@83
+				location   	(2668, 1758)
+				quidu      	"334A67E70244"
+				anchor_loc 	1
+				nlines     	1
+				max_width  	408
+				justify    	0
+				label      	"add:in: (DomainObject, UMLLink)"
+				pctDist    	0.500000
+				height     	45
+				orientation 	0)
+			    client     	@52
+			    supplier   	@57
+			    Focus_Src  	@54
+			    Focus_Entry 	@58
+			    origin     	(2416, 1802)
+			    terminus   	(2921, 1802)
+			    ordinal    	10)
+			(object InterMessView "" @85
+			    location   	(0, 1924)
+			    label      	(object SegLabel @86
+				Parent_View 	@85
+				location   	(3250, 1880)
+				quidu      	"334A68070376"
+				anchor_loc 	1
+				nlines     	1
+				max_width  	196
+				justify    	0
+				label      	"add: (DomainObject)"
+				pctDist    	0.500000
+				height     	45
+				orientation 	0)
+			    client     	@57
+			    supplier   	@55
+			    Focus_Src  	@59
+			    Focus_Entry 	@56
+			    origin     	(2953, 1924)
+			    terminus   	(3548, 1924)
+			    ordinal    	11))))))
+    logical_presentations 	(list unit_reference_list
+	(object ClassDiagram "Link"
+	    quid       	"3341205E0263"
+	    title      	"Link"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object ClassView "Class" "Logical View::Links::OneContainer" @87
+		    location   	(445, 837)
+		    label      	(object ItemLabel
+			Parent_View 	@87
+			location   	(275, 793)
+			nlines     	1
+			max_width  	340
+			justify    	0
+			label      	"OneContainer")
+		    icon_style 	"Icon"
+		    quidu      	"334124C2013D"
+		    width      	358
+		    height     	112
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::Links::ManyContainer" @88
+		    location   	(2180, 836)
+		    label      	(object ItemLabel
+			Parent_View 	@88
+			location   	(1991, 792)
+			nlines     	1
+			max_width  	378
+			justify    	0
+			label      	"ManyContainer")
+		    icon_style 	"Icon"
+		    quidu      	"33412533001D"
+		    width      	396
+		    height     	112
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::Links::UMLAssociation" @89
+		    location   	(607, 2685)
+		    label      	(object ItemLabel
+			Parent_View 	@89
+			location   	(408, 2632)
+			nlines     	1
+			max_width  	398
+			justify    	0
+			label      	"UMLAssociation")
+		    icon_style 	"Icon"
+		    quidu      	"334123240390"
+		    width      	416
+		    height     	130
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::Links::UMLAggregat" @90
+		    location   	(1040, 2685)
+		    label      	(object ItemLabel
+			Parent_View 	@90
+			location   	(864, 2632)
+			nlines     	1
+			max_width  	352
+			justify    	0
+			label      	"UMLAggregat")
+		    icon_style 	"Icon"
+		    quidu      	"3341432300E5"
+		    width      	370
+		    height     	130
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::Links::UnidirectionalLink" @91
+		    location   	(1542, 2685)
+		    label      	(object ItemLabel
+			Parent_View 	@91
+			location   	(1324, 2632)
+			nlines     	1
+			max_width  	436
+			justify    	0
+			label      	"UnidirectionalLink")
+		    icon_style 	"Icon"
+		    quidu      	"334146D2020E"
+		    width      	454
+		    height     	130
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::Links::BidirectionalLink" @92
+		    location   	(2141, 2689)
+		    label      	(object ItemLabel
+			Parent_View 	@92
+			location   	(1940, 2636)
+			nlines     	1
+			max_width  	402
+			justify    	0
+			label      	"BidirectionalLink")
+		    icon_style 	"Icon"
+		    quidu      	"3341472301F6"
+		    width      	420
+		    height     	130
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::Links::OrderedContainerPolicy" @93
+		    location   	(2290, 1415)
+		    label      	(object ItemLabel
+			Parent_View 	@93
+			location   	(1998, 1357)
+			nlines     	1
+			max_width  	584
+			justify    	0
+			label      	"OrderedContainerPolicy")
+		    icon_style 	"Icon"
+		    quidu      	"3342449B0004"
+		    width      	602
+		    height     	141
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::Links::UnorderedContainerPolicy" @94
+		    location   	(1631, 1416)
+		    label      	(object ItemLabel
+			Parent_View 	@94
+			location   	(1316, 1358)
+			nlines     	1
+			max_width  	630
+			justify    	0
+			label      	"UnorderedContainerPolicy")
+		    icon_style 	"Icon"
+		    quidu      	"334244C201AF"
+		    width      	648
+		    height     	141
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::Links::IndexedContainerPolicy" @95
+		    location   	(3517, 1405)
+		    label      	(object ItemLabel
+			Parent_View 	@95
+			location   	(3234, 1347)
+			nlines     	1
+			max_width  	566
+			justify    	0
+			label      	"IndexedContainerPolicy")
+		    icon_style 	"Icon"
+		    quidu      	"334244CE00E4"
+		    width      	584
+		    height     	141
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::Links::NumberedContainer" @96
+		    location   	(2700, 833)
+		    label      	(object ItemLabel
+			Parent_View 	@96
+			location   	(2457, 789)
+			nlines     	1
+			max_width  	486
+			justify    	0
+			label      	"NumberedContainer")
+		    icon_style 	"Icon"
+		    quidu      	"334129A903CC"
+		    width      	504
+		    height     	112
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::Links::ZeroToManyContainer" @97
+		    location   	(1590, 837)
+		    label      	(object ItemLabel
+			Parent_View 	@97
+			location   	(1319, 793)
+			nlines     	1
+			max_width  	542
+			justify    	0
+			label      	"ZeroToManyContainer")
+		    icon_style 	"Icon"
+		    quidu      	"3341243400C0"
+		    width      	560
+		    height     	112
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::Links::ZeroOrOneContainer" @98
+		    location   	(949, 839)
+		    label      	(object ItemLabel
+			Parent_View 	@98
+			location   	(689, 795)
+			nlines     	1
+			max_width  	520
+			justify    	0
+			label      	"ZeroOrOneContainer")
+		    icon_style 	"Icon"
+		    quidu      	"334124270099"
+		    width      	538
+		    height     	112
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::Links::ContainerPolicy" @99
+		    location   	(2630, 1030)
+		    label      	(object ItemLabel
+			Parent_View 	@99
+			location   	(2440, 972)
+			nlines     	1
+			max_width  	380
+			justify    	0
+			label      	"ContainerPolicy")
+		    icon_style 	"Icon"
+		    quidu      	"3342440700E8"
+		    width      	398
+		    height     	141
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritTreeView "" @100
+		    location   	(2630, 1200)
+		    supplier   	@99
+		    vertices   	(list Points
+			(2630, 1200)
+			(2630, 1100)))
+		(object InheritView "" @101
+		    stereotype 	TRUE
+		    quidu      	"334245430060"
+		    client     	@93
+		    supplier   	@99
+		    line_style 	3
+		    origin_attachment 	(2295, 1345)
+		    terminal_attachment 	(2295, 1200)
+		    drawSupplier 	@100)
+		(object InheritView "" @102
+		    stereotype 	TRUE
+		    quidu      	"33424546037B"
+		    client     	@95
+		    supplier   	@99
+		    line_style 	3
+		    origin_attachment 	(3560, 1335)
+		    terminal_attachment 	(3560, 1200)
+		    drawSupplier 	@100)
+		(object InheritView "" @103
+		    stereotype 	TRUE
+		    quidu      	"3342453F024F"
+		    client     	@94
+		    supplier   	@99
+		    line_style 	3
+		    origin_attachment 	(1603, 1346)
+		    terminal_attachment 	(1603, 1200)
+		    drawSupplier 	@100)
+		(object ClassView "Class" "Logical View::Links::MultiLinkContainer" @104
+		    location   	(2184, 485)
+		    label      	(object ItemLabel
+			Parent_View 	@104
+			location   	(1961, 441)
+			nlines     	1
+			max_width  	446
+			justify    	0
+			label      	"MultiLinkContainer")
+		    icon_style 	"Icon"
+		    quidu      	"33423EA00107"
+		    width      	464
+		    height     	112
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritTreeView "" @105
+		    location   	(2184, 631)
+		    supplier   	@104
+		    vertices   	(list Points
+			(2184, 631)
+			(2184, 541)))
+		(object AssociationViewNew "$UNNAMED$4" @106
+		    location   	(3190, 558)
+		    stereotype 	TRUE
+		    quidu      	"3342457902A2"
+		    roleview_list 	(list RoleViews
+			(object RoleView "containerPolicy" @107
+			    Parent_View 	@106
+			    location   	(1495, 66)
+			    label      	(object SegLabel @108
+				Parent_View 	@107
+				location   	(3007, 1021)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	336
+				justify    	0
+				label      	"+containerPolicy"
+				pctDist    	0.790094
+				height     	25
+				orientation 	1)
+			    stereotype 	TRUE
+			    quidu      	"3342457C02E3"
+			    client     	@106
+			    supplier   	@99
+			    vertices   	(list Points
+				(3190, 558)
+				(3190, 1045)
+				(2829, 1045))
+			    line_style 	3
+			    origin_attachment 	(3190, 558)
+			    terminal_attachment 	(2829, 1045)
+			    label      	(object SegLabel @109
+				Parent_View 	@107
+				location   	(2926, 1078)
+				anchor     	2
+				anchor_loc 	1
+				nlines     	1
+				max_width  	15
+				justify    	0
+				label      	"0..1"
+				pctDist    	0.885613
+				height     	33
+				orientation 	0))
+			(object RoleView "$UNNAMED$5" @110
+			    Parent_View 	@106
+			    location   	(1495, 66)
+			    stereotype 	TRUE
+			    quidu      	"3342457C02ED"
+			    client     	@106
+			    supplier   	@104
+			    vertices   	(list Points
+				(3190, 558)
+				(3190, 485)
+				(2416, 485))
+			    line_style 	3
+			    origin_attachment 	(3190, 558)
+			    terminal_attachment 	(2416, 485))))
+		(object InheritView "" @111
+		    stereotype 	TRUE
+		    quidu      	"33414C300105"
+		    client     	@88
+		    supplier   	@104
+		    line_style 	3
+		    origin_attachment 	(2182, 780)
+		    terminal_attachment 	(2182, 631)
+		    drawSupplier 	@105)
+		(object InheritView "" @112
+		    stereotype 	TRUE
+		    quidu      	"334124530269"
+		    client     	@97
+		    supplier   	@104
+		    line_style 	3
+		    origin_attachment 	(1529, 781)
+		    terminal_attachment 	(1529, 631)
+		    drawSupplier 	@105)
+		(object InheritView "" @113
+		    stereotype 	TRUE
+		    quidu      	"334129E30389"
+		    client     	@96
+		    supplier   	@104
+		    line_style 	3
+		    origin_attachment 	(2702, 777)
+		    terminal_attachment 	(2702, 631)
+		    drawSupplier 	@105)
+		(object ClassView "Class" "Logical View::Links::SingleLinkContainer" @114
+		    location   	(685, 486)
+		    label      	(object ItemLabel
+			Parent_View 	@114
+			location   	(443, 442)
+			nlines     	1
+			max_width  	484
+			justify    	0
+			label      	"SingleLinkContainer")
+		    icon_style 	"Icon"
+		    quidu      	"3343C212003E"
+		    width      	502
+		    height     	112
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritTreeView "" @115
+		    location   	(685, 632)
+		    supplier   	@114
+		    vertices   	(list Points
+			(685, 632)
+			(685, 542)))
+		(object InheritView "" @116
+		    stereotype 	TRUE
+		    quidu      	"3341254E01F2"
+		    client     	@87
+		    supplier   	@114
+		    line_style 	3
+		    origin_attachment 	(441, 781)
+		    terminal_attachment 	(441, 632)
+		    drawSupplier 	@115)
+		(object InheritView "" @117
+		    stereotype 	TRUE
+		    quidu      	"3343C2FF0215"
+		    client     	@98
+		    supplier   	@114
+		    line_style 	3
+		    origin_attachment 	(949, 783)
+		    terminal_attachment 	(949, 632)
+		    drawSupplier 	@115)
+		(object ClassView "Class" "Logical View::Links::LinkDirection" @118
+		    location   	(1847, 2405)
+		    label      	(object ItemLabel
+			Parent_View 	@118
+			location   	(1687, 2347)
+			nlines     	1
+			max_width  	320
+			justify    	0
+			label      	"LinkDirection")
+		    icon_style 	"Icon"
+		    quidu      	"334146B40319"
+		    width      	338
+		    height     	141
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritTreeView "" @119
+		    location   	(1850, 2565)
+		    supplier   	@118
+		    vertices   	(list Points
+			(1850, 2565)
+			(1850, 2475)))
+		(object InheritView "" @120
+		    stereotype 	TRUE
+		    quidu      	"334147660008"
+		    client     	@91
+		    supplier   	@118
+		    line_style 	3
+		    origin_attachment 	(1525, 2620)
+		    terminal_attachment 	(1525, 2565)
+		    drawSupplier 	@119)
+		(object InheritView "" @121
+		    stereotype 	TRUE
+		    quidu      	"3341476A023E"
+		    client     	@92
+		    supplier   	@118
+		    line_style 	3
+		    origin_attachment 	(2146, 2624)
+		    terminal_attachment 	(2146, 2565)
+		    drawSupplier 	@119)
+		(object ClassView "Class" "Logical View::Links::LinkContainer" @122
+		    location   	(1255, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@122
+			location   	(1085, 111)
+			nlines     	1
+			max_width  	340
+			justify    	0
+			label      	"LinkContainer")
+		    icon_style 	"Icon"
+		    quidu      	"33412072012B"
+		    width      	358
+		    height     	112
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritTreeView "" @123
+		    location   	(1255, 301)
+		    supplier   	@122
+		    vertices   	(list Points
+			(1255, 301)
+			(1255, 211)))
+		(object InheritView "" @124
+		    stereotype 	TRUE
+		    quidu      	"33423F570273"
+		    client     	@104
+		    supplier   	@122
+		    line_style 	3
+		    origin_attachment 	(2184, 429)
+		    terminal_attachment 	(2184, 301)
+		    drawSupplier 	@123)
+		(object InheritView "" @125
+		    stereotype 	TRUE
+		    quidu      	"3341244A0252"
+		    client     	@114
+		    supplier   	@122
+		    line_style 	3
+		    origin_attachment 	(652, 430)
+		    terminal_attachment 	(652, 301)
+		    drawSupplier 	@123)
+		(object ClassView "Class" "Logical View::Links::DomainObject" @126
+		    location   	(1714, 1937)
+		    label      	(object ItemLabel
+			Parent_View 	@126
+			location   	(1538, 1845)
+			nlines     	1
+			max_width  	352
+			justify    	0
+			label      	"DomainObject")
+		    icon_style 	"Icon"
+		    quidu      	"33412BD2004C"
+		    width      	370
+		    height     	209
+		    annotation 	8)
+		(object AssociationViewNew "linkedDomain" @127
+		    location   	(1245, 953)
+		    label      	(object SegLabel @128
+			Parent_View 	@127
+			location   	(1236, 991)
+			font       	(object Font
+			    italics    	TRUE)
+			anchor     	1
+			anchor_loc 	1
+			nlines     	1
+			max_width  	324
+			justify    	0
+			label      	"linkedDomain"
+			pctDist    	0.350000
+			height     	38
+			orientation 	1)
+		    stereotype 	TRUE
+		    quidu      	"33412CA600D3"
+		    roleview_list 	(list RoleViews
+			(object RoleView "domain" @129
+			    Parent_View 	@127
+			    location   	(433, 420)
+			    label      	(object SegLabel @130
+				Parent_View 	@129
+				location   	(1361, 1796)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	168
+				justify    	0
+				label      	"+domain"
+				pctDist    	0.856410
+				height     	43
+				orientation 	0)
+			    stereotype 	TRUE
+			    quidu      	"33412CA6034A"
+			    client     	@127
+			    supplier   	@126
+			    vertices   	(list Points
+				(1245, 953)
+				(1245, 1839)
+				(1529, 1839))
+			    line_style 	3
+			    origin_attachment 	(1245, 953)
+			    terminal_attachment 	(1529, 1839)
+			    label      	(object SegLabel @131
+				Parent_View 	@129
+				location   	(1493, 1796)
+				anchor     	2
+				anchor_loc 	1
+				nlines     	1
+				max_width  	51
+				justify    	0
+				label      	"0..*"
+				pctDist    	0.969231
+				height     	43
+				orientation 	0))
+			(object RoleView "$UNNAMED$6" @132
+			    Parent_View 	@127
+			    location   	(433, 420)
+			    stereotype 	TRUE
+			    quidu      	"33412CA6034B"
+			    client     	@127
+			    supplier   	@104
+			    vertices   	(list Points
+				(1245, 953)
+				(1245, 490)
+				(1952, 490))
+			    line_style 	3
+			    origin_attachment 	(1245, 953)
+			    terminal_attachment 	(1952, 490))))
+		(object AssociationViewNew "linkedDomain" @133
+		    location   	(228, 1753)
+		    label      	(object SegLabel @134
+			Parent_View 	@133
+			location   	(140, 1547)
+			font       	(object Font
+			    italics    	TRUE)
+			anchor     	1
+			anchor_loc 	1
+			nlines     	1
+			max_width  	324
+			justify    	0
+			label      	"linkedDomain"
+			pctDist    	-0.966667
+			height     	207
+			orientation 	0)
+		    stereotype 	TRUE
+		    quidu      	"33412C000337"
+		    roleview_list 	(list RoleViews
+			(object RoleView "domain" @135
+			    Parent_View 	@133
+			    location   	(-117, 1222)
+			    label      	(object SegLabel @136
+				Parent_View 	@135
+				location   	(1323, 1890)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	168
+				justify    	0
+				label      	"+domain"
+				pctDist    	0.860054
+				height     	34
+				orientation 	0)
+			    stereotype 	TRUE
+			    quidu      	"33412C04017A"
+			    client     	@133
+			    supplier   	@126
+			    vertices   	(list Points
+				(228, 1753)
+				(228, 1924)
+				(1529, 1924))
+			    line_style 	3
+			    origin_attachment 	(228, 1753)
+			    terminal_attachment 	(1529, 1924)
+			    label      	(object SegLabel @137
+				Parent_View 	@135
+				location   	(1468, 1967)
+				anchor     	2
+				anchor_loc 	1
+				nlines     	1
+				max_width  	58
+				justify    	0
+				label      	"0..1"
+				pctDist    	0.959130
+				height     	43
+				orientation 	1))
+			(object RoleView "$UNNAMED$0" @138
+			    Parent_View 	@133
+			    location   	(-117, 1222)
+			    stereotype 	TRUE
+			    quidu      	"33412C04017B"
+			    client     	@133
+			    supplier   	@114
+			    vertices   	(list Points
+				(228, 1753)
+				(228, 487)
+				(434, 487))
+			    line_style 	3
+			    origin_attachment 	(228, 1753)
+			    terminal_attachment 	(434, 487))))
+		(object ClassView "Class" "Logical View::Links::UMLLink" @139
+		    location   	(827, 2399)
+		    label      	(object ItemLabel
+			Parent_View 	@139
+			location   	(713, 2341)
+			nlines     	1
+			max_width  	228
+			justify    	0
+			label      	"UMLLink")
+		    icon_style 	"Icon"
+		    quidu      	"33413BDE00E9"
+		    width      	246
+		    height     	141
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritTreeView "" @140
+		    location   	(827, 2559)
+		    supplier   	@139
+		    vertices   	(list Points
+			(827, 2559)
+			(827, 2469)))
+		(object InheritView "" @141
+		    stereotype 	TRUE
+		    quidu      	"33413C0501B8"
+		    client     	@89
+		    supplier   	@139
+		    line_style 	3
+		    origin_attachment 	(600, 2620)
+		    terminal_attachment 	(600, 2559)
+		    drawSupplier 	@140)
+		(object InheritView "" @142
+		    stereotype 	TRUE
+		    quidu      	"3341433201B9"
+		    client     	@90
+		    supplier   	@139
+		    line_style 	3
+		    origin_attachment 	(1055, 2620)
+		    terminal_attachment 	(1055, 2559)
+		    drawSupplier 	@140)
+		(object AssociationViewNew "linkDirection" @143
+		    location   	(1314, 2400)
+		    label      	(object SegLabel @144
+			Parent_View 	@143
+			location   	(1322, 2434)
+			font       	(object Font
+			    italics    	TRUE)
+			anchor     	1
+			anchor_loc 	1
+			nlines     	1
+			max_width  	300
+			justify    	0
+			label      	"linkDirection"
+			pctDist    	0.633333
+			height     	34
+			orientation 	1)
+		    stereotype 	TRUE
+		    quidu      	"334147740116"
+		    roleview_list 	(list RoleViews
+			(object RoleView "direction" @145
+			    Parent_View 	@143
+			    location   	(609, 1025)
+			    label      	(object SegLabel @146
+				Parent_View 	@145
+				location   	(1551, 2366)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	192
+				justify    	0
+				label      	"+direction"
+				pctDist    	0.653846
+				height     	35
+				orientation 	0)
+			    stereotype 	TRUE
+			    quidu      	"33414775033E"
+			    client     	@143
+			    supplier   	@118
+			    line_style 	3
+			    origin_attachment 	(1314, 2400)
+			    terminal_attachment 	(1678, 2400)
+			    label      	(object SegLabel @147
+				Parent_View 	@145
+				location   	(1633, 2450)
+				anchor     	2
+				anchor_loc 	1
+				nlines     	1
+				max_width  	15
+				justify    	0
+				label      	"1"
+				pctDist    	0.854396
+				height     	50
+				orientation 	1))
+			(object RoleView "$UNNAMED$1" @148
+			    Parent_View 	@143
+			    location   	(609, 1025)
+			    stereotype 	TRUE
+			    quidu      	"334147750348"
+			    client     	@143
+			    supplier   	@139
+			    line_style 	3
+			    origin_attachment 	(1314, 2400)
+			    terminal_attachment 	(950, 2400))))
+		(object AssociationViewNew "linkContainer" @149
+		    location   	(119, 1108)
+		    label      	(object SegLabel @150
+			Parent_View 	@149
+			location   	(168, 2108)
+			font       	(object Font
+			    italics    	TRUE)
+			anchor     	1
+			anchor_loc 	1
+			nlines     	1
+			max_width  	240
+			justify    	0
+			label      	"linkContainer"
+			pctDist    	1.333333
+			height     	1000
+			orientation 	1)
+		    stereotype 	TRUE
+		    quidu      	"33412B17022E"
+		    roleview_list 	(list RoleViews
+			(object RoleView "container" @151
+			    Parent_View 	@149
+			    location   	(-699, -89)
+			    label      	(object SegLabel @152
+				Parent_View 	@151
+				location   	(947, 131)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	192
+				justify    	0
+				label      	"+container"
+				pctDist    	0.932425
+				height     	25
+				orientation 	0)
+			    stereotype 	TRUE
+			    quidu      	"33412B1C0127"
+			    client     	@149
+			    supplier   	@122
+			    vertices   	(list Points
+				(119, 1108)
+				(119, 156)
+				(1076, 156))
+			    line_style 	3
+			    origin_attachment 	(119, 1108)
+			    terminal_attachment 	(1076, 156)
+			    label      	(object SegLabel @153
+				Parent_View 	@151
+				location   	(1042, 195)
+				anchor     	2
+				anchor_loc 	1
+				nlines     	1
+				max_width  	15
+				justify    	0
+				label      	"1"
+				pctDist    	0.982695
+				height     	39
+				orientation 	1))
+			(object RoleView "parent" @154
+			    Parent_View 	@149
+			    location   	(-699, -89)
+			    label      	(object SegLabel @155
+				Parent_View 	@154
+				location   	(539, 2406)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	225
+				justify    	0
+				label      	"+parent"
+				pctDist    	0.913477
+				height     	28
+				orientation 	0)
+			    stereotype 	TRUE
+			    quidu      	"33412B1C0128"
+			    client     	@149
+			    supplier   	@139
+			    vertices   	(list Points
+				(119, 1108)
+				(119, 2433)
+				(704, 2433))
+			    line_style 	3
+			    origin_attachment 	(119, 1108)
+			    terminal_attachment 	(704, 2433))))
+		(object AssociationViewNew "$UNNAMED$2" @156
+		    location   	(733, 1999)
+		    stereotype 	TRUE
+		    quidu      	"334242A80025"
+		    roleview_list 	(list RoleViews
+			(object RoleView "parent" @157
+			    Parent_View 	@156
+			    location   	(-94, 226)
+			    label      	(object SegLabel @158
+				Parent_View 	@157
+				location   	(1306, 1962)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	204
+				justify    	0
+				label      	"+parent"
+				pctDist    	0.719849
+				height     	37
+				orientation 	0)
+			    stereotype 	TRUE
+			    quidu      	"334242AD02B7"
+			    client     	@156
+			    supplier   	@126
+			    line_style 	3
+			    origin_attachment 	(733, 1999)
+			    terminal_attachment 	(1529, 1999)
+			    label      	(object SegLabel @159
+				Parent_View 	@157
+				location   	(1483, 2053)
+				anchor     	2
+				anchor_loc 	1
+				nlines     	1
+				max_width  	15
+				justify    	0
+				label      	"1"
+				pctDist    	0.900000
+				height     	54
+				orientation 	1))
+			(object RoleView "$UNNAMED$3" @160
+			    Parent_View 	@156
+			    location   	(-94, 226)
+			    stereotype 	TRUE
+			    quidu      	"334242AD02C1"
+			    client     	@156
+			    supplier   	@139
+			    vertices   	(list Points
+				(733, 1999)
+				(505, 1999)
+				(505, 2369)
+				(704, 2369))
+			    line_style 	3
+			    origin_attachment 	(733, 1999)
+			    terminal_attachment 	(704, 2369))))
+		(object ClassView "Class" "Logical View::Links::SortedContainerPolicy" @161
+		    location   	(2910, 1410)
+		    label      	(object ItemLabel
+			Parent_View 	@161
+			location   	(2639, 1352)
+			nlines     	1
+			max_width  	542
+			justify    	0
+			label      	"SortedContainerPolicy")
+		    icon_style 	"Icon"
+		    quidu      	"33FDD14001DC"
+		    width      	560
+		    height     	141
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @162
+		    stereotype 	TRUE
+		    quidu      	"33FDD16100C1"
+		    client     	@161
+		    supplier   	@99
+		    line_style 	3
+		    origin_attachment 	(2910, 1340)
+		    terminal_attachment 	(2910, 1200)
+		    drawSupplier 	@100)))))

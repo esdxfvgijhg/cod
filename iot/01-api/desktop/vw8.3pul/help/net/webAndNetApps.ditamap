@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA BookMap//EN" "bookmap.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<map title="Web and Network Applications" 
+	chunk="by-topic" xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+	<topicref navtitle = "Web and Network Applications" href = "overview.xml" type = "topic">
+		<topicref navtitle = "Web Applications (AppeX)" href = "webApps.xml" format = "topic"/>
+		<topicref navtitle = "Web Server Applications (SiouX)" href = "webServers.xml" format = "topic"/>
+		<topicref navtitle = "Net Clients" href = "netClients/netClients.ditamap" format = "ditamap"/>
+		<topicref navtitle = "Web Services" href = "webServices.xml" format = "topic"/>
+		<topicref navtitle = "Security" href = "security.xml" format = "topic"/>
+		<topicref navtitle = "Opentalk" href = "opentalk.xml" format = "topic"/>
+		<topicref navtitle = "Distributed Smalltalk" href = "dst.xml" format = "topic"/>
+	</topicref>
+	
+	<reltable>
+        <relrow>
+            <relcell linking = "sourceonly">
+                <topicref navtitle = "Web Applications (AppeX)"
+                        href = "webApps.xml" type = "topic"/>
+            </relcell>
+            <relcell>
+                <topicref navtitle = "Web Application Developer's Guide"
+                        href = "./doc/WebAppDevGuide.pdf"
+                        format="pdf" scope="external" />
+            </relcell>
+        </relrow>
+    </reltable>
+	
+</map>

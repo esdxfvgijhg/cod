@@ -1,0 +1,449 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<title>The Chronos Date/Time Library</title>
+<meta name="description" content="Code library for date and time computations in Smalltalk. Supports Olson time zones, multiple calendars, scientific and business use cases, and flexible date/time formatting.">
+<meta name="keywords" content="Chronos, date, time, time zone, timezone, calendar, Smalltalk, VisualWorks, Olson timezone database, ANSI-Smalltalk Standard, DateAndTime, Duration, holiday, ISO 8601, RFC 2822">
+
+<link rel="alternate" type="application/atom+xml"
+    title="Chronos Time Zone Repository Publication Advisory" href="http://date-time-zone.com/feeds/timeZoneRepository.atom.xml">
+
+<style type="text/css">
+a:link {color: rgb(192, 164, 132); font-weight: bold;}
+a:visited {color: rgb(192, 164, 132); font-weight: bold; text-decoration: none;} 
+a:hover {color: #0000FF}
+a:active {color: #FF0000}
+td { 
+font-family: Helvetica,Arial,sans-serif;
+font-size: 16;
+text-align: justify;
+color: rgb(0, 0, 0);
+}
+.maintitle {
+font-size: 180%;
+font-weight: bold;
+}
+.gold {
+color:rgb(192, 164, 132);
+}
+.boldgold {
+color:rgb(192, 164, 132);
+font-weight: bold;
+font-size: 125%;
+}
+</style>
+
+<script type="text/javascript">
+function toInteger(n){
+  return (n < 0 ? - 1 : + 1) * Math.floor(Math.abs(n) + 0.5);
+}
+function zeropad(n) { 
+return n>9 ? n : '0'+n; 
+}
+function formatTimeZoneOffset(time, elementSeparator) {
+var minutesWestOfUT=time.getTimezoneOffset()
+var absOffsetInMinutes=Math.abs(minutesWestOfUT)
+var offsetInHours=toInteger(absOffsetInMinutes / 60)
+var offsetMinutes = absOffsetInMinutes % 60
+var isWestOfUT = minutesWestOfUT > 0
+return (isWestOfUT ? '-' : '+')+zeropad(offsetInHours)+elementSeparator+zeropad(offsetMinutes)
+}
+function formatTimeOfDay(time) {
+var hour=time.getHours()
+var minute=time.getMinutes()
+var second=time.getSeconds()
+return zeropad(hour)+':'+zeropad(minute)+':'+zeropad(second)
+}
+function abbreviationOfMonth(time) {
+return ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][time.getMonth()]
+}
+function formatDateAsYMD(time, elementSeparator) {
+var dayOfMonth=time.getDate()
+var month=time.getMonth() + 1
+var year=time.getFullYear()
+return year+elementSeparator+zeropad(month)+elementSeparator+zeropad(dayOfMonth)
+}
+function formatDateAsMDY(time, mdSeparator, dySeparator) {
+var dayOfMonth=time.getDate()
+var year=time.getFullYear()
+return abbreviationOfMonth(time)+mdSeparator+zeropad(dayOfMonth)+dySeparator+year
+}
+function formatDateAsDMY(time, dmSeparator, mySeparator) {
+var dayOfMonth=time.getDate()
+var year=time.getFullYear()
+return zeropad(dayOfMonth)+dmSeparator+abbreviationOfMonth(time)+mySeparator+year
+}
+function abbreviationOfDayOfWeek(time) {
+return ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][time.getDay()]
+}
+function formatDateAsRFC2822(time) {
+return abbreviationOfDayOfWeek(time)+', '+formatDateAsDMY(time, ' ', ' ')
+}
+
+function formatDateAndTimeAsISO8601(time) {
+return formatDateAsYMD(time,'-')+'T'+formatTimeOfDay(time)+formatTimeZoneOffset(time, ':')
+}
+function formatDateAndTimeAsRFC2822(time) {
+return formatDateAsRFC2822(time)+' '+formatTimeOfDay(time)+' '+formatTimeZoneOffset(time, '')
+}
+function startClock()
+{
+document.getElementById('clock').innerHTML=formatDateAndTimeAsRFC2822(new Date())
+t=setTimeout('startClock()',500)
+}
+</script>
+
+</head>
+<body bgcolor="#ffffff" onload="startClock()">
+<br style="font-size: 50%">
+<center>
+<table border="0" valign="center" style="width: 96%; text-align: left; margin-left: auto; margin-right: auto;">
+<tbody><tr><td>
+<center>
+<table width=94%>
+<tbody>
+<tr>
+<td><center>
+<img src="http://www.chronos-st.org/images/Chronos-small.png">
+<br style="font-size: 30%" />
+<a style="text-decoration: none;" href="http://en.wikipedia.org/wiki/Chronos" target="_top"><span class="boldgold">&chi;&rho;&#972;&nu;&omicron;&sigmaf;</span></a>
+</center></td>
+<td><table width="100%" border="0" bgcolor="white" cellpadding="0">
+<tbody>
+<tr>
+<td  align="left" style="text-align: left;">
+<div class="maintitle"><span class="gold"><a style="text-decoration: none;" href="http://www.chronos-st.org/" target="_top">The Chronos Date/Time Library</a></span></div>
+<br> 
+<b><span style="font-family: Helvetica,Arial,sans-serif; color: rgb(110, 110, 110);" id="clock">
+<noscript><small><i>~ A code library for date/time computations ~</i></small></noscript></span></b>
+</td>
+<td align="right" style="text-align: right;">
+<img src="http://www.chronos-st.org/images/SunDial.jpg" width=100 height=100>
+</td>
+<td align="right" style="text-align: right;">
+<img src="http://www.chronos-st.org/images/st-balloon.jpg">
+</td>
+</tbody>
+</table>
+
+</td>
+</tr>
+</tbody>
+</table>
+
+<table width=94% cellpadding=10>
+<tbody><tr><td>
+<table border=0 width="100%">
+<tr style="background-color: rgb(248, 248, 248);"> 
+<td style="text-align: left; font-family: Helvetica,Arial,sans-serif; color: rgb(128, 128, 128);">
+<span style="font-size: 14;">
+<noscript></noscript>
+<script type="text/javascript">
+document.write('Page retrieved '+formatDateAndTimeAsRFC2822(new Date()))
+</script>
+</span> 
+</td>
+<td style="text-align: right; font-family: Helvetica,Arial,sans-serif; color: rgb(128, 128, 128);">
+<span style="font-size: 14;">
+<noscript>Page published Mon, 03 Apr 2006 05:54:53 +0000 (UT: Universal Time)</noscript>
+<script type="text/javascript">
+document.write('Page published '+formatDateAndTimeAsRFC2822(new Date(1144043693082)))
+</script>
+</span>
+</td>
+</tr>
+</table>
+</td></tr>
+<tr><td>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head></head>
+<body><table>
+<tbody> <tr> <td> <h1>Porting
+Chronos...</h1> <h2>...To Earlier Versions of VisualWorks</h2>
+Without any modifications or special procedures, Chronos.st will
+file-in successfully to any VW 5.i3 or later VisualWorks image. Even
+though the code itself is known to work in even earlier versions of VW
+(although it has not been extensively tested in non-VW7x images,) the
+file format of Chronos.st cannot be correctly interpreted by
+VisualWorks images prior to VW 5i.3. For older versions of VW, it is
+necessary to file out Chronos.st using a format that can be consumed by
+the target image (or else to backport the ability to consume the modern
+VW XML format into the target image.) <p>The optional
+&ldquo;PARC Goodie&rdquo;
+FileOut30.pcl
+parcel enables a modern VW image to file out packages or bundles in the
+classic pre-5i &ldquo;chunk format.&rdquo; It also supports a
+variety of non-VisualWorks file-out formats. </p> <p>However,
+due to the lack of any meaningful support for &ldquo;shared pool
+Dictionary&rdquo; file-out/file-in provided by the classic ST80/VW
+&ldquo;chunk&rdquo; file-out format, it is necessary to define
+two &ldquo;shared pool&rdquo; globals before filing-in Chronos
+to a pre-5i image (or into a post 3x image if the file-in is in the
+classic &ldquo;chunk&rdquo; file-out format.). This can be done
+be evaluating the following &ldquo;do it&rdquo; in the target
+image before filing-in Chronos: </p> <font size="+1"><span style="font-family: Courier New,Courier,monospace;">&nbsp;
+&nbsp; Smalltalk</span><span style="margin-left: 40px; font-family: Courier New,Courier,monospace;"><br>
+&nbsp;
+&nbsp; &nbsp; &nbsp; at: #Chronos put: Dictionary new;<br>
+&nbsp;
+&nbsp; &nbsp; &nbsp; at:
+#ChronosConstants put: Dictionary new.</span></font><span style="font-style: italic; font-family: Helvetica,Arial,sans-serif;"><br>
+<br>Note
+to those porting into VW 5i.0, 5i.1 and 5i.2</span><span style="font-family: Helvetica,Arial,sans-serif;">: When
+filing-in a classic &ldquo;chunk format&rdquo; file containing
+the Chronos codebase into a post-3x image, #</span><span style="font-weight: bold;">Chronos</span>
+and #<span style="font-weight: bold; font-family: Helvetica,Arial,sans-serif;">ChronosConstants</span><span style="font-family: Helvetica,Arial,sans-serif;"> must be
+predefined as Namespaces (contained by #</span><span style="font-weight: bold; font-family: Helvetica,Arial,sans-serif;">Smalltalk</span><span style="font-family: Helvetica,Arial,sans-serif;">,) instead
+of as Dictionaries.</span> <p>For pre-3x images, there is
+insufficient ANSI
+Smalltalk compatibility for Chronos to operate without errors. This can
+be fixed by backporting ANSI Smalltalk compatibility methods and other
+changes into the target image. For example, the following steps were
+found to be necessary in order to get Chronos up and running in VW
+2.5.1 (in addition to defining the two global shared pool Dictionaries,
+as mentioned previously): </p> <ul> <li>Add the
+methods #<span style="font-weight: bold;">on:do:</span>
+and #<span style="font-weight: bold;">ensure:</span>
+to BlockClosure (behavior as specified by ANSI.) </li> <li>Add
+the method #<span style="font-weight: bold;">return</span>:
+to Exception (behavior as specified by ANSI.) </li> <li>Add
+the methods #<span style="font-weight: bold;">message</span>
+and #<span style="font-weight: bold;">receiver</span>
+to Exception (behavior as specified by ANSI for the
+MessageNotUnderstood Exception.) </li> <li>Define the
+global #<span style="font-weight: bold;">Error</span>
+with the value
+&ldquo;Object errorSignal&rdquo;. </li> <li>Define
+the global #<span style="font-weight: bold;">MessageNotUnderstood</span>
+with the value &ldquo;Object messageNotUnderstoodSignal&rdquo; </li>
+</ul> <p>Installing and using Chronos in pre-3x
+VisualWorks
+images is not recommended. </p> <h2>&hellip;To Other
+Smalltalk Environments</h2>
+Chronos was architected and designed to be portable to other Smalltalk
+systems. However, the author of Chronos strongly prefers to avoid doing
+any
+such ports himself (in spite of the fact that he did quite a bit of the
+work needed to make the Squeak port fully functional; Squeak, after
+all, has a special place in the world, and has no commerical vendor
+behind it who is primarily responsible for its care and feeding.)
+However, he is willing to serve as a consultant to
+anyone who is seriously engaged in porting Chronos to some other
+Smalltalk environment. To make a request for such aid, send an e-mail
+to the
+following address: <porting (at="" chronos-st="" (dot="" org="">{porting (at) chronos-st (dot) org}.
+Hopefully, the following information will prove to be sufficient:<br></porting><p><span style="text-decoration: underline;">Firstly, y</span>ou
+may find the optional "contributed component" (a.k.a.
+&ldquo;Goodie&rdquo;) FileOut30.pcl parcel to be useful. It
+enables a modern VW image to file out packages or bundles in the
+classic ST80 &ldquo;chunk format.&rdquo; It also supports a
+variety of non-VisualWorks file-out formats. An even better option
+would be the <a href="http://rosettast.sourceforge.net/" target="_top">Rosetta&nbsp;Cross-Dialect
+Smalltalk Code Interchange Tool.</a> You can find it at
+http://rosettast.sourceforge.net/. </p> <porting (at="" chronos-st="" (dot="" org=""> <span style="text-decoration: underline;">Secondly</span>,
+you will need to follow the procedure as given in <a href="http://www.chronos-st.org/Chronos-Seed.html">the instructions to produce the Chronos Seed</a>. [Link: http://www.chronos-st.org/Chronos-Seed.html]</porting><p>In
+the case of
+the VisualWorks version of Chronos, the packages &lt;Passport-Kernel-VW&gt;, &lt;Chronos-VW-Extensions&gt;
+and &lt;Chronos-ST80 (and VW) Compatibility&gt; are VisualWorks
+specific. &nbsp;Similar packages (with different
+names) will probably be present in the versions of Chronos specific to
+other Smalltalk flavors (assuming some sort of module system is even
+supported at all.) &nbsp;Providing classes and methods that are
+analagous to those in &nbsp;&lt;Passport-Kernel-VW&gt;
+will be absolutely necessary. &nbsp;Providing code that is analagous to
+that provided by the other two packages is entirely optional.</p><p>The &lt;Chronos-VW-Extensions&gt;
+package (or its analog) adds convenience methods ("syntactic sugar") to
+classes in the Smalltalk base library, such as
+Number&gt;&gt;hours, so that users (programmers) can code "-8
+hours" instead of "Duration hours: -8." &nbsp;One issue to be
+considered is whether any such methods would conflict with methods
+already present in the target Smalltalk library (perhaps ones added by
+a popular optional module/package.)</p>
+Although you won't want to
+include the &lt;Chronos-VW-Extensions&gt;
+package "as is" in your initial port, you should nevertheless strongly consider providing
+analogous extensions in the target Smalltalk environment, unless such
+methods would conflict with ones natively present (but on the other
+hand, you might do it even then.)
+Chronos itself does not need or use any of the extension methods in the
+&lt;Chronos-VW-Extensions&gt; package, but applications or other libraries
+that rely on Chronos will almost certainly expect them to be present.<br>
+<br>The package &lt;Chronos-ST80 (and VW)
+Compatibility&gt; is also VisualWorks-specific. &nbsp;It
+extends certain Chronos classes with methods to make them type-compatible
+with Core.Date, Core.Timestamp and Core.Time. &nbsp;If such
+compatibility might be useful, you could include this package in your
+port--although some of the implementation-logic assumes that the
+classes Date, Timestamp and Time exist, and have the VW API.
+&nbsp;Otherwise, you can safely remove this package. Chronos itself
+does not depend on any of the extension methods in the &lt;Chronos-ST80 (and VW)
+Compatibility&gt; package.<br><br>You
+might also need or want to add methods to certain Chronos classes to
+make them partially or fully type-compatible with whatever date/time
+classes are native to the target Smaltlalk environment. &nbsp;One
+piece
+of advice here: Don't blindly believe the code comments in the host
+environment's date/time code. &nbsp;For example, as of Squeak 3.8,
+comments in the code of Squeak's Chronology library falsely claim that
+the internal variables of a Chronology.DateAndTime instance specify the
+date and time relative to Universal Time. &nbsp;The truth is that
+those
+variables specify local time--probably because the Squeak system clock
+reports local time (Chronos can handle system clocks that report either
+Universal Time or local time--read the class comments of
+ChronosSystemClock and CalendarClock for more information.).<br>
+<br>The class ChronosInstaller (in the &lt;Chronos-Installation&gt;
+package) should not
+be included in the file-in to be ported to the target Smalltalk image
+(or library.) The ChronosInstaller class only
+exists as a mechanism to launch the final initialization and
+configuration of Chronos. It implements just two class-side methods,
+#initialize and #postLoad:. <br><br>The #postLoad: class method is invoked when a VisualWorks parcel is
+loaded. &nbsp;Outside of a VisualWorks environment, it is superfluous and
+can be removed.<br><br>When&nbsp;ChronosInstaller is filed out of VisualWorks, VW will include a "do
+it" that invokes "ChronosInstaller class&gt;&gt;initialize"
+when
+filed back in. You don't want that to happen pursuant to the very first
+file-in of the Chronos code into the Smalltalk platform to which you
+are porting. &nbsp;However,
+the analogous &ldquo;final
+initialization and configuration&rdquo; effect needs to be achieved
+by the Chronos &ldquo;file-in&rdquo; (or whatever the
+equivalent &ldquo;distribution file&rdquo; may be called) that
+you distribute as the ported &ldquo;load and go&rdquo; version
+of Chronos. &nbsp;How that is best achieved is platform-specific.
+&nbsp;What needs to happen once the fully-ported and functional
+Chronos
+codebase has been "filed in" (or otherwise loaded in) to a new image is
+that the message #install must be sent to the canonical instance of
+ChronosEnvironment (i.e, the expression "ChronosEnvironment canonical
+install" must be evaluated.) &nbsp;That's all that the
+ChronosInstaller
+class&gt;&gt;initialize method does. The ported distrubution
+file you
+prepare for Chronos needs to make that happen, but not until the
+entire Chronos codebase has been loaded. &nbsp;Use whatever
+mechanism
+to get that done automatically that is appropriate for the Smalltalk
+flavor involved.<p><span style="text-decoration: underline;">Thirdly</span>,
+it
+may be useful (or even absolutely necessary) to port Chronos into a
+non-VW Smalltalk environment using a staged approach. For example, it
+may be advisable to only file-in/install the contents of the
+&lt;Passport-Kernel&gt; package, fixing any problems or issues
+encountered during the file-in, then implementing the necessary
+platform-specific subclasses before
+attempting to do the same with the remainder of the Chronos
+codebase.&nbsp; </p>
+<p><span style="text-decoration: underline;">Fourthly</span>,
+it
+may be necessary to add some &ldquo;VisualWorks
+Compatibility&rdquo; and/or &ldquo;ANSI-Smalltalk
+Compatibility&rdquo; code into the target image (or into the
+standard library if the target environment is not image based.) Such
+additions would likely include the following methods (probably not an
+exhaustive list in some cases):&nbsp;</p> <ul> <li>Object&gt;&gt;isSequenceable</li>
+<li>Obect&gt;&gt;respondsToArithmetic
+(answer false, or '^self isNumber', or whatever may be appropriate)</li>
+<li>Number&gt;&gt;respondsToArithmetic
+(answer true)</li> <li>SequenceableCollection&gt;&gt;readStream&nbsp;</li>
+<li>SequenceableCollection&gt;&gt;writeStream&nbsp;</li>
+<li>SequenceableCollection&gt;&gt;newReadWriteStream&nbsp;</li>
+<li>*&gt;&gt;literalArrayEncoding&nbsp;</li> <li>*
+class&gt;&gt;decodeFromLiteralArray:&nbsp;</li> <li>Array&gt;&gt;decodeAsLiteralArray</li>
+</ul> <p>The #literalArrayEncoding message needs
+to be
+understood by the instances of any class whose instances have a literal
+representation that can appear in an Array literal (according to the
+ANSI-Smalltalk Standard.) The class message #decodeFromLiteralArray:
+needs to be understood by any class whose instances respond to
+#literalArrayEncoding.</p> <p>An
+issue that you hopefully won't have to deal with is the
+interpretation of Array literals. &nbsp;Although the Chronos
+codebase
+includes Array literals that assume the
+ANSI-Standard intepretation of Array literals (where #(nil) = (Array
+with: nil),) the code that processes any such Arrays ensures that any
+#nil, #true or #false values that are the elements of such an Array
+literal are converted to the ANSI-mandated value. There are only two
+usages of Arrays where this matters: ChronosPrintPolicy specification
+Arrays and day-of-week policy Arrays (used by SemanticAnnualDateRule
+objects.)</p> <p>Also
+see the comments above regarding the necessary
+steps and procedures for porting Chronos into ancient versions of
+VisualWorks&mdash;the same issues may need to be resolved in
+similar or analogous ways. </p> <p><span style="text-decoration: underline;">Fifthly</span>,
+the
+flip side of having to remove the platform-specific classes and
+packages from the version of Chronos from which you are porting is that
+you must then implement analogous classes and packages for your target
+Smalltalk platform. At a minimum, you will
+have to implement platform-specific subclasses of EnvironmentFacade, ResourcePathFacade, ChronosEnvironment,
+ChronosSystemClock, and ChronosSystemFacade in order to get Chronos
+working on your target Smalltalk platform. </p> <p>Be
+advised that the class comments of
+EnvironmentFacade, ResourcePathFacade, ChronosEnvironment,
+ChronosSystemClock, and ChronosSystemFacade are essential reading for
+anyone who wishes to port Chronos to a non-VisualWorks Smalltalk
+environment. Most of the code that needs to be changed and/or
+implemented de novo in order to effect a port of Chronos to another
+Smalltalk system is specified and documented in those classes.&nbsp;</p>
+<p><span style="text-decoration: underline;">Sixthly</span>,
+for more information about what's involved in discovering what time
+zone your code happens to be running in, and how to obtain the time
+zone rules used by the host operating system to convert between
+Universal Time and local time, you may find the essay <a href="http://www.chronos-st.org/Discovering%20the%20Local%20Time%20Zone--Why%20It%27s%20a%20Hard%20Problem.html" target="_top">
+Discovering the Local Time Zone--Why It's a Hard Problem </a>to
+be a useful resource. </p> <p><span style="text-decoration: underline;">Lastly</span>, be
+advised that Chronos is a work in progress. There will be new versions,
+perhaps with design and/or API changes. You would be well advised to do
+ports to other Smalltalk flavors so that the procedure is
+repeatable--with far less work involved when porting subsequent
+versions. </p> <p>The VW version is modularized into
+StORE
+packages so that most (and hopefully all) of the platform-specific code
+resides in the packages Chronos-Environment and Chronos-System. The
+best approach for porting is to try to limit changes to the Chronos
+codebase to the classes in those packages (or to introduce subclasses
+of the classes in those packages.) Where possible, any porting issues
+that cannot be handled by changes to the Chronos-Environment and
+Chronos-System packages should instead be handled by introducing
+compatibility classes/methods into the target environment (especially
+when the issue is a lack of ANSI compliance.) </p> <p>Modification
+of the Chronos codebase for the
+purpose
+of making Chronos work correctly on the Smalltalk platform to which it
+is being ported (other than as herein described,) is strongly not
+recommended. Instead, please notify the author of Chronos of the
+porting problem {send and e-mail to porting (at) chronos-st (dot) org}
+so that a general solution to the problem can be designed and
+incorporated into the mainline Chronos codebase. </p> <h2>&hellip;To
+Other Programming Languages</h2>
+The author of Chronos expects that Chronos will be ported to other
+programming languages, but currently has no intention of doing any such
+ports himself. However, he may be willing in some cases to offer advice
+and/or provide consulting services to anyone who attempts to port
+Chronos to another programming language. </td> </tr> </tbody>
+</table></body></html>
+</td></tr>
+<tr><td>
+<p style="font-size: 75%; color: rgb(128, 128, 128); background-color: rgb(248, 248, 248);">
+[Chronos] All code (classes and methods, and all associated documentation,) distributed as part of the 
+Chronos Date/Time library are &copy; Copyright 2005-2006 by Alan L. Lovejoy.&nbsp; All Rights Reserved. 
+Usage is controlled by the Chronos License (which is included in the distribution as the contents of 
+the file {chronos-license.txt}, and is also available from the <a href="http://www.chronos-st.org/">
+Chronos web site</a> {<a href="http://www.chronos-st.org/License.html" target="_top">http://www.chronos-st.org/License.html</a>})
+</p>
+<blockquote>"Do not go gentle into that good night,
+<br>Old age should burn and rave at the close of the day;
+<br>Rage, rage at the dying of the light!" -- Dylan Thomas
+</blockquote>
+</td></tr>
+
+</center>
+</td></tr></tbody></table>
+</center>
+
+</body>
+</html>

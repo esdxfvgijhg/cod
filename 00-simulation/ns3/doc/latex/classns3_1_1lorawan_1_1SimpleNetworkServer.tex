@@ -1,0 +1,162 @@
+\hypertarget{classns3_1_1lorawan_1_1SimpleNetworkServer}{}\section{ns3\+:\+:lorawan\+:\+:Simple\+Network\+Server Class Reference}
+\label{classns3_1_1lorawan_1_1SimpleNetworkServer}\index{ns3\+::lorawan\+::\+Simple\+Network\+Server@{ns3\+::lorawan\+::\+Simple\+Network\+Server}}
+
+
+{\ttfamily \#include $<$simple-\/network-\/server.\+h$>$}
+
+
+
+Inheritance diagram for ns3\+:\+:lorawan\+:\+:Simple\+Network\+Server\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{classns3_1_1lorawan_1_1SimpleNetworkServer__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ns3\+:\+:lorawan\+:\+:Simple\+Network\+Server\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classns3_1_1lorawan_1_1SimpleNetworkServer__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1SimpleNetworkServer_a3afe1b0a9cb2353cba11aacbd07c4de4}{Start\+Application} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1SimpleNetworkServer_a95b9553d1da0447ca28f12e615a959d5}{Stop\+Application} (void)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1SimpleNetworkServer_a52ff4184ec4b21340772cdcb22ac9b79}{Add\+Nodes} (Node\+Container nodes)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1SimpleNetworkServer_ad1cb1d6e83af9a6ee38fd0481a94cd36}{Add\+Node} (Ptr$<$ Node $>$ node)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1SimpleNetworkServer_ae4c1abffbbac9ea1eae37371d14b454c}{Add\+Gateway} (Ptr$<$ Node $>$ gateway, Ptr$<$ \hyperlink{classNetDevice}{Net\+Device} $>$ net\+Device)
+\item 
+bool \hyperlink{classns3_1_1lorawan_1_1SimpleNetworkServer_a0cfe7b758c095ac9bc87af7c856990ac}{Receive} (Ptr$<$ \hyperlink{classNetDevice}{Net\+Device} $>$ device, Ptr$<$ const Packet $>$ packet, uint16\+\_\+t protocol, const Address \&address)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1SimpleNetworkServer_ac74989ada880eb1f0fc8501e70a16d9a}{Send\+On\+First\+Window} (\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} address)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1SimpleNetworkServer_af239dffde45d81825fc4bcee31be055a}{Send\+On\+Second\+Window} (\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} address)
+\item 
+uint8\+\_\+t \hyperlink{classns3_1_1lorawan_1_1SimpleNetworkServer_a900b4cf2a982ada33ea1460421077902}{Get\+Data\+Rate\+For\+Reply} (uint8\+\_\+t received\+Data\+Rate)
+\item 
+Address \hyperlink{classns3_1_1lorawan_1_1SimpleNetworkServer_a40e560ebb7d259465369b50118b72715}{Get\+Gateway\+For\+Reply} (\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} device\+Address, double frequency)
+\item 
+void \hyperlink{classns3_1_1lorawan_1_1SimpleNetworkServer_a64d56f6364faa25617b28f77dbb659ee}{Initialize\+Reply} (\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address} addr, bool has\+Rep)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1SimpleNetworkServer_a13d55fb0edd5fbe95e1a0ddd4f875517}\label{classns3_1_1lorawan_1_1SimpleNetworkServer_a13d55fb0edd5fbe95e1a0ddd4f875517}} 
+static Type\+Id {\bfseries Get\+Type\+Id} (void)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1SimpleNetworkServer_a7b268ca5a0d53ac5252c0d1452e51d97}\label{classns3_1_1lorawan_1_1SimpleNetworkServer_a7b268ca5a0d53ac5252c0d1452e51d97}} 
+std\+::map$<$ \hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address}, \hyperlink{classns3_1_1lorawan_1_1DeviceStatus}{Device\+Status} $>$ {\bfseries m\+\_\+device\+Statuses}
+\item 
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1SimpleNetworkServer_aa6859f00a0b25e12439bfa5e1460c176}\label{classns3_1_1lorawan_1_1SimpleNetworkServer_aa6859f00a0b25e12439bfa5e1460c176}} 
+std\+::map$<$ Address, \hyperlink{classns3_1_1lorawan_1_1GatewayStatus}{Gateway\+Status} $>$ {\bfseries m\+\_\+gateway\+Statuses}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A \hyperlink{classns3_1_1lorawan_1_1SimpleNetworkServer}{Simple\+Network\+Server} is an application standing on top of a node equipped with links that connect it with the gateways.
+
+This version of the \hyperlink{classns3_1_1lorawan_1_1NetworkServer}{Network\+Server} isn\textquotesingle{}t smart enough to handle M\+AC commands, but can reply correctly with A\+C\+Ks to confirmed uplink messages. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1SimpleNetworkServer_ae4c1abffbbac9ea1eae37371d14b454c}\label{classns3_1_1lorawan_1_1SimpleNetworkServer_ae4c1abffbbac9ea1eae37371d14b454c}} 
+\index{ns3\+::lorawan\+::\+Simple\+Network\+Server@{ns3\+::lorawan\+::\+Simple\+Network\+Server}!Add\+Gateway@{Add\+Gateway}}
+\index{Add\+Gateway@{Add\+Gateway}!ns3\+::lorawan\+::\+Simple\+Network\+Server@{ns3\+::lorawan\+::\+Simple\+Network\+Server}}
+\subsubsection{\texorpdfstring{Add\+Gateway()}{AddGateway()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Simple\+Network\+Server\+::\+Add\+Gateway (\begin{DoxyParamCaption}\item[{Ptr$<$ Node $>$}]{gateway,  }\item[{Ptr$<$ \hyperlink{classNetDevice}{Net\+Device} $>$}]{net\+Device }\end{DoxyParamCaption})}
+
+Add this gateway to the list of gateways connected to this NS \mbox{\Hypertarget{classns3_1_1lorawan_1_1SimpleNetworkServer_ad1cb1d6e83af9a6ee38fd0481a94cd36}\label{classns3_1_1lorawan_1_1SimpleNetworkServer_ad1cb1d6e83af9a6ee38fd0481a94cd36}} 
+\index{ns3\+::lorawan\+::\+Simple\+Network\+Server@{ns3\+::lorawan\+::\+Simple\+Network\+Server}!Add\+Node@{Add\+Node}}
+\index{Add\+Node@{Add\+Node}!ns3\+::lorawan\+::\+Simple\+Network\+Server@{ns3\+::lorawan\+::\+Simple\+Network\+Server}}
+\subsubsection{\texorpdfstring{Add\+Node()}{AddNode()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Simple\+Network\+Server\+::\+Add\+Node (\begin{DoxyParamCaption}\item[{Ptr$<$ Node $>$}]{node }\end{DoxyParamCaption})}
+
+Inform the \hyperlink{classns3_1_1lorawan_1_1SimpleNetworkServer}{Simple\+Network\+Server} that this node is connected to the network This method will create a \hyperlink{classns3_1_1lorawan_1_1DeviceStatus}{Device\+Status} object for the new node (if it doesn\textquotesingle{}t already exist) \mbox{\Hypertarget{classns3_1_1lorawan_1_1SimpleNetworkServer_a52ff4184ec4b21340772cdcb22ac9b79}\label{classns3_1_1lorawan_1_1SimpleNetworkServer_a52ff4184ec4b21340772cdcb22ac9b79}} 
+\index{ns3\+::lorawan\+::\+Simple\+Network\+Server@{ns3\+::lorawan\+::\+Simple\+Network\+Server}!Add\+Nodes@{Add\+Nodes}}
+\index{Add\+Nodes@{Add\+Nodes}!ns3\+::lorawan\+::\+Simple\+Network\+Server@{ns3\+::lorawan\+::\+Simple\+Network\+Server}}
+\subsubsection{\texorpdfstring{Add\+Nodes()}{AddNodes()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Simple\+Network\+Server\+::\+Add\+Nodes (\begin{DoxyParamCaption}\item[{Node\+Container}]{nodes }\end{DoxyParamCaption})}
+
+Inform the \hyperlink{classns3_1_1lorawan_1_1SimpleNetworkServer}{Simple\+Network\+Server} that these nodes are connected to the network This method will create a \hyperlink{classns3_1_1lorawan_1_1DeviceStatus}{Device\+Status} object for each new node, and add it to the list \mbox{\Hypertarget{classns3_1_1lorawan_1_1SimpleNetworkServer_a900b4cf2a982ada33ea1460421077902}\label{classns3_1_1lorawan_1_1SimpleNetworkServer_a900b4cf2a982ada33ea1460421077902}} 
+\index{ns3\+::lorawan\+::\+Simple\+Network\+Server@{ns3\+::lorawan\+::\+Simple\+Network\+Server}!Get\+Data\+Rate\+For\+Reply@{Get\+Data\+Rate\+For\+Reply}}
+\index{Get\+Data\+Rate\+For\+Reply@{Get\+Data\+Rate\+For\+Reply}!ns3\+::lorawan\+::\+Simple\+Network\+Server@{ns3\+::lorawan\+::\+Simple\+Network\+Server}}
+\subsubsection{\texorpdfstring{Get\+Data\+Rate\+For\+Reply()}{GetDataRateForReply()}}
+{\footnotesize\ttfamily uint8\+\_\+t ns3\+::lorawan\+::\+Simple\+Network\+Server\+::\+Get\+Data\+Rate\+For\+Reply (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{received\+Data\+Rate }\end{DoxyParamCaption})}
+
+Check whether a reply to the device with a certain address already exists Get the data rate that should be used when replying in the first receive window \mbox{\Hypertarget{classns3_1_1lorawan_1_1SimpleNetworkServer_a40e560ebb7d259465369b50118b72715}\label{classns3_1_1lorawan_1_1SimpleNetworkServer_a40e560ebb7d259465369b50118b72715}} 
+\index{ns3\+::lorawan\+::\+Simple\+Network\+Server@{ns3\+::lorawan\+::\+Simple\+Network\+Server}!Get\+Gateway\+For\+Reply@{Get\+Gateway\+For\+Reply}}
+\index{Get\+Gateway\+For\+Reply@{Get\+Gateway\+For\+Reply}!ns3\+::lorawan\+::\+Simple\+Network\+Server@{ns3\+::lorawan\+::\+Simple\+Network\+Server}}
+\subsubsection{\texorpdfstring{Get\+Gateway\+For\+Reply()}{GetGatewayForReply()}}
+{\footnotesize\ttfamily Address ns3\+::lorawan\+::\+Simple\+Network\+Server\+::\+Get\+Gateway\+For\+Reply (\begin{DoxyParamCaption}\item[{\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address}}]{device\+Address,  }\item[{double}]{frequency }\end{DoxyParamCaption})}
+
+Get the best gateway that is available to reply to this device.
+
+This method assumes the gateway needs to be available at the time that it is called. \mbox{\Hypertarget{classns3_1_1lorawan_1_1SimpleNetworkServer_a64d56f6364faa25617b28f77dbb659ee}\label{classns3_1_1lorawan_1_1SimpleNetworkServer_a64d56f6364faa25617b28f77dbb659ee}} 
+\index{ns3\+::lorawan\+::\+Simple\+Network\+Server@{ns3\+::lorawan\+::\+Simple\+Network\+Server}!Initialize\+Reply@{Initialize\+Reply}}
+\index{Initialize\+Reply@{Initialize\+Reply}!ns3\+::lorawan\+::\+Simple\+Network\+Server@{ns3\+::lorawan\+::\+Simple\+Network\+Server}}
+\subsubsection{\texorpdfstring{Initialize\+Reply()}{InitializeReply()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Simple\+Network\+Server\+::\+Initialize\+Reply (\begin{DoxyParamCaption}\item[{\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address}}]{addr,  }\item[{bool}]{has\+Rep }\end{DoxyParamCaption})}
+
+Initialize the has\+Reply value of the device to the given value, so that the Reply can be overwritten.
+
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & The address oh the device \\
+\hline
+{\em has\+Rep} & The new value of the has\+Reply field, \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1SimpleNetworkServer_a0cfe7b758c095ac9bc87af7c856990ac}\label{classns3_1_1lorawan_1_1SimpleNetworkServer_a0cfe7b758c095ac9bc87af7c856990ac}} 
+\index{ns3\+::lorawan\+::\+Simple\+Network\+Server@{ns3\+::lorawan\+::\+Simple\+Network\+Server}!Receive@{Receive}}
+\index{Receive@{Receive}!ns3\+::lorawan\+::\+Simple\+Network\+Server@{ns3\+::lorawan\+::\+Simple\+Network\+Server}}
+\subsubsection{\texorpdfstring{Receive()}{Receive()}}
+{\footnotesize\ttfamily bool ns3\+::lorawan\+::\+Simple\+Network\+Server\+::\+Receive (\begin{DoxyParamCaption}\item[{Ptr$<$ \hyperlink{classNetDevice}{Net\+Device} $>$}]{device,  }\item[{Ptr$<$ const Packet $>$}]{packet,  }\item[{uint16\+\_\+t}]{protocol,  }\item[{const Address \&}]{address }\end{DoxyParamCaption})}
+
+Receive a packet from a gateway 
+\begin{DoxyParams}{Parameters}
+{\em packet} & the received packet \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classns3_1_1lorawan_1_1SimpleNetworkServer_ac74989ada880eb1f0fc8501e70a16d9a}\label{classns3_1_1lorawan_1_1SimpleNetworkServer_ac74989ada880eb1f0fc8501e70a16d9a}} 
+\index{ns3\+::lorawan\+::\+Simple\+Network\+Server@{ns3\+::lorawan\+::\+Simple\+Network\+Server}!Send\+On\+First\+Window@{Send\+On\+First\+Window}}
+\index{Send\+On\+First\+Window@{Send\+On\+First\+Window}!ns3\+::lorawan\+::\+Simple\+Network\+Server@{ns3\+::lorawan\+::\+Simple\+Network\+Server}}
+\subsubsection{\texorpdfstring{Send\+On\+First\+Window()}{SendOnFirstWindow()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Simple\+Network\+Server\+::\+Send\+On\+First\+Window (\begin{DoxyParamCaption}\item[{\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address}}]{address }\end{DoxyParamCaption})}
+
+Send a packet through a gateway to an ED, using the first receive window \mbox{\Hypertarget{classns3_1_1lorawan_1_1SimpleNetworkServer_af239dffde45d81825fc4bcee31be055a}\label{classns3_1_1lorawan_1_1SimpleNetworkServer_af239dffde45d81825fc4bcee31be055a}} 
+\index{ns3\+::lorawan\+::\+Simple\+Network\+Server@{ns3\+::lorawan\+::\+Simple\+Network\+Server}!Send\+On\+Second\+Window@{Send\+On\+Second\+Window}}
+\index{Send\+On\+Second\+Window@{Send\+On\+Second\+Window}!ns3\+::lorawan\+::\+Simple\+Network\+Server@{ns3\+::lorawan\+::\+Simple\+Network\+Server}}
+\subsubsection{\texorpdfstring{Send\+On\+Second\+Window()}{SendOnSecondWindow()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Simple\+Network\+Server\+::\+Send\+On\+Second\+Window (\begin{DoxyParamCaption}\item[{\hyperlink{classns3_1_1lorawan_1_1LoraDeviceAddress}{Lora\+Device\+Address}}]{address }\end{DoxyParamCaption})}
+
+Send a packet through a gateway to an ED, using the second receive window \mbox{\Hypertarget{classns3_1_1lorawan_1_1SimpleNetworkServer_a3afe1b0a9cb2353cba11aacbd07c4de4}\label{classns3_1_1lorawan_1_1SimpleNetworkServer_a3afe1b0a9cb2353cba11aacbd07c4de4}} 
+\index{ns3\+::lorawan\+::\+Simple\+Network\+Server@{ns3\+::lorawan\+::\+Simple\+Network\+Server}!Start\+Application@{Start\+Application}}
+\index{Start\+Application@{Start\+Application}!ns3\+::lorawan\+::\+Simple\+Network\+Server@{ns3\+::lorawan\+::\+Simple\+Network\+Server}}
+\subsubsection{\texorpdfstring{Start\+Application()}{StartApplication()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Simple\+Network\+Server\+::\+Start\+Application (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Parse and take action on the commands contained on the frame\+Header Start the NS application \mbox{\Hypertarget{classns3_1_1lorawan_1_1SimpleNetworkServer_a95b9553d1da0447ca28f12e615a959d5}\label{classns3_1_1lorawan_1_1SimpleNetworkServer_a95b9553d1da0447ca28f12e615a959d5}} 
+\index{ns3\+::lorawan\+::\+Simple\+Network\+Server@{ns3\+::lorawan\+::\+Simple\+Network\+Server}!Stop\+Application@{Stop\+Application}}
+\index{Stop\+Application@{Stop\+Application}!ns3\+::lorawan\+::\+Simple\+Network\+Server@{ns3\+::lorawan\+::\+Simple\+Network\+Server}}
+\subsubsection{\texorpdfstring{Stop\+Application()}{StopApplication()}}
+{\footnotesize\ttfamily void ns3\+::lorawan\+::\+Simple\+Network\+Server\+::\+Stop\+Application (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Stop the NS application 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+simple-\/network-\/server.\+h\item 
+simple-\/network-\/server.\+cc\end{DoxyCompactItemize}

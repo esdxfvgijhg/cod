@@ -1,0 +1,4 @@
+#!/bin/bash
+export VISUALWORKS=$HOME/vw8.3pul
+$VISUALWORKS/bin/linux86/visual ./visualnc.im
+

@@ -1,0 +1,159 @@
+Cincom Smalltalk VisualWorks Install.txt (VisualWorks 8.3)
+Copyright Cincom Systems, Inc. 2017. All rights reserved.
+
+
+Cincom Smalltalk Installation Instructions
+==========================================
+
+Note: An expanded version of installation instructions are provided on the CD in Install.pdf.  
+
+The Cincom Smalltalk installation CD includes installations for VisualWorks version 8.3.  
+
+An installation program leads you through VisualWorks on any supported platform. 
+
+
+Getting Help
+------------
+
+If, after reading this document and Install.pdf on the CD, you find that you need additional help, 
+
+ - Commercial licensees can contact Cincom Technical Support. Use the contact information provided in Install.pdf.
+
+ - Non-commercial licensees can get help on-line from the resources listed in the VisualWorks Application Developer's Guide.
+
+
+VisualWorks System Requirements
+-------------------------------
+
+VisualWorks 8.3 runs on workstations with the following minimum system configurations.
+
+General Disk and Memory Requirements
+
+   - 512 MB of memory minimum (development environment)
+   - Apx. 610 MB disk space for default installation
+   - Apx. 780 MB disk space for full, single platform installation
+   - Apx. 1.2 GB disk space for full installation with all platforms
+   - CD-ROM drive (for installation)
+
+Microsoft Windows x86
+
+   - A PC or compatible with an Intel Pentium compatible processor 
+   - Windows 10, 8.x, 7, Server 2008
+
+Microsoft Windows x64
+
+   - Windows 10, 8.x, 7, Server 2012, 2008 R2
+
+Solaris
+
+   - 32-bit requires at least SPARC V7 processor architecture
+   - 64-bit requires at least SPARC V9 processor architecture
+   - Solaris 11, 10
+
+IBM AIX
+
+   - AIX workstation with POWER processor
+   - AIX release 7.x or 6.x
+
+Apple OS X
+
+   - Mac OS X Yosemite (10.10), Mavericks (10.9), or Mountain Lion (10.8)
+
+Apple OS X - X11
+
+   - Mac OS X Yosemite (10.10), Mavericks (10.9), or Mountain Lion (10.8)
+   - X11 libraries for Mac OS X
+
+Linux x86/x86-64
+
+   - 32-bit requires a Intel Pentium compatible processor
+   - 64-bit requires an AMD x86-64 compatible processor
+   - Linux kernel version 2.4 or later 
+   - GNU glibc version 2.5 or later
+   - libx11 1.0.3, zlib1.2.3 (RHEL 5.4 equivalent)
+
+Linux POWER
+
+   - A POWER-compatible processor
+   - A linux distribution with a 2.6 kernel or higher
+   - GNU glibc version 2.5-42 or later
+   - libx11 1.0.3, zlib1.2.3 (RHEL 5.4 equivalent)
+
+
+Running the Installer
+=====================
+
+On most platforms, the Installer starts automatically when you insert the Cincom Smalltalk CD. If it does not start automatically, start it using the method appropriate to your platform, located in the CD's root directory:
+
+ - Windows: Double-click on the installWin.bat command script file.
+
+ - UNIX/Linux: Execute the installer shell script installUnix.
+
+ - Mac OS X: Double-click on the installMacOSX.command script file. 
+
+Once running, follow the prompts. Refer to Install.pdf on the installation CD for detailed instructions.
+
+
+Choosing an Installation Type
+-----------------------------
+
+Upon startup, the Installer provides the option to perform a typical installation, a custom installation, or to uninstall a previous version of VisualWorks.
+
+ - For new developers, a Typical Install is recommended. This installation installs both products, on Windows platforms, including the most common features of VisualWorks. No options are provided, for instance, to select individual components or the installation directory.
+
+ - If you wish to customize the installation (e.g., choose a different installation directory, or select specific VisualWorks components), select Custom Install.
+
+If you select Typical, and the Installer finds a previous "typical" installation, it assumes you wish to make changes or add components, as in a "custom" install.
+
+At the end of the installation process:
+
+ - MS-Windows: The system registry is updated automatically.
+
+ - UNIX: An informational screen is displayed with instructions for setting your UNIX environment variables (this information is also saved in a text file called userActions.txt, located in the install directory).
+
+This completes the installation.
+
+
+Custom Installation Options
+---------------------------
+
+A custom installation allows you to choose the version of VisualWorks to install (not merely the most recent), the target directory, and the specific components you wish to install.
+
+The steps are:
+
+1. (Optional) Click on Check Server to retrieve a list of available versions from Cincom's web site. To skip this step and install the version on the CD, click Next.
+
+While contacting the web site for version information, the Installer also checks for an update to the Installer itself. If one is available, you may install it immediately by clicking on Apply Updates.
+
+Once the Installer has finished scanning the web site, click on Next.
+
+2. Select a product and version to install.
+
+All available products and versions are shown in the drop-down list. Selecting one item causes the Installer to fetch additional details (these may take a few seconds to display).
+
+3. Choose the version you wish to install, and click Next.
+
+4. Specify the installation directory.
+
+Tip: If you have previous versions of VisualWorks installed, we recommend installing into a new directory rather than installing over a previous version. This allows you to run previous version(s) as well.
+
+When you have made your selections, click Next.
+
+5. Select the VisualWorks components you want to install.
+
+Select at least the Base VisualWorks component and the VM (virtual machine) component for your platform, which are the minimum requirements for a working installation.
+
+When you have made your selections, click Next.
+
+6. Review the summary of installation options, then click Next.
+
+If you wish to change any of these options, click Back.
+
+7. For non-commercial distributions, review the license agreement. Select "I Accept" and click Install.
+
+The Installer shows progress as each component is copied to the local disk of your workstation.
+
+8. When the Installer indicates completion, click Exit to finish.
+
+
+01/26/2017  MDR

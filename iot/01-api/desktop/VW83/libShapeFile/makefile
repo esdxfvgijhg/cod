@@ -1,0 +1,13 @@
+
+
+
+CFLAGS=  -fno-stack-protector 
+
+
+lib.so:  lib.h lib.c
+	cc $(CFLAGS) -c -fpic lib.c
+	ld -o lib.so -shared lib.o -lm
+
+
+clean:
+	rm lib.o lib.so

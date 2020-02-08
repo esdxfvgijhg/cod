@@ -1,0 +1,217 @@
+// -------------------------------------------------------------------------------------------
+//
+// vwAllDT.idl: IDL source for VisualWorks Automation All Data Types Example.
+// Publish IAllDataTypesDisp as a dual interface (not just a dispinterface).
+//
+//**
+//** Differences between a dispinterface and dual interface are marked with '//**'
+//**
+//
+// This file will be processed by the MIDL compiler to
+// produce the type library (vwAllDT.tlb) and marshalling code.
+//
+// CLSID_VWAllDataTypes:				{EAD794C6-9658-4C2C-BE97-F86BDA3338FB}
+// Type library:	vwAllDT.tlb   			{6A693FAC-D5E6-4D5B-909B-0C05834A58A1}
+// Interface:	IAllDataTypesDisp			{DB5DE8E2-AD1F-11d0-ACBE-5E86B1000000}
+//
+// For the legal data types permited on an [oleautomation] interface see
+// Microsoft Developer Network Library -- Visual Studio 97 CD:
+// mk:@ivt:pdapp/native/sdk/rpc/src/mi-laref_100.htm
+//
+// -------------------------------------------------------------------------------------------
+
+cpp_quote("//+-------------------------------------------------------------------------")
+cpp_quote("//")
+cpp_quote("//  VisualWorks Automation: All Data Types Example")
+cpp_quote("//  Created by Gary Gregory")
+cpp_quote("//  Copyright (C) ParcPlace-Digitalk, 1997.")
+cpp_quote("//")
+cpp_quote("//--------------------------------------------------------------------------")
+
+//**
+//** Declare the dual interface IAllDataTypesDisp
+//**
+[ 
+	object,
+	uuid(DB5DE8E2-AD1F-11d0-ACBE-5E86B1000000), // DIID_IAllDataTypesDisp
+	helpstring("VisualWorks All Data Types dispatch interface"),
+	pointer_default(unique),
+	dual,	//** Mark this interface as a dual interface.
+	oleautomation
+] 
+interface IAllDataTypesDisp : IDispatch
+{
+	import "oaidl.idl";
+
+//
+// Properties
+//
+	[propput, helpstring("Sets or returns the LONGValue property (VT_I4).")] 
+	HRESULT LONGValue([in] LONG Value);
+	[propget]
+	HRESULT LONGValue([out, retval] LONG* Value);
+
+	[propput, helpstring("Sets or returns the BYTEValue property (VT_UI1).")] 
+	HRESULT BYTEValue([in] BYTE Value);
+	[propget]
+	HRESULT BYTEValue([out, retval] BYTE* Value);
+
+	[propput, helpstring("Sets or returns the SHORTValue property (VT_I2).")] 
+	HRESULT SHORTValue([in] SHORT Value);
+	[propget]
+	HRESULT SHORTValue([out, retval] SHORT* Value);
+
+	[propput, helpstring("Sets or returns the FLOATValue property. (VT_R4)")] 
+	HRESULT FLOATValue([in] FLOAT Value);
+	[propget]
+	HRESULT FLOATValue([out, retval] FLOAT* Value);
+
+	[propput, helpstring("Sets or returns the DOUBLEValue property (VT_R8).")] 
+	HRESULT DOUBLEValue([in] DOUBLE Value);
+	[propget]
+	HRESULT DOUBLEValue([out, retval] DOUBLE* Value);
+
+	[propput, helpstring("Sets or returns the VARIANT_BOOLValue property (VT_BOOL).")] 
+	HRESULT VARIANT_BOOLValue ([in] VARIANT_BOOL Value);
+	[propget]
+	HRESULT VARIANT_BOOLValue([out, retval] VARIANT_BOOL* Value);
+
+	[propput, helpstring("Sets or returns the SCODEValue property (VT_ERROR).")] 
+	HRESULT SCODEValue([in] SCODE Value);
+	[propget]
+	HRESULT SCODEValue([out, retval] SCODE* Value);
+
+	[propput, helpstring("Sets or returns the DATEValue property (VT_DATE).")] 
+	HRESULT DATEValue([in] DATE Value);
+	[propget]
+	HRESULT DATEValue([out, retval] DATE* Value);
+
+	[propput, helpstring("Sets or returns the BSTRValue property (VT_BSTR).")] 
+	HRESULT BSTRValue([in] BSTR Value);
+	[propget]
+	HRESULT BSTRValue([out, retval] BSTR* Value);
+
+	[propput, helpstring("Sets or returns the IUnknownReference property (VT_UNKNOWN).")] 
+	HRESULT IUnknownReference([in] IUnknown* Value);
+	[propget]
+	HRESULT IUnknownReference([out, retval] IUnknown** Value);
+
+	[propput, helpstring("Sets or returns the IDispatchReference property (VT_DISPATCH).")] 
+	HRESULT IDispatchReference([in] IDispatch* Value);
+	[propget]
+	HRESULT IDispatchReference([out, retval] IDispatch** Value);
+
+	[propput, helpstring("Sets or returns the VARIANTValue property (VT_VARIANT).")] 
+	HRESULT VARIANTValue([in] VARIANT Value);
+	[propget]
+	HRESULT VARIANTValue([out, retval] VARIANT* Value);
+
+	[propput, helpstring("Sets or returns the CURRENCYValue property (VT_CY).")] 
+	HRESULT CURRENCYValue([in] CURRENCY Value);
+	[propget]
+	HRESULT CURRENCYValue([out, retval] CURRENCY* Value);
+
+// SAFEARRAY Examples
+
+	[propput, helpstring("Sets or returns the SAFEARRAY_I4Value property (VT_ARRAY | VT_I4).")] 
+	HRESULT SAFEARRAY_I4Value([in] SAFEARRAY(LONG) Value);
+	[propget]
+	HRESULT SAFEARRAY_I4Value([out, retval] SAFEARRAY(LONG)* Value);
+
+	[propput, helpstring("Sets or returns the SAFEARRAY_DISPATCHValue property (VT_ARRAY | VT_DISPATCH).")] 
+	HRESULT SAFEARRAY_DISPATCHValue([in] SAFEARRAY(IDispatch*) Value);
+	[propget]
+	HRESULT SAFEARRAY_DISPATCHValue([out, retval] SAFEARRAY(IDispatch*)* Value);
+
+	[propput, helpstring("Sets or returns the SAFEARRAY_UNKNOWNValue property (VT_ARRAY | VT_UNKNOWN).")] 
+	HRESULT SAFEARRAY_UNKNOWNValue([in] SAFEARRAY(IUnknown*) Value);
+	[propget]
+	HRESULT SAFEARRAY_UNKNOWNValue([out, retval] SAFEARRAY(IUnknown*)* Value);
+
+	[propput, helpstring("Sets or returns the SAFEARRAY_BSTRValue property (VT_ARRAY | VT_BSTR).")] 
+	HRESULT SAFEARRAY_BSTRValue([in] SAFEARRAY(BSTR) Value);
+	[propget]
+	HRESULT SAFEARRAY_BSTRValue([out, retval] SAFEARRAY(BSTR)* Value);
+
+	[propput, helpstring("Sets or returns the SAFEARRAY_VARIANTValue property (VT_ARRAY | VT_VARIANT).")] 
+	HRESULT SAFEARRAY_VARIANTValue([in] SAFEARRAY(VARIANT) Value);
+	[propget]
+	HRESULT SAFEARRAY_VARIANTValue([out, retval] SAFEARRAY(VARIANT)* Value);
+
+//
+// No other methods are really needed to demonstrate all the data types.
+//
+	[helpstring("Release the Smalltalk Automation server from memory.")]
+	HRESULT Quit();
+
+	[helpstring("Reset the values in the receiver to the initialized state.")]
+	HRESULT Reset();
+
+// A method with many by value arguments
+	[helpstring("Fancy method with many by value arguments.")]
+	HRESULT ManyArguments(
+		[in] IDispatch* AnIDispatch, 
+		[in] BSTR PropertyName, 
+		[in] LONG Number, 
+		[out,retval] VARIANT* Value );
+
+// A method with many by reference arguments
+	[helpstring("Fancy method with many by reference arguments.")]
+	HRESULT ManyByRefArguments(
+		[out] IDispatch** AnIDispatch, 
+		[out] BSTR* PropertyName, 
+		[in,out] LONG* Number, 
+		[in,out] VARIANT* Value );
+};
+
+//**
+//** Here we map our IAllDataTypesDisp to IAllDataTypesAuto as a dispinterface.
+//**
+[ 
+	uuid(04A143E4-883D-4EE4-B2D2-7FB74473A51E), // DIID_IAllDataTypesAuto
+]
+dispinterface IAllDataTypesAuto {
+	interface IAllDataTypesDisp;
+};
+
+//
+// Component and type library descriptions
+//
+[
+  uuid(6A693FAC-D5E6-4D5B-909B-0C05834A58A1), // LIBID_VWALLDT
+  lcid(0x0),
+  version(1.0),
+  helpstring("VisualWorks All Data Types")
+]
+library VWALLDT
+{
+    importlib("stdole32.tlb");
+
+    //  Class information for VWAllDataTypes
+    [
+      uuid(DB5DE8E3-AD1F-11d0-ACBE-5E86B1000000), // CLSID_VWAllDataTypes
+      helpstring("VisualWorks All Data Types Class."),
+    ]
+    coclass VWAllDataTypesAuto
+    {
+	//**
+	//** This next line surfaces the dispinterface from the class.
+	//**
+	[default] dispinterface IAllDataTypesAuto; 
+    }; 
+
+ //  Class information for VWAllDataTypes
+    [
+      uuid(EAD794C6-9658-4C2C-BE97-F86BDA3338FB), // CLSID_VWAllDataTypes
+      helpstring("VisualWorks All Data Types Class."),
+    ]
+    coclass VWAllDataTypes
+    {
+	//**
+	//** This next line surfaces the dual interface from the class.
+	//**
+	[default] interface IAllDataTypesDisp;
+    };
+};
+
+// eof

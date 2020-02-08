@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.inetClient.smtp"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>SMTP</title>
+<topic id = "vw.help.inetClient.smtp.sendTextMessage"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Send a text message </title>
+<body><p><indexterm>smtp<indexterm>send message</indexterm></indexterm>This
+example sends a simple text message from <codeph>santa@northpole.net</codeph> to <codeph>jdoe@abc.com</codeph>,
+and copies (cc and bcc) others. The subject of the message is "Start
+making your list now", and the text of the message, which will be
+sent as plain text, is "What would you like for Christmas?".</p>
+<p>The SMTP server is called <codeph>rudolph.northpole.net</codeph>.
+The SMTP server name could also be replaced with just the machine
+name (for example, RUDOLPH, where your network will resolve its
+full name) or an IP address.
+<codeblock otherprops="smalltalk expression">| message smtpClient |
+message := MailMessage newTextPlain.
+message from: 'santa@northpole.net';
+	to: 'jdoe@abc.com';
+		subject: 'Start making your list now';
+		text: 'What would you like for Christmas?';
+	cc: 'mrsclaus@northpole.net';	bcc: 'parentsofjdoe@aoltimewarner.com';		yourself.
+smtpClient := SimpleSMTPClient host: 'rudolph.northpole.net'.
+smtpClient sendMessage: message.</codeblock></p>
+<p>To include multiple recipients, surround them in angles and separate them
+with a comma, for example:
+<pre>	to: '&lt;jdoe@abc.com&gt;,&lt;mdoe@abc.com&gt;';</pre></p>
+<p>An SMTP server requires a mail address for the submitter, which
+the client supplies from the message from: line. You can leave the
+sender incomplete, or omit it entirely, and specify a NetUser instance
+before sending the mail message:
+<codeblock otherprops="smalltalk expression">smtpClient := SimpleSMTPClient host: 'smtp.northpole.net'.
+smtpClient user: (NetUser new username: 'nicki').
+smtpClient sendMessage: message</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.smtp.sendFileContents"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Send the contents of a file as a message</title>
+<body><p><indexterm>smtp<indexterm>send contents of file</indexterm></indexterm>The
+following code sends the contents of an entire file (<filepath>thelist.txt</filepath>)
+as the text of the message. Note that this example does not send
+the file as an attachment but places the contents of the file in
+the text of the message.
+<codeblock otherprops="smalltalk expression">| message smtpClient |
+message := MailMessage newTextPlain.
+message from: 'santa@northpole.net';
+	to: 'jdoe@abc.com';
+	subject: 'The List';
+	text: ('thelist.txt' asFilename) contentsOfEntireFile;
+	yourself.
+smtpClient := SimpleSMTPClient host: 'rudolph.northpole.net'.
+smtpClient sendMessage: message.</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.smtp.sendContentsAsHTML"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Send the contents of a file as an HTML message</title>
+<body><p><indexterm>smtp<indexterm>send as HTML</indexterm></indexterm>The
+following code sends the contents of an entire file (<filepath>thelist.htm</filepath>)
+as the text of a message. Because the contents of this file are
+assumed to be that of a typical Web page (with embedded HTML tags),
+the <apiname>newTextHTML</apiname> method is used instead of <apiname>newTextPlain</apiname>.
+<codeblock otherprops="smalltalk expression">| message smtpClient |
+message := MailMessage newTextHTML.
+message from: 'Santa Claus';
+	to: 'jdoe@abc.com';
+	subject: 'The List';
+	text: ('thelist.htm' asFilename) contentsOfEntireFile;
+	yourself.
+smtpClient := SimpleSMTPClient host: 'rudolph.northpole.net'.
+smtpClient sendMessage: message.</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.smtp.withAttachment"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Send a message with one attachment</title>
+<body><p><indexterm>smtp<indexterm>send attachment</indexterm></indexterm>To
+send a file as an attachment, use the <apiname>addFileAttachment</apiname>: message.
+You can send multiple attachments in this way:
+<codeblock otherprops="smalltalk expression">| message smtpClient |
+message := MailMessage newTextPlain.
+message from: 'Santa Claus';
+	to: '&lt;jdoe@abc.com>,&lt;mdoe@abc.com>';
+		addFileAttachment: 'thelist.htm';
+		addFileAttachment: 'thelist.txt';
+	subject: 'The List';
+	text: 'Here is the List';
+	yourself.
+smtpClient := SimpleSMTPClient host: 'rudolph.northpole.net'.
+smtpClient sendMessage: message.</codeblock></p></body></topic>
+<topic id = "vw.help.inetClient.smtp.sendToList"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Send a message to a list of recipients</title>
+<body><p><indexterm>smtp<indexterm>send to recipients list</indexterm></indexterm>The
+following code will send a message to more than one recipient. In
+this case, the list of multiple recipients is contained in a List
+object called <apiname>listOfStrings</apiname>. The list can be populated
+from any source, such as a database or text file. In this example,
+it was simply created on the fly. 
+<codeblock otherprops="smalltalk expression">| message smtpClient listOfStrings |
+message := MailMessage newTextPlain.
+message from: 'Santa Claus';
+	to: 'You know who you are';
+	subject: 'Naughty or Nice?';
+	text: ('thelist.htm' asFilename) contentsOfEntireFile;
+	yourself.
+listOfStrings := List new.
+listOfStrings add: '&lt;jdoe@abc.com>'.
+listOfStrings add: '&lt;mdoe@abc.com>'.
+smtpClient := SimpleSMTPClient host: 'rudolph.northpole.net'.
+smtpClient sendMessage: message toAll: listOfStrings.</codeblock></p></body></topic></topic></dita>

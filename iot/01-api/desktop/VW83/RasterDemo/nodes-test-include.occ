@@ -1,0 +1,193 @@
+
+#INCLUDE "rastergraphics.module"
+#INCLUDE "rasterio.module"
+#INCLUDE "string.module"
+
+PROTOCOL diam.proto 
+  CASE
+    number; INT
+    null; BYTE
+:
+
+VAL INT MaxTour IS 200:
+
+PROC CellNode([]CHAN OF diam.proto in,out, VAL INT id, CHAN OF BYTE toMux)
+  CellPosition position:
+  [MaxFanOut] INT bufIn,bufOut:
+  [MaxFanOut] BOOL dansLeSol:
+  INT nbVoisinsMer:
+
+
+  REAL64 elevation:
+  INT ielev,outgoing,population:
+
+  PROC ConfigLocale()
+    [MaxFanOut] INT bufIn,bufOut:
+    SEQ
+      nbVoisinsMer := 0
+      SEQ i=0 FOR SIZE out
+        bufOut[i] := ielev
+      PAR
+        PAR j=0 FOR SIZE in
+          in[j] ? CASE
+            number ; bufIn[j]
+              SEQ
+                dansLeSol[j] := (bufIn[j] > 0)
+                nbVoisinsMer:=nbVoisinsMer +1
+        PAR j=0 FOR SIZE out
+          out[j] ! number ; bufOut [j]
+  :
+
+
+  SEQ
+    position := Cells [id][position]
+    elevation := position[elevation]
+    ielev := INT ROUND elevation
+    ConfigLocale()
+    IF 
+      id=150
+        population := 1000
+      TRUE
+        population := 0
+    -- buffer out
+    outgoing := population/2
+    SEQ i=0 FOR SIZE out
+      IF 
+        dansLeSol[i]
+          bufOut [i] := 0
+        TRUE      
+          SEQ
+            bufOut [i] := outgoing / (nbVoisinsMer)
+            population := population - bufOut [i]
+    SEQ tours = 0 FOR  MaxTour
+      SEQ
+        PAR -- communications
+          PAR j=0 FOR SIZE in
+            in[j] ? CASE
+              number ; bufIn[j]
+                SKIP
+          PAR j=0 FOR SIZE out
+            out[j] ! number ; bufOut [j]
+        SEQ j=0 FOR SIZE in
+          population:= population + bufIn[j]
+        outgoing := population / 2
+        SEQ i=0 FOR SIZE out
+          IF 
+            dansLeSol[i]
+              bufOut [i] := 0
+            TRUE      
+              SEQ
+                bufOut [i] := outgoing / (nbVoisinsMer)
+                population := population - bufOut [i]
+        out.number(population,0,toMux)
+        toMux ! '*n'
+    
+:
+
+PROC Mux([]CHAN OF BYTE fromProc, CHAN OF BYTE out)
+  INT maxX, maxY:
+  VAL INT MaxString IS 100:
+  [ImageDimY*cellSizeY][ImageDimX*cellSizeX] INT  raster: 
+  [MaxString] BYTE fileName:
+  INT nameLen:
+
+  PROC MakeString(VAL INT n, [] BYTE fileName, INT nameLen)
+    VAL [] BYTE name IS "image":
+    SEQ
+      nameLen:=0
+      SEQ i=0 FOR MaxString
+        fileName[i] := (BYTE 0)
+      append.text (nameLen, fileName,name) 
+      append.int (nameLen, fileName , n , 0 )
+      append.text (nameLen, fileName, ".ppm")
+  :
+
+
+  PROC RGBToRaster( Depth24ByteArray rgbArray, [cellSizeY][cellSizeX]INT cellRaster)
+    RGBPixel rgb:
+    INT rgbColour:
+
+    SEQ
+      SEQ j=0 FOR cellSizeY
+        SEQ i=0 FOR cellSizeX
+          SEQ
+            rgb := rgbArray[(j*cellSizeY) + i]
+            rgbColour := pack.colour(rgb[red],rgb[green],rgb[blue])
+            cellRaster[j][i] := rgbColour
+  :
+
+  PROC Draw()
+    CellPosition cell:
+    [cellSizeY][cellSizeX] INT cellRaster:
+    CellImage image:
+    INT x,y:
+    SEQ
+      SEQ i=0 FOR SIZE Cells
+        SEQ
+          cell := Cells[i][position]
+          x:=  (cell[x]-1) *cellSizeX
+          y:=  (cell[y]-1) *cellSizeY
+          image := Cells[i][image]
+          RGBToRaster(image[pixelArray],cellRaster)
+          copy.raster(cellRaster,x,y,0,0,raster)
+  :
+  VAL INT Density IS 2:
+  PROC UpDate(VAL INT id, INT popu)
+    CellPosition position:
+    INT colour, width, height:
+    INT x,y:
+    INT xRand,yRand,seed:
+    SEQ
+      seed := id
+      position := Cells[id][position]
+      x := ( position[x] -1)  * cellSizeX
+      y := ( position[y] -1)  * cellSizeY
+      width := cellSizeX
+      height := cellSizeY
+      colour := COLOUR.NAVY
+      draw.rectangle (x, y, width, height, colour,  raster)
+      SEQ i=0 FOR popu*Density
+        SEQ
+          xRand,seed := random(cellSizeX, seed)
+          yRand,seed := random(cellSizeY, seed)
+          xRand := xRand+x 
+          yRand := yRand+y
+          fill.circle.diameter(xRand,yRand,2, colour, raster) 
+  :
+
+  BYTE ch:
+  INT popu:
+  SEQ
+--    SEQ n=0 FOR 100
+--      SEQ
+--        MakeString(n,fileName,nameLen)
+--        fileName[nameLen] := (BYTE 0)
+--        out.string(fileName,nameLen,out)
+--        out ! '*n'
+
+    Draw()
+    SEQ tour=0 FOR MaxTour
+      SEQ
+        SEQ i=0 FOR MaxNodes
+          ALT j=0 FOR SIZE fromProc
+            fromProc [j] ? ch
+              SEQ
+                popu := 0
+                WHILE ch <> '*n'
+                  SEQ
+                    popu := popu*10
+                    popu := popu + ((INT ch) - (INT '0'))
+                    fromProc [j] ? ch
+                IF
+                  popu>0
+                    UpDate(j,popu)
+                  TRUE
+                    SKIP
+                -- out.number(popu,4,out)
+                -- out ! '*n'
+        
+        MakeString(tour, fileName, nameLen )
+        fileName[nameLen] := (BYTE 0)
+        write.raster.ppm(fileName,raster)
+        -- out ! '*n'
+:

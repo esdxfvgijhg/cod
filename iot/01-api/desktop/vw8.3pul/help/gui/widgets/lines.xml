@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.widgets.visualOrganizers"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Lines, Boxes, and Ovals</title>
+<topic id = "vw.help.widgets.visualOrganizers.lines"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Separate widgets with a line</title>
+<body><p><indexterm>GUI development<indexterm>add line</indexterm></indexterm>Use
+a dividing line to visually separate sets of widgets. Lines are
+one pixel thick. For a thicker line, use a filled region widget.<ol>
+<li><p>Use a Palette to add a divider to the canvas.</p></li>
+<li><p>On the Basics page of the GUI Painter Tool, select either <uicontrol>Horizontal</uicontrol> or <uicontrol>Vertical</uicontrol> for
+the orientation property. <uicontrol>Apply</uicontrol> the property.</p></li>
+<li><p>Use the widget handles to size and position the divider.</p></li>
+<li><p><uicontrol>Install</uicontrol> the canvas.</p></li></ol></p></body></topic>
+<topic id = "vw.help.widgets.visualOrganizers.boxes"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Group widgets with a box</title>
+<body><p><indexterm>GUI development<indexterm>add box</indexterm></indexterm>Use
+boxes to cluster widgets in logical groups.  Box lines are one pixel
+thick. For a thicker line, use a filled region widget.<ol><li><p>Use
+a Palette to add a box to the canvas, leaving the box selected.</p></li>
+<li><p>Use the widget handles to size and position the box.</p></li>
+<li><p>To provide a label,  fill in the <uicontrol>Label</uicontrol> property
+field in the GUI Painter Tool.</p></li>
+<li><p><uicontrol>Apply</uicontrol> the change and <uicontrol>Install</uicontrol> the
+canvas.</p></li></ol></p></body></topic>
+<topic id = "vw.help.widgets.visualOrganizers.regions"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Add a region widget to a canvas</title>
+<body><p><indexterm>GUI development<indexterm>add region</indexterm></indexterm>Use
+rectangular and elliptical regions for grouping other widgets.<ol><li><p>Use
+a Palette to add a region to the canvas.</p></li>
+<li><p>On the Basics page of the GUI Painter Tool, select either <uicontrol>Rectangle</uicontrol> or <uicontrol>Ellipse</uicontrol> as
+the widget’s shape.</p></li>
+<li><p>Set the desired <uicontrol>Border Thickness</uicontrol> property.</p></li>
+<li><p>On the <uicontrol>Color</uicontrol> page, select any colors
+for the region.</p></li>
+<li><p>Use the widget handles to size and position the region.</p></li>
+<li><p><uicontrol>Apply</uicontrol> the properties and <uicontrol>Install</uicontrol> the
+canvas.</p></li></ol></p>
+<p>To label the region, use a label widget.</p></body></topic></topic></dita>

@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!ENTITY Product     "VisualWorks">
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<dita>
+<topic id = "vw.help.glossary"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Glossary of Terms</title>
+<body><p>Documentation on Smalltalk and the &Product; development 
+environment makes use of a number of specialized terms and concepts. 
+For the sake of clarity and simplicity, this glossary gives them 
+concrete definitions.</p></body>
+<glossentry id = "vw.help.glossary.accessMeth"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>accessing method</glossterm>
+<glossdef>A method that is either an accessor or a mutator; a way
+of referring to operations whose purpose is to either get or set
+the value of a variable.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.accessor"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>accessor</glossterm>
+<glossdef>An accessing method that gets, or returns, the value of
+a variable.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.actionWidget"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>action widget</glossterm>
+<glossdef>A widget that enables a user to invoke an application’s
+action. Action widgets include action buttons and menu items. Action widgets
+are designed to ask an application model to carry out their actions.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.application"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>application</glossterm>
+<glossdef>A complete program that enables users to define, process,
+store, and/or retrieve data in various ways. Typical applications
+include word-processing systems, spreadsheets, calculators, and
+payroll systems. </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.appFramework"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>application framework</glossterm>
+<glossdef>A set of classes that provide a core structure from which
+to build a complete application. The &Product; application framework includes
+the <apiname>ApplicationModel</apiname> class and its subclasses,
+the <apiname>UIBuilder</apiname> class, policy classes for various
+platform "look-and-feels," and classes for the various widgets and
+value models.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.appModel"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>application model</glossterm>
+<glossdef>A model in a Smalltalk program that provides application-specific information
+and services. At a minimum, an application model provides the graphical
+user interface (GUI) and defines the  connections to its domain
+models. An application model in &Product; is usually a subclass
+of  <apiname>ApplicationModel</apiname>.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.argument"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>argument</glossterm>
+<glossdef>An object that specifies additional information for an
+operation. Arguments are specified as variables, literals, or expressions.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.aspectAdaptor"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>aspect adaptor</glossterm>
+<glossdef>A kind of value model that accesses a value  held in another object,
+called its subject. An aspect adaptor responds to <apiname>value</apiname> and <apiname>value:</apiname> messages
+by sending appropriate accessor and mutator messages to its subject.
+An aspect adaptor is an instance of the class <apiname>AspectAdaptor</apiname>,
+which is a subclass of <apiname>ValueModel</apiname>.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.aspectPath"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>aspect path</glossterm>
+<glossdef>A sequence of accessor method names used with an <apiname>AspectAdaptor</apiname> that
+together comprise the chain of messages passed to a subject to access
+a particular attribute. An aspect path contains multiple elements,
+in which the first element (the head) refers to a subject channel
+for the aspect adaptor, and one or more subsequent elements that
+specify accessor names. Aspect paths provide a way to fill in a
+data widget’s aspect property to cause the builder to create an
+aspect adaptor for the widget.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.assignment"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>assignment</glossterm>
+<glossdef>An expression that makes a change to a variable’s value &#x2014; for example <codeph>quantity
+:= 19</codeph>.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.binaryMessage"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>binary message</glossterm>
+<glossdef>A message that has one argument and whose selector is
+made up of one or two non-alphanumeric characters (the second character
+may not be a minus sign.) For example, in the message expression <codeph>3 + 4</codeph>,
+the binary message is <codeph>+ 4</codeph>, where <apiname>+</apiname> is
+the selector and <codeph>4</codeph> is the argument.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.binding"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>binding</glossterm>
+<glossdef>A binding is an association between a name and a value. Bindings
+are similar to variables in this regard, but are supported by special
+classes and provide additional operations, such as privacy and import/export
+provisions. Bindings are currently used in the system in the implementation
+of shared variables, classes, and name spaces.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.blockExpression"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>block expression</glossterm>
+<glossdef>A description of a deferred sequence of actions. A block expression
+consists of one or more expressions that are found within a block
+closure.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.blockClosure"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>block closure</glossterm>
+<glossdef>One or more block expressions that are enclosed in square brackets. </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.booleanObject"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>Boolean objects</glossterm>
+<glossdef>The Smalltalk objects <codeph>true</codeph> and <codeph>false</codeph>,
+which serve as the answers to yes-no questions and which respond
+to messages that request logical operations and conditional control
+structures (if-then-else operations).</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.browser"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>browser</glossterm>
+<glossdef>A window that displays portions of the Smalltalk class
+library for viewing or editing. A browser displays its information
+in multiple views.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.builder"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>builder</glossterm>
+<glossdef>An object that builds a window from an interface specification.
+An application model creates a build when the it needs to open a window.
+The builder holds onto the user-interface objects it creates, making
+them available for interaction with the application via messages.
+Builders are instances of the class <apiname>UIBuilder</apiname>.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.bundle"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>bundle</glossterm>
+<glossdef>A code component that contains packages and/or other bundles. Bundles
+are used to represent large units of project functionality.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.canvas"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>canvas</glossterm>
+<glossdef>A special work area in which you "paint" the contents
+and layout of a window (or part of a window) for an application.
+You also affect the appearance of a canvas by setting properties.
+A canvas is the graphical form of an interface specification.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.canvasTool"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>Canvas Tool</glossterm>
+<glossdef>The &Product; tool for fine-tuning a canvas’s appearance
+and for invoking additional canvas-preparation tools. A Canvas Tool
+is automatically opened when you open a canvas. </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.cascadeMessage"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>cascaded messages</glossterm>
+<glossdef>Multiple messages sent to one object in a single message expression.
+A cascaded message expression consists of one description of the
+receiver followed by several messages separated by semicolons. For
+example:
+<codeblock otherprops="smalltalk expression">OrderedCollection new add: 1; add: 2; add: 3; yourself.</codeblock>
+results in three <apiname>add:</apiname> messages being
+sent to the result of <codeph>OrderedCollection new</codeph>.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.category"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>category</glossterm>
+<glossdef>A group of classes. Every class in the system belongs
+to exactly one category. Classes are grouped into categories purely
+for organizational purposes; all classes in all categories are globally available.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.changeList"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>Change List</glossterm>
+<glossdef>The &Product; tool that displays the changes stored
+in a changes file. . </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.changesFile"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>changes file</glossterm>
+<glossdef>A file that lists all the changes made to the system in
+your Smalltalk image. The changes file is located in the same directory
+as the corresponding image file and has the file extension "<filepath>.cha</filepath>."
+You view your changes file using the Change List.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.class"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>class</glossterm>
+<glossdef>A Smalltalk object that serves as a "template" for defining
+the structure and operations for its instances. A class defines
+the instance variables in which its instances store their data and
+the instance methods that describe how instances carry out their operations.
+Every class is itself a kind of object, and may have its own data
+(class variables) and operations (class methods), one of which is
+to create its instances.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.classHierarchy"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>class hierarchy</glossterm>
+<glossdef>The structure formed by the inheritance relationships
+among classes. </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.classInstanceVariable"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>class instance variable</glossterm>
+<glossdef>A variable whose scope is an individual class. </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.classMethod"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>class method</glossterm>
+<glossdef>A mehtod that defines a particular operation that is carried
+out by a class, such as creating an instance of itself.  </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.classVariable"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>class variable</glossterm>
+<glossdef>A variable that is shared by a class and all its instances.
+Class variables maintain information that is the same for all instances.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.component"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>component</glossterm>
+<glossdef>A distinct part or module of a framework, a component
+is made up of single or multiple objects that provide a set of behaviors
+for the framework.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.context"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>context</glossterm>
+<glossdef>An object containing information regarding the state of
+a method or block of executing code.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.controller"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>controller</glossterm>
+<glossdef>An object in a Smalltalk program that enables the user
+to interact with information displayed by a view. Together, view-controller pairs
+form user-interface objects such as widgets. A controller manages
+a widget’s response to mouse or keyboard input.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.cursor"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>cursor</glossterm>
+<glossdef>A graphic that you move on the screen using a pointing
+device, such as a mouse, as a pointer to interact with widgets in windows.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.dataWidget"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>data widget</glossterm>
+<glossdef>A widget that displays some aspect of an application’s
+data and/or collects it from the user. Data widgets include input
+fields, lists, datasets, and so on. Data widgets are designed to
+use value models to manage their access to the data they present.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.dependency"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>dependency</glossterm>
+<glossdef>A technique for coordinating the activities of different
+objects in an application, whereby one object, usually an instance
+of a subclass of <apiname>Model</apiname>, maintains a list of objects
+that depend on it for information and notifies these objects whenever
+the relevant information changes.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.distinguishedInstance"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>distinguished instance</glossterm>
+<glossdef>The sole instance of a class in the system.  Examples
+include: nil (<apiname>UndefinedObject</apiname>), true (<apiname>True</apiname>)
+and false (<apiname>False</apiname>).  </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.domain"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>domain</glossterm>
+<glossdef>The area of endeavor that an application helps to automate &#x2014; for example,
+employee payroll, billing, inventory control, accounting, and so
+on.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.domainModel"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>domain model</glossterm>
+<glossdef>A model in a Smalltalk program that defines data and operations that
+are relevant to the application’s domain. For example, an accounting
+application might include domain models such as <codeph>Customer</codeph>, <codeph>Account</codeph>,
+and so on. Domain models are generally kept free of user-interface
+code, so that they can be reused with other interfaces.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.exception"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>exception</glossterm>
+<glossdef>An error condition resulting in the creation of a notifier
+window.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.expression"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>expression</glossterm>
+<glossdef>A sequence of characters that describes an object, which
+is the value of the expression. Expression types include literals, variable
+names, message expressions, and block expressions.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.filein"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>file in</glossterm>
+<glossdef>To load one or more files from a disk into the current
+&Product; image. When Smalltalk files are filed in, any class
+and method definitions they contain are compiled into the image.
+Note that parcelling is now the preferred method of bringing code
+into the image.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.filelist"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>File List</glossterm>
+<glossdef>The &Product; tool for interacting with your operating
+system’s file-management facilities. You use a File List to locate
+and select files in your file system and then read them into your
+image. To open a File List, choose <uicontrol>Tools&#xA0;&#x2192;&#xA0;File List</uicontrol> in
+the &Product; main window.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.fileout"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>file out</glossterm>
+<glossdef>To store the source code for one or more classes, methods,
+or categories in a disk file that is separate from the &Product; image
+file. Smalltalk code in file out format normally has the file extension
+"<filepath>.st</filepath>". Filing out is a common means of backing
+up your work, preserving intermediate versions, or transferring
+code to another image (by filing in). Note that parcelling is now
+the preferred method of saving code from an image.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.garbagecollection"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>garbage collection</glossterm>
+<glossdef>A mechanism used by the object engine for reclaiming memory that
+was occupied by objects that are no longer valid or used in the
+system.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.globalvariable"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>global variable</glossterm>
+<glossdef>A variable whose value can be accessed by all objects
+within a name space, and potentially within the entire system. Globals, pools,
+and class variables have been superseded by shared variables.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.graphicImage"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>graphical image</glossterm>
+<glossdef>A bitmapped illustration. You create graphical images
+using the Image Editor, import them from other tools, or use screen capture.
+You can use graphical images in a variety of ways &#x2014; for example, as
+labels for action buttons.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.graphicalUserInterface"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>graphical user interface</glossterm>
+<glossdef>A user interface that consists of a collection of windows containing
+visual controls, or widgets.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.image"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>image(1)</glossterm>
+<glossdef>A file that stores the entire state of an individual Smalltalk system,
+including all the current objects, all the information on the screen,
+and any pending instructions to the system. A &Product; image
+preserves objects between &Product; sessions. </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.import"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>import</glossterm>
+<glossdef>A name space may express interest in other name spaces or
+their enclosed bindings by importing them. Name space definitions contain
+an "imports list" which specify the variables or other name spaces
+which may be referenced within the scope of the name space declaring
+the import. Only public bindings may be imported into a name space.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.inheritance"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>inheritance</glossterm>
+<glossdef>A mechanism whereby classes can make use of the methods and
+variables defined in all classes above them on their branch of the
+class hierarchy. </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.instance"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>instance</glossterm>
+<glossdef>An individual object described by a class. An instance
+has state held in instance variables, and it responds to messages
+by invoking methods defined or inherited by its class. Every object
+in the Smalltalk system is an instance of a class<?Fm Condstart Source?>. <?Fm Condend Source?></glossdef></glossentry>
+<glossentry id = "vw.help.glossary.instanceMethod"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>instance method</glossterm>
+<glossdef>A method that describes how a particular operation is
+carried out by every instance of a class.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.instanceVariable"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>instance variable</glossterm>
+<glossdef>A variable that stores data for an instance of a class.
+Collectively, an object’s instance variables describe the object’s
+data structure.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.interfaceSpecification"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>interface specification</glossterm>
+<glossdef>A description of a window (or part of a window) that is
+created when you install a painted canvas in an application model.
+An interface specification contains a description of the widgets
+you painted in the canvas, plus the properties you set for them.
+When the application runs, the interface specification serves as
+the builder’s blueprint for constructing an operational window. </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.keywordMessage"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>keyword message</glossterm>
+<glossdef>A message with one or more arguments whose selector is
+made up of one or more keywords. For example, in the following message
+expression:
+<codeblock otherprops="smalltalk expression">aRunArray copyFrom: startIndex to: stopIndex</codeblock>
+the selector is <apiname>copyFrom:to:</apiname> (consisting
+of keywords <codeph>copyFrom:</codeph> and <codeph>to:</codeph>)
+and the arguments are <codeph>startIndex</codeph> and <codeph>stopIndex</codeph>. </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.launcher"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>Launcher</glossterm>
+<glossdef>The &Product; main window, which provides a starting
+point for operations and access to tools in the system.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.lazyInitialization"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>lazy initialization</glossterm>
+<glossdef>A technique for initializing an instance variable upon
+its first invocation of an accessor method.  </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.lookPolicy"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>look policy</glossterm>
+<glossdef>The platform-specific "look-and-feel" of an application’s
+interface, which determines the appearance and behavior of buttons,
+scroll bars, and so on. You set the look policy by selecting it
+in the Settings tool. A separate <apiname>FeelPolicy</apiname> class
+hierarchy introduces custom key definitions to a UI.  </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.mask"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>mask</glossterm>
+<glossdef><p>A monochrome graphical image that is used to "mask
+off" certain areas of another image.</p></glossdef></glossentry>
+<glossentry id = "vw.help.glossary.message"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>message</glossterm>
+<glossdef>A request for an object to carry out one of its operations.
+A message consists of a selector and possibly one or more arguments.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.messageExpression"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>message expression</glossterm>
+<glossdef>A Smalltalk expression that describes a message to be
+sent to a receiver object, requesting the receiver to perform an
+operation. The receiver carries out the operation requested by the
+message and returns an object to the sender.  </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.messageProtocol"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>message protocol</glossterm>
+<glossdef>A collection of messages to which an object can respond.
+The behavior of a class may organized into several protocols, some public,
+some private.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.metaclass"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>metaclass</glossterm>
+<glossdef>A class whose instances are classes. There is exactly
+one metaclass for each class in the image. The metaclass instance may
+be obtained by sending the message <apiname>class</apiname> to the
+class.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.method"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>method</glossterm>
+<glossdef>A description of an object’s operations, containing a
+sequence of  expressions that are evaluated when the method is executed. Methods
+are analogous to procedures or functions in other programming languages.
+A method is invoked by a message matching its message selector. </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.model"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>model</glossterm>
+<glossdef>An object representing the structure, either of the data
+domain, the application interface, or of data interaction. An application model,
+for example, generally describes the user interface and represents
+user interaction. </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.mutator"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>mutator</glossterm>
+<glossdef>An accessor method that sets a new value for a variable.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.namespace"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>name space</glossterm>
+<glossdef>A named object that represents a name resolution scope
+for a set shared variables, which name classes, pools, general shared variables,
+and other name spaces. All shared variables are uniquely named within
+their name space. </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.object"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>object</glossterm>
+<glossdef>A software unit that contains storage for a collection
+of related data plus operations for manipulating that data. Fundamental kinds
+of objects are classes and instances of classes.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.objectEngine"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>object engine</glossterm>
+<glossdef>The OS-specific executable program that runs the Smalltalk system
+represented by an image.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.objectMemory"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>object memory</glossterm>
+<glossdef>The area of memory that stores object data structures. </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.package"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>package</glossterm>
+<glossdef>The fundamental component for organizing application code. Packages
+may be grouped into bundles representing large functonal units.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.paint"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>paint</glossterm>
+<glossdef>To specify the layout and contents of a window (or part
+of a window) by selecting widgets from a Palette and positioning
+them appropriately on a canvas.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.palette"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>Palette</glossterm>
+<glossdef>The &Product; tool that supplies the widgets you can
+paint on a canvas. </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.parcel"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>parcel</glossterm>
+<glossdef>A file representation of a package or, depending on options,
+a bundle. </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.pool"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>pool</glossterm>
+<glossdef>A named group of variables that can be shared between
+several classes. </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.primitive"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>primitive</glossterm>
+<glossdef>A method that is executed directly by the object engine.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.process"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>process</glossterm>
+<glossdef>A single thread of execution running within the Smalltalk
+system.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.property"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>property</glossterm>
+<glossdef>An attribute of widgets and windows that define visual characteristics,
+such as font, color, borders, and so on. </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.protocol"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>protocol</glossterm>
+<glossdef>A group of methods in a class definition. Methods are
+grouped into protocols for organizational purposes only. Also called
+a method category.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.pseudoVariable"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>pseudo variable</glossterm>
+<glossdef>A name to reference a named object for which the value
+cannot be reassigned. Usually used in reference to special objects <codeph>nil</codeph>, <codeph>true</codeph>,
+and <codeph>false</codeph>, and special reserved words <codeph>self</codeph>, <codeph>thisContext</codeph>,
+and <codeph>super</codeph>. </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.receiver"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>receiver</glossterm>
+<glossdef>The object to which a message is sent and to which the
+return value of the message is returned. </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.resource"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>resource</glossterm>
+<glossdef>In the &Product; GUI context, an object used by the
+builder to assemble a window, such as an interface specification,
+menu, or graphical image. </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.resourceMethod"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>resource method</glossterm>
+<glossdef>A method (usually a class method) in an application model
+that returns a resource. </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.returnValue"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>return value</glossterm>
+<glossdef>The object returned to the receiver of a message upon successful
+evaluation.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.selector"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>selector</glossterm>
+<glossdef>The name of a method; the portion of a message that determines which
+of the receiver’s methods will be invoked. </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.self"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>self</glossterm>
+<glossdef>A pseudo variable available within the execution context
+of any method that always refers to the message receiver.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.sharedVariable"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>shared variable</glossterm>
+<glossdef>A variable whose value is logically independent of any
+single object. Unlike instance variables, in which each instance
+holds separate state for the variable, or class instance variables,
+in which each class holds separate state for the variable, shared variables
+can be shared among multiple classes.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.snapshot"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>snapshot</glossterm>
+<glossdef>A saved image file, being a static representation of the
+current state of the Smalltalk system.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.specification"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>specification</glossterm>
+<glossdef>In the GUI context, a description of a user interface,
+stored in a class method and invoked by the UI Builder.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.subclass"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>subclass</glossterm>
+<glossdef>A class that inherits variables and methods from some
+other class (its superclass). A subclass is generally a specialization
+of its superclass.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.subject"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>subject</glossterm>
+<glossdef>An object that holds onto information to be accessed by
+an aspect adaptor. Every aspect adaptor is created either with a subject
+or a subject channel.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.subjectChannel"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>subject channel</glossterm>
+<glossdef>A value model that holds onto a subject for an aspect
+adaptor. Subject channels provide a convenient mechanism for changing a
+subject that is shared by multiple aspect adaptors.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.super"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>super</glossterm>
+<glossdef>A pseudo variable that refers to the superclass of the
+receiver (<codeph>self</codeph>) of the message that uses <codeph>super</codeph>. </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.superclass"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>superclass</glossterm>
+<glossdef>The class from which another class inherits variables
+and methods. </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.symbol"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>symbol</glossterm>
+<glossdef>A literal string prefixing it with the character <codeph>#</codeph>.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.transcript"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>System Transcript</glossterm>
+<glossdef>The display area in the Launcher used for informational messages
+generated by &Product; or your code. </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.tabChain"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>tab chain</glossterm>
+<glossdef>A sequence of widgets in a single window through which
+the focus moves using the &lt;Tab> key.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.temporaryVariable"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>temporary variable</glossterm>
+<glossdef>A variable whose scope is the method or block that declares
+is. A temporary variable is declared between vertical bars at the beginning
+of the method or block.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.unaryMessage"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>unary message</glossterm>
+<glossdef>A message without arguments. In a message expression such
+as <codeph>0 asValue</codeph>, the unary message is <apiname>asValue</apiname>.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.value"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>value</glossterm>
+<glossdef>The object that is described by an expression. The value
+of a variable name is the object that is referenced by the variable.
+The value of a message expression is the object returned by the invoked
+method.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.valueHolder"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>value holder</glossterm>
+<glossdef>A value model that is an instances of class <apiname>ValueHolder</apiname>.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.valueModel"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>value model</glossterm>
+<glossdef>An object that contains or refers to some other object
+(its value). A value model responds to a standard protocol (the
+messages <apiname>value</apiname> and <apiname>value:</apiname>) for
+accessing the value, and also notifies other interested objects
+when the value changes.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.variable"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>variable</glossterm>
+<glossdef>A referencable data storage unit within an object. Variables
+may be named or indexed. </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.view"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>view</glossterm>
+<glossdef>A visual component representing a functional unit. </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.visualComponent"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>visual component</glossterm>
+<glossdef>Any object that can display itself in a window.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.widget"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>widget</glossterm>
+<glossdef>A visual component that appears in a graphical user interface, providing
+user interaction, either displaying information or accepting input,
+or both.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.window"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>window</glossterm>
+<glossdef>A display area on the screen that is part of an application’s graphical
+user interface. </glossdef></glossentry>
+<glossentry id = "vw.help.glossary.wrapper"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>wrapper</glossterm>
+<glossdef>A container object with a single component that modifies
+or provides certain services to the component such as translation
+of coordinates, a bounding box, a border, or scroll bar facilities.</glossdef></glossentry>
+<glossentry id = "vw.help.glossary.workspace"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<glossterm>Workspace</glossterm>
+<glossdef>A window in which you can enter text and/or evaluate fragments of
+Smalltalk code. </glossdef></glossentry></topic></dita>

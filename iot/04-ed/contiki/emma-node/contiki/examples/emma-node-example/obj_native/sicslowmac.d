@@ -1,0 +1,29 @@
+obj_native/sicslowmac.o: \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/net/mac/sicslowmac.c \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/mac/sicslowmac.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/mac/rdc.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/platform/native/./contiki-conf.h \
+ project-conf.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/mac/mac.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./dev/radio.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/mac/frame802154.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/rime/rimeaddr.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/packetbuf.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/queuebuf.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/netstack.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/mac/framer.h \
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./lib/random.h
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/net/mac/sicslowmac.c :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/mac/sicslowmac.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/mac/rdc.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/platform/native/./contiki-conf.h :
+ project-conf.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/mac/mac.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./dev/radio.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/mac/frame802154.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/rime/rimeaddr.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/packetbuf.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/queuebuf.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/netstack.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./net/mac/framer.h :
+ /home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki/core/./lib/random.h :
