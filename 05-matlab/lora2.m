@@ -2,7 +2,6 @@
 addpath('lib');
 clear all; close all; clc;
 
-%% Cockpit of the simulator
 Total_iterations = 10;
 
 SF               = 7:1:12;          % Spreading Factor from 7 to 12
