@@ -1,0 +1,38 @@
+Experiment Name: Titanic_Evaluate_Tuned
+SKLL Version: 2.0
+Training Set: train
+Training Set Size: 569
+Test Set: dev
+Test Set Size: 143
+Shuffle: False
+Feature Set: ["family.csv", "misc.csv", "socioeconomic.csv", "vitals.csv"]
+Learner: MultinomialNB
+Task: evaluate
+Feature Scaling: none
+Grid Search: True
+Grid Search Folds: 3
+Grid Objective Function: accuracy
+Additional Evaluation Metrics: ['roc_auc']
+Scikit-learn Version: 0.21.3
+Start Timestamp: 15 Feb 2020 19:07:01.021960
+End Timestamp: 15 Feb 2020 19:07:01.108824
+Total Time: 0:00:00.086864
+
+
+Fold: 
+Model Parameters: {"alpha": 0.1, "class_prior": null, "fit_prior": true}
+Grid Objective Score (Train) = 0.6819025457768914
++----+------+------+-------------+----------+-------------+
+|    |    0 |    1 |   Precision |   Recall |   F-measure |
++====+======+======+=============+==========+=============+
+|  0 | [75] |   12 |       0.735 |    0.862 |       0.794 |
++----+------+------+-------------+----------+-------------+
+|  1 |   27 | [29] |       0.707 |    0.518 |       0.598 |
++----+------+------+-------------+----------+-------------+
+(row = reference; column = predicted)
+Accuracy = 0.7272727272727273
+Objective Function Score (Test) = 0.7272727272727273
+
+Additional Evaluation Metrics (Test):
+ roc_auc = 0.7998768472906403
+

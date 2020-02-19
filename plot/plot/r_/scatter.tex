@@ -1,0 +1,26 @@
+scatter/classes/.style                                             ={                                                                                                                                 
+scatter cmyk*/.default                                             ={draw                                                                                                                              =mapped color!80!black,fill                                =mapped color},                                                                                                           
+scatter cmyk/.style                                                ={                                                                                                                                 
+scatter cmyk*/.style                                               ={/pgfplots/scatter explicit color*                                                                                                 ={cmyk}{#1}},                                              
+scatter/.default                                                   =true,                                                                                                                              
+scatter explicit color*/.style 2 args                              ={                                                                                                                                 
+scatter explicit color/.style 2 args                               ={                                                                                                                                 
+scatter/false/.code                                                ={                                                                                                                                 
+scatter/.is choice,
+scatter/position/absolute/.code                                    ={\def\pgfplots@scatter@position{a}},                                                                                               
+scatter/position/.is choice,
+scatter/position                                                   =relative,                                                                                                                          
+scatter/position/relative/.code                                    ={\def\pgfplots@scatter@position{r}},                                                                                               
+scatter/@post marker code/.code                                    =,                                                                                                                                 
+scatter/@pre marker code/.code                                     =,                                                                                                                                 
+scatter rgb*/.default                                              ={draw                                                                                                                              =mapped color!80!black,fill                                =mapped color},                                                                                                           
+scatter rgb/.style                                                 ={                                                                                                                                 
+scatter rgb*/.style                                                ={/pgfplots/scatter explicit color*                                                                                                 ={rgb}{#1}},                                               
+scatter src/.style                                                 ={/pgfplots/point meta                                                                                                              ={#1}},                                                    
+scatter/true*/.code                                                ={                                                                                                                                 
+scatter/true/.code                                                 ={                                                                                                                                 
+scatter/use mapped color*,
+scatter/use mapped color*/.default                                 ={draw                                                                                                                              =mapped color!80!black,fill                                =mapped color},                                                                                                           
+scatter/use mapped color*/.style                                   ={                                                                                                                                  
+scatter/use mapped color/.style                                    ={                                                                                                                                 
+

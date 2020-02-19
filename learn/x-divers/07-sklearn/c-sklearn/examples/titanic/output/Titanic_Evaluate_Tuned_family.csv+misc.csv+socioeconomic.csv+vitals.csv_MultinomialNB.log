@@ -1,0 +1,8 @@
+2020-02-15 19:07:01,022 - INFO - Task: evaluate
+2020-02-15 19:07:01,022 - INFO - Training on train, Test on dev, feature set ['family.csv', 'misc.csv', 'socioeconomic.csv', 'vitals.csv'] ...
+2020-02-15 19:07:01,073 - INFO - Featurizing and training new MultinomialNB model
+2020-02-15 19:07:01,074 - WARNING - Training data will be shuffled to randomize grid search folds.  Shuffling may yield different results compared to scikit-learn.
+2020-02-15 19:07:01,104 - INFO - Best accuracy grid search score: 0.682
+2020-02-15 19:07:01,104 - INFO - Hyperparameters: alpha: 0.1, class_prior: None, fit_prior: True
+2020-02-15 19:07:01,104 - INFO - Evaluating predictions
+2020-02-15 19:07:01,106 - INFO - using probabilities for the positive class to compute "roc_auc" for evaluation.

@@ -1,0 +1,28 @@
+
+
+Aujourd’hui, les villes intelligentes disposent des réseaux sans fil hétérogènes dans le but de simplifier, d’améliorer
+et de sécuriser notre vie quotidienne. Par exemple, les réseaux sans fil ad hoc pour véhicules (IEEE 802.11p) et les
+réseaux LTE (LTE-V) sont proposés pour améliorer la sécurité routière. 
+
+L’Internet industriel des objets (IoT) est également une alternative pour les applications de sécurité et de divertissement.
+Les réseaux de capteurs sans fil, tels que IEEE 802.15.4, LoRa et NB-IoT, sont des réseaux qui collectent et communiquent des données pour construire
+une vue globale de l’environnement de la ville. 
+
+
+Toutes ces données collectées peuvent être utilisées pour prédire les comportements humains et améliorer la sécurité de 
+leurs déplacements grâce à des algorithmes d’apprentissage.Ainsi, la fiabilité et la qualité de service de la transmission 
+des données restent un des problèmes de recherche avec des contraintes différentes à chaque couche de communication.
+
+
+La dynamique et l’hétérogénéité des appareils et de leur utilisation rendent la conception de réseaux robustes
+et évolutifs très complexe. Cependant, les réseaux restreints (IoT ou véhicules) sont vulnérables à plusieurs types
+d’attaques. Par exemple, l’attaquant ou le brouilleur peut générer un bruit, interférant avec les fréquences radio
+utilisées par les dispositifs IoT. Il peut en résulter un plus grand nombre de communications provenant d’appareils
+IoT pouvant épuiser leurs batteries. Par conséquent, le déni de service pourrait facilement être causé. Même si la
+sécurité est assurée, le réseau doit fournir une bonne qualité de service à d’autres applications (par exemple, les
+retards de transmission). 
+
+
+Les protocoles de qualité de service (QoS) peuvent permettre aux réseaux d’identifier et
+de hiérarchiser la transmission des données en fonction de la criticité des données. Dans la littérature, plusieurs
+protocoles ont été proposés concernant la sécurité et la QoS.

@@ -1,0 +1,38 @@
+mesh/check/.code                                                   ={                                                                                                                                 
+mesh/check                                                         =error,                                                                                                                             
+mesh/color input                                                   =colormap,                                                                                                                          
+mesh/color input/colormap/.code                                    =\def\pgfplotsplothandlermesh@colorinput{0},                                                                                       
+mesh/color input/explicit/.code                                    ={                                                                                                                                 
+mesh/color input/explicit mathparse/.code                          ={                                                                                                                                 
+mesh/color input/.is choice,
+mesh/colorspace explicit color input/.initial                      =rgb,                                                                                                                               
+mesh/colorspace explicit color output/.initial                     =rgb,                                                                                                                               
+mesh/cols/.initial                                                 =,                                                                                                                                  
+mesh/.default                                                      =true,                                                                                                                              
+mesh/false/.code                                                   ={                                                                                                                                  
+mesh input/image/.code                                             ={\def\pgfplotsplothandlermesh@matrixinput{2}},                                                                                     
+mesh input/.is choice,
+mesh input/lattice,
+mesh input/lattice/.code                                           ={\def\pgfplotsplothandlermesh@matrixinput{1}},                                                                                     
+mesh input/patches/.code                                           ={\def\pgfplotsplothandlermesh@matrixinput{0}},                                                                                     
+mesh/interior colormap/.code 2 args                                ={                                                                                                                                 
+mesh/interior colormap name/.initial                               =,                                                                                                                                  
+mesh/interior colormap thresh/.initial                             =0,                                                                                                                                 
+mesh/.is choice,
+mesh legend/.style                                                 ={                                                                                                                                 
+mesh/num points/.initial                                           =,%\numcoords,% this is NOT part of the public interface. Don't change it.                                                          
+mesh/ordering/colwise/.style                                       ={/pgfplots/mesh/ordering/y varies},                                                                                                
+mesh/ordering/.is choice,
+mesh/ordering/rowwise/.style                                       ={/pgfplots/mesh/ordering/x varies},                                                                                                
+mesh/ordering/x varies,
+mesh/ordering/x varies/.code                                       ={\def\pgfplots@plot@mesh@ordering{0}},                                                                                             
+mesh/ordering/y varies/.code                                       ={\def\pgfplots@plot@mesh@ordering{1}},                                                                                             
+mesh/refines/.style                                                ={/pgfplots/patch refines                                                                                                           ={#1}},                                                    
+mesh/rows/.initial                                                 =,                                                                                                                                  
+mesh/scanline verbose/.default                                     =true,                                                                                                                              
+mesh/scanline verbose/.is if                                       =pgfplots@scanline@verbose,                                                                                                        
+mesh/show normals/.default                                         =true,                                                                                                                              
+mesh/show normals/.is if                                           =pgfplotsplothandlermesh@shownormals,                                                                                               
+mesh/show normals length factor/.initial                           =50,                                                                                                                                
+mesh/true/.code                                                    ={                                                                                                                                 
+

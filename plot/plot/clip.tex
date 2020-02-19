@@ -1,0 +1,20 @@
+clip bounding box    /default tikz /.code
+clip bounding box                  /.is choice, 
+clip bounding box    /upper bound  /.code
+clip                               /.default    
+clip                               /.is if      
+clip limits compat                 /.is if      
+clip limits if compat              /.code       
+clip limits                        /.style      
+clip marker paths                  /.default    
+clip marker paths                  /.is if      
+clip mode            /global       /.code
+clip mode            /individual   /.code
+clip mode                          /.is choice, 
+clip xlimits                       /.default    
+clip xlimits                       /.is if      
+clip ylimits                       /.default    
+clip ylimits                       /.is if      
+clip zlimits                       /.default    
+clip zlimits                       /.is if      
+

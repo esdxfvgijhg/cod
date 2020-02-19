@@ -1,0 +1,29 @@
+plot box ratio                            /.initial                 
+plot coordinates/math parser              /.is if
+plot file       /ignore first             /.style
+plot file                                 /.search also             
+plot file       /skip first               /.default
+plot file       /skip first               /.is if
+plot graphics   /auto adjust axis         /.is if
+plot graphics                             /.code                    
+plot graphics   /debug                    /.default
+plot graphics   /debug                    /.initial
+plot graphics   /includegraphics cmd      /.initial
+plot graphics   /includegraphics          /.initial
+plot graphics   /lowlevel draw            /.code 2 args
+plot graphics   /lowlevel get natural size/.code
+plot graphics   /node                     /.style
+plot graphics   /points                   /.initial
+plot graphics   /snap z                   /.initial
+plot graphics   /squeeze tol              /.initial
+plot graphics   /src                      /.initial
+plot graphics   /xmax                     /.initial
+plot graphics   /xmin                     /.initial
+plot graphics   /ymax                     /.initial
+plot graphics   /ymin                     /.initial
+plot graphics   /zmax                     /.initial
+plot graphics   /zmin                     /.initial
+plot shift auto                           /.style args              
+plot xshift auto                          /.style 2 args            
+plot yshift auto                          /.style 2 args            
+

@@ -1,0 +1,248 @@
+#!/usr/bin/python3
+import time
+import warnings
+
+import numpy as np
+import pandas as pd
+
+import matplotlib.pyplot as plt
+from seaborn import scatterplot as scatter
+import mpl_toolkits.mplot3d.axes3d as p3
+
+from sklearn import linear_model
+from sklearn.naive_bayes import GaussianNB
+from logistic_regression import plot_classifier
+from sklearn.metrics import classification_report  # Print classification report
+from sklearn.metrics import accuracy_score
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC, SVR
+from sklearn.gaussian_process import GaussianProcessClassifier
+from sklearn.gaussian_process.kernels import RBF
+from sklearn.multioutput import ClassifierChain
+from sklearn.model_selection import train_test_split
+from sklearn.multiclass import OneVsRestClassifier
+from sklearn.metrics import jaccard_score
+from sklearn.linear_model import LogisticRegression
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+from sklearn import metrics as sm
+import argparse
+parser = argparse.ArgumentParser(description="")
+
+
+def add_param(opt2,name,value,help,required,type):
+    dest='--'+name
+    parser.add_argument(opt2, dest, 
+                        dest=name, 
+                        required=required,
+                        default=value,
+                        help=help,
+                        metavar='',
+                        type=type)
+add_param('-a','affinity'     ,'nearest_neighbors','affinity'             ,False,str)
+add_param('-b','eps'          ,0.3                ,'epsilon'              ,False,float)
+add_param('-c','n_clusters'   ,3                  ,'numberofcluster'      ,False,int)
+add_param('-d','damping'      ,0.9                ,'damping'              ,False,float)
+add_param('-e','error'        ,1e-5               ,'error'                ,False,float)
+add_param('-f','algorithm'    ,'FCM'              , 'algorithm'           ,False,str)
+add_param('-g','plot'         ,True              ,'plot'                 ,False,bool)
+add_param('-i','max_iteration',150                ,'maxiteration'         ,False,int)
+add_param('-k','linkage'      ,'single'           ,'linkage'              ,False,str)
+add_param('-l','labels'       ,'bin/L.csv'        ,'labelsfile'           ,False,str)
+add_param('-m','fuzzification',2                  ,'degreeoffuzzification',False,float)
+add_param('-n','neighbors'    ,10                 ,'neighbors'            ,False,int)
+add_param('-p','preference'   ,-200               ,'preference'           ,False,int)
+add_param('-q','quantile'     ,0.3                ,'quantile'             ,False,float)
+add_param('-r','random_state' ,42                 ,'randomstate'          ,False,int)
+add_param('-s','seed'         ,0                  ,'seed'                 ,False,int)
+add_param('-u','membership'   ,'bin/U.csv'        ,'membershipfile'       ,False,str)
+add_param('-v','centers'      ,'bin/V.csv'        ,'centersfile'          ,False,str)
+add_param('-x','input_file'   ,'X.csv'            ,'inputfile'            ,False,str)
+args = parser.parse_args()
+
+
+#from sklearn import preprocessing
+#data_binarized     = preprocessing.Binarizer(threshold=2.1).transform(input_data)  # Binarize data
+#data_scaled        = preprocessing.scale(input_data)  # Remove mean
+#data_scaler_minmax = preprocessing.MinMaxScaler(feature_range=(0, 1))  # Min max scaling
+#data_scaled_minmax = data_scaler_minmax.fit_transform(input_data)
+#data_normalized_l1 = preprocessing.normalize(input_data, norm="l1")  # Normalize data
+#data_normalized_l2 = preprocessing.normalize(input_data, norm="l2")
+
+
+def plot3D(labels,cluster_center,name):
+    cycol = cycle('bgrcmk')
+    fig   = plt.figure()
+    ax    = p3.Axes3D(fig)
+    for l in np.unique(labels):
+          colors = next(cycol)
+          ax.scatter(cluster_center[l,0], cluster_center[l,1], cluster_center[l,2], color=colors, s=100, edgecolor="k")
+          ax.scatter(data[labels == l, 0]  , data[labels == l, 1]  , data[labels == l, 2]  , color=colors, s=20 , edgecolor="k")
+          ax.set_xlabel("BER");ax.set_ylabel("RSSI");ax.set_zlabel("ToA")
+    plt.title(name)
+    plt.show()
+
+
+def get_labels(algorithm, X, y):
+    t0 = time.time()
+    with warnings.catch_warnings():
+        algorithm.fit(X,y)
+    t1 = time.time()
+    
+    labels_probas = classifier.predict_proba(X)
+    labels = classifier.predict(X)
+    timex=t1-t0
+    return timex, labels, labels_probas
+
+data   = np.genfromtxt(args.input_file, delimiter=",", dtype="str", skip_header=1).astype(int)          # load the CSV file as a numpy matrix
+#X, y   = make_classification(n_features=2, n_redundant=0, n_informative=2, random_state=1, n_clusters_per_class=1)
+
+names = ["Nearest Neighbors", "Linear SVM", "RBF SVM", "Gaussian Process","Decision Tree", "Random Forest", "Neural Net", "AdaBoost", "Naive Bayes", "QDA"]
+
+    for name, clf in zip(names, classifiers):
+        ax = plt.subplot(len(datasets), len(classifiers) + 1, i)
+        clf.fit(X_train, y_train)
+        score = clf.score(X_test, y_test)
+
+        # Plot the decision boundary. For that, we will assign a color to each point in the mesh [x_min, x_max]x[y_min, y_max].
+        if hasattr(clf, "decision_function"):
+            Z = clf.decision_function(np.c_[xx.ravel(), yy.ravel()])
+        else:
+            Z = clf.predict_proba(np.c_[xx.ravel(), yy.ravel()])[:, 1]
+
+        # Put the result into a color plot
+        Z = Z.reshape(xx.shape)
+
+
+logistic     = LogisticRegression(C=C, penalty='l1',solver='saga',multi_class='multinomial',max_iter=10000)
+base         = LogisticRegression(solver='lbfgs')
+multinominal = LogisticRegression(C=C, penalty='l2',solver='saga',multi_class='multinomial',max_iter=10000)
+ovr          = LogisticRegression(C=C, penalty='l2',solver='saga',multi_class='ovr'        ,max_iter=10000)
+gf           = LogisticRegression(solver="liblinear", C=100)
+ovr2         = OneVsRestClassifier(ovr)
+svr          = SVR(kernel="linear", C=1.0, epsilon=0.1)         # Create Support Vector Regression model
+linear       = LinearRegression()  # Create the linear regressor model
+
+kneighbors   = KNeighborsClassifier(3),
+svc          = SVC(kernel="linear", C=0.025),
+svc          = SVC(gamma=2, C=1, probability=True, gamma=0.001,random_state=0),
+gaussian     = GaussianProcessClassifier(1.0 * RBF(1.0)),
+dessision    = DecisionTreeClassifier(max_depth=5),
+forest       = RandomForestClassifier(max_depth=5, n_estimators=10, max_features=1, random_state=7),
+mlp          = MLPClassifier(alpha=1, max_iter=1000),
+adaboost     = AdaBoostClassifier(),
+gaussiannb   = GaussianNB(),
+quadratic    = QuadraticDiscriminantAnalysis()
+
+
+#clf1 = LinearDiscriminantAnalysis(solver='lsqr', shrinkage='auto').fit(X, y)
+#clf2 = LinearDiscriminantAnalysis(solver='lsqr', shrinkage=None).fit(X, y)
+#polynomial = PolynomialFeatures(degree=10)  # Polynomial regression
+#X_train_transformed = polynomial.fit_transform(X_train)
+
+#chains = [ClassifierChain(base_lr, order='random', random_state=i) for i in range(10)]
+#for chain in chains:
+#    chain.fit(X_train, Y_train)
+#Y_pred_chains = np.array([chain.predict(X_test) for chain in chains])
+#chain_jaccard_scores = [jaccard_score(Y_test, Y_pred_chain >= .5,average='samples') for Y_pred_chain in Y_pred_chains]
+#Y_pred_ensemble = Y_pred_chains.mean(axis=0)
+#ensemble_jaccard_score = jaccard_score(Y_test, Y_pred_ensemble >= .5, average='samples')
+#model_scores = [ovr_jaccard_score] + chain_jaccard_scores
+#model_scores.append(ensemble_jaccard_score)
+
+
+
+n_algorithms = [fcm  ,ms         ,two_means        ,spectral            ,dbscan  ,affinity_propagation ,birch  ,gmm              ]#, average_linkage]
+x_algorithms = ["FCM","MeanShift","MiniBatchKMeans","SpectralClustering","DBSCAN","AffinityPropagation","Birch","GaussianMixture"]#, "AgglomerativeClustering"] BayesianGaussianMixture
+
+plots                 = []
+names                 = []
+cycol                 = cycle('bgrcmk')
+
+for i, algorithm in enumerate(n_algorithms):
+    if x_algorithms[i] == args.algorithm:
+          timex, algorithm, labels_true, centers = get_labels(algorithm, data)
+
+          df = pd.DataFrame(data=fcm.centers)
+          df.to_csv(args.centers, sep=','   , header=False, float_format='%.2f', index=False) # 
+
+    #    df = pd.DataFrame(data=fcm.u)
+    #    df.to_csv(args.membership, sep=',', header=False, float_format='%.2f', index=False) # 
+
+          df = pd.DataFrame(data=labels_true)
+          df.to_csv(args.labels, sep=','    , header=False, float_format='%.2f', index=False) # 
+
+          # metrics
+          print("Linear Regressor performance:")  # Measure performance
+          print("Mean absolute error =", round(sm.mean_absolute_error(y_test, y_test_pred), 2))
+          print("Mean squared error =", round(sm.mean_squared_error(y_test, y_test_pred), 2))
+          print("Median absolute error =", round(sm.median_absolute_error(y_test, y_test_pred), 2))
+          print("Explained variance score =", round(sm.explained_variance_score(y_test, y_test_pred), 2))
+          print("R2 score =", round(sm.r2_score(y_test, y_test_pred), 2))
+          X_train, X_test, y_train, y_test = model_selection.train_test_split(X, y, test_size=0.25, random_state=5)
+          accuracy        = 100.0 * (y == y_pred).sum() / X.shape[0]  # compute accuracy of the classifier  
+          accuracy = model_selection.cross_val_score(classifier_gaussiannb, X, y, scoring="accuracy", cv=num_validations)
+          print "Accuracy: " + str(round(100 * accuracy.mean(), 2)) + "%"
+          f1 = model_selection.cross_val_score(classifier_gaussiannb, X, y, scoring="f1_weighted", cv=num_validations)
+          print "F1: " + str(round(100 * f1.mean(), 2)) + "%"
+          precision = model_selection.cross_val_score(classifier_gaussiannb, X, y, scoring="precision_weighted", cv=num_validations)
+          print "Precision: " + str(round(100 * precision.mean(), 2)) + "%"
+          recall = model_selection.cross_val_score(classifier_gaussiannb, X, y, scoring="recall_weighted", cv=num_validations)
+          print "Recall: " + str(round(100 * recall.mean(), 2)) + "%"
+          ovr_jaccard_score = jaccard_score(Y_test, Y_pred_ovr, average='samples')
+          accuracy = accuracy_score(y, y_pred)
+          train_scores, validation_scores = validation_curve(classifier, X, y, "n_estimators", parameter_grid, cv=5)
+          confusion_mat = confusion_matrix(y_true, y_pred)
+
+          plot_confusion_matrix(confusion_mat)
+
+          target_names = ["Class-0", "Class-1", "Class-2", "Class-3"]
+          print classification_report(y_true, y_pred, target_names=target_names)
+
+          print(x_algorithms[i])
+          print("Time:           ", timex)
+          print("noise:          ", noise)
+          print("homogeneity:    ", homogeneity)
+          print("completeness:   ", completeness)
+          print("v_measure:      ", v_measure)
+          print("rand_index:     ", rand_index)
+          print("adjusted_mutual:", adjusted_mutual)
+          print("silhouette:     ", silhouette)
+          
+          if (args.plot):
+              plot3D(labels_true,centers, x_algorithms[i])
+
+
+
+#encoder        = preprocessing.LabelEncoder()  # Create label encoder and fit the labels
+#encoded_values = encoder.transform(test_labels)
+#decoded_list   = encoder.inverse_transform(encoded_values)
+
+def visualize_classifier(classifier, X, y):
+    min_x, max_x = X[:, 0].min() - 1.0, X[:, 0].max() + 1.0  # that will be used in the mesh grid # Define the minimum and maximum values for X and Y
+    min_y, max_y = X[:, 1].min() - 1.0, X[:, 1].max() + 1.0
+    mesh_step_size = 0.01  # Define the step size to use in plotting the mesh grid
+    x_vals, y_vals = np.meshgrid(np.arange(min_x, max_x, mesh_step_size), np.arange(min_y, max_y, mesh_step_size))  # Define the mesh grid of X and Y values
+    output = classifier.predict(np.c_[x_vals.ravel(), y_vals.ravel()])  # Run the classifier on the mesh grid
+    output = output.reshape(x_vals.shape)  # Reshape the output array
+    plt.figure()  # Create a plot
+    plt.pcolormesh(x_vals, y_vals, output, cmap=plt.cm.gray)  # Choose a color scheme for the plot
+    plt.scatter(X[:, 0], X[:, 1], c=y, s=75, edgecolors="black", linewidth=1, cmap=plt.cm.Paired)  # Overlay the training points on the plot
+    plt.xlim(x_vals.min(), x_vals.max())  # Specify the boundaries of the plot
+    plt.ylim(y_vals.min(), y_vals.max())
+    plt.xticks((np.arange(int(X[:, 0].min() - 1), int(X[:, 0].max() + 1), 1.0)))  # Specify the ticks on the X and Y axes
+    plt.yticks((np.arange(int(X[:, 1].min() - 1), int(X[:, 1].max() + 1), 1.0)))
+    plt.show()
+    
+visualize_classifier(classifier, X, y)  # Visualize the performance of the classifier
+
+
+#plt.figure()  # Plot the points and cluster centers
+#plt.ylabel("BER")
+#plt.xlabel("RSSI")
+#plt.title("Clusters")
+##scatter(X[:, 1], X[:, 0], marker="o")
+#scatter(X[:, 1], X[:, 0], hue=fcm_labels, marker="o", palette=['red','black','blue'])
+#scatter(cluster_centers[:, 1], cluster_centers[:, 0], marker="o", s=200, palette='green')
+#plt.show()
+
+

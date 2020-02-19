@@ -1,0 +1,17 @@
+patch/.code                                                        ={                                                                                                                                 
+patch internal depth/.is if                                        =pgfplotsplothandlermesh@internaldepth,                                                                                             
+patch internal depth                                               =true,                                                                                                                              
+patch refines/.initial                                             =0,                                                                                                                                 
+patch table/.code                                                  ={                                                                                                                                  
+patch table/value/.initial                                         =,                                                                                                                                  
+patch table with individual point meta/.code                       ={                                                                                                                                 
+patch table with point meta/.code                                  ={                                                                                                                                 
+patch to triangles/.default                                        =true,                                                                                                                              
+patch to triangles                                                 =false,                                                                                                                             
+patch to triangles/false/.code                                     ={\def\pgfplotsplothandlermesh@triangulate{0}},                                                                                     
+patch to triangles/.is choice,
+patch to triangles/true/.code                                      ={\def\pgfplotsplothandlermesh@triangulate{1}},                                                                                     
+patch to triangles/true with edges/.code                           ={\def\pgfplotsplothandlermesh@triangulate{2}},                                                                                     
+patch type/.initial                                                =,                                                                                                                                  
+patch type sampling/.is if                                         =pgfplotsplothandlermesh@patch@type@sampling,                                                                                       
+

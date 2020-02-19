@@ -1,0 +1,34 @@
+mesh       /check                                              /.code             
+mesh       /color input                     /colormap          /.code
+mesh       /color input                     /explicit          /.code
+mesh       /color input                     /explicit mathparse/.code
+mesh       /color input                                        /.is choice,       
+mesh       /colorspace explicit color input                    /.initial          
+mesh       /colorspace explicit color output                   /.initial          
+mesh       /cols                                               /.initial          
+mesh                                                           /.default                        
+mesh       /false                                              /.code             
+mesh input /image                                              /.code             
+mesh input                                                     /.is choice,                     
+mesh input /lattice                                            /.code             
+mesh input /patches                                            /.code             
+mesh       /interior colormap                                  /.code 2 args      
+mesh       /interior colormap name                             /.initial          
+mesh       /interior colormap thresh                           /.initial          
+mesh                                                           /.is choice,                     
+mesh legend                                                    /.style                          
+mesh       /num points                                         /.initial          
+mesh       /ordering                        /colwise           /.style
+mesh       /ordering                                           /.is choice,       
+mesh       /ordering                        /rowwise           /.style
+mesh       /ordering                        /x varies          /.code
+mesh       /ordering                        /y varies          /.code
+mesh       /refines                                            /.style            
+mesh       /rows                                               /.initial          
+mesh       /scanline verbose                                   /.default          
+mesh       /scanline verbose                                   /.is if            
+mesh       /show normals                                       /.default          
+mesh       /show normals                                       /.is if            
+mesh       /show normals length factor                         /.initial          
+mesh       /true                                               /.code             
+

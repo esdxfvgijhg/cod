@@ -1,0 +1,46 @@
+#!/bin/bash
+
+mypath="$1"
+directory=`dirname "$mypath"`
+file=`basename "$mypath"`
+extension="${file##*.}"
+filename="${file%.*}"
+echo $filename
+
+mkdir .bin
+
+scatter="\
+\input{plot}\
+\pgfplotscreateplotcyclelist{mycolorlist}{\
+blue!50!green,every mark/.append style={fill=blue!10!black},mark=x}\
+\begin{document}\
+\begin{tikzpicture}\
+\begin{axis}[\
+	legend pos=north east,\
+	ylabel=$3, \
+	xlabel=$2, \
+	ticklabel style = {font=\scriptsize}, \
+	label style={font=\scriptsize}, \
+	legend style={font=\scriptsize},\
+	cycle list name=mycolorlist\
+]\
+\addplot[\
+	scatter/classes={1={green}, 0={mark size=.8,blue}, 2={red}},\
+	scatter src=explicit symbolic,\
+	only marks,\
+	scatter,\
+	mark=*,\
+	mark size=0.5,\
+	mark color=blue,\
+] table[y=$3,x=$2,meta=$4] {$5};\
+\legend{Cluster 0,Cluster 1, Cluster 2}\
+\end{axis}\
+\end{tikzpicture}\
+\end{document}\
+"
+
+lualatex -output-dir=.bin -jobname=$1 $scatter
+
+cp .bin/$1.pdf .
+evince $1.pdf &
+

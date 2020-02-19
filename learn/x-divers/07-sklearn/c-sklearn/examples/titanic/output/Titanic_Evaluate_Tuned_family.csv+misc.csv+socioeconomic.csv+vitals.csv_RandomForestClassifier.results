@@ -1,0 +1,38 @@
+Experiment Name: Titanic_Evaluate_Tuned
+SKLL Version: 2.0
+Training Set: train
+Training Set Size: 569
+Test Set: dev
+Test Set Size: 143
+Shuffle: False
+Feature Set: ["family.csv", "misc.csv", "socioeconomic.csv", "vitals.csv"]
+Learner: RandomForestClassifier
+Task: evaluate
+Feature Scaling: none
+Grid Search: True
+Grid Search Folds: 3
+Grid Objective Function: accuracy
+Additional Evaluation Metrics: ['roc_auc']
+Scikit-learn Version: 0.21.3
+Start Timestamp: 15 Feb 2020 19:06:50.540710
+End Timestamp: 15 Feb 2020 19:06:59.051406
+Total Time: 0:00:08.510696
+
+
+Fold: 
+Model Parameters: {"bootstrap": true, "class_weight": null, "criterion": "gini", "max_depth": 5, "max_features": "auto", "max_leaf_nodes": null, "min_impurity_decrease": 0.0, "min_impurity_split": null, "min_samples_leaf": 1, "min_samples_split": 2, "min_weight_fraction_leaf": 0.0, "n_estimators": 500, "n_jobs": null, "oob_score": false, "random_state": 123456789, "verbose": 0, "warm_start": false}
+Grid Objective Score (Train) = 0.794315632011967
++----+------+------+-------------+----------+-------------+
+|    |    0 |    1 |   Precision |   Recall |   F-measure |
++====+======+======+=============+==========+=============+
+|  0 | [79] |    8 |       0.849 |    0.908 |       0.878 |
++----+------+------+-------------+----------+-------------+
+|  1 |   14 | [42] |       0.840 |    0.750 |       0.792 |
++----+------+------+-------------+----------+-------------+
+(row = reference; column = predicted)
+Accuracy = 0.8461538461538461
+Objective Function Score (Test) = 0.8461538461538461
+
+Additional Evaluation Metrics (Test):
+ roc_auc = 0.9224137931034483
+

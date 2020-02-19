@@ -1,0 +1,8 @@
+2020-02-15 19:06:50,540 - INFO - Task: evaluate
+2020-02-15 19:06:50,540 - INFO - Training on train, Test on dev, feature set ['family.csv', 'misc.csv', 'socioeconomic.csv', 'vitals.csv'] ...
+2020-02-15 19:06:50,595 - INFO - Featurizing and training new RandomForestClassifier model
+2020-02-15 19:06:50,595 - WARNING - Training data will be shuffled to randomize grid search folds.  Shuffling may yield different results compared to scikit-learn.
+2020-02-15 19:06:59,008 - INFO - Best accuracy grid search score: 0.794
+2020-02-15 19:06:59,008 - INFO - Hyperparameters: bootstrap: True, class_weight: None, criterion: gini, max_depth: 5, max_features: auto, max_leaf_nodes: None, min_impurity_decrease: 0.0, min_impurity_split: None, min_samples_leaf: 1, min_samples_split: 2, min_weight_fraction_leaf: 0.0, n_estimators: 500, n_jobs: None, oob_score: False, random_state: 123456789, verbose: 0, warm_start: False
+2020-02-15 19:06:59,008 - INFO - Evaluating predictions
+2020-02-15 19:06:59,049 - INFO - using probabilities for the positive class to compute "roc_auc" for evaluation.

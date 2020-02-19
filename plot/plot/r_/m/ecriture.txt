@@ -1,0 +1,12 @@
+ Hypothèse:
+    on peut quantifier les besoins des applications.
+Problématique:
+    comment adapter la configuration du réseau au besoin des applications.
+
+Durant ma thèse je réagis à
+Etat de l'art par rapport à ma question
+
+rossete fiona
+
+
+

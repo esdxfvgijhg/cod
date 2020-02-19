@@ -1,0 +1,348 @@
+#!/usr/bin/python3
+import sklearn #http://scikit-learn.org/stable/modules/classes.html#sklearn-metrics-metrics
+from sklearn.neighbors import *    
+from sklearn.svm import *          
+from sklearn.linear_model import * 
+from sklearn.naive_bayes import *  
+from sklearn.tree import *         
+from sklearn.ensemble import *     
+from sklearn.cluster import *
+from scipy import sparse
+from sklearn import metrics as sm
+from fcmeans import FCM
+from collections import defaultdict
+import numpy as np
+import pickle
+import joblib
+import argparse
+import sys
+import types
+
+models = {
+        'linearr'   :LinearRegression,
+        'logisticr' :LogisticRegression,
+        'knnc'      :KNeighborsClassifier,
+        'svc'       :SVC,
+        'lsvc'      :LinearSVC,
+        'sgdc'      :SGDClassifier,
+        'dtc'       :DecisionTreeClassifier,
+        'abc'       :AdaBoostClassifier,
+        'etc'       :ExtraTreesClassifier,
+        'rfc'       :RandomForestClassifier,
+        'gbc'       :GradientBoostingClassifier,
+        
+        'knnr'      :KNeighborsRegressor,
+        'svr'       :SVR,
+        'nusvr'     :NuSVR,
+        'dtr'       :DecisionTreeRegressor,
+        'rfr'       :RandomForestRegressor,
+        'etr'       :ExtraTreesRegressor,
+        'abr'       :AdaBoostRegressor,
+        'gbr'       :GradientBoostingRegressor,
+        
+        'perceptron':Perceptron,
+        'ridge'     :Ridge,
+        'lasso'     :Lasso,
+        'elasticnet':ElasticNet,
+        'mnb'       :MultinomialNB,
+        'bnb'       :BernoulliNB,
+        
+        'agl'       :AgglomerativeClustering,
+        'msl'       :MeanShift,
+        'apl'       :AffinityPropagation,
+        'dbl'       :DBSCAN,
+#        'ol'        :OPTICS,
+        'fal'       :FeatureAgglomeration,
+        'scl'       :SpectralClustering,
+        'mbkl'      :MiniBatchKMeans,
+        'kml'       :KMeans,
+        'sbl'       :SpectralBiclustering,
+        'scl'       :SpectralCoclustering,
+        'bl'        :Birch,
+        'fcml'      :FCM,
+        }
+
+
+metrics ={
+          #'x'  :  sm.mean_poisson_deviance,                                 #(y_true, y_pred)            #Mean Poisson deviance regression loss.
+          #'x'  :  sm.mean_gamma_deviance,                                   #(y_true, y_pred)            #Mean Gamma deviance regression loss.
+          #'x'  :  sm.mean_tweedie_deviance,                                 #(y_true, y_pred)            #Mean Tweedie deviance regression loss.
+          #'x'  :  sm.max_error,                                             #(y_true, y_pred)            #max_error metric calculates the maximum residual error.
+          'evr'  : sm.explained_variance_score,                             #()                          #Explained variance regression score function
+          'maer' :sm.mean_absolute_error,                                   #()                          #Mean absolute error regression loss
+          'mser' :sm.mean_squared_error,                                    #()                          #Mean squared error regression loss
+          'msler':sm.mean_squared_log_error,                                #()                          #Mean squared logarithmic error regression loss
+          'maer' :sm.median_absolute_error,                                 #()                          #Median absolute error regression loss
+          'r2r'  :sm.r2_score,                                              #()                          #R^2 (coefficient of determination) regression score function.
+          #'x'  :  sm.homogeneity_completeness_v_measure                     #(?)                         #Compute the homogeneity and completeness and V-Measure scores at once.
+          #'x'  :  sm.cluster.contingency_matrix                             #(?[, ?])                    #Build a contingency matrix describing the relationship between labels.
+          #'x'  :  sm.adjusted_mutual_info_score                             #(?[, ?])                    #Adjusted Mutual Information between two clusterings.
+          #'x'  :  sm.normalized_mutual_info_score                           #(?[, ?])                    #Normalized Mutual Information between two clusterings.
+          #'x'  :  sm.v_measure_score                                        #(y_true, labels_pred)       #V-measure cluster labeling given a ground truth.
+            'arl': sm.adjusted_rand_score,                                  #(y_pred, labels)            #Rand index adjusted for chance.
+            'cl' : sm.completeness_score,                                   #(y_pred, labels)            #Completeness metric of a cluster labeling given a ground truth.
+            'fml': sm.fowlkes_mallows_score,                                #(y_pred, labels)            #Measure the similarity of two clusterings of a set of points.
+            'hl' : sm.homogeneity_score,                                    #(y_pred, labels)            #Homogeneity metric of a cluster labeling given a ground truth.
+            'mil': sm.mutual_info_score,                                    #(y_pred, labels)            #Mutual Information between two clusterings.
+          #'x'  :  sm.silhouette_score                  (X, labels[, ?])     #()                          #Compute the mean Silhouette Coefficient of all samples.
+          #'x'  :  sm.silhouette_samples                (X, labels[, metric])#()                          #Compute the Silhouette Coefficient for each sample.
+          #'x'  :  sm.calinski_harabasz_score           (X, labels)          #()                          #Compute the Calinski and Harabasz score.
+          #'x'  :  sm.davies_bouldin_score              (X, labels)          #()                          #Computes the Davies-Bouldin score.
+          #'x'  :  sm.precision_recall_fscore_support                        #(?)                         #Compute precision, recall, F-measure and support for each class
+          #'x'  :  sm.precision_recall_fscore_support                        #(?)                         #Compute precision, recall, F-measure and support for each class
+          #'x'  :  sm.auc                                                    #(x, y)                      #Compute Area Under the Curve(AUC) using the trapezoidal rule
+          #'x'  :  sm.average_precision_score                                #(y_true, y_score)           #Compute average precision(AP) from prediction scores
+          #'x'  :  sm.dcg_score                                              #(y_true, y_score[, k, ?])   #Compute Discounted Cumulative Gain.
+          #'x'  :  sm.roc_auc_score                                          #(y_true, y_score[, ?])      #Compute Area Under the Receiver Operating Characteristic Curve(ROC AUC) from prediction scores.
+          #'x'  :  sm.roc_curve                                              #(y_true, y_score[, ?])      #Compute Receiver operating characteristic(ROC)
+          #'x'  :  sm.ndcg_score                                             #(y_true, y_score[, k, ?])   #Compute Normalized Discounted Cumulative Gain.
+          #'x'  :  sm.hinge_loss                                             #(y_true, pred_decision[, ?])#Average hinge loss(non-regularized)
+          #'x'  :  sm.fbeta_score                                            #(y_true, y_pred, beta[, ?]) #Compute the F-beta score
+          #'x'  :  sm.cohen_kappa_score                                      #(y1, y2[, labels, ?])       #Cohen's kappa: a statistic that measures inter-annotator agreement.
+          #'x'  :  sm.brier_score_loss                                       #(y_true, y_prob[, ?])       #Compute the Brier score.
+          #'x'  :  sm.multilabel_confusion_matrix                            #(y_true)                    #Compute a confusion matrix for each class or sample
+          #'x'  :  sm.precision_recall_curve                                 #(y_true)                    #Compute precision-recall pairs for different probability thresholds
+          #'x'  :  sm.precision_score                                        #(y_true, y_pred)            #Compute the precision
+          #'x'  :  sm.recall_score                                           #(y_true, y_pred)            #Compute the recall
+          #'x'  :  sm.f1_score                                               #(y_true, y_pred)            #Compute the F1 score, also known as balanced F-score or F-measure
+          #'x'  :  sm.jaccard_score                                          #(y_true, y_pred)            #Jaccard similarity coefficient score
+          #'x'  :  sm.log_loss                                               #(y_true, y_pred)            #Log loss, aka logistic loss or cross-entr
+           'cmc' : sm.confusion_matrix,                                     #()                          #Compute confusion matrix to evaluate the accuracy of a classification.
+           'ac'  : sm.accuracy_score,                                       #()                          #Accuracy classification score.
+           'bac' : sm.balanced_accuracy_score,                              #()                          #Compute the balanced accuracy
+           'crc' : sm.classification_report,                                #()                          #Build a text report showing the main classification metrics
+           'hlc' : sm.hamming_loss,                                         #()                          #Compute the average Hamming loss.
+           'mcc' : sm.matthews_corrcoef,                                    #()                          #Compute the Matthews correlation coefficient(MCC)
+           'zolc': sm.zero_one_loss,                                        #()                          #Zero-one classification loss.
+}
+
+args = []
+def get_args():
+    description = 'command line wrapper for some models in scikit-learn'
+    tasks = ['fit', 'predict', 'fitpredict', 'f', 'p', 'fp','doc']
+    task_arg_setting = [
+            (['fit', 'f']        ,['training_file', 'model', 'model_output']                ,['model_options']),
+            (['predict', 'p']    ,['test_file', 'model_input', 'prediction_file']           ,[]),
+            (['fitpredict', 'fp'],['training_file', 'model', 'test_file', 'prediction_file'],['model_options', 'model_output']),
+            (['doc'],['model'],[])
+            ]
+    parser = argparse.ArgumentParser(description     = description, formatter_class = argparse.RawDescriptionHelpFormatter)
+    parser.add_argument('-t'              ,'--task'            ,help = 'task to process. see help for detailed information'  ,choices = tasks  ,required = True)
+    parser.add_argument('-i'              ,'--training-file'   ,help = 'input: training file. svm format by default')                                   
+    parser.add_argument('-e'              ,'--test-file'       ,help = 'input: test file. svm format by default')                                   
+    parser.add_argument('-mi'             ,'--model-input'     ,help = 'input: model input file. used in prediction')                                      
+    parser.add_argument('-mo'             ,'--model-output'    ,help = 'output: model output file. used in fitting')                                         
+    parser.add_argument('-m'              ,'--model'           ,help = 'model. specified in fitting'                         ,choices = models)
+    parser.add_argument('-s'              ,'--metric'          ,help = 'metric. specified in fitting'                         ,choices = metrics)
+    parser.add_argument('-o'              ,'--prediction-file' ,help = 'output: prediction file')                            
+    parser.add_argument('-tfg'            ,'--model-format    ',help = 'model format,pickle(default) or joblib'              ,choices = ['pickle','joblib'] ,default = 'pickle')   
+    parser.add_argument('-v'              ,'--show-metrics'    ,help = 'show metric after prediction'                        ,action = 'store_true')                                    
+    parser.add_argument('-V'              ,'--verbose'         ,help = 'verbose level. -v <level> or multiple -v\'s or something like -vvv',nargs = '?',default = 0)
+    parser.add_argument('model_options'   ,nargs = '*'         ,help = """ additional paramters for specific model of format "name:type:val",effective only when training is needed. type is either int,float or str     ,which abbreviates as i,f and s.""")
+    parser.add_argument('metrics_options' ,nargs = '*'         ,help = """ additional paramters for specific model of format "name:type:val",effective only when training is needed. type is either int,float or str     ,which abbreviates as i,f and s.""")
+    args = parser.parse_args()
+    model_options = dict()
+    for opt in args.model_options:
+        opt = opt.split(':')
+        assert len(opt) == 3, 'model option format error'
+        key, t, val = opt
+        if t == 'i':
+            t = 'int'
+        elif t == 'f':
+            t = 'float'
+        elif t == 's':
+            t = 'str'
+        elif t == 'b':
+            t = 'bool'
+        model_options[key] = eval(t)(val)
+    args.model_options = model_options
+    for setting in task_arg_setting:
+        if args.task in setting[0]:
+            args.task = setting[0][0]
+    def check_params(task, argnames):
+        if args.task in task:
+            for name in argnames:
+                if not(name in args.__dict__ and args.__dict__[name]):
+                    info = 'argument `{}\' must present in `{}\' task' . format("--" + name.replace('_', '-'), task[0])
+                    raise Exception(info)
+    try:
+        for setting in task_arg_setting:
+            check_params(setting[0], setting[1])
+    except Exception as e:
+        sys.stderr.write(str(e) + '\n')
+        sys.exit(1)
+    def verbose_print(self, msg, vb = 1): 
+        if vb <= self.verbose:
+            print(msg)
+    return args
+def read_svmformat_data(fname):
+    import pandas as pd
+    import numpy as np
+    data = pd.read_csv(fname)
+    return np.array(data)
+def write_labels(fname, y_pred):
+    count_types = defaultdict(int)
+    for y in y_pred:
+        count_types[type(y)] += 1
+    most_prevalent_type = sorted([(x[1], x[0]) for x in iter(count_types.items())])[0][1]
+    if most_prevalent_type == float:
+        typefmt = '{:f}'
+    else:
+        typefmt = '{}'
+    with open(fname, 'w') as fout:
+        for y in y_pred:
+            fout.write(typefmt.format(y) + '\n')
+def get_model(args):
+    model = models[args.model](**args.model_options)
+    return model
+def get_dim(X):
+    dim = -1
+    for x in X:
+        for ind, val in x:
+            if ind > dim:
+                dim = ind
+    return dim + 1
+def preprocess_data(model, X):
+    return X
+def save_model(fname, model):
+    if args.model_format == 'pickle':
+        fd = open(fname, 'wb')
+        pickle.dump(model, fd)
+        fd.close()
+    else:
+        joblib.dump(model, fname)
+def load_model(fname):
+    if args.model_format == 'pickle':
+        fd = open(fname, 'rb')
+        model = pickle.load(fd)
+        fd.close()
+        return model
+    else:
+        return joblib.load(fname)
+
+def show_metrics(args, X, y_pred):
+    y_true=X[:,-1:]
+    # metric = metrics[args.metric](**args.metric_options)
+    for i in metrics:
+      if i.endswith('l') and args.model.endswith('l') :
+        labels = AffinityPropagation(preference=-50).fit(X).labels_
+        print (i, metrics[i](y_pred, labels))
+      if i.endswith('r') and args.model.endswith('r') :
+        print (i, metrics[i](y_pred, y_pred))
+      if i.endswith('c') and args.model.endswith('c') :
+        print (i, metrics[i](y_pred, y_pred))
+    
+    # Model selection
+    #X_train, X_test, y_train, y_test = model_selection.train_test_split(X, y, test_size=0.25, random_state=5)
+    #model_selection.permutation_test_score(?)                # Evaluate the significance of a cross-validated score with permutations
+    #model_selection.cross_validate        (estimator, X)     # Evaluate metric                                               (s) by cross-validation and also record fit/score times.
+    #model_selection.cross_val_predict     (estimator, X)     # Generate cross-validated estimates for each input data point     
+    #model_selection.cross_val_score       (estimator, X)     # Evaluate a score by cross-validation                           
+    #model_selection.learning_curve        (estimator, X, y)  # Learning curve.                                               
+    #model_selection.validation_curve      (estimator)        # Validation curve.                                               
+    #model_selection.cross_val_score       (estimator, X, y, scoring="accuracy"          , cv=num_validations)
+    #model_selection.cross_val_score       (estimator, X, y, scoring="f1_weighted"       , cv=num_validations)
+    #model_selection.cross_val_score       (estimator, X, y, scoring="precision_weighted", cv=num_validations)
+    #model_selection.cross_val_score       (estimator, X, y, scoring="recall_weighted"   , cv=num_validations)
+    
+#    # Pairwaise
+#    sm.pairwise.distance_metrics          ()                 # Valid metrics for pairwise_distances.
+#    sm.pairwise.kernel_metrics            ()                 # Valid metrics for pairwise_kernels
+#    sm.pairwise.nan_euclidean_distances   (X)                # Calculate the euclidean distances in the presence of missing values.
+#    sm.pairwise.cosine_distances          (X[, Y])           # Compute cosine distance between samples in X and Y.
+#    sm.pairwise.cosine_similarity         (X[, Y, ?])        # Compute cosine similarity between samples in X and Y.
+#    sm.pairwise_distances_argmin_min      (X, Y)             # Compute minimum distances between one point and a set of points.
+#    sm.pairwise_distances_argmin          (X, Y[, ?])        # Compute minimum distances between one point and a set of points.
+#    sm.pairwise.additive_chi2_kernel      (X[, Y])           # Computes the additive chi-squared kernel between observations in X and Y
+#    sm.pairwise.paired_cosine_distances   (X, Y)             # Computes the paired cosine distances between X and Y
+#    sm.pairwise.paired_euclidean_distances(X, Y)             # Computes the paired euclidean distances between X and Y
+#    sm.pairwise.haversine_distances       (X[, Y])           # Compute the Haversine distance between samples in X and Y
+#    sm.pairwise.pairwise_kernels          (X[, Y, ?])        # Compute the kernel between arrays X and optional array Y.
+#    sm.pairwise.paired_manhattan_distances(X, Y)             # Compute the L1 distances between the vectors in X and Y.
+#    sm.pairwise.manhattan_distances       (X[, Y, ?])        # Compute the L1 distances between the vectors in X and Y.
+#    sm.pairwise.linear_kernel             (X[, Y, ?])        # Compute the linear kernel between X and Y.
+#    sm.pairwise.polynomial_kernel         (X[, Y, ?])        # Compute the polynomial kernel between X and Y.
+#    sm.pairwise.sigmoid_kernel            (X[, Y, ?])        # Compute the sigmoid kernel between X and Y.
+#    sm.pairwise.euclidean_distances       (X[, Y, ?])        # Considering the rows of X (and Y=X) as vectors, compute the distance matrix between each pair of vectors.
+#    sm.pairwise.chi2_kernel               (X[, Y, gamma])    # Computes the exponential chi-squared kernel X and Y.
+#    sm.pairwise.laplacian_kernel          (X[, Y, gamma])    # Compute the laplacian kernel between X and Y.
+#    sm.pairwise.rbf_kernel                (X[, Y, gamma])    # Compute the rbf (gaussian) kernel between X and Y.
+#    sm.pairwise_distances_chunked         (X[, Y, ?])        # Generate a distance matrix chunk by chunk with optional reduction
+#    sm.pairwise.paired_distances          (X, Y[, metric])   # Computes the paired distances between X and Y.
+#    sm.pairwise_distances                 (X[, Y, metric, ?])# Compute the distance matrix from a vector array X and optional Y.
+
+def get_labels(algorithm, X):
+    if hasattr(algorithm, "labels_"):
+          labels = algorithm.labels_.astype(np.int)
+    elif hasattr(algorithm, "row_labels_"):
+          labels = algorithm.row_labels_.astype(np.int)
+    else:
+          labels = algorithm.predict(X)
+    num_clusters = len(np.unique(labels))
+    if hasattr(algorithm, "cluster_centers_"):
+          cluster_centerx = algorithm.cluster_centers_
+    elif hasattr(algorithm, "affinity_matrix_"):
+          cluster_centerx = algorithm.affinity_matrix_
+    elif hasattr(algorithm, "components_"):
+          cluster_centerx = algorithm.components_
+    elif hasattr(algorithm, "centers"):
+          cluster_centerx = algorithm.centers
+    else:
+        cluster_centerx=np.zeros((num_clusters,len(X[1])))
+#    timex=t1-t0
+    return labels, cluster_centerx
+
+
+def task_fit(args):
+    model     = get_model(args)
+    X         = read_svmformat_data(args.training_file)
+    if (args.model.endswith('l')):
+        X = preprocess_data(model, X)
+    else:
+       X[:,:-1]  = preprocess_data(model, X[:,:-1])
+    model.fit(X) if (args.model.endswith('l')) else model.fit(X[:,:-1], X[:,-1:])
+    save_model(args.model_output, model)
+def task_predict(args):
+    model     = load_model(args.model_input)
+    X         = read_svmformat_data(args.test_file)
+    if (args.model.endswith('l')):
+        X = preprocess_data(model, X)
+    else:
+       X[:,:-1]  = preprocess_data(model, X[:,:-1])
+    u, v      = get_labels(model,X) if (args.model.endswith('l')) else get_labels(model,X[:,:-1])
+    write_labels(args.prediction_file, u)
+#    if args.show_metrics:
+    show_metrics(args, X, u)
+def task_fitpredict(args):
+    model     = get_model(args)
+    X         = read_svmformat_data(args.training_file)
+    if (args.model.endswith('l')):
+        X = preprocess_data(model, X)
+    else:
+       X[:,:-1]  = preprocess_data(model, X[:,:-1])
+    T         = read_svmformat_data(args.test_file)
+    if (args.model.endswith('l')):
+        T = preprocess_data(model, T)
+    else:
+       T[:,:-1]  = preprocess_data(model, T[:,:-1])
+    model.fit(X) if (args.model.endswith('l')) else model.fit(X[:,:-1],X[:,-1:])
+    u, v      = get_labels(model,T) if (args.model.endswith('l')) else get_labels(model,T[:,:-1])
+    if args.model_output:
+        save_model(args.model_output, model)
+    write_labels("u_"+args.prediction_file, u)
+    write_labels("v_"+args.prediction_file, v)
+#    if args.show_metrics:
+    show_metrics(args, X, u)
+def main():
+    global args
+    args = get_args()
+    if args.task == 'doc':
+        print((models[args.model].__doc__))
+    else:
+        task_worker = dict(
+                fit = task_fit,
+                predict = task_predict,
+                fitpredict = task_fitpredict)
+        task_worker[args.task](args)
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,30 @@
+Comparison
+	Over time
+		Few period
+			Many categories          :Line chart
+			Single or few categories :Bar chart
+		Many periods
+			Non cyclical data        :Line chart
+			Cyclical data            :Circular area chart
+	Among item                   :Bar chart
+Distribution
+	Single variable              :Histogram chart
+	Tow variable                 :Scatter chart
+	Three variable               :3D area chart
+
+Composition
+	Static
+		Component of component     :Stacked 100% column chart
+		Accumulation to total      :Waterfall chart
+		hare of total              :Pie chart
+	Over time
+		Many periods               :Stacked area chart
+		Few periods                :Stacked column chart
+
+Relationship
+	Tow variable                 :Scater chart
+	Thress variable              :Babble chart
+
+
+
+

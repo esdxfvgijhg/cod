@@ -1,0 +1,172 @@
+#!/usr/bin/python3
+import time
+import warnings
+
+import numpy as np
+import pandas as pd
+
+import matplotlib.pyplot as plt
+from seaborn import scatterplot as scatter
+import mpl_toolkits.mplot3d.axes3d as p3
+
+from sklearn import cluster, datasets, mixture
+from sklearn.neighbors import kneighbors_graph
+from sklearn.preprocessing import StandardScaler
+from itertools import cycle, islice
+from fcmeans import FCM
+from sklearn.base import BaseEstimator, clone
+from sklearn.ensemble import RandomForestClassifier
+from sklearn import metrics
+
+#from sklearn.utils.metaestimators import if_delegate_has_method
+#import os;exec(open(os.environ.get('PYTHONSTARTUP')).read())
+
+import argparse
+parser = argparse.ArgumentParser(description="")
+
+x_algorithms = ["FCM","MeanShift","MiniBatchKMeans","SpectralClustering","DBSCAN","AffinityPropagation","Birch","GaussianMixture"]#, "AgglomerativeClustering"]
+
+def add_param(opt2,name,value,help,required,type):
+    dest='--'+name
+    parser.add_argument(opt2, dest, 
+                        dest=name, 
+                        required=required,
+                        default=value,
+                        help=help,
+                        metavar='',
+                        type=type)
+add_param('-a','affinity'     ,'nearest_neighbors','affinity'             ,False,str)
+add_param('-b','eps'          ,0.3                ,'epsilon'              ,False,float)
+add_param('-c','n_clusters'   ,3                  ,'numberofcluster'      ,False,int)
+add_param('-d','damping'      ,0.9                ,'damping'              ,False,float)
+add_param('-e','error'        ,1e-5               ,'error'                ,False,float)
+add_param('-f','algorithm'    ,'FCM'              , 'algorithm'           ,False,str)
+add_param('-g','plot'         ,True              ,'plot'                 ,False,bool)
+add_param('-i','max_iteration',150                ,'maxiteration'         ,False,int)
+add_param('-k','linkage'      ,'single'           ,'linkage'              ,False,str)
+add_param('-l','labels'       ,'bin/L.csv'        ,'labelsfile'           ,False,str)
+add_param('-m','fuzzification',2                  ,'degreeoffuzzification',False,float)
+add_param('-n','neighbors'    ,10                 ,'neighbors'            ,False,int)
+add_param('-p','preference'   ,-200               ,'preference'           ,False,int)
+add_param('-q','quantile'     ,0.3                ,'quantile'             ,False,float)
+add_param('-r','random_state' ,42                 ,'randomstate'          ,False,int)
+add_param('-s','seed'         ,0                  ,'seed'                 ,False,int)
+add_param('-u','membership'   ,'bin/U.csv'        ,'membershipfile'       ,False,str)
+add_param('-v','centers'      ,'bin/V.csv'        ,'centersfile'          ,False,str)
+add_param('-x','input_file'   ,'X.csv'            ,'inputfile'            ,False,str)
+args = parser.parse_args()
+
+def plot3D(labels,cluster_center,name):
+    cycol = cycle('bgrcmk')
+    fig   = plt.figure()
+    ax    = p3.Axes3D(fig)
+    for l in np.unique(labels):
+          colors = next(cycol)
+          ax.scatter(cluster_center[l,0], cluster_center[l,1], cluster_center[l,2], color=colors, s=100, edgecolor="k")
+          ax.scatter(X[labels == l, 0]  , X[labels == l, 1]  , X[labels == l, 2]  , color=colors, s=20 , edgecolor="k")
+          ax.set_xlabel("BER");ax.set_ylabel("RSSI");ax.set_zlabel("ToA")
+    plt.title(name)
+    plt.show()
+
+def get_labels(algorithm, X):
+    t0 = time.time()
+    with warnings.catch_warnings(): # catch warnings related to kneighbors_graph
+        algorithm.fit(X)
+    t1 = time.time()
+    
+    if hasattr(algorithm, "labels_"):
+          labels = algorithm.labels_.astype(np.int)
+    elif hasattr(algorithm, "row_labels_"):
+          labels = algorithm.row_labels_.astype(np.int)
+    else:
+          labels = algorithm.predict(X)
+    num_clusters = len(np.unique(labels))
+    if hasattr(algorithm, "cluster_centers_"):
+          cluster_centerx = algorithm.cluster_centers_
+    elif hasattr(algorithm, "affinity_matrix_"):
+          cluster_centerx = algorithm.affinity_matrix_
+    elif hasattr(algorithm, "components_"):
+          cluster_centerx = algorithm.components_
+    elif hasattr(algorithm, "centers"):
+          cluster_centerx = algorithm.centers
+    else:
+        cluster_centerx=np.zeros((num_clusters,len(X[1])))
+    timex=t1-t0
+    return timex, algorithm, labels, cluster_centerx
+
+X          = np.genfromtxt(args.input_file, delimiter=",", dtype="str", skip_header=1).astype(int)          # load the CSV file as a numpy matrix
+bandwidth     = cluster.estimate_bandwidth(X, quantile=args.quantile)                      # estimate bandwidth for mean shift
+connectivity  = kneighbors_graph(X, n_neighbors=args.neighbors, include_self=False)   # connectivity matrix for structured Ward
+connectivity  = 0.5 * (connectivity + connectivity.T)                                           # make connectivity symmetric
+
+fcm                   = FCM(n_clusters=args.n_clusters,max_iter=args.max_iteration,m=args.fuzzification,error=args.error,random_state=args.random_state)
+ms                    = cluster.MeanShift(bandwidth=bandwidth, bin_seeding=True)
+two_means             = cluster.MiniBatchKMeans(n_clusters=  args.n_clusters)
+#mbk = MiniBatchKMeans(init="k-means++", n_clusters=100, batch_size=100, n_init=10, max_no_improvement=10, verbose=0, random_state=0) # Compute clustering with MiniBatchKMeans.
+spectral              = cluster.SpectralClustering(n_clusters=args.n_clusters, eigen_solver="arpack", affinity=args.affinity)
+dbscan                = cluster.DBSCAN(eps=args.eps)
+affinity_propagation  = cluster.AffinityPropagation(damping=args.damping, preference=args.preference)
+average_linkage       = cluster.AgglomerativeClustering(linkage=args.linkage, affinity=args.affinity, n_clusters=args.n_clusters, connectivity=connectivity)
+birch                 = cluster.Birch(n_clusters=  args.n_clusters)
+gmm                   = mixture.GaussianMixture(n_components=  args.n_clusters, covariance_type="full")
+
+#spectralBiclustering  = bicluster.SpectralBiclustering(n_clusters=args.n_clusters, method="log", random_state=0)
+#spectralCoclustering  = bicluster.SpectralCoclustering(n_clusters=args.n_clusters, random_state=0)
+
+n_algorithms = [fcm  ,ms         ,two_means        ,spectral            ,dbscan  ,affinity_propagation ,birch  ,gmm              ]#, average_linkage]
+x_algorithms = ["FCM","MeanShift","MiniBatchKMeans","SpectralClustering","DBSCAN","AffinityPropagation","Birch","GaussianMixture"]#, "AgglomerativeClustering"] BayesianGaussianMixture
+
+plots                 = []
+names                 = []
+cycol                 = cycle('bgrcmk')
+
+for i, algorithm in enumerate(n_algorithms):
+    if x_algorithms[i] == args.algorithm:
+          timex, algorithm, y_true, centers = get_labels(algorithm,X)
+
+          df = pd.DataFrame(data=fcm.centers)
+          df.to_csv(args.centers, sep=','   , header=False, float_format='%.2f', index=False) # 
+
+    #    df = pd.XFrame(X=fcm.u)
+    #    df.to_csv(args.membership, sep=',', header=False, float_format='%.2f', index=False) # 
+
+          df = pd.DataFrame(data=y_true)
+          df.to_csv(args.labels, sep=','    , header=False, float_format='%.2f', index=False) # 
+
+          model_affinityPropagation     = cluster.AffinityPropagation(preference=-50).fit(X)
+          centers_affinityPropagation   = model_affinityPropagation.cluster_centers_indices_
+          labels                        = model_affinityPropagation.labels_
+
+          # metrics
+          print(x_algorithms[i])
+          print("Time:                      ", timex)
+          print("noise:                     ", list(labels).count(-1))
+          print("adjusted_mutual_info_score:",metrics.adjusted_mutual_info_score(y_true, labels, average_method="arithmetic"))                 # Adjusted Mutual Information: %0.3f"
+          print("v_measure_score:           ",metrics.v_measure_score                   (y_true, labels))      # V-measure cluster labeling given a ground truth.
+          print("adjusted_rand_score:       ",metrics.adjusted_rand_score               (y_true, labels))              # Rand index adjusted for chance.
+          print("completeness_score:        ",metrics.completeness_score                (y_true, labels))              # Completeness metric of a cluster labeling given a ground truth.
+          print("fowlkes_mallows_score:     ",metrics.fowlkes_mallows_score             (y_true, labels))              # Measure the similarity of two clusterings of a set of points.
+          print("homogeneity_score:         ",metrics.homogeneity_score                 (y_true, labels))              # Homogeneity metric of a cluster labeling given a ground truth.
+          print("mutual_info_score:         ",metrics.mutual_info_score                 (y_true,labels))              # Mutual Information between two clusterings.
+          print("silhouette_score:          ",metrics.silhouette_score                  (X, labels))           # Compute the mean Silhouette Coefficient of all samples.
+#          print("silhouette_samples:       ",metrics.silhouette_samples                (X, labels))           # Compute the Silhouette Coefficient for each sample.
+          print("calinski_harabasz_score:   ",metrics.calinski_harabasz_score           (X, labels))           # Compute the Calinski and Harabasz score.
+          print("davies_bouldin_score:      ",metrics.davies_bouldin_score              (X, labels))           # Computes the Davies-Bouldin score.
+#         metrics.homogeneity_completeness_v_measure(?)                   # Compute the homogeneity and completeness and V-Measure scores at once.
+#         metrics.cluster.contingency_matrix        (?[, ?])              # Build a contingency matrix describing the relationship between labels.
+#         metrics.normalized_mutual_info_score      (?[, ?])              # Normalized Mutual Information between two clusterings.
+
+          if (args.plot):
+              plot3D(y_true,centers, x_algorithms[i])
+
+
+#plt.figure()  # Plot the points and cluster centers
+#plt.ylabel("BER")
+#plt.xlabel("RSSI")
+#plt.title("Clusters")
+##scatter(X[:, 1], X[:, 0], marker="o")
+#scatter(X[:, 1], X[:, 0], hue=fcm_labels, marker="o", palette=['red','black','blue'])
+#scatter(cluster_centers[:, 1], cluster_centers[:, 0], marker="o", s=200, palette='green')
+#plt.show()
+
+

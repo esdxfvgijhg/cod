@@ -1,0 +1,13 @@
+#!/bin/bash
+
+BACKUP_SERVER="ssh://pi@192.168.200.1//home/pi/aghiles/cli"
+#rsync -rtavu --delete  $PWD/ $BACKUP_SERVER/
+updatex $PWD $BACKUP_SERVER
+
+
+
+#BACKUP_SERVER="pi@192.168.200.1:aghiles/cli"
+#rsync -rtavu --delete $PWD/ $BACKUP_SERVER/
+
+#BACKUP_SERVER="pi@192.168.200.1:aghiles/cli"
+#rsync -rtavu --delete $BACKUP_SERVER/ $PWD/

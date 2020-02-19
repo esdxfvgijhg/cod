@@ -1,0 +1,9 @@
+2020-02-15 19:06:59,139 - INFO - Task: evaluate
+2020-02-15 19:06:59,139 - INFO - Training on train, Test on dev, feature set ['family.csv', 'misc.csv', 'socioeconomic.csv', 'vitals.csv'] ...
+2020-02-15 19:06:59,172 - WARNING - Because LibSVM does an internal cross-validation to produce probabilities, results will not be exactly replicable when using SVC and probability mode.
+2020-02-15 19:06:59,193 - INFO - Featurizing and training new SVC model
+2020-02-15 19:06:59,193 - WARNING - Training data will be shuffled to randomize grid search folds.  Shuffling may yield different results compared to scikit-learn.
+2020-02-15 19:07:01,015 - INFO - Best accuracy grid search score: 0.752
+2020-02-15 19:07:01,015 - INFO - Hyperparameters: C: 100.0, cache_size: 1000, class_weight: None, coef0: 0.0, decision_function_shape: ovr, degree: 3, gamma: scale, kernel: rbf, max_iter: -1, probability: True, random_state: 123456789, shrinking: True, tol: 0.001, verbose: False
+2020-02-15 19:07:01,015 - INFO - Evaluating predictions
+2020-02-15 19:07:01,018 - INFO - using probabilities for the positive class to compute "roc_auc" for evaluation.

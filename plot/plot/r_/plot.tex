@@ -1,0 +1,30 @@
+plot box ratio/.initial                                            =1 1 1,                                                                                                                            
+plot coordinates/math parser/.is if                                =pgfplots@plot@coords@mathparser,                                                                                                   
+plot file/ignore first/.style                                      ={/pgfplots/plot file/skip first                                                                                                    ={#1}},                                                    
+plot file/.search also                                             =/pgfplots,                                                                                                                        
+plot file/skip first/.default                                      =true,                                                                                                                              
+plot file/skip first/.is if                                        =pgfplots@plot@file@skipfirst,                                                                                                      
+plot graphics/auto adjust axis/.is if                              =pgfplots@plot@graphics@autoadjustaxis,                                                                                             
+plot graphics/auto adjust axis                                     =true,                                                                                                                              
+plot graphics/.code                                                ={\let\tikz@plot@handler                                                                                                            =\pgfplotsplothandlergraphics},                           
+plot graphics/debug/.default                                       =true,                                                                                                                              
+plot graphics/debug/.initial                                       =,                                                                                                                                  
+plot graphics/includegraphics cmd/.initial                         =\includegraphics,                                                                                                                  
+plot graphics/includegraphics/.initial                             =,                                                                                                                                  
+plot graphics/lowlevel draw/.code 2 args                           ={                                                                                                                                 
+plot graphics/lowlevel get natural size/.code                      ={                                                                                                                                 
+plot graphics/node/.style                                          ={                                                                                                                                  
+plot graphics/points/.initial                                      =,                                                                                                                                  
+plot graphics/snap z/.initial                                      =0.02,                                                                                                                              
+plot graphics/squeeze tol/.initial                                 =2pt,                                                                                                                               
+plot graphics/src/.initial                                         =,                                                                                                                                  
+plot graphics/xmax/.initial                                        =,                                                                                                                                  
+plot graphics/xmin/.initial                                        =,                                                                                                                                  
+plot graphics/ymax/.initial                                        =,                                                                                                                                  
+plot graphics/ymin/.initial                                        =,                                                                                                                                  
+plot graphics/zmax/.initial                                        =,                                                                                                                                  
+plot graphics/zmin/.initial                                        =,                                                                                                                                  
+plot shift auto/.style args                                        ={#1#2#3}{                                                                                                                         
+plot xshift auto/.style 2 args                                     ={/pgfplots/plot shift auto                                                                                                         ={x}{#1}{#2}},                                            
+plot yshift auto/.style 2 args                                     ={/pgfplots/plot shift auto                                                                                                         ={y}{#1}{#2}},                                            
+

@@ -1,0 +1,35 @@
+#!/bin/bash
+
+mypath="$1"
+directory=`dirname "$mypath"`
+file=`basename "$mypath"`
+extension="${file##*.}"
+filename="${file%.*}"
+echo $filename
+
+mkdir .bin
+
+
+scatter="\
+\input{tikz}\
+\begin{document}\
+\begin{tikzpicture}[\
+    pie chart,\
+    slice type={comet}{blu},\
+    slice type={legno}{rosso},\
+    slice type={coltello}{giallo},\
+    slice type={sedia}{viola},\
+    slice type={caffe}{verde},\
+    pie values/.style={font={\small}},\
+    scale=2\
+]\
+    \pie[xshift=2.2cm,values of coltello/.style={pos=1.1}] {2009}{52/comet,23/legno,17/sedia,3/coltello,5/caffe}\
+    \legend[shift={(0cm,-1cm)}]{{Comet (Pordenone)}/comet, {Wood and furniture (Livenza)}/legno, {Knife (Maniago)}/coltello}\
+\end{tikzpicture}\
+\end{document}"
+
+lualatex -output-dir=.bin -jobname=$1 $scatter
+
+cp .bin/$1.pdf .
+evince $1.pdf &
+

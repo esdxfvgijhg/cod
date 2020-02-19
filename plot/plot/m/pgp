@@ -1,0 +1,98 @@
+allow reversal of rel axis cs
+apply datatrafo
+apply datatrafo x
+apply datatrafo y
+apply datatrafo z
+autocompute all limits
+autocompute xmax
+autocompute xmin
+autocompute ymax
+autocompute ymin
+autocompute zmax
+autocompute zmin
+avoid emptyrange  range is approx equal
+axis on top
+bb isactive
+clip
+clip limits compatmode
+clip limits x
+clip limits y
+clip limits z
+clip marker paths
+collect firstplot astick
+colorbar
+curplot isirrelevant
+curplot threedim
+datascaletrafo initialised
+deprecated anchors
+determinedefaultvalues isuniform
+determinedefaultvalues needs check uniformtick
+disabledatascaling
+disablelogfilter x
+disablelogfilter y
+disablelogfilter z
+drawmodes append
+enable tick line clipping
+enlargelimits
+enlargelimits auto
+enlargelimits rel thresh
+enlargelimits respect figure size
+errorbars enabled
+has cell picture
+has label information
+hide obscured xtick
+hide obscured ytick
+hide obscured ztick
+hide x
+hide y
+hide z
+identify log minor tick pos
+is old list format
+isuniformtick
+layered graphics
+limits are computed
+LUA backend supported
+LUA fail on TeX fallback
+plot coords mathparser
+plot file skipfirst
+plot graphics autoadjustaxis
+reverse legend
+scale only axis
+scaleuniformly warning
+scanline verbose
+scatterplotenabled
+separate axis lines
+shownothingof x
+shownothingof y
+shownothingof z
+stacked ignores zero
+stackedmode
+stacked plus
+stacked reverse
+substitute pgfpoint
+threedim
+threedim log sampling
+tickshow
+translategnuplot
+transpose legend
+units use
+warn for filter discards
+xislinear
+xmajorgrids
+xmajorticks
+xminorgrids
+xminorticks
+xticklabel interval
+yislinear
+ymajorgrids
+ymajorticks
+yminorgrids
+yminorticks
+yticklabel interval
+zislinear
+zmajorgrids
+zmajorticks
+zminorgrids
+zminorticks
+zticklabel interval
+
