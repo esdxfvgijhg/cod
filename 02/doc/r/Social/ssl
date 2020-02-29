@@ -1,0 +1,125 @@
+Server
+- Server Key and Certificate
+  - Serial Number
+  - Valid from
+  - Valid until
+  - Key
+    - Symetric
+	  - 3DES_128
+	  - AES_128
+      - AES_192
+	  - AES_256
+    - Asymetric
+	  - Cifer
+	    - RSA
+	    - DHE
+	    - ECDHE
+   	  - Signature
+   	    - RSA
+   	    - ECDSA
+    - Hashage
+	  - SHA256
+	  - SHA384
+	- Bloc mode
+	  - CBC
+	  - GCM
+	- Stream mode
+	  - RC4
+  - Revocation information 	
+    - CRL
+    - OCSP
+  - Trusted browser: 
+    - Mozilla
+    - Apple
+    - Android
+    - Windows
+  - Protocols: 
+    - TLS 1.3
+    - TLS 1.2
+    - TLS 1.1
+    - TLS 1.0
+    - SSL 3
+    - SSL 2
+    
+Terminal/Client
+- ip adress
+- mac adress
+- id Network
+- Country
+- Browser
+  - id
+  * PI
+  - Protocols
+    - TLS 1.3
+    - TLS 1.2
+    - TLS 1.1
+    - TLS 1.0
+    - SSL 3
+    - SSL 2
+  - Key
+    - Symetric
+	  - 3DES_128
+	  - AES_128
+      - AES_192
+	  - AES_256
+    - Asymetric
+	  - Cifer
+	    - RSA
+	    - DHE
+	    - ECDHE
+   	  - Signature
+   	    - RSA
+   	    - ECDSA
+    - Hashage
+	  - SHA256
+	  - SHA384
+	- Mode
+	  - CBC
+	  - GCM
+	- Stream mode
+	  - RC4
+
+User/Contact
+- id
+* PI
+- password
+- user_network
+
+Message
+- Metadada
+  - id
+  * PI
+  - id_class
+  - sender_id
+  - target_id
+  - body_id
+  - object
+  - date_creation
+  - date_read
+  - important(enum 0/1)
+  - receipt(enum 0/1)
+  - delete(enum 0/1)
+- body
+  - text
+  - image/video
+  - link
+  - code/exec
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

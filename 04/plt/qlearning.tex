@@ -1,0 +1,33 @@
+\input{tikz}
+\begin{document}
+\begin{tikzpicture}
+
+% \DrawGrid{(0,0)}{(10,5)}
+
+
+\Rectanglee{a}{0}{0}{10}{5}
+
+\CadreText{c1}{5,4}{\LARGE\textbf{Environment}}{4cm}
+
+\CadreText{c2}{5,1}{\hspace{0.9cm} \LARGE\textbf{Agent}}{4cm}
+
+\Fleche{c2}{8,1}
+\Fleche{8,1}{8,4}
+\Fleche{8,4}{c1}
+
+\Fleche{c1}{2,4}
+\Fleche{2,4}{2,1}
+\Fleche{2,1}{c2}
+
+\Fleche{2.9,4.2}{1.5,4.2}
+\Fleche{1.5,4.2}{1.5,.8}
+\Fleche{1.5,.8}{2.9,0.8}
+
+\Label{l1}{9,2.5}{Action}
+\Label{l1}{0.8,2.5}{Reward}
+\Label{l1}{2.6,2.5}{State}
+
+
+\end{tikzpicture}
+\end{document}
+

@@ -1,0 +1,22 @@
+\begin{tikzpicture}
+\begin{axis}[
+	legend pos=north east,
+	xlabel=\$$2_{[$3]}\$ , 
+	ylabel=\$$4_{[$5]}\$ , 
+	ticklabel style = {font=\scriptsize}, 
+	label style={font=\scriptsize}, 
+	legend style={font=\scriptsize},
+	cycle list name=mycolorlist
+]
+\addplot[
+	scatter/classes={1={green}, 0={mark size=.8,blue}, 2={red}},
+	scatter src=explicit symbolic,
+	only marks,
+	scatter,
+	mark=*,
+	mark size=0.5,
+	mark color=blue,
+] table[x=$2,y=$4,meta=$6] {$7};
+\legend{Cluster app. 2,Cluster app. 1, Cluster app. 0}
+\end{axis}
+\end{tikzpicture}

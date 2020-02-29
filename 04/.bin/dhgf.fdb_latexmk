@@ -1,0 +1,16 @@
+# Fdb version 3
+["pdflatex"] 1582728261 ".bin/dhgf.tex" ".bin/dhgf.pdf" "dhgf" 1582728262
+  ".bin/dhgf.aux" 1582728262 8 a94a2480d3289e625eea47cd1b285758 ""
+  ".bin/dhgf.tex" 1582728261 594 9c1500790880ac2f664fcddfed39a654 ""
+  "/home/aghiles/.texlive2018/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-regular.luc" 1579052581 129906 1bd58b856368aab06d26ea638876334f ""
+  "/usr/share/texlive/texmf-dist/tex/luatex/lualibs/lualibs-basic-merged.lua" 1551133342 128042 842461e0b226762dd46396545d7a277d ""
+  "/usr/share/texlive/texmf-dist/tex/luatex/lualibs/lualibs-basic.lua" 1551133342 2722 1bf53d4477fd3e857eb562eef52be3e2 ""
+  "/usr/share/texlive/texmf-dist/tex/luatex/lualibs/lualibs-compat.lua" 1367794330 603 398583cb619d20952d67edcedae41608 ""
+  "/usr/share/texlive/texmf-dist/tex/luatex/lualibs/lualibs-extended-merged.lua" 1551133342 99095 f4387a3380b6c3221b96f52c0bda5dfe ""
+  "/usr/share/texlive/texmf-dist/tex/luatex/lualibs/lualibs-extended.lua" 1551133342 4863 71ebb63cd7b26b0bd5592f889e94f08d ""
+  "/var/lib/texmf/web2c/luatex/lualatex.fmt" 1577236765 1370734 9850b2d99a0ac83ec393ec00d1500504 ""
+  "pgf/plot.tex" 1581007080 1550 abb7475a3526e6297dd5efed2118d6a1 ""
+  (generated)
+  ".bin/dhgf.aux"
+  ".bin/dhgf.pdf"
+  ".bin/dhgf.log"

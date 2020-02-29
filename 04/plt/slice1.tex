@@ -1,0 +1,64 @@
+\input{tikz}
+\begin{document}
+\begin{tikzpicture}
+
+% \DrawGrid{(0,0)}{(5,5)}
+
+
+\Label{f1}{0,2}{App 1}{blue}
+\Label{f2}{0,1}{App 2}{green}
+\Label{f3}{0,0}{App 3}{red}
+
+\Label{d1}{2,1}{\textbf{Device}}{black}
+
+\Label{s1}{4,2}{Slice 1}{blue}
+\Label{s2}{4,1}{Slice 2}{green}
+\Label{s3}{4,0}{Slice 3}{red}
+
+\Label{g2}{6,0}{\textbf{Gateway}}{black}
+\Label{g1}{6,1}{\textbf{Gateway}}{black}
+\Label{g3}{6,2}{\textbf{Gateway}}{black}
+
+\Label{ss1}{8,2}{Slice 1}{blue}
+\Label{ss2}{8,1}{Slice 2}{green}
+\Label{ss3}{8,0}{Slice 3}{red}
+
+\Label{i}{10,1}{\textbf{Internet}}{black}
+
+\Label{server1}{12,2}{Server 1}{blue}
+\Label{server2}{12,1}{Server 2}{green}
+\Label{server3}{12,0}{Server 3}{red}
+
+
+% Fleche 
+
+\Fleche{f1}{d1}{blue}{}
+\Fleche{f2}{d1}{green}{}
+\Fleche{f3}{d1}{red}{}
+
+\Fleche{d1}{s1}{blue}{}
+\Fleche{d1}{s2}{green}{}
+\Fleche{d1}{s3}{red}{}
+
+\Fleche{s1}{g1}{blue}{}
+\Fleche{s2}{g1}{green}{}
+\Fleche{s3}{g1}{red}{}
+
+
+\Fleche{g1}{ss1}{blue}{}
+\Fleche{g1}{ss2}{green}{}
+\Fleche{g1}{ss3}{red}{}
+
+\Fleche{ss1}{i}{blue}{}
+\Fleche{ss2}{i}{green}{}
+\Fleche{ss3}{i}{red}{}
+
+
+
+\Fleche{i}{server1}{blue}{}
+\Fleche{i}{server2}{green}{}
+\Fleche{i}{server3}{red}{}
+
+\end{tikzpicture}
+\end{document}
+

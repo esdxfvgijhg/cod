@@ -1,0 +1,5 @@
+[0] Config.pm:304> INFO - This is Biber 2.12
+[0] Config.pm:307> INFO - Logfile is '.bin/plot.blg'
+[32] biber:315> INFO - === mar. févr.  4, 2020, 10:28:11
+[46] Utils.pm:209> ERROR - .bin/plot.bcf is malformed, last biblatex run probably failed. Deleted .bin/plot.bbl
+[46] Biber.pm:114> INFO - ERRORS: 1

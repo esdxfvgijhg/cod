@@ -1,0 +1,37 @@
+\input{tikz}
+\begin{document}
+\begin{tikzpicture}
+
+% \DrawGrid{(0,0)}{(5,5)}
+
+\Label{i}{2,6}{Internet}{black}
+
+\Label{g1}{0,3}{$G_{1}$}{black}
+\Label{g2}{2,3}{$G_{G-1}$}{black}
+\Label{g3}{4,3}{$G_{G}$}{black}
+
+\Label{d1}{0,0}{$D_{1,1}$}{black}
+\Label{d2}{2,0}{$D_{D-1, S-1}$}{black}
+\Label{d3}{4,0}{$D_{D, S}$}{black}
+
+
+\Fleche{g1}{i}{black}{$U'_{x,x,1}$}
+\Fleche{g2}{i}{black}{}
+\Fleche{g3}{i}{black}{$U'_{x,x,G}$}
+
+
+\Fleche{d1}{g1}{blue}{$U''_{1,1,1}$}
+\Fleche{d2}{g1}{green}{}
+\Fleche{d3}{g1}{red}{}
+
+\Fleche{d1}{g2}{blue}{}
+\Fleche{d2}{g2}{green}{}
+\Fleche{d3}{g2}{red}{}
+
+\Fleche{d1}{g3}{blue}{}
+\Fleche{d2}{g3}{green}{}
+\Fleche{d3}{g3}{red}{$U''_{D,S,G}$}
+
+\end{tikzpicture}
+\end{document}
+

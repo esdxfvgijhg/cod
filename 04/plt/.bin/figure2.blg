@@ -1,0 +1,9 @@
+[0] Config.pm:304> INFO - This is Biber 2.12
+[0] Config.pm:307> INFO - Logfile is '.bin/figure2.blg'
+[44] biber:315> INFO - === mar. févr.  4, 2020, 11:08:00
+[77] Biber.pm:371> INFO - Reading '.bin/figure2.bcf'
+[191] Biber.pm:889> INFO - Found 0 citekeys in bib section 0
+[202] Utils.pm:193> WARN - The file '.bin/figure2.bcf' does not contain any citations!
+[214] bbl.pm:636> INFO - Writing '.bin/figure2.bbl' with encoding 'UTF-8'
+[214] bbl.pm:739> INFO - Output to .bin/figure2.bbl
+[214] Biber.pm:110> INFO - WARNINGS: 1

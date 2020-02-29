@@ -1,0 +1,9 @@
+[0] Config.pm:304> INFO - This is Biber 2.12
+[0] Config.pm:307> INFO - Logfile is '.bin/fcm.blg'
+[23] biber:315> INFO - === lun. févr.  3, 2020, 09:32:42
+[42] Biber.pm:371> INFO - Reading '.bin/fcm.bcf'
+[93] Biber.pm:889> INFO - Found 0 citekeys in bib section 0
+[98] Utils.pm:193> WARN - The file '.bin/fcm.bcf' does not contain any citations!
+[104] bbl.pm:636> INFO - Writing '.bin/fcm.bbl' with encoding 'UTF-8'
+[104] bbl.pm:739> INFO - Output to .bin/fcm.bbl
+[104] Biber.pm:110> INFO - WARNINGS: 1

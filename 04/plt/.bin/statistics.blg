@@ -1,0 +1,9 @@
+[0] Config.pm:304> INFO - This is Biber 2.12
+[0] Config.pm:307> INFO - Logfile is '.bin/statistics.blg'
+[24] biber:315> INFO - === mar. févr.  4, 2020, 11:20:29
+[43] Biber.pm:371> INFO - Reading '.bin/statistics.bcf'
+[98] Biber.pm:889> INFO - Found 0 citekeys in bib section 0
+[103] Utils.pm:193> WARN - The file '.bin/statistics.bcf' does not contain any citations!
+[110] bbl.pm:636> INFO - Writing '.bin/statistics.bbl' with encoding 'UTF-8'
+[110] bbl.pm:739> INFO - Output to .bin/statistics.bbl
+[110] Biber.pm:110> INFO - WARNINGS: 1

@@ -1,0 +1,15 @@
+\input{tikz}
+\begin{document}
+\begin{tikzpicture}
+
+\begin{axis}[legend pos=north east,ylabel=BER, ticklabel style = {font=\scriptsize}, label style={font=\scriptsize}, xlabel=$ToA_{[s]}$, legend style={font=\scriptsize}]
+\addplot[
+		scatter/classes={1={green}, 0={blue}, 2={red}},
+        scatter src=explicit symbolic,
+        only marks,scatter,mark=*,mark size=0.5, mark color=blue
+] table[col sep=space,y=BER,x=ToA,meta=L] {A.dat};
+\legend{Cluster 0,Cluster 1, Cluster 2}
+\end{axis}
+\end{tikzpicture}
+\end{document}
+

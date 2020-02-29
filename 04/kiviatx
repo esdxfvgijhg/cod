@@ -1,0 +1,141 @@
+\begin{tikzpicture}[
+  label distance=.1cm,
+  scale=0.37,
+  plot1/.style={
+    thick,
+    draw=red!40,
+    fill=red!20,
+    mark=ball,
+    mark options={
+     ball color=red,
+     mark size=4pt
+    }
+  },
+  plot2/.style={
+    thick,
+    draw=blue!40,
+    fill=blue!40,
+    mark=ball,
+    mark options={
+      mark size=4pt,
+      ball color=blue
+    },
+    opacity=.5
+  },
+  plot3/.style={
+    thick,
+    draw=blue!20,
+    fill=yellow!20,
+    mark=ball,
+    mark options={
+      mark size=4pt,
+      ball color=yellow
+    },
+    opacity=.5
+  }
+]
+
+
+\begin{scope}[local bounding box=a,shift={(0,0)}]
+
+
+\newcommand\KivStep{4}
+\pgfmathsetmacro\Unity{1/\KivStep}
+\newcommand\zeroshift{0.2}
+
+ \tkzKiviatDiagram[
+   radial  style/.style ={-},
+   rotate=90, 
+   lattice style/.style ={black!30},
+   step=\KivStep,
+   gap=1,
+   lattice=5
+]
+{A,B,C,D,E,F}
+
+
+
+\tkzKiviatLine[
+  /kiviatline/zero point=\zeroshift,
+  plot1
+](0.69967,0.518884,0.666573,0.641628,0.260964,-0.097147)
+\tkzKiviatLine[
+  /kiviatline/zero point=\zeroshift,
+  plot2
+](0.69967,0.51442,0.741518,0.683882,0.845317,0.268581)
+\tkzKiviatLine[
+  /kiviatline/zero point=\zeroshift,
+  plot3
+](0.69967,0.516279,0.716755,0.674239,0.84688,0.85819)
+
+\tkzKiviatGrad[unity=\Unity, label precision=2, zero point=\zeroshift](0) 
+\end{scope}
+
+\begin{scope}[local bounding box=b,shift={(-15,0)}]
+
+\newcommand\KivStep{0.01}
+\pgfmathsetmacro\Unity{1/\KivStep}
+\newcommand\zeroshift{200}
+
+ \tkzKiviatDiagram[
+   radial  style/.style ={-},
+   rotate=90,
+   lattice style/.style ={black!30},
+   step=\KivStep,
+   gap=1,
+   lattice=5
+]
+{A,B,C,D,E,F}
+
+
+\tkzKiviatLine[
+  /kiviatline/zero point=\zeroshift,
+  plot1
+](0.549194,31.436088,41.019637,48.748227,-34.859838,243.311831)
+\tkzKiviatLine[
+  /kiviatline/zero point=\zeroshift,
+  plot2
+](0.549194,31.947443,34.558203,40.005646,-157.190631,-70.267567)
+\tkzKiviatLine[
+  /kiviatline/zero point=\zeroshift,
+  plot3
+](0.549194,34.251384,36.154543,41.913,-139.627415,-20.655737)
+
+\tkzKiviatGrad[unity=\Unity, zero point=\zeroshift](0) 
+\end{scope}
+
+\begin{scope}[local bounding box=c,shift={(15,0)}]
+\newcommand\KivStep{75}
+\pgfmathsetmacro\Unity{1/\KivStep}
+
+\tkzKiviatDiagram[
+  radial  style/.style ={-},
+  rotate=90,
+  lattice style/.style ={black!30},
+  step=\KivStep,
+  gap=1,
+  lattice=5
+]
+{A,B,C,D,E,F}
+
+\tkzKiviatLine[plot1](0.030665,0.0591,0.043113,0.058399,0.022864,0.031734)
+\tkzKiviatLine[plot2](0.030665,0.059414,0.038696,0.053704,0.023005,0.011813)
+\tkzKiviatLine[plot3](0.030665,0.060144,0.040277,0.055047,0.02086,0.002801)
+
+
+\tkzKiviatGrad[unity=\Unity, label precision=3](0)
+\end{scope}
+
+
+\node [above] at (a.north) {Foo};
+\node [above] at (b.north) {Bar};
+\node [above] at (c.north) {Baz};
+
+\matrix [above] at (current bounding box.north) {
+  \filldraw [plot1,scale=0.5] plot coordinates {(0,0)(1,0)(1,0.5)(0,0.5)} -- cycle; & \node[anchor=base]{Lorem}; &
+  \filldraw [plot2,scale=0.5] plot coordinates {(0,0)(1,0)(1,0.5)(0,0.5)} -- cycle; & \node[anchor=base]{ipsum}; &
+  \filldraw [plot3,scale=0.5] plot coordinates {(0,0)(1,0)(1,0.5)(0,0.5)} -- cycle; & \node[anchor=base]{dolor}; \\\\
+};
+
+
+\end{tikzpicture}

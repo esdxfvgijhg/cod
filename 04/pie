@@ -1,0 +1,38 @@
+\begin{tikzpicture}[
+    pie chart,
+    slice type={01}{blu},
+    slice type={02}{rosso},
+    slice type={03}{giallo},
+    slice type={04}{viola},
+    slice type={05}{verde},
+    slice type={06}{yellow},
+    slice type={07}{turquoise2},
+    slice type={08}{tan1},
+    slice type={09}{steelblue},
+    slice type={10}{salmon1},
+    pie values/.style={font={\small}},
+    scale=2
+]
+  \pie[xshift=2.2cm]{2009}{
+    10/01,
+    10/02,
+    10/03,
+    10/04,
+    10/05,
+    10/06,
+    10/07,
+    10/08,
+    10/09,
+    10/10}
+  \legend[shift={(0cm,2cm)}]{
+    {a}/01,
+    {b}/02,
+    {c}/03,
+    {d}/04,
+    {e}/05,
+    {f}/06,
+    {g}/07,
+    {h}/08,
+    {i}/09,
+    {i}/10}
+\end{tikzpicture}

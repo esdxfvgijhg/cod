@@ -1,0 +1,30 @@
+\input{tikz}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+	legend pos      = north east,
+	ylabel          = BER,
+	xlabel          = $RSSI_{[dbm]}$,
+	ticklabel	style	=	{font=\scriptsize},
+	label	style     = {font=\scriptsize},
+	legend	style   = {font=\scriptsize}
+]
+\addplot[
+	scatter/classes = {1={green},0={blue},2={red}},
+	scatter	src     = explicit symbolic,
+	mark            = *,
+	mark	size      = 0.5,
+	mark	color     = blue
+	only marks,
+	scatter,
+]	table[
+	y=BER,
+	x=RSSI,
+	meta=L
+]	{A.csv};
+\legend{Cluster 0,Cluster 1, Cluster 2}
+\end{axis}
+\end{tikzpicture}
+\end{document}
+
+

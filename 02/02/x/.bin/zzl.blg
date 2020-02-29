@@ -1,0 +1,9 @@
+[0] Config.pm:304> INFO - This is Biber 2.12
+[0] Config.pm:307> INFO - Logfile is '.bin/zzl.blg'
+[25] biber:315> INFO - === mer. févr. 26, 2020, 16:26:01
+[45] Biber.pm:371> INFO - Reading '.bin/zzl.bcf'
+[101] Biber.pm:889> INFO - Found 0 citekeys in bib section 0
+[106] Utils.pm:193> WARN - The file '.bin/zzl.bcf' does not contain any citations!
+[112] bbl.pm:636> INFO - Writing '.bin/zzl.bbl' with encoding 'UTF-8'
+[112] bbl.pm:739> INFO - Output to .bin/zzl.bbl
+[112] Biber.pm:110> INFO - WARNINGS: 1

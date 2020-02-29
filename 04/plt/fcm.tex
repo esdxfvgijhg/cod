@@ -1,0 +1,17 @@
+\input{tikz}
+\begin{document}
+\begin{tikzpicture}[node distance=1cm, every node/.style={fill=white, font=\sffamily,scale=0.8}, align=center]
+  \node (start)       [activityStarts]                     {Parameter initialization};
+  \node (fitness)     [selection, below of=start]          {Initialize memberships};
+  \node (crossover)   [selection, below of=fitness]        {Update clusterheads};
+  \node (mutation)    [selection, below of=crossover]      {Update memberships};
+  \node (selection)   [selection, below of=mutation]       {Objective function};
+  \node (end)         [activityStarts, below of=selection] {Final membership values};
+  \draw[->]     (start)     -- (fitness);
+  \draw[->]     (fitness)   -- (crossover);
+  \draw[->]     (crossover) -- (mutation);
+  \draw[->]     (mutation)  -- (selection);
+  \draw[->]     (selection) -- (end);
+  \draw[->] (selection.east) to[bend right] (crossover.east);
+\end{tikzpicture}
+\end{document}

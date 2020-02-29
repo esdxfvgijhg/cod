@@ -1,0 +1,18 @@
+\begin{tikzpicture}
+    \coordinate (origin) at (0, 0);
+
+    \foreach[count=\i] \radius/\dim in {4/Proficiency,
+                                        9/Growth,
+                                        1/Ratio,
+                                        7/Duration,
+                                        3/Motivation,
+                                        7/Breadth,
+                                        2/Depth}{
+        \coordinate (\i) at (\i * 360 / 7: \radius);
+        \node (title) at (\i * 360 / 7: 11) {\Huge\dim};
+        \draw (origin) -- (title);
+    }
+
+    \draw [fill=blue!20, opacity=.7] (1)
+                                \foreach \i in {2,...,7}{-- (\i)} --cycle;
+\end{tikzpicture}

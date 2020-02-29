@@ -1,0 +1,17 @@
+PWD /home/aghiles/Aghiles/02/01/04
+INPUT /var/lib/texmf/web2c/luatex/lualatex.fmt
+INPUT ./.bin/dhgf.tex
+OUTPUT .bin/dhgf.log
+INPUT /usr/share/texlive/texmf-dist/tex/luatex/lualibs/lualibs-basic.lua
+INPUT /usr/share/texlive/texmf-dist/tex/luatex/lualibs/lualibs-basic-merged.lua
+INPUT /usr/share/texlive/texmf-dist/tex/luatex/lualibs/lualibs-compat.lua
+INPUT /usr/share/texlive/texmf-dist/tex/luatex/lualibs/lualibs-extended.lua
+INPUT /usr/share/texlive/texmf-dist/tex/luatex/lualibs/lualibs-extended-merged.lua
+INPUT ./pgf/plot.tex
+INPUT ./pgf/plot.tex
+INPUT .bin/dhgf.aux
+INPUT .bin/dhgf.aux
+OUTPUT .bin/dhgf.aux
+INPUT /home/aghiles/.texlive2018/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-regular.luc
+OUTPUT .bin/dhgf.pdf
+INPUT .bin/dhgf.aux

@@ -1,0 +1,5 @@
+[0] Config.pm:304> INFO - This is Biber 2.12
+[0] Config.pm:307> INFO - Logfile is '.bin/LPWAN.blg'
+[23] biber:315> INFO - === mar. févr.  4, 2020, 16:59:33
+[37] Utils.pm:209> ERROR - .bin/LPWAN.bcf is malformed, last biblatex run probably failed. Deleted .bin/LPWAN.bbl
+[37] Biber.pm:114> INFO - ERRORS: 1
